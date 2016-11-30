@@ -12,7 +12,7 @@ var options = {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer [LineAccessToken]'
+    'Authorization': 'Bearer [Authorization Token]'
   }
 }
 app.set('port', (process.env.PORT || 5000));
@@ -31,12 +31,26 @@ app.post('/', jsonParser, function(req, res) {
 
   let rplyVal = '';
   try {
-    rplyVal = parseInput(msg); 
+    rplyVal = parseInput(rplyToken, msg); 
   } 
   catch(e) {
     rplyVal = '格式錯惹，正確格式如： 1d3, 5d200';
   }
 
+  if (rplyVal) {
+    replyMsgToLine(rplyToken, rplyVal); 
+  } else {
+    console.log('Do not trigger'); 
+  }
+
+  res.send('ok');
+});
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
+
+function replyMsgToLine(rplyToken, rplyVal) {
   let rplyObj = {
     replyToken: rplyToken,
     messages: [
@@ -57,24 +71,28 @@ app.post('/', jsonParser, function(req, res) {
       console.log(body); 
     });
   });
-  console.log(rplyJson);
   request.on('error', function(e) {
     console.log('Request error: ' + e.message);
   })
   request.end(rplyJson);
+}
 
-  res.send('ok');
-});
-
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
-
-function parseInput(inputStr) {
+function parseInput(rplyToken, inputStr) {
   console.log('InputStr: ' + inputStr);
-  let splitor = 'd';
-  let commandArr = inputStr.split(splitor);
-  if (commandArr.length != 2) return '格式錯惹，正確格式如： 1d3, 5d200';
+  let msgSplitor = ' ';
+  let comSplitor = 'd';
+
+  let mainMsg = inputStr.split(msgSplitor);
+  let trigger = mainMsg[0];
+  console.log(trigger);
+  if (trigger != '李孟儒') return null;
+
+  _isNaN = function(obj) {
+    return isNaN(parseInt(obj));
+  }
+
+  let commandArr = mainMsg[1].split(comSplitor);
+  if (commandArr.length != 2 || _isNaN(commandArr[0]) || _isNaN(commandArr[1])) return '格式錯惹，正確格式如： 1d3, 5d200';
   let countOfNum = commandArr[0];
   let randomRange = commandArr[1];
   

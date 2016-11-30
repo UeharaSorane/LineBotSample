@@ -1,0 +1,16 @@
+# LineBot
+
+## Preprocess
+* Install NodeJs 6.9.1
+
+## Installation
+```
+// Create a new project folder
+$ mkdir line-bot
+$ cd line-bot && git clone https://github.com/LarryLo/LineBotTest.git
+$ npm install 
+```
+
+## Modify the Line authorization token in index.js
+
+## Deploy the project on webserver
