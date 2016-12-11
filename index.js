@@ -98,45 +98,109 @@ function parseInput(rplyToken, inputStr) {
           return isNaN(parseInt(obj));
         }                   
         //鴨霸獸指令開始於此
-        if (inputStr.match('鴨霸獸') != null && inputStr.match('說明') != null) return randomReply() + '\n' + '\
-總之你要擲骰前就先打roll，後面接像是2d6，1d6+3，2d6+1d3之類的就好。  \
-\n要多筆輸出就是先空一格再打像是 *5 之類的。  \
-\n不要打成大寫D，不要逼我嗆你 \
-\n如果是CoC系的話，有初步支援cc擲骰了，獎懲骰也支援了。 \
+        if (inputStr.match('鴨霸獸') != null && inputStr.match('說明') != null) return YabasoReply('0') + '\
+\n總之現在應該支援直接的四則運算了，直接打：2d4+1、2D10+1d2\
+\n要多筆輸出就是先打你要的次數，再空一格打骰數：7 3d6、5 2d6+6  \
+\n現在打成大寫D，我也不會嗆你了哈哈哈。 \
+\n如果是CoC系的話，有支援cc擲骰和獎懲骰， \
+\n打 cc> 的話，可以用來骰幕間成長，像：cc>40 偵查。 \
+\n \
+\n以上功能靈感來源來自悠子桑的Hastur，那隻的功能超完整快加他： @fmc9490c \
+\n這隻的BUG超多，棍。\
 ';
-        if (inputStr.match('鴨霸獸') != null) return randomReply() ;
-        
+        else
+          if (inputStr.match('鴨霸獸') != null) return YabasoReply(inputStr) ;
+        else
         //cc判定在此
         if (inputStr.toLowerCase().match(/^cc/)!= null) return CoC7th(inputStr.toLowerCase()) ;      
-          
-        //roll 指令開始於此
-        if (trigger == 'roll'){        
-                  
-          if (inputStr.split(msgSplitor).length == 1) return '\
-總之你要擲骰前就先打roll，後面接像是2d6，1d6+3，2d6+1d3之類的就好。  \
-\n要多筆輸出就是先空一格再打像是 *5 之類的。  \
-\n不要打成大寫D，不要逼我嗆你';
-          if (inputStr.split(msgSplitor).length >= 3){
-            
-            if (mainMsg[2].split('*').length == 2) {
-              let tempArr = mainMsg[2].split('*');
-              let text = inputStr.split(msgSplitor)[3];
-              //secCommand = parseInt(tempArr[1]);
-              return MutiRollDice(mainMsg[1],parseInt(tempArr[1]),text);
-            }
-            return NomalRollDice(mainMsg[1],mainMsg[2]);
-          }
-          if (inputStr.split(msgSplitor).length == 2){
-            return NomalRollDice(mainMsg[1],mainMsg[2]);
-          }
-          
-          
+        else
+        //擲骰判定在此        
+        if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/d/)!=null) {
+          return nomalDiceRoller(inputStr);
         }
-        
+                      
         
         else return undefined;
         
       }
+
+
+function nomalDiceRoller(inputStr){
+  
+  //首先判斷是否是誤啟動（檢查是否有符合骰子格式）
+  if (inputStr.toLowerCase().match(/\d+d\d+/) == null) return undefined;
+  
+  //再來先把第一個分段拆出來，待會判斷是否是複數擲骰
+  let mutiOrNot = inputStr.toLowerCase().match(/\S+/);
+  
+  //排除小數點
+  if (mutiOrNot.toString().match(/\./)!=null)return undefined;
+
+  //先定義要輸出的Str
+  let finalStr = '' ;  
+  
+  //是複數擲骰喔
+  if(mutiOrNot.toString().match(/\D/)==null ) {
+    finalStr= '複數擲骰：\n'
+    if(mutiOrNot>20) return '不支援20次以上的複數擲骰。';
+    
+    for (i=1 ; i<=mutiOrNot ;i++){
+    let DiceToRoll = inputStr.toLowerCase().split(' ',2)[1];
+    if (DiceToRoll.match('d') == null) return undefined;
+
+    //寫出算式
+    let equation = DiceToRoll;
+    while(equation.match(/\d+d\d+/)!=null) {
+      let tempMatch = equation.match(/\d+d\d+/);
+      equation = equation.replace(/\d+d\d+/, RollDice(tempMatch));
+    }
+
+    //計算算式
+    let answer = eval(equation.toString());
+    finalStr = finalStr + i + '# ' + equation + ' = ' + answer + '\n';
+    }
+        
+  }
+  
+  else
+  {
+  //一般單次擲骰
+  let DiceToRoll = mutiOrNot.toString();
+  
+  if (DiceToRoll.match('d') == null) return undefined;
+  
+  //寫出算式
+  let equation = DiceToRoll;
+  while(equation.match(/\d+d\d+/)!=null) {
+    let tempMatch = equation.match(/\d+d\d+/);    
+    if (tempMatch.toString().split('d')[0]>200) return '不支援200D以上擲骰。';
+    if (tempMatch.toString().split('d')[1]==1 || tempMatch.toString().split('d')[1]>500) return '不支援D1和超過D500的擲骰。';
+    equation = equation.replace(/\d+d\d+/, RollDice(tempMatch));
+  }
+  
+  //計算算式
+  let answer = eval(equation.toString());
+    finalStr= '基本擲骰：' + equation + ' = ' + answer;
+  }
+  return finalStr;
+
+
+}        
+
+function RollDice(inputStr){
+  //先把inputStr變成字串（不知道為什麼非這樣不可）
+  let comStr=inputStr.toString();
+  let finalStr = '(';
+
+  for (let i = 1; i <= comStr.split('d')[0]; i++) {
+    finalStr = finalStr + Dice(comStr.split('d')[1]) + '+';
+     }
+
+  finalStr = finalStr.substring(0, finalStr.length - 1) + ')';
+  return finalStr;
+}
+                                                                     
+      
         
 function CoC7th(inputStr){
   //記錄檢定要求值
@@ -152,6 +216,23 @@ function CoC7th(inputStr){
 
   //先設定最終結果等於第一次擲骰
   let finalRoll = firstRoll;
+  
+  
+  //判斷是否為成長骰
+  if(inputStr.match(/^cc>\d+/)!=null){
+    chack = parseInt(inputStr.split('>',2)[1]) ;
+    if (finalRoll>chack) {
+      
+      ReStr = '(1D100>' + chack + ') → ' + finalRoll + ' → 成功成長' + Dice(10) +'點';
+      return ReStr;
+    }
+    if (finalRoll<chack) {
+      ReStr = '(1D100>' + chack + ') → ' + finalRoll + ' → 沒有成長';
+      return ReStr;
+    }
+    return undefined;
+  }
+  
   
   //判斷是否為獎懲骰
   let BPDice = 0;
@@ -169,12 +250,8 @@ function CoC7th(inputStr){
       if (BPDice>0) finalRoll = Math.min(...countArr);
       if (BPDice<0) finalRoll = Math.max(...countArr);
       
-      ReStr = ReStr + tempStr + ' → ';
-      
-    }
-  
-
-  
+      ReStr = ReStr + tempStr + ' → ';      
+    }  
   
   //結果判定
   if (finalRoll == 1) ReStr = ReStr + finalRoll + ' → 恭喜！大成功！';
@@ -199,123 +276,25 @@ function CoC7th(inputStr){
   return ReStr;
 }
  
-
-        function MutiRollDice(DiceToCal,timesNum,text){
-          let cuntSplitor = '+';
-          let comSplitor = 'd';
-          let CuntArr = DiceToCal.toLowerCase().split(cuntSplitor);
-          let numMax = CuntArr.length - 1 ; //設定要做的加法的大次數
-
-          var count = 0;
-          let countStr = '';
-         // if (DiceToCal.match('D') != null) return randomReply() + '\n格式錯啦，d要小寫！';
-
-          if (text == null) {
-            for (let j = 1 ; j <= timesNum ; j++){
-              count = 0;
-              for (let i = 0; i <= numMax; i++) {
-
-                let commandArr = CuntArr[i].split(comSplitor);
-                let countOfNum = commandArr[0];
-                let randomRange = commandArr[1];
-                if (randomRange == null) {
-                  let temp = parseInt(countOfNum);
-                  //countStr = countStr + temp + '+';
-                  count += temp; 
-                }
-                else{
-
-                  for (let idx = 1; idx <= countOfNum; idx ++) {
-                    let temp = Dice(randomRange);
-                    //countStr = countStr + temp + '+';
-                    count += temp; 
-                  }
-                }
-              }
-              countStr = countStr + count + '、';
-            }
-            countStr = countStr.substring(0, countStr.length - 1) ;
-            return countStr;
-          }
-
-          if (text != null) {
-            for (let j = 1 ; j <= timesNum ; j++){
-              count = 0;
-              for (let i = 0; i <= numMax; i++) {
-
-                let commandArr = CuntArr[i].split(comSplitor);
-                let countOfNum = commandArr[0];
-                let randomRange = commandArr[1];
-                if (randomRange == null) {
-                  let temp = parseInt(countOfNum);
-                  //countStr = countStr + temp + '+';
-                  count += temp; 
-                }
-                else{
-
-                  for (let idx = 1; idx <= countOfNum; idx ++) {
-                    let temp = Dice(randomRange);
-                    //countStr = countStr + temp + '+';
-                    count += temp; 
-                  }
-                }
-              }
-              countStr = countStr + count + '、';
-            }
-            countStr = countStr.substring(0, countStr.length - 1) + '；' + text;
-            return countStr;
-          }
-        }
-        
-        
-function NomalRollDice(DiceToCal,text){
-    let cuntSplitor = '+';
-    let comSplitor = 'd';
-    let CuntArr = DiceToCal.toLowerCase().split(cuntSplitor);
-    let numMax = CuntArr.length - 1 ; //設定要做的加法的大次數
-
-    var count = 0;
-    let countStr = '';
-  //if (DiceToCal.match('D') != null) return randomReply() + '\n格式錯啦，d要小寫！';
-    for (let i = 0; i <= numMax; i++) {
-      
-      let commandArr = CuntArr[i].split(comSplitor);
-      let countOfNum = commandArr[0];
-      let randomRange = commandArr[1];
-      if (randomRange == null) {
-        let temp = parseInt(countOfNum);
-        countStr = countStr + temp + '+';
-        count += temp; 
-       }
-       else{
-          
-        for (let idx = 1; idx <= countOfNum; idx ++) {
-          let temp = Dice(randomRange);
-          countStr = countStr + temp + '+';
-          count += temp; 
-        }      }
-    }
   
-    
-  if (countStr.split(cuntSplitor).length == 2) {
-    if (text == null ) countStr = count;
-    else countStr = count + '；' + text;
-  } 
-  else {
-    if (text == null ) countStr = countStr.substring(0, countStr.length - 1) + '=' + count;
-    else countStr = countStr.substring(0, countStr.length - 1) + '=' + count + '；' + text;
-  }
-return countStr;
-          
-}
 
 
-        function Dice(diceSided){          
+function Dice(diceSided){          
           return Math.floor((Math.random() * diceSided) + 1)
         }              
 
 
-        function randomReply() {
+        function YabasoReply(inputStr) {
           let rplyArr = ['你們死定了呃呃呃不要糾結這些……所以是在糾結哪些？', '在澳洲，每過一分鐘就有一隻鴨嘴獸被拔嘴。 \n我到底在共三小。', '嗚噁噁噁噁噁噁，不要隨便叫我。', '幹，你這學不會的豬！', '嘎嘎嘎。', 'wwwwwwwwwwwwwwwww', '為什麼你們每天都可以一直玩；玩就算了還玩我。', '好棒，整點了！咦？不是嗎？', '不要打擾我挖坑！', '好棒，誤點了！', '在南半球，一隻鴨嘴獸拍打他的鰭，他的嘴就會掉下來。 \n我到底在共三小。', '什麼東西你共三小。', '哈哈哈哈哈哈哈哈！', '一直叫，你4不4想拔嘴人家？', '一直叫，你想被淨灘嗎？', '幫主你也敢嘴？', '拔嘴的話，我的嘴巴會長出觸手，然後開花成四個花瓣哦 (´×`)', '看看我！！我體內的怪物已經這麼大了！！', '看看我！！我體內的怪物已經這麼大了！！', '傳說中，凡是拔嘴過鴨嘴獸的人，有高機率在100年內死去。 \n我到底在共三小。', '人類每花60秒拔嘴，就減少一分鐘的壽命。 \n我到底在共三小。', '嘴被拔，就會掉。'];
+          
+          
+          if(inputStr.match('家訪') != null) return 'ㄉㄅㄑ';
+          else
+          if(inputStr.match('運勢') != null){
+            let LuckArr=['超大吉','大吉','大吉','中吉','中吉','中吉','小吉','小吉','小吉','小吉','兇','兇','兇','大兇','大兇','你還是，不要知道比較好'];
+            return '運勢喔…我覺得，' + LuckArr[Math.floor((Math.random() * (LuckArr.length)) + 0)] + '吧。';
+            
+          } 
+          
           return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
         }
