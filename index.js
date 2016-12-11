@@ -106,31 +106,9 @@ function parseInput(rplyToken, inputStr) {
 ';
         if (inputStr.match('鴨霸獸') != null) return randomReply() ;
         
-        //cc指令開始於此
-        if (inputStr.split('=')[0] == 'cc<') 
-        {
-          let cctext = null;
-          if (mainMsg[1] != undefined ) cctext = mainMsg[1];
-          return coc7(parseInt(inputStr.split('=')[1]),cctext);
-        }
-        
-        //獎懲骰設定於此
-        if (inputStr.split('=')[0] == 'cc(1)<'||inputStr.split('=')[0] == 'cc(2)<'||inputStr.split('=')[0] == 'cc(-1)<'||inputStr.split('=')[0] == 'cc(-2)<') 
-        {
-          let cctext = null;
-          if (mainMsg[1] != undefined ) cctext = mainMsg[1];
-          return coc7bp(parseInt(inputStr.split('=')[1]),parseInt(inputStr.split('(')[1]),cctext);
-        }
-        
-        //ccb指令開始於此
-       if (inputStr.split('=')[0] == 'ccb<') 
-        {
-          let cctext = null;
-          if (mainMsg[1] != undefined ) cctext = mainMsg[1];
-          return coc6(parseInt(inputStr.split('=')[1]),cctext);
-        }
-
-        
+        //cc判定在此
+        if (inputStr.toLowerCase().match(/^cc/)!= null) return CoC7th(inputStr.toLowerCase()) ;      
+          
         //roll 指令開始於此
         if (trigger == 'roll'){        
                   
@@ -156,124 +134,81 @@ function parseInput(rplyToken, inputStr) {
         }
         
         
-        if (trigger != 'roll') return null;
+        else return undefined;
         
       }
-
-function coc6(chack,text){
-          let temp = Dice(100);
-
-
-          if (text == null ) {
-            if (temp == 100) return temp + ' → 啊！大失敗！';
-            if (temp <= chack) return temp + ' → 成功';
-            else return temp + ' → 失敗' ;
-          }
-          else
-    {
-            if (temp == 100) return temp + ' → 啊！大失敗！；' + text;
-            if (temp <= chack) return temp + ' → 成功；' + text;
-            else return temp + ' → 失敗；' + text;
-    }
-}        
         
-function coc7(chack,text){
-  let temp = Dice(100);  
-  if (text == null ) {
-    if (temp == 1) return temp + ' → 恭喜！大成功！';
-    if (temp == 100) return temp + ' → 啊！大失敗！';
-    if (temp <= chack/5) return temp + ' → 極限成功';
-    if (temp <= chack/2) return temp + ' → 困難成功';
-    if (temp <= chack) return temp + ' → 通常成功';
-    else return temp + ' → 失敗' ;
-  }
+function CoC7th(inputStr){
+  //記錄檢定要求值
+  let chack = parseInt(inputStr.split('=',2)[1]) ;
+  //設定回傳訊息
+  let ReStr = '(1D100<=' + chack + ') → ';
+  
+  //先骰兩次十面骰作為起始值
+  let OneRoll = Dice(10) - 1;
+  let TenRoll = Dice(10);
+  let firstRoll = TenRoll*10 + OneRoll;
+  if (firstRoll > 100) firstRoll = firstRoll - 100;  
+
+  //先設定最終結果等於第一次擲骰
+  let finalRoll = firstRoll;
+  
+  //判斷是否為獎懲骰
+  let BPDice = 0;
+  if(inputStr.match(/^cc\(-?[12]\)/)!=null) BPDice = parseInt(inputStr.split('(',2)[1]) ;
+  //如果是獎勵骰
+  if(BPDice != 0){
+    let tempStr = firstRoll;
+    for (let i = 1; i <= Math.abs(BPDice); i++ ){
+      let OtherTenRoll = Dice(10);
+      let OtherRoll = OtherTenRoll.toString() + OneRoll.toString();
+      if (OtherRoll > 100) OtherRoll = parseInt(OtherRoll) - 100;  
+      tempStr = tempStr + '、' + OtherRoll;
+      }
+      let countArr = tempStr.split('、');       
+      if (BPDice>0) finalRoll = Math.min(...countArr);
+      if (BPDice<0) finalRoll = Math.max(...countArr);
+      
+      ReStr = ReStr + tempStr + ' → ';
+      
+    }
+  
+
+  
+  
+  //結果判定
+  if (finalRoll == 1) ReStr = ReStr + finalRoll + ' → 恭喜！大成功！';
   else
-  {
-  if (temp == 1) return temp + ' → 恭喜！大成功！；' + text;
-  if (temp == 100) return temp + ' → 啊！大失敗！；' + text;
-  if (temp <= chack/5) return temp + ' → 極限成功；' + text;
-  if (temp <= chack/2) return temp + ' → 困難成功；' + text;
-  if (temp <= chack) return temp + ' → 通常成功；' + text;
-  else return temp + ' → 失敗；' + text;
-  }
-}
-        
-function coc7chack(temp,chack,text){
-  if (text == null ) {
-    if (temp == 1) return temp + ' → 恭喜！大成功！';
-    if (temp == 100) return temp + ' → 啊！大失敗！';
-    if (temp <= chack/5) return temp + ' → 極限成功';
-    if (temp <= chack/2) return temp + ' → 困難成功';
-    if (temp <= chack) return temp + ' → 通常成功';
-    else return temp + ' → 失敗' ;
-  }
-else
-  {
-    if (temp == 1) return temp + ' → 恭喜！大成功！；' + text;
-    if (temp == 100) return temp + ' → 啊！大失敗！；' + text;
-    if (temp <= chack/5) return temp + ' → 極限成功；' + text;
-    if (temp <= chack/2) return temp + ' → 困難成功；' + text;
-    if (temp <= chack) return temp + ' → 通常成功；' + text;
-    else return temp + ' → 失敗；' + text;
-  }
-}
+  if (finalRoll == 100) ReStr = ReStr + finalRoll + ' → 啊！大失敗！';
+  else
+  if (finalRoll <= 99 && finalRoll >= 95 && chack < 50) ReStr = ReStr + finalRoll + ' → 啊！大失敗！';
+  else
+  if (finalRoll <= chack/5) ReStr = ReStr + finalRoll + ' → 極限成功';
+  else
+  if (finalRoll <= chack/2) ReStr = ReStr + finalRoll + ' → 困難成功';
+  else
+  if (finalRoll <= chack) ReStr = ReStr + finalRoll + ' → 通常成功';
+  else ReStr = ReStr + finalRoll + ' → 失敗' ;
 
-
-function coc7bp (chack,bpdiceNum,text){
-  let temp0 = Dice(10) - 1;
-  let countStr = '';
-  
-  if (bpdiceNum > 0){
-  for (let i = 0; i <= bpdiceNum; i++ ){
-    let temp = Dice(10);
-    let temp2 = temp.toString() + temp0.toString();
-    if (temp2 > 100) temp2 = parseInt(temp2) - 100;  
-    countStr = countStr + temp2 + '、';
-  }
-  countStr = countStr.substring(0, countStr.length - 1) 
-    let countArr = countStr.split('、'); 
-    
-  countStr = countStr + ' → ' + coc7chack(Math.min(...countArr),chack,text);
-  return countStr;
-  }
-  
-  if (bpdiceNum < 0){
-    bpdiceNum = Math.abs(bpdiceNum);
-    for (let i = 0; i <= bpdiceNum; i++ ){
-      let temp = Dice(10);
-      let temp2 = temp.toString() + temp0.toString();
-      if (temp2 > 100) temp2 = parseInt(temp2) - 100;  
-      countStr = countStr + temp2 + '、';
-    }
-    countStr = countStr.substring(0, countStr.length - 1) 
-    let countArr = countStr.split('、'); 
-
-    countStr = countStr + ' → ' + coc7chack(Math.max(...countArr),chack,text);
-    return countStr;
-  }
-  
+  //浮動大失敗運算
+  if (finalRoll <= 99 && finalRoll >= 95 ){
+    if(chack/2 < 50) ReStr = ReStr + '\n（若要求困難成功則為大失敗）';
+    else
+    if(chack/5 < 50) ReStr = ReStr + '\n（若要求極限成功則為大失敗）';
+  }  
+  return ReStr;
 }
-        
-function ArrMax (Arr){
-  var max = this[0];
-  this.forEach (function(ele,index,arr){
-    if(ele > max) {
-      max = ele;
-    }
-  })
-  return max;
-}
-        
+ 
 
         function MutiRollDice(DiceToCal,timesNum,text){
           let cuntSplitor = '+';
           let comSplitor = 'd';
-          let CuntArr = DiceToCal.split(cuntSplitor);
+          let CuntArr = DiceToCal.toLowerCase().split(cuntSplitor);
           let numMax = CuntArr.length - 1 ; //設定要做的加法的大次數
 
           var count = 0;
           let countStr = '';
-          if (DiceToCal.match('D') != null) return randomReply() + '\n格式錯啦，d要小寫！';
+         // if (DiceToCal.match('D') != null) return randomReply() + '\n格式錯啦，d要小寫！';
 
           if (text == null) {
             for (let j = 1 ; j <= timesNum ; j++){
@@ -336,12 +271,12 @@ function ArrMax (Arr){
 function NomalRollDice(DiceToCal,text){
     let cuntSplitor = '+';
     let comSplitor = 'd';
-    let CuntArr = DiceToCal.split(cuntSplitor);
+    let CuntArr = DiceToCal.toLowerCase().split(cuntSplitor);
     let numMax = CuntArr.length - 1 ; //設定要做的加法的大次數
 
     var count = 0;
     let countStr = '';
-  if (DiceToCal.match('D') != null) return randomReply() + '\n格式錯啦，d要小寫！';
+  //if (DiceToCal.match('D') != null) return randomReply() + '\n格式錯啦，d要小寫！';
     for (let i = 0; i <= numMax; i++) {
       
       let commandArr = CuntArr[i].split(comSplitor);
@@ -381,6 +316,6 @@ return countStr;
 
 
         function randomReply() {
-          let rplyArr = ['你們死定了呃呃呃不要糾結這些……所以是在糾結哪些？', '在澳洲，每過一分鐘就有一隻鴨嘴獸被拔嘴。 \n我到底在共三小。', '嗚噁噁噁噁噁噁，不要隨便叫我。', '幹，你這學不會的豬！', '嘎嘎嘎。', 'wwwwwwwwwwwwwwwww', '為什麼你們每天都可以一直玩；玩就算了還玩我。', '好棒，整點了！咦？不是嗎？', '不要打擾我挖坑！', '好棒，誤點了！', '在南半球，一隻鴨嘴獸拍打他的鰭，他的嘴就會掉下來。 \n我到底在共三小。', '什麼東西你共三小。', '哈哈哈哈哈哈哈哈！', '一直叫，你4不4想拔嘴人家？', '一直叫，你想被淨灘嗎？', '幫主你也敢嘴？'];
+          let rplyArr = ['你們死定了呃呃呃不要糾結這些……所以是在糾結哪些？', '在澳洲，每過一分鐘就有一隻鴨嘴獸被拔嘴。 \n我到底在共三小。', '嗚噁噁噁噁噁噁，不要隨便叫我。', '幹，你這學不會的豬！', '嘎嘎嘎。', 'wwwwwwwwwwwwwwwww', '為什麼你們每天都可以一直玩；玩就算了還玩我。', '好棒，整點了！咦？不是嗎？', '不要打擾我挖坑！', '好棒，誤點了！', '在南半球，一隻鴨嘴獸拍打他的鰭，他的嘴就會掉下來。 \n我到底在共三小。', '什麼東西你共三小。', '哈哈哈哈哈哈哈哈！', '一直叫，你4不4想拔嘴人家？', '一直叫，你想被淨灘嗎？', '幫主你也敢嘴？', '拔嘴的話，我的嘴巴會長出觸手，然後開花成四個花瓣哦 (´×`)', '看看我！！我體內的怪物已經這麼大了！！', '看看我！！我體內的怪物已經這麼大了！！', '傳說中，凡是拔嘴過鴨嘴獸的人，有高機率在100年內死去。 \n我到底在共三小。', '人類每花60秒拔嘴，就減少一分鐘的壽命。 \n我到底在共三小。', '嘴被拔，就會掉。'];
           return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
         }
