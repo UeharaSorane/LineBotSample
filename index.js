@@ -291,8 +291,8 @@ function Dice(diceSided){
           if(inputStr.match('家訪') != null) return 'ㄉㄅㄑ';
           else
           if(inputStr.match('運勢') != null){
-            let LuckArr=['超大吉','大吉','大吉','中吉','中吉','中吉','小吉','小吉','小吉','小吉','兇','兇','兇','大兇','大兇','你還是，不要知道比較好'];
-            return '運勢喔…我覺得，' + LuckArr[Math.floor((Math.random() * (LuckArr.length)) + 0)] + '吧。';
+            let LuckArr=['超大吉','大吉','大吉','中吉','中吉','中吉','小吉','小吉','小吉','小吉','凶','凶','凶','大凶','大凶','你還是，不要知道比較好','這應該不關我的事'];
+            return '運勢喔…我覺得，' + LuckArr[Math.floor((Math.random() * (LuckArr.length)) + 0)] + '吧。';return '運勢喔…我覺得，' + LuckArr[Math.floor((Math.random() * (LuckArr.length)) + 0)] + '吧。';
             
           } 
           
