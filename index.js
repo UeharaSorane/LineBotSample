@@ -39,7 +39,8 @@ app.post('/', jsonParser, function(req, res) {
       rplyVal = parseInput(rplyToken, msg); 
     } 
     catch(e) {
-      rplyVal = randomReply();
+      //rplyVal = randomReply();
+      console.log('總之先隨便擺個跑到這邊的訊息，catch error');
     }
   }
 
