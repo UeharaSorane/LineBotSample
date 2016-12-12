@@ -230,7 +230,7 @@ function CoC7th(inputStr){
       ReStr = '(1D100>' + chack + ') → ' + finalRoll + ' → 成功成長' + Dice(10) +'點';
       return ReStr;
     }
-    if (finalRoll<chack) {
+    if (finalRoll<=chack) {
       ReStr = '(1D100>' + chack + ') → ' + finalRoll + ' → 沒有成長';
       return ReStr;
     }
