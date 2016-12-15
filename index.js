@@ -250,7 +250,7 @@ function CoC7th(inputStr){
   else ReStr = ReStr + finalRoll + ' → 失敗' ;
 
   //浮動大失敗運算
-  if (finalRoll <= 99 && finalRoll >= 95 ){
+  if (finalRoll <= 99 && finalRoll >= 95 && chack >= 50 ){
     if(chack/2 < 50) ReStr = ReStr + '\n（若要求困難成功則為大失敗）';
     else
     if(chack/5 < 50) ReStr = ReStr + '\n（若要求極限成功則為大失敗）';
@@ -298,16 +298,43 @@ function YabasoReply(inputStr) {
   //鴨霸獸幫我選～～
   if(inputStr.match('選') != null||inputStr.match('決定') != null||inputStr.match('挑') != null) {
     let rplyArr = inputStr.split(' ');
-    let Answer = rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
-    if(Answer.match('選') != null||Answer.match('決定') != null||Answer.match('挑') != null||Answer.match('鴨霸獸') != null)     Answer = '幹，你不會自己決定嗎';
-                
+    
+    if (rplyArr.length == 1) return '靠腰喔要我選也把選項格式打好好不好，真的想被淨灘嗎？';
+    
+    let Answer = rplyArr[Math.floor((Math.random() * (rplyArr.length-1))+ 1)];
+    if(Answer.match('選') != null||Answer.match('決定') != null||Answer.match('挑') != null||Answer.match('鴨霸獸') != null) {
+      rplyArr = ['幹，你不會自己決定嗎', '人生是掌握在自己手裡的', '隨便哪個都好啦', '連這種東西都不能決定，是不是不太應該啊', '沒事別叫我選東西好嗎，難道你們都是天秤座嗎（戰）', '不要把這種東西交給機器人決定比較好吧'];
+      Answer = rplyArr[Math.floor((Math.random() * (rplyArr.length))+ 0)];
+    }
     return '我想想喔……我覺得，' + Answer + '。';
   }
   else  
   //以下是幫眾限定的垃圾話
+  if(inputStr.match('進化') != null) return '鴨霸獸進化～～超霸獸～～～\n（BGM：http://tinyurl.com/jjltrnt）';
+  else  
+  if(inputStr.match('拔嘴') != null) {
+    let rplyArr=['\
+傳說中，凡是拔嘴過鴨嘴獸的人，有高機率在100年內死去。', '\
+拔嘴的話，我的嘴巴會長出觸手，然後開花成四個花瓣哦 (´×`)', '\
+在澳洲，每過一分鐘就有一隻鴨嘴獸被拔嘴。', '\
+可以的可以的，隨意隨意；反正機械鴨霸獸的嘴是拋棄式的。', '\
+人類每花60秒拔嘴，就減少一分鐘的壽命。'];
+      return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+    }
+  else  
+  if(inputStr.match('愛') != null) return '我是不會嗆你的，因為霸獸愛你。';
+  else
   if(inputStr.match('家訪') != null) return 'ㄉㄅㄑ';
   else
   if(inputStr.match('饅頭') != null) return '可愛。';
+  else
+  if(inputStr.match('炸彈') != null) {
+      let rplyArr=['\
+野～格～炸～彈～', '\
+那你就帶著野格炸彈吧。', '\
+野、格、炸、彈，我、的、最、愛。' ];
+      return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+    }
   else
   if(inputStr.match('泰') != null||inputStr.match('ㄩㄊ') != null||inputStr.match('太太') != null) {
     let rplyArr=['\
@@ -316,13 +343,24 @@ function YabasoReply(inputStr) {
 哈哈，你說什麼呢……啊啦，眼淚怎麼自己流下來了QQ' ];
       return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
     }
-
+  else
+  if(inputStr.match('864') != null||inputStr.match('巴魯斯') != null||inputStr.toLowerCase().match('sora') != null) return '巴魯斯';
+  else
+  if(inputStr.match('康青龍') != null) return '淨灘之力與康青龍同在。';
+  else
+  if(inputStr.match('軒') != null) return '這我一定吉。';
+  else
+  if(inputStr.match('肉食性猛擊') != null) return '想試試嗎？（張嘴）';
+  else
+  if(inputStr.match('俊豪') != null) return '錯誤導入，誤你一生。';
+  else
+  if(inputStr.match('豆腐') != null) return '鴨霸獸不吃。';
   else
   if(inputStr.match('包子') != null) return '幹你娘我最討厭的就是包子你還一直提一直提';
   else
-  if(inputStr.match('鍋貼') != null) return '幹你娘我最討厭的就是鍋貼你還一直提一直提';
+  if(inputStr.match('鍋貼') != null||inputStr.match('煎餃') != null) return '十二顆一盒，鴨霸獸也不吃，而且無比憎恨它。';
   else
-  if(inputStr.match('水餃') != null) return '幹你娘我最討厭的就是水餃你還一直提一直提';
+  if(inputStr.match('水餃') != null) return '噁噁噁噁噁噁噁噁噁';
   else
   if(inputStr.match('蘿蔔') != null) return '我說蘿蔔又白又正又嬌小好像可以抱起來轉；照片我有存，意者請私訊yabaso。';
   else
@@ -332,10 +370,10 @@ function YabasoReply(inputStr) {
   else
   if(inputStr.match('黑熊') != null) {
     let rplyArr=['\
-中壢李性閃亮的黑熊熊穿浴衣～混亂善娘的黑熊熊穿浴衣～耶嘿～\n黑熊醬這樣可愛的女孩，沒男朋友真是太不可思議了！', '\
+中壢李性閃亮的黑熊熊穿浴衣👘～混亂善娘的黑熊熊穿浴衣👘～耶嘿～\n黑熊醬這樣可愛的女孩，沒男朋友真是太不可思議了！', '\
 中壢，李性，閃亮（燦笑）', '\
 混亂善娘（燦笑）', '\
-黑熊熊穿浴衣～黑熊熊穿浴衣～耶嘿～', '\
+黑熊熊穿浴衣👘～黑熊熊穿浴衣👘～耶嘿～', '\
 黑熊醬這樣可愛的女孩，沒男朋友真是太不可思議了'];
     return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
   }
@@ -373,6 +411,12 @@ wwwwwwwwwwwwwwwww', '\
 你在大聲什麼啦！！！！', '\
 公道價，八萬一（伸手）。', '\
 你的嘴裡有異音（指）', '\
+噓，安靜跑個團，很難？', '\
+斷！', '\
+在場沒有一個比我帥。', '\
+我不是針對你，我是說在場各位，都是垃圾。', '\
+你知道你很機掰嗎？', '\
+快 …扶我去喝酒 ……', '\
 幫主說，有人打你的左臉，你就要用肉食性猛擊咬斷他的小腿。'];
     return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
   }
