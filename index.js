@@ -195,13 +195,16 @@ function CoC7th(inputStr){
     for (i=1 ; i<=7 ;i++){
       finalStr = finalStr +'\n' + i + '# ' + DiceCal('3d6*5');
     }
-    finalStr = finalStr +'\n\n四次2D6+6決定SIZ、INT、EDU。';
+    
+    finalStr = finalStr + '\n==';
+    finalStr = finalStr +'\n四次2D6+6決定SIZ、INT、EDU。';
     
     for (i=1 ; i<=4 ;i++){
       finalStr = finalStr +'\n' + i + '# ' + DiceCal('(2d6+6)*5');
     }
     
-    finalStr = finalStr +'\n\n兩次3D6決定LUK。';
+    finalStr = finalStr + '\n==';
+    finalStr = finalStr +'\n兩次3D6決定LUK。';
     for (i=1 ; i<=2 ;i++){
       finalStr = finalStr +'\n' + i + '# ' + DiceCal('3d6*5');
     } 
@@ -238,30 +241,31 @@ function CoC7th(inputStr){
         EDUinc = EDUincArr[i];
     }
 
-    
+    ReStr = ReStr + '==\n';
     if (old < 20) ReStr = ReStr + '年齡調整：從STR、SIZ中減去' + Debuff + '點\n（請自行手動選擇計算）。\n將EDU減去5點。LUK可擲兩次取高。' ;
     else
       if (old >= 40)  ReStr = ReStr + '年齡調整：從STR、CON或DEX中「總共」減去' + Debuff + '點\n（請自行手動選擇計算）。\n將APP減去' + AppDebuff +'點。可做' + EDUinc + '次EDU的成長擲骰。' ;
     
     else ReStr = ReStr + '年齡調整：可做' + EDUinc + '次EDU的成長擲骰。' ;
-
-    ReStr = ReStr + '\n\nSTR：' + DiceCal('3d6*5');
+    ReStr = ReStr + '\n==';
+    ReStr = ReStr + '\n\nＳＴＲ：' + DiceCal('3d6*5');
     if (old>=40) ReStr = ReStr + ' ← 這三項自選共減' + Debuff + '點';
     if (old<20) ReStr = ReStr + ' ← 這兩項擇一減' + Debuff + '點';
-    ReStr = ReStr + '\nCON：' + DiceCal('3d6*5');
+    ReStr = ReStr + '\nＣＯＮ：' + DiceCal('3d6*5');
     if (old>=40) ReStr = ReStr + ' ← 這三項自選共減' + Debuff + '點';
-    ReStr = ReStr + '\nDEX：' + DiceCal('3d6*5');
+    ReStr = ReStr + '\nＤＥＸ：' + DiceCal('3d6*5');
     if (old>=40) ReStr = ReStr + ' ← 這三項自選共減' + Debuff + '點';
-    if (old>=40) ReStr = ReStr + '\nAPP：' + DiceCal('3d6*5-' + AppDebuff);
-    else ReStr = ReStr + '\nAPP：' + DiceCal('3d6*5');
-    ReStr = ReStr + '\nPOW：' + DiceCal('3d6*5');
-    ReStr = ReStr + '\nSIZ：' + DiceCal('(2d6+6)*5');
+    if (old>=40) ReStr = ReStr + '\nＡＰＰ：' + DiceCal('3d6*5-' + AppDebuff);
+    else ReStr = ReStr + '\nＡＰＰ：' + DiceCal('3d6*5');
+    ReStr = ReStr + '\nＰＯＷ：' + DiceCal('3d6*5');
+    ReStr = ReStr + '\nＳＩＺ：' + DiceCal('(2d6+6)*5');
     if (old<20) ReStr = ReStr + ' ← 這兩項擇一減' + Debuff + '點';
-    ReStr = ReStr + '\nINT：' + DiceCal('(2d6+6)*5');         
-    if (old<20) ReStr = ReStr + '\nEDU：' + DiceCal('3d6*5-5');
+    ReStr = ReStr + '\nＩＮＴ：' + DiceCal('(2d6+6)*5');         
+    if (old<20) ReStr = ReStr + '\nＥＤＵ：' + DiceCal('3d6*5-5');
     else {
       let firstEDU = RollDice('3d6') + '*5';
-      ReStr = ReStr + '\n\nEDU初始值：' + firstEDU + ' = ' + eval(firstEDU);
+      ReStr = ReStr + '\n==';
+      ReStr = ReStr + '\nＥＤＵ初始值：' + firstEDU + ' = ' + eval(firstEDU);
       
       let tempEDU = eval(firstEDU);
       
@@ -279,9 +283,10 @@ function CoC7th(inputStr){
         ReStr = ReStr + ' → 沒有成長';       
         }
       }
-      ReStr = ReStr + '\nEDU最終值：' +tempEDU;
+      ReStr = ReStr + '\n';
+      ReStr = ReStr + '\nＥＤＵ最終值：' +tempEDU;
     }
-    
+    ReStr = ReStr + '\n==';
     
     ReStr = ReStr + '\n\nLUK：' + DiceCal('3d6*5');    
     if (old<20) ReStr = ReStr + '\nLUK額外加骰：' + DiceCal('3D6*5');
@@ -408,9 +413,12 @@ function YabasoReply(inputStr) {
 \n還有「cc([-2~2])<=[數字]」的獎懲骰。\
 \n \
 \n和凍豆腐不同的新增功能如下： \
+\n==\
 \n幕間成長骰：「cc>[數字]」，用於幕間技能成長。\
-\n一鍵創角（核心規則）：\n「cc 核心創角 [年齡]」，以核心規則創角（含年齡調整）。\
-\n一鍵創角（悠子房規）：\n「cc 悠子創角」，主要屬性骰七取五，次要屬性骰四取三，LUK骰二取一。\
+\n==\
+\n一鍵創角（核心規則）：「cc 核心創角 [年齡]」，\n以核心規則創角（含年齡調整）。\
+\n==\
+\n一鍵創角（悠子房規）：「cc 悠子創角」，\n主要屬性骰七取五，次要屬性骰四取三，LUK骰二取一。\
 ';
   else        
     
