@@ -108,6 +108,9 @@ function parseInput(rplyToken, inputStr) {
 
 
 function nomalDiceRoller(inputStr){
+  
+  //先定義要輸出的Str
+  let finalStr = '' ;  
  //首先判斷是否是誤啟動（檢查是否有符合骰子格式）
   if (inputStr.toLowerCase().match(/\d+d\d+/) == null) return undefined;
 
@@ -118,7 +121,7 @@ function nomalDiceRoller(inputStr){
   if (mutiOrNot.toString().match(/\./)!=null)return undefined;
 
   if(mutiOrNot.toString().match(/\D/)==null )  {
-    let finalStr= '複數擲骰：'
+    finalStr= '複數擲骰：'
     if(mutiOrNot>20) return '不支援20次以上的複數擲骰。';
 
     for (i=1 ; i<=mutiOrNot ;i++){
@@ -126,12 +129,15 @@ function nomalDiceRoller(inputStr){
       if (DiceToRoll.match('d') == null) return undefined;
       finalStr = finalStr +'\n' + i + '# ' + DiceCal(DiceToRoll);
     }
-    if(finalStr.match('200D')!= null) return '欸欸，不支援200D以上擲骰；哪個時候會骰到兩百次以上？想被淨灘嗎？';
-    if(finalStr.match('D500')!= null) return '不支援D1和超過D500的擲骰；想被淨灘嗎？';
-    return finalStr;
+    if(finalStr.match('200D')!= null) finalStr = '欸欸，不支援200D以上擲骰；哪個時候會骰到兩百次以上？想被淨灘嗎？';
+    if(finalStr.match('D500')!= null) finalStr = '不支援D1和超過D500的擲骰；想被淨灘嗎？';
+    
   } 
   
-  else return '基本擲骰：' + DiceCal(mutiOrNot.toString());
+  else finalStr= '基本擲骰：' + DiceCal(mutiOrNot.toString());
+  
+  if (finalStr.match('NaN')!= null||finalStr.match('undefined')!= null) return undefined;
+  return finalStr;
 }
 
         
