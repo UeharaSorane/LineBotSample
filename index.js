@@ -12,8 +12,7 @@ var options = {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer [LineAuthorization]'
-  
+    'Authorization': 'Bearer [LineAuthorization]'    
   }
 }
 app.set('port', (process.env.PORT || 5000));
@@ -87,7 +86,7 @@ function replyMsgToLine(rplyToken, rplyVal) {
 function parseInput(rplyToken, inputStr) {
         console.log('InputStr: ' + inputStr);
         _isNaN = function(obj) {
-          return isNaN(parseInt(obj));
+         return isNaN(parseInt(obj));
         }                   
         //鴨霸獸指令開始於此
 
@@ -100,13 +99,14 @@ function parseInput(rplyToken, inputStr) {
         if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/d/)!=null) {
           return nomalDiceRoller(inputStr);
         }
-                      
+  
         
         else return undefined;
         
       }
 
 
+        
 function nomalDiceRoller(inputStr){
   
   //先定義要輸出的Str
@@ -139,7 +139,6 @@ function nomalDiceRoller(inputStr){
   if (finalStr.match('NaN')!= null||finalStr.match('undefined')!= null) return undefined;
   return finalStr;
 }
-
         
 //作計算的函數
 function DiceCal(inputStr){
@@ -190,25 +189,25 @@ function RollDice(inputStr){
 }
                                                                      
       
-        
+               
 function CoC7th(inputStr){
   
   //先判斷是不是要創角
   //這是悠子房規創角
   if (inputStr.toLowerCase().match('悠子創角') != null){
     let finalStr = '骰七次3D6取五次，\n決定STR、CON、DEX、APP、POW。\n';
-    
+
     for (i=1 ; i<=7 ;i++){
       finalStr = finalStr +'\n' + i + '# ' + DiceCal('3d6*5');
     }
-    
+
     finalStr = finalStr + '\n==';
     finalStr = finalStr +'\n骰四次2D6+6取三次，\n決定SIZ、INT、EDU。\n';
-    
+
     for (i=1 ; i<=4 ;i++){
       finalStr = finalStr +'\n' + i + '# ' + DiceCal('(2d6+6)*5');
     }
-    
+
     finalStr = finalStr + '\n==';
     finalStr = finalStr +'\n骰兩次3D6取一次，\n決定LUK。\n';
     for (i=1 ; i<=2 ;i++){
@@ -220,9 +219,9 @@ function CoC7th(inputStr){
 
   //這是傳統創角
   if (inputStr.toLowerCase().match('核心創角') != null){
-    
+
     if (inputStr.split(' ' ).length != 3) return undefined;
-    
+
     //讀取年齡
     let old = parseInt(inputStr.split(' ',3)[2]);
     if (old == NaN) return undefined;
@@ -231,27 +230,27 @@ function CoC7th(inputStr){
     let Debuff = 0;
     let AppDebuff = 0;
     let EDUinc = 0;
-    
-    
+
+
     let oldArr = [15,20,40,50,60,70,80]
     let DebuffArr = [5,0,5,10,20,40,80]
     let AppDebuffArr = [0,0,5,10,15,20,25]
     let EDUincArr = [0,1,2,3,4,4,4]
-    
+
     if (old < 15) return ReStr + '等等，核心規則不允許小於15歲的人物哦。';    
     if (old >= 90) return ReStr + '等等，核心規則不允許90歲以上的人物哦。'; 
-        
+
     for ( i=0 ; old >= oldArr[i] ; i ++){
-         Debuff = DebuffArr[i];
-        AppDebuff = AppDebuffArr[i];
-        EDUinc = EDUincArr[i];
+      Debuff = DebuffArr[i];
+      AppDebuff = AppDebuffArr[i];
+      EDUinc = EDUincArr[i];
     }
 
     ReStr = ReStr + '==\n';
     if (old < 20) ReStr = ReStr + '年齡調整：從STR、SIZ中減去' + Debuff + '點\n（請自行手動選擇計算）。\n將EDU減去5點。LUK可擲兩次取高。' ;
     else
       if (old >= 40)  ReStr = ReStr + '年齡調整：從STR、CON或DEX中「總共」減去' + Debuff + '點\n（請自行手動選擇計算）。\n將APP減去' + AppDebuff +'點。可做' + EDUinc + '次EDU的成長擲骰。' ;
-    
+
     else ReStr = ReStr + '年齡調整：可做' + EDUinc + '次EDU的成長擲骰。' ;
     ReStr = ReStr + '\n==';
     ReStr = ReStr + '\n\nＳＴＲ：' + DiceCal('3d6*5');
@@ -272,34 +271,48 @@ function CoC7th(inputStr){
       let firstEDU = '(' + RollDice('2d6') + '+6)*5';
       ReStr = ReStr + '\n==';
       ReStr = ReStr + '\nＥＤＵ初始值：' + firstEDU + ' = ' + eval(firstEDU);
-      
+
       let tempEDU = eval(firstEDU);
-      
+
       for (i = 1 ; i <= EDUinc ; i++){
         let EDURoll = Dice(100);
         ReStr = ReStr + '\n第' + i + '次EDU成長 → ' + EDURoll;
-        
-        
+
+
         if (EDURoll>tempEDU) {
           let EDUplus = Dice(10);
           ReStr = ReStr + ' → 成功成長' + EDUplus +'點';
           tempEDU = tempEDU + EDUplus;
         }
         else{
-        ReStr = ReStr + ' → 沒有成長';       
+          ReStr = ReStr + ' → 沒有成長';       
         }
       }
       ReStr = ReStr + '\n';
       ReStr = ReStr + '\nＥＤＵ最終值：' +tempEDU;
     }
     ReStr = ReStr + '\n==';
-    
+
     ReStr = ReStr + '\n\nLUK：' + DiceCal('3d6*5');    
     if (old<20) ReStr = ReStr + '\nLUK額外加骰：' + DiceCal('3D6*5');
-    
-    
+
+
     return ReStr;
   } 
+  
+  //隨機產生角色背景
+  if (inputStr.toLowerCase().match('bg') != null){
+    let PersonalDescriptionArr = ['結實的', '英俊的', '粗鄙的', '機靈的', '迷人的', '娃娃臉的', '聰明的', '蓬頭垢面的', '愚鈍的', '骯髒的', '耀眼的', '有書卷氣的','青春洋溢的','感覺疲憊的','豐滿的','粗壯的','毛髮茂盛的','苗條的','優雅的','邋遢的','敦實的','蒼白的','陰沉的','平庸的','臉色紅潤的','皮膚黝黑色','滿臉皺紋的','古板的','有狐臭的','狡猾的','健壯的','嬌俏的','筋肉發達的','魁梧的','遲鈍的', '虛弱的'];
+    let IdeologyBeliefsArr = ['虔誠信仰著某個神祈','覺得人類不需要依靠宗教也可以好好生活','覺得科學可以解釋所有事，並對某種科學領域有獨特的興趣','相信因果循環與命運','是一個政黨、社群或秘密結社的成員','覺得這個社會已經病了，而其中某些病灶需要被剷除','是神秘學的信徒','積極參與政治的人，有特定的政治立場','覺得金錢至上，且為了金錢不擇手段','是一個激進主義分子，活躍於社會運動'];
+    let SignificantPeopleArr = ['他的父母', '他的祖父母', '他的兄弟姐妹', '他的孩子', '他的另一半', '那位曾經教導調查員最擅長的技能（點數最高的職業技能）的人','他的兒時好友', '他心目中的偶像或是英雄', '在遊戲中的另一位調查員', '一個由KP指定的NPC'];
+    let SignificantPeopleWhyArr = ['調查員在某種程度上受了他的幫助，欠了人情','調查員從他那裡學到了些什麼重要的東西','他給了調查員生活的意義','調查員曾經傷害過他，尋求他的原諒','和他曾有過無可磨滅的經驗與回憶','調查員想要對他證明自己','調查員崇拜著他','調查員對他有著某些使調查員後悔的過往','調查員試圖證明自己和他不同，比他更出色','他讓調查員的人生變得亂七八糟，因此調查員試圖復仇'];
+    let MeaningfulLocationsArr = ['過去就讀的學校','他的故鄉','與他的初戀之人相遇之處','某個可以安靜沉思的地方','某個類似酒吧或是熟人的家那樣的社交場所','與他的信念息息相關的地方','埋葬著某個對調查員別具意義的人的墓地','他從小長大的那個家','他生命中最快樂時的所在','他的工作場所'];
+    let TreasuredPossessionsArr = ['一個與他最擅長的技能（點數最高的職業技能）相關的物品','一件他的在工作上需要用到的必需品','一個從他童年時就保存至今的寶物','一樣由調查員最重要的人給予他的物品','一件調查員珍視的蒐藏品','一件調查員無意間發現，但不知道到底是什麼的東西，調查員正努力尋找答案','某種體育用品','一把特別的武器','他的寵物'];
+    let TraitsArr = ['慷慨大方的人','對動物很友善的人','善於夢想的人','享樂主義者','甘冒風險的賭徒或冒險者', '善於料理的人', '萬人迷','忠心耿耿的人','有好名聲的人','充滿野心的人'];
+    
+    return '背景描述生成器（僅供娛樂用，不具實際參考價值）\n==\n調查員是一個' + PersonalDescriptionArr[Math.floor((Math.random() * (PersonalDescriptionArr.length)) + 0)] + '人。\n【信念】：說到這個人，他' + IdeologyBeliefsArr[Math.floor((Math.random() * (IdeologyBeliefsArr.length)) + 0)] + '。\n【重要之人】：對他來說，最重要的人是' + SignificantPeopleArr[Math.floor((Math.random() * (SignificantPeopleArr.length)) + 0)] + '，這個人對他來說之所以重要，是因為' + SignificantPeopleWhyArr[Math.floor((Math.random() * (SignificantPeopleWhyArr.length)) + 0)] + '。\n【意義非凡之地】：對他而言，最重要的地點是' + MeaningfulLocationsArr[Math.floor((Math.random() * (MeaningfulLocationsArr.length)) + 0)] + '。\n【寶貴之物】：他最寶貴的東西就是'+ TreasuredPossessionsArr[Math.floor((Math.random() * (TreasuredPossessionsArr.length)) + 0)] + '。\n【特徵】：總括來說，調查員是一個' + TraitsArr[Math.floor((Math.random() * (TraitsArr.length)) + 0)] + '。';
+    
+  }
   
   //如果不是正確的格式，直接跳出
   if(inputStr.match('=') == null && inputStr.match('>') == null ) return undefined;
@@ -404,9 +417,10 @@ function YabasoReply(inputStr) {
   if (inputStr.match('垃圾話') != null) return '\
 嗚呵呵呵呵，我就知道你們人類沒辦法抗拒垃圾話的。\
 \n目前實裝的垃圾話功能是以下這些：\
-\n「運勢：你只要提到我的名字和運勢，我就會回答你的運勢。」 \
-\n「隨機選擇：只要提到我的名字和「選、挑、決定」，然後空一格打選項。 \
-\n記得選項之間也要用空格隔開，我就會幫選擇障礙的你挑一個。」\
+\n運勢：你只要提到我的名字和運勢，我就會回答你的運勢。 \
+\n==\
+\n隨機選擇：只要提到我的名字和[選、挑、決定]，然後空一格打選項。 \
+記得選項之間也要用空格隔開，我就會幫選擇障礙的你挑一個。\
 \n \
 \n看起來很實用對不對～那為什麼會叫做垃圾話呢？\
 \n因為不管哪個功能都有可能會被嗆啊哈哈哈哈哈！\
@@ -427,6 +441,8 @@ function YabasoReply(inputStr) {
 \n一鍵創角（核心規則）：「cc 核心創角 [年齡]」，\n以核心規則創角（含年齡調整）。\
 \n==\
 \n一鍵創角（悠子房規）：「cc 悠子創角」，\n主要屬性骰七取五，次要屬性骰四取三，LUK骰二取一。\
+\n==\
+\n一鍵產生背景：「cc bg」，娛樂性質居多的調查員背景產生器\
 ';
   else        
     
@@ -444,6 +460,8 @@ function YabasoReply(inputStr) {
     return '我想想喔……我覺得，' + Answer + '。';
   }
   else  
+    
+    
   //以下是幫眾限定的垃圾話
   if(inputStr.match('泰') != null||inputStr.match('ㄩㄊ') != null||inputStr.match('太太') != null) {
       let rplyArr=['\
@@ -471,6 +489,10 @@ function YabasoReply(inputStr) {
   else
   if(inputStr.match('饅頭') != null) return '可愛。';
   else
+  if(inputStr.match('開司') != null) return '給開司一罐啤酒！';
+  else
+  if(inputStr.match('阿珠') != null) return '不知道今天在誰床上呢（思）';
+  else
   if(inputStr.match('炸彈') != null) {
       let rplyArr=['\
 野～格～炸～彈～', '\
@@ -479,7 +501,19 @@ function YabasoReply(inputStr) {
       return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
     }
   else  
-  if(inputStr.match('864') != null||inputStr.match('巴魯斯') != null||inputStr.toLowerCase().match('sora') != null) return '巴魯斯';
+  if(inputStr.match('864') != null||inputStr.match('巴魯斯') != null||inputStr.toLowerCase().match('sora') != null) {
+    let rplyArr=['\
+呃啊啊啊啊啊啊啊啊──！！！不對、我幹嘛要做反應？', '\
+阿，這是新的一天來臨的訊號。', '\
+バルス！', '\
+burrs！', '\
+Barış！', '\
+Bals！', '\
+Barusu！' ];
+
+    return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];    
+    
+  }
   else
   if(inputStr.match('康青龍') != null) return '淨灘之力與康青龍同在。';
   else
