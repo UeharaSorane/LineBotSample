@@ -247,31 +247,33 @@ function CoC7th(inputStr){
     }
 
     ReStr = ReStr + '==\n';
-    if (old < 20) ReStr = ReStr + '年齡調整：從STR、SIZ中減去' + Debuff + '點\n（請自行手動選擇計算）。\n將EDU減去5點。LUK可擲兩次取高。' ;
+    if (old < 20) ReStr = ReStr + '年齡調整：從STR、SIZ中擇一減去' + Debuff + '點\n（請自行手動選擇計算）。\n將EDU減去5點。LUK可擲兩次取高。' ;
     else
       if (old >= 40)  ReStr = ReStr + '年齡調整：從STR、CON或DEX中「總共」減去' + Debuff + '點\n（請自行手動選擇計算）。\n將APP減去' + AppDebuff +'點。可做' + EDUinc + '次EDU的成長擲骰。' ;
 
     else ReStr = ReStr + '年齡調整：可做' + EDUinc + '次EDU的成長擲骰。' ;
     ReStr = ReStr + '\n==';
-    ReStr = ReStr + '\n\nＳＴＲ：' + DiceCal('3d6*5');
-    if (old>=40) ReStr = ReStr + ' ← 這三項自選共減' + Debuff + '點';
-    if (old<20) ReStr = ReStr + ' ← 這兩項擇一減' + Debuff + '點';
+    if (old>=40) ReStr = ReStr + '\n（以下箭號三項，自選共減' + Debuff + '點。）' ;
+    if (old<20) ReStr = ReStr + '\n（以下箭號兩項，擇一減去' + Debuff + '點。）' ;
+    ReStr = ReStr + '\nＳＴＲ：' + DiceCal('3d6*5');
+    if (old>=40) ReStr = ReStr + ' ← 共減' + Debuff ;
+    if (old<20) ReStr = ReStr + ' ← 擇一減' + Debuff ;
     ReStr = ReStr + '\nＣＯＮ：' + DiceCal('3d6*5');
-    if (old>=40) ReStr = ReStr + ' ← 這三項自選共減' + Debuff + '點';
+    if (old>=40) ReStr = ReStr + ' ← 共減' + Debuff;
     ReStr = ReStr + '\nＤＥＸ：' + DiceCal('3d6*5');
-    if (old>=40) ReStr = ReStr + ' ← 這三項自選共減' + Debuff + '點';
+    if (old>=40) ReStr = ReStr + ' ← 共減' + Debuff ;
     if (old>=40) ReStr = ReStr + '\nＡＰＰ：' + DiceCal('3d6*5-' + AppDebuff);
     else ReStr = ReStr + '\nＡＰＰ：' + DiceCal('3d6*5');
     ReStr = ReStr + '\nＰＯＷ：' + DiceCal('3d6*5');
     ReStr = ReStr + '\nＳＩＺ：' + DiceCal('(2d6+6)*5');
-    if (old<20) ReStr = ReStr + ' ← 這兩項擇一減' + Debuff + '點';
+    if (old<20) ReStr = ReStr + ' ← 擇一減' + Debuff ;
     ReStr = ReStr + '\nＩＮＴ：' + DiceCal('(2d6+6)*5');         
     if (old<20) ReStr = ReStr + '\nＥＤＵ：' + DiceCal('3d6*5-5');
     else {
       let firstEDU = '(' + RollDice('2d6') + '+6)*5';
       ReStr = ReStr + '\n==';
       ReStr = ReStr + '\nＥＤＵ初始值：' + firstEDU + ' = ' + eval(firstEDU);
-
+      
       let tempEDU = eval(firstEDU);
 
       for (i = 1 ; i <= EDUinc ; i++){
@@ -293,7 +295,7 @@ function CoC7th(inputStr){
     }
     ReStr = ReStr + '\n==';
 
-    ReStr = ReStr + '\n\nLUK：' + DiceCal('3d6*5');    
+    ReStr = ReStr + '\nLUK：' + DiceCal('3d6*5');    
     if (old<20) ReStr = ReStr + '\nLUK額外加骰：' + DiceCal('3D6*5');
 
 
@@ -471,6 +473,8 @@ function YabasoReply(inputStr) {
       return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
     }
   else
+  if(inputStr.match('超進化') != null) return '超霸獸超進化～～超級機霸獸～～～\n（BGM：http://tinyurl.com/jjltrnt）';
+  else  
   if(inputStr.match('進化') != null) return '鴨霸獸進化～～超霸獸～～～\n（BGM：http://tinyurl.com/jjltrnt）';
   else  
   if(inputStr.match('拔嘴') != null) {
@@ -482,8 +486,39 @@ function YabasoReply(inputStr) {
 人類每花60秒拔嘴，就減少一分鐘的壽命。'];
       return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
     }
+  else
+  if(inputStr.match('路過') != null) {
+    let rplyArr=['\
+我的+9火把呢？'];
+    return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+  }
   else  
-  if(inputStr.match('愛') != null) return '我是不會嗆你的，因為霸獸愛你。';
+  if(inputStr.match('約翰希南') != null||inputStr.match('江西') != null) {
+      let rplyArr=['\
+HIS NAME IS~~~~江～～～西哪～～～～（登等愣～登！！！登瞪愣登！！！）', '\
+江江江江，有一條江耶，來跳江好了。'];
+      return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+    }
+  else
+  if(inputStr.match('三小') != null) {
+      let rplyArr=['\
+幫主你也敢嘴。', '\
+不要起爭議啦！', '\
+你在大聲什麼啦！'];
+      return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+    }
+  else  
+  if(inputStr.match('鴨霸幫') != null) return '要加入鴨霸幫是沒有這麼容易的，你必須經過重重考驗，攀登過末日火山，穿越過幽暗水道，戰勝九頭蜥蜴，並且躍過無底深淵。\n\n\n或者你也可以選擇月付１９９９成為白銀幫眾。現在加入前三個月還打八折喔。';
+  else
+  if(inputStr.match('愛') != null) return '男的，也可以。';
+  else
+  if(inputStr.match('阿想') != null) return '我是不會嗆你的，因為霸獸愛你。';
+  else
+  if(inputStr.match('哈哈哈') != null) return '你的銅鋰鋅咧？';
+  else
+  if(inputStr.match('狂') != null) return '948794狂，你有幫主狂？淨灘啦！';
+  else
+  if(inputStr.match('笑') != null) return '幫主笑阿笑，笑得你心底發寒。';
   else
   if(inputStr.match('家訪') != null) return 'ㄉㄅㄑ';
   else
@@ -491,8 +526,14 @@ function YabasoReply(inputStr) {
   else
   if(inputStr.match('開司') != null) return '給開司一罐啤酒！';
   else
-  if(inputStr.match('阿珠') != null) return '不知道今天在誰床上呢（思）';
-  else
+  if(inputStr.match('阿珠') != null) {
+    let rplyArr=['\
+有種哈味。', '\
+不知道今天在誰床上呢？', '\
+路過說他已經(ry'];
+    return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+  }
+  else  
   if(inputStr.match('炸彈') != null) {
       let rplyArr=['\
 野～格～炸～彈～', '\
@@ -586,6 +627,14 @@ wwwwwwwwwwwwwwwww', '\
 我不是針對你，我是說在場各位，都是垃圾。', '\
 你知道你很機掰嗎？', '\
 快 …扶我去喝酒 ……', '\
+好好好，下去領五百。', '\
+噁噁噁，躺著也中槍。', '\
+閃開，讓幫主來（脫衣服）。', '\
+現在放棄的話，假期就開始了。', '\
+努力不一定會成功，但是不努力的話，就會很輕鬆喔。', '\
+這種要求，我還是第一次聽到（啃咬）', '\
+你先承認你有病再說。', '\
+ｅｒｒｏｒ：齁，你把鴨霸獸弄壞了。準備迎接幫眾的怒火吧。', '\
 幫主說，有人打你的左臉，你就要用肉食性猛擊咬斷他的小腿。'];
     return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
   }
