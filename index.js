@@ -510,9 +510,9 @@ HIS NAME IS~~~~江～～～西哪～～～～（登等愣～登！！！登瞪�
   else  
   if(inputStr.match('鴨霸幫') != null) return '要加入鴨霸幫是沒有這麼容易的，你必須經過重重考驗，攀登過末日火山，穿越過幽暗水道，戰勝九頭蜥蜴，並且躍過無底深淵。\n\n\n或者你也可以選擇月付１９９９成為白銀幫眾。現在加入前三個月還打八折喔。';
   else
-  if(inputStr.match('愛') != null) return '男的，也可以。';
+  if(inputStr.match('阿想') != null) return '男的，也可以。';
   else
-  if(inputStr.match('阿想') != null) return '我是不會嗆你的，因為霸獸愛你。';
+  if(inputStr.match('愛') != null) return '我是不會嗆你的，因為霸獸愛你。';
   else
   if(inputStr.match('哈哈哈') != null) return '你的銅鋰鋅咧？';
   else
