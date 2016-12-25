@@ -295,8 +295,8 @@ function CoC7th(inputStr){
     }
     ReStr = ReStr + '\n==';
 
-    ReStr = ReStr + '\nLUK：' + DiceCal('3d6*5');    
-    if (old<20) ReStr = ReStr + '\nLUK額外加骰：' + DiceCal('3D6*5');
+    ReStr = ReStr + '\nＬＵＫ：' + DiceCal('3d6*5');    
+    if (old<20) ReStr = ReStr + '\nＬＵＫ加骰：' + DiceCal('3D6*5');
 
 
     return ReStr;
