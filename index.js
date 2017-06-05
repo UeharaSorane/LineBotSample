@@ -88,19 +88,19 @@ function parseInput(rplyToken, inputStr) {
         _isNaN = function(obj) {
          return isNaN(parseInt(obj));
         }                   
-        //鴨霸獸指令開始於此
-
-          if (inputStr.match('鴨霸獸') != null) return YabasoReply(inputStr) ;
-        else
-        //cc判定在此
+         //cc判定在此
         if (inputStr.toLowerCase().match(/^cc/)!= null) return CoC7th(inputStr.toLowerCase()) ;      
+        else
+        //pbta判定在此
+        if (inputStr.toLowerCase().match(/^pb/)!= null) return pbta(inputStr.toLowerCase()) ;      
         else
         //擲骰判定在此        
         if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/d/)!=null) {
           return nomalDiceRoller(inputStr);
         }
-  
-        
+        else
+        //鴨霸獸指令開始於此
+        if (inputStr.match('鴨霸獸') != null) return YabasoReply(inputStr) ;
         else return undefined;
         
       }
@@ -188,7 +188,50 @@ function RollDice(inputStr){
   return finalStr;
 }
                                                                      
-      
+
+//PBTA判定在這裡
+function pbta(inputStr){
+  
+  let input = inputStr.toLowerCase().split(' ',2)[0];
+
+  //如果只有打pb兩個字，直接骰
+  if ( parseInt(input.toLowerCase().length) == 2)
+  {
+    let CalStr = RollDice('2d6');
+    
+    if (eval(CalStr.toString()) >= 10){      
+      return CalStr + '=' + eval(CalStr.toString()) + '，成功！';
+      }
+    else if (eval(CalStr.toString()) <= 6){
+      return CalStr + '=' + eval(CalStr.toString()) + '，失敗。';
+      }    
+    else {
+      return CalStr + '=' + eval(CalStr.toString()) + '，部分成功。';
+      }
+    //DiceCal('2d6');    
+    //RollDice('2d6')
+    
+  }
+  
+  //先去掉誤判
+  if (input.toLowerCase().match(/^pb(?!\+)/) != null && input.toLowerCase().match(/^pb(?!\-)/) != null){
+    return undefined;
+  }
+  
+  //有加值的PBTA擲骰
+  else{
+    let CalStr = RollDice('2d6') + input.split('b',2)[1];
+    if (eval(CalStr.toString()) >= 10){      
+      return CalStr + '=' + eval(CalStr.toString()) + '，成功！';
+    }
+    else if (eval(CalStr.toString()) <= 6){
+      return CalStr + '=' + eval(CalStr.toString()) + '，失敗。';
+    }    
+    else {
+      return CalStr + '=' + eval(CalStr.toString()) + '，部分成功。';
+    }
+  }
+}
                
 function CoC7th(inputStr){
   
@@ -268,7 +311,7 @@ function CoC7th(inputStr){
     ReStr = ReStr + '\nＳＩＺ：' + DiceCal('(2d6+6)*5');
     if (old<20) ReStr = ReStr + ' ←擇一減' + Debuff ;
     ReStr = ReStr + '\nＩＮＴ：' + DiceCal('(2d6+6)*5');         
-    if (old<20) ReStr = ReStr + '\nＥＤＵ：' + DiceCal('3d6*5-5');
+    if (old<20) ReStr = ReStr + '\nＥＤＵ：' + DiceCal('(2d6+6)*5-5');
     else {
       let firstEDU = '(' + RollDice('2d6') + '+6)*5';
       ReStr = ReStr + '\n==';
@@ -324,19 +367,22 @@ function CoC7th(inputStr){
           //設定回傳訊息
           let ReStr = '(1D100<=' + chack + ') → ';
 
-          //先骰兩次十面骰作為起始值
+           //先骰兩次十面骰作為起始值
           let OneRoll = Dice(10) - 1;
           let TenRoll = Dice(10);
+          
           let firstRoll = TenRoll*10 + OneRoll;
           if (firstRoll > 100) firstRoll = firstRoll - 100;  
 
+          
           //先設定最終結果等於第一次擲骰
           let finalRoll = firstRoll;
+          
 
 
           //判斷是否為成長骰
           if(inputStr.match(/^cc>\d+/)!=null){
-            chack = parseInt(inputStr.split('>',2)[1]) ;
+            chack = parseInt(inputStr.split('>',2)[1]) ;          
             if (finalRoll>chack) {
 
               ReStr = '(1D100>' + chack + ') → ' + finalRoll + ' → 成功成長' + Dice(10) +'點';
@@ -374,7 +420,7 @@ function CoC7th(inputStr){
           else
             if (finalRoll == 100) ReStr = ReStr + finalRoll + ' → 啊！大失敗！';
           else
-            if (finalRoll <= 99 && finalRoll >= 95 && chack < 50) ReStr = ReStr + finalRoll + ' → 啊！大失敗！';
+            if (finalRoll <= 99 && finalRoll > 95 && chack < 50) ReStr = ReStr + finalRoll + ' → 啊！大失敗！';
           else
             if (finalRoll <= chack/5) ReStr = ReStr + finalRoll + ' → 極限成功';
           else
@@ -384,7 +430,7 @@ function CoC7th(inputStr){
           else ReStr = ReStr + finalRoll + ' → 失敗' ;
 
           //浮動大失敗運算
-          if (finalRoll <= 99 && finalRoll >= 95 && chack >= 50 ){
+          if (finalRoll <= 99 && finalRoll > 95 && chack >= 50 ){
             if(chack/2 < 50) ReStr = ReStr + '\n（若要求困難成功則為大失敗）';
             else
               if(chack/5 < 50) ReStr = ReStr + '\n（若要求極限成功則為大失敗）';
@@ -409,6 +455,7 @@ function YabasoReply(inputStr) {
 \n現在打成大寫D，我也不會嗆你了哈哈哈。 \
 \n \
 \n目前支援多數CoC 7th指令，可打「鴨霸獸 cc」取得更多說明。 \
+\n初步支持pbta擲骰，語法為pb、pb+2。\
 \n \
 \n其他骰組我都用不到，所以不會去更新哈哈哈哈哈！ \
 \n以上功能靈感來源全部來自悠子桑的Hastur，那隻的功能超完整快加他： @fmc9490c \
@@ -419,9 +466,8 @@ function YabasoReply(inputStr) {
   if (inputStr.match('垃圾話') != null) return '\
 嗚呵呵呵呵，我就知道你們人類沒辦法抗拒垃圾話的。\
 \n目前實裝的垃圾話功能是以下這些：\
-\n運勢：你只要提到我的名字和運勢，我就會回答你的運勢。 \
-\n==\
-\n隨機選擇：只要提到我的名字和[選、挑、決定]，然後空一格打選項。 \
+\n\n【運勢】：你只要提到我的名字和運勢，我就會回答你的運勢。 \
+\n【隨機選擇】：只要提到我的名字和[選、挑、決定]，然後空一格打選項。 \
 記得選項之間也要用空格隔開，我就會幫選擇障礙的你挑一個。\
 \n \
 \n看起來很實用對不對～那為什麼會叫做垃圾話呢？\
@@ -465,6 +511,16 @@ function YabasoReply(inputStr) {
     
     
   //以下是幫眾限定的垃圾話
+    if(inputStr.match('李孟儒') != null) {
+      let rplyArr=['\
+祂是電，祂是光，祂是唯一的神話。', '\
+太初有道，道與李孟儒同在——道就是李孟儒。', '\
+李孟儒說，要有光，就有了光。李孟儒看光是好的，就把光和暗分開。', '\
+起初，李孟儒創造天地。地是空虛渾沌，淵面黑暗，李孟儒的靈運行在水面上。' ];
+      return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+    }
+  else  
+    
   if(inputStr.match('泰') != null||inputStr.match('ㄩㄊ') != null||inputStr.match('太太') != null) {
       let rplyArr=['\
 （抱頭）嗚噁噁噁噁噁頭好痛…', '\
@@ -487,6 +543,14 @@ function YabasoReply(inputStr) {
       return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
     }
   else
+    if(inputStr.match('鬼屋') != null) {
+      let rplyArr=['\
+我還是覺得鬼屋不適合新手KP啦！', '\
+誰再說鬼屋適合新手KP的我就（ry', '\
+神說，你們誰開過鬼屋的，都可以拿石頭打他。'];
+      return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+    }
+    else
   if(inputStr.match('路過') != null) {
     let rplyArr=['\
 我的+9火把呢？'];
@@ -533,6 +597,12 @@ HIS NAME IS~~~~江～～～西哪～～～～（登等愣～登！！！登瞪�
   else
   if(inputStr.match('阿珠') != null) {
     let rplyArr=['\
+怎麼跟妹妹結婚的方法？', '\
+太太，今晚是不是很寂寞？', '\
+以狗，得斯咩，呀妹帖', '\
+嘿嘿，小妹妹，一個人寂寞嗎？', '\
+男孩子，想上。', '\
+包夜3000', '\
 有種哈味。', '\
 不知道今天在誰床上呢？', '\
 路過說他已經(ry'];
@@ -593,6 +663,17 @@ Barusu！' ];
     return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
   }
   else
+  if(inputStr.match('鎮隆') != null||inputStr.match('龍星涼') != null) {
+    let rplyArr=['\
+我到現在還是很訝異，她還只是個14歲的少女阿。', '\
+我沒想過這種畫風鎮隆也會出手，雖然她外表很艷麗但他還是14歲少女。', '\
+吃了我的女兒我真的很震驚，我也不知道為什麼會驚訝這麼久。', '\
+我的女兒被吃了這件事，我到現在還是無法釋懷。', '\
+幹你這個騙子，竟然先走了。', '\
+我的女兒…她才14歲而已阿。'];
+    return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+  }
+  else
     
   //以下是運勢功能
   if(inputStr.match('運勢') != null){
@@ -639,9 +720,11 @@ wwwwwwwwwwwwwwwww', '\
 努力不一定會成功，但是不努力的話，就會很輕鬆喔。', '\
 這種要求，我還是第一次聽到（啃咬）', '\
 你先承認你有病再說。', '\
+想被我切八段嗎臭婊子。', '\
 ｅｒｒｏｒ：齁，你把鴨霸獸弄壞了。準備迎接幫眾的怒火吧。', '\
 幫主說，有人打你的左臉，你就要用肉食性猛擊咬斷他的小腿。'];
     return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
   }
 
 }
+
