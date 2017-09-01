@@ -84,102 +84,6 @@ function replyMsgToLine(rplyToken, rplyVal) {
 }
 
 
-function SendImg(rplyToken, inputStr) {
-     let message = [
-  {
-    chack: ['想相離家出走','阿想離家出走'],
-    img: ['https://i.imgur.com/FItqGSH.jpg']
-    //Pimg: ['https://i.imgur.com/FItqGSH.jpg']
-  },
-  {
-    chack: ['我什麼都沒有'],
-    img: ['https://i.imgur.com/k4QE5Py.png']
-    //Pimg: ['https://i.imgur.com/k4QE5Py.png']
-  },
-  {
-    chack: ['大家的小三','大家的小3'],
-    img: ['https://i.imgur.com/dKW2EJb.png']
-    //Pimg: ['https://i.imgur.com/dKW2EJb.png']
-  },
-  {
-    chack: ['問號黑人','黑人問號','尼哥問號','問號尼哥','尼格問號','問號尼格'],
-    img: ['https://i.imgur.com/cUR20OZ.png']
-  },
-  {
-    chack: ['貴圈真亂'],
-    img: ['https://i.imgur.com/PalRocR.png']
-  },
-  {
-    chack: ['怕'],
-    img: ['https://i.imgur.com/qXGsztE.png']
-  },
-  {
-    chack: ['你要享受這個過程','妳要享受這個過程'],
-    img: ['https://i.imgur.com/mt7NVzr.png','https://i.imgur.com/v094wOd.png','https://i.imgur.com/F5RfDW2.png','https://i.imgur.com/jWm6f6z.png']
-  },
-  {
-    chack: ['我覺得不行'],
-    img: ['https://i.imgur.com/zXvsvJf.png','https://i.imgur.com/U1AK4kL.png','https://i.imgur.com/4TClOgY.png']
-  },
-  {
-    chack: ['我覺得可以','我覺得其實可以'],
-    img: ['https://i.imgur.com/K5WsXso.png']
-  },
-  {
-    chack: ['警察','就是這個人'],
-    img: ['https://i.imgur.com/7BTPpPQ.png','https://i.imgur.com/nweWacp.png','https://i.imgur.com/j0hIscH.png','https://i.imgur.com/9BDCkJr.png','https://i.imgur.com/2ZiVw9g.png']
-  },
-  {
-    chack: ['姆米','姆咪','母米'],
-    img: ['https://i.imgur.com/j7bMpAO.png','https://i.imgur.com/0AatpWN.png','https://i.imgur.com/S69OoYS.png','https://i.imgur.com/kEGB0Vj.png']
-  },
-  {
-    chack: ['take my money','shut up and'],
-    img: ['https://i.imgur.com/UX0OUc0.png']
-  },
-  {
-    chack: ['接受挑戰','challenge'],
-    img: ['https://i.imgur.com/uUwcxtj.png']
-  },
-  {
-    chack: ['成龍'],
-    img: ['https://i.imgur.com/cq0WGxH.png']
-  },
-  {
-    chack: ['true story','真實故事'],
-    img: ['https://i.imgur.com/88MiBLA.png']
-  },
-  {
-    chack: ['一槍'],
-    img: ['https://i.imgur.com/FnmSMWq.png']
-  }
-
-
-  ]
-  
-  for ( i=0 ; i < message.length ; i ++){
-    for ( j=0 ; j < message[i].chack.length ; j ++){
-      if (inputStr.toLowerCase().match(message[i].chack[j]) != null) {
-	 let tempImgUrl = message[i].img[Dice(message[i].img.length)-1];
-         let rplyVal = [
-           {
-            type: "image", 
-            originalContentUrl: tempImgUrl, 
-            previewImageUrl: tempImgUrl
-           }
-         ]
-         SendMsg(rplyToken, rplyVal);
-         return undefined;
-      }
-    }
-    
-  }
-
-  return undefined;
-}
-
-
-
 function SendMsg(rplyToken, rplyVal) {
   let rplyObj = {
     replyToken: rplyToken,
@@ -787,6 +691,100 @@ function CoC7th(rplyToken, inputStr){
           return ReStr;
 }
 
+//依照關鍵字傳送圖片的函數
+function SendImg(rplyToken, inputStr) {
+     let message = [
+  {
+    chack: ['想相離家出走','阿想離家出走'],
+    img: ['https://i.imgur.com/FItqGSH.jpg']
+    //Pimg: ['https://i.imgur.com/FItqGSH.jpg']
+  },
+  {
+    chack: ['我什麼都沒有'],
+    img: ['https://i.imgur.com/k4QE5Py.png']
+    //Pimg: ['https://i.imgur.com/k4QE5Py.png']
+  },
+  {
+    chack: ['大家的小三','大家的小3'],
+    img: ['https://i.imgur.com/dKW2EJb.png']
+    //Pimg: ['https://i.imgur.com/dKW2EJb.png']
+  },
+  {
+    chack: ['問號黑人','黑人問號','尼哥問號','問號尼哥','尼格問號','問號尼格'],
+    img: ['https://i.imgur.com/cUR20OZ.png']
+  },
+  {
+    chack: ['貴圈真亂'],
+    img: ['https://i.imgur.com/PalRocR.png']
+  },
+  {
+    chack: ['怕'],
+    img: ['https://i.imgur.com/qXGsztE.png']
+  },
+  {
+    chack: ['你要享受這個過程','妳要享受這個過程'],
+    img: ['https://i.imgur.com/mt7NVzr.png','https://i.imgur.com/v094wOd.png','https://i.imgur.com/F5RfDW2.png','https://i.imgur.com/jWm6f6z.png']
+  },
+  {
+    chack: ['我覺得不行'],
+    img: ['https://i.imgur.com/zXvsvJf.png','https://i.imgur.com/U1AK4kL.png','https://i.imgur.com/4TClOgY.png']
+  },
+  {
+    chack: ['我覺得可以','我覺得其實可以'],
+    img: ['https://i.imgur.com/K5WsXso.png']
+  },
+  {
+    chack: ['警察','就是這個人'],
+    img: ['https://i.imgur.com/7BTPpPQ.png','https://i.imgur.com/nweWacp.png','https://i.imgur.com/j0hIscH.png','https://i.imgur.com/9BDCkJr.png','https://i.imgur.com/2ZiVw9g.png']
+  },
+  {
+    chack: ['姆米','姆咪','母米'],
+    img: ['https://i.imgur.com/j7bMpAO.png','https://i.imgur.com/0AatpWN.png','https://i.imgur.com/S69OoYS.png','https://i.imgur.com/kEGB0Vj.png']
+  },
+  {
+    chack: ['take my money','shut up and'],
+    img: ['https://i.imgur.com/UX0OUc0.png']
+  },
+  {
+    chack: ['接受挑戰','challenge'],
+    img: ['https://i.imgur.com/uUwcxtj.png']
+  },
+  {
+    chack: ['成龍'],
+    img: ['https://i.imgur.com/cq0WGxH.png']
+  },
+  {
+    chack: ['true story','真實故事'],
+    img: ['https://i.imgur.com/88MiBLA.png']
+  },
+  {
+    chack: ['一槍'],
+    img: ['https://i.imgur.com/FnmSMWq.png']
+  }
+
+
+  ]
+  
+  for ( i=0 ; i < message.length ; i ++){
+    for ( j=0 ; j < message[i].chack.length ; j ++){
+      if (inputStr.toLowerCase().match(message[i].chack[j]) != null) {
+	 let tempImgUrl = message[i].img[Dice(message[i].img.length)-1];
+         let rplyVal = [
+           {
+            type: "image", 
+            originalContentUrl: tempImgUrl, 
+            previewImageUrl: tempImgUrl
+           }
+         ]
+         SendMsg(rplyToken, rplyVal);
+         return undefined;
+      }
+    }
+    
+  }
+
+  return undefined;
+}
 
 function YabasoReply(inputStr) { 
   //一般功能說明
