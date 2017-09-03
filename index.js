@@ -592,7 +592,7 @@ function CoC7th(rplyToken, inputStr){
     chack = parseInt(inputStr.split('>',2)[1]) ;
     if (finalRoll>chack||finalRoll>95) {
       let plus =  Dice(10);
-      ReStr = 'CoC7th擲骰【技能成長】：\n(1D100>' + chack + ') → ' + finalRoll + ' → 成功成長' + Dice(10) +'點\n最終值為：'+ chack + '+' + plus +'='+ (chack + plus);
+      ReStr = 'CoC7th擲骰【技能成長】：\n(1D100>' + chack + ') → ' + finalRoll + ' → 成功成長' + plus +'點\n最終值為：'+ chack + '+' + plus +'='+ (chack + plus);
       return ReStr;
     }
     else if (finalRoll<=chack) {
