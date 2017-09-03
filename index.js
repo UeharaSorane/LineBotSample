@@ -279,7 +279,7 @@ function nomalDiceRoller(inputStr){
     //第三部份是檢查是否有數字或運算符之外的字元
     if (mutiOrNot.toString().match(/\d+d\d+/) == null||
         mutiOrNot.toString().match(/\Dd|d\D/) != null||
-        mutiOrNot.toString().match(/[^0-9d\+\-\*/\(\)]/) != null)
+        mutiOrNot.toString().match(/[^0-9dD+\-*\/()]/) != null)
         return undefined;
 
     finalStr= '基本擲骰：\n' + DiceCal(mutiOrNot.toString()).eqStr;
@@ -309,7 +309,7 @@ function DiceCal(inputStr){
   //再檢查一次
   if (DiceToRoll.match(/\d+d\d+/) == null||
       DiceToRoll.match(/\Dd|d\D/) != null||
-      DiceToRoll.match(/[^0-9d\+\-\*/\(\)]/) != null)
+      DiceToRoll.match(/[^0-9dD+\-*\/()]/) != null)
       return undefined;
   
   //寫出算式，這裡使用while將所有「幾d幾」的骰子找出來，一個一個帶入RollDice並取代原有的部分
@@ -363,8 +363,8 @@ function pbta(inputStr){
   let input = inputStr.toLowerCase().split(' ',2)[0];
   
   //同樣先處理報錯，先確定pb後面只有加或減
-  if(input.match(/^pb[^\+-]/) != null||
-     input.match(/[^0-9pb\+\-]/) != null)
+  if(input.match(/^pb[^+\-]/) != null||
+     input.match(/[^0-9pb+\-]/) != null)
   return undefined;
 
   //把pb去掉，留下後面的+-值，處理報錯
