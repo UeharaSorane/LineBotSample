@@ -266,8 +266,8 @@ function nomalDiceRoller(inputStr){
       finalStr = finalStr +'\n' + i + '# ' + DiceCal(DiceToRoll).eqStr;
     }
     //報錯，不解釋。
-    if(finalStr.match('200D')!= null) finalStr = '欸欸，不支援200D以上擲骰；哪個時候會骰到兩百次以上？想被淨灘嗎？';
-    if(finalStr.match('D500')!= null) finalStr = '不支援D1和超過D500的擲骰；想被淨灘嗎？';
+    if(finalStr.match('200D')!= null) finalStr = '複數擲骰：\n欸欸，不支援200D以上擲骰；哪個時候會骰到兩百次以上？想被淨灘嗎？';
+    if(finalStr.match('D500')!= null) finalStr = '複數擲骰：\n不支援D1和超過D500的擲骰；想被淨灘嗎？';
     
   } 
   
@@ -315,8 +315,8 @@ function DiceCal(inputStr){
   //寫出算式，這裡使用while將所有「幾d幾」的骰子找出來，一個一個帶入RollDice並取代原有的部分
   while(DiceToRoll.match(/\d+d\d+/)!=null) {
     let tempMatch = DiceToRoll.match(/\d+d\d+/);    
-    if (tempMatch.toString().split('d')[0]>200) return '欸欸，不支援200D以上擲骰；哪個時候會骰到兩百次以上？想被淨灘嗎？';
-    if (tempMatch.toString().split('d')[1]==1 || tempMatch.toString().split('d')[1]>500) return '不支援D1和超過D500的擲骰；想被淨灘嗎？';
+    if (tempMatch.toString().split('d')[0]>200) return {eqStr :'欸欸，不支援200D以上擲骰；哪個時候會骰到兩百次以上？想被淨灘嗎？'};
+    if (tempMatch.toString().split('d')[1]==1 || tempMatch.toString().split('d')[1]>500) return {eqStr :'不支援D1和超過D500的擲骰；想被淨灘嗎？'};
     DiceToRoll = DiceToRoll.replace(/\d+d\d+/, RollDice(tempMatch));
   }
   
