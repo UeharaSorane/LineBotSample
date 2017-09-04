@@ -469,7 +469,7 @@ function ccCreate(inputStr){
     if (old<20) ReStr = ReStr + ' ←擇一減' + AdjustValue.Debuff ;
     ReStr = ReStr + '\nＣＯＮ：' + DiceCal('3d6*5').eqStr;
     if (old>=40) ReStr = ReStr + ' ← 共減' + AdjustValue.Debuff;
-    ReStr = ReStr + '\nＤＥＸ：' + DiceCal('3d6*5');
+    ReStr = ReStr + '\nＤＥＸ：' + DiceCal('3d6*5').eqStr;
     if (old>=40) ReStr = ReStr + ' ← 共減' + AdjustValue.Debuff ;
     if (old>=40) ReStr = ReStr + '\nＡＰＰ：' + DiceCal('3d6*5-' + AdjustValue.AppDebuff).eqStr;
     else ReStr = ReStr + '\nＡＰＰ：' + DiceCal('3d6*5').eqStr;
