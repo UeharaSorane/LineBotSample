@@ -96,7 +96,8 @@ function parseInput(rplyToken, inputStr) {
 		let trigger = mainMsg[0].toString().toLowerCase(); //指定啟動詞在第一個詞&把大階強制轉成細階
                        
         //鴨霸獸指令開始於此
-        if (trigger.match(/空音/) != null) return randomReply() ;        
+        if (trigger.match(/空音/) != null) return randomReply() ;
+	if (trigger.match(/寶箱|開寶箱/) != null) return BoxReply() ;        
         if (trigger.match(/運氣|運勢/) != null) return randomLuck(mainMsg) ; //占卜運氣        
         
 		//FLAG指令開始於此
@@ -1003,6 +1004,17 @@ function BStyleFlagSCRIPTS() {
 		  	'\稍微...讓我休息一下吧(攤'];
           return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
         }
+
+	function BoxReply() {
+	  let temp = Dice(100);
+		
+	  if (temp >= 80) return '\恭喜，是普通獎勵。';
+	  if (temp <=79 && temp >= 50) return '\恭喜，是中等獎勵。';
+	  if (temp <=49 && temp >= 40) return '\喔喔！是高等獎勵诶，恭喜！';
+	  if (temp <=39) return '\太棒了！！！是頂級獎勵！恭喜！';
+	  else retrun '\警告，系統出錯了...';
+	}
+		
 		
        function randomLuck(TEXT) {
            let rplyArr = ['超吉','超級上吉','大吉','吉','中吉','小吉','吉','小吉','吉','吉','中吉','吉','中吉','吉','中吉','小吉','末吉','吉','中吉','小吉','末吉','中吉','小吉','小吉','吉','小吉','末吉','中吉','小吉','凶','小凶','沒凶','大凶','很凶'];
