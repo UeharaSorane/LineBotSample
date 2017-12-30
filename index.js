@@ -1012,7 +1012,6 @@ function BStyleFlagSCRIPTS() {
 	  if (temp <=79 && temp >= 50) return '\恭喜，是中等獎勵。';
 	  if (temp <=49 && temp >= 40) return '\喔喔！是高等獎勵诶，恭喜！';
 	  if (temp <=39) return '\太棒了！！！是頂級獎勵！恭喜！';
-	  else retrun '...';
 	}
 		
 		
