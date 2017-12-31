@@ -746,8 +746,9 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 	if (HandToCal.match(/石頭|布|剪刀|1|2|3/) != null) {
 		let aHand = ['石頭','布','剪刀'];
            HandToCal = aHand[Math.floor((Math.random() * (aHand.length)) + 0)];
-	}else if(HandToCal == null){
-		return '\來猜拳吧\n 輸入 猜拳 招式(剪刀/1,石頭/2,布/3)';
+	}
+	if(HandToCal == null){
+		return '\來猜拳吧\n 輸入 猜拳 招式(剪刀/3,石頭/1,布/2)';
 	}
 
 		
