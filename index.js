@@ -101,11 +101,9 @@ function parseInput(rplyToken, inputStr) {
         if (trigger.match(/運氣|運勢/) != null) return randomLuck(mainMsg) ; //占卜運氣        
         
 		//FLAG指令開始於此
-        if (trigger.match(/立flag|死亡flag/) != null) return BStyleFlagSCRIPTS() ;        
+        if (trigger.match(/flag/) != null) return BStyleFlagSCRIPTS() ;        
        
 		
-		//nc指令開始於此 來自Rainsting/TarotLineBot 
-		if (trigger.match(/^[1-4]n[c|a][+|-][1-99]$|^[1-4]n[c|a]$/)!= null ) return nechronica(trigger,mainMsg[1]);
 
 		//依戀
 		if (trigger.match(/(^nm$)/) != null)	 return nechronica_mirenn(mainMsg[1]);
@@ -630,57 +628,6 @@ function BuildRollDice(inputStr){
   return finalStr;
 }
             
-
-////////////////////////////////////////
-//////////////// nechronica (NC)
-////////////////////////////////////////
-function nechronica(triggermsg ,text) {
-	let returnStr = '';
-	var ncarray = [];
-	var dicemax = 0, dicemin = 0, dicenew = 0;
-
-	var match = /^(\d+)(NC|NA)((\+|-)(\d+)|)$/i.exec(triggermsg);	//判斷式
-
-	for (var i = 0; i < Number(match[1]); i++)	
-	{
-		dicenew = Dice(10) + Number(match[3]);
-		ncarray.push(dicenew);
-	}
-
-	dicemax = Math.max(...ncarray);	//判斷最大最小值
-	dicemin = Math.min(...ncarray);
-
-	if (Number(match[1]) == 1)
-		returnStr += dicemax + '[' + ncarray.pop() + ']'; 
-	else
-	{
-		returnStr += dicemax + '[';
-		for (i = 0; i < Number(match[1]); i++)
-		{
-			if (i != Number(match[1]) - 1)
-				returnStr += ncarray.pop() + ',';
-			else
-				returnStr += ncarray.pop();
-		}
-		returnStr += ']';
-	}
-
-	if (dicemax > 5)
-		if (dicemax > 10)
-			returnStr += ' → 大成功';
-		else
-			returnStr += ' → 成功';
-	else
-		if (dicemin <= 1)
-			returnStr += ' → 大失敗';
-		else
-			returnStr += ' → 失敗';
-
-	if (text != null)
-		returnStr += ' ; ' + text;
-
-	return returnStr;
-}
 
 ////////////////////////////////////////
 //////////////// nechronica (NM依戀)
@@ -1319,10 +1266,6 @@ function tarotCardReply(count) {
 \n  \
 \n ・cc六版創角\
 \n ・cc七版創角 （年齡）\
-\n  \
-\n・NC 永遠的後日談擲骰\
-\n (骰數)NC/NA (問題)\
-\n  例子 1NC 2Na+4 3na-2\
 \n 	依戀  NM (問題) \
 \n  例子 NM NM 我的依戀\
 \n  \
