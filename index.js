@@ -617,12 +617,17 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		for(var i=0; i<times;i++){
 			let temp = Dice(100);
 			let Shard = Dice(CharacterShard);
-			if (temp > characterChance) GachaResult[i] = '\夥伴碎片X' +  Shard + '片';
+			if (temp > characterChance) GachaResult[i] = '\夥伴碎片X' +  Shard + '片\n';
 			if (temp <= characterChance) GachaResult[i] = '\恭喜獲得新夥伴:' +  Character[Dice(Character.length)-1];
 		}
 		///
+		let GResult ='招募結果:\n'
+		for(i = 0;i<10;i++){
+			GResult = GResult + GachaResult[i];
+		}
 		
-		return GachaResult[];
+		
+		return GResult;
 	}
 ////////////////
 		
