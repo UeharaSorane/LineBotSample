@@ -742,12 +742,15 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 /* 猜拳功能 */
 	function RockPaperScissors(HandToCal, text) {
 	let returnStr = '';
+	var hand = FunnyDice(3); // 0:石頭 1:布 2:剪刀
 	if (HandToCal.match(/石頭|布|剪刀|1|2|3/) != null) {
 		let aHand = ['石頭','布','剪刀'];
            HandToCal = aHand[Math.floor((Math.random() * (aHand.length)) + 0)];
+	}else{
+		return '\來猜拳吧\n 輸入 猜拳 招式(剪刀/1,石頭/2,布/3)';
 	}
-	var hand = FunnyDice(3); // 0:石頭 1:布 2:剪刀
 
+		
 	switch (hand) {
 		case 0: //石頭
 			returnStr = '我出石頭！\n';
@@ -780,10 +783,10 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			break;
 
 		default:
-			returnStr = '我出的是...欸不對你沒出喔！\n';
 			break;
 	}
-
+		
+	returnStr = '我出的是...欸不對你沒出喔！\n';
 	return returnStr;
 }
 
