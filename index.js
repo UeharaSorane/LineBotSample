@@ -601,6 +601,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 					 '尤克特',
 					 '路卡',
 					 '露'];
+			var NumberOfCharacter = 5;
 			if(GachaTimes =='單抽'){
 				times = 1;
 				characterChance = 20;
@@ -608,7 +609,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			if(GachaTimes =='十連加一'){
 				times = 10;
 				characterChance = 10;
-				var CharacterNS = Dies(Character.length)-1;
+				var CharacterNS = Dies(NumberOfCharacter)-1;
 				GachaResult[10] = '\[保底]夥伴:' +  Character[CharacterNS];
 			}
 			var CharacterShard = 10; 
@@ -619,7 +620,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		for(var i=0; i<times;i++){
 			let temp = Dice(100);
 			let Shard = Dice(CharacterShard);
-			var CharacterN = Dice(10)-1
+			var CharacterN = Dice(NumberOfCharacter)-1
 			if (temp > characterChance) GachaResult[i] = '\夥伴碎片X' +  Shard + '片\n';
 			if (temp <= characterChance) GachaResult[i] = '\夥伴:' +  Character[CharacterN];
 		}
