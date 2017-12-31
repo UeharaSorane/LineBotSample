@@ -618,11 +618,11 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			let temp = Dice(100);
 			let Shard = Dice(CharacterShard);
 			if (temp > characterChance) GachaResult[i] = '\夥伴碎片X' +  Shard + '片';
-			if (temp <= characterChance) GachaResult[i] = '\恭喜獲得新夥伴:' +  Character[Math.floor((Math.random() * (Character.length)) + 0)];
+			if (temp <= characterChance) GachaResult[i] = '\恭喜獲得新夥伴:' +  Character[Dice(Character.length)-1];
 		}
 		///
 		
-		return GachaResult[0];
+		return GachaResult[];
 	}
 ////////////////
 		
