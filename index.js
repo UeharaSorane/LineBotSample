@@ -596,11 +596,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		
 		///確定抽獎狀態
 		if(DrawPool == 1){
-			let Character = ['義熊',
-					 '克雷特',
-					 '尤克特',
-					 '路卡',
-					 '露'];
+			let Character = ['義熊','克雷特','尤克特','路卡','露'];
 			var NumberOfCharacter = 5;
 			if(GachaTimes =='單抽'){
 				times = 1;
@@ -610,7 +606,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				times = 10;
 				characterChance = 10;
 				var CharacterNS = Dies(NumberOfCharacter)-1;
-				GachaResult[10] = '\[保底]夥伴:' +  Character[CharacterNS];
+				GachaResult[10] = '\[保底]夥伴:' + Character[Math.floor((Math.random() * (Character.length)) + 0)];
 			}
 			var CharacterShard = 10; 
 		}
@@ -622,7 +618,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			let Shard = Dice(CharacterShard);
 			var CharacterN = Dice(NumberOfCharacter)-1
 			if (temp > characterChance) GachaResult[i] = '\夥伴碎片X' +  Shard + '片\n';
-			if (temp <= characterChance) GachaResult[i] = '\夥伴:' +  Character[CharacterN];
+			if (temp <= characterChance) GachaResult[i] = '\夥伴:' +  Character[Math.floor((Math.random() * (Character.length)) + 0)] + '\n';
 		}
 		///
 		let GResult ='招募結果:\n'
