@@ -786,7 +786,6 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			break;
 	}
 		
-	returnStr = '我出的是...欸不對你沒出喔！\n';
 	return returnStr;
 }
 
