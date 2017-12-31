@@ -622,7 +622,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n 想要招募的話，請輸入 招募 0 招募方式 \
 				';
 			}else{
-				return '...';
+				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 招募 0';
 			}
 			
 		}else if(DrawPool == 1){
@@ -638,9 +638,9 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				
 				
 			}else if(GachaTimes =='十連加一'){
-				times = 1;
+				times = 10;
 				characterChance = 20;
-				CharacterShard = 90;
+				CharacterShard = 20;
 				CharacterShardBonus = 10;
 				GachaResult[10] = '\[保底]夥伴:' +  CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
 			
@@ -657,11 +657,11 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  (五名夥伴獲得機率相同)\
 				\n 提供招募方式：\
 				\n 單抽 5顆奇蹟石(20%出現夥伴，80%獲得1~10個夥伴碎片)\
-				\n 十連加一 50顆奇蹟石(必定出現一名夥伴，其餘有10%出現夥伴，90%獲得10~100個夥伴碎片)\
-				\n 想要招募的話，請輸入 招募 0 招募方式 \
+				\n 十連加一 50顆奇蹟石(必定出現一名夥伴，其餘有10%出現夥伴，90%獲得10~30個夥伴碎片)\
+				\n 想要招募的話，請輸入 招募 1 招募方式 \
 				';
 			  }else{
-				return '...';
+				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 招募 1';
 				}
 		}else if(DrawPool == 2){
 			let Character = ['劍士-露','長槍手-路卡','路人-克雷特','廚師-義熊','武士-薰','冰法師-艾斯'];
@@ -689,10 +689,10 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  (六名夥伴獲得機率相同)\
 				\n 提供招募方式：\
 				\n 單抽 事前登入專用招募卷x1(必定獲得夥伴)\
-				\n 想要招募的話，請輸入 招募 0 招募方式 \
+				\n 想要招募的話，請輸入 招募 2 招募方式 \
 				';
 			  }else{
-				return '...';
+				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 招募 2';
 				}
 		}else{
 			
