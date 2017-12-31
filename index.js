@@ -596,7 +596,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		
 		///確定抽獎狀態
 		if(DrawPool == 1){
-			let Character = ['a','b','c','d','e'];
+			let rplyArr = ['超吉','超級上吉','大吉','吉','中吉','小吉','吉','小吉','吉','吉','中吉','吉','中吉','吉','中吉','小吉','末吉','吉','中吉','小吉','末吉','中吉','小吉','小吉','吉','小吉','末吉','中吉','小吉','凶','小凶','沒凶','大凶','很凶'];
 			var NumberOfCharacter = 5;
 			if(GachaTimes =='單抽'){
 				times = 1;
@@ -627,7 +627,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		}
 		
 		
-		return Character[0];
+		return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 	}
 ////////////////
 		
