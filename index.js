@@ -100,6 +100,9 @@ function parseInput(rplyToken, inputStr) {
 	
 	
 	////////////////////////////戰鬥相關
+	if (trigger.match(/^ccb$/)!= null && mainMsg[1]<=1000 ){
+		if (trigger == 'ccb'&& mainMsg[1]<=99) return coc6(mainMsg[1],mainMsg[2]);//ccb指令
+        }
 	
 	
 	////////////////////////////服務相關
@@ -110,40 +113,8 @@ function parseInput(rplyToken, inputStr) {
         if (trigger.match(/空音/) != null) return randomReply() ;//空音閒談指令
 	if (trigger.match(/運氣|運勢/) != null) return randomLuck(mainMsg) ; //占卜運氣        
         if (trigger.match(/flag/) != null) return BStyleFlagSCRIPTS() ;//插旗用指令
-       
-  
- 	
-		
-        if (trigger.match(/^d66$/)!= null ) return d66(mainMsg[1]);
 	
-		if (trigger.match(/^d66s$/)!= null ) return d66s(mainMsg[1]);
-		if (trigger.match(/^ccb$|^cc$|^ccn[1-2]$|^cc[1-2]$/)!= null && mainMsg[1]<=1000 )
-	{       		
-
-        //ccb指令開始於此
-		if (trigger == 'ccb'&& mainMsg[1]<=99) return coc6(mainMsg[1],mainMsg[2]);
-          
-        //cc指令開始於此
-        if (trigger == 'cc'&& mainMsg[1]<=1000) return coc7(mainMsg[1],mainMsg[2]);
-        
-        //獎懲骰設定於此    
-          if (trigger == 'cc1'&& mainMsg[1]<=1000) return coc7bp(mainMsg[1],'1',mainMsg[2]);        
-          if (trigger == 'cc2'&& mainMsg[1]<=1000) return coc7bp(mainMsg[1],'2',mainMsg[2]);   
-          if (trigger == 'ccn1'&& mainMsg[1]<=1000) return coc7bp(mainMsg[1],'-1',mainMsg[2]);   
-          if (trigger == 'ccn2'&& mainMsg[1]<=1000) return coc7bp(mainMsg[1],'-2',mainMsg[2]);   
-
-	}
-	//wod 指令開始於此
-		if (trigger.match(/^(\d+)(wd|wod)(\d|)((\+|-)(\d+)|)$/i)!= null)
-	{        
-		return wod(trigger,mainMsg[1]);
-	}
 	
-	//choice 指令開始於此
-		if (trigger.match(/choice|隨機|選項|選1/)!= null && mainMsg.length >= 3) 
-	{        
-		return choice(inputStr,mainMsg);
-	}
 
 	//tarot 指令
 	if (trigger.match(/tarot|塔羅牌|塔羅/) != null) {
@@ -211,53 +182,6 @@ function coc6(chack,text){
             else return 'ccb<=' + chack  + ' ' +  temp + ' → 失敗；' + text;
     }
 }        
-
-////////////////////////////////////////
-//////////////// COC7
-////////////////////////////////////////      
-
-        
-function coc7(chack,text){
-  let temp = Dice(100);  
-  if (text == null ) {
-    if (temp == 1) return temp + ' → 恭喜！大成功！';
-    if (temp == 100) return temp + ' → 啊！大失敗！';
-    if (temp <= chack/5) return temp + ' → 極限成功';
-    if (temp <= chack/2) return temp + ' → 困難成功';
-    if (temp <= chack) return temp + ' → 通常成功';
-    else return temp + ' → 失敗' ;
-  }
-  else
-  {
-  if (temp == 1) return temp + ' → 恭喜！大成功！；' + text;
-  if (temp == 100) return temp + ' → 啊！大失敗！；' + text;
-  if (temp <= chack/5) return temp + ' → 極限成功；' + text;
-  if (temp <= chack/2) return temp + ' → 困難成功；' + text;
-  if (temp <= chack) return temp + ' → 通常成功；' + text;
-  else return temp + ' → 失敗；' + text;
-  }
-}
-        
-function coc7chack(temp,chack,text){
-  if (text == null ) {
-    if (temp == 1) return temp + ' → 恭喜！大成功！';
-    if (temp == 100) return temp + ' → 啊！大失敗！';
-    if (temp <= chack/5) return temp + ' → 極限成功';
-    if (temp <= chack/2) return temp + ' → 困難成功';
-    if (temp <= chack) return temp + ' → 通常成功';
-    else return temp + ' → 失敗' ;
-  }
-else
-  {
-    if (temp == 1) return temp + ' → 恭喜！大成功！；' + text;
-    if (temp == 100) return temp + ' → 啊！大失敗！；' + text;
-    if (temp <= chack/5) return temp + ' → 極限成功；' + text;
-    if (temp <= chack/2) return temp + ' → 困難成功；' + text;
-    if (temp <= chack) return temp + ' → 通常成功；' + text;
-    else return temp + ' → 失敗；' + text;
-  }
-}
-
 
 function coc7bp (chack,bpdiceNum,text){
   let temp0 = Dice(10) - 1;
@@ -474,48 +398,7 @@ function BuildRollDice(inputStr){
   finalStr = finalStr.substring(0, finalStr.length - 1) + ')';
   return finalStr;
 }
-            
-////////////////////////////////////////
-//////////////// D66
-////////////////////////////////////////
 
-function d66(text) {
-
-	let returnStr = '';
-	if(text != null){
-	returnStr =   'D66：' + text + ' → ' + Dice(6) + Dice(6);
-	}
-	else{
-	returnStr = 'D66 → ' + Dice(6) + Dice(6);
-	}
-	return returnStr;
-	
-}
-
-////////////////////////////////////////
-//////////////// D66s
-////////////////////////////////////////
-
-function d66s(text) {
-
-	let temp0 = Dice(6);
-	let temp1 = Dice(6);
-	let returnStr = '';
-	if (temp0>= temp1){
-		let temp2 = temp0;
-		temp0 = temp1;
-		temp1 = temp2;
-	}
-	if(text != null){
-	
-	returnStr =   'D66s：' + text + ' → ' + temp0 + temp1;
-	}
-	else{
-	returnStr = 'D66s → ' +  temp0 + temp1;
-	}
-	return returnStr;
-	
-}
 
 ////////////////////////////////////////
 //////////////// xBy
@@ -629,116 +512,72 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 	}
 
 
-////////////////////////////////////////
-//////////////// WOD黑暗世界
-////////////////////////////////////////
 
-function wod(triggermsg ,text) {
-	var returnStr = triggermsg+' [';
-	var varcou = 0;
-	var varsu = 0;
-	var match = /^(\d+)(wd|wod)(\d|)((\+|-)(\d+)|)$/i.exec(triggermsg);   //判斷式  [0]3wd8+10,[1]3,[2]wd,[3]8,[4]+10,[5]+,[6]10  
-	if (match[3]=="") { match[3] =10 }
-	if (match[3]<=2) { return '加骰最少比2高'; }
-			
-for (var i = 0; i < Number(match[1]); i++)	
-	{
-             varcou =  Math.floor(Math.random() * 10) + 1;
-             returnStr += varcou +', ';
-             
-		
-             if (varcou >=match[3]) { i--}
-             if (varcou >=8) 
-	     {
-		     varsu++;
-	     }
-
-	}
-
-	    if(match[5]=='+'){
-    
-    for (var i = 0; i < Number(match[6]); i++)	{
-	    varsu++;
-    }
-    }
-    if(match[5]=='-'){
-    
-    for (var i = 0; i < Number(match[6]); i++)	{
-	    varsu--;
-    }
-    }
-	
-    returnStr = returnStr.replace(/[,][ ]$/,'] → '+varsu+'成功');
-	if (text != null){
-	returnStr += ' ; ' + text;
-	}
-	return returnStr;
-}
 ////////////////////////////////////////
 //////////////// 占卜&其他
 ////////////////////////////////////////
 
 
-function BStyleFlagSCRIPTS() {
-          let rplyArr = ['\
-「打完這仗我就回老家結婚（この戦いが終わったら、故郷に帰って結婚するんだ）」', '\
-「打完這一仗後我請你喝酒」', '\
-「你、你要錢嗎！要什麼我都能給你！/我可以給你更多的錢！」', '\
-「做完這次任務，我就要結婚了。」', '\
-「幹完這一票我就金盆洗手了。」', '\
-「好想再XXX啊……」', '\
-「已經沒什麼好害怕的了（もう何も恐くない）」', '\
-「我一定會回來的（必ず帰る！）」', '\
-「差不多該走了」', '\
-「我只是希望你永遠不要忘記我。」', '\
-「我只是希望能永遠和你在一起。」', '\
-「啊啊…為什麼會在這種時候、想起了那些無聊的事呢？」', '\
-「能遇見你真是太好了。」', '\
-「我終於…為你們報仇了！」', '\
-「等到一切結束後，我有些話想跟妳說！」', '\
-「這段時間我過的很開心啊。」', '\
-把自己的寶物借給其他人，然後說「待一切結束後記得還給我。」', '\
-「真希望這份幸福可以永遠持續下去。」', '\
-「我們三個人要永永遠遠在一起！」', '\
-「這是我女兒的照片，很可愛吧？」', '\
-「請告訴他/她，我永遠愛他/她」', '\
-「聽好，在我回來之前絕不要亂走動哦（いいか、俺が帰ってくるまでここを動くんじゃないぞ）」', '\
-「要像一個乖孩子一樣等著我回來」', '\
-「我去去就來（先に行って、すぐ戻るから）」', '\
-「快逃！(逃げろう！/早く逃げろう！)」', '\
-「對方只有一個人，大家一起上啊」', '\
-「我就不信，這麼多人還殺不了他一個！」', '\
-「幹，幹掉了嗎？（やったのか？）」', '\
-「身體好輕」', '\
-「可惡！你給我看著！（逃跑）」', '\
-「躲在這裡就應該不會被發現了吧。」', '\
-「我不會讓任何人死的。」', '\
-「可惡！原來是這麼回事！」', '\
-「跑這麼遠應該就行了。」', '\
-「我已經甚麼都不怕了（もう何も恐くない）」', '\
-「這XXX是什麼，怎麼之前沒見過（なんだこのXXX、見たことないな）」', '\
-「什麽聲音……？就去看一下吧（:「何の音だ？ちょっと見てくる」', '\
-「是我的錯覺嗎？/果然是錯覺/錯覺吧/可能是我（看/聽）錯了」', '\
-「二十年後又是一條好漢！」', '\
-「大人/將軍武運昌隆」', '\
-「這次工作的報酬是以前無法比較的（:「今度の仕事でまとまったカネが入るんだ」', '\）」', '\
-「我才不要和罪犯呆在一起，我回自己的房間去了！（この中に殺人者がいるかもしれないのに、一緒に居られるか!俺は自分の部屋に戻るぞ!）」', '\
-「其實我知道事情的真相…（各種廢話）…犯人就是……」', '\
-「我已經天下無敵了~~」', '\
-「大人！這邊就交給小的吧，請快離開這邊吧」', '\
-「XX，這就是我們流派的最終奧義。這一招我只會演示一次，你看好了！」', '\
-「誰敢殺我？」', '\
-「從來沒有人能越過我的劍圍。」', '\
-「就算殺死也沒問題吧？」', '\
-「看我塔下強殺！」', '\
-「騙人的吧，我們不是朋友嗎？」', '\
-「我老爸是....你有種就....」', '\
-「我可以好好利用這件事」'];
-          return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+	function BStyleFlagSCRIPTS() {
+		let rplyArr = ['\
+		「打完這仗我就回老家結婚（この戦いが終わったら、故郷に帰って結婚するんだ）」', '\
+		「打完這一仗後我請你喝酒」', '\
+		「你、你要錢嗎！要什麼我都能給你！/我可以給你更多的錢！」', '\
+		「做完這次任務，我就要結婚了。」', '\
+		「幹完這一票我就金盆洗手了。」', '\
+		「好想再XXX啊……」', '\
+		「已經沒什麼好害怕的了（もう何も恐くない）」', '\
+		「我一定會回來的（必ず帰る！）」', '\
+		「差不多該走了」', '\
+		「我只是希望你永遠不要忘記我。」', '\
+		「我只是希望能永遠和你在一起。」', '\
+		「啊啊…為什麼會在這種時候、想起了那些無聊的事呢？」', '\
+		「能遇見你真是太好了。」', '\
+		「我終於…為你們報仇了！」', '\
+		「等到一切結束後，我有些話想跟妳說！」', '\
+		「這段時間我過的很開心啊。」', '\
+		把自己的寶物借給其他人，然後說「待一切結束後記得還給我。」', '\
+		「真希望這份幸福可以永遠持續下去。」', '\
+		「我們三個人要永永遠遠在一起！」', '\
+		「這是我女兒的照片，很可愛吧？」', '\
+		「請告訴他/她，我永遠愛他/她」', '\
+		「聽好，在我回來之前絕不要亂走動哦（いいか、俺が帰ってくるまでここを動くんじゃないぞ）」', '\
+		「要像一個乖孩子一樣等著我回來」', '\
+		「我去去就來（先に行って、すぐ戻るから）」', '\
+		「快逃！(逃げろう！/早く逃げろう！)」', '\
+		「對方只有一個人，大家一起上啊」', '\
+		「我就不信，這麼多人還殺不了他一個！」', '\
+		「幹，幹掉了嗎？（やったのか？）」', '\
+		「身體好輕」', '\
+		「可惡！你給我看著！（逃跑）」', '\
+		「躲在這裡就應該不會被發現了吧。」', '\
+		「我不會讓任何人死的。」', '\
+		「可惡！原來是這麼回事！」', '\
+		「跑這麼遠應該就行了。」', '\
+		「我已經甚麼都不怕了（もう何も恐くない）」', '\
+		「這XXX是什麼，怎麼之前沒見過（なんだこのXXX、見たことないな）」', '\
+		「什麽聲音……？就去看一下吧（:「何の音だ？ちょっと見てくる」', '\
+		「是我的錯覺嗎？/果然是錯覺/錯覺吧/可能是我（看/聽）錯了」', '\
+		「二十年後又是一條好漢！」', '\
+		「大人/將軍武運昌隆」', '\
+		「這次工作的報酬是以前無法比較的（:「今度の仕事でまとまったカネが入るんだ」', '\）」', '\
+		「我才不要和罪犯呆在一起，我回自己的房間去了！（この中に殺人者がいるかもしれないのに、一緒に居られるか!俺は自分の部屋に戻るぞ!）」', '\
+		「其實我知道事情的真相…（各種廢話）…犯人就是……」', '\
+		「我已經天下無敵了~~」', '\
+		「大人！這邊就交給小的吧，請快離開這邊吧」', '\
+		「XX，這就是我們流派的最終奧義。這一招我只會演示一次，你看好了！」', '\
+		「誰敢殺我？」', '\
+		「從來沒有人能越過我的劍圍。」', '\
+		「就算殺死也沒問題吧？」', '\
+		「看我塔下強殺！」', '\
+		「騙人的吧，我們不是朋友嗎？」', '\
+		「我老爸是....你有種就....」', '\
+		「我可以好好利用這件事」'];
+		return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
         }
 	
         function randomReply() {
-          let rplyArr = [
+        	let rplyArr = [
 		  
 		 	'\有什麼事嗎？', 
 		 	'\如果沒有需要，我回去打街機喔。', 
@@ -759,7 +598,7 @@ function BStyleFlagSCRIPTS() {
 		  	'\比起一直找我聊天，不如試著找其他事做吧。',
 		  	'\我最喜歡的角色嗎...？應該是露吧。不論何時都很可愛',
 		  	'\稍微...讓我休息一下吧(攤'];
-          return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+        	return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
         }
 
 	function BoxReply() {
