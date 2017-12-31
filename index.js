@@ -746,7 +746,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 	if (HandToCal.match(/石頭|布|剪刀|1|2|3/) != null) {
 		let aHand = ['石頭','布','剪刀'];
            HandToCal = aHand[Math.floor((Math.random() * (aHand.length)) + 0)];
-	}else{
+	}else if(HandToCal == null){
 		return '\來猜拳吧\n 輸入 猜拳 招式(剪刀/1,石頭/2,布/3)';
 	}
 
@@ -755,7 +755,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		case 0: //石頭
 			returnStr = '我出石頭！\n';
 
-			if (HandToCal.match(/剪刀|1/) != null) returnStr += '哼哼你輸惹';
+			if (HandToCal.match(/剪刀|1/) != null) returnStr += '太棒了，看我的幻影旋風！(矮扁鍬形蟲)';
 			else if (HandToCal.match(/石頭|2/) != null) returnStr += '看來我們不相上下阿';
 			else if (HandToCal.match(/布|3/) != null) returnStr += '你好像有點強！';
 			else returnStr += '欸不對喔你亂出！';
@@ -767,7 +767,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 
 			if (HandToCal.match(/剪刀|1/) != null) returnStr += '讓你一次而已啦！';
 			else if (HandToCal.match(/布|2/) != null) returnStr += '原來平手...沒什麼嘛！';
-			else if (HandToCal.match(/石頭|3/) != null) returnStr += '哈哈你看看你！';
+			else if (HandToCal.match(/石頭|3/) != null) returnStr += '去吧！超級龍捲投！！！！！！(獨角仙)';
 			else returnStr += '別亂出阿會壞掉的';
 
 			break;
@@ -776,9 +776,9 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			returnStr = '我出剪刀！\n';
 
 			if (HandToCal.match(/剪刀|1/) != null) returnStr += '平手 (  艸)';
-			else if (HandToCal.match(/布|2/) != null) returnStr += '贏了 (｀・ω・´)b';
+			else if (HandToCal.match(/布|2/) != null) returnStr += '接下我的地龍搶珠！(巨顎叉角鍬形蟲)';
 			else if (HandToCal.match(/石頭|3/) != null) returnStr += '輸惹 ゜。。゜(ノД‵)ノ・゜';
-			else returnStr += '亂出打你喔 (｀・ω・´)凸';
+			else returnStr += '亂出我就用鼓棒打你喔';
 
 			break;
 
