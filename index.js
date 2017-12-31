@@ -103,7 +103,21 @@ function parseInput(rplyToken, inputStr) {
 	if (trigger.match(/^ccb$/)!= null && mainMsg[1]<=1000 ){
 		if (trigger == 'ccb'&& mainMsg[1]<=99) return coc6(mainMsg[1],mainMsg[2]);//ccb指令
         }
+	//xBy>A 指令開始於此
+	if (trigger.match(/^(\d+)(b)(\d+)$/i)!= null)
+	{        
+		return xBy(trigger,mainMsg[1],mainMsg[2]);
+	}
+	//xUy 指令開始於此	
+	if (trigger.match(/^(\d+)(u)(\d+)$/i)!= null && isNaN(mainMsg[1])== false)
+	{        
+		return xUy(trigger,mainMsg[1],mainMsg[2],mainMsg[3]);
+	}
 	
+	        //普通ROLL擲骰判定在此        
+        if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/\d+d+\d/)!=null) {
+          return nomalDiceRoller(inputStr,mainMsg[0],mainMsg[1],mainMsg[2]);
+        }
 	
 	////////////////////////////服務相關
 	if (trigger.match(/^寶箱$|^開寶箱$/) != null) return BoxReply() ;//寶箱狩獵指令
@@ -113,10 +127,7 @@ function parseInput(rplyToken, inputStr) {
         if (trigger.match(/空音/) != null) return randomReply() ;//空音閒談指令
 	if (trigger.match(/運氣|運勢/) != null) return randomLuck(mainMsg) ; //占卜運氣        
         if (trigger.match(/flag/) != null) return BStyleFlagSCRIPTS() ;//插旗用指令
-	
-	
-
-	//tarot 指令
+	//塔羅牌
 	if (trigger.match(/tarot|塔羅牌|塔羅/) != null) {
 			if (trigger.match(/每日|daily/)!= null) {
 				return NomalDrawTarot(mainMsg[1], mainMsg[2]);
@@ -128,35 +139,14 @@ function parseInput(rplyToken, inputStr) {
 				return MultiDrawTarot(mainMsg[1], mainMsg[2], 2);
 			}
 			return MultiDrawTarot(mainMsg[1], mainMsg[2], 3); //預設抽 79 張
-		}
-
-		/*tarot 指令
+	}
+	//猜拳
 	if (trigger.match(/猜拳/) != null) {
 			return RockPaperScissors(inputStr, mainMsg[1]);
 		}
-*/
 
-	//xBy>A 指令開始於此
-	if (trigger.match(/^(\d+)(b)(\d+)$/i)!= null)
-	{        
-		return xBy(trigger,mainMsg[1],mainMsg[2]);
-	}
-	//xUy 指令開始於此	
-	if (trigger.match(/^(\d+)(u)(\d+)$/i)!= null && isNaN(mainMsg[1])== false)
-	{        
-		return xUy(trigger,mainMsg[1],mainMsg[2],mainMsg[3]);
-	}
 
-	
-
-         //普通ROLL擲骰判定在此        
-     if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/\d+d+\d/)!=null) {
-          return nomalDiceRoller(inputStr,mainMsg[0],mainMsg[1],mainMsg[2]);
-        }
-	
 }
-
-
 ////////////////////////////////////////
 //////////////// 骰組開始
 ////////////////////////////////////////      
