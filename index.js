@@ -100,8 +100,9 @@ function parseInput(rplyToken, inputStr) {
 	
 	
 	////////////////////////////戰鬥相關
+	//ccb指令
 	if (trigger.match(/^ccb$/)!= null && mainMsg[1]<=1000 ){
-		if (trigger == 'ccb'&& mainMsg[1]<=99) return coc6(mainMsg[1],mainMsg[2]);//ccb指令
+		if (trigger == 'ccb'&& mainMsg[1]<=99) return ccb(mainMsg[1],mainMsg[2]);
         }
 	//xBy>A 指令開始於此
 	if (trigger.match(/^(\d+)(b)(\d+)$/i)!= null)
@@ -120,11 +121,13 @@ function parseInput(rplyToken, inputStr) {
         }
 	
 	////////////////////////////服務相關
-	if (trigger.match(/^寶箱$|^開寶箱$/) != null) return BoxReply() ;//寶箱狩獵指令
+	if (trigger.match(/^寶箱$|^開寶箱$/) != null) return BoxOpen() ;//寶箱狩獵指令
 	if (trigger.match(/^help$|^幫助$/)!= null ) return Help();//幫助頁面
+	if (trigger.match(/^招募$/) != null) return gacha(mainMsg[1],mainMsg[2]);	//角色招募指令
 	
 	////////////////////////////娛樂相關
         if (trigger.match(/空音/) != null) return randomReply() ;//空音閒談指令
+	if (trigger.match(/空空/) != null) return randomReplyShin() ;//空音閒談指令(裏)
 	if (trigger.match(/運氣|運勢/) != null) return randomLuck(mainMsg) ; //占卜運氣        
         if (trigger.match(/flag/) != null) return BStyleFlagSCRIPTS() ;//插旗用指令
 	//塔羅牌
@@ -151,14 +154,8 @@ function parseInput(rplyToken, inputStr) {
 //////////////// 骰組開始
 ////////////////////////////////////////      
 
-
-               
-////////////////////////////////////////
-//////////////// COC6
-////////////////////////////////////////      
-    
-
-function coc6(chack,text){
+//////////////// ccb功能   
+function ccb(chack,text){
           let temp = Dice(100);
           if (text == null ) {
             if (temp == 100) return 'ccb<=' + chack  + ' ' + temp + ' → 啊！大失敗！';
@@ -171,43 +168,8 @@ function coc6(chack,text){
             if (temp <= chack) return 'ccb<=' + chack +  ' ' + temp + ' → 成功；' + text;
             else return 'ccb<=' + chack  + ' ' +  temp + ' → 失敗；' + text;
     }
-}        
-
-function coc7bp (chack,bpdiceNum,text){
-  let temp0 = Dice(10) - 1;
-  let countStr = '';
-  
-  if (bpdiceNum > 0){
-  for (let i = 0; i <= bpdiceNum; i++ ){
-    let temp = Dice(10);
-    let temp2 = temp.toString() + temp0.toString();
-    if (temp2 > 100) temp2 = parseInt(temp2) - 100;  
-    countStr = countStr + temp2 + '、';
-  }
-  countStr = countStr.substring(0, countStr.length - 1) 
-    let countArr = countStr.split('、'); 
-    
-  countStr = countStr + ' → ' + coc7chack(Math.min(...countArr),chack,text);
-  return countStr;
-  }
-  
-  if (bpdiceNum < 0){
-    bpdiceNum = Math.abs(bpdiceNum);
-    for (let i = 0; i <= bpdiceNum; i++ ){
-      let temp = Dice(10);
-      let temp2 = temp.toString() + temp0.toString();
-      if (temp2 > 100) temp2 = parseInt(temp2) - 100;  
-      countStr = countStr + temp2 + '、';
-    }
-    countStr = countStr.substring(0, countStr.length - 1) 
-    let countArr = countStr.split('、'); 
-
-    countStr = countStr + ' → ' + coc7chack(Math.max(...countArr),chack,text);
-    return countStr;
-  }
-  
 }
-
+////////////////
         
 function ArrMax (Arr){
   var max = this[0];
@@ -219,9 +181,7 @@ function ArrMax (Arr){
   return max;
 }
 
-////////////////////////////////////////
 //////////////// 普通ROLL
-////////////////////////////////////////
  function nomalDiceRoller(inputStr,text0,text1,text2){
   
   //首先判斷是否是誤啟動（檢查是否有符合骰子格式）
@@ -306,22 +266,21 @@ function ArrMax (Arr){
   return finalStr;
 
 
-}        
+}
+////////////////
 
-
-////////////////////////////////////////
 //////////////// 擲骰子運算
-////////////////////////////////////////
-
 function sortNumber(a,b)
 {
 return a - b
 }
+////////////////
 
-
-        function Dice(diceSided){          
-          return Math.floor((Math.random() * diceSided) + 1)
-        }              
+//////////////// 取隨機值專用
+function Dice(diceSided){
+	return Math.floor((Math.random() * diceSided) + 1)
+}
+////////////////
 		
 	function RollDice(inputStr){
   //先把inputStr變成字串（不知道為什麼非這樣不可）
@@ -507,7 +466,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 //////////////// 占卜&其他
 ////////////////////////////////////////
 
-
+//////////////// 插旗
 	function BStyleFlagSCRIPTS() {
 		let rplyArr = ['\
 		「打完這仗我就回老家結婚（この戦いが終わったら、故郷に帰って結婚するんだ）」', '\
@@ -565,7 +524,9 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		「我可以好好利用這件事」'];
 		return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
         }
-	
+////////////////
+
+//////////////// 空音閒談
         function randomReply() {
         	let rplyArr = [
 		  
@@ -590,8 +551,30 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		  	'\稍微...讓我休息一下吧(攤'];
         	return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
         }
+////////////////
 
-	function BoxReply() {
+//////////////// 空音閒談(裏)
+        function randomReplyShin() {
+        	let rplyArr = [
+		  
+		 	'\在抽獎之前，先把火力燒成灰吧', 
+		 	'\FYK=Fuck You Komnami', 
+		  	'\NicoNico=垃圾', 
+		  	'\海外太鼓沒廣場',
+		  	'\海外maimia沒人權曲',
+		  	'\海外GC沒日文語音',
+		  	'\我不當一般的Bot了!JOJO!!!!!',
+		  	'\你什麼時候產生了你有妹妹的錯覺？',
+		  	'\乖，帽子戴正，都歪了',
+		  	'\私',
+		  	'\幫我撐十秒',
+		  	'\整天妄想稱呼我暱稱？真是有夠噁心的'];
+        	return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+        }
+////////////////
+
+//////////////// 寶箱狩獵
+	function BoxOpen() {
 	  let temp = Dice(100);
 		
 	  if (temp >= 68) return '\恭喜，是普通獎勵。';
@@ -599,6 +582,50 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 	  if (temp <=38 && temp >= 16) return '\喔喔！是高等獎勵诶，恭喜！';
 	  if (temp <=15) return '\太棒了！！！是頂級獎勵！恭喜！';
 	}
+////////////////
+
+//////////////// 角色招募
+	function gacha(DrawPool,GachaTimes) {
+		
+		///基本變數
+		let GachaResult = ['\n','\n','\n','\n','\n','\n','\n','\n','\n','\n','\n'];
+ 
+		var times = 0;
+		var characterChance = 0;
+		///
+		
+		///確定抽獎狀態
+		if(DrawPool == 1){
+			let Character = ['義熊',
+					 '克雷特',
+					 '尤克特',
+					 '路卡',
+					 '露'];
+			if(GachaTimes =='單抽'){
+				times = 1;
+				characterChance = 20;
+			}
+			if(GachaTimes =='十連加一'){
+				times = 10;
+				characterChance = 10;
+			}
+			var CharacterShard = 10; 
+		}
+		///
+		
+		///抽獎
+		for(var i=0; i<times;i++){
+			let temp = Dice(100);
+			let Shard = Dice(CharacterShard);
+			if (temp > characterChance) GachaResult[i] = '\夥伴碎片X' +  Shard + '片';
+			if (temp <= characterChance) GachaResult[i] = '\恭喜獲得新夥伴:' +  Character[Math.floor((Math.random() * (Character.length)) + 0)];
+		}
+		///
+		
+		return GachaResult;
+	}
+////////////////
+		
 		
 		
        function randomLuck(TEXT) {
