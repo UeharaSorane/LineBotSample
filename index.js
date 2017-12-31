@@ -21,7 +21,7 @@ app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function(req, res) {
 //  res.send(parseInput(req.query.input));
-  res.send('Hello');
+  res.send('看來系統诶有出錯呢...(攤');
 });
 
 app.post('/', jsonParser, function(req, res) {
@@ -104,27 +104,14 @@ function parseInput(rplyToken, inputStr) {
 	
 	////////////////////////////服務相關
 	if (trigger.match(/^寶箱$|^開寶箱$/) != null) return BoxReply() ;//寶箱狩獵指令
+	if (trigger.match(/^help$|^幫助$/)!= null ) return Help();//幫助頁面
 	
 	////////////////////////////娛樂相關
         if (trigger.match(/空音/) != null) return randomReply() ;//空音閒談指令
 	if (trigger.match(/運氣|運勢/) != null) return randomLuck(mainMsg) ; //占卜運氣        
         if (trigger.match(/flag/) != null) return BStyleFlagSCRIPTS() ;//插旗用指令
        
-			
-		if (trigger.match(/(^cc7版創角$|^cc七版創角$)/) != null && mainMsg[1] != NaN )	 return build7char(mainMsg[1]);
-	
-		if (trigger.match(/(^cc6版創角$|^cc六版創角$)/) != null && mainMsg[1] != NaN )	 return build6char(mainMsg[1]);
   
-		if (trigger.match(/^help$|^幫助$/)!= null ) return Help();
-		
-			/**
- 	* Fisher–Yates shuffle
- 	  SortIt 指令開始於此
- 	*/
- 			if (trigger.match(/排序/)!= null && mainMsg.length >= 3) 
- 	{        
- 		return SortIt(inputStr,mainMsg);
- 	}
  	
 		
         if (trigger.match(/^d66$/)!= null ) return d66(mainMsg[1]);
@@ -306,6 +293,7 @@ function coc7bp (chack,bpdiceNum,text){
   }
   
 }
+
         
 function ArrMax (Arr){
   var max = this[0];
@@ -316,151 +304,7 @@ function ArrMax (Arr){
   })
   return max;
 }
-////////////////////////////////////////
-//////////////// COC7傳統創角
-////////////////////////////////////////      
 
-
-  
-function build7char(text01){
-	let old ="";
-	let ReStr = '調查員年齡設為：';
-    //讀取年齡
-	if (text01 == undefined) {
-	old = 18;
-    ReStr = ReStr + old + '(沒有填寫使用預設值)\n';
-	}
-	else 
-	{
-	old = text01;
-    ReStr = ReStr + old + '\n';
-	}
-    //設定 因年齡減少的點數 和 EDU加骰次數
-    let Debuff = 0;
-    let AppDebuff = 0;
-    let EDUinc = 0;
-
-
-    let oldArr = [15,20,40,50,60,70,80]
-    let DebuffArr = [5,0,5,10,20,40,80]
-    let AppDebuffArr = [0,0,5,10,15,20,25]
-    let EDUincArr = [0,1,2,3,4,4,4]
-
-    if (old < 15) return ReStr + '等等，核心規則不允許小於15歲的人物哦。';    
-    if (old >= 90) return ReStr + '等等，核心規則不允許90歲以上的人物哦。'; 
-
-    for ( i=0 ; old >= oldArr[i] ; i ++){
-      Debuff = DebuffArr[i];
-      AppDebuff = AppDebuffArr[i];
-      EDUinc = EDUincArr[i];
-    }
-
-    ReStr = ReStr + '==\n';
-    if (old < 20) ReStr = ReStr + '年齡調整：從STR、SIZ擇一減去' + Debuff + '點\n（請自行手動選擇計算）。\n將EDU減去5點。LUK可擲兩次取高。' ;
-    else
-      if (old >= 40)  ReStr = ReStr + '年齡調整：從STR、CON或DEX中「總共」減去' + Debuff + '點\n（請自行手動選擇計算）。\n將APP減去' + AppDebuff +'點。可做' + EDUinc + '次EDU的成長擲骰。' ;
-
-    else ReStr = ReStr + '年齡調整：可做' + EDUinc + '次EDU的成長擲骰。' ;
-    ReStr = ReStr + '\n==';
-    if (old>=40) ReStr = ReStr + '\n（以下箭號三項，自選共減' + Debuff + '點。）' ;
-    if (old<20) ReStr = ReStr + '\n（以下箭號兩項，擇一減去' + Debuff + '點。）' ;
-    ReStr = ReStr + '\nＳＴＲ：' + BuildDiceCal('3d6*5');
-    if (old>=40) ReStr = ReStr + ' ← 共減' + Debuff ;
-    if (old<20) ReStr = ReStr + ' ←擇一減' + Debuff ;
-    ReStr = ReStr + '\nＣＯＮ：' + BuildDiceCal('3d6*5');
-    if (old>=40) ReStr = ReStr + ' ← 共減' + Debuff;
-    ReStr = ReStr + '\nＤＥＸ：' + BuildDiceCal('3d6*5');
-    if (old>=40) ReStr = ReStr + ' ← 共減' + Debuff ;
-    if (old>=40) ReStr = ReStr + '\nＡＰＰ：' + BuildDiceCal('3d6*5-' + AppDebuff);
-    else ReStr = ReStr + '\nＡＰＰ：' + BuildDiceCal('3d6*5');
-    ReStr = ReStr + '\nＰＯＷ：' + BuildDiceCal('3d6*5');
-    ReStr = ReStr + '\nＳＩＺ：' + BuildDiceCal('(2d6+6)*5');
-    if (old<20) ReStr = ReStr + ' ←擇一減' + Debuff ;
-    ReStr = ReStr + '\nＩＮＴ：' + BuildDiceCal('(2d6+6)*5');         
-    if (old<20) ReStr = ReStr + '\nＥＤＵ：' + BuildDiceCal('3d6*5-5');
-    else {
-      let firstEDU = '(' + BuildRollDice('2d6') + '+6)*5';
-      ReStr = ReStr + '\n==';
-      ReStr = ReStr + '\nＥＤＵ初始值：' + firstEDU + ' = ' + eval(firstEDU);
-      
-      let tempEDU = eval(firstEDU);
-
-      for (i = 1 ; i <= EDUinc ; i++){
-        let EDURoll = Dice(100);
-        ReStr = ReStr + '\n第' + i + '次EDU成長 → ' + EDURoll;
-
-
-        if (EDURoll>tempEDU) {
-          let EDUplus = Dice(10);
-          ReStr = ReStr + ' → 成長' + EDUplus +'點';
-          tempEDU = tempEDU + EDUplus;
-        }
-        else{
-          ReStr = ReStr + ' → 沒有成長';       
-        }
-      }
-      ReStr = ReStr + '\n';
-      ReStr = ReStr + '\nＥＤＵ最終值：' +tempEDU;
-    }
-    ReStr = ReStr + '\n==';
-
-    ReStr = ReStr + '\nＬＵＫ：' + BuildDiceCal('3d6*5');    
-    if (old<20) ReStr = ReStr + '\nＬＵＫ加骰：' + BuildDiceCal('3D6*5');
-
-
-    return ReStr;
-  } 
-
-////////////////////////////////////////
-//////////////// COC7傳統創角
-////////////////////////////////////////      
-
-
-  
-function build6char(){
-
-/*    //讀取年齡
-	if (text01 == undefined) text01 = 18;
-    let old = text01;
-    let ReStr = '調查員年齡設為：' + old + '\n';
-    //設定 因年齡減少的點數 和 EDU加骰次數
-    let Debuff = 0;
-    let AppDebuff = 0;
-    let EDUinc = 0;
-    let oldArr = [15,20,40,50,60,70,80]
-    let DebuffArr = [5,0,5,10,20,40,80]
-    let AppDebuffArr = [0,0,5,10,15,20,25]
-    let EDUincArr = [0,1,2,3,4,4,4]
-    if (old < 15) return ReStr + '等等，核心規則不允許小於15歲的人物哦。';    
-    if (old >= 90) return ReStr + '等等，核心規則不允許90歲以上的人物哦。'; 
-    for ( i=0 ; old >= oldArr[i] ; i ++){
-      Debuff = DebuffArr[i];
-      AppDebuff = AppDebuffArr[i];
-      EDUinc = EDUincArr[i];
-    }
-    ReStr = ReStr + '==\n';
-    if (old < 20) ReStr = ReStr + '年齡調整：從STR、SIZ擇一減去' + Debuff + '點\n（請自行手動選擇計算）。\n將EDU減去5點。LUK可擲兩次取高。' ;
-    else
-      if (old >= 40)  ReStr = ReStr + '年齡調整：從STR、CON或DEX中「總共」減去' + Debuff + '點\n（請自行手動選擇計算）。\n將APP減去' + AppDebuff +'點。可做' + EDUinc + '次EDU的成長擲骰。' ;
-    else ReStr = ReStr + '年齡調整：可做' + EDUinc + '次EDU的成長擲骰。' ;
-    ReStr = ReStr + '\n=='; 
- if (old>=40) ReStr = ReStr + '\n（以下箭號三項，自選共減' + Debuff + '點。）' ;
-    if (old<20) ReStr = ReStr + '\n（以下箭號兩項，擇一減去' + Debuff + '點。）' ;
- */
-	let ReStr = '六版核心創角：';
-	ReStr = ReStr + '\nＳＴＲ：' + BuildDiceCal('3d6');
-    ReStr = ReStr + '\nＤＥＸ：' + BuildDiceCal('3d6');
-    ReStr = ReStr + '\nＣＯＮ：' + BuildDiceCal('3d6');
-	ReStr = ReStr + '\nＰＯＷ：' + BuildDiceCal('3d6');
-    ReStr = ReStr + '\nＡＰＰ：' + BuildDiceCal('3d6');
-    ReStr = ReStr + '\nＩＮＴ：' + BuildDiceCal('(2d6+6)');
-    ReStr = ReStr + '\nＳＩＺ：' + BuildDiceCal('(2d6+6)');         
-    ReStr = ReStr + '\nＥＤＵ：' + BuildDiceCal('(3d6+3)');         
-	ReStr = ReStr + '\n年收入：' + BuildDiceCal('(1d10)'); 	  
-	ReStr = ReStr + '\n調查員的最小起始年齡等於EDU+6，每比起始年齡年老十年，\n調查員增加一點EDU並且加20點職業技能點數。\n當超過40歲後，每老十年，\n從STR,CON,DEX,APP中選擇一個減少一點。';
-    return ReStr;
-  } 
-        
 ////////////////////////////////////////
 //////////////// 普通ROLL
 ////////////////////////////////////////
@@ -1089,19 +933,6 @@ function NomalDrawTarot(CardToCal, text) {
 	return returnStr;
 }
 
-
- function SortIt(input,mainMsg) {   
- 
- 	let a = input.replace(mainMsg[0], '').match(/\S+/ig);
-     for (var i = a.length-1; i >=0; i--) {
- 
-         var randomIndex = Math.floor(Math.random()*(i+1));
-         var itemAtIndex = a[randomIndex];
-         a[randomIndex] = a[i];
-         a[i] = itemAtIndex;
-     }
-     	return mainMsg[0] + ' → ['+ a + ']' ;
- }
 
 function tarotRevReply(count) {
 	let returnStr = '';
