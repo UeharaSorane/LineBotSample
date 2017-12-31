@@ -622,7 +622,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n 想要招募的話，請輸入 招募 0 招募方式 \
 				';
 			}else{
-				return '\很抱歉，這個招募不提供' + GachaTimes + '招募喔！\n 如果想看本招募的詳細內容，請輸入 招募 0 \'	
+				return '\很抱歉，這個招募不提供' + GachaTimes + '招募喔！\n 如果想看本招募的詳細內容，請輸入 招募 0 \';
 			}
 			
 		}else if(DrawPool == 1){
@@ -661,7 +661,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n 想要招募的話，請輸入 招募 0 招募方式 \
 				';
 			  }else{
-				return '\很抱歉，這個招募不提供' + GachaTimes '招募喔！\n 如果想看本招募的詳細內容，請輸入 招募 0 \'	
+				return '\很抱歉，這個招募不提供' + GachaTimes '招募喔！\n 如果想看本招募的詳細內容，請輸入 招募 1 \';
 				}
 		}else if(DrawPool == 2){
 			let Character = ['劍士-露','長槍手-路卡','路人-克雷特','廚師-義熊','武士-薰','冰法師-艾斯'];
@@ -692,7 +692,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n 想要招募的話，請輸入 招募 0 招募方式 \
 				';
 			  }else{
-				return '\很抱歉，這個招募不提供' + GachaTimes '招募喔！\n 如果想看本招募的詳細內容，請輸入 招募 0 \'	
+				return '\很抱歉，這個招募不提供' + GachaTimes '招募喔！\n 如果想看本招募的詳細內容，請輸入 招募 2 \';
 				}
 		}else{
 			
