@@ -627,7 +627,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		}
 		
 		
-		return GResult;
+		return Character[0];
 	}
 ////////////////
 		
