@@ -21,7 +21,7 @@ app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function(req, res) {
 //  res.send(parseInput(req.query.input));
-  res.send('看來系統诶有出錯呢...(攤');
+  res.send('看來系統沒有出錯呢...(攤');
 });
 
 app.post('/', jsonParser, function(req, res) {
@@ -612,7 +612,17 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				GachaResult[10] = '\[保底]夥伴:' + CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
 			}
 			var CharacterShard = 10; 
+		}else{
+			
+			return '\【招募目錄】目前的招募一覽表 \
+				\n  0 【新手招募(首抽)】 \
+				\n  1 【通常奇蹟石招募】 \
+				\n  2 【特殊招募-「事前登錄卷限定招募」】 \
+				\n 如果想看詳細招募內容，請輸入 招募 招募編號 \
+				';
+			
 		}
+		
 		///
 		
 		///抽獎
