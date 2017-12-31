@@ -591,33 +591,115 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		let GachaResult = ['\n','\n','\n','\n','\n','\n','\n','\n','\n','\n','\n'];
 		let CharacterList = [];
  
-		var times = 0;
-		var characterChance = 0;
+		var times = 0;//抽獎次數
+		var characterChance = 0;//夥伴獲得率
+		var CharacterShard = 0;//夥伴碎片獲得數量
+		var CharacterShardBonus = 0;//夥伴碎片保底數量
 		///
 		
 		///確定抽獎狀態
-		if(DrawPool == 1){
-			let Character = ['義熊','克雷特','尤克特','路卡','露'];
+		if(DrawPool == 0){
+			let Character = ['克雷特','路卡','露'];
 			CharacterList.length = Character.length;
 			CharacterList = Character;
+
+			if(GachaTimes =='單抽'){
+				times = 1;
+				characterChance = 100;
+				CharacterShard = 0;
+				CharacterShardBonus = 0;
+			}else if(GachaTimes == null){
+				
+				return '\【首次限定！】新手招募-絕對獲得攻擊型夥伴一名喔！ \
+				\n 出現夥伴一覽： \
+				\n 001起始英雄系列 \
+				\n  克雷特\
+				\n  路卡\
+				\n  露\
+				\n  (三名夥伴獲得機率相同)\
+				\n 提供招募方式：\
+				\n 單抽 無需奇蹟石(100%出現夥伴)[一名玩家限定一次] \
+				\n 想要招募的話，請輸入 招募 0 招募方式 \
+				';
+			}else{
+				return '\很抱歉，這個招募不提供' + GachaTimes + '招募喔！\n 如果想看本招募的詳細內容，請輸入 招募 0 \'	
+			}
 			
-			var NumberOfCharacter = 5;
+		}else if(DrawPool == 1){
+			let Character = ['義雄','尤克特','克雷特','路卡','露'];
+			CharacterList.length = Character.length;
+			CharacterList = Character;
+
 			if(GachaTimes =='單抽'){
 				times = 1;
 				characterChance = 20;
-			}
-			if(GachaTimes =='十連加一'){
-				times = 10;
-				characterChance = 10;
-				GachaResult[10] = '\[保底]夥伴:' + CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
-			}
-			var CharacterShard = 10; 
+				CharacterShard = 10;
+				CharacterShardBonus = 0;
+				
+				
+			}else if(GachaTimes =='十連加一'){
+				times = 1;
+				characterChance = 20;
+				CharacterShard = 90;
+				CharacterShardBonus = 10;
+				GachaResult[10] = '\[保底]夥伴:' +  CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
+			
+			}else if(GachaTimes == null){
+				
+				return '\【通常招募】通常奇蹟石招募 \
+				\n 出現夥伴一覽： \
+				\n 001起始英雄系列 \
+				\n  義熊\
+				\n  尤克特\
+				\n  克雷特\
+				\n  路卡\
+				\n  露\
+				\n  (五名夥伴獲得機率相同)\
+				\n 提供招募方式：\
+				\n 單抽 5顆奇蹟石(20%出現夥伴，80%獲得1~10個夥伴碎片)\
+				\n 十連加一 50顆奇蹟石(必定出現一名夥伴，其餘有10%出現夥伴，90%獲得10~100個夥伴碎片)\
+				\n 想要招募的話，請輸入 招募 0 招募方式 \
+				';
+			  }else{
+				return '\很抱歉，這個招募不提供' + GachaTimes '招募喔！\n 如果想看本招募的詳細內容，請輸入 招募 0 \'	
+				}
+		}else if(DrawPool == 2){
+			let Character = ['劍士-露','長槍手-路卡','路人-克雷特','廚師-義熊','武士-薰','冰法師-艾斯'];
+			CharacterList.length = Character.length;
+			CharacterList = Character;
+
+			if(GachaTimes =='單抽'){
+				times = 1;
+				characterChance = 100;
+				CharacterShard = 00;
+				CharacterShardBonus = 0;
+				
+			
+			}else if(GachaTimes == null){
+				
+				return '\【票券招募】事前登錄卷限定招募 \
+				\n 出現夥伴一覽： \
+				\n 001起始英雄系列 \
+				\n  劍士-露\
+				\n  長槍手-路卡\
+				\n  路人-克雷特\
+				\n  廚師-義熊\
+				\n  武士-薰\
+				\n  冰法師-艾斯\
+				\n  (六名夥伴獲得機率相同)\
+				\n 提供招募方式：\
+				\n 單抽 事前登入專用招募卷x1(必定獲得夥伴)\
+				\n 想要招募的話，請輸入 招募 0 招募方式 \
+				';
+			  }else{
+				return '\很抱歉，這個招募不提供' + GachaTimes '招募喔！\n 如果想看本招募的詳細內容，請輸入 招募 0 \'	
+				}
 		}else{
 			
 			return '\【招募目錄】目前的招募一覽表 \
 				\n  0 【新手招募(首抽)】 \
 				\n  1 【通常奇蹟石招募】 \
-				\n  2 【特殊招募-「事前登錄卷限定招募」】 \
+				\n  2 【票券招募-「事前登錄卷限定招募」】 \
 				\n 如果想看詳細招募內容，請輸入 招募 招募編號 \
 				';
 			
@@ -628,7 +710,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		///抽獎
 		for(var i=0; i<times;i++){
 			let temp = Dice(100);
-			let Shard = Dice(CharacterShard);
+			let Shard = Dice(CharacterShard)+CharacterShardBonus;
 			if (temp > characterChance) GachaResult[i] = '\夥伴碎片X' +  Shard + '片\n';
 			if (temp <= characterChance) GachaResult[i] = '\夥伴:' +  CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)] + '\n';
 		}
