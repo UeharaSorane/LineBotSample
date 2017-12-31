@@ -622,7 +622,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		}
 		///
 		
-		return GachaResult;
+		return GachaResult[0];
 	}
 ////////////////
 		
