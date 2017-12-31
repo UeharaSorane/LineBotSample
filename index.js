@@ -596,7 +596,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		
 		///確定抽獎狀態
 		if(DrawPool == 1){
-			let Character = ['義熊','克雷特','尤克特','路卡','露'];
+			let Character = ['a','b','c','d','e'];
 			var NumberOfCharacter = 5;
 			if(GachaTimes =='單抽'){
 				times = 1;
