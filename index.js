@@ -589,6 +589,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		
 		///基本變數
 		let GachaResult = ['\n','\n','\n','\n','\n','\n','\n','\n','\n','\n','\n'];
+		let CharacterList = [];
  
 		var times = 0;
 		var characterChance = 0;
@@ -596,7 +597,10 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		
 		///確定抽獎狀態
 		if(DrawPool == 1){
-			let rplyArr = ['超吉','超級上吉','大吉','吉','中吉','小吉','吉','小吉','吉','吉','中吉','吉','中吉','吉','中吉','小吉','末吉','吉','中吉','小吉','末吉','中吉','小吉','小吉','吉','小吉','末吉','中吉','小吉','凶','小凶','沒凶','大凶','很凶'];
+			let Character = ['義熊','克雷特','尤克特','路卡','露'];
+			CharacterList.length = Character.length;
+			CharacterList = Character;
+			
 			var NumberOfCharacter = 5;
 			if(GachaTimes =='單抽'){
 				times = 1;
@@ -606,7 +610,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				times = 10;
 				characterChance = 10;
 				var CharacterNS = Dies(NumberOfCharacter)-1;
-				GachaResult[10] = '\[保底]夥伴:' + Character[Math.floor((Math.random() * (Character.length)) + 0)];
+				GachaResult[10] = '\[保底]夥伴:' + CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
 			}
 			var CharacterShard = 10; 
 		}
@@ -618,7 +622,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			let Shard = Dice(CharacterShard);
 			var CharacterN = Dice(NumberOfCharacter)-1
 			if (temp > characterChance) GachaResult[i] = '\夥伴碎片X' +  Shard + '片\n';
-			if (temp <= characterChance) GachaResult[i] = '\夥伴:' +  Character[Math.floor((Math.random() * (Character.length)) + 0)] + '\n';
+			if (temp <= characterChance) GachaResult[i] = '\夥伴:' +  CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)] + '\n';
 		}
 		///
 		let GResult ='招募結果:\n'
@@ -627,7 +631,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		}
 		
 		
-		return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+		return CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
 	}
 ////////////////
 		
