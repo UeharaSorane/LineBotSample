@@ -850,7 +850,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			
 			return '\【重要】 請加空音好友以取得最新消息 \
 				\n\
-				\n 建議各位玩家加入空音為朋友 以變快速獲得情報及取得協助，感謝配合\
+				\n 建議各位玩家加入空音為朋友 以便快速獲得情報及取得協助，感謝配合\
 				';
 			
 		}else if(InformationN == null){
