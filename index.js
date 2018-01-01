@@ -606,7 +606,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			CharacterList.length = Character.length;
 			CharacterList = Character;
 
-			if(GachaTimes =='/^單抽$'){
+			if(GachaTimes =='單抽'){
 				times = 1;
 				characterChance = 100;
 				CharacterShard = 0;
@@ -636,14 +636,14 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			CharacterList.length = Character.length;
 			CharacterList = Character;
 
-			if(GachaTimes =='/^單抽$'){
+			if(GachaTimes =='單抽'){
 				times = 1;
 				characterChance = 20;
 				CharacterShard = 10;
 				CharacterShardBonus = 0;
 				
 				
-			}else if(GachaTimes =='/^十連加一$'|'/^十連$'){
+			}else if(GachaTimes =='十連加一'|'十連'){
 				times = 10;
 				characterChance = 20;
 				CharacterShard = 20;
@@ -710,6 +710,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		}else if(DrawPool == null){
 			
 			return '\【招募目錄】目前的招募一覽表 \
+				\n\
 				\n  0 【新手招募(首抽)】 \
 				\n  1 【通常奇蹟石招募】 \
 				\n  2 【票券招募-「事前登錄卷限定招募」】 \
@@ -718,12 +719,14 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			
 		}else{
 			
-			return '\找不到招募編號'+ DrawPool+ '招募喔\
+			return '\找不到招募編號['+ DrawPool+ ']的招募喔\
 				\n\
 				\n【招募目錄】目前的招募一覽表 \
+				\n\
 				\n  0 【新手招募(首抽)】 \
 				\n  1 【通常奇蹟石招募】 \
 				\n  2 【票券招募-「事前登錄卷限定招募」】 \
+				\n\
 				\n 如果想看詳細招募內容，請輸入 [招募 招募編號] \
 				';
 			
