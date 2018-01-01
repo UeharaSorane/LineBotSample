@@ -126,7 +126,7 @@ function parseInput(rplyToken, inputStr) {
 	if (trigger.match(/^招募$/) != null) return gacha(mainMsg[1],mainMsg[2]);	//角色招募指令
 	if (trigger.match(/^公告$/) != null) return GameInformation(mainMsg[1]);	//遊戲公告指令
 	if (trigger.match(/^活動$/) != null) return GameEvent(mainMsg[1]);	//遊戲活動指令
-	if (trigger.match(/^主線任務$/) != null) return MainStory(mainMsg[1],mainMsg[2]);	//遊戲活動指令
+	if (trigger.match(/^主線$/) != null) return MainStory(mainMsg[1],mainMsg[2]);	//遊戲活動指令
 	
 	////////////////////////////娛樂相關
         if (trigger.match(/空音/) != null) return randomReply() ;//空音閒談指令
