@@ -838,6 +838,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n (1)Bot追加主線關卡確認功能，請輸入[主線]確認\
 				\n (2)Bot追加公告確認功能，請輸入[公告]確認\
 				\n (3)Bot追加當前活動確認功能，請輸入[活動]確認\
+				\n\
 				\n  2017/12/31: \
 				\n  1.重要更新:\
 				\n(1)本遊戲bot更換成專用bot 空音\
