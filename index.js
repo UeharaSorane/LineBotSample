@@ -836,9 +836,10 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			return '\【進度】 目前更新紀錄 \
 				\n\
 				\n  2017/12/31: \
-				\n  1.重要更新:(1)本遊戲bot更換成專用bot 空音\
-				\n            (2)招募方式變更，詳細請輸入[招募]確認\
-				\n  2017/12/30 之前的紀錄請至文章區->更新紀錄確認\
+				\n  1.重要更新:\
+				\n(1)本遊戲bot更換成專用bot 空音\
+				\n(2)招募方式變更，詳細請輸入[招募]確認\
+				\n 2017/12/30 之前的紀錄請至文章區->更新紀錄確認\
 				';
 			
 		}else if(InformationN == null){
