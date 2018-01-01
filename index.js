@@ -125,6 +125,7 @@ function parseInput(rplyToken, inputStr) {
 	if (trigger.match(/^help$|^幫助$/)!= null ) return Help();//幫助頁面
 	if (trigger.match(/^招募$/) != null) return gacha(mainMsg[1],mainMsg[2]);	//角色招募指令
 	if (trigger.match(/^公告$/) != null) return GameInformation(mainMsg[1]);	//遊戲公告指令
+	if (trigger.match(/^活動$/) != null) return GameEvent(mainMsg[1]);	//遊戲活動指令
 	
 	////////////////////////////娛樂相關
         if (trigger.match(/空音/) != null) return randomReply() ;//空音閒談指令
@@ -144,10 +145,6 @@ function parseInput(rplyToken, inputStr) {
 			}
 			return MultiDrawTarot(mainMsg[1], mainMsg[2], 3); //預設抽 79 張
 	}
-	//猜拳
-	if (trigger.match(/猜拳/) != null) {
-			return RockPaperScissors(inputStr, mainMsg[1]);
-		}
 
 
 }
@@ -876,6 +873,52 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		
 	}
 ////////////////
+
+//////////////// 遊戲活動
+	function GameEvent(EventN) {
+		
+		///基本變數
+		///
+		
+		///確定公告狀態
+		if(EventN == 0){
+			
+				return '\【重要】 先行測試一 刪擋封測中 \
+				\n\
+				\n感謝各位參加 Line文遊-梅里歐斯的冒現者 的先行測試 \
+				\n還沒完成教學的測試玩家請盡速找GM進行教學\
+				\n已經完成的玩家將暫時可以使用全部的遊戲物品\
+				\n詳細內容請至[重要文件區->遊戲圖鑑]進行確認\
+				\n\
+				\n        GM團祝各位遊玩愉快\
+				';
+			
+		}else if(EventN == null){
+			
+			return '\【活動目錄】目前開催中的活動一覽表 \
+				\n\
+				\n  0 【重要】 先行測試一 刪擋封測中\
+				\n\
+				\n 如果想看詳細活動內容，請輸入 [活動 活動編號] \
+				';
+			
+		}else{
+			
+			return '\找不到活動編號['+ EventN + ']的活動喔\
+				\n\
+				\n【活動目錄】目前開催中的活動一覽表 \
+				\n\
+				\n  0 【重要】 先行測試一 刪擋封測中\
+				\n\
+				\n 如果想看詳細活動內容，請輸入 [活動 活動編號] \
+				';
+			
+		}
+		
+		///
+		
+	}
+////////////////
 		
 		
 		
@@ -888,56 +931,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 ////////////////////////////////////////
 //////////////// Funny
 ////////////////////////////////////////
-/* 猜拳功能 */
-	function RockPaperScissors(HandToCal, text) {
-	let returnStr = '';
-	var hand = FunnyDice(3); // 0:石頭 1:布 2:剪刀
-	if (HandToCal.match(/石頭|布|剪刀|1|2|3/) != null) {
-		let aHand = ['石頭','布','剪刀'];
-           HandToCal = aHand[Math.floor((Math.random() * (aHand.length)) + 0)];
-	}
-	if(HandToCal == null){
-		return '\來猜拳吧\n 輸入 猜拳 招式(剪刀/3,石頭/1,布/2)';
-	}
 
-		
-	switch (hand) {
-		case 0: //石頭
-			returnStr = '我出石頭！\n';
-
-			if (HandToCal.match(/剪刀|1/) != null) returnStr += '太棒了，看我的幻影旋風！(矮扁鍬形蟲)';
-			else if (HandToCal.match(/石頭|2/) != null) returnStr += '看來我們不相上下阿';
-			else if (HandToCal.match(/布|3/) != null) returnStr += '你好像有點強！';
-			else returnStr += '欸不對喔你亂出！';
-
-			break;
-
-		case 1: //布
-			returnStr = '我出布！\n';
-
-			if (HandToCal.match(/剪刀|1/) != null) returnStr += '讓你一次而已啦！';
-			else if (HandToCal.match(/布|2/) != null) returnStr += '原來平手...沒什麼嘛！';
-			else if (HandToCal.match(/石頭|3/) != null) returnStr += '去吧！超級龍捲投！！！！！！(獨角仙)';
-			else returnStr += '別亂出阿會壞掉的';
-
-			break;
-
-		case 2: //剪刀
-			returnStr = '我出剪刀！\n';
-
-			if (HandToCal.match(/剪刀|1/) != null) returnStr += '平手 (  艸)';
-			else if (HandToCal.match(/布|2/) != null) returnStr += '接下我的地龍搶珠！(巨顎叉角鍬形蟲)';
-			else if (HandToCal.match(/石頭|3/) != null) returnStr += '輸惹 ゜。。゜(ノД‵)ノ・゜';
-			else returnStr += '亂出我就用鼓棒打你喔';
-
-			break;
-
-		default:
-			break;
-	}
-		
-	return returnStr;
-}
 
 
 
@@ -1170,7 +1164,6 @@ function tarotCardReply(count) {
 \n・占卜運氣功能 字句中包括運氣即可\
 \n・塔羅牌占卜 塔羅/大十字塔羅/每日塔羅牌/時間tarot 等關键字可啓動\
 \n  死亡FLAG：句子裡出現 Flag/flag 就能讓你輕鬆插旗\
-\n 輸入 猜拳，就能和空音猜拳\
 \n 如果呼叫空音的名子...好像會有事情發生？\
 ';		
 		}
