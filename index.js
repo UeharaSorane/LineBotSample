@@ -951,10 +951,10 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n\
 				\n 關卡情報:\
 				\n 1-1 不安的氣氛\
-‵				 \n 1-2 疑慮的氣氛\
+				\n 1-2 疑慮的氣氛\
 				\n 1-3 盜賊突襲\
 				\n 1-4 喜悅之風\
-				 \n 1-5 訣別之風\
+				\n 1-5 訣別之風\
 				\n\
 				\n 如果想看詳細內容，請輸入 [主線 第四部 關卡編號] \
 				';
@@ -971,10 +971,10 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n\
 				\n 關卡情報:\
 				\n 2-1 ???\
-‵				 \n 2-2 ???\
+				\n 2-2 ???\
 				\n 2-3 ???\
 				\n 2-4 ???\
-				 \n 2-5 ???\
+				\n 2-5 ???\
 				\n\
 				\n 目前本章節尚未開放喔。敬請期待\
 				';
