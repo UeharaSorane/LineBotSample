@@ -643,7 +643,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				CharacterShardBonus = 0;
 				
 				
-			}else if(GachaTimes =='十連加一'|'十連'){
+			}else if(GachaTimes =='十連加一'||GachaTimes =='十連'){
 				times = 10;
 				characterChance = 20;
 				CharacterShard = 20;
@@ -714,6 +714,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  0 【新手招募(首抽)】 \
 				\n  1 【通常奇蹟石招募】 \
 				\n  2 【票券招募-「事前登錄卷限定招募」】 \
+				\n\
 				\n 如果想看詳細招募內容，請輸入 [招募 招募編號] \
 				';
 			
