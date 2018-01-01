@@ -994,8 +994,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			///
 			else{
 			
-			return '\找不到關卡[\'+ StoryN +
-				'\]喔。\
+			return '\找不到關卡['+ StoryN + ']的關卡喔\
 				\n第四部-碧綠之風 \
 				\n\
 				\n  故事:以「光暗交會」(第三部)故事結束後3年為背景，描述露為了破除自身詛咒，組成風之冒險團前往打到「光之軍勢」的史詩故事\
