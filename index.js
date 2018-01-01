@@ -846,6 +846,13 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n 2017/12/30 之前的紀錄請至文章區->更新紀錄確認\
 				';
 			
+		}else if(InformationN == 5){
+			
+			return '\【重要】 請加空音好友以取得最新消息 \
+				\n\
+				\n 建議各位玩家加入空音為朋友 以變快速獲得情報及取得協助，感謝配合\
+				';
+			
 		}else if(InformationN == null){
 			
 			return '\【公告目錄】目前遊戲中的公告一覽表 \
@@ -855,6 +862,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  2 【招募】 通常奇蹟石招募\
 				\n  3 【招募】 票券招募-「事前登錄卷限定招募」 \
 				\n  4 【進度】 目前更新紀錄 \
+				\n  5 【重要】 請加空音好友以取得最新消息\
 				\n\
 				\n 如果想看詳細公告內容，請輸入 [公告 公告編號] \
 				';
@@ -870,6 +878,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  2 【招募】 通常奇蹟石招募\
 				\n  3 【招募】 票券招募-「事前登錄卷限定招募」 \
 				\n  4 【進度】 目前更新紀錄 \
+				\n  5 【重要】 請加空音好友以取得最新消息\
 				\n\
 				\n 如果想看詳細公告內容，請輸入 [公告 公告編號] \
 				';
