@@ -606,7 +606,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			CharacterList.length = Character.length;
 			CharacterList = Character;
 
-			if(GachaTimes =='單抽'){
+			if(GachaTimes =='/^單抽$'){
 				times = 1;
 				characterChance = 100;
 				CharacterShard = 0;
@@ -614,33 +614,36 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			}else if(GachaTimes == null){
 				
 				return '\【首次限定！】新手招募-絕對獲得攻擊型夥伴一名喔！ \
+				\n\
 				\n 出現夥伴一覽： \
 				\n 001起始英雄系列 \
 				\n  克雷特\
 				\n  路卡\
 				\n  露\
 				\n  (三名夥伴獲得機率相同)\
+				\n\
 				\n 提供招募方式：\
 				\n 單抽 無需奇蹟石(100%出現夥伴)[一名玩家限定一次] \
-				\n 想要招募的話，請輸入 招募 0 招募方式 \
+				\n\
+				\n 想要招募的話，請輸入 [招募 0 招募方式] \
 				';
 			}else{
-				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 招募 0';
+				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 [招募 0]';
 			}
 			
 		}else if(DrawPool == 1){
-			let Character = ['義雄','尤克特','克雷特','路卡','露'];
+			let Character = ['義熊','尤克特','克雷特','路卡','露'];
 			CharacterList.length = Character.length;
 			CharacterList = Character;
 
-			if(GachaTimes =='單抽'){
+			if(GachaTimes =='/^單抽$'){
 				times = 1;
 				characterChance = 20;
 				CharacterShard = 10;
 				CharacterShardBonus = 0;
 				
 				
-			}else if(GachaTimes =='十連加一'){
+			}else if(GachaTimes =='/^十連加一$'|'/^十連$'){
 				times = 10;
 				characterChance = 20;
 				CharacterShard = 20;
@@ -651,6 +654,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				
 				return '\【通常招募】通常奇蹟石招募 \
 				\n 出現夥伴一覽： \
+				\n\
 				\n 001起始英雄系列 \
 				\n  義熊\
 				\n  尤克特\
@@ -658,13 +662,16 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  路卡\
 				\n  露\
 				\n  (五名夥伴獲得機率相同)\
+				\n\
 				\n 提供招募方式：\
 				\n 單抽 5顆奇蹟石(20%出現夥伴，80%獲得1~10個夥伴碎片)\
-				\n 十連加一 50顆奇蹟石(必定出現一名夥伴，其餘有10%出現夥伴，90%獲得10~30個夥伴碎片)\
-				\n 想要招募的話，請輸入 招募 1 招募方式 \
+				\n\
+				\n 十連加一(十連) 50顆奇蹟石(必定出現一名夥伴，其餘有10%出現夥伴，90%獲得10~30個夥伴碎片)\
+				\n\
+				\n 想要招募的話，請輸入 [招募 1 招募方式] \
 				';
 			  }else{
-				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 招募 1';
+				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 [招募 1]';
 				}
 		}else if(DrawPool == 2){
 			let Character = ['劍士-露','長槍手-路卡','路人-克雷特','廚師-義熊','武士-薰','冰法師-艾斯'];
@@ -681,8 +688,9 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			}else if(GachaTimes == null){
 				
 				return '\【票券招募】事前登錄卷限定招募 \
+				\n\
 				\n 出現夥伴一覽： \
-				\n 001起始英雄系列 \
+				\n  SP1 風之冒險團！系列 \
 				\n  劍士-露\
 				\n  長槍手-路卡\
 				\n  路人-克雷特\
@@ -690,20 +698,33 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  武士-薰\
 				\n  冰法師-艾斯\
 				\n  (六名夥伴獲得機率相同)\
+				\n\
 				\n 提供招募方式：\
 				\n 單抽 事前登入專用招募卷x1(必定獲得夥伴)\
-				\n 想要招募的話，請輸入 招募 2 招募方式 \
+				\n\
+				\n 想要招募的話，請輸入 [招募 2 招募方式] \
 				';
 			  }else{
 				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 招募 2';
 				}
-		}else{
+		}else if(DrawPool == null){
 			
 			return '\【招募目錄】目前的招募一覽表 \
 				\n  0 【新手招募(首抽)】 \
 				\n  1 【通常奇蹟石招募】 \
 				\n  2 【票券招募-「事前登錄卷限定招募」】 \
-				\n 如果想看詳細招募內容，請輸入 招募 招募編號 \
+				\n 如果想看詳細招募內容，請輸入 [招募 招募編號] \
+				';
+			
+		}else{
+			
+			return '\找不到招募編號'+ DrawPool+ '招募喔\
+				\n\
+				\n【招募目錄】目前的招募一覽表 \
+				\n  0 【新手招募(首抽)】 \
+				\n  1 【通常奇蹟石招募】 \
+				\n  2 【票券招募-「事前登錄卷限定招募」】 \
+				\n 如果想看詳細招募內容，請輸入 [招募 招募編號] \
 				';
 			
 		}
