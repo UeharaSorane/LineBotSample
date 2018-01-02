@@ -746,7 +746,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				GachaResult[i] = '\夥伴碎片X' +  Shard + '片\n';
 			}
 			if (temp <= characterChance) {
-				CharacterResult[i] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)] + '\n';
+				CharacterResult[i] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
 				GachaResult[i] = '\夥伴:' +  CharacterResult[i] + '\n';
 			}
 		}
@@ -755,7 +755,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		
 		///判定重複腳色換成100角色碎片
 		for(var i = 0;i<11;i++){
-			for(var j = i;j<=11;j++){
+			for(var j = i+1;j<11;j++){
 				if(CharacterResult[i]!= null && CharacterResult[i] == CharacterResult[j] && CharacterResult[j] != null){
 					CharacterResult[j] = null;
 					characterShardResult = characterShardResult +100;
