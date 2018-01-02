@@ -768,7 +768,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			GResult = GResult + GachaResult[i];
 		}
 		
-		GResult = GResult + '\n<<<<<<<<<<結果區>>>>>>>>>>\n總計獲得夥伴:\';
+		GResult = GResult + '\n\n總計獲得夥伴:\';
 		
 		for(var i = 0;i<11;i++){
 			GResult = GResult + CharacterResult[i] + '\,\' ;
