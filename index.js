@@ -593,7 +593,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		let GachaResult = ['\n','\n','\n','\n','\n','\n','\n','\n','\n','\n','\n'];
 		let CharacterResult = [];
 		var characterShardResult = 0;
-		let CharacterList = [,,,,,,,,,,];
+		let CharacterList = [null,null,null,null,null,null,null,null,null,null,null];
  
 		var times = 0;//抽獎次數
 		var characterChance = 0;//夥伴獲得率
@@ -770,8 +770,8 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		
 		GResult = GResult + '\n--------------------\n總計獲得夥伴:';
 		
-		for(var i = 0;i<11;i++){1
-			GResult = GResult + CharacterResult[i] + ',' ;
+		for(var i = 0;i<11;i++){
+			if(CharacterResult[i] != null) GResult = GResult + CharacterResult[i] + ',' ;
 		}
 		
 		GResult = GResult +    '\n總計獲得夥伴碎片(連同重複夥伴):' + characterShardResult + '片';
