@@ -591,7 +591,9 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		
 		///基本變數
 		let GachaResult = ['\n','\n','\n','\n','\n','\n','\n','\n','\n','\n','\n'];
-		let CharacterList = [];
+		let CharacterResult = [];
+		var characterShardResult = 0;
+		let CharacterList = [,,,,,,,,,,];
  
 		var times = 0;//抽獎次數
 		var characterChance = 0;//夥伴獲得率
@@ -647,7 +649,8 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				characterChance = 20;
 				CharacterShard = 20;
 				CharacterShardBonus = 10;
-				GachaResult[10] = '\[保底]夥伴:' +  CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
+				CharacterResult[10] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
+				GachaResult[10] = '\[保底]夥伴:' +  CharacterResult[10];
 			
 			}else if(GachaTimes == null){
 				
@@ -738,14 +741,41 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		for(var i=0; i<times;i++){
 			let temp = Dice(100);
 			let Shard = Dice(CharacterShard)+CharacterShardBonus;
-			if (temp > characterChance) GachaResult[i] = '\夥伴碎片X' +  Shard + '片\n';
-			if (temp <= characterChance) GachaResult[i] = '\夥伴:' +  CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)] + '\n';
+			if (temp > characterChance){
+				characterShardResult = characterShardResult + Shard;
+				GachaResult[i] = '\夥伴碎片X' +  Shard + '片\n';
+			}
+			if (temp <= characterChance) {
+				CharacterResult[i] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)] + '\n';
+				GachaResult[i] = '\夥伴:' +  CharacterResult[i] + '\n';
+			}
 		}
+		
 		///
+		
+		///判定重複腳色換成100角色碎片
+		for(var i = 0;i<11;i++){
+			for(var j = i;j<=11;j++){
+				if(CharacterResult[i]!= null && CharacterResult[i] == CharacterResult[j] && CharacterResult[j] != null){
+					CharacterResult[j] = null;
+					characterShardResult = characterShardResult +100;
+				}
+			   }
+		}
+		
 		let GResult ='招募結果:\n'
-		for(i = 0;i<11;i++){
+		for(var i = 0;i<11;i++){
 			GResult = GResult + GachaResult[i];
 		}
+		
+		GResult = GResult +    '\n--------------------\
+					\n總計獲得夥伴:\';
+		
+		for(var i = 0;i<11;i++){
+			GResult = GResult + CharacterResult[i] + '\,\' ;
+		}
+		
+		GResult = GResult +    '\n總計獲得夥伴碎片(連同重複夥伴):' + characterShardResult + '片\';
 		
 		
 		return GResult;
