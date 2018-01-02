@@ -861,6 +861,12 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		}else if(InformationN == 4){
 			
 			return '\【進度】 目前更新紀錄 \
+				\n2018/1/2:\
+				\n 1.Bot強化:\
+				\n (1)改善招募結果，追加總計獲得的夥伴及伙伴碎片\
+				\n 2.重要更新:\
+				\n未來只要完成「新手教學」全部流程的玩家，將可獲得 火球、治癒、斬擊 三本技能書中尚未獲得的技能書\
+				\n已經完成的玩家將自動追加技能書，請至玩家存檔確認\
 				\n\
 				\n 2018/1/1:\
 				\n 1.Bot強化:\
@@ -882,10 +888,20 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n 建議各位玩家加入空音為朋友 以便快速獲得情報及取得協助，感謝配合\
 				';
 			
+		}else if(InformationN == 6){
+			
+			return '【重要】新手教學獎勵追加 \
+				\n\
+				\n 未來只要完成「新手教學」全部流程的玩家，將可獲得 火球、治癒、斬擊 三本技能書中尚未獲得的技能書\
+				\n 已經完成的玩家將自動追加技能書，請至玩家存檔確認\
+				\n        GM團祝各位遊玩愉快\
+				';
+			
 		}else if(InformationN == null){
 			
 			return '\【公告目錄】目前遊戲中的公告一覽表 \
 				\n\
+				\n  6 【重要】 新手教學獎勵追加\
 				\n  0 【重要】 先行測試一 刪擋封測中\
 				\n  1 【招募】 新手招募(首抽)\
 				\n  2 【招募】 通常奇蹟石招募\
@@ -902,6 +918,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n\
 				\n【公告目錄】目前遊戲中的公告一覽表 \
 				\n\
+				\n  6 【重要】 新手教學獎勵追加\
 				\n  0 【重要】 先行測試一 刪擋封測中\
 				\n  1 【招募】 新手招募(首抽)\
 				\n  2 【招募】 通常奇蹟石招募\
