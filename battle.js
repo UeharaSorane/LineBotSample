@@ -1,6 +1,6 @@
 
 //////////////// 戰鬥系統
-mouudle.exports = {
+module.exports = {
 	
 	//////////////// ccb功能   
 	ccb: function(chack,text){
