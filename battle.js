@@ -27,7 +27,7 @@ mouudle.exports = {
 	  	  	if(ele > max) {
 	     			max = ele;
 	    		}
-	  	}
+	  	})
 		return max;
 	},
 
