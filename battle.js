@@ -18,11 +18,10 @@ mouudle.exports = {
 		    if (temp <= chack) return 'ccb<=' + chack +  ' ' + temp + ' → 成功；' + text;
 		    else return 'ccb<=' + chack  + ' ' +  temp + ' → 失敗；' + text;
 	    }
-	}
+	},
 	////////////////
 
-	/*
-	arrMax: function(Arr){
+	ArrMax: function(Arr){
 	  	var max = this[0];
 	  	this.forEach (function(ele,index,arr){
 	  	  	if(ele > max) {
@@ -30,7 +29,7 @@ mouudle.exports = {
 	    		}
 	  	}
 		return max;
-	} */
+	},
 
 	//////////////// 普通ROLL
 	nomalDiceRoller: function(inputStr,text0,text1,text2){
@@ -117,42 +116,42 @@ mouudle.exports = {
 	  return finalStr;
 
 
-	}
+	},
 	////////////////
 
 	//////////////// 擲骰子運算
 	sortNumber: function(a,b)
 	{
 	return a - b
-	}
+	},
 	////////////////
 
 	//////////////// 取隨機值專用
 	Dice: function(diceSided){
 		return Math.floor((Math.random() * diceSided) + 1)
-	}
+	},
 	////////////////
 
-		function RollDice(inputStr){
-	  //先把inputStr變成字串（不知道為什麼非這樣不可）
-	  let comStr=inputStr.toString();
-	  let finalStr = '[';
-	  let temp = 0;
-	  var totally = 0;
-	  for (let i = 1; i <= comStr.split('d')[0]; i++) {
-		temp = Dice(comStr.split('d')[1]);
-		totally +=temp;
-	    finalStr = finalStr + temp + '+';
-	     }
+	RollDice: function(inputStr){
+		//先把inputStr變成字串（不知道為什麼非這樣不可）
+		let comStr=inputStr.toString();
+		let finalStr = '[';
+		let temp = 0;
+		var totally = 0;
+		for (let i = 1; i <= comStr.split('d')[0]; i++) {
+			temp = Dice(comStr.split('d')[1]);
+			totally +=temp;
+			finalStr = finalStr + temp + '+';
+	}
 
 	  finalStr = finalStr.substring(0, finalStr.length - 1) + ']';
 	  finalStr = finalStr.replace('[', totally +'[');
 	  return finalStr;
-	}
+	},
 
 	FunnyDice: function(diceSided) {
 		return Math.floor((Math.random() * diceSided)) //猜拳，從0開始
-	}
+	},
 
 	BuildDiceCal: function(inputStr){
 
@@ -184,9 +183,9 @@ mouudle.exports = {
 
 	  return finalStr;
 
-	}        
+	},
 
-	function BuildRollDice(inputStr){
+	BuildRollDice: function(inputStr){
 	  //先把inputStr變成字串（不知道為什麼非這樣不可）
 	  let comStr=inputStr.toString().toLowerCase();
 	  let finalStr = '(';
@@ -197,13 +196,13 @@ mouudle.exports = {
 
 	  finalStr = finalStr.substring(0, finalStr.length - 1) + ')';
 	  return finalStr;
-	}
+	},
 
 
 	////////////////////////////////////////
 	//////////////// xBy
 	////////////////////////////////////////
-	function xBy(triggermsg ,text01, text02) {
+	xBy: function(triggermsg ,text01, text02) {
 
 	let returnStr = '(' + triggermsg +')';
 	let match = /^(\d+)(B)(\d+)$/i.exec(triggermsg);  //判斷式  [0]3B8,[1]3,[2]B,[3]8
@@ -235,7 +234,7 @@ mouudle.exports = {
 
 
 	return returnStr;
-	}
+	},
 
 	////////////////////////////////////////
 	//////////////// xUy
@@ -304,7 +303,7 @@ mouudle.exports = {
 		
 		return returnStr;
 
-	}
+	},
 
 
 
@@ -369,7 +368,7 @@ mouudle.exports = {
 			「我老爸是....你有種就....」', '\
 			「我可以好好利用這件事」'];
 			return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
-		}
+		},
 	////////////////
 
 	//////////////// 空音閒談
@@ -397,7 +396,7 @@ mouudle.exports = {
 				'\稍微...讓我休息一下吧(攤',
 				'\希望我成為你的同伴？看看夥伴商店吧！'];
 			return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
-		}
+		},
 	////////////////
 
 	//////////////// 空音閒談(裏)
@@ -417,7 +416,7 @@ mouudle.exports = {
 				'\幫我撐十秒',
 				'\整天妄想稱呼我暱稱？真是有夠噁心的'];
 			return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
-		}
+		},
 	////////////////
 
 	//////////////// 寶箱狩獵
@@ -428,7 +427,7 @@ mouudle.exports = {
 		  if (temp <=67 && temp >= 39) return '\恭喜，是中等獎勵。';
 		  if (temp <=38 && temp >= 16) return '\喔喔！是高等獎勵诶，恭喜！';
 		  if (temp <=15) return '\太棒了！！！是頂級獎勵！恭喜！';
-		}
+		},
 	////////////////
 
 	//////////////// 角色招募
@@ -623,7 +622,7 @@ mouudle.exports = {
 
 
 			return GResult;
-		}
+		},
 	////////////////
 
 	//////////////// 遊戲公告
@@ -778,7 +777,7 @@ mouudle.exports = {
 
 			///
 
-		}
+		},
 	////////////////
 
 	//////////////// 遊戲主線
@@ -944,7 +943,7 @@ mouudle.exports = {
 
 			///
 
-		}
+		},
 	////////////////
 
 	//////////////// 遊戲活動
@@ -990,7 +989,7 @@ mouudle.exports = {
 
 			///
 
-		}
+		},
 	////////////////
 
 
@@ -998,7 +997,7 @@ mouudle.exports = {
 	       function randomLuck(TEXT) {
 		   let rplyArr = ['超吉','超級上吉','大吉','吉','中吉','小吉','吉','小吉','吉','吉','中吉','吉','中吉','吉','中吉','小吉','末吉','吉','中吉','小吉','末吉','中吉','小吉','小吉','吉','小吉','末吉','中吉','小吉','凶','小凶','沒凶','大凶','很凶'];
 		   return TEXT[0] + ' ： ' + rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
-		}
+		},
 
 
 	////////////////////////////////////////
@@ -1098,7 +1097,7 @@ mouudle.exports = {
 
 
 		return returnStr;
-	}
+	},
 
 	NomalDrawTarot: function(CardToCal, text) {
 		let returnStr = '';
@@ -1108,7 +1107,7 @@ mouudle.exports = {
 		else
 			returnStr = tarotCardReply(FunnyDice(22)) + ' ' + tarotRevReply(FunnyDice(2)) + ' ; ' + text;
 		return returnStr;
-	}
+	},
 
 
 	tarotRevReply: function(count) {
@@ -1118,12 +1117,12 @@ mouudle.exports = {
 		if (count == 1) returnStr = '－';
 
 		return returnStr;
-	}
+	},
 
 	choice: function(input,str) {
 		let a = input.replace(str[0], '').match(/\S+/ig);
 		return str[0] + '['+ a + '] → ' + a[Dice(a.length)-1];
-	}
+	},
 
 	tarotCardReply: function(count) {
 		let returnStr = '';
@@ -1210,7 +1209,7 @@ mouudle.exports = {
 
 		return returnStr;
 
-	}
+	},
 
 
 	Help: function () {
