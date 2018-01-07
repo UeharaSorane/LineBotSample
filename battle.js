@@ -2,7 +2,7 @@
 //////////////// 戰鬥系統
 	
 	//////////////// ccb功能   
-	export.ccb = function(chack,text){
+	exports.ccb = function(chack,text){
 		  let temp = Dice(100);
 		  if (text == null ) {
 		    if (temp == 100) return 'ccb<=' + chack  + ' ' + temp + ' → 啊！大失敗！';
@@ -20,7 +20,7 @@
 	};
 	////////////////
 
-	export.ArrMax = function(Arr){
+	exports.ArrMax = function(Arr){
 	  	var max = this[0];
 	  	this.forEach (function(ele,index,arr){
 	  	  	if(ele > max) {
@@ -31,7 +31,7 @@
 	};
 
 	//////////////// 普通ROLL
-	export.nomalDiceRoller = function(inputStr,text0,text1,text2){
+	exports.nomalDiceRoller = function(inputStr,text0,text1,text2){
 
 	  //首先判斷是否是誤啟動（檢查是否有符合骰子格式）
 	 // if (inputStr.toLowerCase().match(/\d+d\d+/) == null) return undefined;
@@ -119,19 +119,19 @@
 	////////////////
 
 	//////////////// 擲骰子運算
-	export.sortNumber = function(a,b)
+	exports.sortNumber = function(a,b)
 	{
 	return a - b
 	};
 	////////////////
 
 	//////////////// 取隨機值專用
-	export.Dice = function(diceSided){
+	exports.Dice = function(diceSided){
 		return Math.floor((Math.random() * diceSided) + 1)
 	};
 	////////////////
 
-	export.RollDice = function(inputStr){
+	exports.RollDice = function(inputStr){
 		//先把inputStr變成字串（不知道為什麼非這樣不可）
 		let comStr=inputStr.toString();
 		let finalStr = '[';
@@ -148,11 +148,11 @@
 	  return finalStr;
 	};
 
-	export.FunnyDice = function(diceSided) {
+	exports.FunnyDice = function(diceSided) {
 		return Math.floor((Math.random() * diceSided)) //猜拳，從0開始
 	};
 
-	export.BuildDiceCal = function(inputStr){
+	exports.BuildDiceCal = function(inputStr){
 
 	  //首先判斷是否是誤啟動（檢查是否有符合骰子格式）
 	  if (inputStr.toLowerCase().match(/\d+d\d+/) == null) return undefined;
@@ -184,7 +184,7 @@
 
 	};
 
-	export.BuildRollDice = function(inputStr){
+	exports.BuildRollDice = function(inputStr){
 	  //先把inputStr變成字串（不知道為什麼非這樣不可）
 	  let comStr=inputStr.toString().toLowerCase();
 	  let finalStr = '(';
@@ -201,7 +201,7 @@
 	////////////////////////////////////////
 	//////////////// xBy
 	////////////////////////////////////////
-	export.xBy = function(triggermsg ,text01, text02) {
+	exports.xBy = function(triggermsg ,text01, text02) {
 
 	let returnStr = '(' + triggermsg +')';
 	let match = /^(\d+)(B)(\d+)$/i.exec(triggermsg);  //判斷式  [0]3B8,[1]3,[2]B,[3]8
@@ -241,7 +241,7 @@
 	////////////////  (5U10[8]>8) → 1,30[9,8,8,5],1,3,4 → 成功数1
 	////////////////////////////////////////
 
-	export.xUy = function(triggermsg ,text01, text02, text03) {
+	exports.xUy = function(triggermsg ,text01, text02, text03) {
 		var match = /^(\d+)(u)(\d+)/i.exec(triggermsg);   //判斷式  5u19,5,u,19, 
 		var returnStr = '('+triggermsg+'['+text01+']';
 		if(Number(text02) <= Number(match[3]) && text02 != undefined) 
@@ -311,7 +311,7 @@
 	////////////////////////////////////////
 
 	//////////////// 插旗
-		export.BStyleFlagSCRIPTS = function() {
+		exports.BStyleFlagSCRIPTS = function() {
 			let rplyArr = ['\
 			「打完這仗我就回老家結婚（この戦いが終わったら、故郷に帰って結婚するんだ）」', '\
 			「打完這一仗後我請你喝酒」', '\
@@ -371,7 +371,7 @@
 	////////////////
 
 	//////////////// 空音閒談
-		export.randomReply = function() {
+		exports.randomReply = function() {
 			let rplyArr = [
 
 				'\有什麼事嗎？', 
@@ -399,7 +399,7 @@
 	////////////////
 
 	//////////////// 空音閒談(裏)
-		export.randomReplyShin = function() {
+		exports.randomReplyShin = function() {
 			let rplyArr = [
 
 				'\在抽獎之前，先把火力燒成灰吧', 
@@ -419,7 +419,7 @@
 	////////////////
 
 	//////////////// 寶箱狩獵
-		export.BoxOpen = function() {
+		exports.BoxOpen = function() {
 		  let temp = Dice(100);
 
 		  if (temp >= 68) return '\恭喜，是普通獎勵。';
@@ -430,7 +430,7 @@
 	////////////////
 
 	//////////////// 角色招募
-		export.gacha = function(DrawPool,GachaTimes) {
+		exports.gacha = function(DrawPool,GachaTimes) {
 
 			///基本變數
 			let GachaResult = ['\n','\n','\n','\n','\n','\n','\n','\n','\n','\n','\n'];
@@ -625,7 +625,7 @@
 	////////////////
 
 	//////////////// 遊戲公告
-		export.GameInformation = function(InformationN) {
+		exports.GameInformation = function(InformationN) {
 
 			///基本變數
 			///
@@ -780,7 +780,7 @@
 	////////////////
 
 	//////////////// 遊戲主線
-		export.MainStory = function(StoryPart,StoryN) {
+		exports.MainStory = function(StoryPart,StoryN) {
 
 			///基本變數
 
@@ -946,7 +946,7 @@
 	////////////////
 
 	//////////////// 遊戲活動
-		export.GameEvent = function(EventN) {
+		exports.GameEvent = function(EventN) {
 
 			///基本變數
 			///
@@ -993,7 +993,7 @@
 
 
 
-	       export.randomLuck = function(TEXT) {
+	       exports.randomLuck = function(TEXT) {
 		   let rplyArr = ['超吉','超級上吉','大吉','吉','中吉','小吉','吉','小吉','吉','吉','中吉','吉','中吉','吉','中吉','小吉','末吉','吉','中吉','小吉','末吉','中吉','小吉','小吉','吉','小吉','末吉','中吉','小吉','凶','小凶','沒凶','大凶','很凶'];
 		   return TEXT[0] + ' ： ' + rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 		};
@@ -1009,7 +1009,7 @@
 	////////////////////////////////////////
 	//////////////// Tarot塔羅牌
 	////////////////////////////////////////
-	export.MultiDrawTarot = function(CardToCal, text, type) {
+	exports.MultiDrawTarot = function(CardToCal, text, type) {
 		let returnStr = '';
 		var tmpcard = 0;
 		var cards = [];
@@ -1098,7 +1098,7 @@
 		return returnStr;
 	};
 
-	export.NomalDrawTarot = function(CardToCal, text) {
+	exports.NomalDrawTarot = function(CardToCal, text) {
 		let returnStr = '';
 
 		if (text == null)
@@ -1109,7 +1109,7 @@
 	};
 
 
-	export.tarotRevReply = function(count) {
+	exports.tarotRevReply = function(count) {
 		let returnStr = '';
 
 		if (count == 0) returnStr = '＋';
@@ -1123,7 +1123,7 @@
 		return str[0] + '['+ a + '] → ' + a[Dice(a.length)-1];
 	};
 
-	export.tarotCardReply = function(count) {
+	exports.tarotCardReply = function(count) {
 		let returnStr = '';
 		// returnStr = count + '愚者';
 		if (count == 0) returnStr = '愚者';
@@ -1211,7 +1211,7 @@
 	};
 
 
-	export.Help = function () {
+	exports.Help = function () {
 		return randomReply() + '\n' + '\
 		【梅里歐斯的冒險者專用BOT】v1.00 \
 		\n --傷害骰(a XdY+b)--\
