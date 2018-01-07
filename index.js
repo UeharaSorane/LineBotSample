@@ -104,49 +104,49 @@ function parseInput(rplyToken, inputStr) {
 	////////////////////////////戰鬥相關
 	//ccb指令
 	if (trigger.match(/^ccb$/)!= null && mainMsg[1]<=1000 ){
-		if (trigger == 'ccb'&& mainMsg[1]<=99) return battle.ccb(mainMsg[1],mainMsg[2]);
+		if (trigger == 'ccb'&& mainMsg[1]<=99) return ccb(mainMsg[1],mainMsg[2]);
         }
 	//xBy>A 指令開始於此
 	if (trigger.match(/^(\d+)(b)(\d+)$/i)!= null)
 	{        
-		return battle.xBy(trigger,mainMsg[1],mainMsg[2]);
+		return xBy(trigger,mainMsg[1],mainMsg[2]);
 	}
 	//xUy 指令開始於此	
 	if (trigger.match(/^(\d+)(u)(\d+)$/i)!= null && isNaN(mainMsg[1])== false)
 	{        
-		return battle.xUy(trigger,mainMsg[1],mainMsg[2],mainMsg[3]);
+		return xUy(trigger,mainMsg[1],mainMsg[2],mainMsg[3]);
 	}
 	
 	        //普通ROLL擲骰判定在此        
         if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/\d+d+\d/)!=null) {
-          return battle.nomalDiceRoller(inputStr,mainMsg[0],mainMsg[1],mainMsg[2]);
+          return nomalDiceRoller(inputStr,mainMsg[0],mainMsg[1],mainMsg[2]);
         }
 	
 	////////////////////////////服務相關
-	if (trigger.match(/^寶箱$|^開寶箱$/) != null) return battle.BoxOpen() ;//寶箱狩獵指令
-	if (trigger.match(/^help$|^幫助$/)!= null ) return battle.Help();//幫助頁面
-	if (trigger.match(/^招募$/) != null) return battle.gacha(mainMsg[1],mainMsg[2]);	//角色招募指令
-	if (trigger.match(/^公告$/) != null) return battle.GameInformation(mainMsg[1]);	//遊戲公告指令
-	if (trigger.match(/^活動$/) != null) return battle.GameEvent(mainMsg[1]);	//遊戲活動指令
-	if (trigger.match(/^主線$/) != null) return battle.MainStory(mainMsg[1],mainMsg[2]);	//遊戲主線指令
+	if (trigger.match(/^寶箱$|^開寶箱$/) != null) return BoxOpen() ;//寶箱狩獵指令
+	if (trigger.match(/^help$|^幫助$/)!= null ) return Help();//幫助頁面
+	if (trigger.match(/^招募$/) != null) return gacha(mainMsg[1],mainMsg[2]);	//角色招募指令
+	if (trigger.match(/^公告$/) != null) return GameInformation(mainMsg[1]);	//遊戲公告指令
+	if (trigger.match(/^活動$/) != null) return GameEvent(mainMsg[1]);	//遊戲活動指令
+	if (trigger.match(/^主線$/) != null) return MainStory(mainMsg[1],mainMsg[2]);	//遊戲主線指令
 	
 	////////////////////////////娛樂相關
-        if (trigger.match(/空音/) != null) return battle.randomReply() ;//空音閒談指令
-	if (trigger.match(/空空/) != null) return battle.randomReplyShin() ;//空音閒談指令(裏)
-	if (trigger.match(/運氣|運勢/) != null) return battle.randomLuck(mainMsg) ; //占卜運氣        
-        if (trigger.match(/flag/) != null) return battle.BStyleFlagSCRIPTS() ;//插旗用指令
+        if (trigger.match(/空音/) != null) return randomReply() ;//空音閒談指令
+	if (trigger.match(/空空/) != null) return randomReplyShin() ;//空音閒談指令(裏)
+	if (trigger.match(/運氣|運勢/) != null) return randomLuck(mainMsg) ; //占卜運氣        
+        if (trigger.match(/flag/) != null) return BStyleFlagSCRIPTS() ;//插旗用指令
 	//塔羅牌
 	if (trigger.match(/tarot|塔羅牌|塔羅/) != null) {
 			if (trigger.match(/每日|daily/)!= null) {
-				return battle.NomalDrawTarot(mainMsg[1], mainMsg[2]);
+				return NomalDrawTarot(mainMsg[1], mainMsg[2]);
 			}
 			if (trigger.match(/時間|time/)!= null) {
-				return battle.MultiDrawTarot(mainMsg[1], mainMsg[2], 1);
+				return MultiDrawTarot(mainMsg[1], mainMsg[2], 1);
 			}
 			if (trigger.match(/大十字|cross/)!= null) {
-				return battle.MultiDrawTarot(mainMsg[1], mainMsg[2], 2);
+				return MultiDrawTarot(mainMsg[1], mainMsg[2], 2);
 			}
-			return battle.MultiDrawTarot(mainMsg[1], mainMsg[2], 3); //預設抽 79 張
+			return MultiDrawTarot(mainMsg[1], mainMsg[2], 3); //預設抽 79 張
 	}
 
 
@@ -940,168 +940,168 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 
 //////////////// 遊戲主線
 	function MainStory(StoryPart,StoryN) {
-		
-		///基本變數
-		
-		///
-		
-		///確定主線狀態
-		
-		///第四部-碧綠之風
-		if(StoryPart == '第四部'||StoryPart == 'part4'||StoryPart == '4'){
-			
-			///第一章
-			if(StoryN == '1-1'){
-				
-				return '\第四部-1-1 不安的氣氛\
-				\n\
-				\n 對手:幸\
-				\n 通關獎勵:(10d2)G金幣\
-				\n 故事:\
-				\n\在歷經一番波折後，露終於如願以償的回到了她的故鄉-「湖之村」。\
-				\原以為會受到熱烈歡迎的她正昂首闊步的踏進村子裡時，得到卻是被刀刃指著的無情對待!? \
-				';
-				
-			}else if(StoryN == '1-2'){
-				
-				return '\第四部-1-2 疑慮的氣氛\
-				\n\
-				\n 對手:塞恩\
-				\n 通關獎勵:(10d2)G金幣\
-				\n 故事:\
-				\n儘管露再怎麼解釋，他們仍舊不相信她就是千年前戰死的英雄，究竟，該怎麼證明自己呢？ \
-				';
-				
-			}else if(StoryN == '1-3'){
-				
-				return '\第四部-1-3 盜賊突襲\
-				\n\
-				\n 對手:盜賊\
-				\n 通關獎勵:(10d3)G金幣\
-				\n 故事:\
-				\n當他們爭執不下時，突然出現一班盜賊要洗劫湖之村！面對來勢兇猛的盜賊，露認為這是證明自己的大好機會。 \
-				';
-				
-			}else if(StoryN == '1-4'){
-				
-				return '\第四部-1-4 喜悅之風\
-				\n\
-				\n 對手:莎拉\
-				\n 通關獎勵:(10d3)G金幣\
-				\n 故事:\
-				\n在親妹妹「聖風的祈願者」莎拉的確認下，露終於被村人認同，面對千年後的姊妹重逢，沙拉在高興之餘也希望能從姊姊那邊學習一點劍術，所以決定向露發起挑戰\
-				';
-				
-			}else if(StoryN == '1-5'){
-				
-				return '\第四部-1-5 訣別之風\
-				\n\
-				\n 對手:莎拉\
-				\n 通關獎勵:100G金幣\
-                  		\n 5%機率獲得技能書「風刃」\
-				\n\
-				\n \
-				\n故事:露想起三年前被下的詛咒，如果她不及早破除詛咒，莎拉就會死亡！為了避免悲劇發生，露決定再度離開湖之村，可是湖之村的入口卻被莎拉擋住了!?\
-				';
-				
-			}else if(StoryN == '1'||StoryN == '第一章'){
-				
-				return '\第四部 第一章-劍聖再臨\
-				\n\
-				\n 故事:在路卡解決奧賽羅爾事件的三年後，復活的風之劍聖-露歷經許多事件，終於回到了湖之村，可是她得到的竟只有無情的對待...\
-				\n\
-				\n 第一章突破獎勵: 技能書「祈願」\
-				\n\
-				\n 關卡情報:\
-				\n 1-1 不安的氣氛\
-				\n 1-2 疑慮的氣氛\
-				\n 1-3 盜賊突襲\
-				\n 1-4 喜悅之風\
-				\n 1-5 訣別之風\
-				\n\
-				\n 如果想看詳細內容，請輸入 [主線 第四部 關卡編號] \
-				';
-				
-			}
+
+			///基本變數
+
 			///
-			
-			///第二章
-			else if(StoryN == '2'||StoryN == '第二章'){
-				
-				return '\第四部 第二章-風之夥伴(未開放)\
-				\n\
-				\n 故事:???\
-				\n\
-				\n 關卡情報:\
-				\n 2-1 ???\
-				\n 2-2 ???\
-				\n 2-3 ???\
-				\n 2-4 ???\
-				\n 2-5 ???\
-				\n\
-				\n 目前本章節尚未開放喔。敬請期待\
-				';
-				
+
+			///確定主線狀態
+
+			///第四部-碧綠之風
+			if(StoryPart == '第一部'||StoryPart == 'part1'||StoryPart == '1'){
+
+				///第一章
+				if(StoryN == '1-1'){
+
+					return '\第一部-1-1 不安的氣氛\
+					\n\
+					\n 對手:幸\
+					\n 通關獎勵:(10d2)G金幣\
+					\n 故事:\
+					\n\在歷經一番波折後，露終於如願以償的回到了她的故鄉-「湖之村」。\
+					\原以為會受到熱烈歡迎的她正昂首闊步的踏進村子裡時，得到卻是被刀刃指著的無情對待!? \
+					';
+
+				}else if(StoryN == '1-2'){
+
+					return '\第一部-1-2 疑慮的氣氛\
+					\n\
+					\n 對手:塞恩\
+					\n 通關獎勵:(10d2)G金幣\
+					\n 故事:\
+					\n儘管露再怎麼解釋，他們仍舊不相信她就是千年前戰死的英雄，究竟，該怎麼證明自己呢？ \
+					';
+
+				}else if(StoryN == '1-3'){
+
+					return '\第一部-1-3 盜賊突襲\
+					\n\
+					\n 對手:盜賊\
+					\n 通關獎勵:(10d3)G金幣\
+					\n 故事:\
+					\n當他們爭執不下時，突然出現一班盜賊要洗劫湖之村！面對來勢兇猛的盜賊，露認為這是證明自己的大好機會。 \
+					';
+
+				}else if(StoryN == '1-4'){
+
+					return '\第一部-1-4 喜悅之風\
+					\n\
+					\n 對手:莎拉\
+					\n 通關獎勵:(10d3)G金幣\
+					\n 故事:\
+					\n在親妹妹「聖風的祈願者」莎拉的確認下，露終於被村人認同，面對千年後的姊妹重逢，沙拉在高興之餘也希望能從姊姊那邊學習一點劍術，所以決定向露發起挑戰\
+					';
+
+				}else if(StoryN == '1-5'){
+
+					return '\第一部-1-5 訣別之風\
+					\n\
+					\n 對手:莎拉\
+					\n 通關獎勵:100G金幣\
+					\n 5%機率獲得技能書「風刃」\
+					\n\
+					\n \
+					\n故事:露想起三年前被下的詛咒，如果她不及早破除詛咒，莎拉就會死亡！為了避免悲劇發生，露決定再度離開湖之村，可是湖之村的入口卻被莎拉擋住了!?\
+					';
+
+				}else if(StoryN == '1'||StoryN == '第一章'){
+
+					return '\第一部 第一章-劍聖再臨\
+					\n\
+					\n 故事:，活的風之劍聖-露在歷經許多事件後，終於回到了湖之村，可是她得到的只有無情的對待...\
+					\n\
+					\n 第一章突破獎勵: 技能書「祈願」\
+					\n\
+					\n 關卡情報:\
+					\n 1-1 不安的氣氛\
+					\n 1-2 疑慮的氣氛\
+					\n 1-3 盜賊突襲\
+					\n 1-4 喜悅之風\
+					\n 1-5 訣別之風\
+					\n\
+					\n 如果想看詳細內容，請輸入 [主線 第一部 關卡編號] \
+					';
+
+				}
+				///
+
+				///第二章
+				else if(StoryN == '2'||StoryN == '第二章'){
+
+					return '\第一部 第二章-風之夥伴(未開放)\
+					\n\
+					\n 故事:???\
+					\n\
+					\n 關卡情報:\
+					\n 2-1 ???\
+					\n 2-2 ???\
+					\n 2-3 ???\
+					\n 2-4 ???\
+					\n 2-5 ???\
+					\n\
+					\n 目前本章節尚未開放喔。敬請期待\
+					';
+
+				}
+				///
+				else if(StoryN == null){
+
+				return '\第一部-碧綠之風 \
+					\n\
+					\n  故事:\
+					\n 這是描述風之劍聖-露為了破除自身詛咒，組成風之冒險團前往打到「光之軍勢」的史詩故事\
+					\n\
+					\n  章節一覽:\
+					\n 1 第一章-劍聖再臨\
+					\n 2 第二章-風之夥伴(未開放)\
+					\n\
+					\n 如果想看詳細活動內容，請輸入 [主線 第一部(part1,1) 第幾章(章節編號) ] \
+					';
+
+				}
+				///
+				else{
+
+				return '\找不到關卡['+ StoryN + ']的關卡喔\
+					\n第一部-碧綠之風 \
+					\n\
+					\n  故事:\
+					\n 這是描述風之劍聖-露為了破除自身詛咒，組成風之冒險團前往打到「光之軍勢」的史詩故事\
+					\n\
+					\n  章節一覽:\
+					\n 1 第一章-劍聖再臨\
+					\n 2 第二章-風之夥伴(未開放)\
+					\n\
+					\n 如果想看詳細活動內容，請輸入 [主線 第一部(part1,1) 第幾章(章節編號) ] \
+					';
+
+				}
+
+			}else if(StoryPart == null){
+
+				return '\【主線目錄】目前開放的部別一覽 \
+					\n\
+					\n 1 第一部-碧綠之風\
+					\n\
+					\n 如果想看詳細活動內容，請輸入 [主線 部別編號(例如:第一部,part1,1)] \
+					';
+
+				}else{
+
+				return '\找不到部別['+ StoryPart + ']的故事喔\
+					\n\
+					\n【主線目錄】目前開放的部別一覽 \
+					\n\
+					\n 1 第一部-碧綠之風\
+					\n\
+					\n 如果想看詳細活動內容，請輸入 [主線 部別編號(例如:第一部,part1,1)] \
+					';
+
 			}
+
 			///
-			else if(StoryN == null){
-			
-			return '\第四部-碧綠之風 \
-				\n\
-				\n  故事:\
-				\n以「光暗交會」(第三部)故事結束後3年為背景，描述露為了破除自身詛咒，組成風之冒險團前往打到「光之軍勢」的史詩故事\
-				\n\
-				\n  章節一覽:\
-				\n 1 第一章-劍聖再臨\
-				\n 2 第二章-風之夥伴(未開放)\
-				\n\
-				\n 如果想看詳細活動內容，請輸入 [主線 第四部(part4,4) 第幾章(章節編號) ] \
-				';
-			
-			}
-			///
-			else{
-			
-			return '\找不到關卡['+ StoryN + ']的關卡喔\
-				\n第四部-碧綠之風 \
-				\n\
-				\n  故事:\
-				\n以「光暗交會」(第三部)故事結束後3年為背景，描述露為了破除自身詛咒，組成風之冒險團前往打到「光之軍勢」的史詩故事\
-				\n\
-				\n  章節一覽:\
-				\n 1 第一章-劍聖再臨\
-				\n 2 第二章-風之夥伴(未開放)\
-				\n\
-				\n 如果想看詳細活動內容，請輸入 [主線 第四部(part4,4) 第幾章(章節編號) ] \
-				';
-			
-			}
-			
-		}else if(StoryPart == null){
-			
-			return '\【主線目錄】目前開放的部別一覽 \
-				\n\
-				\n 4 第四部-碧綠之風\
-				\n\
-				\n 如果想看詳細活動內容，請輸入 [主線 部別編號(例如:第四部,part4,4)] \
-				';
-			
-			}else{
-			
-			return '\找不到部別['+ StoryPart + ']的故事喔\
-				\n\
-				\n【主線目錄】目前開放的部別一覽 \
-				\n\
-				\n 4 第四部-碧綠之風\
-				\n\
-				\n 如果想看詳細活動內容，請輸入 [主線 部別編號(例如:第四部,part4,4)] \
-				';
-			
+
 		}
-		
-		///
-		
-	}
 ////////////////
 
 //////////////// 遊戲活動
