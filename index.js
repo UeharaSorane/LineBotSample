@@ -87,7 +87,7 @@ function replyMsgToLine(rplyToken, rplyVal) {
 ////////////////////////////////////////
 function parseInput(rplyToken, inputStr) {
 	
-	var battle = require('./battle.js');
+	var battle = require("./battle.js");
           
 	//	console.log('InputStr: ' + inputStr);
 	_isNaN = function(obj) {
@@ -124,7 +124,7 @@ function parseInput(rplyToken, inputStr) {
 	
 	////////////////////////////服務相關
 	if (trigger.match(/^寶箱$|^開寶箱$/) != null) return battle.BoxOpen() ;//寶箱狩獵指令
-	if (trigger.match(/^help$|^幫助$/)!= null ) return battle.Hel();//幫助頁面
+	if (trigger.match(/^help$|^幫助$/)!= null ) return battle.Help();//幫助頁面
 	if (trigger.match(/^招募$/) != null) return battle.gacha(mainMsg[1],mainMsg[2]);	//角色招募指令
 	if (trigger.match(/^公告$/) != null) return battle.GameInformation(mainMsg[1]);	//遊戲公告指令
 	if (trigger.match(/^活動$/) != null) return battle.GameEvent(mainMsg[1]);	//遊戲活動指令
