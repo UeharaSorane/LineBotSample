@@ -21,6 +21,7 @@ mouudle.exports = {
 	}
 	////////////////
 
+	/*
 	arrMax: function(Arr){
 	  	var max = this[0];
 	  	this.forEach (function(ele,index,arr){
@@ -29,7 +30,7 @@ mouudle.exports = {
 	    		}
 	  	}
 		return max;
-	}
+	} */
 
 	//////////////// 普通ROLL
 	nomalDiceRoller: function(inputStr,text0,text1,text2){
