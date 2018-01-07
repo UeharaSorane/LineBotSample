@@ -130,7 +130,7 @@ function parseInput(rplyToken, inputStr) {
 	if (trigger.match(/^主線$/) != null) return battle.MainStory(mainMsg[1],mainMsg[2]);	//遊戲主線指令
 	
 	////////////////////////////娛樂相關
-        if (trigger.match(/空音/) != null) return battle.randomReply() ;//空音閒談指令
+        if (trigger.match(/空音/) != null) return battle.randomRepl() ;//空音閒談指令
 	if (trigger.match(/空空/) != null) return battle.randomReplyShin() ;//空音閒談指令(裏)
 	if (trigger.match(/運氣|運勢/) != null) return battle.randomLuck(mainMsg) ; //占卜運氣        
         if (trigger.match(/flag/) != null) return battle.BStyleFlagSCRIPTS() ;//插旗用指令
