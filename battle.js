@@ -3,7 +3,7 @@
 mouudle.exports = {
 	
 	//////////////// ccb功能   
-	function ccb(chack,text){
+	ccb: function(chack,text){
 		  let temp = Dice(100);
 		  if (text == null ) {
 		    if (temp == 100) return 'ccb<=' + chack  + ' ' + temp + ' → 啊！大失敗！';
@@ -21,7 +21,7 @@ mouudle.exports = {
 	}
 	////////////////
 
-	function ArrMax (Arr){
+	ArrMax: function(Arr){
 	  var max = this[0];
 	  this.forEach (function(ele,index,arr){
 	    if(ele > max) {
@@ -32,7 +32,7 @@ mouudle.exports = {
 	}
 
 	//////////////// 普通ROLL
-	 function nomalDiceRoller(inputStr,text0,text1,text2){
+	nomalDiceRoller: function(inputStr,text0,text1,text2){
 
 	  //首先判斷是否是誤啟動（檢查是否有符合骰子格式）
 	 // if (inputStr.toLowerCase().match(/\d+d\d+/) == null) return undefined;
@@ -120,14 +120,14 @@ mouudle.exports = {
 	////////////////
 
 	//////////////// 擲骰子運算
-	function sortNumber(a,b)
+	sortNumber: function(a,b)
 	{
 	return a - b
 	}
 	////////////////
 
 	//////////////// 取隨機值專用
-	function Dice(diceSided){
+	Dice: function(diceSided){
 		return Math.floor((Math.random() * diceSided) + 1)
 	}
 	////////////////
@@ -149,11 +149,11 @@ mouudle.exports = {
 	  return finalStr;
 	}
 
-	function FunnyDice(diceSided) {
+	FunnyDice: function(diceSided) {
 		return Math.floor((Math.random() * diceSided)) //猜拳，從0開始
 	}
 
-	function BuildDiceCal(inputStr){
+	BuildDiceCal: function(inputStr){
 
 	  //首先判斷是否是誤啟動（檢查是否有符合骰子格式）
 	  if (inputStr.toLowerCase().match(/\d+d\d+/) == null) return undefined;
@@ -242,7 +242,7 @@ mouudle.exports = {
 	////////////////  (5U10[8]>8) → 1,30[9,8,8,5],1,3,4 → 成功数1
 	////////////////////////////////////////
 
-	function xUy(triggermsg ,text01, text02, text03) {
+	xUy: function(triggermsg ,text01, text02, text03) {
 		var match = /^(\d+)(u)(\d+)/i.exec(triggermsg);   //判斷式  5u19,5,u,19, 
 		var returnStr = '('+triggermsg+'['+text01+']';
 		if(Number(text02) <= Number(match[3]) && text02 != undefined) 
@@ -251,7 +251,7 @@ mouudle.exports = {
 			if(text03!=undefined) returnStr += text03 +' → ';
 		}
 		else{
-		returnStr+= ') → ';
+			returnStr+= ') → ';
 			if(text02!=undefined) returnStr += text02 +' → ';	
 		}	
 		let varcou =  new Array();
@@ -261,54 +261,49 @@ mouudle.exports = {
 		var varsu = 0;
 		if (text01<=2) { return  '加骰最少比2高'; }
 
-	for (var i = 0; i < Number(match[1]); i++)	
-		{
-				varcou[i] =  Dice(match[3]);
-				varcounew[i] = varcou[i];
-				varcouloop[i] = varcounew[i];
-				for(;varcounew[i]>=text01;)
-				{
-					varcounew[i] =Dice(match[3]);
-					varcouloop[i] += ', ' +varcounew[i];
-					varcou[i] += varcounew[i];
+		for (var i = 0; i < Number(match[1]); i++){
+			varcou[i] =  Dice(match[3]);
+			varcounew[i] = varcou[i];
+			varcouloop[i] = varcounew[i];
+			for(;varcounew[i]>=text01;){
+				varcounew[i] =Dice(match[3]);
+				varcouloop[i] += ', ' +varcounew[i];
+				varcou[i] += varcounew[i];
 				}
 
 		}
 
-	    for(var i = 0; i < varcouloop.length; i++)	
-	  {
-		if(varcouloop[i]==varcou[i])   {returnStr += varcou[i]+', ';}
-	    else     returnStr += varcou[i]+'['+varcouloop[i]+ '], '; 
+	    	for(var i = 0; i < varcouloop.length; i++){
+			if(varcouloop[i]==varcou[i]) returnStr += varcou[i]+', ';
+	    		else returnStr += varcou[i]+'['+varcouloop[i]+ '], '; 
 
-	  }
-			returnStr = returnStr.replace(/, $/ig,'');
+	  	}
+		
+		returnStr = returnStr.replace(/, $/ig,'');
 
+		if(Number(text02) <= Number(match[3]) ){
+			let suc =0;
 
+			////////////////  (5U10[8]>8) → 1,30[9,8,8,5],1,3,4 → 成功数1
+			for(var i=0;i<varcou.length;i++)
+			{
+				if(Number(varcou[i])>=Number(text02)) suc++;
+			}
 
-	 if(Number(text02) <= Number(match[3]) ){
-	let suc =0;
+		returnStr  += ' → 成功数' +suc;
 
-	////////////////  (5U10[8]>8) → 1,30[9,8,8,5],1,3,4 → 成功数1
-	for(var i=0;i<varcou.length;i++)
-	{
-	if(Number(varcou[i])>=Number(text02)) suc++;
-	}
-
-	returnStr  += ' → 成功数' +suc;
-
-	 }
-	 else
+		}else{
 	  ////////////////  (5U10[8]) → 17[10,7],4,5,7,4 → 17/37(最大/合計)
 
-		 {
-	 returnStr  +=' → ' + Math.max.apply(null, varcou)
-	returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
-		return previousValue + currentValue;} ) +'(最大/合計)';
+			returnStr  +=' → ' + Math.max.apply(null, varcou)
+			returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
+			return previousValue + currentValue;} ) +'(最大/合計)';
 
 		}
+		
 		return returnStr;
 
-		}
+	}
 
 
 
@@ -317,7 +312,7 @@ mouudle.exports = {
 	////////////////////////////////////////
 
 	//////////////// 插旗
-		function BStyleFlagSCRIPTS() {
+		BStyleFlagSCRIPTS: function() {
 			let rplyArr = ['\
 			「打完這仗我就回老家結婚（この戦いが終わったら、故郷に帰って結婚するんだ）」', '\
 			「打完這一仗後我請你喝酒」', '\
@@ -377,7 +372,7 @@ mouudle.exports = {
 	////////////////
 
 	//////////////// 空音閒談
-		function randomReply() {
+		randomReply: function() {
 			let rplyArr = [
 
 				'\有什麼事嗎？', 
@@ -405,7 +400,7 @@ mouudle.exports = {
 	////////////////
 
 	//////////////// 空音閒談(裏)
-		function randomReplyShin() {
+		randomReplyShin: function() {
 			let rplyArr = [
 
 				'\在抽獎之前，先把火力燒成灰吧', 
@@ -425,7 +420,7 @@ mouudle.exports = {
 	////////////////
 
 	//////////////// 寶箱狩獵
-		function BoxOpen() {
+		BoxOpen: function() {
 		  let temp = Dice(100);
 
 		  if (temp >= 68) return '\恭喜，是普通獎勵。';
@@ -436,7 +431,7 @@ mouudle.exports = {
 	////////////////
 
 	//////////////// 角色招募
-		function gacha(DrawPool,GachaTimes) {
+		gacha: function(DrawPool,GachaTimes) {
 
 			///基本變數
 			let GachaResult = ['\n','\n','\n','\n','\n','\n','\n','\n','\n','\n','\n'];
@@ -631,7 +626,7 @@ mouudle.exports = {
 	////////////////
 
 	//////////////// 遊戲公告
-		function GameInformation(InformationN) {
+		GameInformation: function(InformationN) {
 
 			///基本變數
 			///
@@ -786,7 +781,7 @@ mouudle.exports = {
 	////////////////
 
 	//////////////// 遊戲主線
-		function MainStory(StoryPart,StoryN) {
+		MainStory: function(StoryPart,StoryN) {
 
 			///基本變數
 
@@ -795,12 +790,12 @@ mouudle.exports = {
 			///確定主線狀態
 
 			///第四部-碧綠之風
-			if(StoryPart == '第四部'||StoryPart == 'part4'||StoryPart == '4'){
+			if(StoryPart == '第一部'||StoryPart == 'part1'||StoryPart == '1'){
 
 				///第一章
 				if(StoryN == '1-1'){
 
-					return '\第四部-1-1 不安的氣氛\
+					return '\第一部-1-1 不安的氣氛\
 					\n\
 					\n 對手:幸\
 					\n 通關獎勵:(10d2)G金幣\
@@ -811,7 +806,7 @@ mouudle.exports = {
 
 				}else if(StoryN == '1-2'){
 
-					return '\第四部-1-2 疑慮的氣氛\
+					return '\第一部-1-2 疑慮的氣氛\
 					\n\
 					\n 對手:塞恩\
 					\n 通關獎勵:(10d2)G金幣\
@@ -821,7 +816,7 @@ mouudle.exports = {
 
 				}else if(StoryN == '1-3'){
 
-					return '\第四部-1-3 盜賊突襲\
+					return '\第一部-1-3 盜賊突襲\
 					\n\
 					\n 對手:盜賊\
 					\n 通關獎勵:(10d3)G金幣\
@@ -831,7 +826,7 @@ mouudle.exports = {
 
 				}else if(StoryN == '1-4'){
 
-					return '\第四部-1-4 喜悅之風\
+					return '\第一部-1-4 喜悅之風\
 					\n\
 					\n 對手:莎拉\
 					\n 通關獎勵:(10d3)G金幣\
@@ -841,7 +836,7 @@ mouudle.exports = {
 
 				}else if(StoryN == '1-5'){
 
-					return '\第四部-1-5 訣別之風\
+					return '\第一部-1-5 訣別之風\
 					\n\
 					\n 對手:莎拉\
 					\n 通關獎勵:100G金幣\
@@ -853,9 +848,9 @@ mouudle.exports = {
 
 				}else if(StoryN == '1'||StoryN == '第一章'){
 
-					return '\第四部 第一章-劍聖再臨\
+					return '\第一部 第一章-劍聖再臨\
 					\n\
-					\n 故事:在路卡解決奧賽羅爾事件的三年後，復活的風之劍聖-露歷經許多事件，終於回到了湖之村，可是她得到的竟只有無情的對待...\
+					\n 故事:，活的風之劍聖-露在歷經許多事件後，終於回到了湖之村，可是她得到的只有無情的對待...\
 					\n\
 					\n 第一章突破獎勵: 技能書「祈願」\
 					\n\
@@ -866,7 +861,7 @@ mouudle.exports = {
 					\n 1-4 喜悅之風\
 					\n 1-5 訣別之風\
 					\n\
-					\n 如果想看詳細內容，請輸入 [主線 第四部 關卡編號] \
+					\n 如果想看詳細內容，請輸入 [主線 第一部 關卡編號] \
 					';
 
 				}
@@ -875,7 +870,7 @@ mouudle.exports = {
 				///第二章
 				else if(StoryN == '2'||StoryN == '第二章'){
 
-					return '\第四部 第二章-風之夥伴(未開放)\
+					return '\第一部 第二章-風之夥伴(未開放)\
 					\n\
 					\n 故事:???\
 					\n\
@@ -893,16 +888,16 @@ mouudle.exports = {
 				///
 				else if(StoryN == null){
 
-				return '\第四部-碧綠之風 \
+				return '\第一部-碧綠之風 \
 					\n\
 					\n  故事:\
-					\n以「光暗交會」(第三部)故事結束後3年為背景，描述露為了破除自身詛咒，組成風之冒險團前往打到「光之軍勢」的史詩故事\
+					\n 這是描述風之劍聖-露為了破除自身詛咒，組成風之冒險團前往打到「光之軍勢」的史詩故事\
 					\n\
 					\n  章節一覽:\
 					\n 1 第一章-劍聖再臨\
 					\n 2 第二章-風之夥伴(未開放)\
 					\n\
-					\n 如果想看詳細活動內容，請輸入 [主線 第四部(part4,4) 第幾章(章節編號) ] \
+					\n 如果想看詳細活動內容，請輸入 [主線 第一部(part1,1) 第幾章(章節編號) ] \
 					';
 
 				}
@@ -910,16 +905,16 @@ mouudle.exports = {
 				else{
 
 				return '\找不到關卡['+ StoryN + ']的關卡喔\
-					\n第四部-碧綠之風 \
+					\n第一部-碧綠之風 \
 					\n\
 					\n  故事:\
-					\n以「光暗交會」(第三部)故事結束後3年為背景，描述露為了破除自身詛咒，組成風之冒險團前往打到「光之軍勢」的史詩故事\
+					\n 這是描述風之劍聖-露為了破除自身詛咒，組成風之冒險團前往打到「光之軍勢」的史詩故事\
 					\n\
 					\n  章節一覽:\
 					\n 1 第一章-劍聖再臨\
 					\n 2 第二章-風之夥伴(未開放)\
 					\n\
-					\n 如果想看詳細活動內容，請輸入 [主線 第四部(part4,4) 第幾章(章節編號) ] \
+					\n 如果想看詳細活動內容，請輸入 [主線 第一部(part1,1) 第幾章(章節編號) ] \
 					';
 
 				}
@@ -928,9 +923,9 @@ mouudle.exports = {
 
 				return '\【主線目錄】目前開放的部別一覽 \
 					\n\
-					\n 4 第四部-碧綠之風\
+					\n 1 第一部-碧綠之風\
 					\n\
-					\n 如果想看詳細活動內容，請輸入 [主線 部別編號(例如:第四部,part4,4)] \
+					\n 如果想看詳細活動內容，請輸入 [主線 部別編號(例如:第一部,part1,1)] \
 					';
 
 				}else{
@@ -939,9 +934,9 @@ mouudle.exports = {
 					\n\
 					\n【主線目錄】目前開放的部別一覽 \
 					\n\
-					\n 4 第四部-碧綠之風\
+					\n 1 第一部-碧綠之風\
 					\n\
-					\n 如果想看詳細活動內容，請輸入 [主線 部別編號(例如:第四部,part4,4)] \
+					\n 如果想看詳細活動內容，請輸入 [主線 部別編號(例如:第一部,part1,1)] \
 					';
 
 			}
@@ -952,7 +947,7 @@ mouudle.exports = {
 	////////////////
 
 	//////////////// 遊戲活動
-		function GameEvent(EventN) {
+		GameEvent: function(EventN) {
 
 			///基本變數
 			///
@@ -1015,7 +1010,7 @@ mouudle.exports = {
 	////////////////////////////////////////
 	//////////////// Tarot塔羅牌
 	////////////////////////////////////////
-	function MultiDrawTarot(CardToCal, text, type) {
+	MultiDrawTarot: function(CardToCal, text, type) {
 		let returnStr = '';
 		var tmpcard = 0;
 		var cards = [];
@@ -1104,7 +1099,7 @@ mouudle.exports = {
 		return returnStr;
 	}
 
-	function NomalDrawTarot(CardToCal, text) {
+	NomalDrawTarot: function(CardToCal, text) {
 		let returnStr = '';
 
 		if (text == null)
@@ -1115,7 +1110,7 @@ mouudle.exports = {
 	}
 
 
-	function tarotRevReply(count) {
+	tarotRevReply: function(count) {
 		let returnStr = '';
 
 		if (count == 0) returnStr = '＋';
@@ -1124,12 +1119,12 @@ mouudle.exports = {
 		return returnStr;
 	}
 
-	function choice(input,str) {
+	choice: function(input,str) {
 		let a = input.replace(str[0], '').match(/\S+/ig);
 		return str[0] + '['+ a + '] → ' + a[Dice(a.length)-1];
 	}
 
-	function tarotCardReply(count) {
+	tarotCardReply: function(count) {
 		let returnStr = '';
 		// returnStr = count + '愚者';
 		if (count == 0) returnStr = '愚者';
@@ -1217,7 +1212,7 @@ mouudle.exports = {
 	}
 
 
-	function Help() {
+	Help: function () {
 		return randomReply() + '\n' + '\
 		【梅里歐斯的冒險者專用BOT】v1.00 \
 		\n --傷害骰(a XdY+b)--\
