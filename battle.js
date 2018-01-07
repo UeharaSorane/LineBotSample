@@ -1,8 +1,9 @@
 
 //////////////// 戰鬥系統
+var battle = {
 	
 	//////////////// ccb功能   
-	exports.ccb = function(chack,text){
+	ccb: function(chack,text){
 		  let temp = Dice(100);
 		  if (text == null ) {
 		    if (temp == 100) return 'ccb<=' + chack  + ' ' + temp + ' → 啊！大失敗！';
@@ -17,10 +18,10 @@
 		    if (temp <= chack) return 'ccb<=' + chack +  ' ' + temp + ' → 成功；' + text;
 		    else return 'ccb<=' + chack  + ' ' +  temp + ' → 失敗；' + text;
 	    }
-	};
+	},
 	////////////////
 
-	exports.ArrMax = function(Arr){
+	ArrMax: function(Arr){
 	  	var max = this[0];
 	  	this.forEach (function(ele,index,arr){
 	  	  	if(ele > max) {
@@ -28,10 +29,10 @@
 	    		}
 	  	})
 		return max;
-	};
+	},
 
 	//////////////// 普通ROLL
-	exports.nomalDiceRoller = function(inputStr,text0,text1,text2){
+	nomalDiceRoller: function(inputStr,text0,text1,text2){
 
 	  //首先判斷是否是誤啟動（檢查是否有符合骰子格式）
 	 // if (inputStr.toLowerCase().match(/\d+d\d+/) == null) return undefined;
@@ -115,23 +116,23 @@
 	  return finalStr;
 
 
-	};
+	},
 	////////////////
 
 	//////////////// 擲骰子運算
-	exports.sortNumber = function(a,b)
+	sortNumber: function(a,b)
 	{
 	return a - b
-	};
+	},
 	////////////////
 
 	//////////////// 取隨機值專用
-	exports.Dice = function(diceSided){
+	Dice: function(diceSided){
 		return Math.floor((Math.random() * diceSided) + 1)
-	};
+	},
 	////////////////
 
-	exports.RollDice = function(inputStr){
+	RollDice: function(inputStr){
 		//先把inputStr變成字串（不知道為什麼非這樣不可）
 		let comStr=inputStr.toString();
 		let finalStr = '[';
@@ -146,13 +147,13 @@
 	  finalStr = finalStr.substring(0, finalStr.length - 1) + ']';
 	  finalStr = finalStr.replace('[', totally +'[');
 	  return finalStr;
-	};
+	},
 
-	exports.FunnyDice = function(diceSided) {
+	FunnyDice: function(diceSided) {
 		return Math.floor((Math.random() * diceSided)) //猜拳，從0開始
-	};
+	},
 
-	exports.BuildDiceCal = function(inputStr){
+	BuildDiceCal: function(inputStr){
 
 	  //首先判斷是否是誤啟動（檢查是否有符合骰子格式）
 	  if (inputStr.toLowerCase().match(/\d+d\d+/) == null) return undefined;
@@ -182,9 +183,9 @@
 
 	  return finalStr;
 
-	};
+	},
 
-	exports.BuildRollDice = function(inputStr){
+	BuildRollDice: function(inputStr){
 	  //先把inputStr變成字串（不知道為什麼非這樣不可）
 	  let comStr=inputStr.toString().toLowerCase();
 	  let finalStr = '(';
@@ -195,13 +196,13 @@
 
 	  finalStr = finalStr.substring(0, finalStr.length - 1) + ')';
 	  return finalStr;
-	};
+	},
 
 
 	////////////////////////////////////////
 	//////////////// xBy
 	////////////////////////////////////////
-	exports.xBy = function(triggermsg ,text01, text02) {
+	xBy: function(triggermsg ,text01, text02) {
 
 	let returnStr = '(' + triggermsg +')';
 	let match = /^(\d+)(B)(\d+)$/i.exec(triggermsg);  //判斷式  [0]3B8,[1]3,[2]B,[3]8
@@ -233,7 +234,7 @@
 
 
 	return returnStr;
-	};
+	},
 
 	////////////////////////////////////////
 	//////////////// xUy
@@ -241,7 +242,7 @@
 	////////////////  (5U10[8]>8) → 1,30[9,8,8,5],1,3,4 → 成功数1
 	////////////////////////////////////////
 
-	exports.xUy = function(triggermsg ,text01, text02, text03) {
+	xUy: function(triggermsg ,text01, text02, text03) {
 		var match = /^(\d+)(u)(\d+)/i.exec(triggermsg);   //判斷式  5u19,5,u,19, 
 		var returnStr = '('+triggermsg+'['+text01+']';
 		if(Number(text02) <= Number(match[3]) && text02 != undefined) 
@@ -302,7 +303,7 @@
 		
 		return returnStr;
 
-	};
+	},
 
 
 
@@ -311,7 +312,7 @@
 	////////////////////////////////////////
 
 	//////////////// 插旗
-		exports.BStyleFlagSCRIPTS = function() {
+		BStyleFlagSCRIPTS: function() {
 			let rplyArr = ['\
 			「打完這仗我就回老家結婚（この戦いが終わったら、故郷に帰って結婚するんだ）」', '\
 			「打完這一仗後我請你喝酒」', '\
@@ -367,11 +368,11 @@
 			「我老爸是....你有種就....」', '\
 			「我可以好好利用這件事」'];
 			return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
-		};
+		},
 	////////////////
 
 	//////////////// 空音閒談
-		exports.randomReply = function() {
+		randomReply: function() {
 			let rplyArr = [
 
 				'\有什麼事嗎？', 
@@ -395,11 +396,11 @@
 				'\稍微...讓我休息一下吧(攤',
 				'\希望我成為你的同伴？看看夥伴商店吧！'];
 			return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
-		};
+		},
 	////////////////
 
 	//////////////// 空音閒談(裏)
-		exports.randomReplyShin = function() {
+		randomReplyShin: function() {
 			let rplyArr = [
 
 				'\在抽獎之前，先把火力燒成灰吧', 
@@ -415,22 +416,22 @@
 				'\幫我撐十秒',
 				'\整天妄想稱呼我暱稱？真是有夠噁心的'];
 			return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
-		};
+		},
 	////////////////
 
 	//////////////// 寶箱狩獵
-		exports.BoxOpen = function() {
+		BoxOpen: function() {
 		  let temp = Dice(100);
 
 		  if (temp >= 68) return '\恭喜，是普通獎勵。';
 		  if (temp <=67 && temp >= 39) return '\恭喜，是中等獎勵。';
 		  if (temp <=38 && temp >= 16) return '\喔喔！是高等獎勵诶，恭喜！';
 		  if (temp <=15) return '\太棒了！！！是頂級獎勵！恭喜！';
-		};
+		},
 	////////////////
 
 	//////////////// 角色招募
-		exports.gacha = function(DrawPool,GachaTimes) {
+		gacha: function(DrawPool,GachaTimes) {
 
 			///基本變數
 			let GachaResult = ['\n','\n','\n','\n','\n','\n','\n','\n','\n','\n','\n'];
@@ -621,11 +622,11 @@
 
 
 			return GResult;
-		};
+		},
 	////////////////
 
 	//////////////// 遊戲公告
-		exports.GameInformation = function(InformationN) {
+		GameInformation: function(InformationN) {
 
 			///基本變數
 			///
@@ -776,11 +777,11 @@
 
 			///
 
-		};
+		},
 	////////////////
 
 	//////////////// 遊戲主線
-		exports.MainStory = function(StoryPart,StoryN) {
+		MainStory: function(StoryPart,StoryN) {
 
 			///基本變數
 
@@ -942,11 +943,11 @@
 
 			///
 
-		};
+		},
 	////////////////
 
 	//////////////// 遊戲活動
-		exports.GameEvent = function(EventN) {
+		GameEvent: function(EventN) {
 
 			///基本變數
 			///
@@ -988,15 +989,15 @@
 
 			///
 
-		};
+		},
 	////////////////
 
 
 
-	       exports.randomLuck = function(TEXT) {
+	       randomLuck: function(TEXT) {
 		   let rplyArr = ['超吉','超級上吉','大吉','吉','中吉','小吉','吉','小吉','吉','吉','中吉','吉','中吉','吉','中吉','小吉','末吉','吉','中吉','小吉','末吉','中吉','小吉','小吉','吉','小吉','末吉','中吉','小吉','凶','小凶','沒凶','大凶','很凶'];
 		   return TEXT[0] + ' ： ' + rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
-		};
+		},
 
 
 	////////////////////////////////////////
@@ -1009,7 +1010,7 @@
 	////////////////////////////////////////
 	//////////////// Tarot塔羅牌
 	////////////////////////////////////////
-	exports.MultiDrawTarot = function(CardToCal, text, type) {
+	MultiDrawTarot: function(CardToCal, text, type) {
 		let returnStr = '';
 		var tmpcard = 0;
 		var cards = [];
@@ -1096,9 +1097,9 @@
 
 
 		return returnStr;
-	};
+	},
 
-	exports.NomalDrawTarot = function(CardToCal, text) {
+	NomalDrawTarot: function(CardToCal, text) {
 		let returnStr = '';
 
 		if (text == null)
@@ -1106,24 +1107,24 @@
 		else
 			returnStr = tarotCardReply(FunnyDice(22)) + ' ' + tarotRevReply(FunnyDice(2)) + ' ; ' + text;
 		return returnStr;
-	};
+	},
 
 
-	exports.tarotRevReply = function(count) {
+	tarotRevReply: function(count) {
 		let returnStr = '';
 
 		if (count == 0) returnStr = '＋';
 		if (count == 1) returnStr = '－';
 
 		return returnStr;
-	};
+	},
 
-	choice = function(input,str) {
+	choice: function(input,str) {
 		let a = input.replace(str[0], '').match(/\S+/ig);
 		return str[0] + '['+ a + '] → ' + a[Dice(a.length)-1];
-	};
+	},
 
-	exports.tarotCardReply = function(count) {
+	tarotCardReply: function(count) {
 		let returnStr = '';
 		// returnStr = count + '愚者';
 		if (count == 0) returnStr = '愚者';
@@ -1208,10 +1209,10 @@
 
 		return returnStr;
 
-	};
+	},
 
 
-	exports.Help = function () {
+	Help: function () {
 		return randomReply() + '\n' + '\
 		【梅里歐斯的冒險者專用BOT】v1.00 \
 		\n --傷害骰(a XdY+b)--\
@@ -1239,8 +1240,9 @@
 		\n 死亡FLAG：句子裡出現 Flag/flag 就能讓你輕鬆插旗\
 		\n 如果呼叫空音的名子...好像會有事情發生？\
 		';		
-	};
+	}
 
+}
 
-
+module.exports = baattle;
 
