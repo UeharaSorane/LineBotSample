@@ -21,14 +21,14 @@ mouudle.exports = {
 	}
 	////////////////
 
-	ArrMax: function(Arr){
-	  var max = this[0];
-	  this.forEach (function(ele,index,arr){
-	    if(ele > max) {
-	      max = ele;
-	    }
-	  })
-	  return max;
+	arrMax: function(Arr){
+	  	var max = this[0];
+	  	this.forEach (function(ele,index,arr){
+	  	  	if(ele > max) {
+	     			max = ele;
+	    		}
+	  	}
+		return max;
 	}
 
 	//////////////// 普通ROLL
