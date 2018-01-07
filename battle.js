@@ -1244,5 +1244,5 @@ var battle = {
 
 }
 
-module.exports = baattle;
+module.exports = battle;
 
