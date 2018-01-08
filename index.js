@@ -1024,7 +1024,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			
 		}else if(tutorialN == 4){
 			
-			return '\遊戲大致流程\
+			return '\流程說明\
 				\n\
 				\n (1)雙方「一起」回報Hp,Mp\
 				\n  當前Hp/最大Hp\
@@ -1041,7 +1041,6 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n (7)回到(1)，開始進行下一回合\
 				\n\
 				\n持續戰鬥直到打倒訓練官吧!\
-
 				';
 			
 		}else if(tutorialN == 5){
