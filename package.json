@@ -1,7 +1,7 @@
 {
-  "name": "leoli",
-  "version": "0.2.0",
-  "description": "LeoLi Line Bot",
+  "name": "Sorane",
+  "version": "1.0.0",
+  "description": "A TRPG Line Bot",
   "engines": {
     "node": "6.9.1"
   },
@@ -14,7 +14,7 @@
     "body-parser": "1.15.2"
   },
   "keywords": [
-    "LeoLi",
+    "Sorane",
     "Line"
   ],
   "license": "MIT"
