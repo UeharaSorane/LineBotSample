@@ -98,7 +98,8 @@ function parseInput(rplyToken, inputStr) {
 	let trigger = mainMsg[0].toString().toLowerCase(); //指定啟動詞在第一個詞&把大階強制轉成細階
 	
 	////////////////////////////情報相關
-	
+	if (trigger.match(/^公告$/) != null) return GameInformation(mainMsg[1]);	//遊戲公告指令
+	if (trigger.match(/^活動$/) != null) return GameEvent(mainMsg[1]);	//遊戲活動指令
 	
 	////////////////////////////戰鬥相關
 	//ccb指令
@@ -123,10 +124,10 @@ function parseInput(rplyToken, inputStr) {
 	
 	////////////////////////////服務相關
 	if (trigger.match(/^寶箱$|^開寶箱$/) != null) return BoxOpen() ;//寶箱狩獵指令
+	if (trigger.match(/^祈願$/) != null) return LoginBonus() ;//每日登入指令
 	if (trigger.match(/^help$|^幫助$/)!= null ) return Help();//幫助頁面
+	if (trigger.match(/^教學$|^新手教學$/)!= null ) return tutorial();//幫助頁面
 	if (trigger.match(/^招募$/) != null) return gacha(mainMsg[1],mainMsg[2]);	//角色招募指令
-	if (trigger.match(/^公告$/) != null) return GameInformation(mainMsg[1]);	//遊戲公告指令
-	if (trigger.match(/^活動$/) != null) return GameEvent(mainMsg[1]);	//遊戲活動指令
 	if (trigger.match(/^主線$/) != null) return MainStory(mainMsg[1],mainMsg[2]);	//遊戲主線指令
 	
 	////////////////////////////娛樂相關
@@ -587,6 +588,17 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 	}
 ////////////////
 
+//////////////// 登入獎勵
+	function LoginBonus() {
+	  let temp = Dice(100);
+		
+	  if (temp >= 80) return '\獲得10g...';
+	  if (temp <=79 && temp >= 60) return '\恭喜獲得50g!';
+	  if (temp <=59 && temp >= 30) return '\恭喜獲得100g!!';
+	  if (temp <=29) return '\恭喜獲得200g!!!';
+	}
+////////////////
+
 //////////////// 角色招募
 	function gacha(DrawPool,GachaTimes) {
 		
@@ -936,6 +948,192 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		
 	}
 ////////////////
+
+//////////////// 新手教學
+	function tutorial(tutorialN) {
+		
+		///基本變數
+		///
+		
+		///確定公告狀態
+		if(tutorialN == 1){
+			
+				return '\歡迎來到梅里歐斯的世界 \
+				\n\
+				\n我和GM會負責引導你適應這裡 \
+				\n首先，請告訴我你在這個世界的名子吧\
+				\n 再從以下武器中挑選一個自己喜歡的武器吧\
+				\n\
+				\n 木劍[劍],木短杖[短杖],木長杖[長杖],木弓[弓],普通筆記本[書]\
+				';
+			
+		}else if(tutorialN == 2){
+			
+			return '\每個一般人都會有三種基本素質 \
+				\n\
+				\n Hp mp atk\
+				\n Hp 掌管你的生命力\
+				\n Mp是施放技能所需的能量\
+				\n Atk是你的通常攻擊力\
+				\n 一般人都會有以下的基本能力值\
+				\n hp20/mp20/atk5\
+				\n目前你唯一的招式叫做通常攻擊:\
+				\n通常攻擊\
+				\n所需mp:0\
+				\n速度:+0\
+				\n給與敵方單體等同自身攻擊力值的傷害，恢復自身Mp最大值x0.1的Mp\
+				\n\
+				\n 那麼，請試著打倒新人訓練官看看\
+				\n\
+				\n 新人訓練官\
+				\nHp:15\
+				\nMp:30\
+				\nAtk:2\
+				\n裝備武器:木劍\
+				\n裝備飾品:無\
+				\n裝備紋章:無\
+				\n同行夥伴:無\
+				\n\
+				\n技能書:\
+				\n斬擊/治癒/火球\
+				';
+			
+		}else if(tutorialN == 3){
+			
+			return '\技能說明\
+				\n 斬擊:\
+				\n  所需mp:10\
+				\n  適性武器:劍\
+				\n  速度:+0\
+				\n  給與敵方自身單體攻擊力+1d3+2點傷害\
+				\n-----\
+				\n 火球:\
+				\n所需mp:10\
+				\n適性武器:短杖、長杖、書\
+				\n速度:+0\
+				\n給與對手自身攻擊力+1d3點傷害，對象有20%機率燒傷3回合\
+				\n-----\
+				\n  治癒:\
+				\n所需mp:15\
+				\n適性武器:無\
+				\n速度:+0\
+				\n恢復自身隊友一名(或自己)1d10Hp\
+				\n\
+				\n  做好覺悟後開始戰鬥吧!\
+				';
+			
+		}else if(tutorialN == 4){
+			
+			return '\遊戲大致流程:\
+				\n\
+				\n (1)雙方「一起」回報Hp,Mp\
+				\n  當前Hp/最大Hp\
+				\n  當前Mp/最大Mp\
+				\n \
+				\n (2)先喊者先決定自己要做的行動(喊招式名即可)\
+				\n (3)後喊者先決定自己要做的行動(喊招式名即可)\
+				\n (4)計算速度差(先喊者速度-後喊者速度)\
+				\n  先喊者還會獲得「先發制人」的加成:該次行動速度+10\
+				\n (5)先喊者擲(ccb 50+速度差)決定出招先後，成功時先出招\
+				\n (6)依照判定結果輪流按照自己的招式行動\
+				\n  如果使用技能跟裝備武器對應的話，技能消耗會減半喔(適性技能)\
+				\n\
+				\n (7)回到(1)，開始進行下一回合\
+				\n\
+				\n持續戰鬥直到打倒訓練官吧!\
+
+				';
+			
+		}else if(tutorialN == 5){
+			
+			return '\恭喜!你打倒了新人訓練官\
+				\n\
+				\n接下來，你可以從新手訓練官中，選擇一本你喜歡的技能書\
+				\n 斬擊:\
+				\n  所需mp:10\
+				\n  適性武器:劍\
+				\n  速度:+0\
+				\n  給與敵方自身單體攻擊力+1d3+2點傷害\
+				\n-----\
+				\n 火球:\
+				\n所需mp:10\
+				\n適性武器:短杖、長杖、書\
+				\n速度:+0\
+				\n給與對手自身攻擊力+1d3點傷害，對象有20%機率燒傷3回合\
+				\n-----\
+				\n  治癒:\
+				\n所需mp:15\
+				\n適性武器:無\
+				\n速度:+0\
+				\n恢復自身隊友一名(或自己)1d10Hp\
+				';
+			
+		}else if(tutorialN == 6){
+			
+			return '\很好，現在你有第一個技能了\
+				\n順帶一提，每名玩家最多裝備三個主動技能跟一個被動技能\
+				\n隨著遊戲進度，慢慢組成自己的技能組吧\
+				\n\
+				\n接下來\
+				\n試著打倒新人訓練官2吧\
+				\n 新人訓練官2\
+				\nHp:20\
+				\nMp:30\
+				\nAtk:2\
+				\n裝備武器:木劍\
+				\n裝備飾品:無\
+				\n裝備紋章:無\
+				\n同行夥伴:無\
+				\n\
+				\n技能書:\
+				\n斬擊/治癒/火球\
+				';
+			
+		}else if(tutorialN == 7){
+			
+			return '一般戰鬥中，先喊者要由擲骰決定\
+				\n\
+				\n 骰 [ccb 50 先喊]即可\
+				\n 這次由GM判定\
+				';
+			
+		}else if(tutorialN == 8){
+			
+			return '\施放技能所需要的Mp，只要透過通常攻擊，就能恢復Mp最大值的0.1被喔\
+				\n  如果使用技能跟裝備武器對應的話，技能消耗會減半喔(適性技能)\
+				';
+			
+		}else if(tutorialN == 9){
+			
+			return '\恭喜!你打倒了新人訓練官2\
+				\n\
+				\n現在的你想必對遊戲有一定認知了\
+				\n那麼是時候該讓你強化自己\
+				\n現在你有10點基本能力點數可以分配\
+				\n Hp每分配1點增加10\
+				\n Mp每分配1點增加10\
+				\n Atk每分配1點增加1\
+				\n 想好之後，告訴我即可\
+				\n 仔細考慮自己該怎麼分配這十點吧，一旦確定就不能更改喔\
+				';
+			
+		}else if(tutorialN == null){
+			
+			return '\這個部分由GM代勞吧\
+				';
+			
+		}else{
+			
+			return '\找不到教學編號['+ tutorialN + ']的教學喔\
+				';
+			
+		}
+		
+		///
+		
+	}
+////////////////
+
 
 //////////////// 遊戲主線
 	function MainStory(StoryPart,StoryN) {
