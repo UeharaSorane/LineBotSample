@@ -124,7 +124,7 @@ function parseInput(rplyToken, inputStr) {
         }
 	
 	////////////////////////////服務相關
-	if (trigger.match(/^寶箱$|^開寶箱$/) != null) return b.BoxOpen() ;//寶箱狩獵指令
+	if (trigger.match(/^寶箱$|^開寶箱$/) != null) return b.battle.BoxOpen() ;//寶箱狩獵指令
 	if (trigger.match(/^help$|^幫助$/)!= null ) return Help();//幫助頁面
 	if (trigger.match(/^招募$/) != null) return gacha(mainMsg[1],mainMsg[2]);	//角色招募指令
 	if (trigger.match(/^公告$/) != null) return GameInformation(mainMsg[1]);	//遊戲公告指令
