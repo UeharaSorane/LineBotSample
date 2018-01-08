@@ -1024,7 +1024,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			
 		}else if(tutorialN == 4){
 			
-			return '\遊戲大致流程:\
+			return '\遊戲大致流程\
 				\n\
 				\n (1)雙方「一起」回報Hp,Mp\
 				\n  當前Hp/最大Hp\
