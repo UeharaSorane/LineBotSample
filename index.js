@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var https = require('https');  
 var app = express();
-var battle = require("./battle.js");
+var battle = require("./battle");
 
 var jsonParser = bodyParser.json();
 
@@ -88,7 +88,7 @@ function replyMsgToLine(rplyToken, rplyVal) {
 ////////////////////////////////////////
 function parseInput(rplyToken, inputStr) {
 	
-	var b = battle;
+	let b = battle;
           
 	//	console.log('InputStr: ' + inputStr);
 	_isNaN = function(obj) {
