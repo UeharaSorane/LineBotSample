@@ -109,17 +109,17 @@ function parseInput(rplyToken, inputStr) {
 	//xBy>A 指令開始於此
 	if (trigger.match(/^(\d+)(b)(\d+)$/i)!= null)
 	{        
-		return b.xBy(trigger,mainMsg[1],mainMsg[2]);
+		return xBy(trigger,mainMsg[1],mainMsg[2]);
 	}
 	//xUy 指令開始於此	
 	if (trigger.match(/^(\d+)(u)(\d+)$/i)!= null && isNaN(mainMsg[1])== false)
 	{        
-		return b.xUy(trigger,mainMsg[1],mainMsg[2],mainMsg[3]);
+		return xUy(trigger,mainMsg[1],mainMsg[2],mainMsg[3]);
 	}
 	
 	        //普通ROLL擲骰判定在此        
         if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/\d+d+\d/)!=null) {
-          return b.nomalDiceRoller(inputStr,mainMsg[0],mainMsg[1],mainMsg[2]);
+          return nomalDiceRoller(inputStr,mainMsg[0],mainMsg[1],mainMsg[2]);
         }
 	
 	////////////////////////////服務相關
