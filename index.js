@@ -2,7 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var https = require('https');  
 var app = express();
-var battle = require('battle');
 
 var jsonParser = bodyParser.json();
 
@@ -104,7 +103,7 @@ function parseInput(rplyToken, inputStr) {
 	////////////////////////////戰鬥相關
 	//ccb指令
 	if (trigger.match(/^ccb$/)!= null && mainMsg[1]<=1000 ){
-		if (trigger == 'ccb'&& mainMsg[1]<=99) return battle.ccb(mainMsg[1],mainMsg[2]);
+		if (trigger == 'ccb'&& mainMsg[1]<=99) return ccb(mainMsg[1],mainMsg[2]);
         }
 	//xBy>A 指令開始於此
 	if (trigger.match(/^(\d+)(b)(\d+)$/i)!= null)
@@ -123,7 +122,7 @@ function parseInput(rplyToken, inputStr) {
         }
 	
 	////////////////////////////服務相關
-	if (trigger.match(/^寶箱$|^開寶箱$/) != null) return battle.BoxOpen() ;//寶箱狩獵指令
+	if (trigger.match(/^寶箱$|^開寶箱$/) != null) return BoxOpen() ;//寶箱狩獵指令
 	if (trigger.match(/^help$|^幫助$/)!= null ) return Help();//幫助頁面
 	if (trigger.match(/^招募$/) != null) return gacha(mainMsg[1],mainMsg[2]);	//角色招募指令
 	if (trigger.match(/^公告$/) != null) return GameInformation(mainMsg[1]);	//遊戲公告指令
