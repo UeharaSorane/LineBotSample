@@ -105,22 +105,22 @@ function parseInput(rplyToken, inputStr) {
 	////////////////////////////戰鬥相關
 	//ccb指令
 	if (trigger.match(/^ccb$/)!= null && mainMsg[1]<=1000 ){
-		if (trigger == 'ccb'&& mainMsg[1]<=99) return ccb(mainMsg[1],mainMsg[2]);
+		if (trigger == 'ccb'&& mainMsg[1]<=99) return b.ccb(mainMsg[1],mainMsg[2]);
         }
 	//xBy>A 指令開始於此
 	if (trigger.match(/^(\d+)(b)(\d+)$/i)!= null)
 	{        
-		return xBy(trigger,mainMsg[1],mainMsg[2]);
+		return b.xBy(trigger,mainMsg[1],mainMsg[2]);
 	}
 	//xUy 指令開始於此	
 	if (trigger.match(/^(\d+)(u)(\d+)$/i)!= null && isNaN(mainMsg[1])== false)
 	{        
-		return xUy(trigger,mainMsg[1],mainMsg[2],mainMsg[3]);
+		return b.xUy(trigger,mainMsg[1],mainMsg[2],mainMsg[3]);
 	}
 	
 	        //普通ROLL擲骰判定在此        
         if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/\d+d+\d/)!=null) {
-          return nomalDiceRoller(inputStr,mainMsg[0],mainMsg[1],mainMsg[2]);
+          return b.nomalDiceRoller(inputStr,mainMsg[0],mainMsg[1],mainMsg[2]);
         }
 	
 	////////////////////////////服務相關
