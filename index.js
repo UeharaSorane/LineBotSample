@@ -874,6 +874,11 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		}else if(InformationN == 4){
 			
 			return '\【進度】 目前更新紀錄 \
+				\n2018/1/9:\
+				\n 1.Bot強化:\
+				\n (1)追加每日祈願功能\
+				\n (2)追加新手教學說明功能\
+				\n 2.追加新技能:冰獄彈,冰牆,轟炎彈,麻痺箭,劇毒箭,燃燒箭,狙擊姿態,重劈,猛虎一式,獵龍一式,蒼藍利刃\
 				\n2018/1/2:\
 				\n 1.Bot強化:\
 				\n (1)改善招募結果，追加總計獲得的夥伴及伙伴碎片\
