@@ -795,13 +795,14 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		let temp = 0;
 		GachaResult.length = times;
 		
-		return GachaResult.length;
-		
 		for(var i = 0; i< times;i++){
 			
 			GachaResult[i] = '\n';
 			
 		}
+		
+		return GachaResult[1];
+		
 		for(var i = 0;i < characterST; i++){
 			temp = dice(100);
 			if(temp <= characterChanceSP){
