@@ -787,10 +787,13 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				
 		for(var i = 0;i < characterST; i++){
 			temp = dice(100);
-			if(temp <= characterChanceSP) CharacterResult[times-characterST+i] = CharacterListSP[Math.floor((Math.random() * (CharacterListSP.length)) + 0)];
-			GachaResult[times-characterST+i] = '\[保底]限定夥伴:' +  CharacterResult[times-characterST+i];
-			else CharacterResult[times-characterST+i] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
-			GachaResult[times-characterST+i] = '\[保底]夥伴:' +  CharacterResult[times-characterST+i];
+			if(temp <= characterChanceSP){
+				CharacterResult[times-characterST+i] = CharacterListSP[Math.floor((Math.random() * (CharacterListSP.length)) + 0)];
+				GachaResult[times-characterST+i] = '\[保底]限定夥伴:' +  CharacterResult[times-characterST+i];
+			}else{
+				CharacterResult[times-characterST+i] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
+				GachaResult[times-characterST+i] = '\[保底]夥伴:' +  CharacterResult[times-characterST+i];
+			}
 		}//保底腳色處理
 				
 		for(var i=0; i<times-characterST;i++){
@@ -804,10 +807,13 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			if (temp <= characterChance) {
 					
 				temp = Dice(100);
-				if(temp <= characterChanceSP) CharacterResult[i] = CharacterListSP[Math.floor((Math.random() * (CharacterListSP.length)) + 0)];
-				GachaResult[i] = '\限定夥伴:' +  CharacterResult[times-characterST+i];
-				else CharacterResult[i] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
-				GachaResult[i] = '\夥伴:' +  CharacterResult[i];
+				if(temp <= characterChanceSP){
+					CharacterResult[i] = CharacterListSP[Math.floor((Math.random() * (CharacterListSP.length)) + 0)];
+					GachaResult[i] = '\限定夥伴:' +  CharacterResult[times-characterST+i];
+				}else{
+					CharacterResult[i] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
+					GachaResult[i] = '\夥伴:' +  CharacterResult[i];
+				}
 			}//確定夥伴
 		}//通常腳色處理	
 		
