@@ -748,7 +748,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				
 			
 			}else if(GachaTimes =='十連加一'||GachaTimes =='十連'){
-				times = 10;
+				times = 11;
 				characterChance = 10;
 				characterChanceSP = 50;
 				CharacterShard = 20;
@@ -847,13 +847,13 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		}
 		
 		let GResult ='招募結果:\n'
-		for(var i = 0;i<11;i++){
+		for(var i = 0;i<times;i++){
 			GResult = GResult + GachaResult[i];
 		}
 		
 		GResult = GResult + '\n--------------------\n總計獲得夥伴:';
 		
-		for(var i = 0;i<11;i++){
+		for(var i = 0;i<times;i++){
 			if(CharacterResult[i] != null ) GResult = GResult + CharacterResult[i] + ',' ;
 		}
 		
