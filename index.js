@@ -801,6 +801,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			
 		}
 		
+		return CharacterList[1];
 		
 		for(var i = 0;i < characterST; i++){
 			temp = dice(100);
@@ -812,7 +813,6 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				GachaResult[times-characterST+i] = '\[保底]夥伴:' +  CharacterResult[times-characterST+i]+ '\n';
 			}
 		}//保底腳色處理
-		return GachaResult[1];
 		
 				
 		for(var i=0; i<times-characterST;i++){
