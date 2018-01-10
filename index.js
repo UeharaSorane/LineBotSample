@@ -618,7 +618,9 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		
 		///確定抽獎狀態
 		if(DrawPool == 0){
+			CharacterList.length = 3;
 			CharacterList = ['克雷特','路卡','露'];
+			CharacterListSP.length = 0;
 			CharacterListSP = [];
 
 			if(GachaTimes =='單抽'){
@@ -649,7 +651,9 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 [招募 ' + DrawPool + ']';
 				}
 		}else if(DrawPool == 1){
+			CharacterList.length = 5;
 			CharacterList = ['義熊','尤克特','克雷特','路卡','露'];
+			CharacterListSP.length = 0;
 			CharacterListSP = [];
 
 			if(GachaTimes =='單抽'){
@@ -693,7 +697,9 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 [招募 ' + DrawPool + ']';
 				}
 		}else if(DrawPool == 2){
+			CharacterList.length = 6;
 			CharacterList = ['劍士-露','長槍手-路卡','路人-克雷特','廚師-義熊','武士-薰','冰法師-艾斯'];
+			CharacterListSP.length = 0;
 			CharacterListSP = [];
 
 			if(GachaTimes =='單抽'){
@@ -727,13 +733,15 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 [招募 ' + DrawPool + ']';
 				}
 		}else if(DrawPool == 1101211){
+			CharacterList.length = 5;
 			CharacterList = ['義熊','尤克特','克雷特','路卡','露'];
+			CharacterList.length = 6;
 			CharacterListSP = ['劍士-露','長槍手-路卡','路人-克雷特','廚師-義熊','武士-薰','冰法師-艾斯'];
 
 			if(GachaTimes =='單抽'){
 				times = 1;
 				characterChance = 20;
-				characterChanceSP = 10;
+				characterChanceSP = 25;
 				CharacterShard = 10;
 				CharacterShardBonus = 0;
 				
@@ -741,7 +749,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			}else if(GachaTimes =='十連加一'||GachaTimes =='十連'){
 				times = 10;
 				characterChance = 10;
-				characterChanceSP = 10;
+				characterChanceSP = 50;
 				CharacterShard = 20;
 				CharacterShardBonus = 10;
 				
@@ -789,10 +797,10 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			temp = dice(100);
 			if(temp <= characterChanceSP){
 				CharacterResult[times-characterST+i] = CharacterListSP[Math.floor((Math.random() * (CharacterListSP.length)) + 0)];
-				GachaResult[times-characterST+i] = '\[保底]限定夥伴:' +  CharacterResult[times-characterST+i];
+				GachaResult[times-characterST+i] = '\[保底]限定夥伴:' +  CharacterResult[times-characterST+i]+ '\n';
 			}else{
 				CharacterResult[times-characterST+i] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
-				GachaResult[times-characterST+i] = '\[保底]夥伴:' +  CharacterResult[times-characterST+i];
+				GachaResult[times-characterST+i] = '\[保底]夥伴:' +  CharacterResult[times-characterST+i]+ '\n';
 			}
 		}//保底腳色處理
 				
@@ -809,10 +817,10 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				temp = Dice(100);
 				if(temp <= characterChanceSP){
 					CharacterResult[i] = CharacterListSP[Math.floor((Math.random() * (CharacterListSP.length)) + 0)];
-					GachaResult[i] = '\限定夥伴:' +  CharacterResult[times-characterST+i];
+					GachaResult[i] = '\限定夥伴:' +  CharacterResult[i]+ '\n';
 				}else{
 					CharacterResult[i] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
-					GachaResult[i] = '\夥伴:' +  CharacterResult[i];
+					GachaResult[i] = '\夥伴:' +  CharacterResult[i]+ '\n';
 				}
 			}//確定夥伴
 		}//通常腳色處理	
@@ -837,7 +845,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		GResult = GResult + '\n--------------------\n總計獲得夥伴:';
 		
 		for(var i = 0;i<11;i++){
-			if(CharacterResult[i] != undefined) GResult = GResult + CharacterResult[i] + ',' ;
+			if(CharacterResult[i] != undefined ) GResult = GResult + CharacterResult[i] + ',' ;
 		}
 		
 		GResult = GResult +    '\n總計獲得夥伴碎片(連同重複夥伴):' + characterShardResult + '片';
