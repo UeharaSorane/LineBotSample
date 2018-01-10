@@ -792,7 +792,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		
 		///抽獎
 		
-		let temp = 0;
+		var temp = 0;
 		GachaResult.length = times;
 		
 		for(var i = 0; i< times;i++){
@@ -801,7 +801,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			
 		}
 		
-		return typeof(characterST);
+		return CharacterListSP[Math.floor((Math.random() * (CharacterListSP.length)) + 0)];
 		
 		for(var i = 0;i < characterST; i++){
 			temp = dice(100);
