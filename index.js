@@ -607,6 +607,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		let CharacterResult = [];//總計獲得同伴
 		var characterShardResult = 0;//總計獲得同伴碎片
 		let CharacterList = [];//腳色清單
+		let CharacterListSP = [];//限定腳色清單
  
 		var times = 0;//抽獎次數
 		var characterChance = 0;//夥伴獲得率
@@ -617,9 +618,8 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		
 		///確定抽獎狀態
 		if(DrawPool == 0){
-			let Character = ['克雷特','路卡','露'];
-			CharacterList.length = Character.length;
-			CharacterList = Character;
+			CharacterList = ['克雷特','路卡','露'];
+			CharacterListSP = [];
 
 			if(GachaTimes =='單抽'){
 				times = 1;
@@ -627,30 +627,30 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				characterChanceSP = 0;
 				CharacterShard = 0;
 				CharacterShardBonus = 0;
+	
 			}else if(GachaTimes == null){
 				
 				return '\【首次限定！】新手招募-絕對獲得攻擊型夥伴一名喔！ \
-				\n\
-				\n 出現夥伴一覽： \
-				\n 001起始英雄系列 \
-				\n  克雷特\
-				\n  路卡\
-				\n  露\
-				\n  (三名夥伴獲得機率相同)\
-				\n\
-				\n 提供招募方式：\
-				\n 單抽 無需奇蹟石(100%出現夥伴)[一名玩家限定一次] \
-				\n\
-				\n 想要招募的話，請輸入 [招募 0 招募方式] \
-				';
-			}else{
-				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 [招募 0]';
-			}
-			
+					\n\
+					\n 出現夥伴一覽： \
+					\n 001起始英雄系列 \
+					\n  克雷特\
+					\n  路卡\
+					\n  露\
+					\n  (三名夥伴獲得機率相同)\
+					\n\
+					\n 提供招募方式：\
+					\n 單抽 無需奇蹟石(100%出現夥伴)[一名玩家限定一次] \
+					\n\
+					\n 想要招募的話，請輸入 [招募 0 招募方式] \
+					';
+				
+			  }else{
+				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 [招募 ' + DrawPool + ']';
+				}
 		}else if(DrawPool == 1){
-			let Character = ['義熊','尤克特','克雷特','路卡','露'];
-			CharacterList.length = Character.length;
-			CharacterList = Character;
+			CharacterList = ['義熊','尤克特','克雷特','路卡','露'];
+			CharacterListSP = [];
 
 			if(GachaTimes =='單抽'){
 				times = 1;
@@ -658,86 +658,83 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				characterChanceSP = 0;
 				CharacterShard = 10;
 				CharacterShardBonus = 0;
-				
-				
+	
 			}else if(GachaTimes =='十連加一'||GachaTimes =='十連'){
-				times = 10;
+				times = 11;
 				characterChance = 10;
 				characterChanceSP = 0;
 				CharacterShard = 20;
 				CharacterShardBonus = 10;
-				CharacterResult[10] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
-				GachaResult[10] = '\[保底]夥伴:' +  CharacterResult[10];
-			
-			}else if(GachaTimes == null){
 				
-				return '\【通常招募】通常奇蹟石招募 \
-				\n 出現夥伴一覽： \
-				\n\
-				\n 001起始英雄系列 \
-				\n  義熊\
-				\n  尤克特\
-				\n  克雷特\
-				\n  路卡\
-				\n  露\
-				\n  (五名夥伴獲得機率相同)\
-				\n\
-				\n 提供招募方式：\
-				\n 單抽 5顆奇蹟石(20%出現夥伴，80%獲得1~10個夥伴碎片)\
-				\n\
-				\n 十連加一(十連) 50顆奇蹟石(必定出現一名夥伴，其餘有10%出現夥伴，90%獲得10~30個夥伴碎片)\
-				\n\
-				\n 想要招募的話，請輸入 [招募 1 招募方式] \
-				';
+				var characterST = 1;
+					
+				}else if(GachaTimes == null){
+				
+					return '\【通常招募】通常奇蹟石招募 \
+						\n 出現夥伴一覽： \
+						\n\
+						\n 001起始英雄系列 \
+						\n  義熊\
+						\n  尤克特\
+						\n  克雷特\
+						\n  路卡\
+						\n  露\
+						\n  (五名夥伴獲得機率相同)\
+						\n\
+						\n 提供招募方式：\
+						\n 單抽 5顆奇蹟石(20%出現夥伴，80%獲得1~10個夥伴碎片)\
+						\n\
+						\n 十連加一(十連) 50顆奇蹟石(必定出現一名夥伴，其餘有10%出現夥伴，90%獲得10~30個夥伴碎片)\
+						\n\
+						\n 想要招募的話，請輸入 [招募 1 招募方式] \
+						';
+				
 			  }else{
-				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 [招募 1]';
+				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 [招募 ' + DrawPool + ']';
 				}
 		}else if(DrawPool == 2){
-			let Character = ['劍士-露','長槍手-路卡','路人-克雷特','廚師-義熊','武士-薰','冰法師-艾斯'];
-			CharacterList.length = Character.length;
-			CharacterList = Character;
+			CharacterList = ['劍士-露','長槍手-路卡','路人-克雷特','廚師-義熊','武士-薰','冰法師-艾斯'];
+			CharacterListSP = [];
 
 			if(GachaTimes =='單抽'){
 				times = 1;
 				characterChance = 100;
 				characterChanceSP = 0;
-				CharacterShard = 00;
+				CharacterShard = 0;
 				CharacterShardBonus = 0;
-				
-			
+	
 			}else if(GachaTimes == null){
-				
+			
 				return '\【票券招募】事前登錄卷限定招募 \
-				\n\
-				\n 出現夥伴一覽： \
-				\n  SP1 風之冒險團！系列 \
-				\n  劍士-露\
-				\n  長槍手-路卡\
-				\n  路人-克雷特\
-				\n  廚師-義熊\
-				\n  武士-薰\
-				\n  冰法師-艾斯\
-				\n  (六名夥伴獲得機率相同)\
-				\n\
-				\n 提供招募方式：\
-				\n 單抽 事前登入專用招募卷x1(必定獲得夥伴)\
-				\n\
-				\n 想要招募的話，請輸入 [招募 2 招募方式] \
-				';
+					\n\
+					\n 出現夥伴一覽： \
+					\n  SP1 風之冒險團！系列 \
+					\n  劍士-露\
+					\n  長槍手-路卡\
+					\n  路人-克雷特\
+					\n  廚師-義熊\
+					\n  武士-薰\
+					\n  冰法師-艾斯\
+					\n  (六名夥伴獲得機率相同)\
+					\n\
+					\n 提供招募方式：\
+					\n 單抽 事前登入專用招募卷x1(必定獲得夥伴)\
+					\n\
+					\n 想要招募的話，請輸入 [招募 2 招募方式] \
+					';
+				
 			  }else{
-				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 招募 2';
+				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 [招募 ' + DrawPool + ']';
 				}
 		}else if(DrawPool == 1101211){
-			let Character = ['義熊','尤克特','克雷特','路卡','露'];
-			let CharacterSP = ['劍士-露','長槍手-路卡','路人-克雷特','廚師-義熊','武士-薰','冰法師-艾斯'];
-			CharacterList.length = Character.length;
-			CharacterList = Character;
+			CharacterList = ['義熊','尤克特','克雷特','路卡','露'];
+			CharacterListSP = ['劍士-露','長槍手-路卡','路人-克雷特','廚師-義熊','武士-薰','冰法師-艾斯'];
 
 			if(GachaTimes =='單抽'){
 				times = 1;
 				characterChance = 20;
 				characterChanceSP = 10;
-				CharacterShard = 00;
+				CharacterShard = 10;
 				CharacterShardBonus = 0;
 				
 			
@@ -749,18 +746,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				CharacterShardBonus = 10;
 				
 				var characterST = 1;
-				
-				for(var i = 0;i < characterST; i++){
-					let temp = dice(100);
-					if(temp <= characterChanceSP) CharacterResult[10] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
-				GachaResult[10] = '\[保底]夥伴:' +  CharacterResult[10];
-				}
 
-				
-				
-				CharacterResult[10] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
-				GachaResult[10] = '\[保底]夥伴:' +  CharacterResult[10];
-			
 			}else if(GachaTimes == null){
 				
 				return '\【測試招募】GM系統測試用招募 \
@@ -797,26 +783,41 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		///
 		
 		///抽獎
-		for(var i=0; i<times;i++){
-			let temp = Dice(100);
+		let temp = 0;
+				
+		for(var i = 0;i < characterST; i++){
+			temp = dice(100);
+			if(temp <= characterChanceSP) CharacterResult[times-characterST+i] = CharacterListSP[Math.floor((Math.random() * (CharacterListSP.length)) + 0)];
+			GachaResult[times-characterST+i] = '\[保底]限定夥伴:' +  CharacterResult[times-characterST+i];
+			else CharacterResult[times-characterST+i] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
+			GachaResult[times-characterST+i] = '\[保底]夥伴:' +  CharacterResult[times-characterST+i];
+		}//保底腳色處理
+				
+		for(var i=0; i<times-characterST;i++){
+			temp = dice(100);
+
 			let Shard = Dice(CharacterShard)+CharacterShardBonus;
 			if (temp > characterChance){
 				characterShardResult = characterShardResult + Shard;
 				GachaResult[i] = '\夥伴碎片X' +  Shard + '片\n';
-			}
+			}//是否抽到夥伴
 			if (temp <= characterChance) {
-				CharacterResult[i] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
-				GachaResult[i] = '\夥伴:' +  CharacterResult[i] + '\n';
-			}
-		}
+					
+				temp = Dice(100);
+				if(temp <= characterChanceSP) CharacterResult[i] = CharacterListSP[Math.floor((Math.random() * (CharacterListSP.length)) + 0)];
+				GachaResult[i] = '\限定夥伴:' +  CharacterResult[times-characterST+i];
+				else CharacterResult[i] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
+				GachaResult[i] = '\夥伴:' +  CharacterResult[i];
+			}//確定夥伴
+		}//通常腳色處理	
 		
 		///
 		
 		///判定重複腳色換成100角色碎片
 		for(var i = 0;i<11;i++){
 			for(var j = i+1;j<11;j++){
-				if(CharacterResult[i]!= null && CharacterResult[i] == CharacterResult[j] && CharacterResult[j] != null){
-					CharacterResult[j] = null;
+				if(CharacterResult[i]!= undefined && CharacterResult[i] == CharacterResult[j] && CharacterResult[j] != undefined){
+					CharacterResult[j] = undefined;
 					characterShardResult = characterShardResult +100;
 				}
 			   }
@@ -830,7 +831,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		GResult = GResult + '\n--------------------\n總計獲得夥伴:';
 		
 		for(var i = 0;i<11;i++){
-			if(CharacterResult[i] != null) GResult = GResult + CharacterResult[i] + ',' ;
+			if(CharacterResult[i] != undefined) GResult = GResult + CharacterResult[i] + ',' ;
 		}
 		
 		GResult = GResult +    '\n總計獲得夥伴碎片(連同重複夥伴):' + characterShardResult + '片';
