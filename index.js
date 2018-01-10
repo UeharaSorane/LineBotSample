@@ -801,10 +801,10 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			
 		}
 		
-		return CharacterListSP[dice(3)];
+		return CharacterListSP[Dice(3)];
 		
 		for(var i = 0;i < characterST; i++){
-			temp = dice(100);
+			temp = Dice(100);
 			if(temp <= characterChanceSP){
 				CharacterResult[times-characterST+i] = CharacterListSP[Math.floor((Math.random() * (CharacterListSP.length)) + 0)];
 				GachaResult[times-characterST+i] = '\[保底]限定夥伴:' +  CharacterResult[times-characterST+i]+ '\n';
@@ -816,7 +816,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		
 				
 		for(var i=0; i<times-characterST;i++){
-			temp = dice(100);
+			temp = Dice(100);
 
 			let Shard = Dice(CharacterShard)+CharacterShardBonus;
 			if (temp > characterChance){
