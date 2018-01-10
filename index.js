@@ -857,7 +857,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		GResult = GResult + '\n總計獲得夥伴碎片(連同重複夥伴):' + characterShardResult + '片';
 		
 		
-		return '...';
+		return '\...';
 	}
 ////////////////
 
