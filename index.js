@@ -603,13 +603,14 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 	function gacha(DrawPool,GachaTimes) {
 		
 		///基本變數
-		let GachaResult = ['\n','\n','\n','\n','\n','\n','\n','\n','\n','\n','\n'];
-		let CharacterResult = [];
-		var characterShardResult = 0;
-		let CharacterList = [null,null,null,null,null,null,null,null,null,null,null];
+		let GachaResult = [];//抽獎結果
+		let CharacterResult = [];//總計獲得同伴
+		var characterShardResult = 0;//總計獲得同伴碎片
+		let CharacterList = [];//腳色清單
  
 		var times = 0;//抽獎次數
 		var characterChance = 0;//夥伴獲得率
+		var characterChanceSP = 0;//限定夥伴獲得率
 		var CharacterShard = 0;//夥伴碎片獲得數量
 		var CharacterShardBonus = 0;//夥伴碎片保底數量
 		///
@@ -623,6 +624,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			if(GachaTimes =='單抽'){
 				times = 1;
 				characterChance = 100;
+				characterChanceSP = 0;
 				CharacterShard = 0;
 				CharacterShardBonus = 0;
 			}else if(GachaTimes == null){
@@ -653,13 +655,15 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			if(GachaTimes =='單抽'){
 				times = 1;
 				characterChance = 20;
+				characterChanceSP = 0;
 				CharacterShard = 10;
 				CharacterShardBonus = 0;
 				
 				
 			}else if(GachaTimes =='十連加一'||GachaTimes =='十連'){
 				times = 10;
-				characterChance = 20;
+				characterChance = 10;
+				characterChanceSP = 0;
 				CharacterShard = 20;
 				CharacterShardBonus = 10;
 				CharacterResult[10] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
@@ -696,6 +700,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			if(GachaTimes =='單抽'){
 				times = 1;
 				characterChance = 100;
+				characterChanceSP = 0;
 				CharacterShard = 00;
 				CharacterShardBonus = 0;
 				
@@ -721,6 +726,47 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				';
 			  }else{
 				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 招募 2';
+				}
+		}else if(DrawPool == 1101211){
+			let Character = ['義熊','尤克特','克雷特','路卡','露'];
+			let CharacterSP = ['劍士-露','長槍手-路卡','路人-克雷特','廚師-義熊','武士-薰','冰法師-艾斯'];
+			CharacterList.length = Character.length;
+			CharacterList = Character;
+
+			if(GachaTimes =='單抽'){
+				times = 1;
+				characterChance = 20;
+				characterChanceSP = 10;
+				CharacterShard = 00;
+				CharacterShardBonus = 0;
+				
+			
+			}else if(GachaTimes =='十連加一'||GachaTimes =='十連'){
+				times = 10;
+				characterChance = 10;
+				characterChanceSP = 10;
+				CharacterShard = 20;
+				CharacterShardBonus = 10;
+				
+				var characterST = 1;
+				
+				for(var i = 0;i < characterST; i++){
+					let temp = dice(100);
+					if(temp <= characterChanceSP) CharacterResult[10] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
+				GachaResult[10] = '\[保底]夥伴:' +  CharacterResult[10];
+				}
+
+				
+				
+				CharacterResult[10] = CharacterList[Math.floor((Math.random() * (CharacterList.length)) + 0)];
+				GachaResult[10] = '\[保底]夥伴:' +  CharacterResult[10];
+			
+			}else if(GachaTimes == null){
+				
+				return '\【測試招募】GM系統測試用招募 \
+				';
+			  }else{
+				return '\本招募無法使用' + GachaTimes +'招募喔';
 				}
 		}else if(DrawPool == null){
 			
