@@ -801,7 +801,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			
 		}
 		
-		return CharacterListSP[dice(CharacterListSP.length)];
+		return CharacterListSP[dice(3)];
 		
 		for(var i = 0;i < characterST; i++){
 			temp = dice(100);
