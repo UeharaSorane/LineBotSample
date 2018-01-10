@@ -614,6 +614,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		var characterChanceSP = 0;//限定夥伴獲得率
 		var CharacterShard = 0;//夥伴碎片獲得數量
 		var CharacterShardBonus = 0;//夥伴碎片保底數量
+		var characterST = 0;//確認保底夥伴數量
 		///
 		
 		///確定抽獎狀態
@@ -670,7 +671,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				CharacterShard = 20;
 				CharacterShardBonus = 10;
 				
-				var characterST = 1;
+				characterST = 1;
 					
 				}else if(GachaTimes == null){
 				
@@ -752,8 +753,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				characterChanceSP = 50;
 				CharacterShard = 20;
 				CharacterShardBonus = 10;
-				
-				var characterST = 1;
+				characterST = 1;
 
 			}else if(GachaTimes == null){
 				
@@ -795,7 +795,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		GachaResult.length = times;
 		for(var i = 0; i< times;i++){
 			
-			GachaResult[i] = null;
+			GachaResult[i] = '\n';
 			
 		}
 				
