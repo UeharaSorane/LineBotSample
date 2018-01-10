@@ -736,7 +736,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		}else if(DrawPool == 1101211){
 			CharacterList.length = 5;
 			CharacterList = ['義熊','尤克特','克雷特','路卡','露'];
-			CharacterList.length = 6;
+			CharacterListSP.length = 6;
 			CharacterListSP = ['劍士-露','長槍手-路卡','路人-克雷特','廚師-義熊','武士-薰','冰法師-艾斯'];
 
 			if(GachaTimes =='單抽'){
