@@ -792,16 +792,16 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		
 		///抽獎
 		
-		return times;
-		
 		let temp = 0;
 		GachaResult.length = times;
+		
+		return GachaResult.length;
+		
 		for(var i = 0; i< times;i++){
 			
 			GachaResult[i] = '\n';
 			
 		}
-				
 		for(var i = 0;i < characterST; i++){
 			temp = dice(100);
 			if(temp <= characterChanceSP){
