@@ -792,6 +792,12 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		
 		///抽獎
 		let temp = 0;
+		GachaResult.length = times;
+		for(var i = 0; i< times;i++){
+			
+			GachaResult[i] = null;
+			
+		}
 				
 		for(var i = 0;i < characterST; i++){
 			temp = dice(100);
@@ -830,8 +836,8 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		///判定重複腳色換成100角色碎片
 		for(var i = 0;i<11;i++){
 			for(var j = i+1;j<11;j++){
-				if(CharacterResult[i]!= undefined && CharacterResult[i] == CharacterResult[j] && CharacterResult[j] != undefined){
-					CharacterResult[j] = undefined;
+				if(CharacterResult[i]!= null && CharacterResult[i] == CharacterResult[j] && CharacterResult[j] != null){
+					CharacterResult[j] = null;
 					characterShardResult = characterShardResult +100;
 				}
 			   }
@@ -845,10 +851,10 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		GResult = GResult + '\n--------------------\n總計獲得夥伴:';
 		
 		for(var i = 0;i<11;i++){
-			if(CharacterResult[i] != undefined ) GResult = GResult + CharacterResult[i] + ',' ;
+			if(CharacterResult[i] != null ) GResult = GResult + CharacterResult[i] + ',' ;
 		}
 		
-		GResult = GResult +    '\n總計獲得夥伴碎片(連同重複夥伴):' + characterShardResult + '片';
+		GResult = GResult + '\n總計獲得夥伴碎片(連同重複夥伴):' + characterShardResult + '片';
 		
 		
 		return GResult;
