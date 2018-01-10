@@ -801,8 +801,6 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			
 		}
 		
-		return CharacterListSP[Dice(3)-1];
-		
 		for(var i = 0;i < characterST; i++){
 			temp = Dice(100);
 			if(temp <= characterChanceSP){
@@ -860,6 +858,10 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		}
 		
 		GResult = GResult + '\n總計獲得夥伴碎片(連同重複夥伴):' + characterShardResult + '片';
+		
+		return GResult;
+		
+		
 		
 	}
 ////////////////
