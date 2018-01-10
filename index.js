@@ -791,6 +791,9 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		///
 		
 		///抽獎
+		
+		return times;
+		
 		let temp = 0;
 		GachaResult.length = times;
 		for(var i = 0; i< times;i++){
