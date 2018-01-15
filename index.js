@@ -651,7 +651,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			  }else{
 				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 [招募 ' + DrawPool + ']';
 				}
-		}else if(DrawPool == 1){
+		}/*else if(DrawPool == 1){
 			CharacterList.length = 5;
 			CharacterList = ['義熊','尤克特','克雷特','路卡','露'];
 			CharacterListSP.length = 0;
@@ -733,7 +733,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			  }else{
 				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 [招募 ' + DrawPool + ']';
 				}
-		}else if(DrawPool == 1101211){
+		}*/else if(DrawPool == 1101211){
 			CharacterList.length = 5;
 			CharacterList = ['義熊','尤克特','克雷特','路卡','露'];
 			CharacterListSP.length = 6;
@@ -757,7 +757,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 
 			}else if(GachaTimes == null){
 				
-				return '\【測試招募】GM系統測試用招募 \
+				return '\【測試招募】GM系統測試專用招募 \
 				';
 			  }else{
 				return '\本招募無法使用' + GachaTimes +'招募喔';
@@ -767,8 +767,6 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			return '\【招募目錄】目前的招募一覽表 \
 				\n\
 				\n  0 【新手招募(首抽)】 \
-				\n  1 【通常奇蹟石招募】 \
-				\n  2 【票券招募-「事前登錄卷限定招募」】 \
 				\n\
 				\n 如果想看詳細招募內容，請輸入 [招募 招募編號] \
 				';
@@ -780,8 +778,6 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n【招募目錄】目前的招募一覽表 \
 				\n\
 				\n  0 【新手招募(首抽)】 \
-				\n  1 【通常奇蹟石招募】 \
-				\n  2 【票券招募-「事前登錄卷限定招募」】 \
 				\n\
 				\n 如果想看詳細招募內容，請輸入 [招募 招募編號] \
 				';
@@ -875,12 +871,13 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		///確定公告狀態
 		if(InformationN == 0){
 			
-				return '\【重要】 先行測試一 刪擋封測中 \
+				return '\【重要】先行測試1即將於 2018/1/15 23:59分結束 \
 				\n\
 				\n感謝各位參加 Line文遊-梅里歐斯的冒現者 的先行測試 \
 				\n還沒完成教學的測試玩家請盡速找GM進行教學\
 				\n已經完成的玩家將暫時可以使用全部的遊戲物品\
 				\n詳細內容請至[重要文件區->遊戲圖鑑]進行確認\
+				\n先行測試1即將於 2018/1/15 23:59分結束\
 				\n\
 				\n        GM團祝各位遊玩愉快\
 				';
@@ -903,47 +900,6 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				';
 			
 		}else if(InformationN == 2){
-			
-			return '\【通常招募】通常奇蹟石招募 \
-				\n 出現夥伴一覽： \
-				\n\
-				\n 001起始英雄系列 \
-				\n  義熊\
-				\n  尤克特\
-				\n  克雷特\
-				\n  路卡\
-				\n  露\
-				\n  (五名夥伴獲得機率相同)\
-				\n\
-				\n 提供招募方式：\
-				\n 單抽 5顆奇蹟石(20%出現夥伴，80%獲得1~10個夥伴碎片)\
-				\n\
-				\n 十連加一(十連) 50顆奇蹟石(必定出現一名夥伴，其餘有10%出現夥伴，90%獲得10~30個夥伴碎片)\
-				\n\
-				\n 想要招募的話，請輸入 [招募 1 招募方式] \
-				';
-			
-		}else if(InformationN == 3){
-			
-			return '\【票券招募】事前登錄卷限定招募 \
-				\n\
-				\n 出現夥伴一覽： \
-				\n  SP1 風之冒險團！系列 \
-				\n  劍士-露\
-				\n  長槍手-路卡\
-				\n  路人-克雷特\
-				\n  廚師-義熊\
-				\n  武士-薰\
-				\n  冰法師-艾斯\
-				\n  (六名夥伴獲得機率相同)\
-				\n\
-				\n 提供招募方式：\
-				\n 單抽 事前登入專用招募卷x1(必定獲得夥伴)\
-				\n\
-				\n 想要招募的話，請輸入 [招募 2 招募方式] \
-				';
-			
-		}else if(InformationN == 4){
 			
 			return '\【進度】 目前更新紀錄 \
 				\n2018/1/9:\
@@ -973,33 +929,46 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n 2017/12/30 之前的紀錄請至文章區->更新紀錄確認\
 				';
 			
-		}else if(InformationN == 5){
+		}else if(InformationN == 3){
 			
 			return '\【重要】 請加空音好友以取得最新消息 \
 				\n\
 				\n 建議各位玩家加入空音為朋友 以便快速獲得情報及取得協助，感謝配合\
 				';
 			
-		}else if(InformationN == 6){
+		}else if(InformationN == 4){
 			
-			return '【重要】新手教學獎勵追加 \
+			return '【重要】先行測試一結束日通知及先行測試二通知 \
 				\n\
-				\n 未來只要完成「新手教學」全部流程的玩家，將可獲得 火球、治癒、斬擊 三本技能書中尚未獲得的技能書\
-				\n 已經完成的玩家將自動追加技能書，請至玩家存檔確認\
-				\n        GM團祝各位遊玩愉快\
+				\n 感謝各位參加 Line文遊-梅里歐斯的冒現者 的先行測試\
+				\n 目前在獲得大量意見下，工作團隊獲得了充分的情報\
+				\n 同時順利進行修正，但是這樣還是遠遠不夠的\
+				\n 我們將進行第二次的先行測試，並招募更多測試人員\
+				\n\
+				\n 為了感謝各位在先行測試一的協助，我們將在正式開始時給予特別獎勵\
+				\n\
+				\n 每名在先行測試一中完成新手教學的玩家，將獲得「事前登入限定招募券」1張\
+				\n 讚正式開始後，將能用這張招募券進行限定招募，敬請期待\
+				\n 日程:\
+				\n 先行測試一的結束時間: 2018/1/15 23:59\
+				\n 先行測試二的開始時間: 2018/1/17 00:00\
+				\n\
+				\n 在先行測試一結束後尚未完成新手教學的玩家將無法獲得「事前登入限定招募券」\
+				\n 請尚未完成的玩家盡速找GM進行\
+				\n 先行測試一結束後，玩家不會被趕出群組，如果想參加先行測試二的玩家可以留下來\
+				\n 先行測試二開始時不會清除玩家存檔，如果需要重置的玩家請找GM處裡\
+				\n\
+				\n        GM團感謝各位的配合\
 				';
 			
 		}else if(InformationN == null){
 			
 			return '\【公告目錄】目前遊戲中的公告一覽表 \
-				\n\
-				\n  6 【重要】 新手教學獎勵追加\
-				\n  0 【重要】 先行測試一 刪擋封測中\
+				\n  0 【重要】 先行測試1即將於 2018/1/15 23:59分結束 \
 				\n  1 【招募】 新手招募(首抽)\
-				\n  2 【招募】 通常奇蹟石招募\
-				\n  3 【招募】 票券招募-「事前登錄卷限定招募」 \
-				\n  4 【進度】 目前更新紀錄 \
-				\n  5 【重要】 請加空音好友以取得最新消息\
+				\n  2 【進度】 目前更新紀錄 \
+				\n  3 【重要】 請加空音好友以取得最新消息 \
+				\n  4 【重要】 先行測試一結束日通知及先行測試二通知  \
 				\n\
 				\n 如果想看詳細公告內容，請輸入 [公告 公告編號] \
 				';
@@ -1010,13 +979,11 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n\
 				\n【公告目錄】目前遊戲中的公告一覽表 \
 				\n\
-				\n  6 【重要】 新手教學獎勵追加\
-				\n  0 【重要】 先行測試一 刪擋封測中\
+				\n  0 【重要】 先行測試1即將於 2018/1/15 23:59分結束 \
 				\n  1 【招募】 新手招募(首抽)\
-				\n  2 【招募】 通常奇蹟石招募\
-				\n  3 【招募】 票券招募-「事前登錄卷限定招募」 \
-				\n  4 【進度】 目前更新紀錄 \
-				\n  5 【重要】 請加空音好友以取得最新消息\
+				\n  2 【進度】 目前更新紀錄 \
+				\n  3 【重要】 請加空音好友以取得最新消息 \
+				\n  4 【重要】 先行測試一結束日通知及先行測試二通知  \
 				\n\
 				\n 如果想看詳細公告內容，請輸入 [公告 公告編號] \
 				';
