@@ -651,7 +651,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			  }else{
 				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 [招募 ' + DrawPool + ']';
 				}
-		}/*else if(DrawPool == 1){
+		}else if(DrawPool == 1){
 			CharacterList.length = 5;
 			CharacterList = ['義熊','尤克特','克雷特','路卡','露'];
 			CharacterListSP.length = 0;
@@ -676,15 +676,10 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				}else if(GachaTimes == null){
 				
 					return '\【通常招募】通常奇蹟石招募 \
-						\n 出現夥伴一覽： \
+						\n 出現夥伴系列一覽： \
 						\n\
 						\n 001起始英雄系列 \
-						\n  義熊\
-						\n  尤克特\
-						\n  克雷特\
-						\n  路卡\
-						\n  露\
-						\n  (五名夥伴獲得機率相同)\
+						\n  (全部夥伴獲得機率相同)\
 						\n\
 						\n 提供招募方式：\
 						\n 單抽 5顆奇蹟石(20%出現夥伴，80%獲得1~10個夥伴碎片)\
@@ -697,7 +692,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			  }else{
 				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 [招募 ' + DrawPool + ']';
 				}
-		}else if(DrawPool == 2){
+		}/*else if(DrawPool == 2){
 			CharacterList.length = 6;
 			CharacterList = ['劍士-露','長槍手-路卡','路人-克雷特','廚師-義熊','武士-薰','冰法師-艾斯'];
 			CharacterListSP.length = 0;
@@ -767,6 +762,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			return '\【招募目錄】目前的招募一覽表 \
 				\n\
 				\n  0 【新手招募(首抽)】 \
+				\n  1 【通常奇蹟石招募】 \
 				\n\
 				\n 如果想看詳細招募內容，請輸入 [招募 招募編號] \
 				';
@@ -778,6 +774,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n【招募目錄】目前的招募一覽表 \
 				\n\
 				\n  0 【新手招募(首抽)】 \
+				\n  1 【通常奇蹟石招募】 \
 				\n\
 				\n 如果想看詳細招募內容，請輸入 [招募 招募編號] \
 				';
@@ -878,7 +875,6 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n 儘管目前只是公開測試，但仍開放了許多功能\
 				\n 目前開放使用的功能:\
 				\n 1.新手教學\
-				\n 2.新手招募\
 				\n 3.單人公式對戰(可獲得寶箱)\
 				\n先行測試二的開始時間為: 2018/1/28 00:00\
 				\n先行測試二招募文發布時間為: 2018/1/28 12:00\
