@@ -128,7 +128,7 @@ function parseInput(rplyToken, inputStr) {
 	if (trigger.match(/^help$|^幫助$/)!= null ) return Help();//幫助頁面
 	if (trigger.match(/^教學$|^新手教學$/)!= null ) return tutorial(mainMsg[1]);//幫助頁面
 	if (trigger.match(/^招募$/) != null) return gacha(mainMsg[1],mainMsg[2]);	//角色招募指令
-	if (trigger.match(/^主線$/) != null) return MainStory(mainMsg[1],mainMsg[2]);	//遊戲主線指令
+	//if (trigger.match(/^主線$/) != null) return MainStory(mainMsg[1],mainMsg[2]);	//遊戲主線指令
 	
 	////////////////////////////娛樂相關
         if (trigger.match(/空音/) != null) return randomReply() ;//空音閒談指令
@@ -1661,8 +1661,8 @@ function tarotCardReply(count) {
 \n--Bot重要功能--\
 \n輸入 招募，就能確認當前的招募目錄\
 \n輸入 公告，就能確認當前的公告目錄\
-\n輸入 活動，就能確認當前的公告目錄\
-\n輸入 主線，就能確認目前開放的主線任務\
+\n輸入 活動，就能確認當前的活動目錄\
+\n輸入 主線，就能確認目前開放的主線任務(暫不開放)\
 \n輸入 寶箱/開寶箱，就能確認你剛獲得的寶箱內容喔\
 \n輸入 祈願，就能進行每日祈願\
 \n--Bot娛樂功能--\
