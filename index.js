@@ -127,6 +127,8 @@ function parseInput(rplyToken, inputStr) {
 	if (trigger.match(/^祈願$/) != null) return LoginBonus() ;//每日登入指令
 	if (trigger.match(/^help$|^幫助$/)!= null ) return Help();//幫助頁面
 	if (trigger.match(/^教學$|^新手教學$/)!= null ) return tutorial(mainMsg[1]);//幫助頁面
+	if (trigger.match(/^重要資訊處$/)!= null ) return ImportantInformation();//重要資訊處
+	if (trigger.match(/^遊戲存檔$/)!= null ) return GameSave();//遊戲存檔
 	if (trigger.match(/^招募$/) != null) return gacha(mainMsg[1],mainMsg[2]);	//角色招募指令
 	//if (trigger.match(/^主線$/) != null) return MainStory(mainMsg[1],mainMsg[2]);	//遊戲主線指令
 	
@@ -1184,7 +1186,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n 想看現行公告的話，輸入[公告]看看\
 				\n 如果想了解所有指令，輸入[Help]或[幫助]看看\
 				\n 想看現行活動的話，輸入[活動]看看\
-				\n 想看主線任務的話，輸入[主線]看看\
+				\n 想看主線任務的話，輸入[主線]看看(公廁期間不開放)\
 				\n 以上\
 				\n 祝旅行愉快\
 				';
@@ -1385,12 +1387,10 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		///確定公告狀態
 		if(EventN == 0){
 			
-				return '\【重要】 先行測試一 刪擋封測中 \
+				return '\【重要】 先行測試二 不刪擋公測中 \
 				\n\
 				\n感謝各位參加 Line文遊-梅里歐斯的冒現者 的先行測試 \
 				\n還沒完成教學的測試玩家請盡速找GM進行教學\
-				\n已經完成的玩家將暫時可以使用全部的遊戲物品\
-				\n詳細內容請至[重要文件區->遊戲圖鑑]進行確認\
 				\n\
 				\n        GM團祝各位遊玩愉快\
 				';
@@ -1399,7 +1399,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			
 			return '\【活動目錄】目前開催中的活動一覽表 \
 				\n\
-				\n  0 【重要】 先行測試一 刪擋封測中\
+				\n  0 【重要】 先行測試二 不刪擋公測中\
 				\n\
 				\n 如果想看詳細活動內容，請輸入 [活動 活動編號] \
 				';
@@ -1641,34 +1641,89 @@ function tarotCardReply(count) {
 
 }
   
+//////////////// 系統幫助
+function Help() {
+	return randomReply() + '\n' + '\
+	【梅里歐斯的冒險者專用BOT】v1.00 \
+	\n --傷害骰(a XdY+b)--\
+	\n 如果輸入2d6+1　攻撃！\
+	\n 就會輸出）2d6+1：攻撃  9[6+3]+1 = 10\
+	\n 如上面一樣,在骰子數字後方隔空白位打字,可以進行發言。\
+	\n 以下還有其他例子\
+	\n 5 3D6 	：分別骰出5次3d6\
+	\n 5B10：不加總的擲骰 會進行小至大排序 \
+	\n 5B10 9：如上,另外計算其中有多少粒大過9 \
+	\n 5U10 8：進行5D10 每骰出一粒8會有一粒獎勵骰 \
+	\n 5U10 8 9：如上,另外計算其中有多少粒大過9 \
+	\n--機率骰(ccb)--\
+	\n CCb （目標値）：做出成功或失敗的判定\
+	\n例）CCb 30　CCb 80\
+	\n--Bot重要功能--\
+	\n輸入 招募，就能確認當前的招募目錄\
+	\n輸入 公告，就能確認當前的公告目錄\
+	\n輸入 活動，就能確認當前的活動目錄\
+	\n輸入 主線，就能確認目前開放的主線任務(暫不開放)\
+	\n輸入 寶箱/開寶箱，就能確認你剛獲得的寶箱內容喔\
+	\n輸入 祈願，就能進行每日祈願\
+	\n輸入 重要資訊處，就能確認重要資訊\
+	\n輸入 遊戲存檔，就能確認遊戲存檔\
+	\n--Bot娛樂功能--\
+	\n 占卜運氣功能 字句中包括運氣即可\
+	\n 塔羅牌占卜 塔羅/大十字塔羅/每日塔羅牌/時間tarot 等關键字可啓動\
+	\n 死亡FLAG：句子裡出現 Flag/flag 就能讓你輕鬆插旗\
+	\n 如果呼叫空音的名子...好像會有事情發生？\
+	';		
+}
 
-		function Help() {
-			return randomReply() + '\n' + '\
-【梅里歐斯的冒險者專用BOT】v1.00 \
-\n --傷害骰(a XdY+b)--\
-\n 如果輸入2d6+1　攻撃！\
-\n 就會輸出）2d6+1：攻撃  9[6+3]+1 = 10\
-\n 如上面一樣,在骰子數字後方隔空白位打字,可以進行發言。\
-\n 以下還有其他例子\
-\n 5 3D6 	：分別骰出5次3d6\
-\n 5B10：不加總的擲骰 會進行小至大排序 \
-\n 5B10 9：如上,另外計算其中有多少粒大過9 \
-\n 5U10 8：進行5D10 每骰出一粒8會有一粒獎勵骰 \
-\n 5U10 8 9：如上,另外計算其中有多少粒大過9 \
-\n--機率骰(ccb)--\
-\n CCb （目標値）：做出成功或失敗的判定\
-\n例）CCb 30　CCb 80\
-\n--Bot重要功能--\
-\n輸入 招募，就能確認當前的招募目錄\
-\n輸入 公告，就能確認當前的公告目錄\
-\n輸入 活動，就能確認當前的活動目錄\
-\n輸入 主線，就能確認目前開放的主線任務(暫不開放)\
-\n輸入 寶箱/開寶箱，就能確認你剛獲得的寶箱內容喔\
-\n輸入 祈願，就能進行每日祈願\
-\n--Bot娛樂功能--\
-\n 占卜運氣功能 字句中包括運氣即可\
-\n 塔羅牌占卜 塔羅/大十字塔羅/每日塔羅牌/時間tarot 等關键字可啓動\
-\n 死亡FLAG：句子裡出現 Flag/flag 就能讓你輕鬆插旗\
-\n 如果呼叫空音的名子...好像會有事情發生？\
-';		
-		}
+//////////////// 
+
+
+//////////////// 重要資訊處
+function ImportantInformation() {
+	return 
+	'\【重要資訊處】\
+	\n 這裡是讓玩家迅速連結到許多重要文件的地方\
+	\n\
+	\n 開始冒險吧！角色創造教學:\
+	\n https://docs.google.com/document/d/1zSe_SLiGM07VhmC8m3vzy8RBu-gXV3wUK7wBhcdxhY8/edit?usp=drivesdk\
+	\n\
+	\n 遊戲規範及使用說明書:\
+	\n https://docs.google.com/document/d/1J1cqWi7zhqalflyLZR-Ns2WRq0XMZ2t1mHS4xjh_gPE/edit?usp=drivesdk\
+	\n\
+	\n 遊戲圖鑑:\
+	\n https://docs.google.com/spreadsheets/d/1YDM6zyP1Ht536HC-gg8mv54Yxe8Gdhdm-2SkTOdahas/edit?usp=drivesdk\
+	\n\
+	\n 異常狀態一覽表:\
+	\n https://docs.google.com/document/d/1d01JETNej2X806eHojfkQCU-GmQ7IDztxgKVSLXVVI4/edit?usp=drivesdk\
+	\n\
+	\n 寶箱狩獵！對戰獎勵說明:\
+	\n https://docs.google.com/document/d/1t9lGvqW5dZvgK54RZZ66xRfVQABvI0MYkSoe70mTtIk/edit?usp=sharing\
+	\n\
+	\n 特殊商店-夥伴商城:\
+	\n https://docs.google.com/document/d/1pR0_PBwf-k6WtNJnpvIZBgrjKvMoTpHu1SH3PsuUYXk/edit?usp=sharing\
+	\n\
+	\n 以上內容皆能在 文章區確認\
+	';		
+}
+
+//////////////// 
+
+
+//////////////// 遊戲存檔
+function GameSave() {
+	return 
+	'\【遊戲存檔專區】\
+	\n 這裡是確認玩家遊戲紀錄及公會資料的地方\
+	\n\
+	\n 玩家存檔1區:\
+	\n https://docs.google.com/spreadsheets/d/1KNAHWzYI3CpfA4o9Cw88xxFeNkWMfgYVFmIM_nF2Afg/edit?usp=drivesdk\
+	\n\
+	\n 公會一覽表1區:\
+	\n https://docs.google.com/document/d/1J1cqWi7zhqalflyLZR-Ns2WRq0XMZ2t1mHS4xjh_gPE/edit?usp=drivesdk\
+
+	\n 以上內容皆能在 文章區確認\
+	';		
+}
+
+//////////////// 
+
