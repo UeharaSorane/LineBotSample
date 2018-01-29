@@ -1712,7 +1712,7 @@ function ImportantInformation() {
 //////////////// 遊戲存檔
 function GameSave() {
 	return 
-	'\【遊戲存檔專區】\
+	'\【遊戲存檔】\
 	\n 這裡是確認玩家遊戲紀錄及公會資料的地方\
 	\n\
 	\n 玩家存檔1區:\
@@ -1720,7 +1720,7 @@ function GameSave() {
 	\n\
 	\n 公會一覽表1區:\
 	\n https://docs.google.com/document/d/1J1cqWi7zhqalflyLZR-Ns2WRq0XMZ2t1mHS4xjh_gPE/edit?usp=drivesdk\
-
+	\n\
 	\n 以上內容皆能在 文章區確認\
 	';		
 }
