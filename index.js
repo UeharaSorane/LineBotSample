@@ -1680,9 +1680,26 @@ function Help() {
 
 //////////////// 重要資訊處
 function ImportantInformation() {
-	return 
-	'\【重要資訊處】\
+	return '\【重要資訊處】\
 	\n 這裡是讓玩家迅速連結到許多重要文件的地方\
+	\n 開始冒險吧！角色創造教學:\
+	\n https://docs.google.com/document/d/1zSe_SLiGM07VhmC8m3vzy8RBu-gXV3wUK7wBhcdxhY8/edit?usp=drivesdk\
+	\n\
+	\n 遊戲規範及使用說明書:\
+	\n https://docs.google.com/document/d/1J1cqWi7zhqalflyLZR-Ns2WRq0XMZ2t1mHS4xjh_gPE/edit?usp=drivesdk\
+	\n\
+	\n 遊戲圖鑑:\
+	\n https://docs.google.com/spreadsheets/d/1YDM6zyP1Ht536HC-gg8mv54Yxe8Gdhdm-2SkTOdahas/edit?usp=drivesdk\
+	\n\
+	\n 異常狀態一覽表:\
+	\n https://docs.google.com/document/d/1d01JETNej2X806eHojfkQCU-GmQ7IDztxgKVSLXVVI4/edit?usp=drivesdk\
+	\n\
+	\n 寶箱狩獵！對戰獎勵說明:\
+	\n https://docs.google.com/document/d/1t9lGvqW5dZvgK54RZZ66xRfVQABvI0MYkSoe70mTtIk/edit?usp=sharing\
+	\n\
+	\n 特殊商店-夥伴商城:\
+	\n https://docs.google.com/document/d/1pR0_PBwf-k6WtNJnpvIZBgrjKvMoTpHu1SH3PsuUYXk/edit?usp=sharing\
+	\n\
 	\n\
 	\n 以上內容皆能在 文章區確認\
 	';		
@@ -1693,8 +1710,7 @@ function ImportantInformation() {
 
 //////////////// 遊戲存檔
 function GameSave() {
-	return 
-	'\【遊戲存檔】\
+	return '\【遊戲存檔】\
 	\n 這裡是確認玩家遊戲紀錄及公會資料的地方\
 	\n\
 	\n 玩家存檔1區:\
