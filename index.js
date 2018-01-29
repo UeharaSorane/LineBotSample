@@ -1186,7 +1186,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n 想看現行公告的話，輸入[公告]看看\
 				\n 如果想了解所有指令，輸入[Help]或[幫助]看看\
 				\n 想看現行活動的話，輸入[活動]看看\
-				\n 想看主線任務的話，輸入[主線]看看(公廁期間不開放)\
+				\n 想看主線任務的話，輸入[主線]看看(公測期間不開放)\
 				\n 以上\
 				\n 祝旅行愉快\
 				';
@@ -1714,10 +1714,10 @@ function GameSave() {
 	\n 這裡是確認玩家遊戲紀錄及公會資料的地方\
 	\n\
 	\n 玩家存檔1區:\
-	\n https://docs.google.com/spreadsheets/d/1KNAHWzYI3CpfA4o9Cw88xxFeNkWMfgYVFmIM_nF2Afg/edit?usp=drivesdk\
+	\n https://docs.google.com/spreadsheets/d/1svWEwU2C7_DF80-x6gacD2QDfGsUVCA67t3T1eXPNGQ/edit?usp=drivesdk\
 	\n\
 	\n 公會一覽表1區:\
-	\n https://docs.google.com/document/d/1J1cqWi7zhqalflyLZR-Ns2WRq0XMZ2t1mHS4xjh_gPE/edit?usp=drivesdk\
+	\n https://docs.google.com/spreadsheets/d/1KNAHWzYI3CpfA4o9Cw88xxFeNkWMfgYVFmIM_nF2Afg/edit?usp=drivesdk\
 	\n\
 	\n 以上內容皆能在 文章區確認\
 	';		
