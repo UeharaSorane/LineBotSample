@@ -127,7 +127,7 @@ function parseInput(rplyToken, inputStr) {
 	if (trigger.match(/^祈願$/) != null) return LoginBonus() ;//每日登入指令
 	if (trigger.match(/^help$|^幫助$/)!= null ) return Help();//幫助頁面
 	if (trigger.match(/^教學$|^新手教學$/)!= null ) return tutorial(mainMsg[1]);//幫助頁面
-	if (trigger.match(/^重要資訊處$/)!= null ) return BoxOpen();//重要資訊處
+	if (trigger.match(/^重要資訊處$/)!= null ) return ImportantInformation();//重要資訊處
 	if (trigger.match(/^遊戲存檔$/)!= null ) return GameSave();//遊戲存檔
 	if (trigger.match(/^招募$/) != null) return gacha(mainMsg[1],mainMsg[2]);	//角色招募指令
 	//if (trigger.match(/^主線$/) != null) return MainStory(mainMsg[1],mainMsg[2]);	//遊戲主線指令
