@@ -904,6 +904,13 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		}else if(InformationN == 2){
 			
 			return '\【進度】 目前更新紀錄 \
+				\n2018/1/30:\
+				\n 1.技能變動\
+				\n (1)治癒:回復量變更為1d10+自身最大HPx0.1\
+				\n\
+				\n 2.新手教學變更\
+				\n (1)新人考試官HP:80->60\
+				\n\
 				\n2018/1/9:\
 				\n 1.Bot強化:\
 				\n (1)追加每日祈願功能\
@@ -938,6 +945,14 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n 建議各位玩家加入空音為朋友 以便快速獲得情報及取得協助，感謝配合\
 				';
 			
+		}else if(InformationN == 4){
+			
+			return '\【補償】 治癒技能更動補償 \
+				\n\
+				\n 持有技能「治癒」的全體玩家，將贈予「奇蹟石x1」作為補償\
+				\n 以上補償將在2018/1/31 12:00 開始發放\
+				';
+			
 		}else if(InformationN == null){
 			
 			return '\【公告目錄】目前遊戲中的公告一覽表 \
@@ -945,6 +960,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  1 【招募】 新手招募(首抽)\
 				\n  2 【進度】 目前更新紀錄 \
 				\n  3 【重要】 請加空音好友以取得最新消息 \
+				\n  4 【補償】 治癒技能更動補償(NEW) \
 				\n\
 				\n 如果想看詳細公告內容，請輸入 [公告 公告編號] \
 				';
@@ -959,6 +975,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  1 【招募】 新手招募(首抽)\
 				\n  2 【進度】 目前更新紀錄 \
 				\n  3 【重要】 請加空音好友以取得最新消息 \
+				\n  4 【補償】 治癒技能更動補償(NEW) \
 				\n\
 				\n 如果想看詳細公告內容，請輸入 [公告 公告編號] \
 				';
@@ -1038,7 +1055,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n所需mp:15\
 				\n適性武器:無\
 				\n速度:+0\
-				\n恢復自身隊友一名(或自己)1d10Hp\
+				\n恢復自身隊友一名(或自己)1d10+自身最大HPx0.1\
 				\n\
 				\n  做好覺悟後開始戰鬥吧!\
 				';
@@ -1085,7 +1102,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n所需mp:15\
 				\n適性武器:無\
 				\n速度:+0\
-				\n恢復自身隊友一名(或自己)1d10Hp\
+				\n恢復自身隊友一名(或自己)1d10+自身最大HPx0.1\
 				';
 			
 		}else if(tutorialN == 6){
@@ -1158,7 +1175,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n\
 				\n 現在就和新手考試官進行對戰，體驗夥伴的力量吧！\
 				\n 新人考試官\
-				\nHp:80\
+				\nHp:60\
 				\nMp:30\
 				\nAtk:2\
 				\n裝備武器:木劍\
@@ -1664,7 +1681,7 @@ function Help() {
 	\n輸入 活動，就能確認當前的活動目錄\
 	\n輸入 主線，就能確認目前開放的主線任務(暫不開放)\
 	\n輸入 寶箱/開寶箱，就能確認你剛獲得的寶箱內容喔\
-	\n輸入 祈願，就能進行每日祈願\
+	\n輸入 祈願，就能進行每日祈願(尚未開放)\
 	\n輸入 重要資訊處，就能確認重要資訊\
 	\n輸入 遊戲存檔，就能確認遊戲存檔\
 	\n--Bot娛樂功能--\
