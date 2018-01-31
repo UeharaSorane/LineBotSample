@@ -585,7 +585,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		
 	  if (temp >= 68) return '\恭喜，是普通獎勵。';
 	  if (temp <=67 && temp >= 39) return '\恭喜，是中等獎勵。';
-	  if (temp <=38 && temp >= 16) return '\喔喔！是高等獎勵诶，恭喜！';
+	  if (temp <=38 && temp >= 16) return '\喔喔！是高等獎勵欸，恭喜！';
 	  if (temp <=15) return '\太棒了！！！是頂級獎勵！恭喜！';
 	}
 ////////////////
@@ -904,6 +904,10 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		}else if(InformationN == 2){
 			
 			return '\【進度】 目前更新紀錄 \
+				\n2018/1/31:\
+				\n 1.追加新技能:魔導劍擊,魔導穿槍,魔導狙擊,魔導彈,舉劍,隱藏術,怒吼,咒術筆記\
+				\n\
+				\n Bot強化:修正部分文字問題\
 				\n2018/1/30:\
 				\n 1.技能變動\
 				\n (1)治癒:回復量變更為1d10+自身最大HPx0.1\
@@ -953,6 +957,14 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n 以上補償將在2018/1/31 12:00 開始發放\
 				';
 			
+		}else if(InformationN == 5){
+			
+			return '\【補償】冰獄彈技能描述錯誤補償 \
+				\n\
+				\n 全體持有技能書「冰獄彈」的玩家將贈與「金幣x500」作為補償\
+				\n 以上補償將於 2018/1/31 23:30 開始發放\
+				';
+			
 		}else if(InformationN == null){
 			
 			return '\【公告目錄】目前遊戲中的公告一覽表 \
@@ -961,6 +973,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  2 【進度】 目前更新紀錄 \
 				\n  3 【重要】 請加空音好友以取得最新消息 \
 				\n  4 【補償】 治癒技能更動補償(NEW) \
+				\n  5 【補償】 冰獄彈技能描述錯誤補償(NEW) \
 				\n\
 				\n 如果想看詳細公告內容，請輸入 [公告 公告編號] \
 				';
@@ -976,6 +989,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  2 【進度】 目前更新紀錄 \
 				\n  3 【重要】 請加空音好友以取得最新消息 \
 				\n  4 【補償】 治癒技能更動補償(NEW) \
+				\n  5 【補償】 冰獄彈技能描述錯誤補償(NEW) \
 				\n\
 				\n 如果想看詳細公告內容，請輸入 [公告 公告編號] \
 				';
