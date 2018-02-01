@@ -965,6 +965,15 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n 以上補償將於 2018/1/31 23:30 開始發放\
 				';
 			
+		}else if(InformationN == 6){
+			
+			return '\【補償】毒、猛毒說明缺失及轟炎彈技能描述錯誤補償 \
+				\n\
+				\n 全體玩家將贈予「奇蹟石x2」作為補償\
+				\n 全體持有技能書「轟炎彈」的玩家將贈與「金幣x500」作為補償\
+				\n 以上補償將於 2018/2/2 01:00 開始發放\
+				';
+			
 		}else if(InformationN == null){
 			
 			return '\【公告目錄】目前遊戲中的公告一覽表 \
@@ -974,6 +983,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  3 【重要】 請加空音好友以取得最新消息 \
 				\n  4 【補償】 治癒技能更動補償(NEW) \
 				\n  5 【補償】 冰獄彈技能描述錯誤補償(NEW) \
+				\n  6 【補償】 毒、猛毒說明缺失及轟炎彈技能描述錯誤補償(NEW) \
 				\n\
 				\n 如果想看詳細公告內容，請輸入 [公告 公告編號] \
 				';
@@ -990,6 +1000,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  3 【重要】 請加空音好友以取得最新消息 \
 				\n  4 【補償】 治癒技能更動補償(NEW) \
 				\n  5 【補償】 冰獄彈技能描述錯誤補償(NEW) \
+				\n  6 【補償】 毒、猛毒說明缺失及轟炎彈技能描述錯誤補償(NEW) \
 				\n\
 				\n 如果想看詳細公告內容，請輸入 [公告 公告編號] \
 				';
