@@ -906,7 +906,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  因個人忘記準備情人節要送給大家的巧克力，將贈與全體玩家「奇蹟石x1」作為補償\
 				\n\
 				\n\
-				\n 以上補償將在2018/2/3 22:00 開始發放\
+				\n 以上補償將在2018/2/10 00:00 開始發放\
 				';
 			
 		}else if(InformationN == 3){
