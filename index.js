@@ -918,6 +918,16 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n\
 				';
 			
+		}else if(InformationN == 4){
+			
+			return '\【補償】 資料儲存延遲補償 \
+				\n\
+				\n  因個人因素導致遊戲資料儲存延遲一天，將贈與全體玩家「奇蹟石x5」作為補償\
+				\n\
+				\n\
+				\n 以上補償將在2018/2/11 21:00 開始發放\
+				';
+			
 		}else if(InformationN == null){
 			
 			return '\【公告目錄】目前遊戲中的公告一覽表 \
@@ -926,6 +936,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  1 【更新】 本次更新介紹(NEW)\
 				\n  2 【補償】 眾多補償(NEW)\
 				\n  3 【活動預告】恭喜發財紅包拿來!壓歲錢狩獵!?\
+				\n  4 【補償】 資料儲存延遲補償(NEW)\
 				\n\
 				\n 如果想看詳細公告內容，請輸入 [公告 公告編號] \
 				';
@@ -940,6 +951,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  1 【更新】 本次更新介紹(NEW)\
 				\n  2 【補償】 眾多補償(NEW)\
 				\n  3 【活動預告】恭喜發財紅包拿來!壓歲錢狩獵!?\
+				\n  4 【補償】 資料儲存延遲補償(NEW)\
 				\n\
 				\n 如果想看詳細公告內容，請輸入 [公告 公告編號] \
 				';
