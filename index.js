@@ -928,6 +928,15 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n 以上補償將在2018/2/11 21:00 開始發放\
 				';
 			
+		}else if(InformationN == 5){
+			
+			return '\【一日限定】情人節來了，要拿出什麼東西呢...\
+				\n\
+				\n 開催時間:2/14 00:00~2/14 23:59\
+				\n 說明:GM似乎在辦公室等待某人，究竟是要討論什麼事情呢?\
+				\n\
+				';
+			
 		}else if(InformationN == null){
 			
 			return '\【公告目錄】目前遊戲中的公告一覽表 \
@@ -937,6 +946,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  2 【補償】 眾多補償(NEW)\
 				\n  3 【活動預告】恭喜發財紅包拿來!壓歲錢狩獵!?\
 				\n  4 【補償】 資料儲存延遲補償(NEW)\
+				\n  5 【一日限定】情人節來了，要拿出什麼東西呢...(NEW)\
 				\n\
 				\n 如果想看詳細公告內容，請輸入 [公告 公告編號] \
 				';
@@ -952,6 +962,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n  2 【補償】 眾多補償(NEW)\
 				\n  3 【活動預告】恭喜發財紅包拿來!壓歲錢狩獵!?\
 				\n  4 【補償】 資料儲存延遲補償(NEW)\
+				\n  5 【一日限定】情人節來了，要拿出什麼東西呢...(NEW)\
 				\n\
 				\n 如果想看詳細公告內容，請輸入 [公告 公告編號] \
 				';
@@ -1391,6 +1402,15 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			
 		}else if(EventN == 1){
 			
+				return '\【一日限定】情人節來了，要拿出什麼東西呢... \
+				\n\
+				\n 開催時間:2/14 00:00~2/14 23:59\
+				\n 說明:GM似乎在辦公室等待某人，究竟是要討論什麼事情呢?\
+				\n 活動辦法:請向GM觀賞特別劇情，會有特別獎勵!?\
+				\n\
+				';
+		}else if(EventN == 2){
+			
 				return '\【預告】恭喜發財紅包拿來!壓歲錢狩獵!? \
 				\n\
 				\n 開催時間:2/17 00:00~3/2 23:59\
@@ -1402,7 +1422,8 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			return '\【活動目錄】目前開催中的活動一覽表 \
 				\n\
 				\n  0 【重要】 先行測試二 不刪擋公測中\
-				\n  1 【預告】恭喜發財紅包拿來!壓歲錢狩獵!?\
+				\n  1 【一日限定】情人節來了，要拿出什麼東西呢...\
+				\n  2 【預告】恭喜發財紅包拿來!壓歲錢狩獵!?\
 				\n\
 				\n 如果想看詳細活動內容，請輸入 [活動 活動編號] \
 				';
@@ -1413,8 +1434,9 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n\
 				\n【活動目錄】目前開催中的活動一覽表 \
 				\n\
-				\n  0 【重要】 先行測試一 刪擋封測中\
-				\n  1 【預告】恭喜發財紅包拿來!壓歲錢狩獵!?\
+				\n  0 【重要】 先行測試二 不刪擋公測中\
+				\n  1 【一日限定】情人節來了，要拿出什麼東西呢...\
+				\n  2 【預告】恭喜發財紅包拿來!壓歲錢狩獵!?\
 				\n\
 				\n 如果想看詳細活動內容，請輸入 [活動 活動編號] \
 				';
