@@ -136,6 +136,7 @@ function parseInput(rplyToken, inputStr) {
 	////////////////////////////娛樂相關
         if (trigger.match(/空音/) != null) return randomReply() ;//空音閒談指令
 	if (trigger.match(/空空/) != null) return randomReplyShin() ;//空音閒談指令(裏)
+	if (trigger.match(/^賀歲抽籤$/) != null) return randomReplyNewYear() ;//賀歲抽籤
 	if (trigger.match(/運氣|運勢/) != null) return randomLuck(mainMsg) ; //占卜運氣        
         if (trigger.match(/flag/) != null) return BStyleFlagSCRIPTS() ;//插旗用指令
 	//塔羅牌
@@ -580,6 +581,26 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
         }
 ////////////////
 
+//////////////// 賀歲抽籤
+        function randomReplyNewYear() {
+        	let rplyArr = [
+		  
+		 	'\押金x1.5倍!!!', 
+		 	'\押金x2倍!!!', 
+		  	'\押金x2.5倍!!!', 
+		  	'\押金x3倍!!!',
+		  	'\我累了，你們慢慢打',
+		  	'\GM今天心情好，這場直接給你們100壓歲錢',
+		  	'\我不當抽籤Bot了!JOJO!!!!!',
+		  	'\押金+10',
+		  	'\押金+50',
+		  	'\押金+100',
+		  	'\莉莉艾好可愛喔莉莉艾'];
+        	return rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
+        }
+////////////////
+
+
 //////////////// 寶箱狩獵
 	function BoxOpen() {
 	  let temp = Dice(100);
@@ -677,7 +698,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				characterST = 0;
 
 			}else if(GachaTimes =='十連加三'||GachaTimes =='十連'){
-				times = 12;
+				times = 13;
 				characterChance = 10;
 				characterChanceSP = 20;
 				CharacterShard = 25;
@@ -688,6 +709,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				
 				return '\【限定招募】新春賀歲的風之冒險團期間限定招募 \
 					\n 趁現在入手新春限定夥伴吧!!!\
+					\n 開催時間:2/17 00:00 ~ 3/2 23:59\
 					\n\
 					\n 期間限定登場:\
 					\n Sp1-賀歲的風之冒險團:\
@@ -736,21 +758,60 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				
 				characterST = 1;
 					
-				}else if(GachaTimes == null){
+			}else if(GachaTimes == null){
+
+				return '\【通常招募】通常奇蹟石招募 \
+					\n 出現夥伴系列一覽： \
+					\n\
+					\n 001起始英雄系列 \
+					\n  (全部夥伴獲得機率相同)\
+					\n\
+					\n 提供招募方式：\
+					\n 單抽 5顆奇蹟石(20%出現夥伴，80%獲得1~10個夥伴碎片)\
+					\n\
+					\n 十連加一(十連) 50顆奇蹟石(必定出現一名夥伴，其餘有10%出現夥伴，90%獲得10~30個夥伴碎片)\
+					\n\
+					\n 想要招募的話，請輸入 [招募 2 招募方式] \
+					';
 				
-					return '\【通常招募】通常奇蹟石招募 \
-						\n 出現夥伴系列一覽： \
-						\n\
-						\n 001起始英雄系列 \
-						\n  (全部夥伴獲得機率相同)\
-						\n\
-						\n 提供招募方式：\
-						\n 單抽 5顆奇蹟石(20%出現夥伴，80%獲得1~10個夥伴碎片)\
-						\n\
-						\n 十連加一(十連) 50顆奇蹟石(必定出現一名夥伴，其餘有10%出現夥伴，90%獲得10~30個夥伴碎片)\
-						\n\
-						\n 想要招募的話，請輸入 [招募 2 招募方式] \
-						';
+			  }else{
+				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 [招募 ' + DrawPool + ']';
+				}
+		}else if(DrawPool == 3){
+			CharacterList.length = 6;
+			CharacterList = ['露(新春ver)','路卡(新春ver)','克雷特(新春ver)','義熊(新春ver)','薰(新春ver)','艾斯(新春ver)'];
+			CharacterListSP.length = 0;
+			CharacterListSP = [];
+
+			if(GachaTimes =='單抽'){
+				times = 1;
+				characterChance = 100;
+				characterChanceSP = 0;
+				CharacterShard = 0;
+				CharacterShardBonus = 0;
+	
+			}else if(GachaTimes == null){
+			
+				return '\【票卷招募】必中新春限定夥伴招募 \
+					\n 使用專用招募卷入手新春限定夥伴吧!!!\
+					\n 開催時間:2/17 00:00 ~ 3/2 23:59\
+					\n\
+					\n 期間限定登場:\
+					\n Sp1-賀歲的風之冒險團:\
+					\n <我不是年獸啊！>路卡\
+					\n <翠花劍士>露\
+					\n <春宴神廚>義熊\
+					\n <引導盛宴的武者>薰\
+					\n <賀歲路人>克雷特\
+					\n <春之霜>艾斯\
+					\n\
+					\n  (六名夥伴獲得機率相同)\
+					\n\
+					\n 提供招募方式：\
+					\n 單抽 必中新春限定夥伴招募招募卷x1(必定獲得夥伴)\
+					\n\
+					\n 想要招募的話，請輸入 [招募 3 招募方式] \
+					';
 				
 			  }else{
 				return '\本招募無法使用' + GachaTimes +'招募喔\n 如果想看本招募詳細內容，請輸入 [招募 ' + DrawPool + ']';
@@ -825,7 +886,9 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			return '\【招募目錄】目前的招募一覽表 \
 				\n\
 				\n  0 【新手招募(首抽)】 \
-				\n  1 【通常奇蹟石招募】 \
+				\n  1 【限定招募】新春賀歲的風之冒險團期間限定招募(NEW) \
+				\n  2 【通常奇蹟石招募】 \
+				\n  3 【票卷招募】必中新春限定夥伴招募(NEW) \
 				\n\
 				\n 如果想看詳細招募內容，請輸入 [招募 招募編號] \
 				';
@@ -837,7 +900,9 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n【招募目錄】目前的招募一覽表 \
 				\n\
 				\n  0 【新手招募(首抽)】 \
-				\n  1 【通常奇蹟石招募】 \
+				\n  1 【限定招募】新春賀歲的風之冒險團期間限定招募(NEW) \
+				\n  2 【通常奇蹟石招募】 \
+				\n  3 【票卷招募】必中新春限定夥伴招募(NEW) \
 				\n\
 				\n 如果想看詳細招募內容，請輸入 [招募 招募編號] \
 				';
@@ -947,54 +1012,36 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			
 		}else if(InformationN == 1){
 			
-			return '\【更新】 本次更新介紹 \
-				\n 1.技能變動\
-				\n   (1)冰獄彈:冰寒標記改為60%賦予\
-				\n   (2)轟炎彈:有冰寒標記時的命中率改為90%\
-				\n\
-				\n 2.追加新技能:劍聖的教誨,大賢者的知惠,箭神的心得,狂戰士的回憶,牧師的專業,不滅意志\
+			return '\【慶祝】 新春系列活動 \
+				\n 詳細請確認:https://docs.google.com/document/d/10OZUIY5VzcSp7HMjrx8sIoDVTwnUOoWsNt2g7NVXXzY/edit?usp=sharing\
 				';
 			
 		}else if(InformationN == 2){
 			
-			return '\【補償】 眾多補償 \
-				\n\
-				\n1.技能更動補償:\
-				\n  持有技能「轟炎彈」,「冰獄彈」的全體玩家，將分別贈予「奇蹟石x1」作為補償\
-				\n\
-				\n2.獎勵忘記準備補償:\
-				\n  因個人忘記準備情人節要送給大家的巧克力，將贈與全體玩家「奇蹟石x1」作為補償\
-				\n\
-				\n\
-				\n 以上補償將在2018/2/10 00:00 開始發放\
+			return '\【更新】 本次更新介紹 \
+				\n 1.BOT維護:\
+				\n   (1)追加「賀歲抽籤」功能\
+				\n   (2)修正招募碎片數不符\
 				';
 			
 		}else if(InformationN == 3){
 			
-			return '\【活動預告】恭喜發財紅包拿來!壓歲錢狩獵!? \
+			return '\【補償】 眾多補償 \
 				\n\
-				\n 開催時間:2/17 00:00~3/2 23:59\
-				\n 說明:新年將至，各位準備好奪取紅包了嗎?\
+				\n1.壓歲錢不夠補償:\
+				\n  因個人有點窮準備的壓歲錢不夠，將贈與全體玩家「奇蹟石x1」作為補償\
 				\n\
+				\n\
+				\n 以上補償將在2018/2/17 00:00 開始發放\
 				';
 			
 		}else if(InformationN == 4){
 			
-			return '\【補償】 資料儲存延遲補償 \
+			return '\【活動】恭喜發財紅包拿來!壓歲錢狩獵!? \
 				\n\
-				\n  因個人因素導致遊戲資料儲存延遲一天，將贈與全體玩家「奇蹟石x5」作為補償\
-				\n\
-				\n\
-				\n 以上補償將在2018/2/11 21:00 開始發放\
-				';
-			
-		}else if(InformationN == 5){
-			
-			return '\【一日限定】情人節來了，要拿出什麼東西呢...\
-				\n\
-				\n 開催時間:2/14 00:00~2/14 23:59\
-				\n 說明:GM似乎在辦公室等待某人，究竟是要討論什麼事情呢?\
-				\n\
+				\n 開催時間:2/17 00:00~3/2 23:59\
+				\n 說明:進行紅包對戰，奪取壓歲錢，換取大量獎勵吧!!!\
+				\n 詳細請確認:https://docs.google.com/document/d/182LNmpAEGlz3c4I9aLphM35ckecIMCOtKXM7WXGLayY/edit?usp=sharing\
 				';
 			
 		}else if(InformationN == null){
@@ -1002,11 +1049,10 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			return '\【公告目錄】目前遊戲中的公告一覽表 \
 				\n\
 				\n  0 【重要】 先行測試2(公開測試) 正式開始!\
-				\n  1 【更新】 本次更新介紹(NEW)\
-				\n  2 【補償】 眾多補償(NEW)\
-				\n  3 【活動預告】恭喜發財紅包拿來!壓歲錢狩獵!?\
-				\n  4 【補償】 資料儲存延遲補償(NEW)\
-				\n  5 【一日限定】情人節來了，要拿出什麼東西呢...(NEW)\
+				\n  1 【慶祝】 新春系列活動(NEW)\
+				\n  2 【更新】 本次更新介紹(NEW)\
+				\n  3 【補償】 眾多補償(NEW)\
+				\n  4 【活動】恭喜發財紅包拿來!壓歲錢狩獵!?(NEW)\
 				\n\
 				\n 如果想看詳細公告內容，請輸入 [公告 公告編號] \
 				';
@@ -1018,11 +1064,10 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n【公告目錄】目前遊戲中的公告一覽表 \
 				\n\
 				\n  0 【重要】 先行測試2(公開測試) 正式開始!\
-				\n  1 【更新】 本次更新介紹(NEW)\
-				\n  2 【補償】 眾多補償(NEW)\
-				\n  3 【活動預告】恭喜發財紅包拿來!壓歲錢狩獵!?\
-				\n  4 【補償】 資料儲存延遲補償(NEW)\
-				\n  5 【一日限定】情人節來了，要拿出什麼東西呢...(NEW)\
+				\n  1 【慶祝】 新春系列活動(NEW)\
+				\n  2 【更新】 本次更新介紹(NEW)\
+				\n  3 【補償】 眾多補償(NEW)\
+				\n  4 【活動】恭喜發財紅包拿來!壓歲錢狩獵!?(NEW)\
 				\n\
 				\n 如果想看詳細公告內容，請輸入 [公告 公告編號] \
 				';
@@ -1462,28 +1507,18 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 			
 		}else if(EventN == 1){
 			
-				return '\【一日限定】情人節來了，要拿出什麼東西呢... \
-				\n\
-				\n 開催時間:2/14 00:00~2/14 23:59\
-				\n 說明:GM似乎在辦公室等待某人，究竟是要討論什麼事情呢?\
-				\n 活動辦法:請向GM觀賞特別劇情，會有特別獎勵!?\
-				\n\
-				';
-		}else if(EventN == 2){
-			
-				return '\【預告】恭喜發財紅包拿來!壓歲錢狩獵!? \
+				return '\【活動】恭喜發財紅包拿來!壓歲錢狩獵!? \
 				\n\
 				\n 開催時間:2/17 00:00~3/2 23:59\
-				\n 說明:新年將至，各位準備好奪取紅包了嗎?\
-				\n\
+				\n 說明:進行紅包對戰，奪取壓歲錢，換取大量獎勵吧!!!\
+				\n 詳細請確認:https://docs.google.com/document/d/182LNmpAEGlz3c4I9aLphM35ckecIMCOtKXM7WXGLayY/edit?usp=sharing\
 				';
 		}else if(EventN == null){
 			
 			return '\【活動目錄】目前開催中的活動一覽表 \
 				\n\
 				\n  0 【重要】 先行測試二 不刪擋公測中\
-				\n  1 【一日限定】情人節來了，要拿出什麼東西呢...\
-				\n  2 【預告】恭喜發財紅包拿來!壓歲錢狩獵!?\
+				\n  1 【活動】恭喜發財紅包拿來!壓歲錢狩獵!?\
 				\n\
 				\n 如果想看詳細活動內容，請輸入 [活動 活動編號] \
 				';
@@ -1495,8 +1530,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n【活動目錄】目前開催中的活動一覽表 \
 				\n\
 				\n  0 【重要】 先行測試二 不刪擋公測中\
-				\n  1 【一日限定】情人節來了，要拿出什麼東西呢...\
-				\n  2 【預告】恭喜發財紅包拿來!壓歲錢狩獵!?\
+				\n  1 【活動】恭喜發財紅包拿來!壓歲錢狩獵!?\
 				\n\
 				\n 如果想看詳細活動內容，請輸入 [活動 活動編號] \
 				';
