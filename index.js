@@ -1042,6 +1042,8 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n 開催時間:2/17 00:00~3/2 23:59\
 				\n 說明:進行紅包對戰，奪取壓歲錢，換取大量獎勵吧!!!\
 				\n 詳細請確認:https://docs.google.com/document/d/182LNmpAEGlz3c4I9aLphM35ckecIMCOtKXM7WXGLayY/edit?usp=sharing\
+				\n\
+				\n 壓歲錢紀錄區:https://docs.google.com/spreadsheets/d/1dJU7vXRUipNf-r4r2_I7C_emVwc7qtSn6qky_8L3jl4/edit?usp=sharing\
 				';
 			
 		}else if(InformationN == null){
@@ -1512,6 +1514,8 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				\n 開催時間:2/17 00:00~3/2 23:59\
 				\n 說明:進行紅包對戰，奪取壓歲錢，換取大量獎勵吧!!!\
 				\n 詳細請確認:https://docs.google.com/document/d/182LNmpAEGlz3c4I9aLphM35ckecIMCOtKXM7WXGLayY/edit?usp=sharing\
+				\n\
+				\n 壓歲錢紀錄區:https://docs.google.com/spreadsheets/d/1dJU7vXRUipNf-r4r2_I7C_emVwc7qtSn6qky_8L3jl4/edit?usp=sharing\
 				';
 		}else if(EventN == null){
 			
