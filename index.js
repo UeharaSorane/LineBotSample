@@ -657,6 +657,66 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 		}else if(DrawPool == 1){
 			CharacterList.length = 5;
 			CharacterList = ['義熊','尤克特','克雷特','路卡','露'];
+			CharacterListSP.length = 6;
+			CharacterListSP = ['露(新春ver)','路卡(新春ver)','克雷特(新春ver)','義熊(新春ver)','薰(新春ver)','艾斯(新春ver)'];
+
+			if(GachaTimes =='單抽'){
+				times = 1;
+				characterChance = 25;
+				characterChanceSP = 20;
+				CharacterShard = 8;
+				CharacterShardBonus = 6;
+				
+			
+			}else if(GachaTimes =='五連加一'||GachaTimes =='五連'){
+				times = 6;
+				characterChance = 20;
+				characterChanceSP = 25;
+				CharacterShard = 15;
+				CharacterShardBonus = 13;
+				characterST = 0;
+
+			}else if(GachaTimes =='十連加三'||GachaTimes =='十連'){
+				times = 12;
+				characterChance = 10;
+				characterChanceSP = 20;
+				CharacterShard = 25;
+				CharacterShardBonus = 9;
+				characterST = 1;
+
+			}else if(GachaTimes == null){
+				
+				return '\【限定招募】新春賀歲的風之冒險團期間限定招募 \
+					\n 趁現在入手新春限定夥伴吧!!!\
+					\n\
+					\n 期間限定登場:\
+					\n Sp1-賀歲的風之冒險團:\
+					\n <我不是年獸啊！>路卡\
+					\n <翠花劍士>露\
+					\n <春宴神廚>義熊\
+					\n <引導盛宴的武者>薰\
+					\n <賀歲路人>克雷特\
+					\n <春之霜>艾斯\
+					\n\
+					\n 還可以招募到以下夥伴系列:\
+					\n\
+					\n 001起始英雄系列 \
+					\n\
+					\n 提供招募方式：\
+					\n 單抽 5顆奇蹟石(20%出現夥伴，5%機率出現期間限定夥伴，75%獲得7~14個夥伴碎片)\
+					\n\
+					\n 五連加一(五連) 25顆奇蹟石(15%出現夥伴，5%機率出現期間限定夥伴，80%獲得14~28個夥伴碎片)\
+					\n\
+					\n 十連加三(十連) 50顆奇蹟石(必定出現一名夥伴，必定出現的夥伴有20%會是限定夥伴，其餘有8%出現夥伴，2%機率出現期間限定夥伴，90%獲得10~35個夥伴碎片)\
+					\n\
+					\n 想要招募的話，請輸入 [招募 1 招募方式] \
+				';
+			  }else{
+				return '\本招募無法使用' + GachaTimes +'招募喔';
+				}
+		}else if(DrawPool == 2){
+			CharacterList.length = 5;
+			CharacterList = ['義熊','尤克特','克雷特','路卡','露'];
 			CharacterListSP.length = 0;
 			CharacterListSP = [];
 
@@ -671,7 +731,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 				times = 11;
 				characterChance = 10;
 				characterChanceSP = 0;
-				CharacterShard = 20;
+				CharacterShard = 19;
 				CharacterShardBonus = 10;
 				
 				characterST = 1;
@@ -689,7 +749,7 @@ returnStr  += '/' + varcou.reduce(function(previousValue,currentValue){
 						\n\
 						\n 十連加一(十連) 50顆奇蹟石(必定出現一名夥伴，其餘有10%出現夥伴，90%獲得10~30個夥伴碎片)\
 						\n\
-						\n 想要招募的話，請輸入 [招募 1 招募方式] \
+						\n 想要招募的話，請輸入 [招募 2 招募方式] \
 						';
 				
 			  }else{
