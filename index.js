@@ -7,7 +7,7 @@ var app = express();
 var jsonParser = bodyParser.json();
 
 //資料庫連接
-/* var con = mysql.createConnection({
+ var con = mysql.createConnection({
   host     : process.env.OPENSHIFT_MYSQL_DB_HOST,
   user     : process.env.OPENSHIFT_MYSQL_DB_USERNAME,
   password : process.env.OPENSHIFT_MYSQL_DB_PASSWORD,
@@ -18,7 +18,7 @@ var jsonParser = bodyParser.json();
 con.connect(function(err) {
   if (err) throw err;
   console.log("Connected to the MySql server!");
-});*/
+});
 //
 
 var options = {
