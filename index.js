@@ -1,9 +1,25 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var https = require('https');  
+var https = require('https'); 
+var mysql = require('mysql');
 var app = express();
 
 var jsonParser = bodyParser.json();
+
+//資料庫連接
+ var con = mysql.createConnection({
+  host     : process.env.OPENSHIFT_MYSQL_DB_HOST,
+  user     : process.env.OPENSHIFT_MYSQL_DB_USERNAME,
+  password : process.env.OPENSHIFT_MYSQL_DB_PASSWORD,
+  port     : process.env.OPENSHIFT_MYSQL_DB_PORT,
+  database : process.env.OPENSHIFT_APP_NAME
+ });
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected to the MySql server!");
+});
+//
 
 var options = {
   host: 'api.line.me',
