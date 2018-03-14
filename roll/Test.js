@@ -12,7 +12,7 @@ function main() {
 
 }
 
-function UID(UserID) {
+function UserID(UserID) {
 			
 	///確認是否能接收玩家UID用
       
@@ -27,5 +27,5 @@ function UID(UserID) {
 
 module.exports = {
 	main,
-	UID
+	UserID
 };
