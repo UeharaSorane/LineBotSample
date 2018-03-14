@@ -6,17 +6,20 @@ var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 
 function main(UserID) {
 	
+	var PlayerNumber = 0;
+	
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
 	  DB.getRows(1, function (err, rows) {
-		var PlayerNumber = rows.length;
 		  console.log(rows.length);
+		  PlayerNumber = rows.length;
+		  console.log(PlayerNumber);
 	  });
 	});
 	
 	
-			
+	console.log(PlayerNumber);	
 	///確認玩家資料
       
 	rply.text =  '資料庫連結沒有問題\
