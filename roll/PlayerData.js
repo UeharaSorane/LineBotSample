@@ -1,8 +1,10 @@
 var rply ={type : 'text'}; //type是必需的,但可以更改
+var fs = require('fs');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
 
 var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
+var DBJson = 'spreadsheet.json';
 
 function main(UserID) {
 	
@@ -11,21 +13,23 @@ function main(UserID) {
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
-	  DB.getRows(1, function (err, rows) {
+	DB.getRows(1, function (err, rows) {
+		if (err) {
+			console.log( err );
+		}
 		  
 		  
-		  console.log(rows.length);
+		  fs.writeFile( DBJson, JSON.stringify( row_data ), 'utf8');
 		  
-		  rply.text =  '資料庫連結沒有問題\
-				\n一共有' + rows.length + ' 筆玩家資料';
-		  
-		  return rply;
-		  
-	  });
+		});
 	});
 	
 	
 	///確認玩家資料
+	
+	rply.text = '玩家資料正常連線!';
+				
+	return rply;
   
 	
 	///
