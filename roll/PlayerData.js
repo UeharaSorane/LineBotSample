@@ -19,7 +19,7 @@ function main(UserID) {
 		}
 		  
 		  
-		  fs.writeFile( DBJson, JSON.stringify( row_data ), 'utf8');
+		  fs.writeFile( DBJson, JSON.stringify( rows ), 'utf8');
 		  
 		});
 	});
