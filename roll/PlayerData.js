@@ -2,7 +2,7 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
 
-var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA/edit#gid=0');
+var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 
 function main(UserID) {
 	DB.useServiceAccountAuth(creds, function (err) {
