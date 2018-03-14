@@ -40,7 +40,7 @@ app.post('/', jsonParser, function(req, res) {
 	//訊息來到後, 會自動呼叫handleEvent 分類,然後跳到analytics.js進行骰組分析
 	//如希望增加修改骰組,只要修改analytics.js的條件式 和ROLL內的骰組檔案即可,然後在HELP.JS 增加說明.
 	try {
-	rplyVal = handleEvent(event);
+	rplyVal = handleEvent(event, event.source.userId);
 	} 
 	catch(e) {
 		console.log('catch error');
@@ -59,13 +59,13 @@ app.listen(app.get('port'), function() {
 	console.log('Node app is running on port', app.get('port'));
 });
 
-function handleEvent(event) {
+function handleEvent(event, UserID) {
   switch (event.type) {
     case 'message':
       const message = event.message;
       switch (message.type) {
         case 'text':
-          return exports.analytics.parseInput(event.rplyToken, event.message.text, event.source.userId); 
+          return exports.analytics.parseInput(event.rplyToken, event.message.text, UserID); 
         default:
            break;
       }
