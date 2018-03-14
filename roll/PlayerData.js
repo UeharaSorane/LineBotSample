@@ -25,13 +25,15 @@ function main(UserID) {
 
 }
 
-function inheritPlayerData() {
+function inheritPlayerData(UserID) {
 	DB.useServiceAccountAuth(creds, function (err) {
  
-	  // Get all of the rows from the spreadsheet.
-	  DB.getRows(1, function (err, rows) {
-	    console.log(rows);
-	  });
+	  	//將玩家UID繼承到玩家資料
+		DB.addRow(2, { UUID: 'bernie0905' }, function(err) {
+		  if(err) {
+		    console.log(err);
+		  }
+		});
 	});
 	
 	
@@ -48,5 +50,6 @@ function inheritPlayerData() {
 
 
 module.exports = {
-	main
+	main,
+	inheritPlayerData
 };
