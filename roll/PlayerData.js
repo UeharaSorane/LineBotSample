@@ -25,8 +25,32 @@ function main(UserID) {
 
 }
 
+function CreatNewPlayer(UserID,CName,Gold,MiraStone,Title) {
+	DB.useServiceAccountAuth(creds, function (err) {
+ 
+	  // Get all of the rows from the spreadsheet.
+	  DB.addRow(1, { UserID: UserID, CName: CName, Gold: Gold, MiraStone: MiraStone,Title: Title }, function(err) {
+		  if(err) {
+		    console.log(err);
+		  }
+		});
+	});
+	
+	
+			
+	///確認玩家資料
+      
+	rply.text =  '資料庫連結沒有問題';
+				
+	return rply;
+	
+	///
+
+}
+
 
 
 module.exports = {
-	main
+	main,
+	CreatNewPlayer
 };
