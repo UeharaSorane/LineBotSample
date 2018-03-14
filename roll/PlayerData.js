@@ -12,18 +12,21 @@ function main(UserID) {
  
 	  // Get all of the rows from the spreadsheet.
 	  DB.getRows(1, function (err, rows) {
+		  
+		  
 		  console.log(rows.length);
 		  
 		  rply.text =  '資料庫連結沒有問題\
 				\n一共有' + rows.length + ' 筆玩家資料';
+		  
+		  return rply;
+		  
 	  });
 	});
 	
 	
 	///確認玩家資料
-      
-				
-	return rply;
+  
 	
 	///
 
