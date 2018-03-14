@@ -20,7 +20,7 @@ function main(UserID) {
 	///確認玩家資料
       
 	rply.text =  '資料庫連結沒有問題\
-			\n一共有' + PlayerNumber + '筆玩家資料';
+			\n一共有' + PlayerNumber + ' 筆玩家資料';
 				
 	return rply;
 	
