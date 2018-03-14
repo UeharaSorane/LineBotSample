@@ -25,31 +25,8 @@ function main(UserID) {
 
 }
 
-function inheritPlayerData(UserID) {
-	DB.useServiceAccountAuth(creds, function (err) {
- 
-	  	//將玩家UID繼承到玩家資料
-		DB.addRow(2, { UUID: 'bernie0905' }, function(err) {
-		  if(err) {
-		    console.log(err);
-		  }
-		});
-	});
-	
-	
-			
-	///確認玩家資料
-      
-	rply.text =  '資料庫連結沒有問題';
-				
-	return rply;
-	
-	///
-
-}
 
 
 module.exports = {
-	main,
-	inheritPlayerData
+	main
 };
