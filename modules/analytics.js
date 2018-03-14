@@ -36,6 +36,7 @@ function parseInput(rplyToken, inputStr) {
 
 	////////////////////////////系統測試
 	if (trigger.match(/^測試$/)!= null ) return exports.Test.main();//連結測試
+	if (trigger.match(/^玩家情報$/)!= null ) return exports.PlayerData.main();//資料庫連結測試
 
 }
 
