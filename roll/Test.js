@@ -12,7 +12,20 @@ function main() {
 
 }
 
+function UID(UserID) {
+			
+	///確認是否能接收玩家UID用
+      
+	rply.text =  '您的UserID是:' + UserID;
+				
+	return rply;
+	
+	///
+
+}
+
 
 module.exports = {
-	main
+	main,
+	UID
 };
