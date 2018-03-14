@@ -9,7 +9,7 @@ require('fs').readdirSync('./roll/').forEach(function(file) {
 
 //用來呼叫骰組,新增骰組的話,要寫條件式到下面呼叫 
 //格式是 exports.骰組檔案名字.function名
-function parseInput(rplyToken, inputStr) {
+function parseInput(rplyToken, inputStr,UserID) {
 	//console.log('InputStr: ' + inputStr);
 	_isNaN = function(obj) 	{
 	return isNaN(parseInt(obj));  
@@ -37,6 +37,7 @@ function parseInput(rplyToken, inputStr) {
 	////////////////////////////系統測試
 	if (trigger.match(/^測試$/)!= null ) return exports.Test.main();//連結測試
 	if (trigger.match(/^玩家情報$/)!= null ) return exports.PlayerData.main();//資料庫連結測試
+	if (trigger.match(/^UID測試$/)!= null ) return exports.Test.UID(UserID);//資料庫連結測試
 
 }
 
