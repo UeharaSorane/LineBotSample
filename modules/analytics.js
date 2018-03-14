@@ -38,6 +38,9 @@ function parseInput(rplyToken, inputStr,UserID) {
 	if (trigger.match(/^測試$/)!= null ) return exports.Test.main();//連結測試
 	if (trigger.match(/^玩家情報$/)!= null ) return exports.PlayerData.main();//資料庫連結測試
 	if (trigger.match(/^uid$/)!= null ) return exports.Test.UserID(UserID);//資料庫連結測試
+	
+	////////////////////////////資料儲存相關
+	if (trigger.match(/^玩家建立$/)!= null ) return exports.PlayerData.CreatNewPlayer(UserID, mainMsg[1], mainMsg[2], mainMsg[3], mainMsg[4]);//資料庫連結測試
 
 }
 
