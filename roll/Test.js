@@ -16,7 +16,7 @@ function UserID(UserID) {
 			
 	///確認是否能接收玩家UID用
       
-	rply.text =  '您的UserID是:' + UserID;
+	rply.text =  '您的UserID是:';
 				
 	return rply;
 	
