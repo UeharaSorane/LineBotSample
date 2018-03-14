@@ -28,18 +28,11 @@ function parseInput(rplyToken, inputStr) {
 
 	////////////////////////////情報相關
 
-	
 	////////////////////////////戰鬥相關
 
 	////////////////////////////服務相關
 
-	
 	////////////////////////////娛樂相關
-
-	////////////////////////////系統測試
-	if (trigger.match(/^測試$/) != null) return exports.Test.main();	//遊戲公告指令
-
-
 module.exports = {
 	parseInput:parseInput
 };
