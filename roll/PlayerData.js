@@ -20,7 +20,7 @@ function main(UserID) {
 			console.log( err );
 		}
 		
-		rply.text = '玩家資料可以確認建立完成!';
+		rply.text = '玩家資料可以確認!';
 		
 		console.log( rply.text );
 		
@@ -42,8 +42,6 @@ function main(UserID) {
 	
 	
 	///確認玩家資料
-	
-	rply.text = '玩家資料正常連線!';
 				
 	return rply;
   
