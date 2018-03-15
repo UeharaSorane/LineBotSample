@@ -19,9 +19,7 @@ function main(UserID) {
 			console.log( err );
 		}
 		
-		console.log( rows.length );
-		
-		for(var i=0; i< 2; i++){
+		for(var i=0; i< rows.length; i++){
 		
 			console.log('2')
 		
