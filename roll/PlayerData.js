@@ -21,10 +21,9 @@ function main(UserID) {
 		
 		console.log( rows.length );
 		
-		for(var i=0; i< rows.length; i++){
-			if (rows[i].userid == UserID) {
-			console.log( rows[i].cname );
-		}
+		for(var i=0; i< 2; i++){
+		
+			console.log('2')
 		
 		}
 		
