@@ -27,6 +27,8 @@ function main(UserID) {
 				CName = rows[i].cname;
 			console.log('你的角色名:'+rows[i].cname);
 		        ReplyText = '你的角色名:'+rows[i].cname;
+				rply.text = ReplyText ;
+				return rply;
 		}
 		
 		}
@@ -37,7 +39,7 @@ function main(UserID) {
 		
 
 		});
-	rply.text = ReplyText ;
+	
 	});
 	
 	
@@ -47,7 +49,6 @@ function main(UserID) {
 	
 	console.log( rply.text );
 	
-	return rply;
   
 	
 	///
