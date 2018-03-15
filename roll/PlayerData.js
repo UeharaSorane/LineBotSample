@@ -27,11 +27,11 @@ function main(UserID) {
 		}
 		
 		}
-			rply.text = ReplyText ;
+			
 			
 		
 		}
-		
+		rply.text = ReplyText ;
 
 		});
 	});
