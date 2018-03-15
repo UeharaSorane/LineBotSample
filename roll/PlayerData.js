@@ -44,7 +44,7 @@ function main(UserID) {
 		
 		  
 		  fs.writeFile( saveFileName, JSON.stringify( rows ), 'utf8');
-		var contents = fs.readFileSync('./spreadsheet.json');
+		var contents = fs.readFileSync(./spreadsheet.json);
                 // Define to JSON type
                 var JSONcontents = JSON.parse(contents);
                 // Get Value from JSON
