@@ -44,7 +44,12 @@ function main(UserID) {
 		
 		  
 		  fs.writeFile( saveFileName, JSON.stringify( rows ), 'utf8');
-		console.log( saveFileName );
+		var contents = fs.readFileSync(saveFileName);
+                // Define to JSON type
+                var JSONcontents = JSON.parse(contents);
+                // Get Value from JSON
+		
+		console.log( JSONcontents );
 		
 		
 		});
