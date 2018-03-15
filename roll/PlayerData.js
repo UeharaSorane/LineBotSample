@@ -25,6 +25,7 @@ function main(UserID) {
 		for(var i=0; i< rows.length; i++){
 			
 			if (rows[i].userid == UserID) {
+				CName = rows[i].cname;
 			console.log( rows[i].cname );
 		}
 		
@@ -35,6 +36,8 @@ function main(UserID) {
 	
 	
 	///確認玩家資料
+	
+	rply.text = '你的角色名;'+ CName;
 	
 	return rply;
   
