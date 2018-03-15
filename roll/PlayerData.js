@@ -10,6 +10,7 @@ function main(UserID) {
 	
 	var PlayerNumber = 0;
 	
+	
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
@@ -17,15 +18,16 @@ function main(UserID) {
 		if (err) {
 			console.log( err );
 		}
+		for(var i=0; i< rows.lengtg; i++){
+			if (rows[i].UserID == UserID) {
+			console.log( rows[i].CName );
+		}
+		
+		}
+		
 		  
 		  
 		  fs.writeFile( DBJson, JSON.stringify( rows ), 'utf8');
-		  var contents = fs.readFileSync(DBJson);
-                  // Define to JSON type
-                  var jsonContent = JSON.parse(contents);
-                  // Get Value from JSON
-                  console.log("UserID:", jsonContent.UserID);
-                  console.log("CName:", jsonContent.CName);
 		
 		});
 	});
