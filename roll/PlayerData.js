@@ -11,31 +11,32 @@ function main(UserID) {
 	
 	DB.useServiceAccountAuth(creds, function (err) {
 		
-	var CName;
+		var CName;
  
-	  // Get all of the rows from the spreadsheet.
-	      DB.getRows(1 , function (err, rows) {
-		if (err) {
-			console.log( err );
-		}else{
-		
-		for(var i=0; i< rows.length; i++){
-			
-			if (rows[i].userid == UserID) {
-				CName = rows[i].cname;
-			console.log('你的角色名:'+rows[i].cname);
-			console.log('比較慢的');
-		
-		}
-		
-		}
-			
-			
-		
-		}
-		
+		  // Get all of the rows from the spreadsheet.
+			DB.getRows(1 , 
+				function (err, rows) {
+					if (err) {
+						console.log( err );
+					}else{
 
-		});
+						for(var i=0; i< rows.length; i++){
+
+							if (rows[i].userid == UserID) {
+								CName = rows[i].cname;
+								console.log('你的角色名:'+rows[i].cname);
+								console.log('比較慢的');
+
+							}
+
+						}
+
+
+
+					}
+
+
+			});
 	
 		
 		
