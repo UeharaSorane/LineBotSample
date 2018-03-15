@@ -4,6 +4,8 @@ var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
 
 var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
+var ReplyText;
+
 
 function main(UserID) {
 	
@@ -11,7 +13,7 @@ function main(UserID) {
 	rply.text = '不希望顯示的';
 	DB.useServiceAccountAuth(creds, function (err) {
 		
-		var ReplyText;
+		
  
 	  // Get all of the rows from the spreadsheet.
 	DB.getRows(1, function (err, rows) {
