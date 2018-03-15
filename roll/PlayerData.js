@@ -12,7 +12,7 @@ function main(UserID) {
 		if (err) {
 			console.log( err );
 		}
-		};
+		});
 	
 	
 	
