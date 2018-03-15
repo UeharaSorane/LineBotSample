@@ -51,6 +51,8 @@ function main(UserID) {
 					\n持有金幣: '+Gold + 'G\
 					\n持有奇蹟石: '+MiraStone + '顆\
 					\n當前稱號: '+Title;
+				
+				return rply;
 			});
 	
 		
