@@ -14,7 +14,7 @@ function main(UserID) {
 			console.log( err );
 		}
 		
-		console.log( row.rows );
+		console.log( rows.length );
 		
 		});
 	});
