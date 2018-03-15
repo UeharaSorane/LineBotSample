@@ -37,6 +37,13 @@ function main(UserID) {
 }
 
 function CreatNewPlayer(UserID,CName,Gold,MiraStone,Title) {
+	if(CName == null|| Gold == null || MiraStone == null|| Title == null) {
+		
+	rply.text = '有資料沒有填進去喔!';
+				
+	return rply;
+        }
+	
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
