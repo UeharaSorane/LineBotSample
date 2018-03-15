@@ -20,7 +20,7 @@ function main(UserID) {
 		  
 		  
 		  fs.writeFile( DBJson, JSON.stringify( rows ), 'utf8');
-		  var contents = fs.readFileSync("spreadsheet.json");
+		  var contents = fs.readFileSync(DBJson);
                   // Define to JSON type
                   var jsonContent = JSON.parse(contents);
                   // Get Value from JSON
