@@ -27,6 +27,8 @@ function main(UserID) {
 		}
 		
 		}
+			rply.text = ReplyText ;
+			
 		
 		}
 		
@@ -37,7 +39,7 @@ function main(UserID) {
 	
 	///確認玩家資料
 	
-	rply.text = ReplyText ;
+	
 	
 	console.log( rply.text );
 	
