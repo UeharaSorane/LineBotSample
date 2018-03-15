@@ -50,7 +50,7 @@ function main(UserID) {
 	
 	///確認玩家資料
 	
-	console.log( row.length );
+	console.log( row.rows );
 	
 	return rply;
   
