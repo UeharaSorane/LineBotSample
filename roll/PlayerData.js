@@ -20,6 +20,11 @@ function main(UserID) {
 			console.log( err );
 		}
 		
+		rply.text = '玩家資料可以確認建立完成!';
+		
+		console.log( rply.text );
+		
+		
 		for(var i=0; i< rows.length; i++){
 			
 			if (rows[i].userid == UserID) {
@@ -28,7 +33,7 @@ function main(UserID) {
 		
 		}
 		
-		  
+		return rply;
 		  
 		  fs.writeFile( DBJson, JSON.stringify( rows ), 'utf8');
 		
