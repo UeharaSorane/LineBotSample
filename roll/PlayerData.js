@@ -8,9 +8,10 @@ var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 
 function main(UserID) {
 	
+	
 	DB.useServiceAccountAuth(creds, function (err) {
 		
-		
+	var CName;
  
 	  // Get all of the rows from the spreadsheet.
 	      DB.getRows(1 , function (err, rows) {
@@ -46,7 +47,7 @@ function main(UserID) {
 
 	console.log('比較快的');
 	
-	setTimeout('return rply', 10000 );
+	setTimeout('console.log("你的角色名:"+Cname)', 10000 );
 	
   
 	
