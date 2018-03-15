@@ -47,7 +47,7 @@ function main(UserID) {
 	
 	///確認玩家資料
 
-	console.log('比較快的');
+	console.log(rply.text);
 	
 	return rply;
 	
