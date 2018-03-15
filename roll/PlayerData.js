@@ -44,7 +44,7 @@ function main(UserID) {
 		
 		  
 		  fs.writeFile( DBJson, JSON.stringify( rows ), 'utf8');
-		console.log( DBJson );
+		console.log( spreadsheet.json );
 		
 		return rply;
 		
