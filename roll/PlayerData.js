@@ -14,6 +14,10 @@ function main(UserID) {
 		
 		
 		var CName;
+		var Gold;
+		var MiraStone;
+		var Title;
+		
  
 		  // Get all of the rows from the spreadsheet.
 			DB.getRows(1 , 
@@ -27,7 +31,12 @@ function main(UserID) {
 							if (rows[i].userid == UserID) {
 								CName = rows[i].cname;
 								console.log('你的角色名:'+rows[i].cname);
-								console.log('比較慢的');
+								Gold = rows[i].gold;
+								console.log('持有金幣: '+rows[i].gold + 'G');
+								MiraStone = rows[i].mirastone;
+								console.log('持有奇蹟石: '+rows[i].mirastone + '顆');
+								Title = rows[i].title;
+								console.log('當前稱號: '+rows[i].title);
 
 							}
 
@@ -37,7 +46,11 @@ function main(UserID) {
 
 					}
 
-				rply.text ='你的角色名:' + CName;
+				rply.text ='基本資料:\
+					\n你的角色名:' + CName + '\
+					\n持有金幣: '+Gold + 'G\
+					\n持有奇蹟石: '+MiraStone + '顆\
+					\n當前稱號: '+Title';
 			});
 	
 		
