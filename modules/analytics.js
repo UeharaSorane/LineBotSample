@@ -7,6 +7,8 @@ require('fs').readdirSync('./roll/').forEach(function(file) {
 	}
   });
 
+var Sync = require('sync');
+
 //用來呼叫骰組,新增骰組的話,要寫條件式到下面呼叫 
 //格式是 exports.骰組檔案名字.function名
 function parseInput(rplyToken, inputStr,UserID) {
@@ -36,7 +38,7 @@ function parseInput(rplyToken, inputStr,UserID) {
 
 	////////////////////////////系統測試
 	if (trigger.match(/^測試$/)!= null ) return exports.Test.main();//連結測試
-	if (trigger.match(/^玩家情報$/)!= null ) return exports.PlayerData.main(UserID);//資料庫連結測試
+	if (trigger.match(/^玩家情報$/)!= null ) return Sync(exports.PlayerData.main(UserID));//資料庫連結測試
 	if (trigger.match(/^uid$/)!= null ) return exports.Test.UserID(UserID);//資料庫連結測試
 	
 	////////////////////////////資料儲存相關
