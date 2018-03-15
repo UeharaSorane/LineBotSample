@@ -16,7 +16,7 @@ function main(UserID) {
 		
  
 	  // Get all of the rows from the spreadsheet.
-	DB.getRows(1, function (err, rows) {
+	DB.getRows(1 /*, function (err, rows) {
 		if (err) {
 			console.log( err );
 		}else{
@@ -38,7 +38,7 @@ function main(UserID) {
 		}
 		
 
-		});
+		}*/);
 	
 	});
 	
