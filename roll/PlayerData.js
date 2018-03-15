@@ -9,6 +9,7 @@ var DBJson = 'spreadsheet.json';
 function main(UserID) {
 	
 	var PlayerNumber = 0;
+	console.log(UserID);
 	
 	
 	DB.useServiceAccountAuth(creds, function (err) {
@@ -18,8 +19,6 @@ function main(UserID) {
 		if (err) {
 			console.log( err );
 		}
-		
-		console.log(UserID);
 		
 		for(var i=0; i< rows.length; i++){
 		
