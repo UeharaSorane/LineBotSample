@@ -22,7 +22,7 @@ function main(UserID) {
 		
 		for(var i=0; i< rows.length; i++){
 			
-			if (rows[i] == UserID) {
+			if (rows[i].userid == UserID) {
 			console.log( rows[i].cname );
 		}
 		
