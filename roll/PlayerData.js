@@ -8,12 +8,12 @@ var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 
 function main(UserID) {
 	
-	var ReplyText = DB.useServiceAccountAuth(creds, function (err) {
+	DB.useServiceAccountAuth(creds, function (err) {
 		
 		
  
 	  // Get all of the rows from the spreadsheet.
-	      var CName = DB.getRows(1 , function (err, rows) {
+	      DB.getRows(1 , function (err, rows) {
 		if (err) {
 			console.log( err );
 		}else{
@@ -23,9 +23,8 @@ function main(UserID) {
 			if (rows[i].userid == UserID) {
 				CName = rows[i].cname;
 			console.log('你的角色名:'+rows[i].cname);
-		        var temp = '你的角色名:'+rows[i].cname;
-				
-				return temp;
+			console.log('比較慢的');
+		
 		}
 		
 		}
@@ -37,16 +36,17 @@ function main(UserID) {
 
 		});
 	
-		return CName;
+		
 		
 	});
 	
 	
 	///確認玩家資料
-	rply.text = ReplyText ;
+	rply.text = '比較快的' ;
+	console.log('比較快的');
 	
 	
-	console.log( rply.text );
+	return rply;
 	
   
 	
