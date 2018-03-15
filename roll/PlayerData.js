@@ -8,8 +8,6 @@ var DBJson = 'spreadsheet.json';
 
 function main(UserID) {
 	
-	var PlayerNumber = 0;
-	console.log(UserID);
 	
 	
 	DB.useServiceAccountAuth(creds, function (err) {
@@ -33,9 +31,10 @@ function main(UserID) {
 		
 		}
 		
-		return rply;
 		  
 		  fs.writeFile( DBJson, JSON.stringify( rows ), 'utf8');
+		
+		return rply;
 		
 		});
 	});
