@@ -48,7 +48,7 @@ function main(UserID) {
 	
 	///確認玩家資料
 	
-	console.log( rows.length );
+	console.log( row.length );
 	
 	return rply;
   
