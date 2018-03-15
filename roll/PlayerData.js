@@ -15,14 +15,8 @@ function main(UserID) {
 	DB.getRows(1, function (err, rows) {
 		if (err) {
 			console.log( err );
-		}
-		
-		rply.text = '希望顯示的';
-		
+		}else{
 		var ReplyText;
-		
-		console.log( rply.text );
-		
 		
 		for(var i=0; i< rows.length; i++){
 			
@@ -33,6 +27,9 @@ function main(UserID) {
 		}
 		
 		}
+		
+		}
+		
 
 		});
 	});
@@ -41,6 +38,8 @@ function main(UserID) {
 	///確認玩家資料
 	
 	rply.text = ReplyText ;
+	
+	console.log( rply.text );
 	
 	return rply;
   
