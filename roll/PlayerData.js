@@ -20,7 +20,8 @@ function main(UserID) {
 		  
 		  
 		  fs.writeFile( DBJson, JSON.stringify( rows ), 'utf8');
-		  
+		  console.log( rows );
+		
 		});
 	});
 	
