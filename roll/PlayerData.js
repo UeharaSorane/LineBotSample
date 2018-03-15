@@ -10,6 +10,8 @@ function main(UserID) {
 	
 	
 	DB.useServiceAccountAuth(creds, function (err) {
+		rply.text ='你的角色名:';
+		
 		
 		var CName;
  
@@ -35,7 +37,7 @@ function main(UserID) {
 
 					}
 
-
+				rply.text ='你的角色名:' + CName;
 			});
 	
 		
@@ -44,9 +46,10 @@ function main(UserID) {
 	
 	
 	///確認玩家資料
-	rply.text = '比較快的' ;
 
 	console.log('比較快的');
+	
+	return rply;
 	
   
 	
