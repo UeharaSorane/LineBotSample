@@ -4,19 +4,16 @@ var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
 
 var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
-var ReplyText;
 
 
 function main(UserID) {
 	
-	var CName;
-	rply.text = '不希望顯示的';
-	DB.useServiceAccountAuth(creds, function (err) {
+	var ReplyText = DB.useServiceAccountAuth(creds, function (err) {
 		
 		
  
 	  // Get all of the rows from the spreadsheet.
-	DB.getRows(1 /*, function (err, rows) {
+	      var CName = DB.getRows(1 , function (err, rows) {
 		if (err) {
 			console.log( err );
 		}else{
@@ -26,9 +23,9 @@ function main(UserID) {
 			if (rows[i].userid == UserID) {
 				CName = rows[i].cname;
 			console.log('你的角色名:'+rows[i].cname);
-		        ReplyText = '你的角色名:'+rows[i].cname;
-				rply.text = ReplyText ;
-				return rply;
+		        var temp = '你的角色名:'+rows[i].cname;
+				
+				return temp;
 		}
 		
 		}
@@ -38,13 +35,15 @@ function main(UserID) {
 		}
 		
 
-		}*/);
+		});
 	
+		return CName;
+		
 	});
 	
 	
 	///確認玩家資料
-	
+	rply.text = ReplyText ;
 	
 	
 	console.log( rply.text );
