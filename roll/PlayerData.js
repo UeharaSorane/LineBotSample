@@ -7,6 +7,8 @@ var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 
 function main(UserID) {
 	
+	var CName;
+	rply.text = '不希望顯示的';
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
@@ -15,7 +17,7 @@ function main(UserID) {
 			console.log( err );
 		}
 		
-		rply.text = '玩家資料可以確認!';
+		rply.text = '希望顯示的';
 		
 		console.log( rply.text );
 		
