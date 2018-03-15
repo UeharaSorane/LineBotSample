@@ -37,7 +37,7 @@ function main(UserID) {
 	
 	///確認玩家資料
 	
-	rply.text = '你的角色名;'+ CName;
+	rply.text = '你的角色名:'+ CName;
 	
 	return rply;
   
