@@ -65,7 +65,7 @@ function CreatNewPlayer(UserID,CName,Gold,MiraStone,Title) {
 			
 	///確認玩家資料
       
-	rply.text = '玩家資料 ' + CName + '建立完成!';
+	rply.text = '玩家資料 ' + CName + ' 建立完成!';
 				
 	return rply;
 	
