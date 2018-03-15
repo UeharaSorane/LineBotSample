@@ -14,10 +14,11 @@ function main(UserID) {
 			console.log( err );
 		}
 		
-		console.log( rows.length );
 		
 		});
 	});
+	
+	console.log( row.rows );
 	
 	
 	
@@ -52,8 +53,6 @@ function main(UserID) {
 	
 	
 	///確認玩家資料
-	
-	console.log( row );
 	
 	return rply;
   
