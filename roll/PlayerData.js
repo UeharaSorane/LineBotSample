@@ -7,7 +7,7 @@ var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 
 function main(UserID) {
 	
-	let CName;
+	var CName;
 	rply.text = '不希望顯示的';
 	DB.useServiceAccountAuth(creds, function (err) {
  
@@ -19,6 +19,8 @@ function main(UserID) {
 		
 		rply.text = '希望顯示的';
 		
+		var ReplyText;
+		
 		console.log( rply.text );
 		
 		
@@ -27,6 +29,7 @@ function main(UserID) {
 			if (rows[i].userid == UserID) {
 				CName = rows[i].cname;
 			console.log('你的角色名:'+rows[i].cname);
+		        ReplyText = '你的角色名:'+rows[i].cname);
 		}
 		
 		}
@@ -37,7 +40,7 @@ function main(UserID) {
 	
 	///確認玩家資料
 	
-	rply.text = '你的角色名:'+ CName;
+	rply.text = ReplyText ;
 	
 	return rply;
   
