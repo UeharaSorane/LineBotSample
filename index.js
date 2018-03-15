@@ -65,6 +65,15 @@ function handleEvent(event) {
       const message = event.message;
       switch (message.type) {
         case 'text':
+          if(event.message.text=='隱藏測試'){
+        
+            event.reply([{
+		    
+		     type: 'text',
+		     text: '爆裂解禁！' 
+	    
+	    }]);
+		  
           return exports.analytics.parseInput(event.rplyToken, event.message.text, event.source.userId); 
         default:
            break;
