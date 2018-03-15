@@ -10,13 +10,14 @@ function main(UserID) {
 	var CName;
 	rply.text = '不希望顯示的';
 	DB.useServiceAccountAuth(creds, function (err) {
+		
+		var ReplyText;
  
 	  // Get all of the rows from the spreadsheet.
 	DB.getRows(1, function (err, rows) {
 		if (err) {
 			console.log( err );
 		}else{
-		var ReplyText;
 		
 		for(var i=0; i< rows.length; i++){
 			
@@ -31,9 +32,10 @@ function main(UserID) {
 			
 		
 		}
-		rply.text = ReplyText ;
+		
 
 		});
+	rply.text = ReplyText ;
 	});
 	
 	
