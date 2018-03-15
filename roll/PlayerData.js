@@ -19,6 +19,8 @@ function main(UserID) {
 			console.log( err );
 		}
 		
+		console.log( rows[0].cname );
+		
 		for(var i=0; i< rows.length; i++){
 			if (rows[i].userid == UserID) {
 			console.log( rows[i].cname );
