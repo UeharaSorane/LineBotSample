@@ -47,8 +47,6 @@ function main(UserID) {
 
 	console.log('比較快的');
 	
-	setTimeout('console.log("你的角色名:"+Cname)', 10000 );
-	
   
 	
 	///
