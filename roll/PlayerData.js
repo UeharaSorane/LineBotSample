@@ -29,7 +29,7 @@ function main(UserID) {
 			if (rows[i].userid == UserID) {
 				CName = rows[i].cname;
 			console.log('你的角色名:'+rows[i].cname);
-		        ReplyText = '你的角色名:'+rows[i].cname);
+		        ReplyText = '你的角色名:'+rows[i].cname;
 		}
 		
 		}
