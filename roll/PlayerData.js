@@ -8,6 +8,12 @@ var DBJson = 'spreadsheet.json';
 
 function main(UserID) {
 	
+	var row = DB.getRows(1, function (err, rows) {
+		if (err) {
+			console.log( err );
+		}
+		};
+	
 	
 	
 	DB.useServiceAccountAuth(creds, function (err) {
