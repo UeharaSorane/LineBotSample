@@ -18,7 +18,6 @@ function main(UserID) {
 		});
 	});
 	
-	console.log( row.rows );
 	
 	
 	
