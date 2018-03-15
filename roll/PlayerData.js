@@ -50,7 +50,7 @@ function main(UserID) {
 					\n你的角色名:' + CName + '\
 					\n持有金幣: '+Gold + 'G\
 					\n持有奇蹟石: '+MiraStone + '顆\
-					\n當前稱號: '+Title';
+					\n當前稱號: '+Title;
 			});
 	
 		
