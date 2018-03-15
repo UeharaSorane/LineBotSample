@@ -46,7 +46,7 @@ function main(UserID) {
 
 	console.log('比較快的');
 	
-	setTimeout('return rply', 10000 );
+	setTimeout(return rply, 10000 );
 	
   
 	
