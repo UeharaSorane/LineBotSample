@@ -20,7 +20,12 @@ function main(UserID) {
 		  
 		  
 		  fs.writeFile( DBJson, JSON.stringify( rows ), 'utf8');
-		  console.log( rows );
+		  var contents = fs.readFileSync("spreadsheet.json");
+                  // Define to JSON type
+                  var jsonContent = JSON.parse(contents);
+                  // Get Value from JSON
+                  console.log("UserID:", jsonContent.UserID);
+                  console.log("CName:", jsonContent.CName);
 		
 		});
 	});
