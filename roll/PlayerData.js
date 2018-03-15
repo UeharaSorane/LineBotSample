@@ -19,17 +19,11 @@ function main(UserID) {
 			console.log( err );
 		}
 		
-		console.log( rows[0].cname );
+		console.log( rows.length );
 		
 		for(var i=0; i< rows.length; i++){
 			if (rows[i].userid == UserID) {
 			console.log( rows[i].cname );
-		}else{
-		
-			rply.text = '你的Line帳號尚未建立角色喔!';
-				
-			return rply;
-			
 		}
 		
 		}
