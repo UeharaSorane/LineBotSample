@@ -71,7 +71,7 @@ function main(UserID) {
 }
 
 function CreatNewPlayer(UserID,CName,Gold,MiraStone,Title) {
-	var AlreadyHaveCharacter = 1;
+	var AlreadyHaveCharacter = 0;
 	
 	DB.useServiceAccountAuth(creds, function (err) {		
 		var CName;
