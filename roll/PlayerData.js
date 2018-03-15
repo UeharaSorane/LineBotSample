@@ -43,10 +43,10 @@ function main(UserID) {
 	
 	///確認玩家資料
 	rply.text = '比較快的' ;
+
 	console.log('比較快的');
 	
-	
-	return rply;
+	setTimeout('return rply', 10000 );
 	
   
 	
