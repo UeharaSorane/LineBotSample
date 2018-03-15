@@ -14,7 +14,7 @@
     "express": "4.13.3",
     "body-parser": "1.15.2",
     "google-spreadsheet": "2.0.3",
-    "googleapis": "25.*"
+    "googleapis": "25.*",
     "google-auth-library": "0.*"
   },
   "keywords": [
