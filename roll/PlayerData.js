@@ -58,6 +58,50 @@ function main(UserID) {
 }
 
 function CreatNewPlayer(UserID,CName,Gold,MiraStone,Title) {
+	var AlreadyHaveCharacter = 1;
+	
+	DB.useServiceAccountAuth(creds, function (err) {		
+		var CName;
+		var AHC = 0;
+ 
+		  // Get all of the rows from the spreadsheet.
+			DB.getRows(1 , 
+				function (err, rows) {
+					if (err) {
+						console.log( err );
+					}else{
+
+						for(var i=0; i< rows.length; i++){
+
+							if (rows[i].userid == UserID) {
+								AHC = 1;
+								CName = '你的Line帳號已經有角色了，請輸入「玩家情報確認」';
+								console.log('你的Line帳號已經有角色了，請輸入「玩家情報確認」');
+
+							}
+
+						}
+
+
+
+					}
+				AlreadyHaveCharacter = AHC;
+				rply.text =CName;
+			});
+	
+		
+		
+	});
+	
+	
+	if(AlreadyHaveCharacter == 1){
+		rply.text = '你的Line帳號已經有角色了，請輸入「玩家情報確認」';
+
+		return rply;
+	
+	}
+	
+	
 	if(CName == null|| Gold == null || MiraStone == null|| Title == null) {
 		
 	rply.text = '有資料沒有填進去喔!';
