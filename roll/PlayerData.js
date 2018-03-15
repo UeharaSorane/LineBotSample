@@ -19,6 +19,8 @@ function main(UserID) {
 			console.log( err );
 		}
 		
+		console.log(UserID);
+		
 		for(var i=0; i< rows.length; i++){
 		
 			console.log(rows[i].userid);
