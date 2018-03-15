@@ -21,7 +21,7 @@ function main(UserID) {
 		
 		for(var i=0; i< rows.length; i++){
 		
-			console.log('2')
+			console.log(rows[i].userid);
 		
 		}
 		
