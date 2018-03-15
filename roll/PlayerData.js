@@ -21,6 +21,12 @@ function main(UserID) {
 		for(var i=0; i< rows.lengtg; i++){
 			if (rows[i].UserID == UserID) {
 			console.log( rows[i].CName );
+		}else{
+		
+			rply.text = '你的Line帳號尚未建立角色喔!';
+				
+			return rply;
+			
 		}
 		
 		}
