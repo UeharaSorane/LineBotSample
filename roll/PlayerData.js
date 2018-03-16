@@ -210,11 +210,12 @@ function CreatNewPlayer(UserID,CName,Title) {
 	CharArr[CharArrleng][2] = 1000;
 	CharArr[CharArrleng][3] = 5;
 	CharArr[CharArrleng][4] = CTitle;
+	CharArr[CharArrleng][5] = 0;
 	
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
-	  DB.addRow(1, { Userid: UserID, cname: CName, gold: 1000, mirastone: 5, Title: CTitle }, function(err) {
+	  DB.addRow(1, { Userid: UserID, cname: CName, gold: 1000, mirastone: 5, Title: CTitle , InheritIO: 0 }, function(err) {
 		  if(err) {
 		    console.log(err);
 		  }
