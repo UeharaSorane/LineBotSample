@@ -10,7 +10,7 @@ function main(UserID) {
 	
 	var testF = function(){
 		
-		console.log(rply.text);
+		console.log('rply.texr'+rply.text);
 	}
 	
 	
@@ -61,7 +61,7 @@ function main(UserID) {
 				
 			Temp = TempRply;
 				
-				console.log(Temp);
+				console.log('Temp:'+Temp);
 			});
 	
 		
@@ -79,7 +79,7 @@ function main(UserID) {
 	return readF(function(Temp){
 		var rplyT ={type : 'text'};
 		
-		console.log(rplyT);
+		console.log('rplyT:'+rplyT);
 		
 		rplyT.text=Temp;
 		return rplyT;
