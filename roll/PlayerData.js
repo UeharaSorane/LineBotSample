@@ -4,7 +4,35 @@ var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
 
 var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
+var CharArr= [];
+DB.useServiceAccountAuth(creds, function (err) {
+		
+ 
+	
+ // Get all of the rows from the spreadsheet.
+	DB.getRows(1 , 
+		function (err, rows) {
+			if (err) {
+				console.log( err );
+			}else{
 
+				for(var i=0; i< rows.length; i++){
+					CharArr[i][0] = rows[i].usedid;
+					CharArr[i][1] = rows[i].cname;
+					CharArr[i][2] = rows[i].gold;
+					CharArr[i][3] = rows[i].mirastone;
+					CharArr[i][4] = rows[i].title;
+				}
+			}
+
+			console.log('玩家基本資料 讀取完成');
+			});
+	
+		
+		
+	});
+
+console.log(CharArr);
 
 function main(UserID) {
 	
