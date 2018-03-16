@@ -5,6 +5,7 @@ var creds = require('../client_secret.json');
 
 var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 var CharArr= [];
+var PlayerNumber= 0;
 DB.useServiceAccountAuth(creds, function (err) {
 		
  
@@ -15,6 +16,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 			if (err) {
 				console.log( err );
 			}else{
+				PlayerNumber= rows.length;
 
 				for(var i=0; i< rows.length; i++){
 					CharArr[i] = [];
@@ -199,16 +201,21 @@ function CreatNewPlayer(UserID,CName,Title) {
 		  if(err) {
 		    console.log(err);
 		  }
+		  
 		});
 	});
 	
 	
 			
 	///確認玩家資料
+	
+	CharArr[PlayerNumber][0] = UserID;
+	CharArr[PlayerNumber][1] = CName;
+	CharArr[PlayerNumber][2] = 1000;
+	CharArr[PlayerNumber][3] = 5;
+	CharArr[PlayerNumber][4] = CTitle;
       
 	rply.text = '玩家資料 ' + CName + ' 建立完成，稍等一下才會生效喔！';
-	
-	setTimeout("ArrayUpdate",5000);
 				
 	return rply;
 	
