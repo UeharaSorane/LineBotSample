@@ -8,7 +8,7 @@ var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 
 function main(UserID) {
 	
-	var testF = function{
+	var testF = function(){
 		
 		console.log(rply.text);
 	}
