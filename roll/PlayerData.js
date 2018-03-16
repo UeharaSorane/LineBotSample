@@ -253,39 +253,39 @@ function InheritModeOn(Cname,password){
 
 			return rply;
 	
-			}else{
-				for(var i=0; i< CharArr.length; i++){
-
+		}else{
+			for(var i=0; i< CharArr.length; i++){
 				if (CharArr[i][1] == Cname) {
-			
-				if (CharArr[i][5] == 1) {
-			
-				rply.text = '此角色已經開啟繼承模式了！';
+					if (CharArr[i][5] == 1) {
+						rply.text = '此角色已經開啟繼承模式了！';
 
-				return rply;
-
-			}
-			
-			CharArr[i][5] = 1;
-			
-			DB.useServiceAccountAuth(creds, function (err) {
+						return rply;
+					}
+					CharArr[i][5] = 1;
+					DB.useServiceAccountAuth(creds, function (err) {
 		
-				DB.getRows(1 , 
-					function (err, rows) {
-						if (err) {
-							console.log( err );
-						}else{
-							rows[i].inheritio = 1;
-							rows[i].save();
-						}
+						DB.getRows(1 , 
+							function (err, rows) {
+								if (err) {
+									console.log( err );
+								}else{
+									rows[i].inheritio = 1;
+									rows[i].save();
+								}
+							});
 					});
-			});
-			rply.text = '角色' + Cname + '開啟繼承模式！請輸入 繼承 角色名 進行繼承';
+					rply.text = '角色' + Cname + '開啟繼承模式！請輸入 繼承 角色名 進行繼承';
+			
+					return rply;
+					
+				}
+				
+			}
+			rply.text = '找不到角色名為 ' + Cname + ' 的角色喔！';
 			
 			return rply;
-	
+		}
 	}
-
 }
 
 
