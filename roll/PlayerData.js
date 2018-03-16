@@ -199,13 +199,13 @@ function CreatNewPlayer(UserID,CName,Title) {
 		CTitle = Title;
 	}
 	
-	CharArr[CharArr.length] = [];
+	CharArr[4] = [];
 	
-	CharArr[CharArr.length][0] = UserID;
-	CharArr[CharArr.length][1] = CName;
-	CharArr[CharArr.length][2] = 1000;
-	CharArr[CharArr.length][3] = 5;
-	CharArr[CharArr.length][4] = CTitle;
+	CharArr[4][0] = UserID;
+	CharArr[4][1] = CName;
+	CharArr[4][2] = 1000;
+	CharArr[4][3] = 5;
+	CharArr[4][4] = CTitle;
 	
 	DB.useServiceAccountAuth(creds, function (err) {
  
