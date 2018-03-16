@@ -15,8 +15,10 @@ function main(UserID) {
 	
 	
 	var returnF = function(){
+		var rplyT ={type : 'text'};
 		
-		return rply;
+		rplyT.text=rply.text;
+		return rplyT;
 	}
 	
 	DB.useServiceAccountAuth(creds, function (err) {
@@ -55,7 +57,7 @@ function main(UserID) {
 					}
 
 				
-				rply.text=TempRply;
+			rply.text = TempRply;
 			});
 	
 		
@@ -67,7 +69,7 @@ function main(UserID) {
 	
               setTimeout(testF, 3000);
 	
-              return returnF;
+              return returnF();
 
 	
 	
