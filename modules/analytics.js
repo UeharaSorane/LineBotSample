@@ -31,7 +31,6 @@ DB.useServiceAccountAuth(creds, function (err) {
 					CharArr[i][4] = rows[i].title;
 				}
 			}
-		}
 
 			console.log('玩家基本資料 讀取完成');
 			});
