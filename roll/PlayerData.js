@@ -143,8 +143,14 @@ function main(UserID) {
 				\n持有金幣: '+CharArr[i][2] + 'G\
 				\n持有奇蹟石: '+CharArr[i][3] + '顆\
 				\n當前稱號: '+CharArr[i][4];
+			ArrayUpdate();
+
+	return rply;
+
 		}
 	}
+	
+	rply.text = '你的Line帳號尚未建立角色了，請輸入 玩家建立 角色名 稱號(選填)  以建立角色';
 	
 	ArrayUpdate();
 
@@ -158,62 +164,34 @@ function main(UserID) {
 
 }
 
-function CreatNewPlayer(UserID,CName,Gold,MiraStone,Title) {
-	var AlreadyHaveCharacter = 0;
-	
-	DB.useServiceAccountAuth(creds, function (err) {		
-		var CName;
-		var AHC = 0;
- 
-		  // Get all of the rows from the spreadsheet.
-			DB.getRows(1 , 
-				function (err, rows) {
-					if (err) {
-						console.log( err );
-					}else{
+function CreatNewPlayer(UserID,CName,Title) {
+	for(var i=0; i< CharArr.length; i++){
 
-						for(var i=0; i< rows.length; i++){
-
-							if (rows[i].userid == UserID) {
-								AHC = 1;
-								CName = '你的Line帳號已經有角色了，請輸入「玩家情報確認」';
-								console.log('你的Line帳號已經有角色了，請輸入「玩家情報確認」');
-
-							}
-
-						}
-
-
-
-					}
-				AlreadyHaveCharacter = AHC;
-				rply.text =CName;
-			});
-	
-		
-		
-	});
-	
-	
-	if(AlreadyHaveCharacter == 1){
-		rply.text = '你的Line帳號已經有角色了，請輸入「玩家情報確認」';
+		if (CharArr[i][0] == UserID) {
+			rply.text = '你的Line帳號已經有角色了，請輸入「玩家情報確認」';
 
 		return rply;
-	
+		}
 	}
 	
 	
-	if(CName == null|| Gold == null || MiraStone == null|| Title == null) {
+	if(CName == null) {
 		
 	rply.text = '有資料沒有填進去喔!';
 				
 	return rply;
         }
 	
+	if(Title == null) {
+		
+	Title = '冒險者';
+
+        }
+	
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
-	  DB.addRow(1, { UserID: UserID, CName: CName, Gold: Gold, MiraStone: MiraStone,Title: Title }, function(err) {
+	  DB.addRow(1, { userid: UserID, cname: CName, gold: 1000, mirastone: 5, title: Title }, function(err) {
 		  if(err) {
 		    console.log(err);
 		  }
@@ -225,6 +203,8 @@ function CreatNewPlayer(UserID,CName,Gold,MiraStone,Title) {
 	///確認玩家資料
       
 	rply.text = '玩家資料 ' + CName + ' 建立完成!';
+	
+	ArrayUpdate();
 				
 	return rply;
 	
