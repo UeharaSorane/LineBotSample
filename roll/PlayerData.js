@@ -185,18 +185,24 @@ function CreatNewPlayer(UserID,CName,Title) {
 	
 	if(CName == null) {
 		
-	rply.text = '有資料沒有填進去喔!';
+		rply.text = '有資料沒有填進去喔!';
 				
-	return rply;
+		return rply;
         }
 	
 	if(Title == null) {
 		
-	CTitle = '冒險者';
+		CTitle = '冒險者';
 
         }else if(Title != null){
 		CTitle = Title;
 	}
+	
+	CharArr[CharArr.length][0] = UserID;
+	CharArr[CharArr.length][1] = CName;
+	CharArr[CharArr.length][2] = 1000;
+	CharArr[CharArr.length][3] = 5;
+	CharArr[CharArr.length][4] = CTitle;
 	
 	DB.useServiceAccountAuth(creds, function (err) {
  
@@ -207,17 +213,12 @@ function CreatNewPlayer(UserID,CName,Title) {
 		  }
 		  
 		});
-	});/*
+	});
 	
 	
 			
 	///確認玩家資料
 	
-	CharArr[PlayerNumber][0] = UserID;
-	CharArr[PlayerNumber][1] = CName;
-	CharArr[PlayerNumber][2] = 1000;
-	CharArr[PlayerNumber][3] = 5;
-	CharArr[PlayerNumber][4] = CTitle;*/
       
 	rply.text = '玩家資料 ' + CName + ' 建立完成，稍等一下才會生效喔！';
 				
