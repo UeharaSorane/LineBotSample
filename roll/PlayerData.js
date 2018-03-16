@@ -55,11 +55,9 @@ function main(UserID) {
 	
 	///確認玩家資料
 	
-	setImmediate(function(){
               console.log(rply.text);
 	
               return rply;
-        });
 
 	
 	
