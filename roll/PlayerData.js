@@ -56,13 +56,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 
 				for(var i=0; i< rows.length; i++){
 					
-					for(var j=0; j< rows.length; j++){
-						if (rows[j].userid == rows[i].userid) {
-							console.log('刪除重複建立的角色: '+rows[j].cname);
-						rows[j].del();
-						}
-					
-					}
+
 					
 					CharArr[i] = [];
 					
