@@ -79,7 +79,6 @@ DB.useServiceAccountAuth(creds, function (err) {
 				}
 				console.log(CharArr);
 				console.log('玩家基本資料 更新完成');
-			}
 
 			
 			});
