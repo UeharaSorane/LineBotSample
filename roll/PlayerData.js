@@ -165,6 +165,8 @@ function main(UserID) {
 }
 
 function CreatNewPlayer(UserID,CName,Title) {
+	var CTitle;
+	
 	for(var i=0; i< CharArr.length; i++){
 
 		if (CharArr[i][0] == UserID) {
@@ -184,14 +186,16 @@ function CreatNewPlayer(UserID,CName,Title) {
 	
 	if(Title == null) {
 		
-	Title = '冒險者';
+	CTitle = '冒險者';
 
-        }
+        }else{
+		CTitle = Title;
+	}
 	
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
-	  DB.addRow(1, { userid: UserID, cname: CName, gold: 1000, mirastone: 5, title: Title }, function(err) {
+	  DB.addRow(1, { userid: UserID, cname: CName, gold: 1000, mirastone: 5, title: CTitle }, function(err) {
 		  if(err) {
 		    console.log(err);
 		  }
