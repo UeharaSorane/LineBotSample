@@ -170,7 +170,7 @@ function CreatNewPlayer(UserID,CName,Title) {
 	for(var i=0; i< CharArr.length; i++){
 
 		if (CharArr[i][0] == UserID) {
-			rply.text = '你的Line帳號已經有角色了，請輸入「玩家情報確認」';
+			rply.text = '你的Line帳號已經有角色了，請輸入 玩家情報 確認';
 
 		return rply;
 		}
@@ -188,14 +188,14 @@ function CreatNewPlayer(UserID,CName,Title) {
 		
 	CTitle = '冒險者';
 
-        }else{
+        }else if(Title != null){
 		CTitle = Title;
 	}
 	
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
-	  DB.addRow(1, { userid: UserID, cname: CName, gold: 1000, mirastone: 5, title: CTitle }, function(err) {
+	  DB.addRow(1, { userid: UserID, cname: CName, gold: 1000, mirastone: 5, Title: CTitle }, function(err) {
 		  if(err) {
 		    console.log(err);
 		  }
