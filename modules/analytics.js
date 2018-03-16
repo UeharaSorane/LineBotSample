@@ -13,11 +13,11 @@ var CharDB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA
 
 var CharArr = [];
 
-DB.useServiceAccountAuth(creds, function (err) {
+CharDB.useServiceAccountAuth(creds, function (err) {
 		
  
  // Get all of the rows from the spreadsheet.
-	DB.getRows(1 , 
+	CharDB.getRows(1 , 
 		function (err, rows) {
 			if (err) {
 				console.log( err );
