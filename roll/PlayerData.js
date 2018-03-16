@@ -55,6 +55,25 @@ DB.useServiceAccountAuth(creds, function (err) {
 			}else{
 
 				for(var i=0; i< rows.length; i++){
+					
+					for(var j=0; j< rows.length; j++){
+						if (rows[j].userid == rows[i].userid) {
+							console.log('刪除重複建立的角色: '+rows[j].cname);
+						rows[j].del();
+						}
+					
+					}
+					
+					CharArr[i] = [];
+					
+					CharArr[i][0] = rows[i].userid;
+					CharArr[i][1] = rows[i].cname;
+					CharArr[i][2] = rows[i].gold;
+					CharArr[i][3] = rows[i].mirastone;
+					CharArr[i][4] = rows[i].title;
+					
+				}
+					
 					CharArr[i] = [];
 					
 					CharArr[i][0] = rows[i].userid;
