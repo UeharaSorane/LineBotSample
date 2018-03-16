@@ -22,7 +22,7 @@ function main(UserID) {
 		console.log('rply:(3)'+rply.text);
 		
 		
-		return rplyT;
+		return rply;
 	}
 	
 	var readF = function(cb){ 
