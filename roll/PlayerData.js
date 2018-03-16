@@ -77,7 +77,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 
 function main(UserID) {
 	
-	ArrayUpdate();
+	
 	
 	/*var readF = function(cb){ 
 		var Temp;
@@ -146,6 +146,7 @@ function main(UserID) {
 		}
 	}
 	
+	ArrayUpdate();
 
 	return rply;
 
