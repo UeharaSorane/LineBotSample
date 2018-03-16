@@ -203,7 +203,7 @@ function CreatNewPlayer(UserID,CName,Title) {
 		  }
 		  
 		});
-	});
+	});/*
 	
 	
 			
@@ -213,7 +213,7 @@ function CreatNewPlayer(UserID,CName,Title) {
 	CharArr[PlayerNumber][1] = CName;
 	CharArr[PlayerNumber][2] = 1000;
 	CharArr[PlayerNumber][3] = 5;
-	CharArr[PlayerNumber][4] = CTitle;
+	CharArr[PlayerNumber][4] = CTitle;*/
       
 	rply.text = '玩家資料 ' + CName + ' 建立完成，稍等一下才會生效喔！';
 				
