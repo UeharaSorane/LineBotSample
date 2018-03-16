@@ -236,5 +236,6 @@ function CreatNewPlayer(UserID,CName,Gold,MiraStone,Title) {
 
 module.exports = {
 	main,
-	CreatNewPlayer
+	CreatNewPlayer,
+	ArrayUpdate
 };
