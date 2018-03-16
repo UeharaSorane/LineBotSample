@@ -289,6 +289,15 @@ function InheritModeOn(Cname,password){
 }
 
 function InheritChatacter(UserID,Cname){
+	for(var i=0; i< CharArr.length; i++){
+		if(CharArr[i][0] == UserID && CharArr[i][1] != Cname){
+			rply.text = '你的Line帳號已經有角色了，請輸入 玩家情報 確認';
+			return rply;
+		
+		}
+	}
+	
+	
 	if(Cname == null){
 		rply.text = '請輸入要開啟繼承模式的角色名！';
 
