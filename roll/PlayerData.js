@@ -61,7 +61,7 @@ function main(UserID) {
 			console.log('TempRply:(1)'+TempRply);
 			Temp = TempRply;
 			console.log('Temp:(2)'+Temp);
-		//cb(Temp);
+		cb(Temp);
 				
 			});
 	
@@ -80,7 +80,7 @@ function main(UserID) {
 		
 		rplyT.text='太慢了!';
 		rplyT.text=Temp;
-		console.log('rplyT:(3)'+rplyT);
+		console.log('rplyT:(3)'+rplyT.text);
 		
 		
 		return rplyT;
