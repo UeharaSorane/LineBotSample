@@ -77,6 +77,7 @@ function main(UserID) {
 	return readF(function(Temp){
 		var rplyT ={type : 'text'};
 		
+		rplyT.text='太慢了!';
 		rplyT.text=Temp;
 		console.log('rplyT:(3)'+rplyT);
 		
