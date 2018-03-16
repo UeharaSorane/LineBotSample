@@ -74,7 +74,7 @@ function main(UserID) {
 		
 	});
 		
-	return cb(Temp);
+	cb(Temp);
 		
 		
 }
@@ -83,6 +83,8 @@ function main(UserID) {
 	///確認玩家資料
 	
 	console.log('rply'+readF(returnF));
+
+	return rply;
 
 	
 	
