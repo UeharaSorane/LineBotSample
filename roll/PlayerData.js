@@ -304,6 +304,18 @@ function InheritChatacter(UserID,Cname){
 					return rply;
 				}else if(CharArr[i][0] == UserID){
 					rply.text = '此角色是屬於你目前使用的Line帳號喔！';
+					CharArr[i][5] = 0;
+					DB.useServiceAccountAuth(creds, function (err) {
+						DB.getRows(1 , 
+							function (err, rows) {
+								if (err) {
+									console.log( err );
+								}else{
+									rows[i].inheritio = 0;
+									rows[i].save();
+								}
+							});
+					});
 
 					return rply;
 				}
