@@ -13,7 +13,7 @@ var CharDB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA
 
 var CharArr = [];
 
-CharDB.useServiceAccountAuth(creds, function (err) {
+/*CharDB.useServiceAccountAuth(creds, function (err) {
 		
  
  // Get all of the rows from the spreadsheet.
@@ -40,6 +40,7 @@ CharDB.useServiceAccountAuth(creds, function (err) {
 	});
 
 console.log(CharArr);
+*/
 
 //用來呼叫骰組,新增骰組的話,要寫條件式到下面呼叫 
 //格式是 exports.骰組檔案名字.function名
