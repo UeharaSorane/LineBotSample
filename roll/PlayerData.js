@@ -82,7 +82,16 @@ function main(UserID) {
 	
 	///確認玩家資料
 	
-	console.log('rply'+readF(returnF));
+	console.log('rply'+readF(function(Temp){
+		
+		
+		rply.text='太慢了!';
+		rply.text=Temp;
+		console.log('rply:(3)'+rply.text);
+		
+		
+		return rply;
+	}));
 
 	return rply;
 
