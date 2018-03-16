@@ -69,7 +69,7 @@ function main(UserID) {
 	
               setTimeout(testF, 3000);
 	
-              return JSON.stringify(setTimeout(returnF, 3000));
+              return returnF();
 
 	
 	
