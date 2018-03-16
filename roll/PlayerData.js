@@ -75,7 +75,12 @@ function main(UserID) {
 	
               setTimeout(testF, 3000);
 	
-	return readF(returnF());
+	return readF(function(Temp){
+		var rplyT ={type : 'text'};
+		
+		rplyT.text=Temp;
+		return rplyT;
+	});
 
 	
 	
