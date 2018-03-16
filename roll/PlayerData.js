@@ -17,6 +17,7 @@ function main(UserID) {
 		var Gold;
 		var MiraStone;
 		var Title;
+		var TempRply;
 		
  
 		  // Get all of the rows from the spreadsheet.
@@ -33,7 +34,7 @@ function main(UserID) {
 								Gold = rows[i].gold;
 								MiraStone = rows[i].mirastone;
 								Title = rows[i].title;
-								rply.text ='基本資料:\
+								TempRply ='基本資料:\
 								\n你的角色名:' + CName + '\
 								\n持有金幣: '+Gold + 'G\
 								\n持有奇蹟石: '+MiraStone + '顆\
@@ -44,7 +45,7 @@ function main(UserID) {
 					}
 
 				
-				
+				rply.text=TempRply;
 			});
 	
 		
