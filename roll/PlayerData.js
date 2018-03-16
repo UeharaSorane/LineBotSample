@@ -67,7 +67,7 @@ function main(UserID) {
 	
               setTimeout(testF, 3000);
 	
-              return setTimeout(returnF, 3000);
+              return returnF;
 
 	
 	
