@@ -199,6 +199,8 @@ function CreatNewPlayer(UserID,CName,Title) {
 		CTitle = Title;
 	}
 	
+	CharArr[CharArr.length] = [];
+	
 	CharArr[CharArr.length][0] = UserID;
 	CharArr[CharArr.length][1] = CName;
 	CharArr[CharArr.length][2] = 1000;
