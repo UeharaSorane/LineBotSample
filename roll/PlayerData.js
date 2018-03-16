@@ -77,22 +77,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 
 function main(UserID) {
 	
-	var testF = function(){
-		
-		console.log('rply.texr'+rply.text);
-	}
-	
-	
-	var returnF = function(Temp){
-		
-		
-		rply.text='太慢了!';
-		rply.text=Temp;
-		console.log('rply:(3)'+rply.text);
-		
-		
-		return rply;
-	}
+	ArrayUpdate();
 	
 	/*var readF = function(cb){ 
 		var Temp;
@@ -161,7 +146,6 @@ function main(UserID) {
 		}
 	}
 	
-	ArrayUpdate();
 
 	return rply;
 
