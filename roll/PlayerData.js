@@ -8,6 +8,11 @@ var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 
 function main(UserID) {
 	
+	var testF = function{
+		
+		console.log(rply.text);
+	}
+	
 	
 	DB.useServiceAccountAuth(creds, function (err) {
 		rply.text ='你的角色名:';
@@ -55,7 +60,7 @@ function main(UserID) {
 	
 	///確認玩家資料
 	
-              console.log(rply.text);
+              setTimeout(testF, 3000);
 	
               return rply;
 
