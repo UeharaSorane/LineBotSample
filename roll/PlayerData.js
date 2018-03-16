@@ -14,6 +14,11 @@ function main(UserID) {
 	}
 	
 	
+	var returnF = function(){
+		
+		return rply;
+	}
+	
 	DB.useServiceAccountAuth(creds, function (err) {
 		rply.text ='你的角色名:';
 		
@@ -62,7 +67,7 @@ function main(UserID) {
 	
               setTimeout(testF, 3000);
 	
-              return rply;
+              return setTimeout(returnF, 3000);
 
 	
 	
