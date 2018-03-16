@@ -24,10 +24,13 @@ DB.useServiceAccountAuth(creds, function (err) {
 					CharArr[i][2] = rows[i].gold;
 					CharArr[i][3] = rows[i].mirastone;
 					CharArr[i][4] = rows[i].title;
+					
 				}
+				console.log(CharArr);
+				console.log('玩家基本資料 讀取完成');
 			}
 
-			console.log('玩家基本資料 讀取完成');
+			
 			});
 	
 		
