@@ -293,5 +293,6 @@ function InheritModeOn(Cname,password){
 module.exports = {
 	main,
 	CreatNewPlayer,
-	ArrayUpdate
+	ArrayUpdate,
+	InheritModeOn
 };
