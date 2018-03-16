@@ -58,7 +58,7 @@ function main(UserID) {
 						}
 					}
 
-				
+			console.log('TempRply:(1)'+TempRply);
 			Temp = TempRply;
 				
 			});
@@ -66,7 +66,7 @@ function main(UserID) {
 		
 		
 	});
-		console.log('Temp:'+Temp);
+		console.log('Temp:(2)'+Temp);
 		cb(Temp);
 		
 }
@@ -78,7 +78,7 @@ function main(UserID) {
 		var rplyT ={type : 'text'};
 		
 		rplyT.text=Temp;
-		console.log('rplyT:'+rplyT);
+		console.log('rplyT:(3)'+rplyT);
 		
 		
 		return rplyT;
