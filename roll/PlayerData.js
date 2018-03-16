@@ -19,7 +19,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 				for(var i=0; i< rows.length; i++){
 					CharArr[i] = [];
 					
-					CharArr[i][0] = rows[i].usedid;
+					CharArr[i][0] = rows[i].userid;
 					CharArr[i][1] = rows[i].cname;
 					CharArr[i][2] = rows[i].gold;
 					CharArr[i][3] = rows[i].mirastone;
