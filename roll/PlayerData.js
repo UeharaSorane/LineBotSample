@@ -206,9 +206,9 @@ function CreatNewPlayer(UserID,CName,Title) {
 			
 	///確認玩家資料
       
-	rply.text = '玩家資料 ' + CName + ' 建立完成!';
+	rply.text = '玩家資料 ' + CName + ' 建立完成，稍等一下才會生效喔！';
 	
-	ArrayUpdate();
+	setTimeout('arrayUpdate',5000);
 				
 	return rply;
 	
