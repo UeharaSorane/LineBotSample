@@ -6,8 +6,12 @@ require('fs').readdirSync('./roll/').forEach(function(file) {
 	  exports[name] = require('../roll/' + file);
 	}
   });
+var GoogleSpreadsheet = require('google-spreadsheet');
+var creds = require('../client_secret.json');
 
-var Sync = require('sync');
+var CharDB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
+
+var CharArr[]:
 
 //用來呼叫骰組,新增骰組的話,要寫條件式到下面呼叫 
 //格式是 exports.骰組檔案名字.function名
