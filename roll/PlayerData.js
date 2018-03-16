@@ -65,7 +65,9 @@ function main(UserID) {
 			console.log('TempRply:(1)'+TempRply);
 			Temp = TempRply;
 			console.log('Temp:(2)'+Temp);
-		cb(Temp);
+				
+		return cb(Temp);
+				
 				
 			});
 	
