@@ -26,6 +26,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					CharArr[i][2] = rows[i].gold;
 					CharArr[i][3] = rows[i].mirastone;
 					CharArr[i][4] = rows[i].title;
+					CharArr[i][5] = rows[i].inheritio;
 					
 				}
 				console.log(CharArr);
@@ -65,6 +66,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					CharArr[i][2] = rows[i].gold;
 					CharArr[i][3] = rows[i].mirastone;
 					CharArr[i][4] = rows[i].title;
+					CharArr[i][5] = rows[i].inheritio;
 					
 				}
 					
@@ -172,7 +174,7 @@ function main(UserID) {
 
 function CreatNewPlayer(UserID,CName,Title) {
 	var CTitle;
-	console.log(CharArr.length);
+	var CharArrleng = CharArr.length);
 	
 	for(var i=0; i< CharArr.length; i++){
 
@@ -199,13 +201,15 @@ function CreatNewPlayer(UserID,CName,Title) {
 		CTitle = Title;
 	}
 	
-	CharArr[4] = [];
+	CharArr[CharArrleng] = [];
 	
-	CharArr[4][0] = UserID;
-	CharArr[4][1] = CName;
-	CharArr[4][2] = 1000;
-	CharArr[4][3] = 5;
-	CharArr[4][4] = CTitle;
+	console.log(CharArr.length);
+	
+	CharArr[CharArrleng][0] = UserID;
+	CharArr[CharArrleng][1] = CName;
+	CharArr[CharArrleng][2] = 1000;
+	CharArr[CharArrleng][3] = 5;
+	CharArr[CharArrleng][4] = CTitle;
 	
 	DB.useServiceAccountAuth(creds, function (err) {
  
