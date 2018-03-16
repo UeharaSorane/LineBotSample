@@ -21,7 +21,7 @@ function main(UserID) {
 		return rplyT;
 	}
 	
-	DB.useServiceAccountAuth(creds, function (err) {
+	return DB.useServiceAccountAuth(creds, function (err) {
 		rply.text ='你的角色名:';
 		
 		
@@ -58,7 +58,7 @@ function main(UserID) {
 
 				
 			rply.text = TempRply;
-			});
+			}).then(returnF);
 	
 		
 		
@@ -69,7 +69,6 @@ function main(UserID) {
 	
               setTimeout(testF, 3000);
 	
-              return returnF();
 
 	
 	
