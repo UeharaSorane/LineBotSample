@@ -60,10 +60,14 @@ function main(UserID) {
 	
 	
 	///確認玩家資料
-
-	console.log(rply.text);
 	
-	return rply;
+	setImmediate(function(){
+              console.log(rply.text);
+	
+              return rply;
+        });
+
+	
 	
   
 	
