@@ -17,7 +17,11 @@ function main(UserID) {
 	var returnF = function(Temp){
 		var rplyT ={type : 'text'};
 		
+		rplyT.text='太慢了!';
 		rplyT.text=Temp;
+		console.log('rplyT:(3)'+rplyT.text);
+		
+		
 		return rplyT;
 	}
 	
@@ -75,16 +79,7 @@ function main(UserID) {
 	
 	///確認玩家資料
 	
-	return readF(function(Temp){
-		var rplyT ={type : 'text'};
-		
-		rplyT.text='太慢了!';
-		rplyT.text=Temp;
-		console.log('rplyT:(3)'+rplyT.text);
-		
-		
-		return rplyT;
-	});
+	return readF(returnF(Temp));
 
 	
 	
