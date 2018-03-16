@@ -61,12 +61,12 @@ function main(UserID) {
 				
 			Temp = TempRply;
 				
-				console.log('Temp:'+Temp);
 			});
 	
 		
 		
 	});
+		console.log('Temp:'+Temp);
 		cb(Temp);
 		
 }
@@ -74,14 +74,13 @@ function main(UserID) {
 	
 	///確認玩家資料
 	
-              setTimeout(testF, 3000);
-	
 	return readF(function(Temp){
 		var rplyT ={type : 'text'};
 		
+		rplyT.text=Temp;
 		console.log('rplyT:'+rplyT);
 		
-		rplyT.text=Temp;
+		
 		return rplyT;
 	});
 
