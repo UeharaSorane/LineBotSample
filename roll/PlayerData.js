@@ -288,11 +288,59 @@ function InheritModeOn(Cname,password){
 	}
 }
 
+function InheritChatacter(UserID,Cname){
+	if(Cname == null){
+		rply.text = '請輸入要開啟繼承模式的角色名！';
+
+		return rply;
+		
+	}else{
+
+		for(var i=0; i< CharArr.length; i++){
+			if (CharArr[i][1] == Cname) {
+				if (CharArr[i][5] == 0) {
+					rply.text = '此角色尚未開啟繼承模式！';
+
+					return rply;
+				}else if(CharArr[i][0] == UserID){
+					rply.text = '此角色是屬於你目前使用的Line帳號喔！';
+
+					return rply;
+				}
+				CharArr[i][5] = 0;
+				CharArr[i][0] = UserID;
+				DB.useServiceAccountAuth(creds, function (err) {
+					DB.getRows(1 , 
+						function (err, rows) {
+							if (err) {
+								console.log( err );
+							}else{
+								rows[i].inheritio = 0;
+								rows[i].userID = UserID;
+								rows[i].save();
+							}
+						});
+				});
+				rply.text = '角色' + Cname + '繼承完成！請輸入 玩家情報以進行確認';
+
+				return rply;
+
+			}
+
+		}
+		rply.text = '找不到角色名為 ' + Cname + ' 的角色喔！';
+
+		return rply;
+		
+	}
+}
+
 
 
 module.exports = {
 	main,
 	CreatNewPlayer,
 	ArrayUpdate,
-	InheritModeOn
+	InheritModeOn,
+	InheritChatacter
 };
