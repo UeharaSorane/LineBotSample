@@ -150,7 +150,7 @@ function main(UserID) {
 		}
 	}
 	
-	rply.text = '你的Line帳號尚未建立角色了，請輸入 玩家建立 角色名 稱號(選填)  以建立角色';
+	rply.text = '你的Line帳號尚未建立角色，請輸入 玩家建立 角色名 稱號(選填)  以建立角色';
 	
 	ArrayUpdate();
 
@@ -208,7 +208,7 @@ function CreatNewPlayer(UserID,CName,Title) {
       
 	rply.text = '玩家資料 ' + CName + ' 建立完成，稍等一下才會生效喔！';
 	
-	setTimeout('ArrayUpdate()',5000);
+	setTimeout(ArrayUpdate(),5000);
 				
 	return rply;
 	
