@@ -174,7 +174,7 @@ function main(UserID) {
 
 function CreatNewPlayer(UserID,CName,Title) {
 	var CTitle;
-	var CharArrleng = CharArr.length);
+	var CharArrleng = CharArr.length;
 	
 	for(var i=0; i< CharArr.length; i++){
 
@@ -203,7 +203,7 @@ function CreatNewPlayer(UserID,CName,Title) {
 	
 	CharArr[CharArrleng] = [];
 	
-	console.log(CharArr.length);
+	console.log(CharArrleng);
 	
 	CharArr[CharArrleng][0] = UserID;
 	CharArr[CharArrleng][1] = CName;
