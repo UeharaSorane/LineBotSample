@@ -25,7 +25,6 @@ function main(UserID) {
 		var Temp;
 		
 		DB.useServiceAccountAuth(creds, function (err) {
-		rply.text ='你的角色名:';
 		
 		
 		var CName;
@@ -61,6 +60,8 @@ function main(UserID) {
 
 				
 			Temp = TempRply;
+				
+				console.log(Temp);
 			});
 	
 		
@@ -77,6 +78,8 @@ function main(UserID) {
 	
 	return readF(function(Temp){
 		var rplyT ={type : 'text'};
+		
+		console.log(rplyT);
 		
 		rplyT.text=Temp;
 		return rplyT;
