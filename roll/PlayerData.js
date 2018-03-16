@@ -79,7 +79,7 @@ function main(UserID) {
 	
 	///確認玩家資料
 	
-	return readF(returnF);
+	console.log(readF(returnF));
 
 	
 	
