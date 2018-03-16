@@ -15,11 +15,11 @@ function main(UserID) {
 	
 	
 	var returnF = function(Temp){
-		var rplyT ={type : 'text'};
 		
-		rplyT.text='太慢了!';
-		rplyT.text=Temp;
-		console.log('rplyT:(3)'+rplyT.text);
+		
+		rply.text='太慢了!';
+		rply.text=Temp;
+		console.log('rply:(3)'+rply.text);
 		
 		
 		return rplyT;
