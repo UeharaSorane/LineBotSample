@@ -55,7 +55,7 @@ function main(UserID) {
 		return rply;
 	}
 	
-	var readF = function(cb){ 
+	/*var readF = function(cb){ 
 		var Temp;
 		
 		DB.useServiceAccountAuth(creds, function (err) {
@@ -107,21 +107,21 @@ function main(UserID) {
 	cb(Temp);
 		
 		
-}
+}*/
 	
 	
 	///確認玩家資料
+	for(var i=0; i< CharArr.length; i++){
+
+		if (CharArr[i][0] == UserID) {
+			Rply.text ='基本資料:\
+				\n你的角色名:' + CharArr[i][1] + '\
+				\n持有金幣: '+CharArr[i][2] + 'G\
+				\n持有奇蹟石: '+CharArr[i][3] + '顆\
+				\n當前稱號: '+CharArr[i][4];
+		}
+	}
 	
-	console.log('rply'+readF(function(Temp){
-		
-		
-		rply.text='太慢了!';
-		rply.text=Temp;
-		console.log('rply:(3)'+rply.text);
-		
-		
-		return rply;
-	}));
 
 	return rply;
 
