@@ -153,7 +153,7 @@ function main(UserID) {
 				\n當前稱號: '+CharArr[i][4];
 			ArrayUpdate();
 
-	return rply;
+			return rply;
 
 		}
 	}
@@ -233,6 +233,59 @@ function CreatNewPlayer(UserID,CName,Title) {
 	return rply;
 	
 	///
+
+}
+
+function InheritModeOn(Cname,password){
+	if(password == null){
+		rply.text = '請輸入GM專用密碼！';
+
+		return rply;
+	
+	}else if(password != '112201211'){
+		rply.text = '密碼錯誤！';
+
+		return rply;
+	
+	}else{
+		for(var i=0; i< CharArr.length; i++){
+
+		if (CharArr[i][1] == Cname) {
+			
+			if (CharArr[i][5] == 1) {
+			
+			rply.text = '此角色已經開啟繼承模式了！';
+
+			return rply;
+
+		}
+			
+			CharArr[i][5] = 1;
+			
+			DB.useServiceAccountAuth(creds, function (err) {
+		
+				DB.getRows(1 , 
+					function (err, rows) {
+						if (err) {
+							console.log( err );
+						}else{
+							rows[i].inheritio = 1;
+							rows[i].save();
+						}
+					});
+			});
+			
+
+			rply.text = '角色' + Cname + '開啟繼承模式！請輸入 繼承 角色名 進行繼承';
+			
+			return rply;
+
+		}
+	}
+	
+	
+	}
+
 
 }
 
