@@ -39,6 +39,42 @@ DB.useServiceAccountAuth(creds, function (err) {
 
 console.log(CharArr);
 
+function ArrayUpdate() {
+
+DB.useServiceAccountAuth(creds, function (err) {
+		
+ 
+	
+ // Get all of the rows from the spreadsheet.
+	DB.getRows(1 , 
+		function (err, rows) {
+			if (err) {
+				console.log( err );
+			}else{
+
+				for(var i=0; i< rows.length; i++){
+					CharArr[i] = [];
+					
+					CharArr[i][0] = rows[i].userid;
+					CharArr[i][1] = rows[i].cname;
+					CharArr[i][2] = rows[i].gold;
+					CharArr[i][3] = rows[i].mirastone;
+					CharArr[i][4] = rows[i].title;
+					
+				}
+				console.log(CharArr);
+				console.log('玩家基本資料 更新完成');
+			}
+
+			
+			});
+	
+		
+		
+	});
+}
+	
+
 function main(UserID) {
 	
 	var testF = function(){
@@ -125,6 +161,7 @@ function main(UserID) {
 		}
 	}
 	
+	ArrayUpdate();
 
 	return rply;
 
