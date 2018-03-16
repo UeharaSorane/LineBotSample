@@ -11,7 +11,7 @@ function main(UserID) {
 	var testF = function{
 		
 		console.log(rply.text);
-	};
+	}
 	
 	
 	DB.useServiceAccountAuth(creds, function (err) {
