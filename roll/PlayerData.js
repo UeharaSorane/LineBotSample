@@ -14,14 +14,17 @@ function main(UserID) {
 	}
 	
 	
-	var returnF = function(){
+	var returnF = function(Temp){
 		var rplyT ={type : 'text'};
 		
-		rplyT.text=rply.text;
+		rplyT.text=Temp;
 		return rplyT;
 	}
 	
-	return DB.useServiceAccountAuth(creds, function (err) {
+	var readF = function(cb){ 
+		var Temp;
+		
+		DB.useServiceAccountAuth(creds, function (err) {
 		rply.text ='你的角色名:';
 		
 		
@@ -57,18 +60,22 @@ function main(UserID) {
 					}
 
 				
-			rply.text = TempRply;
-			}).then(returnF);
+			Temp = TempRply;
+			});
 	
 		
 		
 	});
+		cb(Temp);
+		
+}
 	
 	
 	///確認玩家資料
 	
               setTimeout(testF, 3000);
 	
+	return readF(returnF());
 
 	
 	
