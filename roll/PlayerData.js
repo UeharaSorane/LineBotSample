@@ -152,7 +152,7 @@ function main(UserID) {
 				\n持有奇蹟石: '+CharArr[i][3] + '顆\
 				\n當前稱號: '+CharArr[i][4];
 			
-			if(CharArr[i][5] == 1) rply.text += '\n!!!警告 繼承模式開啟中，請盡速繼承!!!'
+			if(CharArr[i][5] == 1) rply.text += '\n!!!警告 繼承模式開啟中，請盡速繼承!!!';
 			
 			ArrayUpdate();
 
