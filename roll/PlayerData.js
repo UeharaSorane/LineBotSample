@@ -172,6 +172,7 @@ function main(UserID) {
 
 function CreatNewPlayer(UserID,CName,Title) {
 	var CTitle;
+	console.log(CharArr.length);
 	
 	for(var i=0; i< CharArr.length; i++){
 
