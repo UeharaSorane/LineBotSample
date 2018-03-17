@@ -10,7 +10,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 		
  
 	
- // Get all of the rows from the spreadsheet.
+ // 是先將資料讀進陣列
 	DB.getRows(1 , 
 		function (err, rows) {
 			if (err) {
@@ -27,11 +27,19 @@ DB.useServiceAccountAuth(creds, function (err) {
 					CharArr[i][3] = rows[i].mirastone;
 					CharArr[i][4] = rows[i].title;
 					CharArr[i][5] = rows[i].inheritio;
+					CharArr[i][6] = rows[i].inheritpassword;
+					CharArr[i][7] = rows[i].wmaterials;
+					CharArr[i][8] = rows[i].wmaterialm;
+					CharArr[i][9] = rows[i].wmateriall;
+					CharArr[i][10] = rows[i].gmaterials;
+					CharArr[i][11] = rows[i].gmaterialm;
+					CharArr[i][12] = rows[i].gmateriall;
 					
 				}
 				console.log(CharArr);
 				console.log('玩家基本資料 讀取完成');
 			}
+		
 
 			
 			});
@@ -67,6 +75,13 @@ DB.useServiceAccountAuth(creds, function (err) {
 					CharArr[i][3] = rows[i].mirastone;
 					CharArr[i][4] = rows[i].title;
 					CharArr[i][5] = rows[i].inheritio;
+					CharArr[i][6] = rows[i].inheritpassword;
+					CharArr[i][7] = rows[i].wmaterials;
+					CharArr[i][8] = rows[i].wmaterialm;
+					CharArr[i][9] = rows[i].wmateriall;
+					CharArr[i][10] = rows[i].gmaterials;
+					CharArr[i][11] = rows[i].gmaterialm;
+					CharArr[i][12] = rows[i].gmateriall;
 					
 				}
 					
@@ -84,64 +99,6 @@ DB.useServiceAccountAuth(creds, function (err) {
 	
 
 function main(UserID) {
-	
-	
-	
-	/*var readF = function(cb){ 
-		var Temp;
-		
-		DB.useServiceAccountAuth(creds, function (err) {
-		
-		
-		var CName;
-		var Gold;
-		var MiraStone;
-		var Title;
-		var TempRply;
-		
- 
-		  // Get all of the rows from the spreadsheet.
-			DB.getRows(1 , 
-				function (err, rows) {
-					if (err) {
-						console.log( err );
-					}else{
-
-						for(var i=0; i< rows.length; i++){
-
-							if (rows[i].userid == UserID) {
-								CName = rows[i].cname;
-								Gold = rows[i].gold;
-								MiraStone = rows[i].mirastone;
-								Title = rows[i].title;
-								TempRply ='基本資料:\
-								\n你的角色名:' + CName + '\
-								\n持有金幣: '+Gold + 'G\
-								\n持有奇蹟石: '+MiraStone + '顆\
-								\n當前稱號: '+Title;
-
-							}
-						}
-					}
-
-			console.log('TempRply:(1)'+TempRply);
-			Temp = TempRply;
-			console.log('Temp:(2)'+Temp);
-				
-				
-				
-			});
-	
-		
-		
-	});
-		
-	cb(Temp);
-		
-		
-}*/
-	
-	
 	///確認玩家資料
 	for(var i=0; i< CharArr.length; i++){
 
@@ -150,7 +107,14 @@ function main(UserID) {
 				\n你的角色名:' + CharArr[i][1] + '\
 				\n持有金幣: '+CharArr[i][2] + 'G\
 				\n持有奇蹟石: '+CharArr[i][3] + '顆\
-				\n當前稱號: '+CharArr[i][4];
+				\n當前稱號: '+CharArr[i][4] + '\
+				\n-----持有素材-----\
+				\n 武器素材(小):' + CharArr[i][7]+'\
+				\n 武器素材(中):' + CharArr[i][8]+'\
+				\n 武器素材(大):' + CharArr[i][9]+'\
+				\n 公會素材(小):' + CharArr[i][10]+'\
+				\n 公會素材(中):' + CharArr[i][11]+'\
+				\n 公會素材(大):' + CharArr[i][12];
 			
 			if(CharArr[i][5] == 1) rply.text += '\n!!!警告 繼承模式開啟中，請盡速繼承!!!';
 			
@@ -218,7 +182,7 @@ function CreatNewPlayer(UserID,CName,Title) {
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
-	  DB.addRow(1, { Userid: UserID, cname: CName, gold: 1000, mirastone: 5, Title: CTitle , InheritIO: 0 }, function(err) {
+	  DB.addRow(1, { Userid: UserID, cname: CName, gold: 1000, mirastone: 5, Title: CTitle , InheritIO: 0 , WmateialS:0, WmateialM:0,WmateiaL:0,GmateialS:0,GmateialM:0,GmateialL:0}, function(err) {
 		  if(err) {
 		    console.log(err);
 		  }
@@ -231,7 +195,7 @@ function CreatNewPlayer(UserID,CName,Title) {
 	///確認玩家資料
 	
       
-	rply.text = '玩家資料 ' + CName + ' 建立完成，稍等一下才會生效喔！';
+	rply.text = '玩家資料 ' + CName + ' 建立完成！';
 				
 	return rply;
 	
