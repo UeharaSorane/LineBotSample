@@ -422,7 +422,7 @@ function main(userID, test) {
 				rply.text+='\n測試而已沒有儲存';
 				return rply;
 			}else{
-				DB.useServiceAccountAuth(creds, function (err) {
+				/*DB.useServiceAccountAuth(creds, function (err) {
 		
 					DB.getRows(1 , 
 						function (err, rows) {
@@ -442,6 +442,7 @@ function main(userID, test) {
 							}
 						});
 				});
+				*/
 			}
 			
 			
