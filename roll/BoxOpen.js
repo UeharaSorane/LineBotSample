@@ -423,11 +423,11 @@ function main(userID, test) {
 			
 			return rply;
 			
-		}
-	}else{
+		}else{
 		rply.text = '錯誤:你尚未建立角色';
 
 		return rply;
+		}
 	
 	}
 	
