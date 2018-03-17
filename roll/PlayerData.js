@@ -211,7 +211,7 @@ function InheritModeOn(userID,Cname,password){
 		
 	}else{
 		for(var i=0; i< CharArr.length; i++){
-			if(CharArr[i][1] == Cname && CharArr[i][0] ==userID){
+			if(CharArr[i][1] == Cname && CharArr[i][0] !=userID){
 				rply.text = '此角色不是屬於你的喔!';
 
 				return rply;
