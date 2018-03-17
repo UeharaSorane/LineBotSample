@@ -442,7 +442,7 @@ function main(userID, test) {
 				});
 			}
 			
-			
+			console.log(rply.text);
 			return rply;
 			
 		}else{
