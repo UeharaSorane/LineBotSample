@@ -13,7 +13,6 @@ require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
   }
 });
 
-var DisplayName;
 
 var options = {
 	host: 'api.line.me',
@@ -33,10 +32,6 @@ app.get('/', function(req, res) {
 });
 app.post('/', jsonParser, function(req, res) {
 	let event = req.body.events[0];
-	
-	event.source.profile().then(function (profile) {
-		 DisplayName = profile.displayName;
-	});
 	let type = event.type;
 	let msgType = event.message.type;
 	let msg = event.message.text;
@@ -72,7 +67,7 @@ function handleEvent(event) {
       const message = event.message;
       switch (message.type) {
         case 'text':
-          return exports.analytics.parseInput(event.rplyToken, event.message.text, event.source.userId,DisplayName); 
+          return exports.analytics.parseInput(event.rplyToken, event.message.text, event.source.userId; 
 		  
         default:
            break;
