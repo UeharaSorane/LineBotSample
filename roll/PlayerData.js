@@ -242,6 +242,7 @@ function InheritModeOn(userID,Cname,password){
 									console.log( err );
 								}else{
 									rows[i].inheritio = 1;
+									rows[i].inheritpassword = password;
 									rows[i].save();
 								}
 							});
