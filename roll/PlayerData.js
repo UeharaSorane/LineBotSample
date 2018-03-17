@@ -290,7 +290,7 @@ function InheritChatacter(UserID,Cname,password){
 					return rply;
 					
 				}else if(CharArr[i][0] == UserID){
-					rply.text = '此角色是屬於你目前使用的Line帳號喔！';
+					rply.text = '此角色是屬於你目前使用的Line帳號喔！關閉繼承模式';
 					CharArr[i][5] = 0;
 					DB.useServiceAccountAuth(creds, function (err) {
 						DB.getRows(1 , 
