@@ -98,12 +98,12 @@ DB.useServiceAccountAuth(creds, function (err) {
 }
 	
 
-function main(UserID,Dname) {
+function main(UserID) {
 	///確認玩家資料
 	for(var i=0; i< CharArr.length; i++){
 
 		if (CharArr[i][0] == UserID) {
-			rply.text =Dname + '的基本資料:\
+			rply.text ='你的基本資料:\
 				\n你的角色名:' + CharArr[i][1] + '\
 				\n持有金幣: '+CharArr[i][2] + 'G\
 				\n持有奇蹟石: '+CharArr[i][3] + '顆\
