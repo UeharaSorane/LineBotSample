@@ -77,8 +77,8 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	if (trigger.match(/^玩家情報$/)!= null ) return exports.PlayerData.main(UserID);//資料庫連結測試
 	if (trigger.match(/^玩家建立$/)!= null ) return exports.PlayerData.CreatNewPlayer(UserID, mainMsg[1], mainMsg[2]);//建立新玩家
 	if (trigger.match(/^資料庫更新$/)!= null ) return exports.PlayerData.ArrayUpdate();//資料庫外部更動更新
-	if (trigger.match(/^繼承模式開啟$/)!= null ) return exports.PlayerData.InheritModeOn(mainMsg[1], mainMsg[2]);//[GM專用]開啟繼承權限
-	if (trigger.match(/^繼承$/)!= null ) return exports.PlayerData.InheritChatacter(UserID, mainMsg[1]);//繼承角色
+	if (trigger.match(/^繼承模式開啟$/)!= null ) return exports.PlayerData.InheritModeOn(UserID,mainMsg[1], mainMsg[2]);//[GM專用]開啟繼承權限
+	if (trigger.match(/^繼承$/)!= null ) return exports.PlayerData.InheritChatacter(UserID, mainMsg[1], mainMsg[1]);//繼承角色
 
 
 }
