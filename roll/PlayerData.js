@@ -98,7 +98,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 }
 	
 
-function main(Dname,UserID) {
+function main(UserID,Dname) {
 	///確認玩家資料
 	for(var i=0; i< CharArr.length; i++){
 
