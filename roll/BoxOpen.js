@@ -430,7 +430,7 @@ function main(userID, test) {
 								console.log( err );
 							}else{
 								//rows[i].Gold += Gold;
-								rows[i].MiraStone = CharArr[i][3];
+								//rows[i].MiraStone = CharArr[i][3];
 								rows[i].WmaterialS = WSitem;
 								rows[i].WmaterialM = WMitem;
 								rows[i].WmaterialL = WLitem;
