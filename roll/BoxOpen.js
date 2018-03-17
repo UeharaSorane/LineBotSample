@@ -146,6 +146,8 @@ function ArrayUpdate() {
 }
 
 function main(userID, test) {
+	console.log(userID);
+	console.log(test);
 	var date = new Date();
 	var day = date.getDay();
 	console.log(day);
