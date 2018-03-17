@@ -181,8 +181,6 @@ function main(userID, test) {
 	
 	let temp = rollbase.Dice(100);
 	
-	console.log(CharArr.length);
-	console.log(CharArr[0][0]);
 	
 	for(var i = 0; i<=CharArr.length; i++){
 		if(userID == CharArr[i][0]){
@@ -430,7 +428,7 @@ function main(userID, test) {
 							if (err) {
 								console.log( err );
 							}else{
-								rows[i].Gold += Gold;
+								//rows[i].Gold += Gold;
 								rows[i].MiraStone = CharArr[i][3];
 								rows[i].WmaterialS = WSitem;
 								rows[i].WmaterialM = WMitem;
