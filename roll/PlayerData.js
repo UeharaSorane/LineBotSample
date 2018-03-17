@@ -203,20 +203,24 @@ function CreatNewPlayer(UserID,CName,Title) {
 
 }
 
-function InheritModeOn(Cname,password){
+function InheritModeOn(userID,Cname,password){
 	if(Cname == null){
 		rply.text = '請輸入要開啟繼承模式的角色名！';
 
 		return rply;
 		
 	}else{
-		if(password == null){
-			rply.text = '請輸入GM專用密碼！';
+		for(var i=0; i< CharArr.length; i++){
+			if(CharArr[i][1] == Cname && CharArr[i][0] ==userID){
+				rply.text = '此角色不是屬於你的喔!';
 
-			return rply;
-	
-		}else if(password != '112201211'){
-			rply.text = '密碼錯誤！';
+				return rply;
+			}
+		
+		}
+		
+		if(password == null){
+			rply.text = '請輸入要用來繼承的專用密碼！(一旦建立就不能修改，請勿必記下)';
 
 			return rply;
 	
@@ -224,11 +228,12 @@ function InheritModeOn(Cname,password){
 			for(var i=0; i< CharArr.length; i++){
 				if (CharArr[i][1] == Cname) {
 					if (CharArr[i][5] == 1) {
-						rply.text = '此角色已經開啟繼承模式了！';
+						rply.text = '此角色已經開啟繼承模式了！如果忘記密碼，請找GM處理';
 
 						return rply;
 					}
 					CharArr[i][5] = 1;
+					CharArr[i][6] = password;
 					DB.useServiceAccountAuth(creds, function (err) {
 		
 						DB.getRows(1 , 
@@ -241,7 +246,7 @@ function InheritModeOn(Cname,password){
 								}
 							});
 					});
-					rply.text = '角色' + Cname + '開啟繼承模式！請輸入 繼承 角色名 進行繼承';
+					rply.text = '角色' + Cname + '開啟繼承模式！請輸入 繼承 角色名 繼承密碼 進行繼承';
 			
 					return rply;
 					
@@ -255,7 +260,7 @@ function InheritModeOn(Cname,password){
 	}
 }
 
-function InheritChatacter(UserID,Cname){
+function InheritChatacter(UserID,Cname,password){
 	for(var i=0; i< CharArr.length; i++){
 		if(CharArr[i][0] == UserID && CharArr[i][1] != Cname){
 			rply.text = '你的Line帳號已經有角色了，請輸入 玩家情報 確認';
@@ -266,7 +271,7 @@ function InheritChatacter(UserID,Cname){
 	
 	
 	if(Cname == null){
-		rply.text = '請輸入要開啟繼承模式的角色名！';
+		rply.text = '請輸入要繼承的角色名！';
 
 		return rply;
 		
@@ -278,6 +283,11 @@ function InheritChatacter(UserID,Cname){
 					rply.text = '此角色尚未開啟繼承模式！';
 
 					return rply;
+				}else if (password != CharArr[i][6] ) {
+					rply.text = '繼承密碼有誤，請重新嘗試！';
+
+					return rply;
+					
 				}else if(CharArr[i][0] == UserID){
 					rply.text = '此角色是屬於你目前使用的Line帳號喔！';
 					CharArr[i][5] = 0;
@@ -297,6 +307,7 @@ function InheritChatacter(UserID,Cname){
 				}
 				CharArr[i][5] = 0;
 				CharArr[i][0] = UserID;
+				CharArr[i][6] = '';
 				DB.useServiceAccountAuth(creds, function (err) {
 					DB.getRows(1 , 
 						function (err, rows) {
@@ -305,6 +316,7 @@ function InheritChatacter(UserID,Cname){
 							}else{
 								rows[i].inheritio = 0;
 								rows[i].userID = UserID;
+								rows[i].inheritPassword = password;
 								rows[i].save();
 							}
 						});
