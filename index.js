@@ -33,6 +33,10 @@ app.get('/', function(req, res) {
 });
 app.post('/', jsonParser, function(req, res) {
 	let event = req.body.events[0];
+	
+	event.source.profile().then(function (profile) {
+		 DisplayName = profile.displayName;
+	});
 	let type = event.type;
 	let msgType = event.message.type;
 	let msg = event.message.text;
@@ -61,10 +65,7 @@ app.listen(app.get('port'), function() {
 	console.log('Node app is running on port', app.get('port'));
 });
 
-function handleEvent(event) {
-	event.source.profile().then(function (profile) {
-	 DisplayName = profile.displayName;
-	});	
+function handleEvent(event) {	
 
   switch (event.type) {
     case 'message':
