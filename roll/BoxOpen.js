@@ -424,11 +424,13 @@ function main(userID, test) {
 			return rply;
 			
 		}
+	}else{
+		rply.text = '錯誤:你尚未建立角色';
+
+		return rply;
+	
 	}
 	
-	rply.text = '錯誤:你尚未建立角色';
-
-	return rply;
 
 	
 }
