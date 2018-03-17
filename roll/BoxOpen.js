@@ -182,6 +182,7 @@ function main(userID, test) {
 	let temp = rollbase.Dice(100);
 	
 	for(var i; i<=CharArr.length; i++){
+		console.log(userID);
 		if(userID == CharArr[i][0]){
 			if (temp > RHP){
 				if(day ==0){
