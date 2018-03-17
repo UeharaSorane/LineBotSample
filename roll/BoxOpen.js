@@ -443,10 +443,6 @@ function main(userID, test) {
 			}
 			
 			
-		}else{
-			rply.text = '錯誤:你尚未建立角色';
-
-			return rply;
 		}
 		
 	
