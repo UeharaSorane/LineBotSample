@@ -442,17 +442,18 @@ function main(userID, test) {
 				});
 			}
 			
-			console.log(rply.text);
-			return rply;
 			
 		}else{
 			rply.text = '錯誤:你尚未建立角色';
 
 			return rply;
 		}
+		
 	
 	}
 	
+	console.log(rply.text);
+	return rply;
 
 	
 }
