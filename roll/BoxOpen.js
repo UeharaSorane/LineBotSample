@@ -146,8 +146,6 @@ function ArrayUpdate() {
 }
 
 function main(userID, test) {
-	console.log(userID);
-	console.log(test);
 	var date = new Date();
 	var day = date.getDay();
 	console.log(day);
@@ -191,7 +189,7 @@ function main(userID, test) {
 					CharArr[i][7]+= WSitem;
 
 					rply.text = '恭喜，是普通獎勵。\
-							\n你獲得了' + Sitem + '個武器素材(小)';
+							\n你獲得了' + WSitem + '個武器素材(小)';
 
 				}else if(day == 1){
 					CharArr[i][2]+= 10;
@@ -230,7 +228,7 @@ function main(userID, test) {
 
 				}else if(day ==6){
 					GSitem = rollbase.Dice(5);
-					CharArr[i][10]+= Sitem;
+					CharArr[i][10]+= GSitem;
 					rply.text = '恭喜，是普通獎勵。\
 							\n你獲得了' + GSitem + '個公會素材(小)';
 
