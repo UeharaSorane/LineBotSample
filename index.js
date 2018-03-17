@@ -13,6 +13,8 @@ require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
   }
 });
 
+var DisplayName;
+
 var options = {
 	host: 'api.line.me',
 	port: 443,
@@ -60,21 +62,16 @@ app.listen(app.get('port'), function() {
 });
 
 function handleEvent(event) {
+	event.source.profile().then(function (profile) {
+	 DisplayName = profile.displayName;
+	});	
+
   switch (event.type) {
     case 'message':
       const message = event.message;
       switch (message.type) {
         case 'text':
-          if(event.message.text=='隱藏測試'){
-        
-            event.reply([{
-		    
-		     type: 'text',
-		     text: '爆裂解禁！' 
-	    
-	    }]);
-		  }
-          return exports.analytics.parseInput(event.rplyToken, event.message.text, event.source.userId); 
+          return exports.analytics.parseInput(event.rplyToken, event.message.text, event.source.userId,DisplayName); 
 		  
         default:
            break;
