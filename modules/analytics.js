@@ -33,13 +33,38 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 ////////////////////////開始分析////////////////////////
 ///////////////////////////////////////////////////////
 	
-	///////////////////////////普通ROLL擲骰判定在此
-	
+	///////////////////////////普通ROLL擲骰
+	if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/\d+d+\d/)!=null) {
+          return exports.rollbase.nomalDiceRoller(inputStr,mainMsg[0],mainMsg[1],mainMsg[2]);
+        }
 	////////////////////////////情報相關
 
 	////////////////////////////戰鬥相關
+	//ccb指令
+	if (trigger.match(/^ccb$/)!= null && mainMsg[1]<=1000 ){
+		if (trigger == 'ccb'&& mainMsg[1]<=99) return exports.battle.ccb(mainMsg[1],mainMsg[2]);
+        }
+	
+	//速度判定指令
+	if (trigger.match(/^速度判定$|^速度$/)!= null && mainMsg[1]<=1000 && mainMsg[2]<=1000 ){
+		if (trigger == '速度判定'&& mainMsg[1]<=99 && mainMsg[2]<=99) return exports.battle.spd(mainMsg[1],mainMsg[2]);
+        }
+	
+	//xBy>A 指令開始於此
+	if (trigger.match(/^(\d+)(b)(\d+)$/i)!= null)
+	{        
+		return exports.battle.xBy(trigger,mainMsg[1],mainMsg[2]);
+	}
+	//xUy 指令開始於此	
+	if (trigger.match(/^(\d+)(u)(\d+)$/i)!= null && isNaN(mainMsg[1])== false)
+	{        
+		return exports.battle.xUy(trigger,mainMsg[1],mainMsg[2],mainMsg[3]);
+	}
+	
+	
 
 	////////////////////////////服務相關
+	if (trigger.match(/^寶箱$|^開寶箱$/) != null) return exports.BoxOpen.main() ;//寶箱狩獵指令
 
 	////////////////////////////娛樂相關
 
