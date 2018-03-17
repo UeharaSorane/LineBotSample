@@ -184,7 +184,7 @@ function main(userID, test) {
 	
 	
 	for(var i = 0; i<=CharArr.length; i++){
-		if(userID == CharArr[1][0]){
+		if(userID == CharArr[0][0]){
 			if (temp > RHP){
 				if(day ==0){
 					WSitem = rollbase.Dice(5);
