@@ -38,6 +38,7 @@ WeaponDB.useServiceAccountAuth(creds, function (err) {
 					WeapArr[i][12] = rows[i].evolutiontree;
 					
 				}
+				console.log(WeapArr[0][0]);
 				console.log('武器資料 讀取完成');
 			}
 		
