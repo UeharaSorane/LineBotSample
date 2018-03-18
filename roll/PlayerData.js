@@ -1,4 +1,5 @@
 var rply ={type : 'text'}; //type是必需的,但可以更改
+var BoxOpen = require('./BoxOpen.js');
 var fs = require('fs');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
@@ -116,8 +117,6 @@ function main(UserID) {
 				\n 公會素材(大):' + CharArr[i][12];
 			
 			if(CharArr[i][5] == 1) rply.text += '\n!!!警告 繼承模式開啟中，請盡速繼承!!!';
-			
-			ArrayUpdate();
 
 			return rply;
 
@@ -125,8 +124,6 @@ function main(UserID) {
 	}
 	
 	rply.text = '你的Line帳號尚未建立角色，請輸入 玩家建立 角色名 稱號(選填)  以建立角色';
-	
-	ArrayUpdate();
 
 	return rply;
 
@@ -335,6 +332,23 @@ function InheritChatacter(UserID,Cname,password){
 	}
 }
 
+function BoxOpen(UserID){
+	for(var i=0; i< CharArr.length; i++){
+
+		if (CharArr[i][0] == UserID) {
+			rply.text ='玩家 ' + CharArr[i][1] + '開啟寶箱！';
+			
+			rply.text += BoxOpen.main()[9];
+
+			return rply;
+
+		}
+	}
+	
+	rply.text = '錯誤！此Line帳號尚未擁有角色';
+	return rply;
+
+}
 
 
 module.exports = {
