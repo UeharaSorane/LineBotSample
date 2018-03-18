@@ -52,7 +52,7 @@ WeaponDB.useServiceAccountAuth(creds, function (err) {
 
 
 function WeapIllustration(Name){
-	console.log(WeapArr);
+	console.log(WeapArr[0][0]);
 	/*for(var i = 0;i<WeapArr.length; i++){
 		if(WeapArr[i][0] == Name || WeapArr[i][1] == Name){
 			rply.text = '武器情報:\
