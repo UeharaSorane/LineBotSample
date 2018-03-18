@@ -86,7 +86,7 @@ function WeapIllustration(Name){
 		rply.text += '\n\n想要查詢特定武器的話，請輸入 武器圖鑑 武器編號(武器名字)';
 		
 		return rply;
-	}else{
+	}
 		
 		rply.text = '找不到編號或名稱為' + Name +'的武器喔！\
 				\n\n-----武器圖鑑-----\n\n';
@@ -98,10 +98,6 @@ function WeapIllustration(Name){
 		rply.text += '想要查詢特定武器的話，請輸入 武器圖鑑 武器編號(武器名字)';
 		
 		return rply;
-	
-	}
-	
-
 }
 
 module.exports = {
