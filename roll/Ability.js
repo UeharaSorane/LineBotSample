@@ -38,7 +38,20 @@ AbilityDB.useServiceAccountAuth(creds, function (err) {
 	});
   
   function AbilityReturn(Name){
-  
+	var returnA;
+	  
+  	for(var i=0; i< AbilArr.length; i++){
+		if(AbilArr[i][1] == Name){
+			
+			returnA = AbilArr[i][2];
+			
+			return returnA;
+		}
+
+
+	}
+	  
+	 console.log('找不到被動' + Name);
   
   
   }
