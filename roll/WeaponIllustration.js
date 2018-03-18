@@ -70,16 +70,16 @@ function WeapIllustration(Name){
 					\n-----進化相關-----\
 					\n 向上進化: ' + WeapArr[i][10] + '\
 					\n-----進化樹-----\n' + WeapArr[i][12] + '\
-					\n---------------';
+					\n--------------------';
 			
 			return rply;
 		
 		}
-	}/*
+	}
 	if(Name == null){
 		rply.text = '-----武器圖鑑-----\n\n';
 		
-		for(var i = 0; i<=WeapArr.length; i++){
+		for(var i = 0; i<WeapArr.length; i++){
 			rply.text += '[' + WeapArr[i][0] + '] ' + WeapArr[i][1] + ' ('  + WeapArr[i][2] + ') [' + WeapArr[i][3] + ']\n';
 		}
 		
@@ -91,7 +91,7 @@ function WeapIllustration(Name){
 		rply.text = '找不到編號或名稱為' + Name +'的武器喔！\
 				\n\n-----武器圖鑑-----\n\n';
 		
-		for(var i = 0; i<=WeapArr.length; i++){
+		for(var i = 0; i<WeapArr.length; i++){
 			rply.text += '[' + WeapArr[i][0] + '] ' + WeapArr[i][1] + ' ('  + WeapArr[i][2] + ') [' + WeapArr[i][3] + ']\n';
 		}
 		
@@ -99,7 +99,7 @@ function WeapIllustration(Name){
 	
 	}
 	
-*/
+
 }
 
 module.exports = {
