@@ -356,5 +356,6 @@ module.exports = {
 	CreatNewPlayer,
 	ArrayUpdate,
 	InheritModeOn,
-	InheritChatacter
+	InheritChatacter,
+	BoxOpen
 };
