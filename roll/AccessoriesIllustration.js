@@ -30,7 +30,7 @@ AccessDB.useServiceAccountAuth(creds, function (err) {
 					AccessArr[i][7] = rows[i].htgi;
 					
 				}
-				console.log(AccessArr);
+				//console.log(AccessArr);
 				console.log('飾品資料 讀取完成');
 			}
 		
@@ -44,7 +44,7 @@ AccessDB.useServiceAccountAuth(creds, function (err) {
 
 
 function AccessoriesIllustration(Name){
-	for(var i = 0 ;i<WeapArr.length; i++){
+	for(var i = 0 ;i<AccessArr.length; i++){
 		if(AccessArr[i][0] == Name || AccessArr[i][1] == Name){
 			rply.text = '飾品情報:\
 					\n-----基本資料-----\
