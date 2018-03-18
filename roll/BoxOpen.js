@@ -130,7 +130,7 @@ function main() {
 		}else if(day ==6){
 			returnArr[6] = rollbase.Dice(5);
 			returnArr[9] = '恭喜，是普通獎勵。\
-					\n你獲得了' + Sitem + '個公會素材(小)';
+					\n你獲得了' + returnArr[6] + '個公會素材(小)';
 			
 		}
 	
@@ -175,25 +175,25 @@ function main() {
 					\n你獲得了200G';
 			
 		}else if(day ==6){
-			returnArr[3] = rollbase.Dice(10);
-			returnArr[4] = rollbase.Dice(5);
-			returnArr[5] = rollbase.Dice(3);
+			returnArr[6] = rollbase.Dice(10);
+			returnArr[7] = rollbase.Dice(5);
+			returnArr[8] = rollbase.Dice(3);
 			returnArr[9] = '恭喜，是中等獎勵。\
-					\n你獲得了' + returnArr[3] + '個公會素材(小)\
-					\n你獲得了' + returnArr[4] + '個公會素材(中)\
-					\n你獲得了' + returnArr[5] + '個公會素材(大)';
+					\n你獲得了' + returnArr[6] + '個公會素材(小)\
+					\n你獲得了' + returnArr[7] + '個公會素材(中)\
+					\n你獲得了' + returnArr[8] + '個公會素材(大)';
 			
 		}
 	
 	}else if (temp <=HP && temp > P){
 		if(day ==0){
-			returnArr[6] = rollbase.Dice(20);
-			returnArr[7] = rollbase.Dice(10);
-			returnArr[8] = rollbase.Dice(5);
+			returnArr[3] = rollbase.Dice(20);
+			returnArr[4] = rollbase.Dice(10);
+			returnArr[5] = rollbase.Dice(5);
 			returnArr[9] = '喔喔！是高等獎勵欸，恭喜！\
-					\n你獲得了' + returnArr[6] + '個武器素材(小)\
-					\n你獲得了' + returnArr[7] + '個武器素材(中)\
-					\n你獲得了' + returnArr[8] + '個武器素材(大)';
+					\n你獲得了' + returnArr[3] + '個武器素材(小)\
+					\n你獲得了' + returnArr[4] + '個武器素材(中)\
+					\n你獲得了' + returnArr[5] + '個武器素材(大)';
 			
 		}else if(day == 1){
 			
@@ -226,25 +226,25 @@ function main() {
 					\n你獲得了500G';
 			
 		}else if(day ==6){
-			returnArr[3] = rollbase.Dice(20);
-			returnArr[4] = rollbase.Dice(10);
-			returnArr[5] = rollbase.Dice(5);
+			returnArr[6] = rollbase.Dice(20);
+			returnArr[7] = rollbase.Dice(10);
+			returnArr[8] = rollbase.Dice(5);
 			returnArr[9] = '喔喔！是高等獎勵欸，恭喜！\
-					\n你獲得了' + returnArr[3] + '個公會素材(小)\
-					\n你獲得了' + returnArr[4] + '個公會素材(中)\
-					\n你獲得了' + returnArr[5] + '個公會素材(大)';
+					\n你獲得了' + returnArr[6] + '個公會素材(小)\
+					\n你獲得了' + returnArr[7] + '個公會素材(中)\
+					\n你獲得了' + returnArr[8] + '個公會素材(大)';
 			
 		}
 	
 	}else if (temp <=P){
 		if(day == 0){
-			returnArr[6] = rollbase.Dice(90)+10;
-			returnArr[7] = rollbase.Dice(20);
-			returnArr[8] = rollbase.Dice(10);
+			returnArr[3] = rollbase.Dice(90)+10;
+			returnArr[4] = rollbase.Dice(20);
+			returnArr[5] = rollbase.Dice(10);
 			returnArr[9] = '太棒了！！！是頂級獎勵！恭喜！\
-					\n你獲得了' + returnArr[6] + '個武器素材(小)\
-					\n你獲得了' + returnArr[7] + '個武器素材(中)\
-					\n你獲得了' + returnArr[8] + '個武器素材(大)';
+					\n你獲得了' + returnArr[3] + '個武器素材(小)\
+					\n你獲得了' + returnArr[4] + '個武器素材(中)\
+					\n你獲得了' + returnArr[5] + '個武器素材(大)';
 			
 		}else if(day == 1){
 			returnArr[2] = SkillArr[0][Math.floor((Math.random() * (SkillArr[0].length)))];
@@ -276,13 +276,13 @@ function main() {
 					\n你獲得了1000G';
 			
 		}else if(day ==6){
-			returnArr[3] = rollbase.Dice(90)+10;
-			returnArr[4] = rollbase.Dice(30);
-			returnArr[5] = rollbase.Dice(20);
+			returnArr[6] = rollbase.Dice(90)+10;
+			returnArr[7] = rollbase.Dice(30);
+			returnArr[8] = rollbase.Dice(20);
 			returnArr[9] = '太棒了！！！是頂級獎勵！恭喜！\
-					\n你獲得了' + returnArr[3] + '個公會素材(小)\
-					\n你獲得了' + returnArr[4] + '個公會素材(中)\
-					\n你獲得了' + returnArr[5] + '個公會素材(大)';
+					\n你獲得了' + returnArr[6] + '個公會素材(小)\
+					\n你獲得了' + returnArr[7] + '個公會素材(中)\
+					\n你獲得了' + returnArr[8] + '個公會素材(大)';
 			
 		}
 	}
