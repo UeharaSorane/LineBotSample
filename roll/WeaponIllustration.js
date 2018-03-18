@@ -19,22 +19,21 @@ WeaponDB.useServiceAccountAuth(creds, function (err) {
 				for(var i=0; i< rows.length; i++){
 					WeapArr[i] = [];
 					
-					WeapArr[i][0] = rows[i].id;
-					WeapArr[i][1] = rows[i].name;
+					WeapArr[i][0] = rows[i].wid;
+					WeapArr[i][1] = rows[i].wname;
 					WeapArr[i][2] = rows[i].rare;
-					WeapArr[i][3] = rows[i].type;
+					WeapArr[i][3] = rows[i].wtype;
 					WeapArr[i][4] = rows[i].ability;
 					WeapArr[i][5] = Number(rows[i].hp);
 					WeapArr[i][6] = Number(rows[i].mp);
 					WeapArr[i][7] = Number(rows[i].atk);
-					WeapArr[i][8] = rows[i].description;
+					WeapArr[i][8] = rows[i].wdescription;
 					WeapArr[i][9] = rows[i].htgi;
 					WeapArr[i][10] = rows[i].evolution;
 					WeapArr[i][11] = rows[i].evolutionrate;
 					WeapArr[i][12] = rows[i].evolutiontree;
 					
 				}
-				console.log(WeapArr);
 				console.log('武器資料 讀取完成');
 			}
 		
