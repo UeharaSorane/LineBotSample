@@ -23,17 +23,17 @@ DB.useServiceAccountAuth(creds, function (err) {
 					
 					CharArr[i][0] = rows[i].userid;
 					CharArr[i][1] = rows[i].cname;
-					CharArr[i][2] = rows[i].gold;
-					CharArr[i][3] = rows[i].mirastone;
+					CharArr[i][2] = Number(rows[i].gold);
+					CharArr[i][3] = Number(rows[i].mirastone);
 					CharArr[i][4] = rows[i].title;
 					CharArr[i][5] = rows[i].inheritio;
 					CharArr[i][6] = rows[i].inheritpassword;
-					CharArr[i][7] = rows[i].wmaterials;
-					CharArr[i][8] = rows[i].wmaterialm;
-					CharArr[i][9] = rows[i].wmateriall;
-					CharArr[i][10] = rows[i].gmaterials;
-					CharArr[i][11] = rows[i].gmaterialm;
-					CharArr[i][12] = rows[i].gmateriall;
+					CharArr[i][7] = Number(rows[i].wmaterials);
+					CharArr[i][8] = Number(rows[i].wmaterialm);
+					CharArr[i][9] = Number(rows[i].wmateriall);
+					CharArr[i][10] = Number(rows[i].gmaterials);
+					CharArr[i][11] = Number(rows[i].gmaterialm);
+					CharArr[i][12] = Number(rows[i].gmateriall);
 					
 				}
 				console.log(CharArr);
@@ -78,6 +78,7 @@ function ArrayUpdate() {
 						rows[i].gmaterials = CharArr[i][10];
 						rows[i].gmaterialm = CharArr[i][11];
 						rows[i].gmateriall = CharArr[i][12];
+						rows[i].save();
 
 					}
 
@@ -341,15 +342,14 @@ function box(UserID){
 			
 			rply.text += '\n' + OpenedBox[9];
 			
-			CharArr[i][2] += OpenedBox[0];
-			CharArr[i][3] += OpenedBox[1];
-			CharArr[i][7] += OpenedBox[6];
-			CharArr[i][8] += OpenedBox[7];
-			CharArr[i][9] += OpenedBox[8];
-			CharArr[i][10] += OpenedBox[3];
-			CharArr[i][11] += OpenedBox[4];
-			CharArr[i][12] += OpenedBox[5];
-			
+			CharArr[i][2] += Number(OpenedBox[0]);
+			CharArr[i][3] += Number(OpenedBox[1]);
+			CharArr[i][7] += Number(OpenedBox[6]);
+			CharArr[i][8] += Number(OpenedBox[7]);
+			CharArr[i][9] += Number(OpenedBox[8]);
+			CharArr[i][10] += Number(OpenedBox[3]);
+			CharArr[i][11] += Number(OpenedBox[4]);
+			CharArr[i][12] += Number(OpenedBox[5]);
 			
 			ArrayUpdate();
 
