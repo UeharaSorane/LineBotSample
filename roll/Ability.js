@@ -25,7 +25,7 @@ AbilityDB.useServiceAccountAuth(creds, function (err) {
 
 					
 				}
-				console.log(WeapArr[0][0]);
+				console.log(AbilArr);
 				console.log('被動資料 讀取完成');
 			}
 		
