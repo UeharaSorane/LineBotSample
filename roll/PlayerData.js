@@ -52,49 +52,44 @@ console.log(CharArr);
 
 function ArrayUpdate() {
 
-DB.useServiceAccountAuth(creds, function (err) {
-		
- 
-	
- // Get all of the rows from the spreadsheet.
-	DB.getRows(1 , 
-		function (err, rows) {
-			if (err) {
-				console.log( err );
-			}else{
+	DB.useServiceAccountAuth(creds, function (err) {
 
-				for(var i=0; i< rows.length; i++){
-					
 
-					
-					CharArr[i] = [];
-					
-					CharArr[i][0] = rows[i].userid;
-					CharArr[i][1] = rows[i].cname;
-					CharArr[i][2] = rows[i].gold;
-					CharArr[i][3] = rows[i].mirastone;
-					CharArr[i][4] = rows[i].title;
-					CharArr[i][5] = rows[i].inheritio;
-					CharArr[i][6] = rows[i].inheritpassword;
-					CharArr[i][7] = rows[i].wmaterials;
-					CharArr[i][8] = rows[i].wmaterialm;
-					CharArr[i][9] = rows[i].wmateriall;
-					CharArr[i][10] = rows[i].gmaterials;
-					CharArr[i][11] = rows[i].gmaterialm;
-					CharArr[i][12] = rows[i].gmateriall;
-					
-				}
-					
-				}
-				console.log(CharArr);
-				console.log('玩家基本資料 更新完成');
 
-			
-			});
-	
-		
-		
-	});
+	 // Get all of the rows from the spreadsheet.
+		DB.getRows(1 , 
+			function (err, rows) {
+				if (err) {
+					console.log( err );
+				}else{
+
+					for(var i=0; i< rows.length; i++){
+
+						rows[i].userid = CharArr[i][0];
+						rows[i].cname = CharArr[i][1];
+						rows[i].gold = CharArr[i][2];
+						rows[i].mirastone = CharArr[i][3];
+						rows[i].title = CharArr[i][4];
+						rows[i].inheritio = CharArr[i][5];
+						rows[i].inheritpassword = CharArr[i][6];
+						rows[i].wmaterials = CharArr[i][7];
+						rows[i].wmaterialm = CharArr[i][8];
+						rows[i].wmateriall = CharArr[i][9];
+						rows[i].gmaterials = CharArr[i][10];
+						rows[i].gmaterialm = CharArr[i][11];
+						rows[i].gmateriall = CharArr[i][12];
+
+					}
+
+					}
+					console.log('玩家基本資料 更新完成');
+
+
+				});
+
+
+
+		});
 }
 	
 
@@ -244,6 +239,8 @@ function InheritModeOn(userID,Cname,password){
 							});
 					});
 					rply.text = '角色' + Cname + '開啟繼承模式！請輸入 繼承 角色名 繼承密碼 進行繼承';
+					
+					ArrayUpdate();
 			
 					return rply;
 					
@@ -319,6 +316,8 @@ function InheritChatacter(UserID,Cname,password){
 						});
 				});
 				rply.text = '角色' + Cname + '繼承完成！請輸入 玩家情報以進行確認';
+				
+				ArrayUpdate();
 
 				return rply;
 
@@ -338,7 +337,21 @@ function box(UserID){
 		if (CharArr[i][0] == UserID) {
 			rply.text ='玩家 ' + CharArr[i][1] + '開啟寶箱！';
 			
-			rply.text += '\n' + BoxOpen.main()[9];
+			var OpenedBox = BoxOpen.main()
+			
+			rply.text += '\n' + OpenedBox[9];
+			
+			CharArr[i][2] += OpenedBox[0];
+			CharArr[i][3] += OpenedBox[1];
+			CharArr[i][7] += OpenedBox[6];
+			CharArr[i][8] += OpenedBox[7];
+			CharArr[i][9] += OpenedBox[8];
+			CharArr[i][10] += OpenedBox[3];
+			CharArr[i][11] += OpenedBox[4];
+			CharArr[i][12] += OpenedBox[5];
+			
+			
+			ArrayUpdate();
 
 			return rply;
 
