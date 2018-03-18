@@ -12,7 +12,6 @@ SkillArr[1] = [];
 SkillArr[2] = [];
 SkillArr[3] = [];
 
-console.log(SkillArr[0]);
 SkillDB.useServiceAccountAuth(creds, 
 	function (err) {
  // 先將資料讀進陣列
@@ -28,8 +27,8 @@ SkillDB.useServiceAccountAuth(creds,
 						SkillArr[3][i] = rows[i].thursdayskill;
 					}
 
-					for(var i=0; i<=3; i++){
-						for(var j =0;j<=18;j++){
+					for(var i=1; i<3; i++){
+						for(var j =0;j<=SkillArr[i].length;j++){
 							if(SkillArr[i][j] == 'none'){
 								delete SkillArr[i][j];
 								SkillArr[i].length--;
