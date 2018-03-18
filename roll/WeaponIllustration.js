@@ -52,8 +52,7 @@ WeaponDB.useServiceAccountAuth(creds, function (err) {
 
 
 function WeapIllustration(Name){
-	console.log(WeapArr.length);
-	/*for(var i = 0;i<WeapArr.length; i++){
+	for(var i = 0 ;i<WeapArr.length; i++){
 		if(WeapArr[i][0] == Name || WeapArr[i][1] == Name){
 			rply.text = '武器情報:\
 					\n-----基本資料-----\
@@ -76,7 +75,7 @@ function WeapIllustration(Name){
 			return rply;
 		
 		}
-	}
+	}/*
 	if(Name == null){
 		rply.text = '-----武器圖鑑-----\n\n';
 		
