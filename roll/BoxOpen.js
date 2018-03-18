@@ -133,7 +133,7 @@ function main() {
 			returnArr[4] = rollbase.Dice(5);
 			returnArr[5] = rollbase.Dice(3);
 			returnArr[9] = '恭喜，是中等獎勵。\
-					\n你獲得了' + returnArr{3] + '個武器素材(小)\
+					\n你獲得了' + returnArr[3] + '個武器素材(小)\
 					\n你獲得了' + returnArr[4] + '個武器素材(中)\
 					\n你獲得了' + returnArr[5] + '個武器素材(大)';
 			
