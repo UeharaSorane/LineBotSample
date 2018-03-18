@@ -64,7 +64,7 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	
 
 	////////////////////////////服務相關
-	if (trigger.match(/^寶箱$|^開寶箱$/) != null) return exports.BoxOpen.main(UserID ,mainMsg[1] ) ;//寶箱狩獵指令
+	if (trigger.match(/^寶箱$|^開寶箱$/) != null) return exports.PlayerData.main(UserID ,mainMsg[1] ) ;//寶箱狩獵指令
 
 	////////////////////////////娛樂相關
 
