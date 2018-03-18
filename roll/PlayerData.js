@@ -344,12 +344,12 @@ function box(UserID){
 			
 			CharArr[i][2] += Number(OpenedBox[0]);
 			CharArr[i][3] += Number(OpenedBox[1]);
-			CharArr[i][7] += Number(OpenedBox[6]);
-			CharArr[i][8] += Number(OpenedBox[7]);
-			CharArr[i][9] += Number(OpenedBox[8]);
-			CharArr[i][10] += Number(OpenedBox[3]);
-			CharArr[i][11] += Number(OpenedBox[4]);
-			CharArr[i][12] += Number(OpenedBox[5]);
+			CharArr[i][7] += Number(OpenedBox[3]);
+			CharArr[i][8] += Number(OpenedBox[4]);
+			CharArr[i][9] += Number(OpenedBox[5]);
+			CharArr[i][10] += Number(OpenedBox[6]);
+			CharArr[i][11] += Number(OpenedBox[7]);
+			CharArr[i][12] += Number(OpenedBox[8]);
 			
 			ArrayUpdate();
 
