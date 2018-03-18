@@ -16,7 +16,6 @@ DB.useServiceAccountAuth(creds, function (err) {
 			if (err) {
 				console.log( err );
 			}else{
-				PlayerNumber= rows.length;
 
 				for(var i=0; i< rows.length; i++){
 					CharArr[i] = [];
