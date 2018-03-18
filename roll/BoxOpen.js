@@ -7,6 +7,7 @@ var creds = require('../client_secret.json');
 
 var SkillDB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 var SkillArr= [];
+SkillArr[0],SkillArr[1],SkillArr[2],SkillArr[3] = [];
 SkillDB.useServiceAccountAuth(creds, 
 	function (err) {
  // 先將資料讀進陣列
@@ -15,7 +16,6 @@ SkillDB.useServiceAccountAuth(creds,
 				if (err) {
 					console.log( err );
 				}else{
-					SkillArr[0],SkillArr[1],SkillArr[2],SkillArr[3] = [];
 					for(var i=0; i< rows.length; i++){
 						SkillArr[1][i] = rows[i].tuesdayskill;
 						SkillArr[2][i] = rows[i].wednesdayskill;
