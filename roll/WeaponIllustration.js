@@ -6,10 +6,6 @@ var creds = require('../client_secret.json');
 var WeaponDB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 var WeapArr= [];
 
-WeapArr[0] = [];
-
-console.log(WeapArr[0][0]);
-
 WeaponDB.useServiceAccountAuth(creds, function (err) {
 		
  
@@ -38,7 +34,7 @@ WeaponDB.useServiceAccountAuth(creds, function (err) {
 					WeapArr[i][12] = rows[i].evolutiontree;
 					
 				}
-				console.log(WeapArr[0][0]);
+				//console.log(WeapArr);
 				console.log('武器資料 讀取完成');
 			}
 		
