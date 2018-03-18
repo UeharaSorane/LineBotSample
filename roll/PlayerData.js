@@ -338,7 +338,7 @@ function box(UserID){
 		if (CharArr[i][0] == UserID) {
 			rply.text ='玩家 ' + CharArr[i][1] + '開啟寶箱！';
 			
-			rply.text += BoxOpen.main()[9];
+			rply.text += '\n' + BoxOpen.main()[9];
 
 			return rply;
 
