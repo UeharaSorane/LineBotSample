@@ -29,7 +29,7 @@ SkillDB.useServiceAccountAuth(creds,
 					}
 
 					for(var i=0; i<=3; i++){
-						for(var j =0;j<=SkillArr[i];j++){
+						for(var j =0;j<=18;j++){
 							if(SkillArr[i][j] == 'none'){
 								delete SkillArr[i][j];
 							}
