@@ -83,7 +83,7 @@ function WeapIllustration(Name){
 			rply.text += '[' + WeapArr[i][0] + '] ' + WeapArr[i][1] + ' ('  + WeapArr[i][2] + ') [' + WeapArr[i][3] + ']\n';
 		}
 		
-		rply.text += '想要查詢特定武器的話，請輸入 武器圖鑑 武器編號(武器名字)';
+		rply.text += '\n\n想要查詢特定武器的話，請輸入 武器圖鑑 武器編號(武器名字)';
 		
 		return rply;
 	}else{
