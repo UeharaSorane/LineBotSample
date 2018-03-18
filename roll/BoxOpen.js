@@ -11,6 +11,8 @@ SkillArr[0] = [];
 SkillArr[1] = [];
 SkillArr[2] = [];
 SkillArr[3] = [];
+
+console.log(SkillArr[0]);
 SkillDB.useServiceAccountAuth(creds, 
 	function (err) {
  // 先將資料讀進陣列
@@ -20,6 +22,7 @@ SkillDB.useServiceAccountAuth(creds,
 					console.log( err );
 				}else{
 					for(var i=0; i< rows.length; i++){
+						console.log(SkillArr[0]);
 						SkillArr[1][i] = rows[i].tuesdayskill;
 						SkillArr[2][i] = rows[i].wednesdayskill;
 						SkillArr[3][i] = rows[i].thursdayskill;
