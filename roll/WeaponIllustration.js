@@ -8,6 +8,8 @@ var WeapArr= [];
 
 WeapArr[0] = [];
 
+console.log(WeapArr[0][0]);
+
 WeaponDB.useServiceAccountAuth(creds, function (err) {
 		
  
