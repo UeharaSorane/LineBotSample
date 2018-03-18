@@ -47,8 +47,6 @@ DB.useServiceAccountAuth(creds, function (err) {
 		
 	});
 
-console.log(CharArr);
-
 function ArrayUpdate() {
 
 	DB.useServiceAccountAuth(creds, function (err) {
