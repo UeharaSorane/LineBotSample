@@ -96,6 +96,8 @@ function WeapIllustration(Name){
 		}
 		
 		rply.text += '想要查詢特定武器的話，請輸入 武器圖鑑 武器編號(武器名字)';
+		
+		return rply;
 	
 	}
 	
