@@ -28,15 +28,18 @@ SkillDB.useServiceAccountAuth(creds,
 					}
 
 					for(var i=1; i<3; i++){
+						var delArr = 0;
 						for(var j =1;j<=SkillArr[i].length;j++){
 							if(SkillArr[i][j] == 'none'){
 								delete SkillArr[i][j];
-								SkillArr[i].length--;
+								delArr++;
 							}
+							SkillArr[i].length-=delArr;
 						}
+						
 					}
 					SkillArr[0] = SkillArr[1].concat(SkillArr[2],SkillArr[3]);
-					console.log(SkillArr);
+					console.log(SkillArr[3]);
 					console.log('寶箱技能資料 讀取完成');
 				}
 			}
