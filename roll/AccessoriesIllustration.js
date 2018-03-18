@@ -18,7 +18,7 @@ AccessDB.useServiceAccountAuth(creds, function (err) {
 				console.log( err );
 			}else{
 				for(var i=0; i< rows.length; i++){
-					WeapArr[i] = [];
+					AccessArr[i] = [];
 					
 					AccessArr[i][0] = rows[i].acid;
 					AccessArr[i][1] = rows[i].acname;
