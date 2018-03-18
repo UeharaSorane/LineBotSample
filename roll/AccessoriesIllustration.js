@@ -68,7 +68,7 @@ function AccessoriesIllustration(Name){
 		rply.text = '-----飾品圖鑑-----\n\n';
 		
 		for(var i = 0; i<AccessArr.length; i++){
-			rply.text += '[' + AccessArr[i][0] + '] ' + AccessArr[i][1];
+			rply.text += '[' + AccessArr[i][0] + '] ' + AccessArr[i][1] + '\n';
 		}
 		
 		rply.text += '\n\n想要查詢特定飾品的話，請輸入 飾品圖鑑 飾品編號(飾品名字)';
@@ -80,7 +80,7 @@ function AccessoriesIllustration(Name){
 				\n\n-----飾品圖鑑-----\n\n';
 		
 		for(var i = 0; i<AccessArr.length; i++){
-			rply.text += '[' + AccessArr[i][0] + '] ' + AccessArr[i][1];
+			rply.text += '[' + AccessArr[i][0] + '] ' + AccessArr[i][1] + '\n';
 		}
 		
 		rply.text += '\n\n想要查詢特定飾品的話，請輸入 飾品圖鑑 飾品編號(飾品名字)';
