@@ -26,7 +26,7 @@ SkillDB.useServiceAccountAuth(creds,
 						SkillArr[3][i] = rows[i].thursdayskill;
 					}
 
-					for(var i=1; i<3; i++){
+					for(var i=1; i<=4; i++){
 						var delArr = 0;
 						for(var j =1;j<=SkillArr[i].length;j++){
 							if(SkillArr[i][j] == 'none'){
