@@ -332,7 +332,7 @@ function InheritChatacter(UserID,Cname,password){
 	}
 }
 
-function BoxOpen(UserID){
+function box(UserID){
 	for(var i=0; i< CharArr.length; i++){
 
 		if (CharArr[i][0] == UserID) {
@@ -357,5 +357,5 @@ module.exports = {
 	ArrayUpdate,
 	InheritModeOn,
 	InheritChatacter,
-	BoxOpen
+	box
 };
