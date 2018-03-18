@@ -19,7 +19,7 @@ AbilityDB.useServiceAccountAuth(creds, function (err) {
 				for(var i=0; i< rows.length; i++){
 					AbilArr[i] = [];
 					
-					AbilArr[i][0] = rows[i]awid;
+					AbilArr[i][0] = rows[i].aid;
 					AbilArr[i][1] = rows[i].aname;
 					AbilArr[i][2] = rows[i].adescription;
 
