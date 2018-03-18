@@ -35,7 +35,7 @@ SkillDB.useServiceAccountAuth(creds,
 							}
 						}
 					}
-					SkillArr[0] = SkillArr[1].concaat(SkillArr[2],SkillArr[3]);
+					SkillArr[0] = SkillArr[1].concat(SkillArr[2],SkillArr[3]);
 				}
 			}
 		);
