@@ -35,6 +35,7 @@ WeaponDB.useServiceAccountAuth(creds, function (err) {
 					
 				}
 				//console.log(WeapArr);
+				console.log(WeapArr[0][0]);
 				console.log('武器資料 讀取完成');
 			}
 		
@@ -46,7 +47,6 @@ WeaponDB.useServiceAccountAuth(creds, function (err) {
 		
 	});
 
-console.log(WeapArr[0][0]);
 
 function WeapIllustration(Name){
 	for(var i = 0;i<WeapArr.length; i++){
