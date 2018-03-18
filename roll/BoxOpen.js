@@ -75,6 +75,12 @@ function main() {
 	
 	///建立回傳用陣列(金幣,奇蹟石,技能書,武(小中大),公(小中大),對話)
 	let returnArr = [];
+	
+	
+	for(var a = 0;a<=8 && a!=2; a++){
+		returnArr[a] = 0;
+	
+	}
 
 	///
 	
