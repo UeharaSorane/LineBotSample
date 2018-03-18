@@ -36,14 +36,14 @@ SkillDB.useServiceAccountAuth(creds,
 						}
 					}
 					SkillArr[0] = SkillArr[1].concat(SkillArr[2],SkillArr[3]);
+					console.log(SkillArr);
+					console.log('寶箱技能資料 讀取完成');
 				}
 			}
 		);
 	}
 );
 
-console.log(SkillArr);
-console.log('寶箱技能資料 讀取完成');
 
 
 function main() {
