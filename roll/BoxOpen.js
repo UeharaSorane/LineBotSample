@@ -21,7 +21,6 @@ SkillDB.useServiceAccountAuth(creds,
 					console.log( err );
 				}else{
 					for(var i=0; i< rows.length; i++){
-						console.log(SkillArr[0]);
 						SkillArr[1][i] = rows[i].tuesdayskill;
 						SkillArr[2][i] = rows[i].wednesdayskill;
 						SkillArr[3][i] = rows[i].thursdayskill;
@@ -39,7 +38,7 @@ SkillDB.useServiceAccountAuth(creds,
 						
 					}
 					SkillArr[0] = SkillArr[1].concat(SkillArr[2],SkillArr[3]);
-					//console.log(SkillArr[3]);
+					console.log(SkillArr[2]);
 					console.log('寶箱技能資料 讀取完成');
 				}
 			}
