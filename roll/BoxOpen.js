@@ -1,60 +1,44 @@
 var rollbase = require('./rollbase.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
-let TuesdayBox = [
-		'突刺',
-		'穿心射擊',
-		'刺拳',
-		'掃堂腿',
-		'風神腿',
-		'突襲',
-		'當頭棒喝',
-		'麻痺箭',
-		'劇毒箭',
-		'燃燒箭',
-		'重劈',
-		'猛虎一式',
-		'獵龍一式',
-		'蓄力打擊',
-		'交叉反擊',
-		'眩光箭',
-		'紅蓮怒拳',
-		'銀槍連閃'
-		 ];
+var fs = require('fs');
+var GoogleSpreadsheet = require('google-spreadsheet');
+var creds = require('../client_secret.json');
 
-let WednesdayBox = [
-		'冰雹',
-		'雷擊',
-		'冰獄彈',
-		'轟炎彈',
-		'魔導劍擊',
-		'魔導穿槍',
-		'魔導狙擊',
-		'魔導彈'
-		 ];
+var SkillDB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
+var SkillArr= [];
+DB.useServiceAccountAuth(creds, 
+	function (err) {
+ // 先將資料讀進陣列
+		DB.getRows(2 , 
+			function (err, rows) {
+				if (err) {
+					console.log( err );
+				}else{
+					SkillArr[0],SkillArr[1],SkillArr[2],SkillArr[3] = [];
+					for(var i=0; i< rows.length; i++){
+						SkillArr[1][i] = rows[i].tuesdayskill;
+						SkillArr[2][i] = rows[i].wednesdayskill;
+						SkillArr[3][i] = rows[i].thursdayskill;
+					}
 
-let ThursdayBox = [
-		'祝福',
-		'光盾',
-		'狙擊姿態',
-		'舉劍',
-		'隱藏術',
-		'怒吼',
-		'咒術筆記',
-		'劍聖的教誨(被動)',
-		'大賢者的知惠(被動)',
-		'箭神的心得(被動)',
-		'狂戰士的回憶(被動)',
-		'牧師的專業(被動)',
-		'不滅意志(被動)',
-		'急速詠唱'
-		 ];
+					for(var i=0; i<=3; i++){
+						for(var j =0;j<=SkillArr[i];j++){
+							if(SkillArr[i][j] == 'none'){
+								delete SkillArr[i][j];
+							}
+						}
+					}
+					SkillArr[0] = SkillArr[1].concaat(SkillArr[2],SkillArr[3]);
+				}
+			}
+		);
+	}
+);
 
-let MondayBox = [];
+console.log(SkillArr);
+console.log('寶箱技能資料 讀取完成');
 
-MondayBox.length = TuesdayBox.length + WednesdayBox.length  + ThursdayBox.length;
-
-MondayBox = TuesdayBox.concat(WednesdayBox,ThursdayBox);
 
 function main() {
 	var date = new Date();
@@ -231,22 +215,22 @@ function main() {
 		}else if(day == 1){
 			
 			rply.text = '太棒了！！！是頂級獎勵！恭喜！\
-					\n你獲得了技能書「' + MondayBox[Math.floor((Math.random() * (MondayBox.length)))] + '」';
+					\n你獲得了技能書「' + SkillArr[0][Math.floor((Math.random() * (SkillArr[0].length)))] + '」';
 			
 		}else if(day == 2){
 			
 			rply.text = '太棒了！！！是頂級獎勵！恭喜！\
-					\n你獲得了技能書「' + TuesdayBox[Math.floor((Math.random() * (TuesdayBox.length)))] + '」';
+					\n你獲得了技能書「' + SkillArr[1][Math.floor((Math.random() * (SkillArr[1].length)))] + '」';
 			
 		}else if(day == 3){
 			
 			rply.text = '太棒了！！！是頂級獎勵！恭喜！\
-					\n你獲得了技能書「' + WednesdayBox[Math.floor((Math.random() * (WednesdayBox.length)))] + '」';
+					\n你獲得了技能書「' + SkillArr[2][Math.floor((Math.random() * (SkillArr[2].length)))] + '」';
 			
 		}else if(day == 4){
 			
 			rply.text = '太棒了！！！是頂級獎勵！恭喜！\
-					\n你獲得了技能書「' + ThursdayBox[Math.floor((Math.random() * (ThursdayBox.length)))] + '」';
+					\n你獲得了技能書「' + SkillArr[3][Math.floor((Math.random() * (SkillArr[3].length)))] + '」';
 			
 		}else if(day == 5){
 			
