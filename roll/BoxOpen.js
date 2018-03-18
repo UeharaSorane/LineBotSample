@@ -77,9 +77,10 @@ function main() {
 	let returnArr = [];
 	
 	
-	for(var a = 0;a<=8 && a!=2; a++){
-		returnArr[a] = 0;
-	
+	for(var a = 0;a<=8 ; a++){
+		if (a!=2){
+			returnArr[a] = 0;
+		}
 	}
 
 	///
