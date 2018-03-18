@@ -46,6 +46,8 @@ WeaponDB.useServiceAccountAuth(creds, function (err) {
 		
 	});
 
+console.log(WeapArr[0][0]);
+
 function WeapIllustration(Name){
 	for(var i = 0;i<WeapArr.length; i++){
 		if(WeapArr[i][0] == Name || WeapArr[i][1] == Name){
