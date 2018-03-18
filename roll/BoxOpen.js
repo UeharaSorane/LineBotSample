@@ -1,51 +1,5 @@
 var rollbase = require('./rollbase.js');
-var PlayerData = require('./PlayerData.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
-var fs = require('fs');
-var GoogleSpreadsheet = require('google-spreadsheet');
-var creds = require('../client_secret.json');
-
-var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
-var CharArr= [];
-DB.useServiceAccountAuth(creds, function (err) {
-		
- 
-	
- // 是先將資料讀進陣列
-	DB.getRows(1 , 
-		function (err, rows) {
-			if (err) {
-				console.log( err );
-			}else{
-
-				for(var i=0; i< rows.length; i++){
-					CharArr[i] = [];
-					
-					CharArr[i][0] = rows[i].userid;
-					CharArr[i][1] = rows[i].cname;
-					CharArr[i][2] = rows[i].gold;
-					CharArr[i][3] = rows[i].mirastone;
-					CharArr[i][7] = rows[i].wmaterials;
-					CharArr[i][8] = rows[i].wmaterialm;
-					CharArr[i][9] = rows[i].wmateriall;
-					CharArr[i][10] = rows[i].gmaterials;
-					CharArr[i][11] = rows[i].gmaterialm;
-					CharArr[i][12] = rows[i].gmateriall;
-					
-				}
-				console.log(CharArr);
-				console.log('玩家基本資料 讀取完成');
-			}
-		
-
-			
-			});
-	
-		
-		
-	});
-
-console.log(CharArr);
 
 let TuesdayBox = [
 		'突刺',
@@ -102,51 +56,7 @@ MondayBox.length = TuesdayBox.length + WednesdayBox.length  + ThursdayBox.length
 
 MondayBox = TuesdayBox.concat(WednesdayBox,ThursdayBox);
 
-function ArrayUpdate() {
-
-	DB.useServiceAccountAuth(creds, function (err) {
-		
- 
-	
- //讀取情報
-		DB.getRows(1 , 
-			function (err, rows) {
-				if (err) {
-					console.log( err );
-				}else{
-
-					for(var i=0; i< rows.length; i++){
-
-
-
-						CharArr[i] = [];
-
-						CharArr[i][0] = rows[i].userid;
-						CharArr[i][1] = rows[i].cname;
-						CharArr[i][2] = rows[i].gold;
-						CharArr[i][3] = rows[i].mirastone;
-						CharArr[i][7] = rows[i].wmaterials;
-						CharArr[i][8] = rows[i].wmaterialm;
-						CharArr[i][9] = rows[i].wmateriall;
-						CharArr[i][10] = rows[i].gmaterials;
-						CharArr[i][11] = rows[i].gmaterialm;
-						CharArr[i][12] = rows[i].gmateriall;
-
-					}
-
-					}
-					console.log(CharArr);
-					console.log('玩家基本資料 更新完成');
-
-
-			});
-	
-		
-		
-	});
-}
-
-function main(userID, test) {
+function main() {
 	var date = new Date();
 	var day = date.getDay();
 	console.log(day);
@@ -172,288 +82,191 @@ function main(userID, test) {
 	var P = Prate;
 	///
 	
-	var WSitem = 0;
-	var WMitem = 0;
-	var WLitem = 0;
-	var GSitem = 0;
-	var GMitem = 0;
-	var GLitem = 0;
-	var Gold =0;
+	var Sitem = 0;
+	var Mitem = 0;
+	var Litem = 0;
 	
 	let temp = rollbase.Dice(100);
-	
-	
-	for(var i = 0; i<=CharArr.length; i++){
-		if(userID == CharArr[0][0]){
-			if (temp > RHP){
-				if(day ==0){
-					WSitem = rollbase.Dice(5);
-					CharArr[i][7]+= WSitem;
-
-					rply.text = '恭喜，是普通獎勵。\
-							\n你獲得了' + WSitem + '個武器素材(小)';
-
-				}else if(day == 1){
-					CharArr[i][2]+= 10;
-					Gold =10;
-
-					rply.text = '恭喜，是普通獎勵。\
-							\n你獲得了10G';
-
-				}else if(day == 2){
-					CharArr[i][2]+= 10;
-					Gold =10;
-
-					rply.text = '恭喜，是普通獎勵。\
-							\n你獲得了10G';
-
-				}else if(day == 3){
-					CharArr[i][2]+= 10;
-					Gold =10;
-
-					rply.text = '恭喜，是普通獎勵。\
-							\n你獲得了10G';
-
-				}else if(day == 4){
-					CharArr[i][2]+= 10;
-					Gold =10;
-
-					rply.text = '恭喜，是普通獎勵。\
-							\n你獲得了10G';
-
-				}else if(day == 5){
-					CharArr[i][2]+= 100;
-					Gold =100;
-
-					rply.text = '恭喜，是普通獎勵。\
-							\n你獲得了100G';
-
-				}else if(day ==6){
-					GSitem = rollbase.Dice(5);
-					CharArr[i][10]+= GSitem;
-					rply.text = '恭喜，是普通獎勵。\
-							\n你獲得了' + GSitem + '個公會素材(小)';
-
-				}
-
-			}else if (temp <=RHP && temp > HP){
-				if(day ==0){
-					WSitem = rollbase.Dice(10);
-					WMitem = rollbase.Dice(5);
-					WLitem = rollbase.Dice(3);
-					
-					CharArr[i][7]+= WSitem;
-					CharArr[i][8]+= WMitem;
-					CharArr[i][9]+= WLitem;
-					rply.text = '恭喜，是中等獎勵。\
-							\n你獲得了' + WSitem + '個武器素材(小)\
-							\n你獲得了' + WMitem + '個武器素材(中)\
-							\n你獲得了' + WLitem + '個武器素材(大)';
-
-				}else if(day == 1){
-					CharArr[i][2]+= 50;
-					Gold =50;
-
-					rply.text = '恭喜，是中等獎勵。\
-							\n你獲得了50G';
-
-				}else if(day == 2){
-					CharArr[i][2]+= 50;
-					Gold =50;
-
-					rply.text = '恭喜，是中等獎勵。\
-							\n你獲得了50G';
-
-				}else if(day == 3){
-					CharArr[i][2]+= 50;
-					Gold =50;
-
-					rply.text = '恭喜，是中等獎勵。\
-							\n你獲得了50G';
-
-				}else if(day == 4){
-					CharArr[i][2]+= 50;
-					Gold =50;
-
-					rply.text = '恭喜，是中等獎勵。\
-							\n你獲得了50G';
-
-				}else if(day == 5){
-					CharArr[i][2]+= 200;
-					Gold =200;
-
-					rply.text = '恭喜，是中等獎勵。\
-							\n你獲得了200G';
-
-				}else if(day ==6){
-					GSitem = rollbase.Dice(10);
-					GMitem = rollbase.Dice(5);
-					GLitem = rollbase.Dice(3);
-					CharArr[i][10]+= GSitem;
-					CharArr[i][11]+= GMitem;
-					CharArr[i][12]+= GLitem;
-					rply.text = '恭喜，是中等獎勵。\
-							\n你獲得了' + GSitem + '個公會素材(小)\
-							\n你獲得了' + GMitem + '個公會素材(中)\
-							\n你獲得了' + GLitem + '個公會素材(大)';
-
-				}
-
-			}else if (temp <=HP && temp > P){
-				if(day ==0){
-					WSitem = rollbase.Dice(20);
-					WMitem = rollbase.Dice(10);
-					WLitem = rollbase.Dice(5);
-					CharArr[i][7]+= WSitem;
-					CharArr[i][8]+= WMitem;
-					CharArr[i][9]+= WLitem;
-					rply.text = '喔喔！是高等獎勵欸，恭喜！\
-							\n你獲得了' + WSitem + '個武器素材(小)\
-							\n你獲得了' + WMitem + '個武器素材(中)\
-							\n你獲得了' + WLitem + '個武器素材(大)';
-
-				}else if(day == 1){
-					CharArr[i][2]+= 100;
-					Gold =100;
-
-					rply.text = '喔喔！是高等獎勵欸，恭喜！\
-							\n你獲得了100G';
-
-				}else if(day == 2){
-					CharArr[i][2]+= 100;
-					Gold =100;
-
-					rply.text = '喔喔！是高等獎勵欸，恭喜！\
-							\n你獲得了100G';
-
-				}else if(day == 3){
-					CharArr[i][2]+= 100;
-					Gold =100;
-
-					rply.text = '喔喔！是高等獎勵欸，恭喜！\
-							\n你獲得了100G';
-
-				}else if(day == 4){
-					CharArr[i][2]+= 100;
-					Gold =100;
-
-					rply.text = '喔喔！是高等獎勵欸，恭喜！\
-							\n你獲得了100G';
-
-				}else if(day == 5){
-					CharArr[i][2]+= 500;
-					Gold =500;
-
-					rply.text = '喔喔！是高等獎勵欸，恭喜！\
-							\n你獲得了500G';
-
-				}else if(day ==6){
-					GSitem = rollbase.Dice(20);
-					GMitem = rollbase.Dice(10);
-					GLitem = rollbase.Dice(5);
-					CharArr[i][10]+= GSitem;
-					CharArr[i][11]+= GMitem;
-					CharArr[i][12]+= GLitem;
-					rply.text = '喔喔！是高等獎勵欸，恭喜！\
-							\n你獲得了' + GSitem + '個公會素材(小)\
-							\n你獲得了' + GMitem + '個公會素材(中)\
-							\n你獲得了' + GLitem + '個公會素材(大)';
-
-				}
-
-			}else if (temp <=P){
-				if(day == 0){
-					WSitem = rollbase.Dice(90)+10;
-					WMitem = rollbase.Dice(20);
-					WLitem = rollbase.Dice(10);
-					CharArr[i][7]+= WSitem;
-					CharArr[i][8]+= WMitem;
-					CharArr[i][9]+= WLitem;
-					rply.text = '太棒了！！！是頂級獎勵！恭喜！\
-							\n你獲得了' + WSitem + '個武器素材(小)\
-							\n你獲得了' + WMitem + '個武器素材(中)\
-							\n你獲得了' + WLitem + '個武器素材(大)';
-
-				}else if(day == 1){
-
-					rply.text = '太棒了！！！是頂級獎勵！恭喜！\
-							\n你獲得了技能書「' + MondayBox[Math.floor((Math.random() * (MondayBox.length)))] + '」';
-
-				}else if(day == 2){
-
-					rply.text = '太棒了！！！是頂級獎勵！恭喜！\
-							\n你獲得了技能書「' + TuesdayBox[Math.floor((Math.random() * (TuesdayBox.length)))] + '」';
-
-				}else if(day == 3){
-
-					rply.text = '太棒了！！！是頂級獎勵！恭喜！\
-							\n你獲得了技能書「' + WednesdayBox[Math.floor((Math.random() * (WednesdayBox.length)))] + '」';
-
-				}else if(day == 4){
-
-					rply.text = '太棒了！！！是頂級獎勵！恭喜！\
-							\n你獲得了技能書「' + ThursdayBox[Math.floor((Math.random() * (ThursdayBox.length)))] + '」';
-
-				}else if(day == 5){
-					CharArr[i][2]+= 1000;
-					Gold =1000;
-
-					rply.text = '太棒了！！！是頂級獎勵！恭喜！\
-							\n你獲得了1000G';
-
-				}else if(day ==6){
-					GSitem = rollbase.Dice(90)+10;
-					GMitem = rollbase.Dice(30);
-					GLitem = rollbase.Dice(20);
-					CharArr[i][10]+= GSitem;
-					CharArr[i][11]+= GMitem;
-					CharArr[i][12]+= GLitem;
-					rply.text = '太棒了！！！是頂級獎勵！恭喜！\
-							\n你獲得了' + GSitem + '個公會素材(小)\
-							\n你獲得了' + GMitem + '個公會素材(中)\
-							\n你獲得了' + GLitem + '個公會素材(大)';
-
-				}
-			}
-			
-			if(test =='測試'){
-				PlayerData.ArrayUpdate()
-				ArrayUpdate();
-				rply.text+='\n測試而已沒有儲存';
-				return rply;
-			}else{
-				/*DB.useServiceAccountAuth(creds, function (err) {
 		
-					DB.getRows(1 , 
-						function (err, rows) {
-							if (err) {
-								console.log( err );
-							}else{
-								//rows[i].Gold += Gold;
-								//rows[i].MiraStone = CharArr[i][3];
-								rows[i].WmaterialS = WSitem;
-								rows[i].WmaterialM = WMitem;
-								rows[i].WmaterialL = WLitem;
-								rows[i].GmaterialS = GSitem;
-								rows[i].GmaterialM = GMitem;
-								rows[i].GmaterialL = GLitem;
-								rows[i].save();
-
-							}
-						});
-				});
-				*/
-			}
+	if (temp > RHP){
+		if(day ==0){
+			Sitem = rollbase.Dice(5);
+			rply.text = '恭喜，是普通獎勵。\
+					\n你獲得了' + Sitem + '個武器素材(小)';
 			
+		}else if(day == 1){
+			
+			rply.text = '恭喜，是普通獎勵。\
+					\n你獲得了10G';
+			
+		}else if(day == 2){
+			
+			rply.text = '恭喜，是普通獎勵。\
+					\n你獲得了10G';
+			
+		}else if(day == 3){
+			
+			rply.text = '恭喜，是普通獎勵。\
+					\n你獲得了10G';
+			
+		}else if(day == 4){
+			
+			rply.text = '恭喜，是普通獎勵。\
+					\n你獲得了10G';
+			
+		}else if(day == 5){
+			
+			rply.text = '恭喜，是普通獎勵。\
+					\n你獲得了10G';
+			
+		}else if(day ==6){
+			Sitem = rollbase.Dice(5);
+			rply.text = '恭喜，是普通獎勵。\
+					\n你獲得了' + Sitem + '個公會素材(小)';
 			
 		}
-		
 	
+	}else if (temp <=RHP && temp > HP){
+		if(day ==0){
+			Sitem = rollbase.Dice(10);
+			Mitem = rollbase.Dice(5);
+			Litem = rollbase.Dice(3);
+			rply.text = '恭喜，是中等獎勵。\
+					\n你獲得了' + Sitem + '個武器素材(小)\
+					\n你獲得了' + Mitem + '個武器素材(中)\
+					\n你獲得了' + Litem + '個武器素材(大)';
+			
+		}else if(day == 1){
+			
+			rply.text = '恭喜，是中等獎勵。\
+					\n你獲得了50G';
+			
+		}else if(day == 2){
+			
+			rply.text = '恭喜，是中等獎勵。\
+					\n你獲得了50G';
+			
+		}else if(day == 3){
+			
+			rply.text = '恭喜，是中等獎勵。\
+					\n你獲得了50G';
+			
+		}else if(day == 4){
+			
+			rply.text = '恭喜，是中等獎勵。\
+					\n你獲得了50G';
+			
+		}else if(day == 5){
+			
+			rply.text = '恭喜，是中等獎勵。\
+					\n你獲得了50G';
+			
+		}else if(day ==6){
+			Sitem = rollbase.Dice(10);
+			Mitem = rollbase.Dice(5);
+			Litem = rollbase.Dice(3);
+			rply.text = '恭喜，是中等獎勵。\
+					\n你獲得了' + Sitem + '個公會素材(小)\
+					\n你獲得了' + Mitem + '個公會素材(中)\
+					\n你獲得了' + Litem + '個公會素材(大)';
+			
+		}
+	
+	}else if (temp <=HP && temp > P){
+		if(day ==0){
+			Sitem = rollbase.Dice(20);
+			Mitem = rollbase.Dice(10);
+			Litem = rollbase.Dice(5);
+			rply.text = '喔喔！是高等獎勵欸，恭喜！\
+					\n你獲得了' + Sitem + '個武器素材(小)\
+					\n你獲得了' + Mitem + '個武器素材(中)\
+					\n你獲得了' + Litem + '個武器素材(大)';
+			
+		}else if(day == 1){
+			
+			rply.text = '喔喔！是高等獎勵欸，恭喜！\
+					\n你獲得了100G';
+			
+		}else if(day == 2){
+			
+			rply.text = '喔喔！是高等獎勵欸，恭喜！\
+					\n你獲得了100G';
+			
+		}else if(day == 3){
+			
+			rply.text = '喔喔！是高等獎勵欸，恭喜！\
+					\n你獲得了100G';
+			
+		}else if(day == 4){
+			
+			rply.text = '喔喔！是高等獎勵欸，恭喜！\
+					\n你獲得了100G';
+			
+		}else if(day == 5){
+			
+			rply.text = '喔喔！是高等獎勵欸，恭喜！\
+					\n你獲得了100G';
+			
+		}else if(day ==6){
+			Sitem = rollbase.Dice(20);
+			Mitem = rollbase.Dice(10);
+			Litem = rollbase.Dice(5);
+			rply.text = '喔喔！是高等獎勵欸，恭喜！\
+					\n你獲得了' + Sitem + '個公會素材(小)\
+					\n你獲得了' + Mitem + '個公會素材(中)\
+					\n你獲得了' + Litem + '個公會素材(大)';
+			
+		}
+	
+	}else if (temp <=P){
+		if(day == 0){
+			Sitem = rollbase.Dice(90)+10;
+			Mitem = rollbase.Dice(20);
+			Litem = rollbase.Dice(10);
+			rply.text = '太棒了！！！是頂級獎勵！恭喜！\
+					\n你獲得了' + Sitem + '個武器素材(小)\
+					\n你獲得了' + Mitem + '個武器素材(中)\
+					\n你獲得了' + Litem + '個武器素材(大)';
+			
+		}else if(day == 1){
+			
+			rply.text = '太棒了！！！是頂級獎勵！恭喜！\
+					\n你獲得了技能書「' + MondayBox[Math.floor((Math.random() * (MondayBox.length)))] + '」';
+			
+		}else if(day == 2){
+			
+			rply.text = '太棒了！！！是頂級獎勵！恭喜！\
+					\n你獲得了技能書「' + TuesdayBox[Math.floor((Math.random() * (TuesdayBox.length)))] + '」';
+			
+		}else if(day == 3){
+			
+			rply.text = '太棒了！！！是頂級獎勵！恭喜！\
+					\n你獲得了技能書「' + WednesdayBox[Math.floor((Math.random() * (WednesdayBox.length)))] + '」';
+			
+		}else if(day == 4){
+			
+			rply.text = '太棒了！！！是頂級獎勵！恭喜！\
+					\n你獲得了技能書「' + ThursdayBox[Math.floor((Math.random() * (ThursdayBox.length)))] + '」';
+			
+		}else if(day == 5){
+			
+			rply.text = '太棒了！！！是頂級獎勵！恭喜！\
+					\n你獲得了1000G';
+			
+		}else if(day ==6){
+			Sitem = rollbase.Dice(90)+10;
+			Mitem = rollbase.Dice(30);
+			Litem = rollbase.Dice(20);
+			rply.text = '太棒了！！！是頂級獎勵！恭喜！\
+					\n你獲得了' + Sitem + '個公會素材(小)\
+					\n你獲得了' + Mitem + '個公會素材(中)\
+					\n你獲得了' + Litem + '個公會素材(大)';
+			
+		}
 	}
 	
-	console.log(rply.text);
+	
 	return rply;
-
 	
 }
 
