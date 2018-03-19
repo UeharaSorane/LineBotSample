@@ -47,7 +47,7 @@ TMDB.useServiceAccountAuth(creds, function (err) {
 
 function TMIllustration(Name){
 	for(var i = 0 ;i<TMArr.length; i++){
-		if(TMArr[i][0] == Name || TMArr[i][1] == Name){
+		if(TMArr[i][1] == Name || TMArr[i][2] == Name){
 			rply.text = '夥伴情報:\
 					\n-----基本資料-----\
 					\n 夥伴編號: ' + TMArr[i][1] + '\
