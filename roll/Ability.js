@@ -85,7 +85,7 @@ function SkillEffectReturn(Name){
   	for(var i=0; i< SkillEffArr.length; i++){
 		if(SkillEffArr[i][1] == Name){
 			
-			returnA = SkillEffArr[i][2];
+			returnSE = SkillEffArr[i][2];
 			
 			return returnSE;
 		}
