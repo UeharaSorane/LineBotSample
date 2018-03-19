@@ -67,32 +67,27 @@ function SkillIllustration(Name){
 						\n 技能名稱: ' + SkillArr[i][1] + '\
 						\n 消耗mp: ' + SkillArr[i][2] + '\
 						\n 適性武器:';
-      
-     				for(var j =0;j<3;j++){
-    		
-					if(j == 0 || SkillArr[i][j+3] != '無'){
+				
+				rply.text += SkillArr[i][3];
+				
+				if(SkillArr[i][4] != '無'){
 					
-						if(j == 0){
-							rply.text += SkillArr[i][j+3];
-						}else{
-							rply.text += '、' + SkillArr[i][j+3];
-						}
-				
-					}
-      				}
-				
-				for(var k =0;k<2;k++){
-    		
-					if(SkillArr[i][j+6] != '0'){
+					rply.text += SkillArr[i][4];
 					
-						if(j == 0){
-							rply.text +='\n 施法詠唱: ' + SkillArr[i][j+6];
-						}else{
-							rply.text +='\n 強化詠唱: ' + SkillArr[i][j+6];
-						}
-				
+					if(SkillArr[i][5] != '無'){
+						rply.text += SkillArr[i][5];
 					}
-      				}
+				}
+				
+				if(SkillArr[i][6] != '0'){
+					
+					rply.text +='\n 施法詠唱: ' + SkillArr[i][6];
+					
+					if(SkillArr[i][7] != '0'){
+						rply.text +='\n 強化詠唱: ' + SkillArr[i][7];
+					}
+				}
+				
 				rply.text += '\n 速度: ' + SkillArr[i][8] + '\
 						\n 命中率: ' + SkillArr[i][9] + '\
 						\n-----技能效果-----\
