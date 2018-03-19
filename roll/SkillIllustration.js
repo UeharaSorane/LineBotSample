@@ -56,7 +56,7 @@ function SkillIllustration(Name){
 						\n 技能編號: ' + SkillArr[i][0] + '\
 						\n 被動名稱: ' + SkillArr[i][1] + '\
 						\n-----被動效果-----\
-						\n' + Ability.AbilityReturn(SkillArr[i][1]) + '\
+						\n' + Ability.SkillEffectReturn(SkillArr[i][1]) + '\
 						\n-----取得途徑-----\n' + SkillArr[i][11] +'\
 						\n--------------------';
 			
@@ -96,7 +96,7 @@ function SkillIllustration(Name){
 				rply.text += '\n 速度: ' + SkillArr[i][8] + '\
 						\n 命中率: ' + SkillArr[i][9] + '\
 						\n-----技能效果-----\
-						\n' + Ability.AbilityReturn(SkillArr[i][1]);
+						\n' + Ability.SkillEffectReturn(SkillArr[i][1]);
 				
 				if(SkillArr[i][10] != '0'){
 
