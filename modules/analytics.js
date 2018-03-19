@@ -68,6 +68,7 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	if (trigger.match(/^武器圖鑑$/)!= null ) return exports.WeaponIllustration.WeapIllustration(mainMsg[1]);//武器圖鑑
 	if (trigger.match(/^飾品圖鑑$/)!= null ) return exports.AccessoriesIllustration.AccessoriesIllustration(mainMsg[1]);//飾品圖鑑
 	if (trigger.match(/^紋章圖鑑$/)!= null ) return exports.BadgeIllustration.BadgeIllustration(mainMsg[1]);//紋章圖鑑
+	if (trigger.match(/^技能圖鑑$/)!= null ) return exports.SkillIllustration.SkillIllustration(mainMsg[1]);//紋章圖鑑
 
 	////////////////////////////娛樂相關
 
