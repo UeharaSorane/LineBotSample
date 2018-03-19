@@ -1,104 +1,153 @@
-
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var Ability = require('./Ability.js');
 var fs = require('fs');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
 
-var WeaponDB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
-var WeapArr= [];
+var SkillDB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
+var SkillArr= [];
 
-WeaponDB.useServiceAccountAuth(creds, function (err) {
+SkillDB.useServiceAccountAuth(creds, function (err) {
 		
  
 	
  // 是先將資料讀進陣列
-	WeaponDB.getRows(3 , 
+	SkillDB.getRows(8 , 
 		function (err, rows) {
 			if (err) {
 				console.log( err );
 			}else{
 				for(var i=0; i< rows.length; i++){
-					WeapArr[i] = [];
+					SkillArr[i] = [];
 					
-					WeapArr[i][0] = rows[i].wid;
-					WeapArr[i][1] = rows[i].wname;
-					WeapArr[i][2] = rows[i].rare;
-					WeapArr[i][3] = rows[i].wtype;
-					WeapArr[i][4] = rows[i].ability;
-					WeapArr[i][5] = Number(rows[i].hp);
-					WeapArr[i][6] = Number(rows[i].mp);
-					WeapArr[i][7] = Number(rows[i].atk);
-					WeapArr[i][8] = rows[i].wdescription;
-					WeapArr[i][9] = rows[i].htgi;
-					WeapArr[i][10] = rows[i].evolution;
-					WeapArr[i][11] = rows[i].evolutionrate;
-					WeapArr[i][12] = rows[i].evolutiontree;
+					SkillArr[i][0] = rows[i].skillid;
+					SkillArr[i][1] = rows[i].skillname;
+					SkillArr[i][2] = rows[i].costmp;
+					SkillArr[i][3] = rows[i].suitablewapon1;
+          				SkillArr[i][4] = rows[i].suitablewapon2;
+          				SkillArr[i][5] = rows[i].suitablewapo3;
+					SkillArr[i][6] = rows[i].launchspell;
+					SkillArr[i][7] = rows[i].enhancespell;
+					SkillArr[i][8] = rows[i].speed;
+					SkillArr[i][9] = rows[i].hitrate;
+					SkillArr[i][10] = rows[i].actionbreak;
+					SkillArr[i][11] = rows[i].htgi;
 					
 				}
-				//console.log(WeapArr);
-				console.log('武器資料 讀取完成');
+				//console.log(SkillArr);
+				console.log('技能資料 讀取完成');
 			}
 		
 
 			
-			});
+		});
 	
 		
 		
 	});
 
 
-function WeapIllustration(Name){
-	for(var i = 0 ;i<WeapArr.length; i++){
-		if(WeapArr[i][0] == Name || WeapArr[i][1] == Name){
-			rply.text = '武器情報:\
-					\n-----基本資料-----\
-					\n 武器編號: ' + WeapArr[i][0] + '\
-					\n 武器名稱: ' + WeapArr[i][1] + '\
-					\n 稀有度: ' + WeapArr[i][2] + '\
-					\n 武器類型: ' + WeapArr[i][3] + '\
-					\n 武器被動: ' + WeapArr[i][4] + '\
-					\n' + Ability.AbilityReturn(WeapArr[i][4]) + '\
-					\n-----能力值一覽-----\
-					\n 增加Hp: ' + WeapArr[i][5] + '\
-					\n 增加Mp: ' + WeapArr[i][6] + '\
-					\n 增加攻擊力: ' + WeapArr[i][7] + '\
-					\n-----武器描述-----\n' + WeapArr[i][8] + '\
-					\n-----取得途徑-----\n' + WeapArr[i][9] + '\
-					\n-----進化相關-----\
-					\n 向上進化: ' + WeapArr[i][10] + '\
-					\n-----進化樹-----\n' + WeapArr[i][12] + '\
-					\n--------------------';
+function SkillIllustration(Name){
+	for(var i = 0 ;i<SkillArr.length; i++){
+		if(SkillArr[i][0] == Name || SkillArr[i][1] == Name){
+			if(SkillArr[i][2] == '被動'){
+				rply.text = '被動技能情報:\
+						\n-----基本資料-----\
+						\n 技能編號: ' + SkillArr[i][0] + '\
+						\n 被動名稱: ' + SkillArr[i][1] + '\
+						\n-----被動效果-----\
+						\n' + Ability.AbilityReturn(SkillArr[i][1]) + '\
+						\n-----取得途徑-----\n' + SkillArr[i][11] +'\
+						\n--------------------';
+			
+			}else{
+				rply.text = '技能情報:\
+						\n-----基本資料-----\
+						\n 技能編號: ' + SkillArr[i][0] + '\
+						\n 技能名稱: ' + SkillArr[i][1] + '\
+						\n 消耗mp: ' + SkillArr[i][2] + '\
+						\n 適性武器:\';
+      
+     				for(var j =0;j<3;j++){
+    		
+					if(j == 0 || SkillArr[i][j+3] != '無'){
+					
+						if(j == 0){
+							rply.text += SkillArr[i][j+3];
+						}else{
+							rply.text += '、' + SkillArr[i][j+3];
+						}
+				
+					}
+      				}
+				
+				for(var k =0;k<2;k++){
+    		
+					if(SkillArr[i][j+6] != '0'){
+					
+						if(j == 0){
+							rply.text +='\n 施法詠唱: ' + SkillArr[i][j+6];
+						}else{
+							rply.text +='\n 強化詠唱: ' + SkillArr[i][j+6];
+						}
+				
+					}
+      				}
+				rply.text += '\n 速度: ' + SkillArr[i][8] + '\
+						\n 命中率: ' + SkillArr[i][9] + '\
+						\n-----技能效果-----\
+						\n' + Ability.AbilityReturn(SkillArr[i][1]);
+				
+				if(SkillArr[i][10] != '0'){
+
+						rply.text +='\n\n 阻斷行動: ' + SkillArr[i][10];
+					
+				}
+						
+				rply.text += '\n-----取得途徑-----\n' + SkillArr[i][11] +'\
+						\n--------------------';
+			
+			
+			}
 			
 			return rply;
 		
 		}
 	}
 	if(Name == null){
-		rply.text = '-----武器圖鑑-----\n\n';
+		rply.text = '-----技能圖鑑-----\n\n';
 		
-		for(var i = 0; i<WeapArr.length; i++){
-			rply.text += '[' + WeapArr[i][0] + '] ' + WeapArr[i][1] + ' ('  + WeapArr[i][2] + ') [' + WeapArr[i][3] + ']\n';
+		for(var i = 0; i<SkillArr.length; i++){
+			rply.text += '[' + SkillArr[i][0] + '] ' + SkillArr[i][1];
+			if(SkillArr[i][2] == '被動'){
+				rply.text += '(被動)\n';
+			}else{
+				rply.text += '(技能)\n';
+			}
 		}
 		
-		rply.text += '\n\n想要查詢特定武器的話，請輸入 武器圖鑑 武器編號(武器名字)';
+		rply.text += '\n\n想要查詢特定技能的話，請輸入 技能圖鑑 技能編號(技能名字)';
 		
 		return rply;
 	}
 		
-		rply.text = '找不到編號或名稱為' + Name +'的武器喔！\
-				\n\n-----武器圖鑑-----\n\n';
+		rply.text = '找不到編號或名稱為' + Name +'的技能喔！\
+				\n\n-----技能圖鑑-----\n\n';
 		
-		for(var i = 0; i<WeapArr.length; i++){
-			rply.text += '[' + WeapArr[i][0] + '] ' + WeapArr[i][1] + ' ('  + WeapArr[i][2] + ') [' + WeapArr[i][3] + ']\n';
+		for(var i = 0; i<SkillArr.length; i++){
+			rply.text += '[' + SkillArr[i][0] + '] ' + SkillArr[i][1];
+			if(SkillArr[i][2] == '被動'){
+				rply.text += '(被動)\n';
+			}else{
+				rply.text += '(技能)\n';
+			}
 		}
 		
-		rply.text += '想要查詢特定武器的話，請輸入 武器圖鑑 武器編號(武器名字)';
+		rply.text += '\n\n想要查詢特定技能的話，請輸入 技能圖鑑 技能編號(技能名字)';
 		
 		return rply;
 }
 
 module.exports = {
-	WeapIllustration
+	SkillIllustration
 };
