@@ -66,7 +66,7 @@ function SkillIllustration(Name){
 						\n 技能編號: ' + SkillArr[i][0] + '\
 						\n 技能名稱: ' + SkillArr[i][1] + '\
 						\n 消耗mp: ' + SkillArr[i][2] + '\
-						\n 適性武器:\';
+						\n 適性武器:';
       
      				for(var j =0;j<3;j++){
     		
