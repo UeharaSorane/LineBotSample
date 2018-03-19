@@ -5,6 +5,7 @@ var creds = require('../client_secret.json');
 
 var AbilityDB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 var AbilArr= [];
+var SkillEffArr = =[];
 
 AbilityDB.useServiceAccountAuth(creds, function (err) {
 		
@@ -33,12 +34,34 @@ AbilityDB.useServiceAccountAuth(creds, function (err) {
 			
 			});
 	
+	AbilityDB.getRows(7 , 
+		function (err, rows) {
+			if (err) {
+				console.log( err );
+			}else{
+				for(var i=0; i< rows.length; i++){
+					SkillEffArr[i] = [];
+					
+					SkillEffArr[i][0] = rows[i].sid;
+					SkillEffArr[i][1] = rows[i].sname;
+					SkillEffArr[i][2] = rows[i].sdescription;
+
+					
+				}
+				console.log(SkillEffArr);
+				console.log('技能效果資料 讀取完成');
+			}
+		
+
+			
+			});
+	
 		
 		
 	});
   
   function AbilityReturn(Name){
-	var returnA;
+	let returnA;
 	  
   	for(var i=0; i< AbilArr.length; i++){
 		if(AbilArr[i][1] == Name){
@@ -55,7 +78,27 @@ AbilityDB.useServiceAccountAuth(creds, function (err) {
   
   
   }
+
+function SkillEffectReturn(Name){
+	let returnSE;
+	  
+  	for(var i=0; i< SkillEffArr.length; i++){
+		if(SkillEffArr[i][1] == Name){
+			
+			returnA = SkillEffArr[i][2];
+			
+			return returnSE;
+		}
+
+
+	}
+	  
+	 console.log('找不到技能' + Name);
+  
+  
+  }
   
   module.exports = {
-	 AbilityReturn
+	 AbilityReturn,
+	 SkillEffectReturn
 };
