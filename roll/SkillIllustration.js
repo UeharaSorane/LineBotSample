@@ -25,7 +25,7 @@ SkillDB.useServiceAccountAuth(creds, function (err) {
 					SkillArr[i][2] = rows[i].costmp;
 					SkillArr[i][3] = rows[i].suitableweapon1;
           				SkillArr[i][4] = rows[i].suitableweapon2;
-          				SkillArr[i][5] = rows[i].suitableweapo3;
+          				SkillArr[i][5] = rows[i].suitableweapon3;
 					SkillArr[i][6] = rows[i].launchspell;
 					SkillArr[i][7] = rows[i].enhancespell;
 					SkillArr[i][8] = rows[i].speed;
@@ -83,9 +83,10 @@ function SkillIllustration(Name){
 					
 					rply.text +='\n 施法詠唱: ' + SkillArr[i][6];
 					
-					if(SkillArr[i][7] != '0'){
-						rply.text +='\n 強化詠唱: ' + SkillArr[i][7];
-					}
+				}
+				
+				if(SkillArr[i][7] != '0'){
+					rply.text +='\n 強化詠唱: ' + SkillArr[i][7];
 				}
 				
 				rply.text += '\n 速度: ' + SkillArr[i][8] + '\
