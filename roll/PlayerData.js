@@ -33,9 +33,10 @@ DB.useServiceAccountAuth(creds, function (err) {
 					CharArr[i][10] = Number(rows[i].gmaterials);
 					CharArr[i][11] = Number(rows[i].gmaterialm);
 					CharArr[i][12] = Number(rows[i].gmateriall);
+					CharArr[i][13] = Number(rows[i].mateshards);
 					
 				}
-				console.log(CharArr);
+				//console.log(CharArr);
 				console.log('玩家基本資料 讀取完成');
 			}
 		
@@ -75,6 +76,7 @@ function ArrayUpdate() {
 						rows[i].gmaterials = CharArr[i][10];
 						rows[i].gmaterialm = CharArr[i][11];
 						rows[i].gmateriall = CharArr[i][12];
+						rows[i].mateshards = CharArr[i][13];
 						rows[i].save();
 
 					}
@@ -107,7 +109,8 @@ function main(UserID) {
 				\n 武器素材(大):' + CharArr[i][9]+'\
 				\n 公會素材(小):' + CharArr[i][10]+'\
 				\n 公會素材(中):' + CharArr[i][11]+'\
-				\n 公會素材(大):' + CharArr[i][12];
+				\n 公會素材(大):' + CharArr[i][12]+'\
+				\n 夥伴隨拍:' + CharArr[i][13];
 			
 			if(CharArr[i][5] == 1) rply.text += '\n!!!警告 繼承模式開啟中，請盡速繼承!!!';
 
