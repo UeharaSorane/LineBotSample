@@ -4,8 +4,8 @@ var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
 
 var AbilityDB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
-var AbilArr= [];
-var SkillEffArr = =[];
+var AbilArr = [];
+var SkillEffArr = [];
 
 AbilityDB.useServiceAccountAuth(creds, function (err) {
 		
