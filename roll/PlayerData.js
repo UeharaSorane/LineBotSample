@@ -110,7 +110,7 @@ function main(UserID) {
 				\n 公會素材(小):' + CharArr[i][10]+'\
 				\n 公會素材(中):' + CharArr[i][11]+'\
 				\n 公會素材(大):' + CharArr[i][12]+'\
-				\n 夥伴隨拍:' + CharArr[i][13];
+				\n 夥伴碎片:' + CharArr[i][13];
 			
 			if(CharArr[i][5] == 1) rply.text += '\n!!!警告 繼承模式開啟中，請盡速繼承!!!';
 
