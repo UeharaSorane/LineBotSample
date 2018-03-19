@@ -70,7 +70,7 @@ function SkillIllustration(Name){
 				
 				rply.text += SkillArr[i][3];
 				
-				if(SkillArr[i][4] != '無'){
+				/*if(SkillArr[i][4] != '無'){
 					
 					rply.text += SkillArr[i][4];
 					
@@ -86,7 +86,7 @@ function SkillIllustration(Name){
 					if(SkillArr[i][7] != '0'){
 						rply.text +='\n 強化詠唱: ' + SkillArr[i][7];
 					}
-				}
+				}*/
 				
 				rply.text += '\n 速度: ' + SkillArr[i][8] + '\
 						\n 命中率: ' + SkillArr[i][9] + '\
