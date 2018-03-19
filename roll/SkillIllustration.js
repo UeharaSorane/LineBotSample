@@ -72,10 +72,10 @@ function SkillIllustration(Name){
 				
 				if(SkillArr[i][4] != '無'){
 					
-					rply.text += SkillArr[i][4];
+					rply.text += '、' + SkillArr[i][4];
 					
 					if(SkillArr[i][5] != '無'){
-						rply.text += SkillArr[i][5];
+						rply.text += '、' + SkillArr[i][5];
 					}
 				}
 				
