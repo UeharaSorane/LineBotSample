@@ -77,13 +77,15 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	if (trigger.match(/^測試$/)!= null ) return exports.Test.main();//連結測試
 	if (trigger.match(/^uid$/)!= null ) return exports.Test.UserID(UserID);//uid查詢測試
 	
-	////////////////////////////資料儲存相關
-	if (trigger.match(/^玩家情報$/)!= null ) return exports.PlayerData.main(UserID);//資料庫連結測試
+	////////////////////////////玩家資料相關
+	if (trigger.match(/^玩家情報$/)!= null ) return exports.PlayerData.main(UserID);//玩家情報
 	if (trigger.match(/^玩家建立$/)!= null ) return exports.PlayerData.CreatNewPlayer(UserID, mainMsg[1], mainMsg[2]);//建立新玩家
 	if (trigger.match(/^資料庫更新$/)!= null ) return exports.PlayerData.ArrayUpdate();//資料庫外部更動更新
 	if (trigger.match(/^繼承模式開啟$/)!= null ) return exports.PlayerData.InheritModeOn(UserID,mainMsg[1], mainMsg[2]);//開啟繼承權限
 	if (trigger.match(/^繼承$/)!= null ) return exports.PlayerData.InheritChatacter(UserID, mainMsg[1], mainMsg[2]);//繼承角色
-
+	
+	////////////////////////////戰鬥資料相關
+	if (trigger.match(/^戰鬥能力$/)!= null ) return exports.BattleStates.BattleStates(UserID);//玩家情報
 
 }
 
