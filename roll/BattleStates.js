@@ -117,6 +117,50 @@ function BattleStates(UserID){
 
 }
 
+function BattleStatesSearch(Name){
+	
+	for(var i=0; i< CharArr.length; i++){
+
+		if (CharArr[i][1] == Name) {
+			rply.text ='查詢結果\
+				\n角色名:' + CharArr[i][1] + '\
+				\n訓練等級: '+CharArr[i][31] + '等\
+				\n-----目前裝備-----\
+				\n裝備武器:' + CharArr[i][2] + '(' + CharArr[i][3] + ')\
+				\n裝備飾品:' + CharArr[i][5] + '\
+				\n裝備紋章:' + CharArr[i][7] + '\
+				\n同行夥伴:' + CharArr[i][8] + '\
+				\n-----能力值-----\
+				\n HP:' + (CharArr[i][9] + CharArr[i][10]*10 + CharArr[i][11] + CharArr[i][12] + CharArr[i][13]) +'\
+				\n MP:' + (CharArr[i][14] + CharArr[i][15]*5 + CharArr[i][16] + CharArr[i][17] + CharArr[i][18]) +'\
+				\n ATK:' + (CharArr[i][19] + CharArr[i][20] + CharArr[i][21] + CharArr[i][22] + CharArr[i][23]) +'\
+				\n-----技能一覽-----\
+				\n被動之書:' + CharArr[i][24] + '\
+				\n技能一:' + CharArr[i][25] + '\
+				\n技能二:' + CharArr[i][26] + '\
+				\n技能三:' + CharArr[i][27] + '\
+				\n\
+				\n爆裂技能:' + CharArr[i][28] + '[' + CharArr[i][29] + ']\
+				\n-----特殊被動一覽-----\
+				\n武器被動:' + CharArr[i][4] + '\
+				\n飾品被動:' + CharArr[i][6] + '\
+				\n紋章被動:' + CharArr[i][7] + '\
+				\n------------------------';
+
+			return rply;
+
+		}
+	}
+	
+	rply.text = '找不到角色名為 ' + Name + ' 的角色喔！';
+
+	return rply;
+
+
+
+
+}
+
 module.exports = {
 	BattleStates
 };
