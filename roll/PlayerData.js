@@ -1,5 +1,6 @@
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var BoxOpen = require('./BoxOpen.js');
+var BattleStates = require('./BattleStates.js');
 var fs = require('fs');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
@@ -90,6 +91,8 @@ function ArrayUpdate() {
 
 
 		});
+	
+	BattleStates.ArrayUpdate();
 }
 	
 
