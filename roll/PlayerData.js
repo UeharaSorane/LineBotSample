@@ -131,6 +131,42 @@ function main(UserID) {
 
 }
 
+function SearchPlayer(Name) {
+	///確認玩家資料
+	for(var i=0; i< CharArr.length; i++){
+
+		if (CharArr[i][0] == Name) {
+			rply.text ='查詢結果:\
+				\n角色名:' + CharArr[i][1] + '\
+				\n持有金幣: '+CharArr[i][2] + 'G\
+				\n持有奇蹟石: '+CharArr[i][3] + '顆\
+				\n當前稱號: '+CharArr[i][4] + '\
+				\n-----持有素材-----\
+				\n 武器素材(小):' + CharArr[i][7]+'\
+				\n 武器素材(中):' + CharArr[i][8]+'\
+				\n 武器素材(大):' + CharArr[i][9]+'\
+				\n 公會素材(小):' + CharArr[i][10]+'\
+				\n 公會素材(中):' + CharArr[i][11]+'\
+				\n 公會素材(大):' + CharArr[i][12]+'\
+				\n 夥伴碎片:' + CharArr[i][13];
+
+			return rply;
+
+		}
+	}
+	
+	rply.text = '找不到角色名為 ' + Name + ' 的角色喔！';
+
+	return rply;
+
+	
+	
+  
+	
+	///
+
+}
+
 function CreatNewPlayer(UserID,CName,Title) {
 	var CTitle;
 	var CharArrleng = CharArr.length;
@@ -366,6 +402,7 @@ function box(UserID){
 
 module.exports = {
 	main,
+	SearchPlayer,
 	CreatNewPlayer,
 	ArrayUpdate,
 	InheritModeOn,
