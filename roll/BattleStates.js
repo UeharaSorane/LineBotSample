@@ -10,7 +10,7 @@ DB.useServiceAccountAuth(creds, function (err) {
  
 	
  // 是先將資料讀進陣列
-	DB.getRows(10 , 
+	/*DB.getRows(10 , 
 		function (err, rows) {
 			if (err) {
 				console.log( err );
@@ -69,7 +69,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 		
 
 			
-			});
+			});*/
 	
 		
 		
