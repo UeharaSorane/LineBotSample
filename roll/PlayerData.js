@@ -135,7 +135,7 @@ function SearchPlayer(Name) {
 	///確認玩家資料
 	for(var i=0; i< CharArr.length; i++){
 
-		if (CharArr[i][0] == Name) {
+		if (CharArr[i][1] == Name) {
 			rply.text ='查詢結果:\
 				\n角色名:' + CharArr[i][1] + '\
 				\n持有金幣: '+CharArr[i][2] + 'G\
@@ -153,6 +153,13 @@ function SearchPlayer(Name) {
 			return rply;
 
 		}
+	}
+	
+	if(Name == null){
+		rply.text = '請輸入要查詢的角色名！';
+
+		return rply;
+		
 	}
 	
 	rply.text = '找不到角色名為 ' + Name + ' 的角色喔！';
