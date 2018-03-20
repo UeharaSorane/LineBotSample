@@ -61,6 +61,8 @@ DB.useServiceAccountAuth(creds, function (err) {
 					CharArr[i][30] = Number(rows[i].trainingpoint);
 					CharArr[i][31] = Number(rows[i].trainlv);
 					
+					CharArr[i][32] = rows[i].stresetio;
+					
 				}
 				console.log(CharArr);
 				console.log('玩家戰鬥資料 讀取完成');
@@ -102,6 +104,8 @@ function BattleStates(UserID){
 				\n飾品被動:' + CharArr[i][6] + '\
 				\n紋章被動:' + CharArr[i][7] + '\
 				\n------------------------';
+			
+			if(CharArr[i][32] == 1) rply.text += '\n!!!注意 你的基本能力值尚未分配!!!';
 
 			return rply;
 
