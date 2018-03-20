@@ -156,6 +156,13 @@ function BattleStatesSearch(Name){
 		}
 	}
 	
+	if(Name == null){
+		rply.text = '請輸入要查詢的角色名！';
+
+		return rply;
+		
+	}
+	
 	rply.text = '找不到角色名為 ' + Name + ' 的角色喔！';
 
 	return rply;
