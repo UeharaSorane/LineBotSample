@@ -49,7 +49,7 @@ function TMIllustration(Name){
 	
 	for(var i = 0 ;i<TMArr.length; i++){
 		if(TMArr[i][1] == Name || TMArr[i][2] == Name){
-			let TMB = Ability.TMBurstReturn(TMArr[i][2]);
+			let TMB = Ability.TMBurstReturn(TMArr[i][3]);
 			
 			rply.text = '夥伴情報:\
 					\n-----基本資料-----\
