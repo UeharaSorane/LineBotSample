@@ -46,8 +46,11 @@ TMDB.useServiceAccountAuth(creds, function (err) {
 
 
 function TMIllustration(Name){
+	
 	for(var i = 0 ;i<TMArr.length; i++){
 		if(TMArr[i][1] == Name || TMArr[i][2] == Name){
+			let TMB = Ability.TMBurstReturn(TMArr[i][2]);
+			
 			rply.text = '夥伴情報:\
 					\n-----基本資料-----\
 					\n 夥伴編號: ' + TMArr[i][1] + '\
@@ -58,7 +61,8 @@ function TMIllustration(Name){
 					\n 增加Mp: ' + TMArr[i][6] + '\
 					\n 增加攻擊力: ' + TMArr[i][7] + '\
 					\n-----爆裂之力-----\
-					\n 爆裂類型: ' + TMArr[i][8] + '\
+					\n 爆裂類型: ' + TMB[1] + '\
+					\n\n' + TMB[2] + '\n\
 					\n-----取得途徑-----\n' + TMArr[i][9] + '\
 					\n--------------------';
 			
