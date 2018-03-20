@@ -75,6 +75,79 @@ DB.useServiceAccountAuth(creds, function (err) {
 		
 	});
 
+function ArrayUpdate(){
+	DB.useServiceAccountAuth(creds, function (err) {
+		
+ 
+	
+	 // 是先將資料讀進陣列
+		DB.getRows(10 , 
+			function (err, rows) {
+				if (err) {
+					console.log( err );
+				}else{
+					for(var i=0; i< rows.length; i++){
+						rows[i].userid = CharArr[i][0];
+						rows[i].cname = CharArr[i][1];
+
+						rows[i].weapon = CharArr[i][2];
+						rows[i].weapontype = CharArr[i][3];
+						rows[i].weaponability = CharArr[i][4];
+
+						rows[i].accessory = CharArr[i][5];
+						rows[i].accessoryability = CharArr[i][6];
+
+						rows[i].badge = CharArr[i][7];
+
+						rows[i].teammate = CharArr[i][8];
+
+						rows[i].hpst = CharArr[i][9];
+						rows[i].hptraininglv = CharArr[i][10];
+						rows[i].hpweap = CharArr[i][11];
+						rows[i].hpacce = CharArr[i][12];
+						rows[i].hptm = CharArr[i][13];
+
+						rows[i].mpst = CharArr[i][14];
+						rows[i].mptraininglv = CharArr[i][15];
+						rows[i].mpweap = CharArr[i][16];
+						rows[i].mpacce = CharArr[i][17];
+						rows[i].mptm = CharArr[i][18];
+
+						rows[i].atkst = CharArr[i][19];
+						rows[i].atktraininglv = CharArr[i][20];
+						rows[i].atkweap = CharArr[i][21];
+						rows[i].atkacce = CharArr[i][22];
+						rows[i].atktm = CharArr[i][23];
+
+						rows[i].skillability = CharArr[i][24];
+						rows[i].skill1 = CharArr[i][25];
+						rows[i].skill2 = CharArr[i][26];
+						rows[i].skill3 = CharArr[i][27];
+
+						rows[i].teammateburst = CharArr[i][28];
+						rows[i].bursttype = CharArr[i][29];
+
+						rows[i].trainingpoint = CharArr[i][30];
+						rows[i].trainlv = CharArr[i][31];
+
+						rows[i].stresetio = CharArr[i][32];
+
+					}
+					console.log(CharArr);
+					console.log('玩家戰鬥資料 更新完成');
+				}
+
+
+				});
+
+
+
+		});
+
+
+
+}
+
 function BattleStates(UserID){
 	
 	for(var i=0; i< CharArr.length; i++){
@@ -174,5 +247,6 @@ function BattleStatesSearch(Name){
 
 module.exports = {
 	BattleStates,
-	BattleStatesSearch
+	BattleStatesSearch,
+	ArrayUpdate
 };
