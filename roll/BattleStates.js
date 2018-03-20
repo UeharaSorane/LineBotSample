@@ -72,3 +72,30 @@ DB.useServiceAccountAuth(creds, function (err) {
 		
 		
 	});
+
+function BattleStates(UserID){
+	
+	for(var i=0; i< CharArr.length; i++){
+
+		if (CharArr[i][0] == UserID) {
+			rply.text ='你的戰鬥資料:\
+				\n你的角色名:' + CharArr[i][1] + '\
+				\n訓練等級: '+CharArr[i][31] + '等\
+				\n-----能力值-----\
+				\n     (基本素質/訓練加成(訓練等級)/武器加成/飾品加成/夥伴加成/總和值)\
+				\n HP:' + (CharArr[i][9] + CharArr[i][10]*10 + CharArr[i][11] + CharArr[i][12] + CharArr[i][13]) +'\
+				\n';
+
+			return rply;
+
+		}
+	}
+	
+	rply.text = '警告！你沒有戰鬥能力數據，請向GM確認';
+
+	return rply;
+
+
+
+
+}
