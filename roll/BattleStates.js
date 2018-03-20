@@ -162,5 +162,6 @@ function BattleStatesSearch(Name){
 }
 
 module.exports = {
-	BattleStates
+	BattleStates,
+	BattleStatesSearch
 };
