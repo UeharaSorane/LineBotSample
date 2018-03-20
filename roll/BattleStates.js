@@ -99,3 +99,7 @@ function BattleStates(UserID){
 
 
 }
+
+module.exports = {
+	BattleStates
+};
