@@ -59,7 +59,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					CharArr[i][29] = rows[i].bursttype;
 					
 					CharArr[i][30] = Number(rows[i].trainingpoint);
-					CharArr[i][31] = Number(rows[i].traininglv);
+					CharArr[i][31] = Number(rows[i].trainlv);
 					
 				}
 				console.log(CharArr);
