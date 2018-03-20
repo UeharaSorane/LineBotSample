@@ -6,6 +6,7 @@ var creds = require('../client_secret.json');
 var AbilityDB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 var AbilArr = [];
 var SkillEffArr = [];
+var TMBurstArr = [];
 
 AbilityDB.useServiceAccountAuth(creds, function (err) {
 		
@@ -26,7 +27,7 @@ AbilityDB.useServiceAccountAuth(creds, function (err) {
 
 					
 				}
-				console.log(AbilArr);
+				//console.log(AbilArr);
 				console.log('被動資料 讀取完成');
 			}
 		
@@ -48,8 +49,32 @@ AbilityDB.useServiceAccountAuth(creds, function (err) {
 
 					
 				}
-				console.log(SkillEffArr);
+				//console.log(SkillEffArr);
 				console.log('技能效果資料 讀取完成');
+			}
+		
+
+			
+			});
+	
+	AbilityDB.getRows(11 , 
+		function (err, rows) {
+			if (err) {
+				console.log( err );
+			}else{
+				for(var i=0; i< rows.length; i++){
+					TMBurstArr[i] = [];
+					
+					TMBurstArr[i][0] = rows[i].tmbid;
+					TMBurstArr[i][1] = rows[i].tmcname;
+					TMBurstArr[i][2] = rows[i].tmburst;
+					TMBurstArr[i][3] = rows[i].bursttype;
+					TMBurstArr[i][4] = rows[i].victorydeclaration;
+
+					
+				}
+				console.log(SkillEffArr);
+				console.log('夥伴爆裂資料 讀取完成');
 			}
 		
 
@@ -97,8 +122,30 @@ function SkillEffectReturn(Name){
   
   
   }
+
+function TMBurstReturn(Name){
+	let returnTMB = [];
+	  
+  	for(var i=0; i< TMBurstArr.length; i++){
+		if(TMBurstArr[i][1] == Name){
+			
+			returnTMB[0] = TMBurstArr[i][2];
+			returnTMB[1] = TMBurstArr[i][3];
+			returnTMB[2] = TMBurstArr[i][4];
+			
+			return returnTMB;
+		}
+
+
+	}
+	  
+	 console.log('找不到夥伴' + Name);
+  
+  
+  }
   
   module.exports = {
-	 AbilityReturn,
-	 SkillEffectReturn
+	AbilityReturn,
+	SkillEffectReturn,
+	TMBurstReturn
 };
