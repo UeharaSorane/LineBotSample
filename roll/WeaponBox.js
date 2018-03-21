@@ -92,15 +92,15 @@ function SwitchWeapon(UserID,Weapon){
 			for(var j = 0; j<BattleStatesDataArray.length;j++){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
-								\n 目前裝備武器: ' + BattleStatesDataArray[j][2] +'(' + BattleStatesDataArray[j][3] + ')\n' + '持有武器一覽:\n';
+								\n 目前裝備武器: ' + BattleStatesDataArray[j][2] +'(' + BattleStatesDataArray[j][3] + ')\n';
 					for(var k = 1; k<WeaponBoxArr[i].length; k++){
 						if(WeaponBoxArr[i][k] == Weapon){
 							for(var l =0; l<WeaponsArray.length; l++){
 								if(WeaponsArray[l][1] == Weapon){
 									
-									rply.text += '更換成: ' + WeaponsArray[l][1] + '(' + WeaponsArray[l][2] + ')\n\
+									rply.text += '更換成: ' + WeaponsArray[l][1] + '(' + WeaponsArray[l][3] + ')\n\
 											\n -----能力值變動-----\
-											\n 武器被動: ' + BattleStatesDataArray[j][4] + '->' + WeaponsArray[l][3] + '\
+											\n 武器被動: ' + BattleStatesDataArray[j][4] + '->' + WeaponsArray[l][4] + '\
 											\n Hp:' + (BattleStatesDataArray[i][9] + BattleStatesDataArray[i][10]*10 + BattleStatesDataArray[i][11] + BattleStatesDataArray[i][12] + BattleStatesDataArray[i][13]);
 									BattleStatesDataArray[j][11] = WeaponsArray[l][5];
 									rply.text += '->' + (BattleStatesDataArray[i][9] + BattleStatesDataArray[i][10]*10 + BattleStatesDataArray[i][11] + BattleStatesDataArray[i][12] + BattleStatesDataArray[i][13]) + '\n\
@@ -117,8 +117,8 @@ function SwitchWeapon(UserID,Weapon){
 									
 									
 									BattleStatesDataArray[j][2] = WeaponsArray[l][1];
-									BattleStatesDataArray[j][3] = WeaponsArray[l][2];
-									BattleStatesDataArray[j][4] = WeaponsArray[l][3];
+									BattleStatesDataArray[j][3] = WeaponsArray[l][3];
+									BattleStatesDataArray[j][4] = WeaponsArray[l][4];
 									
 									BattleStates.saveArray(BattleStatesDataArray);
 									
@@ -133,6 +133,10 @@ function SwitchWeapon(UserID,Weapon){
 							return rply;
 							
 						}
+					}
+					if(Weapon = null){
+						rply.text += '\n 請輸入你要裝備的武器！';
+						return rply;
 					}
 					
 					rply.text += '\n 你尚未擁有武器' + Weapon + '喔！';
