@@ -134,7 +134,7 @@ function SwitchWeapon(UserID,Weapon){
 							
 						}
 					}
-					if(Weapon = null){
+					if(Weapon == null){
 						rply.text = '請輸入你要裝備的武器！';
 						return rply;
 					}
