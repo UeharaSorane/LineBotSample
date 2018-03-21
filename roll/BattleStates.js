@@ -250,9 +250,15 @@ function GetArray(){
 
 }
 
+function saveArray(ReturnF){
+	CharArr = ReturnF;
+	ArrayUpdate();
+}
+
 module.exports = {
 	BattleStates,
 	BattleStatesSearch,
 	ArrayUpdate,
-	GetArray
+	GetArray,
+	saveArray
 };
