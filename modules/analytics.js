@@ -91,6 +91,7 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	
 	///////////////////////////裝備相關
 	if (trigger.match(/^武器一覽$/)!= null ) return exports.WeaponBox.SearchWeapon(UserID);//所持武器一覽
+	if (trigger.match(/^武器更換$/)!= null ) return exports.WeaponBox.SwitchWeapon(UserID,mainMsg[1]);//更換武器
 
 }
 
