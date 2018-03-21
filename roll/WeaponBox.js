@@ -35,10 +35,10 @@ DB.useServiceAccountAuth(creds, function (err) {
 					WeaponBoxArr[i] = [];
 					var WeaponNumber = 0;
 					
-					for(var j = 1; j<=cells.length; j++){
+					for(var j = 0; j<cells.length; j++){
 						
 						if(cells[j].col == i+1){
-							WeaponBoxArr[i][j-WeaponNumber-1] = cells[j].value;
+							WeaponBoxArr[i][j-WeaponNumber] = cells[j].value;
 						}else{
 							WeaponNumber++;
 						}
