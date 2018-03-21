@@ -29,12 +29,21 @@ DB.useServiceAccountAuth(creds, function (err) {
 						PlayerNumber++;
 					
 					}
-				
-				
 				}
 				
-				//var cell = cells[0];
-     				console.log('一共有 ' + PlayerNumber + ' 名玩家');
+				for(var i = 0; i<PlayerNumber; i++){
+					WeaponBoxArr[i] = [];
+					
+					for(var j = 0; j<cells.length; i++){
+						if(cells[i].row == 1){
+							WeaponBoxArr[i][0] = cells[i].value;
+							break;
+						}
+					}
+					
+				}
+				
+     				console.log(WeaponBoxArr);
 
 				
 				//console.log(cells);
