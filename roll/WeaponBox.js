@@ -22,9 +22,12 @@ DB.useServiceAccountAuth(creds, function (err) {
 			if (err) {
 				console.log( err );
 			}else{
+				
+				var cell = cells[0];
+     				console.log('Cell R'+cell.row+'C'+cell.col+' = '+cell.value);
 
 				
-				console.log(cells);
+				//console.log(cells);
 				//console.log('玩家所持武器庫 讀取完成');
 			}
 		
