@@ -409,6 +409,11 @@ function box(UserID){
 
 }
 
+function GetArray(){
+	return CharArr;
+
+}
+
 
 module.exports = {
 	main,
@@ -417,5 +422,6 @@ module.exports = {
 	ArrayUpdate,
 	InheritModeOn,
 	InheritChatacter,
-	box
+	box,
+	GetArray
 };
