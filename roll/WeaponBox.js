@@ -135,11 +135,11 @@ function SwitchWeapon(UserID,Weapon){
 						}
 					}
 					if(Weapon = null){
-						rply.text += '\n 請輸入你要裝備的武器！';
+						rply.text = '請輸入你要裝備的武器！';
 						return rply;
 					}
 					
-					rply.text += '\n 你尚未擁有武器' + Weapon + '喔！';
+					rply.text = '你尚未擁有武器' + Weapon + '喔！';
 					return rply;
 					
 				}
