@@ -245,8 +245,14 @@ function BattleStatesSearch(Name){
 
 }
 
+function GetArray(){
+	return CharArr;
+
+}
+
 module.exports = {
 	BattleStates,
 	BattleStatesSearch,
-	ArrayUpdate
+	ArrayUpdate,
+	GetArray
 };
