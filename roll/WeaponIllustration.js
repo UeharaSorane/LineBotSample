@@ -98,6 +98,11 @@ function WeapIllustration(Name){
 		return rply;
 }
 
+function GetArray(){
+	return WeapArr;
+}
+
 module.exports = {
-	WeapIllustration
+	WeapIllustration,
+	GetArray
 };
