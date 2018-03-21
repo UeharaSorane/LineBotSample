@@ -88,6 +88,9 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	////////////////////////////戰鬥資料相關
 	if (trigger.match(/^戰鬥能力$/)!= null ) return exports.BattleStates.BattleStates(UserID);//玩家情報
 	if (trigger.match(/^角色能力查詢$/)!= null ) return exports.BattleStates.BattleStatesSearch(mainMsg[1]);//查詢角色能力
+	
+	///////////////////////////裝備相關
+	if (trigger.match(/^武器一覽$/)!= null ) return exports.WeaponBox.SearchWeapon(UserID);//玩家情報
 
 }
 
