@@ -15,6 +15,7 @@ var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 var WeaponBoxArr= [];
 
 DB.useServiceAccountAuth(creds, function (err) {
+	var PlayerNumber = 0;
 	
  // 是先將資料讀進陣列
 	DB.getCells(12 , 
@@ -23,8 +24,17 @@ DB.useServiceAccountAuth(creds, function (err) {
 				console.log( err );
 			}else{
 				
+				for(var i = 0; i<cells.length; i++){
+					if(cells[i].col == 1){
+						PlayerNumber++;
+					
+					}
+				
+				
+				}
+				
 				//var cell = cells[0];
-     				console.log(cells.length);
+     				console.log('一共有 ' + PlayerNumber + ' 名玩家');
 
 				
 				//console.log(cells);
