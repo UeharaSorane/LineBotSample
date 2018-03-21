@@ -3,6 +3,9 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 ///引入其他資料陣列
 var BattleStates = require('./BattleStates.js');
 var Weapons = require('./WeaponIllustration.js');
+var PlayerData = require('./PlayerData.js');
+
+var BattleStatesDataArray = BattleStates.GetArray();
 ///
 
 ///引入資料庫
@@ -46,12 +49,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					}
 					
 				}
-				
-     				console.log(WeaponBoxArr);
-
-				
-				//console.log(cells);
-				//console.log('玩家所持武器庫 讀取完成');
+				console.log('玩家所持武器庫 讀取完成');
 			}
 		
 
@@ -61,3 +59,32 @@ DB.useServiceAccountAuth(creds, function (err) {
 		
 		
 	});
+
+function SearchWeapon(UserID){
+	for(var i =0; i<WeaponBoxArr.length;i++){
+		if(WeaponBoxArr[i][0] == UserID){
+			for(var j = 0; j<BattleStatesDataArray.length;j++){
+				if(BattleStatesDataArray[j][0] == UserID){
+					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
+								\n 目前裝備武器: ' + BattleStatesDataArray[j][2] +'(' + BattleStatesDataArray[j][3] + ')\n' + '持有武器一覽:\n';
+					for(var k = 1; k<WeaponBoxArr[i].length; k++){
+						rply.text += WeaponBoxArr[i][k] + '\n';
+					}
+					rply.text += '\n 想更換武器的話，請輸入 武器更換 要裝備的武器名';
+					
+					return rply;
+					
+				}
+				
+			}
+		}
+	}
+
+	rply.text = '找不到你的角色的武器庫，請向GM確認';
+	return rply;
+
+}
+
+module.exports = {
+	SearchWeapon
+};
