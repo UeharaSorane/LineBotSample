@@ -25,7 +25,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 			}else{
 				
 				for(var i = 0; i<cells.length; i++){
-					if(cells[i].col == 1){
+					if(cells[i].row == 1){
 						PlayerNumber++;
 					
 					}
