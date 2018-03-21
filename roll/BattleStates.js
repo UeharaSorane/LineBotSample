@@ -131,7 +131,7 @@ function ArrayUpdate(){
 						rows[i].trainlv = CharArr[i][31];
 
 						rows[i].stresetio = CharArr[i][32];
-						rows[i].save;
+						rows[i].save();
 
 					}
 					console.log(CharArr);
