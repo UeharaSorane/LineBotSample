@@ -23,8 +23,8 @@ DB.useServiceAccountAuth(creds, function (err) {
 				console.log( err );
 			}else{
 				
-				var cell = cells[0];
-     				console.log('Cell R'+cell.row+'C'+cell.col+' = '+cell.value);
+				//var cell = cells[0];
+     				console.log(cells.length);
 
 				
 				//console.log(cells);
