@@ -45,8 +45,6 @@ DB.useServiceAccountAuth(creds, function (err) {
 					
 					}
 					
-					for(var j = 0;)
-					
 				}
 				
      				console.log(WeaponBoxArr[0]);
