@@ -33,17 +33,23 @@ DB.useServiceAccountAuth(creds, function (err) {
 				
 				for(var i = 0; i<PlayerNumber; i++){
 					WeaponBoxArr[i] = [];
+					var WeaponNumber = 0;
 					
-					for(var j = 0; j<cells.length; i++){
-						if(cells[i].row == 1){
-							WeaponBoxArr[i][0] = cells[i].value;
-							break;
+					for(var j = 1; j<=cells.length; j++){
+						
+						if(cells[j].col == i+1){
+							WeaponBoxArr[i][j-WeaponNumber-1] = cells[j].value;
+						}else{
+							WeaponNumber++;
 						}
+					
 					}
+					
+					for(var j = 0;)
 					
 				}
 				
-     				console.log(WeaponBoxArr);
+     				console.log(WeaponBoxArr[0]);
 
 				
 				//console.log(cells);
