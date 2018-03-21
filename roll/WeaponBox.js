@@ -6,7 +6,7 @@ var Weapons = require('./WeaponIllustration.js');
 var PlayerData = require('./PlayerData.js');
 
 var BattleStatesDataArray = BattleStates.GetArray();
-var WeaponsArray = WeaponsArray.GetArray();
+var WeaponsArray = Weapons.GetArray();
 ///
 
 ///引入資料庫
