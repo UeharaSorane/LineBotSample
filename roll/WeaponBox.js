@@ -6,6 +6,7 @@ var Weapons = require('./WeaponIllustration.js');
 var PlayerData = require('./PlayerData.js');
 
 var BattleStatesDataArray = BattleStates.GetArray();
+var WeaponsArray = WeaponsArray.GetArray();
 ///
 
 ///引入資料庫
@@ -85,6 +86,74 @@ function SearchWeapon(UserID){
 
 }
 
+function SwitchWeapon(UserID,Weapon){
+	for(var i =0; i<WeaponBoxArr.length;i++){
+		if(WeaponBoxArr[i][0] == UserID){
+			for(var j = 0; j<BattleStatesDataArray.length;j++){
+				if(BattleStatesDataArray[j][0] == UserID){
+					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
+								\n 目前裝備武器: ' + BattleStatesDataArray[j][2] +'(' + BattleStatesDataArray[j][3] + ')\n' + '持有武器一覽:\n';
+					for(var k = 1; k<WeaponBoxArr[i].length; k++){
+						if(WeaponBoxArr[i][k] == Weapon){
+							for(var l =0; l<WeaponsArray.length; l++){
+								if(WeaponsArray[l][1] == Weapon){
+									
+									rply.text += '更換成: ' + WeaponsArray[l][1] + '(' + WeaponsArray[l][2] + ')\n\
+											\n -----能力值變動-----\
+											\n 武器被動: ' + BattleStatesDataArray[j][4] + '->' + WeaponsArray[l][3] + '\
+											\n Hp:' + (BattleStatesDataArray[i][9] + BattleStatesDataArray[i][10]*10 + BattleStatesDataArray[i][11] + BattleStatesDataArray[i][12] + BattleStatesDataArray[i][13]);
+									BattleStatesDataArray[j][11] = WeaponsArray[l][5];
+									rply.text += '->' + (BattleStatesDataArray[i][9] + BattleStatesDataArray[i][10]*10 + BattleStatesDataArray[i][11] + BattleStatesDataArray[i][12] + BattleStatesDataArray[i][13]) + '\n\
+											\n Mp:' + (BattleStatesDataArray[i][14] + BattleStatesDataArray[i][15]*5 + BattleStatesDataArray[i][16] + BattleStatesDataArray[i][17] + BattleStatesDataArray[i][18]);
+									
+									BattleStatesDataArray[j][16] = WeaponsArray[l][6];
+									
+									rply.text+= '->' + (BattleStatesDataArray[i][14] + BattleStatesDataArray[i][15]*5 + BattleStatesDataArray[i][16] + BattleStatesDataArray[i][17] + BattleStatesDataArray[i][18]) +'\n\
+											\n Atk:' + (BattleStatesDataArray[i][19] + BattleStatesDataArray[i][20] + BattleStatesDataArray[i][21] + BattleStatesDataArray[i][22] + BattleStatesDataArray[i][23]);
+									BattleStatesDataArray[j][21] = WeaponsArray[l][7];
+									
+									rply.text += '->' + (BattleStatesDataArray[i][19] + BattleStatesDataArray[i][20] + BattleStatesDataArray[i][21] + BattleStatesDataArray[i][22] + BattleStatesDataArray[i][23]) +'\n\
+									\n-------------------------';
+									
+									
+									BattleStatesDataArray[j][2] = WeaponsArray[l][1];
+									BattleStatesDataArray[j][3] = WeaponsArray[l][2];
+									BattleStatesDataArray[j][4] = WeaponsArray[l][3];
+									
+									BattleStates.saveArray(BattleStatesDataArray);
+									
+									return rply;
+									
+									
+								}
+							
+							}
+							
+							rply.text += '\n 錯誤！你持有圖鑑沒有的武器，請回報給GM確認';
+							return rply;
+							
+						}
+					}
+					
+					rply.text += '\n 你尚未擁有武器' + Weapon + '喔！';
+					return rply;
+					
+				}
+				
+			}
+			
+			rply.text = '找不到你的角色的戰鬥資料，請向GM確認';
+			return rply;
+			
+		}
+	}
+
+	rply.text = '找不到你的角色的武器庫，請向GM確認';
+	return rply;
+	
+}
+
 module.exports = {
-	SearchWeapon
+	SearchWeapon,
+	SwitchWeapon
 };
