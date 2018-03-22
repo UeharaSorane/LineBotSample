@@ -133,7 +133,7 @@ function SwitchAccess(UserID,Accessory){
 							
 						}
 					}
-					if(Weapon == null){
+					if(Accessory == null){
 						rply.text = '請輸入你要裝備的飾品！';
 						return rply;
 					}
