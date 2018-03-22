@@ -70,6 +70,7 @@ AbilityDB.useServiceAccountAuth(creds, function (err) {
 					TMBurstArr[i][2] = rows[i].tmburst;
 					TMBurstArr[i][3] = rows[i].bursttype;
 					TMBurstArr[i][4] = rows[i].victorydeclaration;
+					TMBurstArr[i][5] = rows[i].burstname;
 
 					
 				}
