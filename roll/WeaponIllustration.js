@@ -58,7 +58,7 @@ function WeapIllustration(Name){
 					\n 稀有度: ' + WeapArr[i][2] + '\
 					\n 武器類型: ' + WeapArr[i][3] + '\
 					\n 武器被動: ' + WeapArr[i][4];
-			if(WeapArr[i][4]!='無') rply.text+='\n' + Ability.AbilityReturn(WeapArr[i][4]) + '\';
+			if(WeapArr[i][4]!='無') rply.text+='\n' + Ability.AbilityReturn(WeapArr[i][4]);
 			rply.text+='\n-----能力值一覽-----\
 					\n 增加Hp: ' + WeapArr[i][5] + '\
 					\n 增加Mp: ' + WeapArr[i][6] + '\
