@@ -132,6 +132,7 @@ function TMBurstReturn(Name){
 			returnTMB[0] = TMBurstArr[i][2];
 			returnTMB[1] = TMBurstArr[i][3];
 			returnTMB[2] = TMBurstArr[i][4];
+			returnTMB[3] = TMBurstArr[i][5];
 			
 			return returnTMB;
 		}
