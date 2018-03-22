@@ -97,7 +97,7 @@ function SwitchMate(UserID,Mate){
 					for(var k = 1; k<WeaponBoxArr[i].length; k++){
 						if(WeaponBoxArr[i][k] == Mate){
 							for(var l =0; l<WeaponsArray.length; l++){
-								if(WeaponsArray[l][1] == Mate){
+								if(WeaponsArray[l][2] == Mate){
 									
 									rply.text += '更換成: ' + WeaponsArray[l][2] + '\n\
 											\n -----能力值變動-----\
