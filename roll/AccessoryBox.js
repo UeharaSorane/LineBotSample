@@ -67,7 +67,7 @@ function SearchAccessory(UserID){
 			for(var j = 0; j<BattleStatesDataArray.length;j++){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
-								\n 目前裝備飾品: ' + BattleStatesDataArray[j][5] + '持有飾品一覽:\n';
+								\n 目前裝備飾品: ' + BattleStatesDataArray[j][5] + '\n持有飾品一覽:\n';
 					for(var k = 1; k<WeaponBoxArr[i].length; k++){
 						rply.text += WeaponBoxArr[i][k] + '\n';
 					}
