@@ -95,6 +95,12 @@ function TMIllustration(Name){
 		return rply;
 }
 
+function GetArray(){
+	return TMArr;
+}
+
+
 module.exports = {
-	TMIllustration
+	TMIllustration,
+	GetArray
 };
