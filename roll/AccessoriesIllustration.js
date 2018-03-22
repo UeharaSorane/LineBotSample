@@ -88,6 +88,11 @@ function AccessoriesIllustration(Name){
 		return rply;
 }
 
+function GetArray(){
+	return AccessArr;
+}
+
 module.exports = {
-	AccessoriesIllustration
+	AccessoriesIllustration,
+	GetArray
 };
