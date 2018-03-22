@@ -94,6 +94,8 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	if (trigger.match(/^武器更換$/)!= null ) return exports.WeaponBox.SwitchWeapon(UserID,mainMsg[1]);//更換武器
 	if (trigger.match(/^飾品一覽$/)!= null ) return exports.AccessoryBox.SearchAccessory(UserID);//所持飾品一覽
 	if (trigger.match(/^飾品更換$/)!= null ) return exports.AccessoryBox.SwitchAccess(UserID,mainMsg[1]);//更換飾品
+	if (trigger.match(/^紋章一覽$/)!= null ) return exports.BadgeBox.SearchBadge(UserID);//所持飾品一覽
+	if (trigger.match(/^紋章更換$/)!= null ) return exports.BadgeBox.SwitchBadge(UserID,mainMsg[1]);//更換飾品
 	
 
 }
