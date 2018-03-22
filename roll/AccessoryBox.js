@@ -2,7 +2,7 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 
 ///引入其他資料陣列
 var BattleStates = require('./BattleStates.js');
-var Accessory = require('./AccessoryIllustration.js');
+var Accessory = require('./AccessoriesIllustration.js');
 var PlayerData = require('./PlayerData.js');
 
 var BattleStatesDataArray = BattleStates.GetArray();
