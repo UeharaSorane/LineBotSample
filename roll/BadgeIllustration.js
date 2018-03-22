@@ -78,6 +78,11 @@ function BadgeIllustration(Name){
 		return rply;
 }
 
+function GetArray(){
+	return BadgeArr;
+}
+
 module.exports = {
-	BadgeIllustration
+	BadgeIllustration,
+	GetArray
 };
