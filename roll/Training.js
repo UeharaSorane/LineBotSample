@@ -8,7 +8,7 @@ var BattleStatesDataArray = BattleStates.GetArray();
 ///
 
 function TrainingStates(UserID,Hp,Mp,Atk){
-  for(var i =0; i<BattleStatesDataArray.length;i++){
+	for(var i =0; i<BattleStatesDataArray.length;i++){
   }
 
 
