@@ -7,7 +7,7 @@ var PlayerData = require('./PlayerData.js');
 var BattleStatesDataArray = BattleStates.GetArray();
 ///
 
-function TrainingStates(UserID,Hp,Mp,Atk){
+function TrainingStates(UserID){
 	
 	for(var i =0; i<BattleStatesDataArray.length;i++){
 		if(UserID == BattleStatesDataArray[i][0]){
