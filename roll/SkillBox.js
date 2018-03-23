@@ -131,7 +131,7 @@ function switchSkill(UserID,SkillSlot,SkillName){
 											 \n        技能書一: ' + BattleStatesDataArray[j][25] + '\
 											 \n        技能書二: ' + BattleStatesDataArray[j][26] + '\
 											 \n        技能書三: ' + BattleStatesDataArray[j][27] + '\
-											 \n---------------------------\';
+											 \n---------------------------';
 										
 										BattleStatesDataArray[j][24] = WeaponBoxArr[i][k];
 										BattleStates.saveArray(BattleStatesDataArray);
@@ -152,7 +152,7 @@ function switchSkill(UserID,SkillSlot,SkillName){
 											 \n        技能書一: ' + BattleStatesDataArray[j][25] + '->' + WeaponBoxArr[i][k] + '\
 											 \n        技能書二: ' + BattleStatesDataArray[j][26] + '\
 											 \n        技能書三: ' + BattleStatesDataArray[j][27] + '\
-											 \n---------------------------\';
+											 \n---------------------------';
 										
 										BattleStatesDataArray[j][25] = WeaponBoxArr[i][k];
 										BattleStates.saveArray(BattleStatesDataArray);
@@ -174,7 +174,7 @@ function switchSkill(UserID,SkillSlot,SkillName){
 											 \n        技能書一: ' + BattleStatesDataArray[j][25] + '\
 											 \n        技能書二: ' + BattleStatesDataArray[j][26] + '->' + WeaponBoxArr[i][k] + '\
 											 \n        技能書三: ' + BattleStatesDataArray[j][27] + '\
-											 \n---------------------------\';
+											 \n---------------------------';
 										
 										BattleStatesDataArray[j][26] = WeaponBoxArr[i][k];
 										BattleStates.saveArray(BattleStatesDataArray);
@@ -196,7 +196,7 @@ function switchSkill(UserID,SkillSlot,SkillName){
 											 \n        技能書一: ' + BattleStatesDataArray[j][25] + '\
 											 \n        技能書二: ' + BattleStatesDataArray[j][26] + '\
 											 \n        技能書三: ' + BattleStatesDataArray[j][27] + '->' + WeaponBoxArr[i][k] + '\
-											 \n---------------------------\';
+											 \n---------------------------';
 										
 										BattleStatesDataArray[j][27] = WeaponBoxArr[i][k];
 										BattleStates.saveArray(BattleStatesDataArray);
