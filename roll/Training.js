@@ -49,13 +49,13 @@ function setTrain(UserID,Hp,Mp,Atk){
 	let HpTemp,MpTemp,AtkTemp;
 	
 	if(Hp == null) HpTemp = 0;
-	else HpTemp = Hp;
+	else HpTemp = Number(Hp);
 	
 	if(Mp == null) MpTemp = 0;
-	else MpTemp = Mp;
+	else MpTemp = Number(Mp);
 	
 	if(Atk == null) AtkTemp = 0;
-	else AtkTemp = Atk;
+	else AtkTemp = Number(Atk);
 	
 	for(var i =0; i<BattleStatesDataArray.length;i++){
 		if(UserID == BattleStatesDataArray[i][0]){
