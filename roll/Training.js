@@ -60,6 +60,8 @@ function setTrain(UserID,Hp,Mp,Atk){
 	for(var i =0; i<BattleStatesDataArray.length;i++){
 		if(UserID == BattleStatesDataArray[i][0]){
 			
+			console.log(HpTemp + MpTemp + AtkTemp);
+			
 			if(HpTemp + MpTemp + AtkTemp > BattleStatesDataArray[i][31]){
 				rply.text = '錯誤！你的訓練點數不足';
 				return rply;
