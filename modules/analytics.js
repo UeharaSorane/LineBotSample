@@ -89,7 +89,7 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	if (trigger.match(/^戰鬥能力$/)!= null ) return exports.BattleStates.BattleStates(UserID);//玩家情報
 	if (trigger.match(/^角色能力查詢$/)!= null ) return exports.BattleStates.BattleStatesSearch(mainMsg[1]);//查詢角色能力
 	
-	///////////////////////////裝備相關
+	///////////////////////////能力相關
 	if (trigger.match(/^武器一覽$/)!= null ) return exports.WeaponBox.SearchWeapon(UserID);//所持武器一覽
 	if (trigger.match(/^武器更換$/)!= null ) return exports.WeaponBox.SwitchWeapon(UserID,mainMsg[1]);//更換武器
 	if (trigger.match(/^飾品一覽$/)!= null ) return exports.AccessoryBox.SearchAccessory(UserID);//所持飾品一覽
@@ -100,6 +100,7 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	if (trigger.match(/^夥伴更換$/)!= null ) return exports.MateBox.SwitchMate(UserID,mainMsg[1]);//更換夥伴
 	if (trigger.match(/^技能一覽$/)!= null ) return exports.SkillBox.SearchSkill(UserID);//所持技能一覽
 	if (trigger.match(/^技能更換$/)!= null ) return exports.SkillBox.switchSkill(UserID,mainMsg[1],mainMsg[2]);//更換技能
+	if (trigger.match(/^訓練情報$/)!= null ) return exports.Training.TrainingStates(UserID);//確認訓練狀態
 	
 
 }
