@@ -136,6 +136,9 @@ function StandardPoint(UserID,Hp,Mp,Atk){
 			if(HpTemp + MpTemp + AtkTemp > 10){
 				rply.text = '錯誤！基本點數只有10點！';
 				return rply;
+			}else if(HpTemp + MpTemp + AtkTemp < 10){
+				rply.text = '錯誤！10點基本點數必須分配完！';
+				return rply;
 			}
 			
 			rply.text ='玩家 ' + BattleStatesDataArray[i][1] + '基本能力分配完成！\n\
