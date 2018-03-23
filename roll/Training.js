@@ -11,5 +11,6 @@ function Training(UserID,Hp,Mp,Atk){
 
 
 
+
 }
 
