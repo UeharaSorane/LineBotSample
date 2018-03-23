@@ -26,7 +26,7 @@ BadgeDB.useServiceAccountAuth(creds, function (err) {
 					BadgeArr[i][3] = rows[i].htgi;
 					
 				}
-				console.log(BadgeArr);
+				//console.log(BadgeArr);
 				console.log('紋章資料 讀取完成');
 			}
 		
