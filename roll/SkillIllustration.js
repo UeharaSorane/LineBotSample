@@ -144,6 +144,12 @@ function SkillIllustration(Name){
 		return rply;
 }
 
+function GetArray(){
+	return SkillArr;
+}
+
+
 module.exports = {
-	SkillIllustration
+	SkillIllustration,
+	GetArray
 };
