@@ -205,5 +205,6 @@ function CreatNewPlayer(UserID,STWeapon){
 module.exports = {
 	SearchWeapon,
 	SwitchWeapon,
-	CreatNewPlayer
+	CreatNewPlayer,
+	UpdateArray
 };
