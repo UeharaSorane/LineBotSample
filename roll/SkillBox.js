@@ -108,6 +108,141 @@ function SearchSkill(UserID){
 
 }
 
+function switchSkill(UserID,SkillSlot,SkillName){
+	for(var i = 0; i<WeaponBoxArr.length; i++){
+		if(WeaponBoxArr[i][0] == UserID){ 
+			
+			for(var j = 0;j<SkillArray.length;j++){
+				
+				if(SkillName ==SkillArray[j][1]){
+					
+					for(var k = 0;k<WeaponBoxArr[i].length; k++){
+						
+						if(SkillName == WeaponBoxArr[i][k]){
+							
+							if(SkillSlot == '被動'){
+								
+								for(var l = 0; l<SkillArray.length; l++){
+									
+									if(WeaponBoxArr[i][k] == SkillArray[l][1] && SkillArray[l][2] == '被動'){
+										
+										rply.text = '玩家 ' + BattleStatesDataArray[j][1] + 
+											'\n 被動之書:' + BattleStatesDataArray[j][24] + '->' + WeaponBoxArr[i][k] + '\
+											 \n        技能書一: ' + BattleStatesDataArray[j][25] + '\
+											 \n        技能書二: ' + BattleStatesDataArray[j][26] + '\
+											 \n        技能書三: ' + BattleStatesDataArray[j][27] + '\
+											 \n---------------------------\';
+										
+										BattleStatesDataArray[j][24] = WeaponBoxArr[i][k];
+										BattleStates.saveArray(BattleStatesDataArray);
+										
+									}
+								}
+								
+								rply.text = '，技能書 ' + SkillName + '不是被動之書喔！';
+								return rply;
+							}else if(SkillSlot == 1){
+								
+								for(var l = 0; l<SkillArray.length; l++){
+									
+									if(WeaponBoxArr[i][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
+										
+										rply.text = '玩家 ' + BattleStatesDataArray[j][1] + 
+											'\n 被動之書:' + BattleStatesDataArray[j][24] + '\
+											 \n        技能書一: ' + BattleStatesDataArray[j][25] + '->' + WeaponBoxArr[i][k] + '\
+											 \n        技能書二: ' + BattleStatesDataArray[j][26] + '\
+											 \n        技能書三: ' + BattleStatesDataArray[j][27] + '\
+											 \n---------------------------\';
+										
+										BattleStatesDataArray[j][25] = WeaponBoxArr[i][k];
+										BattleStates.saveArray(BattleStatesDataArray);
+										
+									}
+								}
+								
+								rply.text = '，技能書 ' + SkillName + '不是主動技能書喔！';
+								return rply;
+								
+							}else if(SkillSlot == 2){
+								
+								for(var l = 0; l<SkillArray.length; l++){
+									
+									if(WeaponBoxArr[i][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
+										
+										rply.text = '玩家 ' + BattleStatesDataArray[j][1] + 
+											'\n 被動之書:' + BattleStatesDataArray[j][24] + '\
+											 \n        技能書一: ' + BattleStatesDataArray[j][25] + '\
+											 \n        技能書二: ' + BattleStatesDataArray[j][26] + '->' + WeaponBoxArr[i][k] + '\
+											 \n        技能書三: ' + BattleStatesDataArray[j][27] + '\
+											 \n---------------------------\';
+										
+										BattleStatesDataArray[j][26] = WeaponBoxArr[i][k];
+										BattleStates.saveArray(BattleStatesDataArray);
+										
+									}
+								}
+								
+								rply.text = '，技能書 ' + SkillName + '不是主動技能書喔！';
+								return rply;
+								
+							}else if(SkillSlot == 3){
+								
+								for(var l = 0; l<SkillArray.length; l++){
+									
+									if(WeaponBoxArr[i][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
+										
+										rply.text = '玩家 ' + BattleStatesDataArray[j][1] + 
+											'\n 被動之書:' + BattleStatesDataArray[j][24] + '\
+											 \n        技能書一: ' + BattleStatesDataArray[j][25] + '\
+											 \n        技能書二: ' + BattleStatesDataArray[j][26] + '\
+											 \n        技能書三: ' + BattleStatesDataArray[j][27] + '->' + WeaponBoxArr[i][k] + '\
+											 \n---------------------------\';
+										
+										BattleStatesDataArray[j][27] = WeaponBoxArr[i][k];
+										BattleStates.saveArray(BattleStatesDataArray);
+										
+									}
+								}
+								
+								rply.text = '，技能書 ' + SkillName + '不是主動技能書喔！';
+								return rply;
+							}else if(SkillSlot == null){
+								rply.text = '，請輸入想要更換的技能欄位！';
+								return rply;
+							}else{
+								rply.text = '，沒有技能欄位 ' + SkillSlot + '的欄位喔！';
+								return rply;
+							}
+							
+						}
+						
+						
+					}
+					
+					rply.text = '，你尚未擁有技能名為' + SkillName + '的技能喔！';
+					return rply;
+					
+				}
+			}
+			
+			if(SkillName == null){
+				rply.text = '，請輸入想要裝備的技能！';
+				return rply;
+			}
+			
+			rply.text = '，找不到技能名為' + SkillName + '的技能喔！';
+			return rply;
+			
+			
+		}
+	}
+	
+	rply.text = '找不到你的角色的技能庫，請向GM確認';
+	return rply;
+	
+}
+
 module.exports = {
-	SearchSkill
+	SearchSkill,
+	switchSkill
 };
