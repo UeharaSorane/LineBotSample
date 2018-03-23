@@ -74,7 +74,7 @@ AbilityDB.useServiceAccountAuth(creds, function (err) {
 
 					
 				}
-				console.log(SkillEffArr);
+				//console.log(SkillEffArr);
 				console.log('夥伴爆裂資料 讀取完成');
 			}
 		
