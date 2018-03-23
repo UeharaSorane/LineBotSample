@@ -109,6 +109,59 @@ function setTrain(UserID,Hp,Mp,Atk){
 	
 }
 
+function StandardPoint(UserID,Hp,Mp,Atk){
+	BattleStatesDataArray = BattleStates.GetArray();
+	
+	let HpTemp,MpTemp,AtkTemp;
+	
+	if(Hp == null) HpTemp = 0;
+	else HpTemp = Number(Hp);
+	
+	if(Mp == null) MpTemp = 0;
+	else MpTemp = Number(Mp);
+	
+	if(Atk == null) AtkTemp = 0;
+	else AtkTemp = Number(Atk);
+	
+	for(var i =0; i<BattleStatesDataArray.length;i++){
+		if(UserID == BattleStatesDataArray[i][0]){
+			
+			if(BattleStatesDataArray[i][32] == '0'){
+				rply.text = '尚未購買基本能力重置機會，請輸入 奇蹟石商店 能力重置 購買(一次奇蹟石x20)';
+				return rply;
+			
+			}
+			
+			
+			if(HpTemp + MpTemp + AtkTemp > 10){
+				rply.text = '錯誤！基本點數只有10點！';
+				return rply;
+			}
+			
+			rply.text ='玩家 ' + BattleStatesDataArray[i][1] + '基本能力分配完成！\n\
+					\n Hp基本值: ' + (20 + HpTemp*25) + '\
+					\n Mp基本值: ' + (20 + MpTemp*10) + '\
+					\n Atk基本值: ' + (5 + AtkTemp) + '\
+					\n----------';
+			BattleStatesDataArray[i][9] = 20 + HpTemp*25;
+			BattleStatesDataArray[i][14] = 20 + MpTemp*10;
+			BattleStatesDataArray[i][19] = 5 + AtkTemp;
+			
+			BattleStatesDataArray[i][32] = '0';
+			
+			BattleStates.saveArray(BattleStatesDataArray);
+			return rply;
+			
+			
+		}
+	}
+	
+	rply.text = '找不到你的角色的戰鬥資料，請向GM確認';
+	return rply;
+
+
+}
+
 
 module.exports = {
 	TrainingStates,
