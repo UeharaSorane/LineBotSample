@@ -7,3 +7,9 @@ var PlayerData = require('./PlayerData.js');
 var BattleStatesDataArray = BattleStates.GetArray();
 ///
 
+function Training(UserID,Hp,Mp,Atk){
+
+
+
+}
+
