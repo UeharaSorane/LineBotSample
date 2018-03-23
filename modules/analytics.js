@@ -75,6 +75,7 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 
 	////////////////////////////系統測試
 	if (trigger.match(/^測試$/)!= null ) return exports.Test.main();//連結測試
+	if (trigger.match(/^武器庫儲存$/)!= null ) return exports.WeaponBox.UpdateArray();//連結測試
 	if (trigger.match(/^uid$/)!= null ) return exports.Test.UserID(UserID);//uid查詢測試
 	
 	////////////////////////////玩家資料相關
