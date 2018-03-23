@@ -6,7 +6,7 @@ var Skill = require('./SkillIllustration.js');
 var PlayerData = require('./PlayerData.js');
 
 var BattleStatesDataArray = BattleStates.GetArray();
-var SkillArray = SkillIllustration.GetArray();
+var SkillArray = Skill.GetArray();
 ///
 
 ///引入資料庫
