@@ -38,3 +38,6 @@ function TrainingStates(UserID,Hp,Mp,Atk){
 
 }
 
+module.exports = {
+	TrainingStates
+};
