@@ -61,6 +61,42 @@ DB.useServiceAccountAuth(creds, function (err) {
 		
 	});
 
+function UpdateArray(){
+	DB.useServiceAccountAuth(creds, function (err) {
+		DB.getCells(12 , 
+			function (err, cells) {
+				if (err) {
+					console.log( err );
+				}else{
+					let AllArrayLeng;
+
+					for(var i =0; i<WeaponBoxArr.length;i++){
+						
+						for(var j = 0; j <WeaponBoxArr[i].length; j++){
+							cells[j+AllArrayLeng].col = i+1;
+							cells[j+AllArrayLeng].value = WeaponBoxArr[i][j];
+						}
+						
+						AllArrayLeng+=WeaponBoxArr[i].length;
+					
+					}
+					
+					DB.bulkUpdateCells(cells);
+					console.log('玩家所持武器庫 更新完成');
+					
+				}
+
+
+
+				});
+		
+		
+	
+	});
+	
+
+}
+
 function SearchWeapon(UserID){
 	for(var i =0; i<WeaponBoxArr.length;i++){
 		if(WeaponBoxArr[i][0] == UserID){
@@ -157,7 +193,17 @@ function SwitchWeapon(UserID,Weapon){
 	
 }
 
+function CreatNewPlayer(UserID,STWeapon){
+	
+	WeaponBoxArr[WeaponBoxArr.length] = [];
+	WeaponBoxArr[WeaponBoxArr.length-1][0] = UserID;
+	WeaponBoxArr[WeaponBoxArr.length-1][1] = STWeapon;
+	UpdateArray();
+	
+}
+
 module.exports = {
 	SearchWeapon,
-	SwitchWeapon
+	SwitchWeapon,
+	CreatNewPlayer
 };
