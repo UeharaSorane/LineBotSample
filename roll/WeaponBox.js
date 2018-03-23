@@ -87,8 +87,8 @@ function UpdateArray(){
 					DB.bulkUpdateCells(cells);
 					console.log('玩家所持武器庫 更新完成');*/
 					
-					cells[cells.length] = '傳說鐵劍';
-					cells[cells.length-1].save;
+					cells[45] = '傳說鐵劍';
+					cells[45].save;
 					
 				}
 
