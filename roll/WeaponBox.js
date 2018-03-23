@@ -73,6 +73,9 @@ function UpdateArray(){
 					for(var i =0; i<WeaponBoxArr.length;i++){
 						
 						for(var j = 0; j <WeaponBoxArr[i].length; j++){
+							cells.length += WeaponBoxArr[i].length;
+							
+							
 							cells[j+AllArrayLeng].col = i+1;
 							cells[j+AllArrayLeng].value = WeaponBoxArr[i][j];
 						}
