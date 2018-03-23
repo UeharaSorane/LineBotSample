@@ -68,7 +68,7 @@ function UpdateArray(){
 				if (err) {
 					console.log( err );
 				}else{
-					let AllArrayLeng;
+					/*let AllArrayLeng;
 
 					for(var i =0; i<WeaponBoxArr.length;i++){
 						
@@ -85,7 +85,10 @@ function UpdateArray(){
 					}
 					
 					DB.bulkUpdateCells(cells);
-					console.log('玩家所持武器庫 更新完成');
+					console.log('玩家所持武器庫 更新完成');*/
+					
+					cells[cells.length] = '傳說鐵劍';
+					DB.bulkUpdateCells(cells);
 					
 				}
 
