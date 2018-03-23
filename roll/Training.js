@@ -71,17 +71,17 @@ function setTrain(UserID,Hp,Mp,Atk){
 					\n Hp基本值: ' + BattleStatesDataArray[i][9] + '\
 					\n Hp訓練等級: ' + BattleStatesDataArray[i][10] + '(+' + BattleStatesDataArray[i][10]*10 + ') -> ' + HpTemp + '(+' + HpTemp*10 + ')\
 					\n Hp總和值: ' + (BattleStatesDataArray[i][9] + BattleStatesDataArray[i][10]*10 + BattleStatesDataArray[i][11] + BattleStatesDataArray[i][12] + BattleStatesDataArray[i][13])
-						+ ' -> ' + (BattleStatesDataArray[i][9] + HpTemp*10 + BattleStatesDataArray[i][11] + BattleStatesDataArray[i][12] + BattleStatesDataArray[i][13]) '\
+						+ ' -> ' + (BattleStatesDataArray[i][9] + HpTemp*10 + BattleStatesDataArray[i][11] + BattleStatesDataArray[i][12] + BattleStatesDataArray[i][13]) + '\
 					\n----------\
 					\n Mp基本值: ' + BattleStatesDataArray[i][14] + '\
 					\n Mp訓練等級: ' + BattleStatesDataArray[i][15] + '(+' + BattleStatesDataArray[i][15]*5 + ') -> ' + MpTemp + '(+' + MpTemp*5 + ')\
 					\n Mp總和值: ' + (BattleStatesDataArray[i][14] + BattleStatesDataArray[i][15]*5 + BattleStatesDataArray[i][16] + BattleStatesDataArray[i][17] + BattleStatesDataArray[i][18])
-						+ ' -> ' + (BattleStatesDataArray[i][14] + MpTemp*5 + BattleStatesDataArray[i][16] + BattleStatesDataArray[i][17] + BattleStatesDataArray[i][18]) '\
+						+ ' -> ' + (BattleStatesDataArray[i][14] + MpTemp*5 + BattleStatesDataArray[i][16] + BattleStatesDataArray[i][17] + BattleStatesDataArray[i][18]) + '\
 					\n----------\
 					\n Atk基本值: ' + BattleStatesDataArray[i][19] + '\
 					\n Atk訓練等級: ' + BattleStatesDataArray[i][20] + '(+' + BattleStatesDataArray[i][20] + ') -> ' + AtkTemp + '(+' + AtkTemp + ')\
 					\n Atk總和值: ' + (BattleStatesDataArray[i][19] + BattleStatesDataArray[i][20] + BattleStatesDataArray[i][21] + BattleStatesDataArray[i][22] + BattleStatesDataArray[i][23])
-						+ ' -> ' + (BattleStatesDataArray[i][19] + AtkTemp + BattleStatesDataArray[i][21] + BattleStatesDataArray[i][22] + BattleStatesDataArray[i][23]) '\
+						+ ' -> ' + (BattleStatesDataArray[i][19] + AtkTemp + BattleStatesDataArray[i][21] + BattleStatesDataArray[i][22] + BattleStatesDataArray[i][23]) + '\
 					\n----------\
 					\n\
 					\n 訓練等級: ' + BattleStatesDataArray[i][31] + '等\
