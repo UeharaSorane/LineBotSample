@@ -101,6 +101,7 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	if (trigger.match(/^技能一覽$/)!= null ) return exports.SkillBox.SearchSkill(UserID);//所持技能一覽
 	if (trigger.match(/^技能更換$/)!= null ) return exports.SkillBox.switchSkill(UserID,mainMsg[1],mainMsg[2]);//更換技能
 	if (trigger.match(/^訓練情報$/)!= null ) return exports.Training.TrainingStates(UserID);//確認訓練狀態
+	if (trigger.match(/^訓練點數分配$/)!= null ) return exports.Training.setTrain(UserID,mainMsg[1],mainMsg[2],mainMsg[3]);//分配訓練點數
 	
 
 }
