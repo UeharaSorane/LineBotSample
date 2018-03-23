@@ -98,6 +98,7 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	if (trigger.match(/^紋章更換$/)!= null ) return exports.BadgeBox.SwitchBadge(UserID,mainMsg[1]);//更換紋章
 	if (trigger.match(/^夥伴一覽$/)!= null ) return exports.MateBox.SearchMate(UserID);//所持夥伴一覽
 	if (trigger.match(/^夥伴更換$/)!= null ) return exports.MateBox.SwitchMate(UserID,mainMsg[1]);//更換夥伴
+	if (trigger.match(/^技能一覽$/)!= null ) return exports.SkillBox.SearchSkill(UserID);//所持夥伴一覽
 	
 
 }
