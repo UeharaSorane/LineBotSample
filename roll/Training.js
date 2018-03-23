@@ -165,5 +165,6 @@ function StandardPoint(UserID,Hp,Mp,Atk){
 
 module.exports = {
 	TrainingStates,
-	setTrain
+	setTrain,
+	StandardPoint
 };
