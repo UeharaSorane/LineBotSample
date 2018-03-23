@@ -13,13 +13,16 @@ function TrainingStates(UserID){
 		if(UserID == BattleStatesDataArray[i][0]){
 			rply.text ='玩家 ' + BattleStatesDataArray[i][1] + '的訓練情報:\n\
 					\n Hp基本值: ' + BattleStatesDataArray[i][9] + '\
-					\n Hp訓練等級: ' + BattleStatesDataArray[i][9] + '(+' + BattleStatesDataArray[i][9]*20 + ')\
+					\n Hp訓練等級: ' + BattleStatesDataArray[i][10] + '(+' + BattleStatesDataArray[i][10]*10 + ')\
+					\n Hp總和值: ' + (BattleStatesDataArray[i][9] + BattleStatesDataArray[i][10]*10 + BattleStatesDataArray[i][11] + BattleStatesDataArray[i][12] + BattleStatesDataArray[i][13]) + '\
 					\n----------\
 					\n Mp基本值: ' + BattleStatesDataArray[i][14] + '\
-					\n Mp訓練等級: ' + BattleStatesDataArray[i][15] + '(+' + BattleStatesDataArray[i][15]*10 + ')\
+					\n Mp訓練等級: ' + BattleStatesDataArray[i][15] + '(+' + BattleStatesDataArray[i][15]*5 + ')\
+					\n Mp總和值: ' + (BattleStatesDataArray[i][14] + BattleStatesDataArray[i][14]*5 + BattleStatesDataArray[i][15] + BattleStatesDataArray[i][16] + BattleStatesDataArray[i][17]) + '\
 					\n----------\
 					\n Atk基本值: ' + BattleStatesDataArray[i][19] + '\
 					\n Atk訓練等級: ' + BattleStatesDataArray[i][20] + '(+' + BattleStatesDataArray[i][20] + ')\
+					\n Atk總和值: ' + (BattleStatesDataArray[i][19] + BattleStatesDataArray[i][20] + BattleStatesDataArray[i][21] + BattleStatesDataArray[i][22] + BattleStatesDataArray[i][23]) + '\
 					\n----------\
 					\n\
 					\n 訓練等級: ' + BattleStatesDataArray[i][31] + '等\
