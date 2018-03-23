@@ -77,7 +77,7 @@ function SearchSkill(UserID){
 								\n持有技能書一覽:\n';
 					
 					for(var k = 1; k<WeaponBoxArr[i].length; k++){
-						for(var l = 0; l<SkillArray; l++){
+						for(var l = 0; l<SkillArray.length; l++){
 							if(WeaponBoxArr[i][k] == SkillArray[l][1] && SkillArray[l][1] != '被動'){
 								rply.text += WeaponBoxArr[i][k] + '\n';
 							}
@@ -87,7 +87,7 @@ function SearchSkill(UserID){
 					rply.text += '\n持有被動之書一覽:\n';
 					
 					for(var k = 1; k<WeaponBoxArr[i].length; k++){
-						for(var l = 0; l<SkillArray; l++){
+						for(var l = 0; l<SkillArray.length; l++){
 							if(WeaponBoxArr[i][k] == SkillArray[l][1] && SkillArray[l][1] == '被動'){
 								rply.text += WeaponBoxArr[i][k] + '\n';
 							}
