@@ -64,7 +64,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					CharArr[i][32] = rows[i].stresetio;
 					
 				}
-				console.log(CharArr);
+				//console.log(CharArr);
 				console.log('玩家戰鬥資料 讀取完成');
 			}
 		
@@ -134,7 +134,7 @@ function ArrayUpdate(){
 						rows[i].save();
 
 					}
-					console.log(CharArr);
+					//console.log(CharArr);
 					console.log('玩家戰鬥資料 更新完成');
 				}
 
@@ -157,6 +157,7 @@ function BattleStates(UserID){
 			rply.text ='你的戰鬥資料:\
 				\n你的角色名:' + CharArr[i][1] + '\
 				\n訓練等級: '+CharArr[i][31] + '等\
+				\n尚未分配的訓練點數: ' + CharArr[i][30] + '點\
 				\n-----目前裝備-----\
 				\n裝備武器:' + CharArr[i][2] + '(' + CharArr[i][3] + ')\
 				\n裝備飾品:' + CharArr[i][5] + '\
@@ -203,6 +204,7 @@ function BattleStatesSearch(Name){
 			rply.text ='查詢結果\
 				\n角色名:' + CharArr[i][1] + '\
 				\n訓練等級: '+CharArr[i][31] + '等\
+				\n尚未分配的訓練點數: ' + CharArr[i][30] + '點\
 				\n-----目前裝備-----\
 				\n裝備武器:' + CharArr[i][2] + '(' + CharArr[i][3] + ')\
 				\n裝備飾品:' + CharArr[i][5] + '\
