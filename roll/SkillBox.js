@@ -138,11 +138,12 @@ function switchSkill(UserID,SkillSlot,SkillName){
 
 												BattleStatesDataArray[q][24] = WeaponBoxArr[i][k];
 												BattleStates.saveArray(BattleStatesDataArray);
+												return rply;
 
 											}
 										}
 
-										rply.text = '，技能書 ' + SkillName + '不是被動之書喔！';
+										rply.text = '技能書 ' + SkillName + '不是被動之書喔！';
 										return rply;
 									}else if(SkillSlot == 1){
 
@@ -159,11 +160,12 @@ function switchSkill(UserID,SkillSlot,SkillName){
 
 												BattleStatesDataArray[q][25] = WeaponBoxArr[i][k];
 												BattleStates.saveArray(BattleStatesDataArray);
+												return rply;
 
 											}
 										}
 
-										rply.text = '，技能書 ' + SkillName + '不是主動技能書喔！';
+										rply.text = '技能書 ' + SkillName + '不是主動技能書喔！';
 										return rply;
 
 									}else if(SkillSlot == 2){
@@ -181,11 +183,12 @@ function switchSkill(UserID,SkillSlot,SkillName){
 
 												BattleStatesDataArray[q][26] = WeaponBoxArr[i][k];
 												BattleStates.saveArray(BattleStatesDataArray);
+												return rply;
 
 											}
 										}
 
-										rply.text = '，技能書 ' + SkillName + '不是主動技能書喔！';
+										rply.text = '技能書 ' + SkillName + '不是主動技能書喔！';
 										return rply;
 
 									}else if(SkillSlot == 3){
@@ -203,6 +206,7 @@ function switchSkill(UserID,SkillSlot,SkillName){
 
 												BattleStatesDataArray[q][27] = WeaponBoxArr[i][k];
 												BattleStates.saveArray(BattleStatesDataArray);
+												return rply;
 
 											}
 										}
@@ -210,7 +214,7 @@ function switchSkill(UserID,SkillSlot,SkillName){
 										rply.text = '技能書 ' + SkillName + '不是主動技能書喔！';
 										return rply;
 									}else if(SkillSlot == null){
-										rply.text = '，請輸入想要更換的技能欄位！';
+										rply.text = '請輸入想要更換的技能欄位！';
 										return rply;
 									}else{
 										rply.text = '沒有技能欄位 ' + SkillSlot + '的欄位喔！';
