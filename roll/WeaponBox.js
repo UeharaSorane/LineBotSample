@@ -35,7 +35,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					WeaponBoxArr[i][2] = rows[i].box.split(',');
 					
 				}
-				//console.log(WeaponBoxArr);
+				console.log(WeaponBoxArr);
 				console.log('玩家所持武器庫 讀取完成');
 			}
 		
