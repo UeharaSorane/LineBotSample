@@ -136,7 +136,7 @@ function switchSkill(UserID,SkillSlot,SkillName){
 
 							for(var k = 0;k<WeaponBoxArr[i][1].length; k++){
 
-								if(SkillName == WeaponBoxArr[i][k]){
+								if(SkillName == WeaponBoxArr[i][1][k]){
 
 									if(SkillSlot == '被動'){
 
