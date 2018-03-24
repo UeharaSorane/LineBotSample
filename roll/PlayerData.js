@@ -2,7 +2,7 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 var BoxOpen = require('./BoxOpen.js');
 var BattleStates = require('./BattleStates.js');
 var WB = require('./WeaponBox.js');
-var AB = require('./AccessoryBox.js');
+var AccessoryBox = require('./AccessoryBox.js');
 var BB = require('./BadgeBox.js');
 var MB = require('./MateBox.js');
 var SB = require('./SkillBox.js');
@@ -124,7 +124,7 @@ function main(UserID) {
 			ArrayUpdate();
 			BattleStates.ArrayUpdate();
 			WB.UpdateArray();
-			AB.testA();
+			AccessoryBox.testA();
 			BB.UpdateArray();
 			MB.UpdateArray();
 			SB.UpdateArray();
