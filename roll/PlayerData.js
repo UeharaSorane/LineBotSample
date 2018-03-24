@@ -69,20 +69,20 @@ function ArrayUpdate() {
 
 					for(var i=0; i< CharArr.length; i++){
 
-						rows[i].userid = CharArr[i][0];
-						rows[i].cname = CharArr[i][1];
-						rows[i].gold = CharArr[i][2];
-						rows[i].mirastone = CharArr[i][3];
-						rows[i].title = CharArr[i][4];
-						rows[i].inheritio = CharArr[i][5];
-						rows[i].inheritpassword = CharArr[i][6];
-						rows[i].wmaterials = CharArr[i][7];
-						rows[i].wmaterialm = CharArr[i][8];
-						rows[i].wmateriall = CharArr[i][9];
-						rows[i].gmaterials = CharArr[i][10];
-						rows[i].gmaterialm = CharArr[i][11];
-						rows[i].gmateriall = CharArr[i][12];
-						rows[i].mateshards = CharArr[i][13];
+						rows[i].UserID = CharArr[i][0];
+						rows[i].Cname = CharArr[i][1];
+						rows[i].Gold = CharArr[i][2];
+						rows[i].MiraStone = CharArr[i][3];
+						rows[i].Title = CharArr[i][4];
+						rows[i].InheritIO = CharArr[i][5];
+						rows[i].InheritPassword = CharArr[i][6];
+						rows[i].WmaterialS = CharArr[i][7];
+						rows[i].WmaterialM = CharArr[i][8];
+						rows[i].WmaterialL = CharArr[i][9];
+						rows[i].GmaterialS = CharArr[i][10];
+						rows[i].GmaterialM = CharArr[i][11];
+						rows[i].GmaterialL = CharArr[i][12];
+						rows[i].MateShards = CharArr[i][13];
 						rows[i].save();
 
 					}
