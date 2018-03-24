@@ -50,8 +50,6 @@ DB.useServiceAccountAuth(creds, function (err) {
 					}
 					
 				}
-				cells[45] = cells[38];
-				console.log(cells[45].value);
 				console.log('玩家所持武器庫 讀取完成');
 			}
 		
@@ -89,8 +87,12 @@ function UpdateArray(){
 					DB.bulkUpdateCells(cells);
 					console.log('玩家所持武器庫 更新完成');*/
 					
-					cells[45] = '傳說鐵劍';
-					cells[45].save;
+					cells[44] = cells[0];
+					cells[44].row = 6;
+					cells[44].col = 2;
+					
+					cells[44] = '傳說鐵劍';
+					cells[44].save;
 					
 				}
 
