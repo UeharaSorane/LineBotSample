@@ -31,10 +31,11 @@ DB.useServiceAccountAuth(creds, function (err) {
 					WeaponBoxArr[i] = [];
 					
 					WeaponBoxArr[i][0] = rows[i].userid;
-					WeaponBoxArr[i][1] = rows[i].box.split(',');
+					WeaponBoxArr[i][1] = rows[i].cname;
+					WeaponBoxArr[i][2] = rows[i].box.split(',');
 					
 				}
-				//console.log(BadgeArr);
+				//console.log(WeaponBoxArr);
 				console.log('玩家所持武器庫 讀取完成');
 			}
 		
@@ -56,9 +57,10 @@ function UpdateArray(){
 				for(var i=0; i< WeaponBoxArr.length; i++){
 					
 					rows[i].userid = WeaponBoxArr[i][0];
-					rows[i].box = WeaponBoxArr[i][1][0];
-					for(var j=1;j<WeaponBoxArr[i][1].length;j++){
-						rows[i].box += ',' + WeaponBoxArr[i][1][j];
+					rows[i].cname = WeaponBoxArr[i][1];
+					rows[i].box = WeaponBoxArr[i][2][0];
+					for(var j=1;j<WeaponBoxArr[i][2].length;j++){
+						rows[i].box += ',' + WeaponBoxArr[i][2][j];
 					}
 					rows[i].save();
 				}
@@ -84,8 +86,8 @@ function SearchWeapon(UserID){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
 								\n 目前裝備武器: ' + BattleStatesDataArray[j][2] +'(' + BattleStatesDataArray[j][3] + ')\n' + '持有武器一覽:\n';
-					for(var k = 0; k<WeaponBoxArr[i][1].length; k++){
-						rply.text += WeaponBoxArr[i][1][k] + '\n';
+					for(var k = 0; k<WeaponBoxArr[i][2].length; k++){
+						rply.text += WeaponBoxArr[i][2][k] + '\n';
 					}
 					rply.text += '\n 想更換武器的話，請輸入 武器更換 要裝備的武器名';
 					
@@ -109,8 +111,8 @@ function SwitchWeapon(UserID,Weapon){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
 								\n 目前裝備武器: ' + BattleStatesDataArray[j][2] +'(' + BattleStatesDataArray[j][3] + ')\n';
-					for(var k = 0; k<WeaponBoxArr[i][1].length; k++){
-						if(WeaponBoxArr[i][1][k] == Weapon){
+					for(var k = 0; k<WeaponBoxArr[i][2].length; k++){
+						if(WeaponBoxArr[i][2][k] == Weapon){
 							for(var l =0; l<WeaponsArray.length; l++){
 								if(WeaponsArray[l][1] == Weapon){
 									
@@ -192,9 +194,53 @@ function CreatNewPlayer(UserID,STWeapon){
 	
 }
 
+function getWeapon(UserID,Weapon){
+	for(var i = 0; i<WeaponBoxArr.length; i++){
+		if(WeaponBoxArr[i][0] == UserID){
+			for(var j = 0; j<WeaponsArray.length ; j++){
+				if(WeaponsArray[j][1] == Weapon){
+					let temp = WeaponBoxArr[i][2].length;
+					WeaponBoxArr[i][2][temp] = Weapon;
+					
+					UpdateArray();
+				}
+			}
+			
+		}
+	}
+	
+}
+
+function switchName(UserID,Name){
+	for(var i = 0; i<WeaponBoxArr.length; i++){
+		if(WeaponBoxArr[i][0] == UserID){
+			WeaponBoxArr[i][1] = Name;
+			
+			UpdateArray();
+		
+		}
+	}
+}
+
+function InheritPlayer(UserID,Name){
+	for(var i = 0; i<WeaponBoxArr.length; i++){
+		if(WeaponBoxArr[i][1] == Name){
+			WeaponBoxArr[i][0] = UserID;
+			
+			UpdateArray();
+		
+		}
+	}
+}
+
+
+
 module.exports = {
 	SearchWeapon,
 	SwitchWeapon,
 	CreatNewPlayer,
-	UpdateArray
+	UpdateArray,
+	getWeapon,
+	switchName,
+	InheritPlayer
 };
