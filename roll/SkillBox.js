@@ -327,5 +327,6 @@ module.exports = {
 	SearchSkill,
 	switchSkill,
 	getSkill,
-	CreatNewPlayer
+	CreatNewPlayer,
+	UpdateArray
 };
