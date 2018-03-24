@@ -192,9 +192,14 @@ function CreatNewPlayer(UserID,STWeapon){
 	
 }
 
+function testA(){
+	console.log('問題無');
+}
+
 module.exports = {
 	SearchAccessory,
 	SwitchAccess,
 	CreatNewPlayer,
-	UpdateArray
+	UpdateArray,
+	testA
 };
