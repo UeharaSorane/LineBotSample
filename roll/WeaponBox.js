@@ -23,7 +23,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 	
  // 是先將資料讀進陣列
 	DB.getCells(12 ,
-		return-empty = true,
+		    {return-empty = true},
 		function (err, cells) {
 			if (err) {
 				console.log( err );
