@@ -58,8 +58,8 @@ function UpdateArray(){
 					
 					rows[i].userid = WeaponBoxArr[i][0];
 					rows[i].cname = WeaponBoxArr[i][1];
-					rows[i].box = '無';
-					for(var j=0;j<WeaponBoxArr[i][2].length;j++){
+					rows[i].box = WeaponBoxArr[i][2][0];
+					for(var j=1;j<WeaponBoxArr[i][2].length;j++){
 						rows[i].box += ',' + WeaponBoxArr[i][2][j];
 					}
 					rows[i].save();
