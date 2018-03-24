@@ -304,7 +304,7 @@ function CreatNewPlayer(UserID,Name,weaponN){
 	CharArr[CAleng][29] = '無';
 	CharArr[CAleng][30] = 0;
 	CharArr[CAleng][31] = 0;
-	CharArr[CAleng][32] = 0;
+	CharArr[CAleng][32] = 1;
 
 	DB.useServiceAccountAuth(creds, function (err) {
  
