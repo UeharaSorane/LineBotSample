@@ -2,7 +2,6 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 var BoxOpen = require('./BoxOpen.js');
 var BattleStates = require('./BattleStates.js');
 var WB = require('./WeaponBox.js');
-var AccessoryBox = require('./AccessoryBox.js');
 var BB = require('./BadgeBox.js');
 var MB = require('./MateBox.js');
 var SB = require('./SkillBox.js');
@@ -44,7 +43,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 				}
 				//console.log(CharArr);
 				console.log('玩家基本資料 讀取完成');
-				console.log(require('./AccessoryBox.js'));
+				//console.log();
 			}
 		
 
@@ -125,7 +124,7 @@ function main(UserID) {
 			ArrayUpdate();
 			BattleStates.ArrayUpdate();
 			WB.UpdateArray();
-			AccessoryBox.SearchAccessory();
+			require('./AccessoryBox.js').UpdateArray();
 			BB.UpdateArray();
 			MB.UpdateArray();
 			SB.UpdateArray();
