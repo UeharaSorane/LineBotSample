@@ -265,7 +265,8 @@ function saveArray(ReturnF){
 
 function CreatNewPlayer(UserID,Name,weaponN){
 	CharArr[CharArr.length] = [];
-	CharArr[CharArr.length][0] = UserID;
+	console.log(CharArr[CharArr.length][0]);
+	/*CharArr[CharArr.length][0] = UserID;
 	CharArr[CharArr.length][1] = Name;
 
 	for(var j =0; j<WeaponsArr.length; j++){
@@ -292,7 +293,7 @@ function CreatNewPlayer(UserID,Name,weaponN){
 		  }
 		  
 		});
-	});
+	});*/
 
 }
 
