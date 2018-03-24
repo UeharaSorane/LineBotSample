@@ -22,34 +22,19 @@ DB.useServiceAccountAuth(creds, function (err) {
 	var PlayerNumber = 0;
 	
  // 是先將資料讀進陣列
-	DB.getCells(14 , 
-		function (err, cells) {
+	DB.getRows(14 , 
+		function (err, rows) {
 			if (err) {
 				console.log( err );
 			}else{
-				
-				for(var i = 0; i<cells.length; i++){
-					if(cells[i].row == 1){
-						PlayerNumber++;
-					
-					}
-				}
-				
-				for(var i = 0; i<PlayerNumber; i++){
+				for(var i=0; i< rows.length; i++){
 					WeaponBoxArr[i] = [];
-					var WeaponNumber = 0;
 					
-					for(var j = 0; j<cells.length; j++){
-						
-						if(cells[j].col == i+1){
-							WeaponBoxArr[i][j-WeaponNumber] = cells[j].value;
-						}else{
-							WeaponNumber++;
-						}
-					
-					}
+					WeaponBoxArr[i][0] = rows[i].userid;
+					WeaponBoxArr[i][1] = rows[i].box.split(',');
 					
 				}
+				//console.log(BadgeArr);
 				console.log('玩家所持紋章庫 讀取完成');
 			}
 		
@@ -61,6 +46,37 @@ DB.useServiceAccountAuth(creds, function (err) {
 		
 	});
 
+function UpdateArray(){
+	DB.useServiceAccountAuth(creds, function (err) {
+		DB.getRows(14 , 
+		function (err, rows) {
+			if (err) {
+				console.log( err );
+			}else{
+				for(var i=0; i< WeaponBoxArr.length; i++){
+					
+					rows[i].userid = WeaponBoxArr[i][0];
+					rows[i].box = WeaponBoxArr[i][1][0];
+					for(var j=1;j<WeaponBoxArr[i][1].length;j++){
+						rows[i].box += ',' + WeaponBoxArr[i][1][j];
+					}
+					rows[i].save();
+				}
+				//console.log(BadgeArr);
+				console.log('玩家所持紋章庫 更新完成');
+			}
+		
+
+			
+			});
+		
+		
+	
+	});
+	
+
+}
+
 function SearchBadge(UserID){
 	for(var i =0; i<WeaponBoxArr.length;i++){
 		if(WeaponBoxArr[i][0] == UserID){
@@ -68,8 +84,8 @@ function SearchBadge(UserID){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
 								\n 目前裝備紋章: ' + BattleStatesDataArray[j][7] + '\n持有紋章一覽:\n';
-					for(var k = 1; k<WeaponBoxArr[i].length; k++){
-						rply.text += WeaponBoxArr[i][k] + '\n';
+					for(var k = 0; k<WeaponBoxArr[i].length; k++){
+						rply.text += WeaponBoxArr[i][1][k] + '\n';
 					}
 					rply.text += '\n 想更換紋章的話，請輸入 紋章更換 要裝備的飾品名';
 					
@@ -93,8 +109,8 @@ function SwitchBadge(UserID,Badge){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
 								\n 目前裝備飾品: ' + BattleStatesDataArray[j][7] + '\n';
-					for(var k = 1; k<WeaponBoxArr[i].length; k++){
-						if(WeaponBoxArr[i][k] == Badge){
+					for(var k = 0; k<WeaponBoxArr[i][1].length; k++){
+						if(WeaponBoxArr[i][1][k] == Badge){
 							for(var l =0; l<WeaponsArray.length; l++){
 								if(WeaponsArray[l][1] == Badge){
 									
@@ -143,7 +159,17 @@ function SwitchBadge(UserID,Badge){
 	
 }
 
+function CreatNewPlayer(UserID,STWeapon){
+	
+	WeaponBoxArr[WeaponBoxArr.length] = [];
+	WeaponBoxArr[WeaponBoxArr.length-1][0] = UserID;
+	WeaponBoxArr[WeaponBoxArr.length-1][1] = [STWeapon];
+	UpdateArray();
+	
+}
+
 module.exports = {
 	SearchBadge,
-	SwitchBadge
+	SwitchBadge,
+	CreatNewPlayer
 };
