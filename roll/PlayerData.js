@@ -263,7 +263,7 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 	});
 	
       
-	rply.text = '玩家資料 ' + CName + ' 建立完成！';
+	rply.text = '玩家資料 ' + CName + ' 建立完成！請輸入 玩家情報 進行確認';
 				
 	return rply;
 	
