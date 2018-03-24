@@ -22,7 +22,8 @@ DB.useServiceAccountAuth(creds, function (err) {
 	var PlayerNumber = 0;
 	
  // 是先將資料讀進陣列
-	DB.getCells(12 , 
+	DB.getCells(12 ,
+		return-empty = true,
 		function (err, cells) {
 			if (err) {
 				console.log( err );
@@ -51,6 +52,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					
 				}
 				console.log('玩家所持武器庫 讀取完成');
+				console.log(cells.length);
 			}
 		
 
@@ -87,12 +89,6 @@ function UpdateArray(){
 					DB.bulkUpdateCells(cells);
 					console.log('玩家所持武器庫 更新完成');*/
 					
-					cells[44] = cells[0];
-					cells[44].row = 6;
-					cells[44].col = 2;
-					
-					cells[44].value = '傳說鐵劍';
-					console.log(cells[44]);
 					
 				}
 
