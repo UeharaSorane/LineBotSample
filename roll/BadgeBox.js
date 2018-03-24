@@ -181,5 +181,6 @@ function CreatNewPlayer(UserID,STWeapon){
 module.exports = {
 	SearchBadge,
 	SwitchBadge,
-	CreatNewPlayer
+	CreatNewPlayer,
+	UpdateArray
 };
