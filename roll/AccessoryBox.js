@@ -31,7 +31,8 @@ DB.useServiceAccountAuth(creds, function (err) {
 					WeaponBoxArr[i] = [];
 					
 					WeaponBoxArr[i][0] = rows[i].userid;
-					WeaponBoxArr[i][1] = rows[i].box.split(',');
+					WeaponBoxArr[i][1] = rows[i].cname;
+					WeaponBoxArr[i][2] = rows[i].box.split(',');
 					
 				}
 				//console.log(BadgeArr);
@@ -57,9 +58,10 @@ function UpdateArray(){
 				for(var i=0; i< WeaponBoxArr.length; i++){
 					
 					rows[i].userid = WeaponBoxArr[i][0];
-					rows[i].box = WeaponBoxArr[i][1][0];
-					for(var j=1;j<WeaponBoxArr[i][1].length;j++){
-						rows[i].box += ',' + WeaponBoxArr[i][1][j];
+					rows[i].cname = WeaponBoxArr[i][1];
+					rows[i].box = WeaponBoxArr[i][2][0];
+					for(var j=1;j<WeaponBoxArr[i][2].length;j++){
+						rows[i].box += ',' + WeaponBoxArr[i][2][j];
 					}
 					rows[i].save();
 				}
@@ -86,8 +88,8 @@ function SearchAccessory(UserID){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
 								\n 目前裝備飾品: ' + BattleStatesDataArray[j][5] + '\n持有飾品一覽:\n';
-					for(var k = 0; k<WeaponBoxArr[i][1].length; k++){
-						rply.text += WeaponBoxArr[i][1][k] + '\n';
+					for(var k = 0; k<WeaponBoxArr[i][2].length; k++){
+						rply.text += WeaponBoxArr[i][2][k] + '\n';
 					}
 					rply.text += '\n 想更換飾品的話，請輸入 飾品更換 要裝備的飾品名';
 					
@@ -111,8 +113,8 @@ function SwitchAccess(UserID,Accessory){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
 								\n 目前裝備飾品: ' + BattleStatesDataArray[j][5] + '\n';
-					for(var k = 0; k<WeaponBoxArr[i].length; k++){
-						if(WeaponBoxArr[i][1][k] == Accessory){
+					for(var k = 0; k<WeaponBoxArr[i][2].length; k++){
+						if(WeaponBoxArr[i][2][k] == Accessory){
 							for(var l =0; l<WeaponsArray.length; l++){
 								if(WeaponsArray[l][1] == Accessory){
 									
@@ -174,12 +176,13 @@ function SwitchAccess(UserID,Accessory){
 	
 }
 
-function CreatNewPlayer(UserID,STWeapon){
+function CreatNewPlayer(UserID,cname,STWeapon){
 	let CAleng = WeaponBoxArr.length;
 	
 	WeaponBoxArr[CAleng] = [];
 	WeaponBoxArr[CAleng][0] = UserID;
-	WeaponBoxArr[CAleng][1] = [STWeapon];
+	WeaponBoxArr[CAleng][1] = cname;
+	WeaponBoxArr[CAleng][2] = [STWeapon];
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
