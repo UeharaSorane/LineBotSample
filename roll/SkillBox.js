@@ -22,36 +22,20 @@ DB.useServiceAccountAuth(creds, function (err) {
 	var PlayerNumber = 0;
 	
  // 是先將資料讀進陣列
-	DB.getCells(16 , 
-		function (err, cells) {
+	DB.getRows(12 , 
+		function (err, rows) {
 			if (err) {
 				console.log( err );
 			}else{
-				
-				for(var i = 0; i<cells.length; i++){
-					if(cells[i].row == 1){
-						PlayerNumber++;
-					
-					}
-				}
-				
-				for(var i = 0; i<PlayerNumber; i++){
+				for(var i=0; i< rows.length; i++){
 					WeaponBoxArr[i] = [];
 					
-					var WeaponNumber = 0;
-					
-					for(var j = 0; j<cells.length; j++){
-						
-						if(cells[j].col == i+1){
-							WeaponBoxArr[i][j-WeaponNumber] = cells[j].value;
-						}else{
-							WeaponNumber++;
-						}
-					
-					}
+					WeaponBoxArr[i][0] = rows[i].userid;
+					WeaponBoxArr[i][1] = rows[i].box.split(',');
 					
 				}
-				console.log('玩家所持技能庫 讀取完成');
+				//console.log(BadgeArr);
+				console.log('玩家所持武器庫 讀取完成');
 			}
 		
 
@@ -61,6 +45,37 @@ DB.useServiceAccountAuth(creds, function (err) {
 		
 		
 	});
+
+function UpdateArray(){
+	DB.useServiceAccountAuth(creds, function (err) {
+		DB.getRows(12 , 
+		function (err, rows) {
+			if (err) {
+				console.log( err );
+			}else{
+				for(var i=0; i< WeaponBoxArr.length; i++){
+					
+					rows[i].userid = WeaponBoxArr[i][0];
+					rows[i].box = WeaponBoxArr[i][1][0];
+					for(var j=1;j<WeaponBoxArr[i][1].length;j++){
+						rows[i].box += ',' + WeaponBoxArr[i][1][j];
+					}
+					rows[i].save();
+				}
+				//console.log(BadgeArr);
+				console.log('玩家所持武器庫 更新完成');
+			}
+		
+
+			
+			});
+		
+		
+	
+	});
+	
+
+}
 
 
 function SearchSkill(UserID){
@@ -76,20 +91,20 @@ function SearchSkill(UserID){
 								\n---------------------------\
 								\n持有技能書一覽:\n';
 					
-					for(var k = 1; k<WeaponBoxArr[i].length; k++){
+					for(var k = 0; k<WeaponBoxArr[i][1].length; k++){
 						for(var l = 0; l<SkillArray.length; l++){
-							if(WeaponBoxArr[i][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
-								rply.text += WeaponBoxArr[i][k] + '\n';
+							if(WeaponBoxArr[i][1][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
+								rply.text += WeaponBoxArr[i][1][k] + '\n';
 							}
 						}
 					}
 					
 					rply.text += '\n持有被動之書一覽:\n';
 					
-					for(var k = 1; k<WeaponBoxArr[i].length; k++){
+					for(var k = 0; k<WeaponBoxArr[i][1].length; k++){
 						for(var l = 0; l<SkillArray.length; l++){
-							if(WeaponBoxArr[i][k] == SkillArray[l][1] && SkillArray[l][2] == '被動'){
-								rply.text += WeaponBoxArr[i][k] + '\n';
+							if(WeaponBoxArr[i][1][k] == SkillArray[l][1] && SkillArray[l][2] == '被動'){
+								rply.text += WeaponBoxArr[i][1][k] + '\n';
 							}
 						}
 					}
@@ -119,7 +134,7 @@ function switchSkill(UserID,SkillSlot,SkillName){
 
 						if(SkillName ==SkillArray[j][1]){
 
-							for(var k = 0;k<WeaponBoxArr[i].length; k++){
+							for(var k = 0;k<WeaponBoxArr[i][1].length; k++){
 
 								if(SkillName == WeaponBoxArr[i][k]){
 
@@ -127,16 +142,16 @@ function switchSkill(UserID,SkillSlot,SkillName){
 
 										for(var l = 0; l<SkillArray.length; l++){
 
-											if(WeaponBoxArr[i][k] == SkillArray[l][1] && SkillArray[l][2] == '被動'){
+											if(WeaponBoxArr[i][1][k] == SkillArray[l][1] && SkillArray[l][2] == '被動'){
 
 												rply.text = '玩家 ' + BattleStatesDataArray[q][1] + 
-													'\n 被動之書:' + BattleStatesDataArray[q][24] + '->' + WeaponBoxArr[i][k] + '\
+													'\n 被動之書:' + BattleStatesDataArray[q][24] + '->' + WeaponBoxArr[i][1][k] + '\
 													 \n        技能書一: ' + BattleStatesDataArray[q][25] + '\
 													 \n        技能書二: ' + BattleStatesDataArray[q][26] + '\
 													 \n        技能書三: ' + BattleStatesDataArray[q][27] + '\
 													 \n---------------------------';
 
-												BattleStatesDataArray[q][24] = WeaponBoxArr[i][k];
+												BattleStatesDataArray[q][24] = WeaponBoxArr[i][1][k];
 												BattleStates.saveArray(BattleStatesDataArray);
 												return rply;
 
@@ -149,16 +164,16 @@ function switchSkill(UserID,SkillSlot,SkillName){
 
 										for(var l = 0; l<SkillArray.length; l++){
 
-											if(WeaponBoxArr[i][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
+											if(WeaponBoxArr[i][1][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
 
 												rply.text = '玩家 ' + BattleStatesDataArray[q][1] + 
 													'\n 被動之書:' + BattleStatesDataArray[q][24] + '\
-													 \n        技能書一: ' + BattleStatesDataArray[q][25] + '->' + WeaponBoxArr[i][k] + '\
+													 \n        技能書一: ' + BattleStatesDataArray[q][25] + '->' + WeaponBoxArr[i][1][k] + '\
 													 \n        技能書二: ' + BattleStatesDataArray[q][26] + '\
 													 \n        技能書三: ' + BattleStatesDataArray[q][27] + '\
 													 \n---------------------------';
 
-												BattleStatesDataArray[q][25] = WeaponBoxArr[i][k];
+												BattleStatesDataArray[q][25] = WeaponBoxArr[i][1][k];
 												BattleStates.saveArray(BattleStatesDataArray);
 												return rply;
 
@@ -172,16 +187,16 @@ function switchSkill(UserID,SkillSlot,SkillName){
 
 										for(var l = 0; l<SkillArray.length; l++){
 
-											if(WeaponBoxArr[i][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
+											if(WeaponBoxArr[i][1][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
 
 												rply.text = '玩家 ' + BattleStatesDataArray[q][1] + 
 													'\n 被動之書:' + BattleStatesDataArray[q][24] + '\
 													 \n        技能書一: ' + BattleStatesDataArray[q][25] + '\
-													 \n        技能書二: ' + BattleStatesDataArray[q][26] + '->' + WeaponBoxArr[i][k] + '\
+													 \n        技能書二: ' + BattleStatesDataArray[q][26] + '->' + WeaponBoxArr[i][1][k] + '\
 													 \n        技能書三: ' + BattleStatesDataArray[q][27] + '\
 													 \n---------------------------';
 
-												BattleStatesDataArray[q][26] = WeaponBoxArr[i][k];
+												BattleStatesDataArray[q][26] = WeaponBoxArr[i][1][k];
 												BattleStates.saveArray(BattleStatesDataArray);
 												return rply;
 
@@ -195,16 +210,16 @@ function switchSkill(UserID,SkillSlot,SkillName){
 
 										for(var l = 0; l<SkillArray.length; l++){
 
-											if(WeaponBoxArr[i][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
+											if(WeaponBoxArr[i][1][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
 
 												rply.text = '玩家 ' + BattleStatesDataArray[q][1] + 
 													'\n 被動之書:' + BattleStatesDataArray[q][24] + '\
 													 \n        技能書一: ' + BattleStatesDataArray[q][25] + '\
 													 \n        技能書二: ' + BattleStatesDataArray[q][26] + '\
-													 \n        技能書三: ' + BattleStatesDataArray[q][27] + '->' + WeaponBoxArr[i][k] + '\
+													 \n        技能書三: ' + BattleStatesDataArray[q][27] + '->' + WeaponBoxArr[i][1][k] + '\
 													 \n---------------------------';
 
-												BattleStatesDataArray[q][27] = WeaponBoxArr[i][k];
+												BattleStatesDataArray[q][27] = WeaponBoxArr[i][1][k];
 												BattleStates.saveArray(BattleStatesDataArray);
 												return rply;
 
@@ -251,6 +266,15 @@ function switchSkill(UserID,SkillSlot,SkillName){
 	
 	rply.text = '找不到你的角色的技能庫，請向GM確認';
 	return rply;
+	
+}
+
+function CreatNewPlayer(UserID,STWeapon){
+	
+	WeaponBoxArr[WeaponBoxArr.length] = [];
+	WeaponBoxArr[WeaponBoxArr.length-1][0] = UserID;
+	WeaponBoxArr[WeaponBoxArr.length-1][1] = [STWeapon];
+	UpdateArray();
 	
 }
 
