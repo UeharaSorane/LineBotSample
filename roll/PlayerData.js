@@ -97,7 +97,6 @@ function ArrayUpdate() {
 
 		});
 	
-	BattleStates.ArrayUpdate();
 }
 	
 
@@ -126,8 +125,8 @@ function main(UserID) {
 			BattleStates.ArrayUpdate();
 			WB.UpdateArray();
 			//AB.UpdateArray();
-			//BB.UpdateArray();
-			//MB.UpdateArray();
+			BB.UpdateArray();
+			MB.UpdateArray();
 			SB.UpdateArray();
 
 			return rply;
