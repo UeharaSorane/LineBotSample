@@ -91,7 +91,7 @@ function UpdateArray(){
 					cells[44].row = 6;
 					cells[44].col = 2;
 					
-					cells[44] = '傳說鐵劍';
+					cells[44].value = '傳說鐵劍';
 					console.log(cells[44]);
 					
 				}
