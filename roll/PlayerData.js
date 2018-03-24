@@ -220,11 +220,11 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 	
 	if(weapon == '木劍' || weapon == '木短杖' || weapon == '木長杖' ||weapon == '木弓' ||weapon == '普通筆記本'){
 		BattleStates.CreatNewPlayer(UserID,CName,weapon);
-		WB.CreatNewPlayer(UserID,weapon);
-		require('./AccessoryBox.js').CreatNewPlayer(UserID);
-		BB.CreatNewPlayer(UserID);
-		MB.CreatNewPlayer(UserID);
-		SB.CreatNewPlayer(UserID);
+		WB.CreatNewPlayer(UserID,CName,weapon);
+		require('./AccessoryBox.js').CreatNewPlayer(UserID,CName);
+		BB.CreatNewPlayer(UserID,CName);
+		MB.CreatNewPlayer(UserID,CName);
+		SB.CreatNewPlayer(UserID,CName);
 		
 	}else{
 		rply.text = '請不要輸入起始武器以外的武器喔...';
@@ -379,6 +379,13 @@ function InheritChatacter(UserID,Cname,password){
 				CharArr[i][5] = 0;
 				CharArr[i][0] = UserID;
 				CharArr[i][6] = '';
+				
+				BattleStates.InheritPlayer(UserID,Cname);
+				WB.InheritPlayer(UserID,Cname);
+				require('./AccessoryBox.js').InheritPlayer(UserID,Cname);
+				BB.InheritPlayer(UserID,Cname);
+				MB.InheritPlayer(UserID,Cname);
+				SB.InheritPlayer(UserID,Cname);
 				DB.useServiceAccountAuth(creds, function (err) {
 					DB.getRows(1 , 
 						function (err, rows) {
@@ -414,7 +421,7 @@ function box(UserID){
 		if (CharArr[i][0] == UserID) {
 			rply.text ='玩家 ' + CharArr[i][1] + '開啟寶箱！';
 			
-			var OpenedBox = BoxOpen.main()
+			var OpenedBox = BoxOpen.main();
 			
 			rply.text += '\n' + OpenedBox[9];
 			
@@ -426,6 +433,15 @@ function box(UserID){
 			CharArr[i][10] += Number(OpenedBox[6]);
 			CharArr[i][11] += Number(OpenedBox[7]);
 			CharArr[i][12] += Number(OpenedBox[8]);
+			
+			if(typeof(OpenedBox[2]) != 'undefined'){
+				let tempS = getSkill(UserID,OpenedBox[2]);
+				
+				rply.text += tempS[0];
+				CharArr[i][2] += tempS[1];
+				
+			
+			}
 			
 			ArrayUpdate();
 
@@ -456,6 +472,11 @@ function switchName(UserID,Name){
 			CharArr[i][1] = Name;
 			ArrayUpdate();
 			BattleStates.switchName(UserID,Name);
+			WB.switchName(UserID,Name);
+			require('./AccessoryBox.js').switchName(UserID,Name);
+			BB.switchName(UserID,Name);
+			MB.switchName(UserID,Name);
+			SB.switchName(UserID,Name);
 			
 			
 			rply.text = '更名成功！你現在的名字為' + Name;
