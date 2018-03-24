@@ -196,5 +196,6 @@ function CreatNewPlayer(UserID,STWeapon){
 
 module.exports = {
 	SearchMate,
-	SwitchMate
+	SwitchMate,
+	UpdateArray
 };
