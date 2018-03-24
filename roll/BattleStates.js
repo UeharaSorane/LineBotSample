@@ -258,6 +258,18 @@ function saveArray(ReturnF){
 	ArrayUpdate();
 }
 
+function switchName(UserID,Name){
+	for(var i=0; i< CharArr.length; i++){
+		if(CharArr[i][0] == UserID){
+			
+			CharArr[i][1] = Name;
+			ArrayUpdate();
+		
+		}
+	}
+}
+
+
 module.exports = {
 	BattleStates,
 	BattleStatesSearch,
