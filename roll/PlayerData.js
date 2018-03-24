@@ -124,7 +124,7 @@ function main(UserID) {
 			ArrayUpdate();
 			BattleStates.ArrayUpdate();
 			WB.UpdateArray();
-			AccessoryBox.testA();
+			AccessoryBox.SearchAccessory();
 			BB.UpdateArray();
 			MB.UpdateArray();
 			SB.UpdateArray();
