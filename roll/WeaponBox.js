@@ -56,7 +56,7 @@ function UpdateArray(){
 				for(var i=0; i< WeaponBoxArr.length; i++){
 					
 					rows[i].userid = WeaponBoxArr[i][0];
-					rows[i].box = ',' + WeaponBoxArr[i][1][0];
+					rows[i].box = WeaponBoxArr[i][1][0];
 					for(var j=1;j<WeaponBoxArr[i][1].length;j++){
 						rows[i].box += ',' + WeaponBoxArr[i][1][j];
 					}
@@ -84,7 +84,7 @@ function SearchWeapon(UserID){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
 								\n 目前裝備武器: ' + BattleStatesDataArray[j][2] +'(' + BattleStatesDataArray[j][3] + ')\n' + '持有武器一覽:\n';
-					for(var k = 1; k<WeaponBoxArr[i][1].length; k++){
+					for(var k = 0; k<WeaponBoxArr[i][1].length; k++){
 						rply.text += WeaponBoxArr[i][1][k] + '\n';
 					}
 					rply.text += '\n 想更換武器的話，請輸入 武器更換 要裝備的武器名';
@@ -109,7 +109,7 @@ function SwitchWeapon(UserID,Weapon){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
 								\n 目前裝備武器: ' + BattleStatesDataArray[j][2] +'(' + BattleStatesDataArray[j][3] + ')\n';
-					for(var k = 1; k<WeaponBoxArr[i][1].length; k++){
+					for(var k = 0; k<WeaponBoxArr[i][1].length; k++){
 						if(WeaponBoxArr[i][1][k] == Weapon){
 							for(var l =0; l<WeaponsArray.length; l++){
 								if(WeaponsArray[l][1] == Weapon){
