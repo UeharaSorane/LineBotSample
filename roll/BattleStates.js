@@ -332,7 +332,7 @@ function switchName(UserID,Name){
 
 function InheritPlayer(UserID,Name){
 	for(var i=0; i< CharArr.length; i++){
-		if(CharArr[i][0] == Name){
+		if(CharArr[i][1] == Name){
 			CharArr[i][0] = UserID;
 			
 			ArrayUpdate();
