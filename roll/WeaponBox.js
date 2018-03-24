@@ -54,7 +54,6 @@ function UpdateArray(){
 				console.log( err );
 			}else{
 				for(var i=0; i< WeaponBoxArr.length; i++){
-					WeaponBoxArr[i] = [];
 					
 					rows[i].userid = WeaponBoxArr[i][0];
 					rows[i].box = ',' + WeaponBoxArr[i][1][0];
