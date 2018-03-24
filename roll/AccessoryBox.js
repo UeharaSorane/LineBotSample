@@ -197,6 +197,7 @@ function testA(){
 }
 
 module.exports = {
+	SearchAccessory,
 	SwitchAccess,
 	CreatNewPlayer,
 	UpdateArray,
