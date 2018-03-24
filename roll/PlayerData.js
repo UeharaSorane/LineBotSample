@@ -211,17 +211,6 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 		CTitle = Title;
 	}
 	
-	CharArr[CharArrleng] = [];
-	
-	console.log(CharArrleng);
-	
-	CharArr[CharArrleng][0] = UserID;
-	CharArr[CharArrleng][1] = CName;
-	CharArr[CharArrleng][2] = 1000;
-	CharArr[CharArrleng][3] = 5;
-	CharArr[CharArrleng][4] = CTitle;
-	CharArr[CharArrleng][5] = 0;
-	
 	if(weapon == '木劍' || weapon == '木短杖' || weapon == '木長杖' ||weapon == '木弓' ||weapon == '普通筆記本'){
 		WB.CreatNewPlayer(UserID,weapon);
 		AB.CreatNewPlayer(UserID);
@@ -234,6 +223,17 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 
 		return rply;
 	}
+	
+	CharArr[CharArrleng] = [];
+	
+	console.log(CharArrleng);
+	
+	CharArr[CharArrleng][0] = UserID;
+	CharArr[CharArrleng][1] = CName;
+	CharArr[CharArrleng][2] = 1000;
+	CharArr[CharArrleng][3] = 5;
+	CharArr[CharArrleng][4] = CTitle;
+	CharArr[CharArrleng][5] = 0;
 	
 	DB.useServiceAccountAuth(creds, function (err) {
  
