@@ -162,9 +162,11 @@ function SwitchBadge(UserID,Badge){
 
 function CreatNewPlayer(UserID,STWeapon){
 	
-	WeaponBoxArr[WeaponBoxArr.length] = [];
-	WeaponBoxArr[WeaponBoxArr.length-1][0] = UserID;
-	WeaponBoxArr[WeaponBoxArr.length-1][1] = [STWeapon];
+	let CAleng = WeaponBoxArr.length;
+	
+	WeaponBoxArr[CAleng] = [];
+	WeaponBoxArr[CAleng][0] = UserID;
+	WeaponBoxArr[CAleng][1] = [STWeapon];
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
