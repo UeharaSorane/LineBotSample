@@ -80,6 +80,7 @@ function UpdateArray(){
 
 
 function SearchMate(UserID){
+	UpdateArray();
 	for(var i =0; i<WeaponBoxArr.length;i++){
 		if(WeaponBoxArr[i][0] == UserID){
 			for(var j = 0; j<BattleStatesDataArray.length;j++){
