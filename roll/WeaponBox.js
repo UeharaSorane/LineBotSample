@@ -60,9 +60,9 @@ function UpdateArray(){
 					for(var j=1;j<WeaponBoxArr[i][1].length;j++){
 						rows[i].box += ',' + WeaponBoxArr[i][1][j];
 					}
+					rows[i].save();
 				}
 				//console.log(BadgeArr);
-				rows.save();
 				console.log('玩家所持武器庫 更新完成');
 			}
 		
