@@ -128,7 +128,7 @@ function main(UserID) {
 			//AB.UpdateArray();
 			//BB.UpdateArray();
 			//MB.UpdateArray();
-			//SB.UpdateArray();
+			SB.UpdateArray();
 
 			return rply;
 
