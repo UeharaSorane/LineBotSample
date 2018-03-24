@@ -264,25 +264,26 @@ function saveArray(ReturnF){
 }
 
 function CreatNewPlayer(UserID,Name,weaponN){
-	CharArr[CharArr.length] = [];
-	console.log(CharArr.length);
-	/*CharArr[CharArr.length][0] = UserID;
-	CharArr[CharArr.length][1] = Name;
+	let CAleng = CharArr.length;
+	
+	CharArr[CAleng] = [];
+	CharArr[CAleng][0] = UserID;
+	CharArr[CAleng][1] = Name;
 
 	for(var j =0; j<WeaponsArr.length; j++){
 		if(WeaponsArr[j][1] == weaponN){
-			CharArr[CharArr.length][2] = WeaponsArr[j][1];
-			CharArr[CharArr.length][3] = WeaponsArr[j][3];
-			CharArr[CharArr.length][4] = WeaponsArr[j][4];
-			CharArr[CharArr.length][11] = WeaponsArr[j][5];
-			CharArr[CharArr.length][16] = WeaponsArr[j][6];
-			CharArr[CharArr.length][21] = WeaponsArr[j][7];
+			CharArr[CAleng][2] = WeaponsArr[j][1];
+			CharArr[CAleng][3] = WeaponsArr[j][3];
+			CharArr[CAleng][4] = WeaponsArr[j][4];
+			CharArr[CAleng][11] = WeaponsArr[j][5];
+			CharArr[CAleng][16] = WeaponsArr[j][6];
+			CharArr[CAleng][21] = WeaponsArr[j][7];
 		}
 	}
 
-	CharArr[CharArr.length][9] = 20;
-	CharArr[CharArr.length][14] = 20;
-	CharArr[CharArr.length][19] = 5;
+	CharArr[CAleng][9] = 20;
+	CharArr[CAleng][14] = 20;
+	CharArr[CAleng][19] = 5;
 
 	DB.useServiceAccountAuth(creds, function (err) {
  
@@ -293,7 +294,7 @@ function CreatNewPlayer(UserID,Name,weaponN){
 		  }
 		  
 		});
-	});*/
+	});
 
 }
 
