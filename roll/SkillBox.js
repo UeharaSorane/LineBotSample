@@ -288,7 +288,7 @@ function CreatNewPlayer(UserID,cname,STWeapon){
 	WeaponBoxArr[CAleng] = [];
 	WeaponBoxArr[CAleng][0] = UserID;
 	WeaponBoxArr[CAleng][1] = cname;
-	WeaponBoxArr[CAleng][2] = ['無'];
+	WeaponBoxArr[CAleng][2] = ['無','無被動'];
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
