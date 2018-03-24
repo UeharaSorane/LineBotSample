@@ -58,8 +58,8 @@ function UpdateArray(){
 					
 					rows[i].userid = WeaponBoxArr[i][0];
 					rows[i].cname = WeaponBoxArr[i][1];
-					rows[i].box = '無';
-					for(var j=0;j<WeaponBoxArr[i][2].length;j++){
+					rows[i].box = WeaponBoxArr[i][2][0];
+					for(var j=1;j<WeaponBoxArr[i][2].length;j++){
 						rows[i].box += ',' + WeaponBoxArr[i][2][j];
 					}
 					rows[i].save();
@@ -288,7 +288,7 @@ function CreatNewPlayer(UserID,cname,STWeapon){
 	WeaponBoxArr[CAleng] = [];
 	WeaponBoxArr[CAleng][0] = UserID;
 	WeaponBoxArr[CAleng][1] = cname;
-	WeaponBoxArr[CAleng][2] = ['無',STWeapon];
+	WeaponBoxArr[CAleng][2] = ['無'];
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
