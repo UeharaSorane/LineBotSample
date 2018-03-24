@@ -228,26 +228,19 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 	
 	console.log(CharArrleng);
 	
-	CharArr[CharArrleng][0] = UserID;
-	CharArr[CharArrleng][1] = CName;
-	CharArr[CharArrleng][2] = 1000;
-	CharArr[CharArrleng][3] = 5;
-	CharArr[CharArrleng][4] = CTitle;
-	CharArr[CharArrleng][5] = 0;
-	
-	DB.useServiceAccountAuth(creds, function (err) {
- 
-	  // Get all of the rows from the spreadsheet.
-	  DB.addRow(1, { Userid: UserID, cname: CName, gold: 1000, mirastone: 5, Title: CTitle , InheritIO: 0 , WmaterialS:0, WmaterialM:0,WmaterialL:0,GmaterialS:0,GmaterialM:0,GmaterialL:0}, function(err) {
-		  if(err) {
-		    console.log(err);
-		  }
-		  
-		});
-	});
-	
-	
-			
+	CharArr[CharArrleng-1][0] = UserID;
+	CharArr[CharArrleng-1][1] = CName;
+	CharArr[CharArrleng-1][2] = 1000;
+	CharArr[CharArrleng-1][3] = 5;
+	CharArr[CharArrleng-1][4] = CTitle;
+	CharArr[CharArrleng-1][5] = 0;
+	CharArr[CharArrleng-1][7] = 0;
+	CharArr[CharArrleng-1][8] = 0;
+	CharArr[CharArrleng-1][9] = 0;
+	CharArr[CharArrleng-1][10] = 0;
+	CharArr[CharArrleng-1][11] = 0;
+	CharArr[CharArrleng-1][12] = 0;
+	CharArr[CharArrleng-1][13] = 0;
 	///確認玩家資料
 	
       
