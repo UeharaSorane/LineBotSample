@@ -197,10 +197,52 @@ function testA(){
 	console.log('問題無');
 }
 
+function getAcce(UserID,Acce){
+	for(var i = 0; i<WeaponBoxArr.length; i++){
+		if(WeaponBoxArr[i][0] == UserID){
+			for(var j = 0; j<WeaponsArray.length ; j++){
+				if(WeaponsArray[j][1] == Acce){
+					let temp = WeaponBoxArr[i][2].length;
+					WeaponBoxArr[i][2][temp] = Acce;
+					
+					UpdateArray();
+				}
+			}
+			
+		}
+	}
+	
+}
+
+function switchName(UserID,Name){
+	for(var i = 0; i<WeaponBoxArr.length; i++){
+		if(WeaponBoxArr[i][0] == UserID){
+			WeaponBoxArr[i][1] = Name;
+			
+			UpdateArray();
+		
+		}
+	}
+}
+
+function InheritPlayer(UserID,Name){
+	for(var i = 0; i<WeaponBoxArr.length; i++){
+		if(WeaponBoxArr[i][1] == Name){
+			WeaponBoxArr[i][0] = UserID;
+			
+			UpdateArray();
+		
+		}
+	}
+}
+
 module.exports = {
 	SearchAccessory,
 	SwitchAccess,
 	CreatNewPlayer,
 	UpdateArray,
-	testA
+	testA,
+	getAcce,
+	switchName,
+	InheritPlayer
 };
