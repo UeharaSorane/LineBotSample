@@ -314,7 +314,7 @@ function getSkill(UserID,getS){
 			UpdateArray();
 			
 			returnS[0] = '得到新技能' + getS;
-			returnS[1] = 500;
+			returnS[1] = 0;
 			
 			return returnS;
 			
