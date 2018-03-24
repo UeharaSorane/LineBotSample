@@ -121,6 +121,14 @@ function main(UserID) {
 				\n 夥伴碎片:' + CharArr[i][13];
 			
 			if(CharArr[i][5] == 1) rply.text += '\n!!!警告 繼承模式開啟中，請盡速繼承!!!';
+			
+			ArrayUpdate();
+			BattleStates.ArrayUpdate();
+			WB.UpdateArray();
+			AB.UpdateArray();
+			BB.UpdateArray();
+			MB.UpdateArray();
+			SB.UpdateArray();
 
 			return rply;
 
