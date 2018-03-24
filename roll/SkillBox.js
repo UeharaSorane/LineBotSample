@@ -64,7 +64,7 @@ function UpdateArray(){
 					}
 					rows[i].save();
 				}
-				//console.log(BadgeArr);
+				console.log(WeaponBoxArr);
 				console.log('玩家所持技能庫 更新完成');
 			}
 		
