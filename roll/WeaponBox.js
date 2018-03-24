@@ -50,7 +50,8 @@ DB.useServiceAccountAuth(creds, function (err) {
 					}
 					
 				}
-				console.log(cells[45]);
+				cells[45] = cells[1];
+				console.log(cells[45].value);
 				console.log('玩家所持武器庫 讀取完成');
 			}
 		
