@@ -262,24 +262,33 @@ function saveArray(ReturnF){
 	ArrayUpdate();
 }
 
+function CreatNewPlayer(UserID,Name,weaponN){
+	CharArr[CharArr.length][0] = UserID;
+	CharArr[CharArr.length][1] = Name;
+
+	for(var j =0; j<WeaponsArr.length; j++){
+		if(WeaponsArr[j][1] == weaponN){
+			CharArr[CharArr.length][2] = WeaponsArr[j][1];
+			CharArr[CharArr.length][3] = WeaponsArr[j][3];
+			CharArr[CharArr.length][4] = WeaponsArr[j][4];
+			CharArr[CharArr.length][11] = WeaponsArr[j][5];
+			CharArr[CharArr.length][16] = WeaponsArr[j][6];
+			CharArr[CharArr.length][21] = WeaponsArr[j][7];
+		}
+	}
+
+	CharArr[CharArr.length][9] = 20;
+	CharArr[CharArr.length][14] = 20;
+	CharArr[CharArr.length][19] = 5;
+
+	ArrayUpdate();
+
+}
+
 function switchName(UserID,Name){
 	for(var i=0; i< CharArr.length; i++){
 		if(CharArr[i][0] == UserID){
-			
-			for(var j =0; j<WeaponsArr.length; j++){
-				if(WeaponsArr[j][1] == Name){
-					CharArr[i][2] = WeaponsArr[j][1];
-					CharArr[i][3] = WeaponsArr[j][3];
-					CharArr[i][4] = WeaponsArr[j][4];
-					CharArr[i][11] = WeaponsArr[j][5];
-					CharArr[i][16] = WeaponsArr[j][6];
-					CharArr[i][21] = WeaponsArr[j][7];
-				}
-			}
-			
-			CharArr[i][9] = 20;
-			CharArr[i][14] = 20;
-			CharArr[i][19] = 5;
+			CharArr[i][1] = UserID;
 			
 			ArrayUpdate();
 		
@@ -293,5 +302,7 @@ module.exports = {
 	BattleStatesSearch,
 	ArrayUpdate,
 	GetArray,
-	saveArray
+	saveArray,
+	CreatNewPlayer,
+	switchName
 };
