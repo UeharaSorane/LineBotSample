@@ -178,7 +178,16 @@ function CreatNewPlayer(UserID,STWeapon){
 	WeaponBoxArr[WeaponBoxArr.length] = [];
 	WeaponBoxArr[WeaponBoxArr.length-1][0] = UserID;
 	WeaponBoxArr[WeaponBoxArr.length-1][1] = [STWeapon];
-	UpdateArray();
+	DB.useServiceAccountAuth(creds, function (err) {
+ 
+	  // Get all of the rows from the spreadsheet.
+	  DB.addRow(13, { Userid: UserID}, function(err) {
+		  if(err) {
+		    console.log(err);
+		  }
+		  
+		});
+	});
 	
 }
 
