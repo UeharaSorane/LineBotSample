@@ -140,6 +140,15 @@ function switchSkill(UserID,SkillSlot,SkillName){
 							for(var k = 0;k<WeaponBoxArr[i][2].length; k++){
 
 								if(SkillName == WeaponBoxArr[i][2][k]){
+									
+									if(SkillName != '無'){
+										if(SkillName == BattleStatesDataArray[q][24]||SkillName == BattleStatesDataArray[q][25]||SkillName == BattleStatesDataArray[q][26]||SkillName == BattleStatesDataArray[q][27]){
+											rply.text += '你以裝備此技能';
+					
+											return rply;
+											
+										}
+									}
 
 									if(SkillSlot == '被動'){
 
