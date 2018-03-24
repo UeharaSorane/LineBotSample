@@ -31,7 +31,8 @@ DB.useServiceAccountAuth(creds, function (err) {
 					WeaponBoxArr[i] = [];
 					
 					WeaponBoxArr[i][0] = rows[i].userid;
-					WeaponBoxArr[i][1] = rows[i].box.split(',');
+					WeaponBoxArr[i][1] = rows[i].cname;
+					WeaponBoxArr[i][2] = rows[i].box.split(',');
 					
 				}
 				//console.log(BadgeArr);
@@ -56,9 +57,10 @@ function UpdateArray(){
 				for(var i=0; i< WeaponBoxArr.length; i++){
 					
 					rows[i].userid = WeaponBoxArr[i][0];
-					rows[i].box = WeaponBoxArr[i][1][0];
-					for(var j=1;j<WeaponBoxArr[i][1].length;j++){
-						rows[i].box += ',' + WeaponBoxArr[i][1][j];
+					rows[i].cname = WeaponBoxArr[i][1];
+					rows[i].box = WeaponBoxArr[i][2][0];
+					for(var j=1;j<WeaponBoxArr[i][2].length;j++){
+						rows[i].box += ',' + WeaponBoxArr[i][2][j];
 					}
 					rows[i].save();
 				}
@@ -85,8 +87,8 @@ function SearchBadge(UserID){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
 								\n 目前裝備紋章: ' + BattleStatesDataArray[j][7] + '\n持有紋章一覽:\n';
-					for(var k = 0; k<WeaponBoxArr[i][1].length; k++){
-						rply.text += WeaponBoxArr[i][1][k] + '\n';
+					for(var k = 0; k<WeaponBoxArr[i][2].length; k++){
+						rply.text += WeaponBoxArr[i][2][k] + '\n';
 					}
 					rply.text += '\n 想更換紋章的話，請輸入 紋章更換 要裝備的飾品名';
 					
@@ -110,8 +112,8 @@ function SwitchBadge(UserID,Badge){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
 								\n 目前裝備飾品: ' + BattleStatesDataArray[j][7] + '\n';
-					for(var k = 0; k<WeaponBoxArr[i][1].length; k++){
-						if(WeaponBoxArr[i][1][k] == Badge){
+					for(var k = 0; k<WeaponBoxArr[i][2].length; k++){
+						if(WeaponBoxArr[i][2][k] == Badge){
 							for(var l =0; l<WeaponsArray.length; l++){
 								if(WeaponsArray[l][1] == Badge){
 									
@@ -160,13 +162,14 @@ function SwitchBadge(UserID,Badge){
 	
 }
 
-function CreatNewPlayer(UserID,STWeapon){
+function CreatNewPlayer(UserID,cname,STWeapon){
 	
 	let CAleng = WeaponBoxArr.length;
 	
 	WeaponBoxArr[CAleng] = [];
 	WeaponBoxArr[CAleng][0] = UserID;
-	WeaponBoxArr[CAleng][1] = [STWeapon];
+	WeaponBoxArr[CAleng][1] = cname;
+	WeaponBoxArr[CAleng][2] = [STWeapon];
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
@@ -180,9 +183,51 @@ function CreatNewPlayer(UserID,STWeapon){
 	
 }
 
+function getBadge(UserID,Badge){
+	for(var i = 0; i<WeaponBoxArr.length; i++){
+		if(WeaponBoxArr[i][0] == UserID){
+			for(var j = 0; j<WeaponsArray.length ; j++){
+				if(WeaponsArray[j][1] == Badge){
+					let temp = WeaponBoxArr[i][2].length;
+					WeaponBoxArr[i][2][temp] = Badge;
+					
+					UpdateArray();
+				}
+			}
+			
+		}
+	}
+	
+}
+
+function switchName(UserID,Name){
+	for(var i = 0; i<WeaponBoxArr.length; i++){
+		if(WeaponBoxArr[i][0] == UserID){
+			WeaponBoxArr[i][1] = Name;
+			
+			UpdateArray();
+		
+		}
+	}
+}
+
+function InheritPlayer(UserID,Name){
+	for(var i = 0; i<WeaponBoxArr.length; i++){
+		if(WeaponBoxArr[i][1] == Name){
+			WeaponBoxArr[i][0] = UserID;
+			
+			UpdateArray();
+		
+		}
+	}
+}
+
 module.exports = {
 	SearchBadge,
 	SwitchBadge,
 	CreatNewPlayer,
-	UpdateArray
+	UpdateArray,
+	getBadge,
+	switchName,
+	InheritPlayer
 };
