@@ -154,6 +154,7 @@ function ArrayUpdate(){
 }
 
 function BattleStates(UserID){
+	ArrayUpdate();
 	
 	for(var i=0; i< CharArr.length; i++){
 
@@ -282,7 +283,16 @@ function CreatNewPlayer(UserID,Name,weaponN){
 	CharArr[CharArr.length][14] = 20;
 	CharArr[CharArr.length][19] = 5;
 
-	ArrayUpdate();
+	DB.useServiceAccountAuth(creds, function (err) {
+ 
+	  // Get all of the rows from the spreadsheet.
+	  DB.addRow(10, { Userid: UserID}, function(err) {
+		  if(err) {
+		    console.log(err);
+		  }
+		  
+		});
+	});
 
 }
 
