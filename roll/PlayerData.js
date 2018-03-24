@@ -212,12 +212,12 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 	}
 	
 	if(weapon == '木劍' || weapon == '木短杖' || weapon == '木長杖' ||weapon == '木弓' ||weapon == '普通筆記本'){
-		//BattleStates.CreatNewPlayer(UserID,CName,weapon);
-		/*WB.CreatNewPlayer(UserID,weapon);
+		BattleStates.CreatNewPlayer(UserID,CName,weapon);
+		WB.CreatNewPlayer(UserID,weapon);
 		AB.CreatNewPlayer(UserID);
 		BB.CreatNewPlayer(UserID);
 		MB.CreatNewPlayer(UserID);
-		SB.CreatNewPlayer(UserID);*/
+		SB.CreatNewPlayer(UserID);
 		
 	}else{
 		rply.text = '請不要輸入起始武器以外的武器喔...';
@@ -244,7 +244,16 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 	CharArr[CharArrleng][13] = 0;
 	///確認玩家資料
 	
-	ArrayUpdate();
+	DB.useServiceAccountAuth(creds, function (err) {
+ 
+	  // Get all of the rows from the spreadsheet.
+	  DB.addRow(1, { Userid: UserID}, function(err) {
+		  if(err) {
+		    console.log(err);
+		  }
+		  
+		});
+	});
 	
       
 	rply.text = '玩家資料 ' + CName + ' 建立完成！';
