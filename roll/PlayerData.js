@@ -1,6 +1,11 @@
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var BoxOpen = require('./BoxOpen.js');
 var BattleStates = require('./BattleStates.js');
+var WB = require('./WeaponBox.js');
+var AB = require('./AccessoryBox.js');
+var BB = require('./BadgeBox.js');
+var MB = require('./MateBox.js');
+var SB = require('./SkillBox.js');
 var fs = require('fs');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
@@ -177,7 +182,7 @@ function SearchPlayer(Name) {
 
 }
 
-function CreatNewPlayer(UserID,CName,Title) {
+function CreatNewPlayer(UserID,CName,Title,weapon) {
 	var CTitle;
 	var CharArrleng = CharArr.length;
 	
@@ -186,12 +191,12 @@ function CreatNewPlayer(UserID,CName,Title) {
 		if (CharArr[i][0] == UserID) {
 			rply.text = '你的Line帳號已經有角色了，請輸入 玩家情報 確認';
 
-		return rply;
+			return rply;
 		}
 	}
 	
 	
-	if(CName == null) {
+	if(CName == null||weapon == null) {
 		
 		rply.text = '有資料沒有填進去喔!';
 				
@@ -216,6 +221,19 @@ function CreatNewPlayer(UserID,CName,Title) {
 	CharArr[CharArrleng][3] = 5;
 	CharArr[CharArrleng][4] = CTitle;
 	CharArr[CharArrleng][5] = 0;
+	
+	if(weapon == '木劍' || weapon == '木短杖' || weapon == '木長杖' ||weapon == '木弓' ||weapon == '普通筆記本'){
+		WB.CreatNewPlayer(UserID,weapon);
+		AB.CreatNewPlayer(UserID);
+		BB.CreatNewPlayer(UserID);
+		MB.CreatNewPlayer(UserID);
+		SB.CreatNewPlayer(UserID);
+		
+	}else{
+		rply.text = '請不要輸入起始武器以外的武器喔...';
+
+		return rply;
+	}
 	
 	DB.useServiceAccountAuth(creds, function (err) {
  
@@ -414,6 +432,50 @@ function GetArray(){
 
 }
 
+function switchName(UserID,Name){
+	for(var i=0; i< CharArr.length; i++){
+		if(CharArr[i][0] == UserID){
+			if(Name == null){
+			
+				rply.text = '請輸入想更換的名字';
+				return rply;
+			}
+			
+			CharArr[i][1] = Name;
+			ArrayUpdate();
+			BattleStates.saveArray(UserID,Name);
+			
+			
+			rply.text = '更名成功！你現在的名字為' + Name;
+			return rply;
+		
+		}
+	}
+	rply.text = '錯誤！此Line帳號尚未擁有角色';
+	return rply;
+}
+
+function switchTitle(UserID,Name){
+	for(var i=0; i< CharArr.length; i++){
+		if(CharArr[i][0] == UserID){
+			if(Name == null){
+			
+				rply.text = '請輸入想更換的名字';
+				return rply;
+			}
+			
+			CharArr[i][4] = Name;
+			ArrayUpdate();
+			
+			rply.text = '更換稱號成功！你現在的稱號為' + Name;
+			return rply;
+		
+		}
+	}
+	rply.text = '錯誤！此Line帳號尚未擁有角色';
+	return rply;
+}
+
 
 module.exports = {
 	main,
@@ -423,5 +485,7 @@ module.exports = {
 	InheritModeOn,
 	InheritChatacter,
 	box,
-	GetArray
+	GetArray,
+	switchName,
+	switchTitle
 };
