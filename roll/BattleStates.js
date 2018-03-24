@@ -5,6 +5,10 @@ var creds = require('../client_secret.json');
 
 var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 var CharArr= [];
+var WeaponI = require('./WeaponIllustration.js');
+
+var WeaponsArr = WeaponI.getArray();
+
 DB.useServiceAccountAuth(creds, function (err) {
 		
  
@@ -262,7 +266,21 @@ function switchName(UserID,Name){
 	for(var i=0; i< CharArr.length; i++){
 		if(CharArr[i][0] == UserID){
 			
-			CharArr[i][1] = Name;
+			for(var j =0; j<WeaponsArr.length; j++){
+				if(WeaponsArr[j][1] == Name){
+					CharArr[i][2] = WeaponsArr[j][1];
+					CharArr[i][3] = WeaponsArr[j][3];
+					CharArr[i][4] = WeaponsArr[j][4];
+					CharArr[i][11] = WeaponsArr[j][5];
+					CharArr[i][16] = WeaponsArr[j][6];
+					CharArr[i][21] = WeaponsArr[j][7];
+				}
+			}
+			
+			CharArr[i][9] = 20;
+			CharArr[i][14] = 20;
+			CharArr[i][19] = 5;
+			
 			ArrayUpdate();
 		
 		}
