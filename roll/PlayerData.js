@@ -67,7 +67,7 @@ function ArrayUpdate() {
 					console.log( err );
 				}else{
 
-					for(var i=0; i< rows.length; i++){
+					for(var i=0; i< CharArr.length; i++){
 
 						rows[i].userid = CharArr[i][0];
 						rows[i].cname = CharArr[i][1];
