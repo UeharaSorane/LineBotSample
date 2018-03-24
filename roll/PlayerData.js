@@ -219,9 +219,9 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 	}
 	
 	if(weapon == '木劍' || weapon == '木短杖' || weapon == '木長杖' ||weapon == '木弓' ||weapon == '普通筆記本'){
-		/*BattleStates.CreatNewPlayer(UserID,CName,weapon);
-		WB.CreatNewPlayer(UserID,weapon);
-		AB.CreatNewPlayer(UserID);
+		BattleStates.CreatNewPlayer(UserID,CName,weapon);
+		/*WB.CreatNewPlayer(UserID,weapon);
+		require('./AccessoryBox.js').CreatNewPlayer(UserID);
 		BB.CreatNewPlayer(UserID);
 		MB.CreatNewPlayer(UserID);
 		SB.CreatNewPlayer(UserID);*/
