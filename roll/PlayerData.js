@@ -212,11 +212,11 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 	}
 	
 	if(weapon == '木劍' || weapon == '木短杖' || weapon == '木長杖' ||weapon == '木弓' ||weapon == '普通筆記本'){
-		WB.CreatNewPlayer(UserID,weapon);
+		/*WB.CreatNewPlayer(UserID,weapon);
 		AB.CreatNewPlayer(UserID);
 		BB.CreatNewPlayer(UserID);
 		MB.CreatNewPlayer(UserID);
-		SB.CreatNewPlayer(UserID);
+		SB.CreatNewPlayer(UserID);*/
 		
 	}else{
 		rply.text = '請不要輸入起始武器以外的武器喔...';
@@ -242,6 +242,8 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 	CharArr[CharArrleng-1][12] = 0;
 	CharArr[CharArrleng-1][13] = 0;
 	///確認玩家資料
+	
+	ArrayUpdate();
 	
       
 	rply.text = '玩家資料 ' + CName + ' 建立完成！';
