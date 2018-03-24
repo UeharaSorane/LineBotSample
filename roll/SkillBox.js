@@ -278,7 +278,43 @@ function CreatNewPlayer(UserID,STWeapon){
 	
 }
 
+function getSkill(UserID,getS){
+	let returnS = [];
+	
+	for(var i =0; i<WeaponBoxArr.length;i++){
+		if(WeaponBoxArr[i][0] == UserID){
+			for(var j =0; j<WeaponBoxArr[i][1].length;j++){
+				if(WeaponBoxArr[i][1][j] == getS){
+					returnS[0] = '得到重複技能' + getS +'轉換成500G';
+					returnS[1] = 500;
+					
+					return returnS;
+				}
+			
+			}
+			
+			WeaponBoxArr[i][1][WeaponBoxArr[i][1].length] = getS;
+			
+			returnS[0] = '得到新技能' + getS +'！';
+					returnS[1] = 0;
+			
+			UpdateArray();
+					
+			return returnS;
+			
+			
+		}
+	}
+	
+	returnS[0] = '錯誤:找不到你的技能庫，請向GM確認';
+	returnS[1] = 0;
+					
+	return returnS;
+
+}
+
 module.exports = {
 	SearchSkill,
-	switchSkill
+	switchSkill,
+	getSkill
 };
