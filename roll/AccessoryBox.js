@@ -194,5 +194,6 @@ function CreatNewPlayer(UserID,STWeapon){
 module.exports = {
 	SearchAccessory,
 	SwitchAccess,
-	CreatNewPlayer
+	CreatNewPlayer,
+	UpdateArray
 };
