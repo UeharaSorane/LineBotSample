@@ -23,7 +23,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 	
  // 是先將資料讀進陣列
 	DB.getCells(12 ,
-		    {'return-empty' : true},
+		    {'return-empty' : false},
 		function (err, cells) {
 			if (err) {
 				console.log( err );
@@ -88,6 +88,8 @@ function UpdateArray(){
 					
 					DB.bulkUpdateCells(cells);
 					console.log('玩家所持武器庫 更新完成');*/
+					
+					
 					
 					
 				}
