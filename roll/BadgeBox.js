@@ -84,7 +84,7 @@ function SearchBadge(UserID){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
 								\n 目前裝備紋章: ' + BattleStatesDataArray[j][7] + '\n持有紋章一覽:\n';
-					for(var k = 0; k<WeaponBoxArr[i].length; k++){
+					for(var k = 0; k<WeaponBoxArr[i][1].length; k++){
 						rply.text += WeaponBoxArr[i][1][k] + '\n';
 					}
 					rply.text += '\n 想更換紋章的話，請輸入 紋章更換 要裝備的飾品名';
