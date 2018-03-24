@@ -31,7 +31,8 @@ DB.useServiceAccountAuth(creds, function (err) {
 					WeaponBoxArr[i] = [];
 					
 					WeaponBoxArr[i][0] = rows[i].userid;
-					WeaponBoxArr[i][1] = rows[i].box.split(',');
+					WeaponBoxArr[i][1] = rows[i].cname;
+					WeaponBoxArr[i][2] = rows[i].box.split(',');
 					
 				}
 				//console.log(BadgeArr);
@@ -56,9 +57,10 @@ function UpdateArray(){
 				for(var i=0; i< WeaponBoxArr.length; i++){
 					
 					rows[i].userid = WeaponBoxArr[i][0];
-					rows[i].box = WeaponBoxArr[i][1][0];
-					for(var j=1;j<WeaponBoxArr[i][1].length;j++){
-						rows[i].box += ',' + WeaponBoxArr[i][1][j];
+					rows[i].cname = WeaponBoxArr[i][1];
+					rows[i].box = WeaponBoxArr[i][2][0];
+					for(var j=1;j<WeaponBoxArr[i][2].length;j++){
+						rows[i].box += ',' + WeaponBoxArr[i][2][j];
 					}
 					rows[i].save();
 				}
@@ -92,20 +94,20 @@ function SearchSkill(UserID){
 								\n---------------------------\
 								\n持有技能書一覽:\n';
 					
-					for(var k = 0; k<WeaponBoxArr[i][1].length; k++){
+					for(var k = 0; k<WeaponBoxArr[i][2].length; k++){
 						for(var l = 0; l<SkillArray.length; l++){
-							if(WeaponBoxArr[i][1][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
-								rply.text += WeaponBoxArr[i][1][k] + '\n';
+							if(WeaponBoxArr[i][2][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
+								rply.text += WeaponBoxArr[i][2][k] + '\n';
 							}
 						}
 					}
 					
 					rply.text += '\n持有被動之書一覽:\n';
 					
-					for(var k = 0; k<WeaponBoxArr[i][1].length; k++){
+					for(var k = 0; k<WeaponBoxArr[i][2].length; k++){
 						for(var l = 0; l<SkillArray.length; l++){
-							if(WeaponBoxArr[i][1][k] == SkillArray[l][1] && SkillArray[l][2] == '被動'){
-								rply.text += WeaponBoxArr[i][1][k] + '\n';
+							if(WeaponBoxArr[i][2][k] == SkillArray[l][1] && SkillArray[l][2] == '被動'){
+								rply.text += WeaponBoxArr[i][2][k] + '\n';
 							}
 						}
 					}
@@ -135,24 +137,24 @@ function switchSkill(UserID,SkillSlot,SkillName){
 
 						if(SkillName ==SkillArray[j][1]){
 
-							for(var k = 0;k<WeaponBoxArr[i][1].length; k++){
+							for(var k = 0;k<WeaponBoxArr[i][2].length; k++){
 
-								if(SkillName == WeaponBoxArr[i][1][k]){
+								if(SkillName == WeaponBoxArr[i][2][k]){
 
 									if(SkillSlot == '被動'){
 
 										for(var l = 0; l<SkillArray.length; l++){
 
-											if(WeaponBoxArr[i][1][k] == SkillArray[l][1] && SkillArray[l][2] == '被動'){
+											if(WeaponBoxArr[i][2][k] == SkillArray[l][1] && SkillArray[l][2] == '被動'){
 
 												rply.text = '玩家 ' + BattleStatesDataArray[q][1] + 
-													'\n 被動之書:' + BattleStatesDataArray[q][24] + '->' + WeaponBoxArr[i][1][k] + '\
+													'\n 被動之書:' + BattleStatesDataArray[q][24] + '->' + WeaponBoxArr[i][2][k] + '\
 													 \n        技能書一: ' + BattleStatesDataArray[q][25] + '\
 													 \n        技能書二: ' + BattleStatesDataArray[q][26] + '\
 													 \n        技能書三: ' + BattleStatesDataArray[q][27] + '\
 													 \n---------------------------';
 
-												BattleStatesDataArray[q][24] = WeaponBoxArr[i][1][k];
+												BattleStatesDataArray[q][24] = WeaponBoxArr[i][2][k];
 												BattleStates.saveArray(BattleStatesDataArray);
 												return rply;
 
@@ -165,16 +167,16 @@ function switchSkill(UserID,SkillSlot,SkillName){
 
 										for(var l = 0; l<SkillArray.length; l++){
 
-											if(WeaponBoxArr[i][1][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
+											if(WeaponBoxArr[i][2][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
 
 												rply.text = '玩家 ' + BattleStatesDataArray[q][1] + 
 													'\n 被動之書:' + BattleStatesDataArray[q][24] + '\
-													 \n        技能書一: ' + BattleStatesDataArray[q][25] + '->' + WeaponBoxArr[i][1][k] + '\
+													 \n        技能書一: ' + BattleStatesDataArray[q][25] + '->' + WeaponBoxArr[i][2][k] + '\
 													 \n        技能書二: ' + BattleStatesDataArray[q][26] + '\
 													 \n        技能書三: ' + BattleStatesDataArray[q][27] + '\
 													 \n---------------------------';
 
-												BattleStatesDataArray[q][25] = WeaponBoxArr[i][1][k];
+												BattleStatesDataArray[q][25] = WeaponBoxArr[i][2][k];
 												BattleStates.saveArray(BattleStatesDataArray);
 												return rply;
 
@@ -188,16 +190,16 @@ function switchSkill(UserID,SkillSlot,SkillName){
 
 										for(var l = 0; l<SkillArray.length; l++){
 
-											if(WeaponBoxArr[i][1][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
+											if(WeaponBoxArr[i][2][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
 
 												rply.text = '玩家 ' + BattleStatesDataArray[q][1] + 
 													'\n 被動之書:' + BattleStatesDataArray[q][24] + '\
 													 \n        技能書一: ' + BattleStatesDataArray[q][25] + '\
-													 \n        技能書二: ' + BattleStatesDataArray[q][26] + '->' + WeaponBoxArr[i][1][k] + '\
+													 \n        技能書二: ' + BattleStatesDataArray[q][26] + '->' + WeaponBoxArr[i][2][k] + '\
 													 \n        技能書三: ' + BattleStatesDataArray[q][27] + '\
 													 \n---------------------------';
 
-												BattleStatesDataArray[q][26] = WeaponBoxArr[i][1][k];
+												BattleStatesDataArray[q][26] = WeaponBoxArr[i][2][k];
 												BattleStates.saveArray(BattleStatesDataArray);
 												return rply;
 
@@ -211,16 +213,16 @@ function switchSkill(UserID,SkillSlot,SkillName){
 
 										for(var l = 0; l<SkillArray.length; l++){
 
-											if(WeaponBoxArr[i][1][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
+											if(WeaponBoxArr[i][2][k] == SkillArray[l][1] && SkillArray[l][2] != '被動'){
 
 												rply.text = '玩家 ' + BattleStatesDataArray[q][1] + 
 													'\n 被動之書:' + BattleStatesDataArray[q][24] + '\
 													 \n        技能書一: ' + BattleStatesDataArray[q][25] + '\
 													 \n        技能書二: ' + BattleStatesDataArray[q][26] + '\
-													 \n        技能書三: ' + BattleStatesDataArray[q][27] + '->' + WeaponBoxArr[i][1][k] + '\
+													 \n        技能書三: ' + BattleStatesDataArray[q][27] + '->' + WeaponBoxArr[i][2][k] + '\
 													 \n---------------------------';
 
-												BattleStatesDataArray[q][27] = WeaponBoxArr[i][1][k];
+												BattleStatesDataArray[q][27] = WeaponBoxArr[i][2][k];
 												BattleStates.saveArray(BattleStatesDataArray);
 												return rply;
 
@@ -270,13 +272,14 @@ function switchSkill(UserID,SkillSlot,SkillName){
 	
 }
 
-function CreatNewPlayer(UserID,STWeapon){
+function CreatNewPlayer(UserID,cname,STWeapon){
 	
 	let CAleng = WeaponBoxArr.length;
 	
 	WeaponBoxArr[CAleng] = [];
 	WeaponBoxArr[CAleng][0] = UserID;
-	WeaponBoxArr[CAleng][1] = [STWeapon];
+	WeaponBoxArr[CAleng][1] = cname;
+	WeaponBoxArr[CAleng][2] = [STWeapon];
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
@@ -295,8 +298,8 @@ function getSkill(UserID,getS){
 	
 	for(var i =0; i<WeaponBoxArr.length;i++){
 		if(WeaponBoxArr[i][0] == UserID){
-			for(var j =0; j<WeaponBoxArr[i][1].length;j++){
-				if(WeaponBoxArr[i][1][j] == getS){
+			for(var j =0; j<WeaponBoxArr[i][2].length;j++){
+				if(WeaponBoxArr[i][2][j] == getS){
 					returnS[0] = '得到重複技能' + getS +'轉換成500G';
 					returnS[1] = 500;
 					
@@ -304,16 +307,16 @@ function getSkill(UserID,getS){
 				}
 			
 			}
+			let temp = WeaponBoxArr[i][2].length;
 			
-			WeaponBoxArr[i][1][WeaponBoxArr[i][1].length] = getS;
-			
-			returnS[0] = '得到新技能' + getS +'！';
-					returnS[1] = 0;
+			WeaponBoxArr[i][2][temp] = getS;
 			
 			UpdateArray();
-					
-			return returnS;
 			
+			returnS[0] = '得到新技能' + getS;
+			returnS[1] = 500;
+			
+			return returnS;
 			
 		}
 	}
@@ -325,10 +328,35 @@ function getSkill(UserID,getS){
 
 }
 
+function switchName(UserID,Name){
+	for(var i = 0; i<WeaponBoxArr.length; i++){
+		if(WeaponBoxArr[i][0] == UserID){
+			WeaponBoxArr[i][1] = Name;
+			
+			UpdateArray();
+		
+		}
+	}
+}
+
+function InheritPlayer(UserID,Name){
+	for(var i = 0; i<WeaponBoxArr.length; i++){
+		if(WeaponBoxArr[i][1] == Name){
+			WeaponBoxArr[i][0] = UserID;
+			
+			UpdateArray();
+		
+		}
+	}
+}
+
+
 module.exports = {
 	SearchSkill,
 	switchSkill,
 	getSkill,
 	CreatNewPlayer,
-	UpdateArray
+	UpdateArray,
+	switchName,
+	InheritPlayer
 };
