@@ -175,12 +175,13 @@ function SwitchWeapon(UserID,Weapon){
 	
 }
 
-function CreatNewPlayer(UserID,STWeapon){
+function CreatNewPlayer(UserID,cname,STWeapon){
 	let CAleng = WeaponBoxArr.length;
 	
 	WeaponBoxArr[CAleng] = [];
 	WeaponBoxArr[CAleng][0] = UserID;
-	WeaponBoxArr[CAleng][1] = [STWeapon];
+	WeaponBoxArr[CAleng][1] = cname;
+	WeaponBoxArr[CAleng][2] = [STWeapon];
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
