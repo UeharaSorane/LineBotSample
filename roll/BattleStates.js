@@ -265,7 +265,7 @@ function saveArray(ReturnF){
 
 function CreatNewPlayer(UserID,Name,weaponN){
 	CharArr[CharArr.length] = [];
-	console.log(CharArr[CharArr.length][0]);
+	console.log(CharArr[CharArr.length-1][0]);
 	/*CharArr[CharArr.length][0] = UserID;
 	CharArr[CharArr.length][1] = Name;
 
