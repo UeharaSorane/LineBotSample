@@ -22,7 +22,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 	var PlayerNumber = 0;
 	
  // 是先將資料讀進陣列
-	DB.getRows(12 , 
+	DB.getRows(16 , 
 		function (err, rows) {
 			if (err) {
 				console.log( err );
@@ -35,7 +35,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					
 				}
 				//console.log(BadgeArr);
-				console.log('玩家所持武器庫 讀取完成');
+				console.log('玩家所持技能庫 讀取完成');
 			}
 		
 
@@ -48,7 +48,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 
 function UpdateArray(){
 	DB.useServiceAccountAuth(creds, function (err) {
-		DB.getRows(12 , 
+		DB.getRows(16 , 
 		function (err, rows) {
 			if (err) {
 				console.log( err );
@@ -63,7 +63,7 @@ function UpdateArray(){
 					rows[i].save();
 				}
 				//console.log(BadgeArr);
-				console.log('玩家所持武器庫 更新完成');
+				console.log('玩家所持技能庫 更新完成');
 			}
 		
 
