@@ -280,10 +280,31 @@ function CreatNewPlayer(UserID,Name,weaponN){
 			CharArr[CAleng][21] = WeaponsArr[j][7];
 		}
 	}
-
+	CharArr[CAleng][5] = '無';
+	CharArr[CAleng][6] = '無';
+	CharArr[CAleng][7] = '無';
+	CharArr[CAleng][8] = '無';
 	CharArr[CAleng][9] = 20;
+	CharArr[CAleng][10] = 0;
+	CharArr[CAleng][12] = 0;
+	CharArr[CAleng][13] = 0;
 	CharArr[CAleng][14] = 20;
+	CharArr[CAleng][15] = 0;
+	CharArr[CAleng][17] = 0;
+	CharArr[CAleng][18] = 0;
 	CharArr[CAleng][19] = 5;
+	CharArr[CAleng][20] = 0;
+	CharArr[CAleng][22] = 0;
+	CharArr[CAleng][23] = 0;
+	CharArr[CAleng][24] = '無';
+	CharArr[CAleng][25] = '無';
+	CharArr[CAleng][26] = '無';
+	CharArr[CAleng][27] = '無';
+	CharArr[CAleng][28] = '無';
+	CharArr[CAleng][29] = '無';
+	CharArr[CAleng][30] = 0;
+	CharArr[CAleng][31] = 0;
+	CharArr[CAleng][32] = 0;
 
 	DB.useServiceAccountAuth(creds, function (err) {
  
