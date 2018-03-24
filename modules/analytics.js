@@ -78,6 +78,8 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	if (trigger.match(/^武器庫儲存$/)!= null ) return exports.WeaponBox.UpdateArray();//連結測試
 	if (trigger.match(/^uid$/)!= null ) return exports.Test.UserID(UserID);//uid查詢測試
 	
+	if (trigger.match(/^testA$/)!= null ) return exports.AccessoryBox.testA();//所持飾品一覽
+	
 	////////////////////////////玩家資料相關
 	if (trigger.match(/^玩家情報$/)!= null ) return exports.PlayerData.main(UserID);//玩家情報
 	if (trigger.match(/^角色查詢$/)!= null ) return exports.PlayerData.SearchPlayer(mainMsg[1]);//查詢角色
