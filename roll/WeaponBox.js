@@ -22,37 +22,20 @@ DB.useServiceAccountAuth(creds, function (err) {
 	var PlayerNumber = 0;
 	
  // 是先將資料讀進陣列
-	DB.getCells(12 ,
-		    {'return-empty' : false},
-		function (err, cells) {
+	DB.getRows(12 , 
+		function (err, rows) {
 			if (err) {
 				console.log( err );
 			}else{
-				
-				for(var i = 0; i<cells.length; i++){
-					if(cells[i].row == 1){
-						PlayerNumber++;
-					
-					}
-				}
-				
-				for(var i = 0; i<PlayerNumber; i++){
+				for(var i=0; i< rows.length; i++){
 					WeaponBoxArr[i] = [];
-					var WeaponNumber = 0;
 					
-					for(var j = 0; j<cells.length; j++){
-						
-						if(cells[j].col == i+1){
-							WeaponBoxArr[i][j-WeaponNumber] = cells[j].value;
-						}else{
-							WeaponNumber++;
-						}
-					
-					}
+					WeaponBoxArr[i][0] = rows[i].userid;
+					WeaponBoxArr[i][1] = rows[i].box.split(',');
 					
 				}
+				//console.log(BadgeArr);
 				console.log('玩家所持武器庫 讀取完成');
-				console.log(cells.length);
 			}
 		
 
@@ -112,8 +95,8 @@ function SearchWeapon(UserID){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
 								\n 目前裝備武器: ' + BattleStatesDataArray[j][2] +'(' + BattleStatesDataArray[j][3] + ')\n' + '持有武器一覽:\n';
-					for(var k = 1; k<WeaponBoxArr[i].length; k++){
-						rply.text += WeaponBoxArr[i][k] + '\n';
+					for(var k = 1; k<WeaponBoxArr[i][1].length; k++){
+						rply.text += WeaponBoxArr[i][1][k] + '\n';
 					}
 					rply.text += '\n 想更換武器的話，請輸入 武器更換 要裝備的武器名';
 					
@@ -137,8 +120,8 @@ function SwitchWeapon(UserID,Weapon){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
 								\n 目前裝備武器: ' + BattleStatesDataArray[j][2] +'(' + BattleStatesDataArray[j][3] + ')\n';
-					for(var k = 1; k<WeaponBoxArr[i].length; k++){
-						if(WeaponBoxArr[i][k] == Weapon){
+					for(var k = 1; k<WeaponBoxArr[i][1].length; k++){
+						if(WeaponBoxArr[i][1][k] == Weapon){
 							for(var l =0; l<WeaponsArray.length; l++){
 								if(WeaponsArray[l][1] == Weapon){
 									
@@ -205,7 +188,7 @@ function CreatNewPlayer(UserID,STWeapon){
 	
 	WeaponBoxArr[WeaponBoxArr.length] = [];
 	WeaponBoxArr[WeaponBoxArr.length-1][0] = UserID;
-	WeaponBoxArr[WeaponBoxArr.length-1][1] = STWeapon;
+	WeaponBoxArr[WeaponBoxArr.length-1][1] = [STWeapon];
 	UpdateArray();
 	
 }
