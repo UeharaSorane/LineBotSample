@@ -296,7 +296,7 @@ function CreatNewPlayer(UserID,Name,weaponN){
 	CharArr[CAleng][20] = 0;
 	CharArr[CAleng][22] = 0;
 	CharArr[CAleng][23] = 0;
-	CharArr[CAleng][24] = '無';
+	CharArr[CAleng][24] = '無被動';
 	CharArr[CAleng][25] = '無';
 	CharArr[CAleng][26] = '無';
 	CharArr[CAleng][27] = '無';
