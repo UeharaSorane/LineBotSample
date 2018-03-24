@@ -22,35 +22,20 @@ DB.useServiceAccountAuth(creds, function (err) {
 	var PlayerNumber = 0;
 	
  // 是先將資料讀進陣列
-	DB.getCells(13 , 
-		function (err, cells) {
+	DB.getRows(13 , 
+		function (err, rows) {
 			if (err) {
 				console.log( err );
 			}else{
-				
-				for(var i = 0; i<cells.length; i++){
-					if(cells[i].row == 1){
-						PlayerNumber++;
-					
-					}
-				}
-				
-				for(var i = 0; i<PlayerNumber; i++){
+				for(var i=0; i< rows.length; i++){
 					WeaponBoxArr[i] = [];
-					var WeaponNumber = 0;
 					
-					for(var j = 0; j<cells.length; j++){
-						
-						if(cells[j].col == i+1){
-							WeaponBoxArr[i][j-WeaponNumber] = cells[j].value;
-						}else{
-							WeaponNumber++;
-						}
-					
-					}
+					WeaponBoxArr[i][0] = rows[i].userid;
+					WeaponBoxArr[i][1] = rows[i].box.split(',');
 					
 				}
-				console.log('玩家所持武器庫 讀取完成');
+				//console.log(BadgeArr);
+				console.log('玩家所持飾品庫 讀取完成');
 			}
 		
 
@@ -61,6 +46,38 @@ DB.useServiceAccountAuth(creds, function (err) {
 		
 	});
 
+
+function UpdateArray(){
+	DB.useServiceAccountAuth(creds, function (err) {
+		DB.getRows(13 , 
+		function (err, rows) {
+			if (err) {
+				console.log( err );
+			}else{
+				for(var i=0; i< WeaponBoxArr.length; i++){
+					
+					rows[i].userid = WeaponBoxArr[i][0];
+					rows[i].box = WeaponBoxArr[i][1][0];
+					for(var j=1;j<WeaponBoxArr[i][1].length;j++){
+						rows[i].box += ',' + WeaponBoxArr[i][1][j];
+					}
+					rows[i].save();
+				}
+				//console.log(BadgeArr);
+				console.log('玩家所持飾品庫 更新完成');
+			}
+		
+
+			
+			});
+		
+		
+	
+	});
+	
+
+}
+
 function SearchAccessory(UserID){
 	for(var i =0; i<WeaponBoxArr.length;i++){
 		if(WeaponBoxArr[i][0] == UserID){
@@ -68,8 +85,8 @@ function SearchAccessory(UserID){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
 								\n 目前裝備飾品: ' + BattleStatesDataArray[j][5] + '\n持有飾品一覽:\n';
-					for(var k = 1; k<WeaponBoxArr[i].length; k++){
-						rply.text += WeaponBoxArr[i][k] + '\n';
+					for(var k = 0; k<WeaponBoxArr[i][1].length; k++){
+						rply.text += WeaponBoxArr[i][1][k] + '\n';
 					}
 					rply.text += '\n 想更換飾品的話，請輸入 飾品更換 要裝備的飾品名';
 					
@@ -93,8 +110,8 @@ function SwitchAccess(UserID,Accessory){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
 								\n 目前裝備飾品: ' + BattleStatesDataArray[j][5] + '\n';
-					for(var k = 1; k<WeaponBoxArr[i].length; k++){
-						if(WeaponBoxArr[i][k] == Accessory){
+					for(var k = 0; k<WeaponBoxArr[i].length; k++){
+						if(WeaponBoxArr[i][1][k] == Accessory){
 							for(var l =0; l<WeaponsArray.length; l++){
 								if(WeaponsArray[l][1] == Accessory){
 									
@@ -156,7 +173,17 @@ function SwitchAccess(UserID,Accessory){
 	
 }
 
+function CreatNewPlayer(UserID,STWeapon){
+	
+	WeaponBoxArr[WeaponBoxArr.length] = [];
+	WeaponBoxArr[WeaponBoxArr.length-1][0] = UserID;
+	WeaponBoxArr[WeaponBoxArr.length-1][1] = [STWeapon];
+	UpdateArray();
+	
+}
+
 module.exports = {
 	SearchAccessory,
-	SwitchAccess
+	SwitchAccess,
+	CreatNewPlayer
 };
