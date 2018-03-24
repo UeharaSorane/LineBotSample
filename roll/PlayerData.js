@@ -212,6 +212,7 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 	}
 	
 	if(weapon == '木劍' || weapon == '木短杖' || weapon == '木長杖' ||weapon == '木弓' ||weapon == '普通筆記本'){
+		BattleStates.CreatNewPlayer(UserID,CName,weapon);
 		/*WB.CreatNewPlayer(UserID,weapon);
 		AB.CreatNewPlayer(UserID);
 		BB.CreatNewPlayer(UserID);
@@ -228,19 +229,19 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 	
 	console.log(CharArrleng);
 	
-	CharArr[CharArrleng-1][0] = UserID;
-	CharArr[CharArrleng-1][1] = CName;
-	CharArr[CharArrleng-1][2] = 1000;
-	CharArr[CharArrleng-1][3] = 5;
-	CharArr[CharArrleng-1][4] = CTitle;
-	CharArr[CharArrleng-1][5] = 0;
-	CharArr[CharArrleng-1][7] = 0;
-	CharArr[CharArrleng-1][8] = 0;
-	CharArr[CharArrleng-1][9] = 0;
-	CharArr[CharArrleng-1][10] = 0;
-	CharArr[CharArrleng-1][11] = 0;
-	CharArr[CharArrleng-1][12] = 0;
-	CharArr[CharArrleng-1][13] = 0;
+	CharArr[CharArrleng][0] = UserID;
+	CharArr[CharArrleng][1] = CName;
+	CharArr[CharArrleng][2] = 1000;
+	CharArr[CharArrleng][3] = 5;
+	CharArr[CharArrleng][4] = CTitle;
+	CharArr[CharArrleng][5] = 0;
+	CharArr[CharArrleng][7] = 0;
+	CharArr[CharArrleng][8] = 0;
+	CharArr[CharArrleng][9] = 0;
+	CharArr[CharArrleng][10] = 0;
+	CharArr[CharArrleng][11] = 0;
+	CharArr[CharArrleng][12] = 0;
+	CharArr[CharArrleng][13] = 0;
 	///確認玩家資料
 	
 	ArrayUpdate();
@@ -438,7 +439,7 @@ function switchName(UserID,Name){
 			
 			CharArr[i][1] = Name;
 			ArrayUpdate();
-			BattleStates.saveArray(UserID,Name);
+			BattleStates.switchName(UserID,Name);
 			
 			
 			rply.text = '更名成功！你現在的名字為' + Name;
