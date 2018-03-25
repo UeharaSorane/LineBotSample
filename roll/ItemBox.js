@@ -196,8 +196,8 @@ function getItem(UserID,Item){
 					WeaponBoxArr[i][2][temp] = Item;
 					WeaponBoxArr[i][3][temp] = 1;
 					
-					UpdateArray();*/
-				}
+					UpdateArray();
+				}*/
 			}
 			
 		}
