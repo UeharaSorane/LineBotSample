@@ -445,7 +445,7 @@ function box(UserID,test){
 			CharArr[i][12] += Number(OpenedBox[8]);
 			
 			if(typeof(OpenedBox[2]) != 'undefined'){
-				let tempS = getSkill(UserID,OpenedBox[2]);
+				let tempS = SB.getSkill(UserID,OpenedBox[2]);
 				
 				rply.text += tempS[0];
 				CharArr[i][2] += tempS[1];
