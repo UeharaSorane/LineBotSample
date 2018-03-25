@@ -261,6 +261,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					let NameArr = [];
 					for(var x = 0; x<CharacterResult;x++){
 						if(CharacterResult[x] != null ){
+							console.log(CharacterResult[x]);
 							NameArr.push(CharacterResult[x]);
 						}
 						
