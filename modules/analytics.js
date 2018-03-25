@@ -72,7 +72,7 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	if (trigger.match(/^夥伴圖鑑$/)!= null ) return exports.TeammateIllustration.TMIllustration(mainMsg[1]);//夥伴圖鑑
 	if (trigger.match(/^道具圖鑑$/)!= null ) return exports.itemIllustration.itemIllustration(mainMsg[1]);//夥伴圖鑑
 	if (trigger.match(/^招募$/) != null) return exports.gacha.main(UserID, mainMsg[1],mainMsg[2],mainMsg[3]);//角色招募指令
-	if (trigger.match(/^ 夥伴商店$/) != null) return exports.MateShop.MateShop(UserID, mainMsg[1],mainMsg[2]);//夥伴商店指令
+	if (trigger.match(/^夥伴商店$/) != null) return exports.MateShop.MateShop(UserID, mainMsg[1],mainMsg[2]);//夥伴商店指令
 
 	////////////////////////////娛樂相關
 
