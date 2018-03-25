@@ -5,6 +5,7 @@ var WB = require('./WeaponBox.js');
 var BB = require('./BadgeBox.js');
 var MB = require('./MateBox.js');
 var SB = require('./SkillBox.js');
+var IB = require('./ItemBox.js');
 var fs = require('fs');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
@@ -225,6 +226,7 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 		BB.CreatNewPlayer(UserID,CName);
 		MB.CreatNewPlayer(UserID,CName);
 		SB.CreatNewPlayer(UserID,CName);
+		IB.CreatNewPlayer(UserID,CName);
 		
 	}else{
 		rply.text = '請不要輸入起始武器以外的武器喔...';
@@ -386,6 +388,7 @@ function InheritChatacter(UserID,Cname,password){
 				BB.InheritPlayer(UserID,Cname);
 				MB.InheritPlayer(UserID,Cname);
 				SB.InheritPlayer(UserID,Cname);
+				IB.InheritPlayer(UserID,Cname);
 				DB.useServiceAccountAuth(creds, function (err) {
 					DB.getRows(1 , 
 						function (err, rows) {
@@ -484,6 +487,7 @@ function switchName(UserID,Name){
 			BB.switchName(UserID,Name);
 			MB.switchName(UserID,Name);
 			SB.switchName(UserID,Name);
+			IB.switchName(UserID,Name);
 			
 			
 			rply.text = '更名成功！你現在的名字為' + Name;
