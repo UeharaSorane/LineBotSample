@@ -203,17 +203,12 @@ function getMate(UserID,mateArr){
 	for(var i = 0; i<WeaponBoxArr.length; i++){
 		if(WeaponBoxArr[i][0] == UserID){
 			let temp = WeaponBoxArr[i][2].length;
-			
-			for(var j = 0; j<WeaponsArray.length ; j++){
 				
 				for(var k =0; k<mateArr.length;k++){
-					if(WeaponsArray[j][1] == mateArr[k]){
-						console.log(mateArr[k]);
-						WeaponBoxArr[i][2][temp+k] = mateArr[k];
+					console.log(mateArr[k]);
+					WeaponBoxArr[i][2][temp+k] = mateArr[k];
 					
-					}
 				}
-			}
 		
 			UpdateArray();
 		}
