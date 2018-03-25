@@ -100,7 +100,7 @@ function MateShop(UserID,Goods,confirm){
 											return rply;
 										}
 									}
-									WD.getWeapon(UserID,Goods);
+									WeaponBox.getWeapon(UserID,Goods);
 								}
 							}
 						}else if(ShopArr[k][2] == '飾品'){
