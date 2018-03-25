@@ -180,25 +180,21 @@ function getItem(UserID,Item){
 	for(var i = 0; i<WeaponBoxArr.length; i++){
 		if(WeaponBoxArr[i][0] == UserID){
 			let findaway;
-			for(var j = 0; j<WeaponsArray.length ; j++){
-				for(var k =0; k<WeaponBoxArr[i][2]; k++){
-					if(WeaponBoxArr[i][2][k] == Item){
-						console.log(WeaponBoxArr[i][3][k]);
-						/*WeaponBoxArr[i][3][k]++;
-						findaway++;
+			for(var k =0; k<WeaponBoxArr[i][2]; k++){
+				if(WeaponBoxArr[i][2][k] == Item){
+					WeaponBoxArr[i][3][k]++;
+					findaway++;
 
-						UpdateArray();*/
-					}
-				}
-				
-				if(findaway == 0){
-					console.log('you dont know da way');
-					/*let temp = WeaponBoxArr[i][2].length;
-					WeaponBoxArr[i][2][temp] = Item;
-					WeaponBoxArr[i][3][temp] = 1;
-					
 					UpdateArray();*/
 				}
+			}
+
+			if(findaway == 0){
+				let temp = WeaponBoxArr[i][2].length;
+				WeaponBoxArr[i][2][temp] = Item;
+				WeaponBoxArr[i][3][temp] = 1;
+
+				UpdateArray();
 			}
 			
 		}
