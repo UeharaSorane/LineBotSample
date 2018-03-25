@@ -79,7 +79,7 @@ function MateShop(UserID,Goods,confirm){
 			for(var k = 0;k<ShopArr.length;k++){
 				if(ShopArr[k][1] == Goods){
 					if(confirm != '確定'){
-						rply.text += '\n[' + ShopArr[k][0] +  '] ' + ShopArr[k][1] + ' (' + ShopArr[k][2] + ') -' + ShopArr[k][3] + '夥伴碎片\n\
+						rply.text = '\n[' + ShopArr[k][0] +  '] ' + ShopArr[k][1] + ' (' + ShopArr[k][2] + ') -' + ShopArr[k][3] + '夥伴碎片\n\
 							\n' + ShopArr[k][15] + '\n\
 							\n 持有夥伴碎片: ' + PD[i][13] + '\
 							\n確定購買的話，請輸入 夥伴商店 道具名 確定 完成手續';
