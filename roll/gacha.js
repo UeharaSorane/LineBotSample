@@ -105,7 +105,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 						CharacterShard = WeaponBoxArr[i][15];
 
 						if(GachaTimes == WeaponBoxArr[i][3] && WeaponBoxArr[i][3] !='無'){
-							times = WeaponBoxArr[i][4];
+							times = 1;
 							stoneNeed = WeaponBoxArr[i][5];
 							characterST = WeaponBoxArr[i][6];
 
@@ -155,6 +155,13 @@ DB.useServiceAccountAuth(creds, function (err) {
 						
 						return rply;
 					}
+				}
+				
+				if( PData[a][3]<stoneNeed && test !='測試'){
+					rply.text = '錯誤！奇蹟石不足(' +(PData[a][3]-stoneNeed) + ')';
+					return rply;
+					
+					
 				}
 				
 				var temp = 0;
@@ -245,6 +252,8 @@ DB.useServiceAccountAuth(creds, function (err) {
 				}
 
 				GResult = GResult + '\n總計獲得夥伴碎片(連同重複夥伴):' + characterShardResult + '片';
+				
+				if(test == '測試') GResult+='\n 注意，這只是測試，不具有實際效果(攤';
 				
 				console.log(CharacterResult);
 
