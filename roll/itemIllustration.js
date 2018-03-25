@@ -24,7 +24,7 @@ AccessDB.useServiceAccountAuth(creds, function (err) {
 					AccessArr[i][2] = rows[i].effect;
 					AccessArr[i][3] = rows[i].range;
 					AccessArr[i][4] = Number(rows[i].maxuseturn);
-					AccessArr[i][5] = Number(rows[i].game);
+					AccessArr[i][5] = Number(rows[i].maxusegame);
 					AccessArr[i][6] = rows[i].htgi;
 					
 				}
