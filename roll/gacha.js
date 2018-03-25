@@ -258,15 +258,16 @@ DB.useServiceAccountAuth(creds, function (err) {
 					GResult+= '\n 剩餘奇蹟石: ' + PData[a][3] + '\
 						\n 所持夥伴碎片:' + (PData[a][13] + characterShardResult);
 					PData[a][13] += characterShardResult;
+					console.log(CharacterResult);
 					let NameArr = [];
 					for(var x = 0; x<CharacterResult;x++){
-						console.log(CharacterResult);
+
 						if(CharacterResult[x] != null ){
 							NameArr.push(CharacterResult[x]);
 						}
 						
 					}
-					console.log(NameArr);
+					//console.log(NameArr);
 					MateBox.getMate(UesrID,NameArr);
 					PlayerData.saveArray(PData);
 				}
