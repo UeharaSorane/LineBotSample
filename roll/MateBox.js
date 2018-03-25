@@ -203,9 +203,9 @@ function getMate(UserID,mateArr){
 	for(var i = 0; i<WeaponBoxArr.length; i++){
 		if(WeaponBoxArr[i][0] == UserID){
 			let temp = WeaponBoxArr[i][2].length;
+			let OKMate = 0;
 				
 				for(var k =0; k<mateArr.length;k++){
-					let OKMate = 0;
 					if(mateArr[k]!=undefined&&mateArr[k]!=null){
 						console.log(mateArr[k]);
 						WeaponBoxArr[i][2][temp+OKMate] = mateArr[k];
