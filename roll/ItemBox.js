@@ -2,11 +2,11 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 
 ///引入其他資料陣列
 var BattleStates = require('./BattleStates.js');
-var Badge = require('./BadgeIllustration.js');
+var Item = require('./itemIllustration.js');
 var PlayerData = require('./PlayerData.js');
 
 var BattleStatesDataArray = BattleStates.GetArray();
-var WeaponsArray = Badge.GetArray();
+var WeaponsArray = Item.GetArray();
 ///
 
 ///引入資料庫
@@ -91,7 +91,7 @@ function SearchItem(UserID){
 			for(var j = 0; j<BattleStatesDataArray.length;j++){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
-								\n 持有紋章一覽:\n';
+								\n 持有道具一覽:\n';
 					for(var k = 0; k<WeaponBoxArr[i][2].length; k++){
 						rply.text += WeaponBoxArr[i][2][k] + 'x' + WeaponBoxArr[i][3][k] +  '\n';
 					}
@@ -110,7 +110,50 @@ function SearchItem(UserID){
 
 }
 
+function useItem(UserID,Name,confirm){
+	if(Name == null){
+		rply.text = '請輸入想使用的道具名';
+		return rply;
+	}
+	
+	for(var i =0; i<WeaponBoxArr.length;i++){
+		if(WeaponBoxArr[i][0] == UserID){
+			for(var j =0;j<WeaponBoxArr[i][2].length;j++){
+				if(WeaponBoxArr[i][2][j] == Name){
+					if(WeaponBoxArr[i][3][j]<=0){
+						rply.text = '錯誤！你沒有這項道具了';
+						return rply;
+					}else{
+						if(confirm != '確定'){
+							rply.text = '道具名:' + Name + '\n';
+							for(var k = 0; k<WeaponsArray.length;k++){
+								if(WeaponsArray[k][1] == Name){
+									rply.text += WeaponsArray[k][2];
+								}
+							}
+							
+							rply.text = '所持數: ' + WeaponBoxArr[i][3][j] + '\
+									\n 確定要使用的話，請輸入 使用道具 道具名 確認 以使用道具';
+							return rply;
+						}else{
+							WeaponBoxArr[i][3][j]--;
+							rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '使用道具' + Name + '！';
+							UpdateArray();
+							return rply;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	rply.text = '找不到你的角色的道具庫，請向GM確認';
+	return rply;
+	
+}
+
 module.exports = {
 	SearchItem,
-	UpdateArray
+	UpdateArray,
+	useItem
 };
