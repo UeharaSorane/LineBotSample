@@ -135,7 +135,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					
 					rply.text = '【招募目錄】目前的招募一覽表 \n';
 					
-					for(var b = 0;b<WeaponBoxArr.length; b++){
+					for(var b = 0;b<2; b++){
 						
 						rply.text+= '\n   ' + WeaponBoxArr[b][0] + ' 【' + WeaponBoxArr[b][1] + '】' + WeaponBoxArr[b][2] + '\
 								\n 如果想看詳細招募內容，請輸入 招募 招募編號';
@@ -148,7 +148,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					rply.text = '找不到招募編號['+ DrawPool+ ']的招募喔\n';
 					rply.text += '【招募目錄】目前的招募一覽表 \n';
 					
-					for(var b = 0;b<WeaponBoxArr.length; b++){
+					for(var b = 0;b<2; b++){
 						
 						rply.text+= '\n   ' + WeaponBoxArr[b][0] + ' 【' + WeaponBoxArr[b][1] + '】' + WeaponBoxArr[b][2] + '\
 								\n 如果想看詳細招募內容，請輸入 招募 招募編號';
