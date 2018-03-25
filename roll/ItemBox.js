@@ -33,7 +33,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					WeaponBoxArr[i][0] = rows[i].userid;
 					WeaponBoxArr[i][1] = rows[i].cname;
 					WeaponBoxArr[i][2] = rows[i].box.split(',');
-					WeaponBoxArr[i][3] = Number(rows[i].numbers.split(','));
+					WeaponBoxArr[i][3] = rows[i].numbers.split(',');
 					
 				}
 				//console.log(BadgeArr);
