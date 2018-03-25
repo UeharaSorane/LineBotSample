@@ -64,7 +64,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 //////////////// 角色招募
 	function main(UesrID,DrawPool,GachaTimes,test) {
 		var PData =  PlayerData.GetArray();
-		var MB = MateBox.getArray();
+		var MB = MateBox.GetArray();
 		
 		///基本變數
 		let GachaResult = [];//抽獎結果
