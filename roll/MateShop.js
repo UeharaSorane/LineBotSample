@@ -95,7 +95,7 @@ function MateShop(UserID,Goods,confirm){
 							for(var l = 0;l<WD.length;l++){
 								if(WD[l][0] == UserID){
 									for(var m =0;m<WD[l][2].length; m++){
-										if(WD[l][m] == Goods){
+										if(WD[l][2][m] == Goods){
 											rply.text = '錯誤！你已經擁有' + Goods + '了';
 											return rply;
 										}
