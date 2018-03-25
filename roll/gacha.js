@@ -143,7 +143,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 						return rply;
 					}
 
-				}else if(findtarget == 0;){
+				}else if(findtarget == 0){
 
 					rply.text = '找不到招募編號['+ DrawPool+ ']的招募喔\n';
 					rply.text += '【招募目錄】目前的招募一覽表 \n';
