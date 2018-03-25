@@ -187,6 +187,8 @@ function InheritPlayer(UserID,Name){
 }
 
 function getItem(UserID,Item){
+	console.log(Item)
+	
 	for(var i = 0; i<WeaponBoxArr.length; i++){
 		if(WeaponBoxArr[i][0] == UserID){
 			let findaway;
