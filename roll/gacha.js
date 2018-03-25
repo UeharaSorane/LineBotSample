@@ -105,7 +105,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 						CharacterShard = WeaponBoxArr[i][15];
 
 						if(GachaTimes == WeaponBoxArr[i][3] && WeaponBoxArr[i][3] !='無'){
-							times = 1;
+							times = 2;
 							stoneNeed = WeaponBoxArr[i][5];
 							characterST = WeaponBoxArr[i][6];
 
