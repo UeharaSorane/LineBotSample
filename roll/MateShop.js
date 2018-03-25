@@ -7,6 +7,12 @@ var WeaponBox = require('./WeaponBox.js');
 var BadgeBox = require('./BadgeBox.js');
 var MateBox = require('./MateBox.js');
 
+var PD = PlayerData.GetArray();
+var WD = WeaponBox.GetArray();
+var AD = require('./AccessoryBox.js').GetArray();
+var BD = BadgeBox.GetArray();
+var MD = BadgeBox.MateBox();
+
 
 var ShopDB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 var ShopArr= [];
@@ -54,6 +60,38 @@ ShopDB.useServiceAccountAuth(creds, function (err) {
 		
 	});
 
-function MateShop(UserID,Goods){
+function MateShop(UserID,Goods,confirm){
+	
+	
+	for(var i = 0; i<PD.length; i++){
+		if(PD[i][0] == UserID){
+			if(Goods == null){
+				rply.text = '特殊夥伴商店一覽:\n';
+				for(var j = 0 ;j<ShopArr.length;j++){
+					rply.text += '\n[' + ShopArr[i][0] '] ' + ShopArr[i][1] + ' (' + ShopArr[i][2] + ') -' + ShopArr[i][3] + '夥伴碎片\n\
+							\n' + ShopArr[i][15] + '\n';
+				}
+				
+				rply.text += '\n 持有夥伴碎片: ' + PD[i][13] + '\
+						\n想要購買商品的話，請輸入 夥伴商店 道具名';
+				return rply;
+			}
+			for(var k = 0;k<ShopArr.length;k++){
+				if(ShopArr[k][1] == Goods){
+					if(confirm != '確定'){
+						rply.text += '\n[' + ShopArr[k][0] '] ' + ShopArr[k][1] + ' (' + ShopArr[k][2] + ') -' + ShopArr[k][3] + '夥伴碎片\n\
+							\n' + ShopArr[k][15] + '\n\
+							\n 持有夥伴碎片: ' + PD[i][13] + '\
+							\n確定購買的話，請輸入 夥伴商店 道具名 確定 完成手續';
+						return rply;
+					}
+				}
+				
+			}
+		}
+	}
+	
+	rply.text = '錯誤！此Line帳號尚未擁有角色';
+	return rply;
 
 }
