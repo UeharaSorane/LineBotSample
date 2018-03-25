@@ -11,7 +11,7 @@ var PD = PlayerData.GetArray();
 var WD = WeaponBox.GetArray();
 var AD = require('./AccessoryBox.js').GetArray();
 var BD = BadgeBox.GetArray();
-var MD = BadgeBox.MateBox();
+var MD = MateBox.GetArray();
 
 
 var ShopDB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
