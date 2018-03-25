@@ -39,7 +39,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 				}
 				for(var i=0; i< WeaponBoxArr.length; i++){
 					
-					for(var j = 0;j<WeaponBoxArr[i][3]){
+					for(var j = 0;j<WeaponBoxArr[i][3];j++){
 
 					WeaponBoxArr[i][3] = Number(WeaponBoxArr[i][3]);
 					}
