@@ -111,7 +111,7 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	if (trigger.match(/^訓練點數分配$/)!= null ) return exports.Training.setTrain(UserID,mainMsg[1],mainMsg[2],mainMsg[3]);//分配訓練點數
 	if (trigger.match(/^基本能力分配$/)!= null ) return exports.Training.StandardPoint(UserID,mainMsg[1],mainMsg[2],mainMsg[3]);//分配基本能力點數
 	if (trigger.match(/^道具一覽$/)!= null ) return exports.ItemBox.SearchItem(UserID);//所持道具一覽
-	if (trigger.match(/^使用道具$/)!= null ) return exports.ItemBox.useItem(UserID,mainMsg[1],mainMsg[2],);//使用道具
+	if (trigger.match(/^使用道具$/)!= null ) return exports.ItemBox.useItem(UserID,mainMsg[1],mainMsg[2]);//使用道具
 	
 }
 
