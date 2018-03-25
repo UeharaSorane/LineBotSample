@@ -70,7 +70,7 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	if (trigger.match(/^紋章圖鑑$/)!= null ) return exports.BadgeIllustration.BadgeIllustration(mainMsg[1]);//紋章圖鑑
 	if (trigger.match(/^技能圖鑑$/)!= null ) return exports.SkillIllustration.SkillIllustration(mainMsg[1]);//技能圖鑑
 	if (trigger.match(/^夥伴圖鑑$/)!= null ) return exports.TeammateIllustration.TMIllustration(mainMsg[1]);//夥伴圖鑑
-	if (trigger.match(/^招募$/) != null) return exports.gacha.main(mainMsg[1],mainMsg[2],mainMsg[3]);//角色招募指令
+	if (trigger.match(/^招募$/) != null) return exports.gacha.main(UserID, mainMsg[1],mainMsg[2],mainMsg[3]);//角色招募指令
 
 	////////////////////////////娛樂相關
 
