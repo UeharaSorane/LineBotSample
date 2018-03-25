@@ -183,19 +183,20 @@ function getItem(UserID,Item){
 			for(var j = 0; j<WeaponsArray.length ; j++){
 				for(var k =0; k<WeaponBoxArr[i][2]; k++){
 					if(WeaponBoxArr[i][2][k] == Item){
-						WeaponBoxArr[i][3][k]++;
+						console.log(WeaponBoxArr[i][3][k]);
+						/*WeaponBoxArr[i][3][k]++;
 						findaway++;
 
-						UpdateArray();
+						UpdateArray();*/
 					}
 				}
 				
-				if(findaway == 0){
+				/*if(findaway == 0){
 					let temp = WeaponBoxArr[i][2].length;
 					WeaponBoxArr[i][2][temp] = Item;
 					WeaponBoxArr[i][3][temp] = 1;
 					
-					UpdateArray();
+					UpdateArray();*/
 				}
 			}
 			
