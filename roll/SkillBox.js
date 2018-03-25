@@ -359,6 +359,9 @@ function InheritPlayer(UserID,Name){
 	}
 }
 
+function GetArray(){
+	return WeaponBoxArr;
+}
 
 module.exports = {
 	SearchSkill,
@@ -367,5 +370,6 @@ module.exports = {
 	CreatNewPlayer,
 	UpdateArray,
 	switchName,
-	InheritPlayer
+	InheritPlayer,
+	GetArray
 };
