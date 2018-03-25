@@ -160,8 +160,8 @@ DB.useServiceAccountAuth(creds, function (err) {
 				if( PData[a][3]<stoneNeed && test !='測試'){
 					rply.text = '錯誤！奇蹟石不足(' +(PData[a][3]-stoneNeed) + ')';
 					return rply;
-					
-					
+				}else{
+					PData[a][3]-=stoneNeed;					
 				}
 				
 				var temp = 0;
@@ -254,8 +254,21 @@ DB.useServiceAccountAuth(creds, function (err) {
 				GResult = GResult + '\n總計獲得夥伴碎片(連同重複夥伴):' + characterShardResult + '片';
 				
 				if(test == '測試') GResult+='\n 注意，這只是測試，不具有實際效果(攤';
-				
-				console.log(CharacterResult);
+				else{
+					GResult+= '\n 剩餘奇蹟石: ' + PData[a][3] + '\
+						\n 所持夥伴碎片:' + (PData[a][13] + characterShardResult);
+					PData[a][13] += characterShardResult;
+					let NameArr = [];
+					for(var x = 0; x<CharacterResult;x++){
+						if(CharacterResult[x] != null ){
+							NameArr.push(CharacterResult[x]);
+						}
+						
+					}
+					console.log(NameArr);
+					MateBox.getMate(UesrID,NameArr);
+					PlayerData.saveArray(PData);
+				}
 
 				rply.text = GResult;
 
