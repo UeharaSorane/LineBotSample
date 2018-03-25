@@ -64,8 +64,8 @@ DB.useServiceAccountAuth(creds, function (err) {
 						rows[i].box += ',' + WeaponBoxArr[i][2][j];
 					}
 					rows[i].numbers = WeaponBoxArr[i][3][0];
-					for(var j=1;j<WeaponBoxArr[i][2].length;j++){
-						rows[i].box += ',' + WeaponBoxArr[i][3][j];
+					for(var j=1;j<WeaponBoxArr[i][3].length;j++){
+						rows[i].numbers += ',' + WeaponBoxArr[i][3][j];
 					}
 					rows[i].save();
 				}
