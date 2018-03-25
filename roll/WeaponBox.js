@@ -234,6 +234,10 @@ function InheritPlayer(UserID,Name){
 	}
 }
 
+function GetArray(){
+	return WeaponBoxArr;
+}
+
 
 
 module.exports = {
@@ -243,5 +247,6 @@ module.exports = {
 	UpdateArray,
 	getWeapon,
 	switchName,
-	InheritPlayer
+	InheritPlayer,
+	GetArray
 };
