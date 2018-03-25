@@ -415,7 +415,7 @@ function InheritChatacter(UserID,Cname,password){
 	}
 }
 
-function box(UserID){
+function box(UserID,test){
 	for(var i=0; i< CharArr.length; i++){
 
 		if (CharArr[i][0] == UserID) {
@@ -424,6 +424,13 @@ function box(UserID){
 			var OpenedBox = BoxOpen.main();
 			
 			rply.text += '\n' + OpenedBox[9];
+			
+			if(test == '測試'){
+				rply.text+= '\n 注意，這只是測試，不具有實際效果(攤';
+				return rply;
+				
+				
+			}
 			
 			CharArr[i][2] += Number(OpenedBox[0]);
 			CharArr[i][3] += Number(OpenedBox[1]);
