@@ -35,6 +35,15 @@ DB.useServiceAccountAuth(creds, function (err) {
 					WeaponBoxArr[i][2] = rows[i].box.split(',');
 					WeaponBoxArr[i][3] = rows[i].numbers.split(',');
 					
+					
+				}
+				for(var i=0; i< WeaponBoxArr.length; i++){
+					
+					for(var j = 0;j<WeaponBoxArr[i][3]){
+
+					WeaponBoxArr[i][3] = Number(WeaponBoxArr[i][3]);
+					}
+					
 				}
 				//console.log(BadgeArr);
 				console.log('玩家所持道具庫 讀取完成');
