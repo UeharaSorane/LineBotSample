@@ -107,7 +107,7 @@ function MateShop(UserID,Goods,confirm){
 							for(var l = 0;l<AD.length;l++){
 								if(AD[l][0] == UserID){
 									for(var m =0;m<AD[l][2].length; m++){
-										if(AD[l][m] == Goods){
+										if(AD[l][2][m] == Goods){
 											rply.text = '錯誤！你已經擁有' + Goods + '了';
 											return rply;
 										}
@@ -119,7 +119,7 @@ function MateShop(UserID,Goods,confirm){
 							for(var l = 0;l<BD.length;l++){
 								if(BD[l][0] == UserID){
 									for(var m =0;m<BD[l][2].length; m++){
-										if(BD[l][m] == Goods){
+										if(BD[l][2][m] == Goods){
 											rply.text = '錯誤！你已經擁有' + Goods + '了';
 											return rply;
 										}
@@ -131,7 +131,7 @@ function MateShop(UserID,Goods,confirm){
 							for(var l = 0;l<MD.length;l++){
 								if(MD[l][0] == UserID){
 									for(var m =0;m<MD[l][2].length; m++){
-										if(MD[l][m] == Goods){
+										if(MD[l][2][m] == Goods){
 											rply.text = '錯誤！你已經擁有' + Goods + '了';
 											return rply;
 										}
