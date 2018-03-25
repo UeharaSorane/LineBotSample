@@ -192,7 +192,6 @@ function getItem(UserID,Item){
 					WeaponBoxArr[i][3][temp] = 1;
 					
 					UpdateArray();
-				}
 			}
 			
 		}
@@ -200,12 +199,33 @@ function getItem(UserID,Item){
 	
 }
 
+function CreatNewPlayer(UserID,cname,STWeapon){
+	let CAleng = WeaponBoxArr.length;
+	
+	WeaponBoxArr[CAleng] = [];
+	WeaponBoxArr[CAleng][0] = UserID;
+	WeaponBoxArr[CAleng][1] = cname;
+	WeaponBoxArr[CAleng][2] = ['無'];
+	WeaponBoxArr[CAleng][3] = [0];
+	DB.useServiceAccountAuth(creds, function (err) {
+ 
+	  // Get all of the rows from the spreadsheet.
+	  DB.addRow(19, { Userid: UserID}, function(err) {
+		  if(err) {
+		    console.log(err);
+		  }
+		  
+		});
+	});
+	
+}
+
 
 module.exports = {
 	SearchItem,
-	UpdateArray,
 	useItem,
 	switchName,
 	InheritPlayer,
-	getItem
+	getItem,
+	CreatNewPlayer
 };
