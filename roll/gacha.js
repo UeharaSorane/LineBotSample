@@ -49,7 +49,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					WeaponBoxArr[i][22] = rows[i].gdescription;
 					
 				}
-				//console.log(BadgeArr);
+				console.log(WeaponBoxArr);
 				console.log('招募情報 讀取完成');
 			}
 		
