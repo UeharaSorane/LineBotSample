@@ -132,7 +132,7 @@ function useItem(UserID,Name,confirm){
 								}
 							}
 							
-							rply.text += '所持數: ' + WeaponBoxArr[i][3][j] + '\
+							rply.text += '\n所持數: ' + WeaponBoxArr[i][3][j] + '\
 									\n 確定要使用的話，請輸入 使用道具 道具名 確認 以使用道具';
 							return rply;
 						}else{
@@ -144,6 +144,8 @@ function useItem(UserID,Name,confirm){
 					}
 				}
 			}
+			rply.text = '你的尚未持有該道具';
+			return rply;
 		}
 	}
 
