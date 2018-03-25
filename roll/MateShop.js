@@ -68,8 +68,8 @@ function MateShop(UserID,Goods,confirm){
 			if(Goods == null){
 				rply.text = '特殊夥伴商店一覽:\n';
 				for(var j = 0 ;j<ShopArr.length;j++){
-					rply.text += '\n[' + ShopArr[i][0] +  '] ' + ShopArr[i][1] + ' (' + ShopArr[i][2] + ') -' + ShopArr[i][3] + '夥伴碎片\n\
-							\n' + ShopArr[i][15] + '\n';
+					rply.text += '\n[' + ShopArr[j][0] +  '] ' + ShopArr[j][1] + ' (' + ShopArr[j][2] + ') -' + ShopArr[j][3] + '夥伴碎片\n\
+							\n' + ShopArr[j][15] + '\n';
 				}
 				
 				rply.text += '\n 持有夥伴碎片: ' + PD[i][13] + '\
