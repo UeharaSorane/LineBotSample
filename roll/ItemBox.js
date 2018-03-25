@@ -191,13 +191,14 @@ function getItem(UserID,Item){
 					}
 				}
 				
-				/*if(findaway == 0){
-					let temp = WeaponBoxArr[i][2].length;
+				if(findaway == 0){
+					console.log('you dont know da way');
+					/*let temp = WeaponBoxArr[i][2].length;
 					WeaponBoxArr[i][2][temp] = Item;
 					WeaponBoxArr[i][3][temp] = 1;
 					
-					UpdateArray();
-				}*/
+					UpdateArray();*/
+				}
 			}
 			
 		}
