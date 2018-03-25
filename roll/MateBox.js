@@ -215,10 +215,12 @@ function getMate(UserID,mate){
 	
 }
 
-function switchName(UserID,Name){
+function switchName(UserID,NameArr){
 	for(var i = 0; i<WeaponBoxArr.length; i++){
 		if(WeaponBoxArr[i][0] == UserID){
-			WeaponBoxArr[i][1] = Name;
+			for(var j = 0; j<NameArr.length;j++){
+				WeaponBoxArr[i][1] = NameArr[j];
+			}
 			
 			UpdateArray();
 		
