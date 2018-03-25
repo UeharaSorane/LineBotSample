@@ -63,7 +63,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 
 //////////////// 角色招募
 	function main(UesrID,DrawPool,GachaTimes,test) {
-		var PData =  PlayerData.getArray();
+		var PData =  PlayerData.GetArray();
 		var MB = MateBox.getArray();
 		
 		///基本變數
