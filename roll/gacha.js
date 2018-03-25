@@ -217,7 +217,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					for(var j = i+1;j<times;j++){
 						if(CharacterResult[i]!= null && CharacterResult[i] == CharacterResult[j] && CharacterResult[j] != null){
 							CharacterResult[j] = null;
-							GachaResult[j]+='(重複)';
+							GachaResult[j]+='(重複)\n';
 							characterShardResult = characterShardResult +100;
 						}
 					   }
@@ -227,7 +227,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					for(var j = 0;j<times;j++){
 						if(MB[a][2][i]!= '無' && CharacterResult[j] == MB[a][2][i] && CharacterResult[j] != null){
 							CharacterResult[j] = null;
-							GachaResult[j]+='(重複)';
+							GachaResult[j]+='(重複)\n';
 							characterShardResult = characterShardResult +100;
 						}
 					   }
