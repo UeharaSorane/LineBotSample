@@ -509,6 +509,11 @@ function switchTitle(UserID,Name){
 	return rply;
 }
 
+function saveArray(ReturnF){
+	CharArr = ReturnF;
+	ArrayUpdate();
+}
+
 
 module.exports = {
 	main,
@@ -520,5 +525,6 @@ module.exports = {
 	box,
 	GetArray,
 	switchName,
-	switchTitle
+	switchTitle,
+	saveArray
 };
