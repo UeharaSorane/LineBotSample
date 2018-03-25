@@ -260,7 +260,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					PData[a][13] += characterShardResult;
 					let NameArr = CharacterResult;
 
-					console.log(NameArr);
+					//console.log(NameArr);
 					MateBox.getMate(UesrID,NameArr);
 					PlayerData.saveArray(PData);
 				}
