@@ -87,8 +87,10 @@ DB.useServiceAccountAuth(creds, function (err) {
 		for(var a = 0; a< PData.length;a++){
 			
 			if(PData[a][0] == UesrID){
+				let findtarget =0;
 				for(var i = 0; i<WeaponBoxArr.length;i++){
 					if(DrawPool == WeaponBoxArr[i][0]){
+						findtarget = 1;
 						CharacterList.length = WeaponBoxArr[i][19].length;
 						CharacterList = WeaponBoxArr[i][19];
 						CharacterListSP.length = WeaponBoxArr[i][20].length;
@@ -141,7 +143,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 						return rply;
 					}
 
-				}else{
+				}else if(findtarget == 0;){
 
 					rply.text = '找不到招募編號['+ DrawPool+ ']的招募喔\n';
 					rply.text += '【招募目錄】目前的招募一覽表 \n';
