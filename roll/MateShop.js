@@ -88,6 +88,8 @@ function MateShop(UserID,Goods,confirm){
 				}
 				
 			}
+			rply.text = '錯誤！找不到商品名為' + Goods + '的商品';
+			return rply;
 		}
 	}
 	
@@ -95,3 +97,8 @@ function MateShop(UserID,Goods,confirm){
 	return rply;
 
 }
+
+
+module.exports = {
+	MateShop
+};
