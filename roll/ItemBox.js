@@ -185,7 +185,7 @@ function getItem(UserID,Item){
 					WeaponBoxArr[i][3][k]++;
 					findaway++;
 
-					UpdateArray();*/
+					UpdateArray();
 				}
 			}
 
