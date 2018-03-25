@@ -198,29 +198,32 @@ function CreatNewPlayer(UserID,cname,STWeapon){
 	});
 	
 }
-function getMate(UserID,mate){
+function getMate(UserID,mateArr){
 	for(var i = 0; i<WeaponBoxArr.length; i++){
 		if(WeaponBoxArr[i][0] == UserID){
+			let temp = WeaponBoxArr[i][2].length;
+			
 			for(var j = 0; j<WeaponsArray.length ; j++){
-				if(WeaponsArray[j][1] == mate){
-					let temp = WeaponBoxArr[i][2].length;
-					WeaponBoxArr[i][2][temp] = mate;
+				
+				for(var k =0; k<mateArr.length;k++){
+					if(WeaponsArray[j][1] == mateArr[k]){
+					WeaponBoxArr[i][2][temp+k] = mateArr[k];
 					
-					UpdateArray();
+					}
 				}
 			}
-			
+		
+			UpdateArray();
 		}
 	}
 	
 }
 
-function switchName(UserID,NameArr){
+function switchName(UserID,Name){
 	for(var i = 0; i<WeaponBoxArr.length; i++){
 		if(WeaponBoxArr[i][0] == UserID){
-			for(var j = 0; j<NameArr.length;j++){
-				WeaponBoxArr[i][1] = NameArr[j];
-			}
+			
+			WeaponBoxArr[i][1] = Name;
 			
 			UpdateArray();
 		
