@@ -94,7 +94,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 						CharacterList.length = WeaponBoxArr[i][19].length;
 						CharacterList = WeaponBoxArr[i][19];
 						CharacterListSP.length = WeaponBoxArr[i][20].length;
-						CharacterListSP = WeaponBoxArr[i][12];
+						CharacterListSP = WeaponBoxArr[i][20];
 						CharacterListSecret.length = WeaponBoxArr[i][21].length;
 						CharacterListSecret = WeaponBoxArr[i][21];
 
