@@ -222,6 +222,10 @@ function InheritPlayer(UserID,Name){
 	}
 }
 
+function GetArray(){
+	return WeaponBoxArr;
+}
+
 module.exports = {
 	SearchBadge,
 	SwitchBadge,
@@ -229,5 +233,6 @@ module.exports = {
 	UpdateArray,
 	getBadge,
 	switchName,
-	InheritPlayer
+	InheritPlayer,
+	GetArray
 };
