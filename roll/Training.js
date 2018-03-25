@@ -44,6 +44,12 @@ function TrainingStates(UserID){
 }
 
 function setTrain(UserID,Hp,Mp,Atk){
+	if(isNaN(Hp)||isNaN(Mp)||isNaN(Atk)){
+		rply.text = '錯誤！請輸入半形阿拉伯數字';
+		return rply;
+		
+	}
+	
 	BattleStatesDataArray = BattleStates.GetArray();
 	
 	let HpTemp,MpTemp,AtkTemp;
@@ -110,6 +116,12 @@ function setTrain(UserID,Hp,Mp,Atk){
 }
 
 function StandardPoint(UserID,Hp,Mp,Atk){
+	if(isNaN(Hp)||isNaN(Mp)||isNaN(Atk)){
+		rply.text = '錯誤！請輸入半形阿拉伯數字';
+		return rply;
+		
+	}
+	
 	BattleStatesDataArray = BattleStates.GetArray();
 	
 	let HpTemp,MpTemp,AtkTemp;
