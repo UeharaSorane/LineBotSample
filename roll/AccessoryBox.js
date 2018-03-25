@@ -239,6 +239,10 @@ function InheritPlayer(UserID,Name){
 	}
 }
 
+function GetArray(){
+	return WeaponBoxArr;
+}
+
 module.exports = {
 	SearchAccessory,
 	SwitchAccess,
@@ -247,5 +251,6 @@ module.exports = {
 	testA,
 	getAcce,
 	switchName,
-	InheritPlayer
+	InheritPlayer,
+	GetArray
 };
