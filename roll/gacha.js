@@ -260,7 +260,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					PData[a][13] += characterShardResult;
 					let NameArr = [];
 					for(var x = 0; x<CharacterResult;x++){
-						console.log(CharacterResult[x]);
+						console.log(CharacterResult);
 						if(CharacterResult[x] != null ){
 							NameArr.push(CharacterResult[x]);
 						}
