@@ -237,6 +237,10 @@ function InheritPlayer(UserID,Name){
 	}
 }
 
+function GetArray(){
+	return WeaponBoxArr;
+}
+
 module.exports = {
 	SearchMate,
 	SwitchMate,
@@ -244,5 +248,6 @@ module.exports = {
 	CreatNewPlayer,
 	getMate,
 	switchName,
-	InheritPlayer
+	InheritPlayer,
+	GetArray
 };
