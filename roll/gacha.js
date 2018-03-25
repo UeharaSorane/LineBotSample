@@ -253,6 +253,9 @@ DB.useServiceAccountAuth(creds, function (err) {
 				return rply;
 			}
 		}
+		
+		rply.text = '錯誤！找不到你的夥伴庫，請向GM確認';
+		return rply;
 	}
 ////////////////
 
