@@ -132,7 +132,7 @@ function useItem(UserID,Name,confirm){
 								}
 							}
 							
-							rply.text = '所持數: ' + WeaponBoxArr[i][3][j] + '\
+							rply.text += '所持數: ' + WeaponBoxArr[i][3][j] + '\
 									\n 確定要使用的話，請輸入 使用道具 道具名 確認 以使用道具';
 							return rply;
 						}else{
@@ -152,8 +152,33 @@ function useItem(UserID,Name,confirm){
 	
 }
 
+function switchName(UserID,Name){
+	for(var i = 0; i<WeaponBoxArr.length; i++){
+		if(WeaponBoxArr[i][0] == UserID){
+			WeaponBoxArr[i][1] = Name;
+			
+			UpdateArray();
+		
+		}
+	}
+}
+
+function InheritPlayer(UserID,Name){
+	for(var i = 0; i<WeaponBoxArr.length; i++){
+		if(WeaponBoxArr[i][1] == Name){
+			WeaponBoxArr[i][0] = UserID;
+			
+			UpdateArray();
+		
+		}
+	}
+}
+
+
 module.exports = {
 	SearchItem,
 	UpdateArray,
-	useItem
+	useItem,
+	switchName,
+	InheritPlayer
 };
