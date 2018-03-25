@@ -72,7 +72,7 @@ function itemIllustration(Name){
 	}
 		
 		rply.text = '找不到編號或名稱為' + Name +'的道具喔！\
-				\n\n-----飾品圖鑑-----\n\n';
+				\n\n-----道具圖鑑-----\n\n';
 		
 		for(var i = 0; i<AccessArr.length; i++){
 			rply.text += '[' + AccessArr[i][0] + '] ' + AccessArr[i][1] + '\n';
