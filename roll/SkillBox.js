@@ -84,6 +84,7 @@ function SearchSkill(UserID){
 	UpdateArray();
 	for(var i =0; i<WeaponBoxArr.length;i++){
 		if(WeaponBoxArr[i][0] == UserID){
+			console.log(WeaponBoxArr[i][2]);
 			for(var j = 0; j<BattleStatesDataArray.length;j++){
 				if(BattleStatesDataArray[j][0] == UserID){
 					rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '\n\
