@@ -12,16 +12,16 @@ var BattleStatesDataArray = BattleStates.GetArray();
 var ShopArr = [[1,'基本能力重置',20],[2,'金幣x10000',10]];
 
 
-function MateShop(UserID,Goods,confirm){
+function MiraShop(UserID,Goods,confirm){
 	
 	
 	for(var i = 0; i<PD.length; i++){
 		if(PD[i][0] == UserID){
 			if(Goods == null){
 				rply.text = '奇蹟石商店一覽:\
-										\n\n[1] 基本能力重置 20奇蹟石\
-                    \n[2] 金幣x10000 10奇蹟石\
-                    \n 想要購買商品的話，請輸入 奇蹟石 商品名\n 奇蹟石數量: ' + PD[i][3];
+				\n\n[1] 基本能力重置 20奇蹟石\
+                    		\n[2] 金幣x10000 10奇蹟石\
+                    		\n 想要購買商品的話，請輸入 奇蹟石 商品名\n 奇蹟石數量: ' + PD[i][3];
 				return rply;
 			}
 			for(var k = 0;k<ShopArr.length;k++){
@@ -49,6 +49,7 @@ function MateShop(UserID,Goods,confirm){
 							
 							PlayerData.saveArray(PD);
 							rply.text = '你成功購買了金幣x10000！請輸入 玩家情報 進行確認';
+						}
 							
 							
 						
@@ -68,5 +69,5 @@ function MateShop(UserID,Goods,confirm){
 
 
 module.exports = {
-	MateShop
+	MiraShop
 };
