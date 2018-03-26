@@ -197,12 +197,13 @@ function getItem(UserID,Item){
 					WeaponBoxArr[i][3][k]++;
 					console.log(WeaponBoxArr[i][3][k]);
 					findaway++;
-					break;
+					return ;
 
 					UpdateArray();
 				}
 			}
 
+			console.log(findaway);
 			if(findaway != 1){
 				let temp = WeaponBoxArr[i][2].length;
 				WeaponBoxArr[i][2][temp] = Item;
