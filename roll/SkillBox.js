@@ -64,7 +64,7 @@ function UpdateArray(){
 					}
 					rows[i].save();
 				}
-				console.log(WeaponBoxArr);
+				//console.log(WeaponBoxArr);
 				console.log('玩家所持技能庫 更新完成');
 			}
 		
@@ -309,7 +309,7 @@ function getSkill(UserID,getS){
 		if(WeaponBoxArr[i][0] == UserID){
 			for(var j =0; j<WeaponBoxArr[i][2].length;j++){
 				if(WeaponBoxArr[i][2][j] == getS){
-					returnS[0] = '得到重複技能' + getS +'轉換成500G';
+					returnS[0] = '\n得到重複技能' + getS +'轉換成500G';
 					returnS[1] = 500;
 					
 					return returnS;
@@ -319,10 +319,11 @@ function getSkill(UserID,getS){
 			let temp = WeaponBoxArr[i][2].length;
 			
 			WeaponBoxArr[i][2][temp] = getS;
+			console.log(WeaponBoxArr[i][2]);
 			
 			UpdateArray();
 			
-			returnS[0] = '得到新技能' + getS;
+			returnS[0] = '\n得到新技能' + getS;
 			returnS[1] = 0;
 			
 			return returnS;
