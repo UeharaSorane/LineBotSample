@@ -8,7 +8,7 @@ DB.useServiceAccountAuth(creds, function (err) {
  
 	
  // 是先將資料讀進陣列
-	DB.getRows(1 , 
+	DB.getRows(21 , 
 		function (err, rows) {
 			if (err) {
 				console.log( err );
@@ -17,26 +17,17 @@ DB.useServiceAccountAuth(creds, function (err) {
 				for(var i=0; i< rows.length; i++){
 					CharArr[i] = [];
 					
-					CharArr[i][0] = rows[i].userid;
-					CharArr[i][1] = rows[i].cname;
-					CharArr[i][2] = Number(rows[i].gold);
-					CharArr[i][3] = Number(rows[i].mirastone);
-					CharArr[i][4] = rows[i].title;
-					CharArr[i][5] = rows[i].inheritio;
-					CharArr[i][6] = rows[i].inheritpassword;
-					CharArr[i][7] = Number(rows[i].wmaterials);
-					CharArr[i][8] = Number(rows[i].wmaterialm);
-					CharArr[i][9] = Number(rows[i].wmateriall);
-					CharArr[i][10] = Number(rows[i].gmaterials);
-					CharArr[i][11] = Number(rows[i].gmaterialm);
-					CharArr[i][12] = Number(rows[i].gmateriall);
-					CharArr[i][13] = Number(rows[i].mateshards);
-					CharArr[i][14] = rows[i].guild;
-					CharArr[i][15] = rows[i].guildtitle;
+					CharArr[i][0] = rows[i].guildid;
+					CharArr[i][1] = rows[i].guildname;
+					CharArr[i][2] = rows[i].memberid.split(',');
+					CharArr[i][3] = rows[i].membername.split(',');
+					CharArr[i][4] = rows[i].membertitle.split(',');
+					CharArr[i][5] = Number(rows[i].membern);
+					CharArr[i][6] = rows[i].jointype;
 					
 				}
 				//console.log(CharArr);
-				console.log('玩家基本資料 讀取完成');
+				console.log('公會基本資料 讀取完成');
 				//console.log();
 			}
 		
@@ -55,7 +46,7 @@ function ArrayUpdate() {
 
 
 	 // Get all of the rows from the spreadsheet.
-		DB.getRows(1 , 
+		DB.getRows(21 , 
 			function (err, rows) {
 				if (err) {
 					console.log( err );
@@ -63,28 +54,18 @@ function ArrayUpdate() {
 
 					for(var i=0; i< CharArr.length; i++){
 
-						rows[i].UserID = CharArr[i][0];
-						rows[i].Cname = CharArr[i][1];
-						rows[i].Gold = CharArr[i][2];
-						rows[i].MiraStone = CharArr[i][3];
-						rows[i].Title = CharArr[i][4];
-						rows[i].InheritIO = CharArr[i][5];
-						rows[i].InheritPassword = CharArr[i][6];
-						rows[i].WmaterialS = CharArr[i][7];
-						rows[i].WmaterialM = CharArr[i][8];
-						rows[i].WmaterialL = CharArr[i][9];
-						rows[i].GmaterialS = CharArr[i][10];
-						rows[i].GmaterialM = CharArr[i][11];
-						rows[i].GmaterialL = CharArr[i][12];
-						rows[i].MateShards = CharArr[i][13];
-						rows[i].guild = CharArr[i][14];
-						rows[i].guildtitle = CharArr[i][15];
-						rows[i].save();
+						rows[i].guildid = CharArr[i][0];
+						rows[i].guildname = CharArr[i][1];
+						rows[i].memberid = CharArr[i][2].join(',');
+						rows[i].membername = CharArr[i][3].join(',');
+						rows[i].membertitle = CharArr[i][4].join(',');
+						rows[i].membern = CharArr[i][5];
+						rows[i].jointype = CharArr[i][6];
 
 					}
 
 					}
-					console.log('玩家基本資料 更新完成');
+					console.log('公會基本資料 更新完成');
 
 
 				});
@@ -93,4 +74,16 @@ function ArrayUpdate() {
 
 		});
 	
+}
+
+function guildvView(){
+	rply.text = '【公會一覽】';
+	
+	for(var i  =0; i<CharArr.length;i++){
+		rply.text+= '\n [' + CharArr[i][0] + '] ' + CharArr[i][1] + ' (' + CharArr[i][5] + '人) [' + CharArr[i][6] + ']';
+	}
+	
+	rply.text += '\n 如果想要確認公會詳細內容，請輸入 公會 公會名(公會編號) 進行查詢';
+	
+	return rply;
 }
