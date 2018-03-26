@@ -41,7 +41,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					
 					for(var j = 0;j<WeaponBoxArr[i][3];j++){
 
-					WeaponBoxArr[i][3] = Number(WeaponBoxArr[i][3]);
+						WeaponBoxArr[i][3] = Number(WeaponBoxArr[i][3]);
 					}
 					
 				}
@@ -147,7 +147,7 @@ function useItem(UserID,Name,confirm){
 							return rply;
 						}else{
 							WeaponBoxArr[i][3][j]--;
-							rply.text = '玩家 ' + WeaponBoxArr[j][1] + '使用道具' + Name + '！';
+							rply.text = '玩家 ' + WeaponBoxArr[i][1] + '使用道具' + Name + '！';
 							UpdateArray();
 							return rply;
 						}
@@ -196,6 +196,7 @@ function getItem(UserID,Item){
 				if(WeaponBoxArr[i][2][k] == Item){
 					WeaponBoxArr[i][3][k]++;
 					findaway++;
+					break;
 
 					UpdateArray();
 				}
