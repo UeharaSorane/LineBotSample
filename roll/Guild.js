@@ -95,7 +95,7 @@ function guildView(){
 	
 	ArrayUpdate();
 	
-	return rply;
+	return rply.text;
 }
 
 function guildSearch(GuildName){
@@ -103,7 +103,7 @@ function guildSearch(GuildName){
 		if(CharArr[i][1] == '輔導公會'){
 			rply.text = '【輔導公會】 無公會玩家的歸宿\
 					\n 只要你沒有加入公會，就會來到這裡！';
-			return rply;
+			return rply.text;
 			
 		}else if(CharArr[i][1] == GuildName || CharArr[i][0] == GuildName){
 			rply.text = '【公會情報】\
@@ -128,7 +128,7 @@ function guildSearch(GuildName){
 				rply.text += '\n目前這個公會暫時停止招募新人了';
 			}
 			
-			return rply;
+			return rply.text;
 			
 		}
 	}
@@ -138,11 +138,15 @@ function guildSearch(GuildName){
 }
 
 function GuildCommand(UserID,Guild,Command){
-	if(Guild == null) return guildView();
-	
-	else{
+	if(Guild == null){
+		rply.text = guildView();
+		return rply;
+	}else{
 		//if(Command == '加入'){}
-		if(Command == null) return guildSearch(Guild);
+		if(Command == null){
+			rply.text = guildSearch(Guild);
+			return rply;
+		}
 	}
 	
 }
