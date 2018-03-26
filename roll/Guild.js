@@ -1,6 +1,5 @@
 var rply ={type : 'text'}; //type是必需的,但可以更改
-var PlayerData = require('./PlayerData.js');
-console.log(PlayerData);
+console.log(require('./PlayerData.js'));
 
 
 var fs = require('fs');
