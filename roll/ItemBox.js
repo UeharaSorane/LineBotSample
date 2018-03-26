@@ -147,7 +147,7 @@ function useItem(UserID,Name,confirm){
 							return rply;
 						}else{
 							WeaponBoxArr[i][3][j]--;
-							rply.text = '玩家 ' + BattleStatesDataArray[j][1] + '使用道具' + Name + '！';
+							rply.text = '玩家 ' + WeaponBoxArr[j][1] + '使用道具' + Name + '！';
 							UpdateArray();
 							return rply;
 						}
