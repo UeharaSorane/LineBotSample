@@ -98,6 +98,87 @@ function guildView(){
 	return rply;
 }
 
+function guildSearch(GuildName){
+	for(var i =0; i<CharArr.length;i++){
+		if(CharArr[i][1] == '輔導公會'){
+			rply.text = '【輔導公會】 無公會玩家的歸宿\
+					\n 只要你沒有加入公會，就會來到這裡！';
+			return rply;
+			
+		}else if(CharArr[i][1] == GuildName || CharArr[i][0] == GuildName){
+			rply.text = '【公會情報】\
+					\n 公會編號: ' + CharArr[i][0] + '\
+					\n 公會名: ' + CharArr[i][1] + '\
+					\n 公會會長: ' + CharArr[i][3][0] + '\
+					\n 公會人數: ' + CharArr[i][5] + '\
+					\n 公會加入模式: ' + CharArr[i][6] + '\
+					\n-----公會成員-----';
+			
+			for(var j = 0;j<CharArr[i][3].length; j++){
+				rply.text += CharArr[i][4] + ': ' + CharArr[i][3] + '\n';
+			}
+			
+			if(CharArr[i][6] == 'GM限定'){
+				rply.text += '\n這是GM限定公會，一般人是加不進來的';
+			}else if(CharArr[i][6] == '自由加入'){
+				rply.text += '\n這是可以自由加入公會，請輸入 公會 公會名 加入 就能直接加入公會了';
+			}else if(CharArr[i][6] == '審核'){
+				rply.text += '\n這是必須審核才能加入的公會，請輸入 公會 公會名 加入 並等待公會會長同意';
+			}else if(CharArr[i][6] == '暫停招生'){
+				rply.text += '\n目前這個公會暫時停止招募新人了';
+			}
+			
+			return rply;
+			
+		}
+	}
+	
+	return guildView();
+	
+}
+
+function GuildCommand(UserID,Guild,Command){
+	if(Guild == null) return guildView();
+	
+	else{
+		//if(Command == '加入'){}
+		if(Command == null) return guildSearch(Guild);
+	}
+	
+}
+
+function GetArray(){
+	return CharArr;
+}
+
+function InheritPlayer(UserID,Guild,Name){
+	for(var i =0; i<CharArr.length;i++){
+		if(CharArr[i][1] == Guild && CharArr[i][1] != '輔導公會'){
+			for(var j = 0;j<CharArr[i][3].length;j++){
+				if(CharArr[i][3][j] == Name){
+					CharArr[i][2][j] = UserID;
+				}
+			}
+		}
+	}
+}
+
+function switchName(UserID,Guild,Name){
+	for(var i =0; i<CharArr.length;i++){
+		if(CharArr[i][1] == Guild && CharArr[i][1] != '輔導公會'){
+			for(var j = 0;j<CharArr[i][2].length;j++){
+				if(CharArr[i][2][j] == UserID){
+					CharArr[i][3][j] = Name;
+				}
+			}
+		}
+	}
+}
+
 module.exports = {
-	guildView
+	guildView,
+	GetArray,
+	InheritPlayer,
+	switchName,
+	GuildCommand
 };
