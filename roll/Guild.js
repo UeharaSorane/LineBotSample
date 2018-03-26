@@ -85,6 +85,8 @@ function guildView(){
 	
 	rply.text += '\n 如果想要確認公會詳細內容，請輸入 公會 公會名(公會編號) 進行查詢';
 	
+	ArrayUpdate();
+	
 	return rply;
 }
 
