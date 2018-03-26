@@ -40,12 +40,12 @@ ShopDB.useServiceAccountAuth(creds, function (err) {
 					ShopArr[i][6] = rows[i].badge;
 					ShopArr[i][7] = rows[i].mate;
 					ShopArr[i][8] = rows[i].item;
-					ShopArr[i][9] = Number(rows[i].WMS);
-					ShopArr[i][10] = Number(rows[i].WMM);
-					ShopArr[i][11] = Number(rows[i].WML);
-					ShopArr[i][12] = Number(rows[i].GMS);
-					ShopArr[i][13] = Number(rows[i].GMM);
-					ShopArr[i][14] = Number(rows[i].GMM);
+					ShopArr[i][9] = Number(rows[i].wms);
+					ShopArr[i][10] = Number(rows[i].wmm);
+					ShopArr[i][11] = Number(rows[i].wml);
+					ShopArr[i][12] = Number(rows[i].gms);
+					ShopArr[i][13] = Number(rows[i].gmm);
+					ShopArr[i][14] = Number(rows[i].gml);
 					ShopArr[i][15] = rows[i].gdescription;
 					
 				}
