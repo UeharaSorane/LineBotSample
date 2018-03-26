@@ -203,6 +203,15 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 		}
 	}
 	
+	for(var i=0; i< CharArr.length; i++){
+
+		if (CharArr[i][1] == CName) {
+			rply.text = '已經有人取這個名字了！請改取其它名字';
+
+			return rply;
+		}
+	}
+	
 	
 	if(CName == null||weapon == null) {
 		
@@ -471,6 +480,15 @@ function GetArray(){
 }
 
 function switchName(UserID,Name){
+	for(var i=0; i< CharArr.length; i++){
+
+		if (CharArr[i][1] == Name &&CharArr[i][0]!=UserID) {
+			rply.text = '已經有人取這個名字了！請改取其它名字';
+
+			return rply;
+		}
+	}
+	
 	for(var i=0; i< CharArr.length; i++){
 		if(CharArr[i][0] == UserID){
 			if(Name == null){
