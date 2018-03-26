@@ -3,6 +3,12 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 var PlayerData = require('./PlayerData.js');
 var PD = PlayerData.GetArray();
 
+var fs = require('fs');
+var GoogleSpreadsheet = require('google-spreadsheet');
+var creds = require('../client_secret.json');
+
+var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
+
 DB.useServiceAccountAuth(creds, function (err) {
 		
  
