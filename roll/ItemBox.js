@@ -143,7 +143,7 @@ function useItem(UserID,Name,confirm){
 							}
 							
 							rply.text += '\n所持數: ' + WeaponBoxArr[i][3][j] + '\
-									\n 確定要使用的話，請輸入 使用道具 道具名 確認 以使用道具';
+									\n 確定要使用的話，請輸入 使用道具 道具名 確定 以使用道具';
 							return rply;
 						}else{
 							WeaponBoxArr[i][3][j]--;
