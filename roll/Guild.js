@@ -112,7 +112,7 @@ function guildSearch(GuildName){
 					\n-----公會成員-----';
 			
 			for(var j = 0;j<CharArr[i][3].length; j++){
-				rply.text += '\n' + CharArr[i][j] + ': ' + CharArr[i][j];
+				rply.text += '\n' + CharArr[i][4][j] + ': ' + CharArr[i][3][j];
 			}
 			
 			if(CharArr[i][6] == 'GM限定'){
