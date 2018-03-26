@@ -40,6 +40,8 @@ DB.useServiceAccountAuth(creds, function (err) {
 					CharArr[i][11] = Number(rows[i].gmaterialm);
 					CharArr[i][12] = Number(rows[i].gmateriall);
 					CharArr[i][13] = Number(rows[i].mateshards);
+					CharArr[i][14] = rows[i].guild;
+					CharArr[i][15] = rows[i].guildtitle;
 					
 				}
 				//console.log(CharArr);
@@ -84,6 +86,8 @@ function ArrayUpdate() {
 						rows[i].GmaterialM = CharArr[i][11];
 						rows[i].GmaterialL = CharArr[i][12];
 						rows[i].MateShards = CharArr[i][13];
+						rows[i].guild = CharArr[i][14];
+						rows[i].guildtitle = CharArr[i][15];
 						rows[i].save();
 
 					}
@@ -118,7 +122,11 @@ function main(UserID) {
 				\n 公會素材(小):' + CharArr[i][10]+'\
 				\n 公會素材(中):' + CharArr[i][11]+'\
 				\n 公會素材(大):' + CharArr[i][12]+'\
-				\n 夥伴碎片:' + CharArr[i][13];
+				\n 夥伴碎片:' + CharArr[i][13] + '\
+				\n-----公會相關-----\
+				\n 所屬公會: ' + CharArr[i][14] + '\
+				\n 公會職位: ' + CharArr[i][15] + '\
+				\n--------------------------------';
 			
 			if(CharArr[i][5] == 1) rply.text += '\n!!!警告 繼承模式開啟中，請盡速繼承!!!';
 			
@@ -164,7 +172,11 @@ function SearchPlayer(Name) {
 				\n 公會素材(小):' + CharArr[i][10]+'\
 				\n 公會素材(中):' + CharArr[i][11]+'\
 				\n 公會素材(大):' + CharArr[i][12]+'\
-				\n 夥伴碎片:' + CharArr[i][13];
+				\n 夥伴碎片:' + CharArr[i][13]+ '\
+				\n-----公會相關-----\
+				\n 所屬公會: ' + CharArr[i][14] + '\
+				\n 公會職位: ' + CharArr[i][15] + '\
+				\n--------------------------------';
 
 			return rply;
 
@@ -260,6 +272,8 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 	CharArr[CharArrleng][11] = 0;
 	CharArr[CharArrleng][12] = 0;
 	CharArr[CharArrleng][13] = 0;
+	CharArr[CharArrleng][14] = '輔導公會';
+	CharArr[CharArrleng][15] = '會員';
 	///確認玩家資料
 	
 	DB.useServiceAccountAuth(creds, function (err) {
