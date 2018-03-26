@@ -3,7 +3,7 @@ var fs = require('fs');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
 
-var PD = require('./BattleStates.js').GetArray;
+var PD = require('./BattleStates.js').GetArray();
 
 
 var CharArr= [];
