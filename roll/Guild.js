@@ -76,7 +76,7 @@ function ArrayUpdate() {
 	
 }
 
-function guildvView(){
+function guildView(){
 	rply.text = '【公會一覽】';
 	
 	for(var i  =0; i<CharArr.length;i++){
@@ -89,5 +89,5 @@ function guildvView(){
 }
 
 module.exports = {
-	guildvView
+	guildView
 };
