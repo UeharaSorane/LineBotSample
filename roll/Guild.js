@@ -1,5 +1,4 @@
 var rply ={type : 'text'}; //type是必需的,但可以更改
-console.log(require('./BoxOpen.js'));
 
 
 var fs = require('fs');
@@ -7,6 +6,8 @@ var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
 
 var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
+var PlayerData = require('./PlayerData.js');
+console.log(PlayerData);
 
 var CharArr= [];
 
