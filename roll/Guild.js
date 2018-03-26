@@ -115,17 +115,17 @@ function guildSearch(GuildName){
 					\n-----公會成員-----';
 			
 			for(var j = 0;j<CharArr[i][3].length; j++){
-				rply.text += CharArr[i][4] + ': ' + CharArr[i][3] + '\n';
+				rply.text += '\n'CharArr[i][j][4] + ': ' + CharArr[i][j][3];
 			}
 			
 			if(CharArr[i][6] == 'GM限定'){
-				rply.text += '\n這是GM限定公會，一般人是加不進來的';
+				rply.text += '\n\n這是GM限定公會，一般人是加不進來的';
 			}else if(CharArr[i][6] == '自由加入'){
-				rply.text += '\n這是可以自由加入公會，請輸入 公會 公會名 加入 就能直接加入公會了';
+				rply.text += '\n\n這是可以自由加入公會，請輸入 公會 公會名 加入 就能直接加入公會了';
 			}else if(CharArr[i][6] == '審核'){
-				rply.text += '\n這是必須審核才能加入的公會，請輸入 公會 公會名 加入 並等待公會會長同意';
+				rply.text += '\n\n這是必須審核才能加入的公會，請輸入 公會 公會名 加入 並等待公會會長同意';
 			}else if(CharArr[i][6] == '暫停招生'){
-				rply.text += '\n目前這個公會暫時停止招募新人了';
+				rply.text += '\n\n目前這個公會暫時停止招募新人了';
 			}
 			
 			return rply.text;
