@@ -8,6 +8,7 @@ var PD = require('./BattleStates.js').GetArray;
 
 var CharArr= [];
 
+var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 DB.useServiceAccountAuth(creds, function (err) {
 		
  
