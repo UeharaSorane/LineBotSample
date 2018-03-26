@@ -1,5 +1,5 @@
 var rply ={type : 'text'}; //type是必需的,但可以更改
-console.log(require('./PlayerData.js'));
+console.log(require('./BoxOpen.js'));
 
 
 var fs = require('fs');
