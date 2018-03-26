@@ -5,6 +5,7 @@ var BattleStates = require('./BattleStates.js');
 var Mate = require('./TeammateIllustration.js');
 var Ability = require('./Ability.js');
 var PlayerData = require('./PlayerData.js');
+console.log(PlayerData);
 
 var BattleStatesDataArray = BattleStates.GetArray();
 var WeaponsArray = Mate.GetArray();
