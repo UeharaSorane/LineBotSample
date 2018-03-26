@@ -143,12 +143,15 @@ function MateShop(UserID,Goods,confirm){
 						}else if(ShopArr[k][2] == '道具'){
 							ItemBox.getItem(UserID,Goods);
 						}else if(ShopArr[k][2] == '素材'){
-							PD[i][7]+=ShopArr[k][9];
+						/*	PD[i][7]+=ShopArr[k][9];
 							PD[i][8]+=ShopArr[k][10];
 							PD[i][9]+=ShopArr[k][11];
 							PD[i][10]+=ShopArr[k][12];
 							PD[i][11]+=ShopArr[k][13];
-							PD[i][12]+=ShopArr[k][14];
+							PD[i][12]+=ShopArr[k][14];*/
+							
+							console.log(PD[i][7]);
+							console.log(isNaN(ShopArr[k][9]));
 						}
 						
 						PD[i][13]-=ShopArr[k][3];
