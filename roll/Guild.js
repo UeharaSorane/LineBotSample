@@ -2,17 +2,9 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 var fs = require('fs');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
-var PlayerData = require('./PlayerData.js');
-var WeaponBox = require('./WeaponBox.js');
-var BadgeBox = require('./BadgeBox.js');
-var MateBox = require('./MateBox.js');
-var ItemBox = require('./ItemBox.js');
 
-var PD = PlayerData.GetArray();
-var WD = WeaponBox.GetArray();
-var AD = require('./AccessoryBox.js').GetArray();
-var BD = BadgeBox.GetArray();
-var MD = MateBox.GetArray();
+var PD = require('./PlayerData.js').GetArray();
+
 
 var CharArr= [];
 
