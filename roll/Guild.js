@@ -1,7 +1,3 @@
-var PlayerData = require('./PlayerData.js');
-var PD = PlayerData.GetArray();
-console.log(PD);
-
 var rply ={type : 'text'}; //type是必需的,但可以更改
 var fs = require('fs');
 var GoogleSpreadsheet = require('google-spreadsheet');
