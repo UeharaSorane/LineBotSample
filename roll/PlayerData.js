@@ -6,7 +6,6 @@ var BB = require('./BadgeBox.js');
 var MB = require('./MateBox.js');
 var SB = require('./SkillBox.js');
 var IB = require('./ItemBox.js');
-var Guild = require('./aaa.js');
 
 var GB = Guild.GetArray();
 
