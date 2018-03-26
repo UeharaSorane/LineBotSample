@@ -38,17 +38,20 @@ function MiraShop(UserID,Goods,confirm){
 						return rply;
 					}else{
 						if(ShopArr[k][1] == '基本能力重置'){
-									BattleStatesDataArray[i][32] = 1;
-									BattleStates.saveArray(BattleStatesDataArray);
-									
-									rply.text = '你成功購買了基本能力重置！請輸入 基本能力分配 hp mp atk 重新分配你的能力';
-									return rply;
+							BattleStatesDataArray[i][32] = 1;
+							BattleStates.saveArray(BattleStatesDataArray);
+							PD[i][3]-=20;							
+							PlayerData.saveArray(PD);
+
+							rply.text = '你成功購買了基本能力重置！請輸入 基本能力分配 hp mp atk 重新分配你的能力';
+							return rply;
 									
 						}else if(ShopArr[k][1] == '金幣x10000'){
-							PD[i][7]+=ShopArr[k][2]+=10000;
-							
+							PD[i][2]+=10000;
+							PD[i][3]-=10;							
 							PlayerData.saveArray(PD);
 							rply.text = '你成功購買了金幣x10000！請輸入 玩家情報 進行確認';
+							return rply;
 						}
 							
 							
