@@ -93,7 +93,7 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	if (trigger.match(/^繼承$/)!= null ) return exports.PlayerData.InheritChatacter(UserID, mainMsg[1], mainMsg[2]);//繼承角色
 	if (trigger.match(/^更名$/)!= null ) return exports.PlayerData.switchName(UserID, mainMsg[1]);//更名
 	if (trigger.match(/^更換稱號$/)!= null ) return exports.PlayerData.switchTitle(UserID, mainMsg[1]);//更換稱號
-	if (trigger.match(/^公會$/)!= null ) return exports.aaa.GuildCommand(UserID, mainMsg[1], mainMsg[2]);//公會功能
+	if (trigger.match(/^公會$/)!= null ) return exports.Guild.GuildCommand(UserID, mainMsg[1], mainMsg[2]);//公會功能
 	
 	////////////////////////////戰鬥資料相關
 	if (trigger.match(/^戰鬥能力$/)!= null ) return exports.BattleStates.BattleStates(UserID);//玩家情報
