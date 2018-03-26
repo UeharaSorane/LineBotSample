@@ -187,7 +187,7 @@ function InheritPlayer(UserID,Name){
 }
 
 function getItem(UserID,Item){
-	console.log(Item)
+	console.log(Item);
 	
 	for(var i = 0; i<WeaponBoxArr.length; i++){
 		if(WeaponBoxArr[i][0] == UserID){
@@ -195,6 +195,7 @@ function getItem(UserID,Item){
 			for(var k =0; k<WeaponBoxArr[i][2]; k++){
 				if(WeaponBoxArr[i][2][k] == Item){
 					WeaponBoxArr[i][3][k]++;
+					console.log(WeaponBoxArr[i][3][k]);
 					findaway++;
 					break;
 
@@ -202,10 +203,11 @@ function getItem(UserID,Item){
 				}
 			}
 
-			if(findaway == 0){
+			if(findaway != 1){
 				let temp = WeaponBoxArr[i][2].length;
 				WeaponBoxArr[i][2][temp] = Item;
 				WeaponBoxArr[i][3][temp] = 1;
+				console.log(WeaponBoxArr[i][3][WeaponBoxArr[i][3][temp]]);
 
 				UpdateArray();
 			}
