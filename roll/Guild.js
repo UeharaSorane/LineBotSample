@@ -87,3 +87,7 @@ function guildvView(){
 	
 	return rply;
 }
+
+module.exports = {
+	guildvView
+};
