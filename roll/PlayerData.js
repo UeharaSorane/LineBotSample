@@ -6,6 +6,10 @@ var BB = require('./BadgeBox.js');
 var MB = require('./MateBox.js');
 var SB = require('./SkillBox.js');
 var IB = require('./ItemBox.js');
+var Guild = require('./Guild.js');
+
+var GB = Guild.getArray();
+
 var fs = require('fs');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
@@ -412,6 +416,7 @@ function InheritChatacter(UserID,Cname,password){
 				MB.InheritPlayer(UserID,Cname);
 				SB.InheritPlayer(UserID,Cname);
 				IB.InheritPlayer(UserID,Cname);
+				Guild.InheritPlayer(UserID,CharArr[i][14],Cname);
 				DB.useServiceAccountAuth(creds, function (err) {
 					DB.getRows(1 , 
 						function (err, rows) {
@@ -520,6 +525,7 @@ function switchName(UserID,Name){
 			MB.switchName(UserID,Name);
 			SB.switchName(UserID,Name);
 			IB.switchName(UserID,Name);
+			Guild.switchName(UserID,CharArr[i][14],Name);
 			
 			
 			rply.text = '更名成功！你現在的名字為' + Name;
