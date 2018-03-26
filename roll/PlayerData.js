@@ -7,8 +7,6 @@ var MB = require('./MateBox.js');
 var SB = require('./SkillBox.js');
 var IB = require('./ItemBox.js');
 
-var GB = Guild.GetArray();
-
 var fs = require('fs');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
