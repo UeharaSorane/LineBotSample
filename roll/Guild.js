@@ -117,7 +117,7 @@ function guildSearch(GuildName){
 			if(CharArr[i][6] == 'GM限定'){
 				returnRply += '\n\n這是GM限定公會，一般人是加不進來的';
 			}else if(CharArr[i][6] == '自由加入'){
-				returnRply += '\n\n這是可以自由加入公會，請輸入 公會 加入 公會名 就能直接加入公會了';
+				returnRply += '\n\n這是可以自由加入的公會，請輸入 公會 加入 公會名 就能直接加入公會了';
 			}else if(CharArr[i][6] == '審核'){
 				returnRply += '\n\n這是必須審核才能加入的公會，請輸入 公會 加入 公會名 並等待公會會長同意';
 			}else if(CharArr[i][6] == '暫停招生'){
