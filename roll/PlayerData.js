@@ -563,6 +563,21 @@ function saveArray(ReturnF){
 	ArrayUpdate();
 }
 
+function GuildInformation(UserID,command,guild){
+	for(var i =0; i<CharArr.length;i++){
+		if(UserID == CharArr[i][0]){
+			if(command == null){
+				rply.text =  Guild.guildView();
+				return rply;
+			}else if(command == '查詢'){
+				rply.text =  Guild.guildSearch(guild);
+				return rply;
+			}
+		}
+	}
+	
+}
+
 
 module.exports = {
 	main,
@@ -575,5 +590,6 @@ module.exports = {
 	GetArray,
 	switchName,
 	switchTitle,
-	saveArray
+	saveArray,
+	GuildInformation
 };
