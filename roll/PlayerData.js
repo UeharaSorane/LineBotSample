@@ -633,7 +633,7 @@ function GuildInformation(UserID,command,guild){
 								if(GB[j][7][k] = CharArr[i][1]){
 									//console.log(GB[j][7][k]);
 									console.log(k);
-									console.log(GB[j][7].splice(2));
+									console.log(GB[j][7].splice(2,2));
 									
 									/*CharArr[i][16] = 0;
 									GB[j][7].splice(k,1);
