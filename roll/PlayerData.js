@@ -8,7 +8,7 @@ var SB = require('./SkillBox.js');
 var IB = require('./ItemBox.js');
 var Guild = require('./Guild.js');
 
-var GB = Guild.getArray();
+var GB = Guild.GetArray();
 
 var fs = require('fs');
 var GoogleSpreadsheet = require('google-spreadsheet');
