@@ -65,6 +65,7 @@ function ArrayUpdate() {
 						rows[i].membertitle = CharArr[i][4].join(',');
 						rows[i].membern = CharArr[i][5];
 						rows[i].jointype = CharArr[i][6];
+						rows[i].save();
 
 					}
 
