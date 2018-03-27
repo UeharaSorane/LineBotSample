@@ -46,6 +46,8 @@ DB.useServiceAccountAuth(creds, function (err) {
 					CharArr[i][13] = Number(rows[i].mateshards);
 					CharArr[i][14] = rows[i].guild;
 					CharArr[i][15] = rows[i].guildtitle;
+					CharArr[i][16] = rows[i].waitingg;
+					CharArr[i][17] = rows[i].waitinggname;
 					
 				}
 				//console.log(CharArr);
@@ -92,6 +94,8 @@ function ArrayUpdate() {
 						rows[i].MateShards = CharArr[i][13];
 						rows[i].guild = CharArr[i][14];
 						rows[i].guildtitle = CharArr[i][15];
+						rows[i].waitingg = CharArr[i][16];
+						rows[i].waitinggname = CharArr[i][17];
 						rows[i].save();
 
 					}
@@ -595,6 +599,25 @@ function GuildInformation(UserID,command,guild){
 								rply.text = '你成功加入該公會了！請輸入 公會確認 進行確認';
 								
 								return rply;
+							}else{
+								rply.text = '錯誤！此公會人數已滿！';
+								
+								return rply;
+							}
+						}if(GB[j][6] == '審核'){
+							if(GB[j][5]<10){
+								CharArr[i][16] = 1;
+								CharArr[i][17] = GB[j][0];
+								let temp = GB[j][7].length;
+								GB[j][7][temp] = CharArr[i][1];
+								
+								Guild.saveArray(GB);
+								ArrayUpdate();
+								
+								rply.text = '你成功申請加入該公會了！請等待公會會長的同意\
+										\n 如果想終止申請，請輸入 公會 取消申請 即可';
+								
+								return rply;
 							}
 						}
 					}
@@ -602,6 +625,32 @@ function GuildInformation(UserID,command,guild){
 				
 				rply.text = '錯誤！找不到該公會';
 				return rply;
+			}else if(command == '取消申請'){
+				if(CharArr[i][16] == 1){
+					for(var j = 0;j<GB.length;j++){
+						if(CharArr[i][17] == GB[j][0]){
+							for(var k = 0; k<GB[j][7].length;k++){
+								if(GB[j][7][k] = CharArr[i][1]){
+									CharArr[i][16] = 0;
+									GB[j][7].splice(k,1);
+									CharArr[i][17] = '無';
+									
+									rply.text = '你取消申請加入公會' + GB[j][1] + '了！';
+									return rply;
+								}
+							}
+							
+						}
+						
+					}
+					
+					
+				}else{
+					rply.text = '錯誤！你並沒有申請加入任何公會';
+					return rply;
+					
+					
+				}
 			}else{
 				rply.text = '錯誤！沒有 ' + command + '的指令';
 				return rply;
