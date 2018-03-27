@@ -592,6 +592,8 @@ function GuildInformation(UserID,command,guild){
 								Guild.saveArray(GB);
 								
 								rply.text = '你成功加入該公會了！請輸入 公會確認 進行確認';
+								
+								return rply;
 							}
 						}
 					}
