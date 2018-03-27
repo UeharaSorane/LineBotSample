@@ -632,13 +632,13 @@ function GuildInformation(UserID,command,guild){
 							for(var k = 0; k<GB[j][7].length;k++){
 								if(GB[j][7][k] = CharArr[i][1]){
 									CharArr[i][16] = 0;
-									GB[j][7].splice(k,1);
+									GB[j][7].splice(k+1,1);
 									CharArr[i][17] = '無';
 									
 									Guild.saveArray(GB);
 									ArrayUpdate();
 									
-									rply.text = '你取消申請加入公會' + GB[j][1] + '了！';
+									rply.text = '你取消申請加入公會 ' + GB[j][1] + ' 了！';
 									return rply;
 								}
 							}
