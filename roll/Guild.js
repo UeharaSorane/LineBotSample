@@ -161,10 +161,16 @@ function switchName(UserID,Guild,Name){
 	}
 }
 
+function saveArray(ReturnF){
+	CharArr = ReturnF;
+	ArrayUpdate();
+}
+
 module.exports = {
 	guildView,
 	guildSearch,
 	GetArray,
 	InheritPlayer,
-	switchName
+	switchName,
+	saveArray
 };
