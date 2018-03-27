@@ -162,9 +162,9 @@ function switchName(UserID,Guild,Name){
 }
 
 function saveArray(ReturnF){
-	console.log(ReturnF[0][3].join(','));
 	
 	CharArr = ReturnF;
+	console.log(CharArr[0][3].join(','));
 	ArrayUpdate();
 }
 
