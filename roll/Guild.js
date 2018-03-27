@@ -28,6 +28,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					CharArr[i][4] = rows[i].membertitle.split(',');
 					CharArr[i][5] = Number(rows[i].membern);
 					CharArr[i][6] = rows[i].jointype;
+					CharArr[i][7] = rows[i].waitlist.split(',');
 					
 				}
 				//console.log(CharArr);
@@ -65,7 +66,9 @@ function ArrayUpdate() {
 						rows[i].membertitle = CharArr[i][4].join(',');
 						rows[i].membern = CharArr[i][5];
 						rows[i].jointype = CharArr[i][6];
+						rows[i].waitlist = CharArr[i][7].join(',');
 						rows[i].save();
+						
 
 					}
 
