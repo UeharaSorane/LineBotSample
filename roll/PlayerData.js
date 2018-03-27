@@ -572,9 +572,42 @@ function GuildInformation(UserID,command,guild){
 			}else if(command == '查詢'){
 				rply.text =  Guild.guildSearch(guild);
 				return rply;
+			}else if(command == '加入'){
+				if(CharArr[i][14] != '輔導公會'){
+					rply.text = '錯誤！你已經有所屬公會了';
+					return rply;
+				}
+				
+				for(var j = 0;j<GB.length;j++){
+					if(guild == GB[j][0]||guild == GB[j][1]){
+						if(GB[j][6] == '自由加入'){
+							if(GB[j][5]<10){
+								CharArr[i][14] = GB[j][1];
+								CharArr[i][15] = GB[j][4][GB[j][5]];
+								
+								GB[j][2][GB[j][5]] = UserID;
+								GB[j][3][GB[j][5]] = CharArr[i][1];
+								GB[j][5]++;
+								
+								Guild.saveArray(GB);
+								
+								rply.text = '你成功加入該公會了！請輸入 公會確認 進行確認';
+							}
+						}
+					}
+				}
+				
+				rply.text = '錯誤！找不到該公會';
+				return rply;
+			}else{
+				rply.text = '錯誤！沒有 ' + command + '的指令';
+				return rply;
+				
 			}
 		}
 	}
+	rply.text = '錯誤！此Line帳號尚未擁有角色';
+	return rply;
 	
 }
 
