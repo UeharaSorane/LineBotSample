@@ -590,6 +590,7 @@ function GuildInformation(UserID,command,guild){
 								GB[j][5]++;
 								
 								Guild.saveArray(GB);
+								ArrayUpdate();
 								
 								rply.text = '你成功加入該公會了！請輸入 公會確認 進行確認';
 								
