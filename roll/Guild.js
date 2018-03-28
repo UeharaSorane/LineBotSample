@@ -172,11 +172,38 @@ function saveArray(ReturnF){
 	ArrayUpdate();
 }
 
+function InGuildView(GuildName){
+	for(var i =0; i<CharArr.length;i++){
+		if(CharArr[i][1] == '輔導公會'){
+			returnRply = '【輔導公會】 無公會玩家的歸宿\
+					\n 只要你沒有加入公會，就會來到這裡！';
+			return returnRply;
+			
+		}else if(CharArr[i][1] == GuildName || CharArr[i][0] == GuildName){
+			returnRply = '【公會情報】\
+					\n 公會編號: ' + CharArr[i][0] + '\
+					\n 公會名: ' + CharArr[i][1] + '\
+					\n 公會會長: ' + CharArr[i][3][0] + '\
+					\n 公會人數: ' + CharArr[i][5] + '\
+					\n 公會加入模式: ' + CharArr[i][6] + '\
+					\n-----公會成員-----';
+			
+			for(var j = 0;j<CharArr[i][3].length; j++){
+				returnRply += '\n' + CharArr[i][4][j] + ': ' + CharArr[i][3][j];
+			}
+			
+			return returnRply;
+			
+		}
+	}
+}
+
 module.exports = {
 	guildView,
 	guildSearch,
 	GetArray,
 	InheritPlayer,
 	switchName,
-	saveArray
+	saveArray,
+	InGuildView
 };
