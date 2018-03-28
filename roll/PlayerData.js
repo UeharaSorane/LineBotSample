@@ -650,7 +650,7 @@ function GuildInformation(UserID,command,guild){
 									Guild.saveArray(GB);
 									ArrayUpdate();
 									
-									//rply.text = '你取消申請加入公會 ' + GB[j][1] + ' 了！';
+									rply.text = '你取消申請加入公會 ' + GB[j][1] + ' 了！';
 									return rply;
 								}
 							}
