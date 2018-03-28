@@ -643,7 +643,7 @@ function GuildInformation(UserID,command,guild){
 									
 									var array=[ 'a', 'b', 'c', 'd' ];
 									array.splice(2, 1);      // 刪除 'c'
-									console.log(array.length);     // 3
+									console.log(GB[j][7].isArray());     // 3
 									console.log(array);      // [ 'a', 'b', 'd' ]
 									
 									/*let aaa = GB[j][7].slice(1,1);
