@@ -641,6 +641,7 @@ function GuildInformation(UserID,command,guild){
 									//console.log(GB[j][7][k]);
 									
 									let aaa = GB[j][7].slice(1,1);
+									aaa.remove('a');
 									console.log(aaa);
 									
 									/*CharArr[i][16] = 0;
