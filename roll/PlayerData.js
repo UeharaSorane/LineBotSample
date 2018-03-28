@@ -282,6 +282,7 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 	CharArr[CharArrleng][13] = 0;
 	CharArr[CharArrleng][14] = '輔導公會';
 	CharArr[CharArrleng][15] = '會員';
+	CharArr[CharArrleng][16] = 0;
 	///確認玩家資料
 	
 	DB.useServiceAccountAuth(creds, function (err) {
