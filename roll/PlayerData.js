@@ -639,8 +639,9 @@ function GuildInformation(UserID,command,guild){
 							for(var k = 0; k<GB[j][7].length;k++){
 								if(GB[j][7][k] == CharArr[i][1]){
 									//console.log(GB[j][7][k]);
-									console.log(k);
-									console.log(GB[j][7].splice(1,0));
+									
+									let aaa = GB[j][7]..splice(1,0);
+									console.log(aaa);
 									
 									/*CharArr[i][16] = 0;
 									GB[j][7].splice(k,1);
