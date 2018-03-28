@@ -641,9 +641,8 @@ function GuildInformation(UserID,command,guild){
 									//console.log(GB[j][7][k]);
 									
 									
-									var array=GB[j][7];
-									array.splice(k, 1);      // 刪除 'c'
-									console.log(array);      // [ 'a', 'b', 'd' ]
+									GB[j][7].splice(k, 1);      // 刪除 'c'
+									console.log(GB[j][7]);      // [ 'a', 'b', 'd' ]
 									
 									/*let aaa = GB[j][7].slice(1,1);
 									aaa.remove('a');
