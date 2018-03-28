@@ -683,8 +683,37 @@ function GuildManage(UserID,commmand,Name){
 		if(UserID == CharArr[i][0]){
 			for(var j =0;j<GB.length;j++){
 				if(GB[j][2][0] == UserID){
-					rply.text = '歡迎' + GB[j][1] + '的會長！';
-					return rply;
+					if(command == null){
+						rply.text = '歡迎' + GB[j][1] + '的會長！\n-------------\n';
+						rply.text += Guild.InGuildView(CharArr[i][14]);
+
+						if(GB[j][7].length>0){
+							rply.text += '你有' + GB[j][7].length + '名玩家需要審核喔！\
+									\n 請輸入 公會管理 審核 進行確認';
+						}
+
+						return rply;
+
+					}else if(command == '審核'){
+						rply.text = '歡迎' + GB[j][1] + '的會長！\n-------------\n';
+
+						if(GB[j][7].length == 0){
+							rply.text += '沒有任何申請喔！';
+							return rply;
+						}else{
+							rply.text += '這是待審核玩家清單:'
+							
+							for(var k =0; k<GB[j][7].length;k++){
+								rply.text += '\n' + GB[j][7][k];
+							}
+							
+							rply.text += '\n要通過的話，請輸入 公會管理 通過審核 玩家名\
+									\n 反之，則輸入 公會管理 拒絕審核 玩家名';
+						}
+
+						return rply;
+
+					}
 				}
 			}
 			rply.text = '錯誤！你並不具有會長權限';
