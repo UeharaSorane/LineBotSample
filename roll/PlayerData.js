@@ -678,6 +678,23 @@ function GuildInformation(UserID,command,guild){
 	
 }
 
+function GuildManage(UserID,commmand,Name){
+	for(var i =0; i<CharArr.length;i++){
+		if(UserID == CharArr[i][0]){
+			for(var j =0;j<GB.length;j++){
+				if(GB[j][2][0] == UserID){
+					rply.text = '歡迎' + GB[j][1] + '的會長！';
+					return rply;
+				}
+			}
+			rply.text = '錯誤！你並不具有會長權限';
+			return rply;
+		}
+	}
+	rply.text = '錯誤！此Line帳號尚未擁有角色';
+	return rply;
+}
+
 
 module.exports = {
 	main,
@@ -691,5 +708,6 @@ module.exports = {
 	switchName,
 	switchTitle,
 	saveArray,
-	GuildInformation
+	GuildInformation,
+	GuildManage
 };
