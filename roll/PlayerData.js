@@ -688,7 +688,7 @@ function GuildManage(UserID,command,Name){
 						rply.text += Guild.InGuildView(CharArr[i][14]);
 
 						if(GB[j][7].length>0){
-							rply.text += '你有' + GB[j][7].length + '名玩家需要審核喔！\
+							rply.text += '\n!!!你有' + GB[j][7].length + '名玩家需要審核喔!!!！\
 									\n 請輸入 公會管理 審核 進行確認';
 						}
 
@@ -707,8 +707,8 @@ function GuildManage(UserID,command,Name){
 								rply.text += '\n' + GB[j][7][k];
 							}
 							
-							rply.text += '\n要通過的話，請輸入 公會管理 通過審核 玩家名\
-									\n 反之，則輸入 公會管理 拒絕審核 玩家名';
+							rply.text += '\n------------------\n要通過的話，請輸入 公會管理 通過審核 玩家名\
+									\n\n 反之，則輸入 公會管理 拒絕審核 玩家名';
 						}
 
 						return rply;
