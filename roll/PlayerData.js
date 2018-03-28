@@ -641,19 +641,14 @@ function GuildInformation(UserID,command,guild){
 									//console.log(GB[j][7][k]);
 									
 									
-									GB[j][7].splice(k, 1);      // 刪除 'c'
-									console.log(GB[j][7]);      // [ 'a', 'b', 'd' ]
+									GB[j][7].splice(k, 1);
+									console.log(GB[j][7]);
 									
-									/*let aaa = GB[j][7].slice(1,1);
-									aaa.remove('a');
-									console.log(aaa);*/
-									
-									/*CharArr[i][16] = 0;
-									GB[j][7].splice(k,1);
+									CharArr[i][16] = 0;
 									CharArr[i][17] = '無';
 									
 									Guild.saveArray(GB);
-									ArrayUpdate();*/
+									ArrayUpdate();
 									
 									//rply.text = '你取消申請加入公會 ' + GB[j][1] + ' 了！';
 									return rply;
