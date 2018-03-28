@@ -8,11 +8,6 @@ var SB = require('./SkillBox.js');
 var IB = require('./ItemBox.js');
 var Guild = require('./Guild.js');
 
-var array=[ 'a', 'b', 'c', 'd' ];
-array.splice(2, 1);      // 刪除 'c'
-console.log(array.length);     // 3
-console.log(array);      // [ 'a', 'b', 'd' ]
-
 var GB = Guild.GetArray();
 
 var fs = require('fs');
@@ -644,6 +639,12 @@ function GuildInformation(UserID,command,guild){
 							for(var k = 0; k<GB[j][7].length;k++){
 								if(GB[j][7][k] == CharArr[i][1]){
 									//console.log(GB[j][7][k]);
+									
+									
+									var array=[ 'a', 'b', 'c', 'd' ];
+									array.splice(2, 1);      // 刪除 'c'
+									console.log(array.length);     // 3
+									console.log(array);      // [ 'a', 'b', 'd' ]
 									
 									/*let aaa = GB[j][7].slice(1,1);
 									aaa.remove('a');
