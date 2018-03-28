@@ -607,6 +607,12 @@ function GuildInformation(UserID,command,guild){
 							}
 						}if(GB[j][6] == '審核'){
 							if(GB[j][5]<10){
+								if(CharArr[i][16] == 1){
+									rply.text = '錯誤！你已經提出申請了，不能一次申請多個公會！\
+											\n 如果想終止申請，請輸入 公會 取消申請 即可';
+									return rply;
+								
+								}
 								CharArr[i][16] = 1;
 								CharArr[i][17] = GB[j][0];
 								let temp = GB[j][7].length;
