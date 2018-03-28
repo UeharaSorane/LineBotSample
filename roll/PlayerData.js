@@ -678,7 +678,7 @@ function GuildInformation(UserID,command,guild){
 	
 }
 
-function GuildManage(UserID,commmand,Name){
+function GuildManage(UserID,command,Name){
 	for(var i =0; i<CharArr.length;i++){
 		if(UserID == CharArr[i][0]){
 			for(var j =0;j<GB.length;j++){
