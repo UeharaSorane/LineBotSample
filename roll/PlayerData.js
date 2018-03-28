@@ -634,7 +634,7 @@ function GuildInformation(UserID,command,guild){
 								if(GB[j][7][k] = CharArr[i][1]){
 									//console.log(GB[j][7][k]);
 									console.log(k);
-									console.log(GB[j][7].splice(1,1));
+									console.log(GB[j][7].splice(k,1));
 									
 									/*CharArr[i][16] = 0;
 									GB[j][7].splice(k,1);
@@ -643,7 +643,7 @@ function GuildInformation(UserID,command,guild){
 									Guild.saveArray(GB);
 									ArrayUpdate();*/
 									
-									rply.text = '你取消申請加入公會 ' + GB[j][1] + ' 了！';
+									//rply.text = '你取消申請加入公會 ' + GB[j][1] + ' 了！';
 									return rply;
 								}
 							}
