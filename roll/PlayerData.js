@@ -750,8 +750,8 @@ function GuildManage(UserID,command,Name){
 								
 								return rply;
 							}else{
-								for(var k =0; k<GB[j][17].length;k++){
-									if(Name == GB[j][17][k]){
+								for(var k =0; k<GB[j][7].length;k++){
+									if(Name == GB[j][7][k]){
 										
 										for(var l = 0;l<CharArr.length;l++){
 											if(Name == CharArr[l][1]){
