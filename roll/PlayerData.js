@@ -530,6 +530,32 @@ function switchName(UserID,Name){
 			MB.switchName(UserID,Name);
 			SB.switchName(UserID,Name);
 			IB.switchName(UserID,Name);
+			
+			if(CharArr[i][16] == 1){
+				for(var j = 0;j<GB.length;j++){
+					if(CharArr[i][17] == GB[j][0]){
+						for(var k = 0; k<GB[j][7].length;k++){
+							if(GB[j][7][k] == CharArr[i][1]){
+								//console.log(GB[j][7][k]);
+
+
+								GB[j][7].splice(k, 1);
+								console.log(GB[j][7]);
+
+								CharArr[i][16] = 0;
+								CharArr[i][17] = '無';
+
+								Guild.saveArray(GB);
+
+								rply.text += '\n警告！因為更名，將取消申請加入公會 ' + GB[j][1] + '\n\n';
+							}
+						}
+
+					}
+
+				}
+			}
+			
 			Guild.switchName(UserID,CharArr[i][14],Name);
 			
 			
@@ -724,10 +750,16 @@ function GuildManage(UserID,command,Name){
 								
 								return rply;
 							}else{
-								for(var k =0; k<GB[j][17].lenggth;k++){
+								for(var k =0; k<GB[j][17].length;k++){
 									if(Name == GB[j][17][k]){
-										for(var l = 0;l<CharArr.lenth;l++){
+										
+										for(var l = 0;l<CharArr.length;l++){
 											if(Name == CharArr[l][1]){
+												if(CharArr[l][14] != '輔導公會'){
+													rply.text = '錯誤！此玩家已經有所屬公會了';
+													return rply;
+												}
+												
 												CharArr[l][14] = GB[j][1];
 												CharArr[l][15] = GB[j][4][GB[j][5]];
 												GB[j][7].splice(k, 1);
