@@ -684,18 +684,18 @@ function GuildManage(UserID,command,Name){
 			for(var j =0;j<GB.length;j++){
 				if(GB[j][2][0] == UserID){
 					if(command == null){
-						rply.text = '歡迎' + GB[j][1] + '的會長！\n-------------\n';
+						rply.text = '歡迎' + GB[j][1] + '的' + GB[j][4][0] +'！\n-------------\n';
 						rply.text += Guild.InGuildView(CharArr[i][14]);
 
 						if(GB[j][7].length>0){
-							rply.text += '\n!!!你有' + GB[j][7].length + '名玩家需要審核喔!!!！\
+							rply.text += '\n!!!你有' + GB[j][7].length + '名玩家需要審核喔!!!\
 									\n 請輸入 公會管理 審核 進行確認';
 						}
 
 						return rply;
 
 					}else if(command == '審核'){
-						rply.text = '歡迎' + GB[j][1] + '的會長！\n-------------\n';
+						rply.text = '歡迎' + GB[j][1] + '的' + GB[j][4][0] +'！\n-------------\n';
 
 						if(GB[j][7].length == 0){
 							rply.text += '沒有任何申請喔！';
@@ -713,6 +713,55 @@ function GuildManage(UserID,command,Name){
 
 						return rply;
 
+					}else if(command == '通過審核'){
+						if(GB[j][5]>=10){
+							rply.text = '錯誤！你的公會人數已滿！';
+								
+							return rply;
+						}else{
+							if(Name == null){
+								rply.text = '錯誤！請輸入想要通過審核的玩家名！';
+								
+								return rply;
+							}else{
+								for(var k =0; k<GB[j][17].lenggth;k++){
+									if(Name == GB[j][17][k]){
+										for(var l = 0;l<CharArr.lenth;l++){
+											if(Name == CharArr[l][1]){
+												CharArr[l][14] = GB[j][1];
+												CharArr[l][15] = GB[j][4][GB[j][5]];
+												GB[j][7].splice(k, 1);
+
+												CharArr[l][16] = 0;
+												CharArr[l][17] = '無';
+
+												GB[j][2][GB[j][5]] = CharArr[l][0];
+												GB[j][3][GB[j][5]] = CharArr[l][1];
+												GB[j][5]++;
+
+												Guild.saveArray(GB);
+												ArrayUpdate();
+
+												rply.text = '玩家 '+ Name +'成功加入你的公會了！請主動通知他！';
+
+												return rply;
+												
+											}
+										}
+									}
+									
+									rply.text = '嚴重錯誤！發現無資料的玩家名，請立刻通知GM！';
+								
+									return rply;
+								}
+							}
+							rply.text = '錯誤！這名玩家沒有申請加入你的公會喔！';
+								
+							return rply;
+						}	
+					}else{
+						rply.text = '錯誤！沒有 ' + command + '的指令';
+						return rply;
 					}
 				}
 			}
