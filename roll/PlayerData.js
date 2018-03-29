@@ -780,16 +780,15 @@ function GuildManage(UserID,command,Name){
 												
 											}
 										}
+										rply.text = '嚴重錯誤！發現無資料的玩家名，請立刻通知GM！';
+								
+										return rply;
 									}
-									
-									rply.text = '嚴重錯誤！發現無資料的玩家名，請立刻通知GM！';
-								
-									return rply;
 								}
-							}
-							rply.text = '錯誤！這名玩家沒有申請加入你的公會喔！';
+								rply.text = '錯誤！這名玩家沒有申請加入你的公會喔！';
 								
-							return rply;
+								return rply;
+							}
 						}	
 					}else{
 						rply.text = '錯誤！沒有 ' + command + '的指令';
