@@ -716,7 +716,7 @@ function GuildInformation(UserID,command,guild){
 				
 				for(var j = 0;j<GB.length;j++){
 					if(CharArr[i][14] == GB[j][1]){
-						if(CharArr[i][0] == GB[j][1][2][0]){
+						if(CharArr[i][0] == GB[j][2][0]){
 							rply.text = '錯誤！會長是不能退出公會的';
 							return rply;
 						}
