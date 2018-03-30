@@ -631,7 +631,7 @@ function GuildInformation(UserID,command,guild){
 								
 								return rply;
 							}
-						}if(GB[j][6] == '審核'){
+						}else if(GB[j][6] == '審核'){
 							if(GB[j][5]<10){
 								if(CharArr[i][16] == 1){
 									rply.text = '錯誤！你已經提出申請了，不能一次申請多個公會！\
@@ -652,6 +652,14 @@ function GuildInformation(UserID,command,guild){
 								
 								return rply;
 							}
+						}else if(GB[j][6] == 'GM限定'){
+							rply.text = '錯誤！你無法主動加入此公會！';
+								
+							return rply;
+						}else if(GB[j][6] == '暫停招生'){
+							rply.text = '錯誤！此公會暫時不開放招生！';
+								
+							return rply;
 						}
 					}
 				}
