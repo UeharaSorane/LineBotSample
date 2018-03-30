@@ -762,7 +762,7 @@ function GuildInformation(UserID,command,guild){
 	
 }
 
-function GuildManage(UserID,command,Name){
+function GuildManage(UserID,command,Name, title){
 	for(var i =0; i<CharArr.length;i++){
 		if(UserID == CharArr[i][0]){
 			for(var j =0;j<GB.length;j++){
@@ -902,6 +902,33 @@ function GuildManage(UserID,command,Name){
 
 							return rply;
 						}
+					}else if(command == '職稱更換'){
+						if(Name == null && title == null){
+							rply.text = '請輸入\
+									\n公會管理 職稱更換 想要更換的成員編號(1~10) 職稱！';
+
+							return rply;
+						}else{
+							if(Name >10 || Name <1){
+								rply.text = '錯誤！編號只有1~10喔';
+
+								return rply;
+							}
+							
+							if(title == null){
+								rply.text = '錯誤！請輸入想要更換的職稱名';
+
+								return rply;
+							}
+							
+							GB[j][4][Name] = title;
+							CheckTitle(GB[j][1]);
+							Guild.saveArray(GB);
+							
+							rply.text = '職稱變更完成！';
+
+							return rply;
+						}
 					}else{
 						rply.text = '錯誤！沒有 ' + command + '的指令';
 						return rply;
@@ -922,7 +949,8 @@ function CheckTitle(guild){
 			for(var j = 0; j<GB[i][5]; j++){
 				for(var k = 0; k<CharArr.length;k++){
 					if(GB[i][2][j] == CharArr[k][0]){
-						CharArr[k][15] == GB[i][4][j];
+						CharArr[k][15] = GB[i][4][j];
+						ArrayUpdate();
 					}
 				}
 			}
