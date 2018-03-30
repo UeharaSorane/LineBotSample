@@ -713,8 +713,8 @@ function GuildManage(UserID,command,Name){
 						rply.text = '歡迎' + GB[j][1] + '的' + GB[j][4][0] +'！\n-------------\n';
 						rply.text += Guild.InGuildView(CharArr[i][14]);
 
-						if(GB[j][7].length>0){
-							rply.text += '\n!!!你有' + GB[j][7].length + '名玩家需要審核喔!!!\
+						if(GB[j][7].length>1){
+							rply.text += '\n!!!你有' + (GB[j][7].length-1) + '名玩家需要審核喔!!!\
 									\n 請輸入 公會管理 審核 進行確認';
 						}
 
@@ -723,7 +723,7 @@ function GuildManage(UserID,command,Name){
 					}else if(command == '審核'){
 						rply.text = '歡迎' + GB[j][1] + '的' + GB[j][4][0] +'！\n-------------\n';
 
-						if(GB[j][7].length == 0){
+						if(GB[j][7].length == 1){
 							rply.text += '沒有任何申請喔！';
 							return rply;
 						}else{
