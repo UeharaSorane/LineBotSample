@@ -893,7 +893,7 @@ function GuildManage(UserID,command,Name){
 								return rply;
 							}
 							
-							GB[j][6] == Name;
+							GB[j][6] = Name;
 							Guild.saveArray(GB);
 							
 							rply.text = '招生模式變更完成！';
