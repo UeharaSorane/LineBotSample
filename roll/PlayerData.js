@@ -619,6 +619,7 @@ function GuildInformation(UserID,command,guild){
 								GB[j][2][GB[j][5]] = UserID;
 								GB[j][3][GB[j][5]] = CharArr[i][1];
 								GB[j][5]++;
+								CheckTitle(GB[j][1]);
 								
 								Guild.saveArray(GB);
 								ArrayUpdate();
@@ -735,6 +736,7 @@ function GuildInformation(UserID,command,guild){
 								CharArr[i][15] = '會員';
 								
 								GB[j][5]--;
+								CheckTitle(GB[j][1]);
 
 								Guild.saveArray(GB);
 								ArrayUpdate();
@@ -817,7 +819,7 @@ function GuildManage(UserID,command,Name){
 												}
 												
 												CharArr[l][14] = GB[j][1];
-												CharArr[l][15] = GB[j][4][GB[j][5]];
+												CheckTitle(GB[j][1]);
 												GB[j][7].splice(k, 1);
 
 												CharArr[l][16] = 0;
@@ -912,6 +914,21 @@ function GuildManage(UserID,command,Name){
 	}
 	rply.text = '錯誤！此Line帳號尚未擁有角色';
 	return rply;
+}
+
+function CheckTitle(guild){
+	for(var i=0;i<GB.length;i++){
+		if(GB[i][1] == guild){
+			for(var j = 0; j<GB[i][5]; j++){
+				for(var k = 0; k<CharArr.length;k++){
+					if(GB[i][2][j] == CharArr[k][0]){
+						CharArr[k][15] == GB[i][4][j];
+					}
+				}
+			}
+		}
+	}
+	
 }
 
 
