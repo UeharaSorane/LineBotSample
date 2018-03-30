@@ -909,7 +909,7 @@ function GuildManage(UserID,command,Name, title){
 
 							return rply;
 						}else{
-							if(Name >10 || Name <1){
+							if(Name >10 || Name <1||isNaN(Name)){
 								rply.text = '錯誤！編號只有1~10喔';
 
 								return rply;
