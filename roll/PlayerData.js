@@ -700,6 +700,47 @@ function GuildInformation(UserID,command,guild){
 					
 					
 				}
+			}else if(command == '退出'){
+				if(CharArr[i][14] == '輔導公會'){
+					rply.text = '錯誤！你尚未加入任何公會';
+					return rply;
+				}
+				
+				if(guild !='確定'){
+					rply.text = '你確定要退出公會 ' + CharArr[i][14] + ' 嗎？\
+							\n 一旦退出將無法取回你已經投入公會的任何東西\
+							\n 確定要退出的話，請輸入:\
+							\n\n 公會 退出 確定';
+					return rply;
+				}
+				
+				for(var j = 0;j<GB.length;j++){
+					if(CharArr[i][14] == GB[j][1]){
+						for(var k = 0; k<GB[j][2].length;k++){
+							if(GB[j][2][k] == CharArr[i][0]){
+								//console.log(GB[j][7][k]);
+
+
+								GB[j][2].splice(k, 1);
+								GB[j][3].splice(k, 1);
+								GB[j][2][9] = '無';
+								GB[j][3][9] = '無';
+
+								CharArr[i][14] = '輔導公會';
+								CharArr[i][15] = '會員';
+
+								Guild.saveArray(GB);
+								ArrayUpdate();
+
+								rply.text = '你已退出公會 ' + GB[j][1] + ' 了！';
+								return rply;
+							}
+						}
+					}
+				}
+				
+				rply.text = '嚴重錯誤！找不到你所屬的公會';
+				return rply;
 			}else{
 				rply.text = '錯誤！沒有 ' + command + '的指令';
 				return rply;
