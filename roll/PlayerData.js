@@ -846,6 +846,59 @@ function GuildManage(UserID,command,Name){
 								return rply;
 							}
 						}	
+					}else if(command == '拒絕審核'){
+						if(Name == null){
+							rply.text = '錯誤！請輸入想要拒絕審核的玩家名！';
+
+							return rply;
+						}else{
+							for(var k =0; k<GB[j][7].length;k++){
+								if(Name == GB[j][7][k]){
+
+									for(var l = 0;l<CharArr.length;l++){
+										if(Name == CharArr[l][1]){
+											
+											GB[j][7].splice(k, 1);
+
+											CharArr[l][16] = 0;
+											CharArr[l][17] = '無';
+
+											Guild.saveArray(GB);
+											ArrayUpdate();
+
+											rply.text = '已經拒絕玩家 '+ Name +'的申請了！請主動通知他！';
+
+											return rply;
+
+										}
+									}
+									rply.text = '嚴重錯誤！發現無資料的玩家名，請立刻通知GM！';
+
+									return rply;
+								}
+							}
+							rply.text = '錯誤！這名玩家沒有申請加入你的公會喔！';
+
+							return rply;
+						}
+					}else if(command == '招生模式'){
+						if(Name == null){
+							rply.text = '請輸入想要更換的招生模式(自由加入、審核、暫停招生)！';
+
+							return rply;
+						}else{
+							if(Name != '自由加入' && Name != '審核' && Name != '暫停招生'){
+								rply.text = '錯誤！沒有' + Name + '這種招生模式';
+
+								return rply;
+							}
+							
+							GB[j][6] == Name;
+							
+							rply.text = '招生模式變更完成！';
+
+							return rply;
+						}
 					}else{
 						rply.text = '錯誤！沒有 ' + command + '的指令';
 						return rply;
