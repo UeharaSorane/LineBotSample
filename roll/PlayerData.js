@@ -921,7 +921,7 @@ function GuildManage(UserID,command,Name, title){
 								return rply;
 							}
 							
-							GB[j][4][Name] = title;
+							GB[j][4][Name-1] = title;
 							CheckTitle(GB[j][1]);
 							Guild.saveArray(GB);
 							
