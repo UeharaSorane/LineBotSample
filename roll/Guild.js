@@ -206,7 +206,7 @@ function creatGuild(GB){
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
-	  DB.addRow(19, { GuildID: GB}, function(err) {
+	  DB.addRow(19, { Guildid: GB}, function(err) {
 		  if(err) {
 		    console.log(err);
 		  }
