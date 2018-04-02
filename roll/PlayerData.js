@@ -760,7 +760,7 @@ function GuildInformation(UserID,command,guild){
 						return rply;
 					}else{
 						for(var j = 0; j<GB.length;j++){
-							if(guild == 'GB[j][1]' ){
+							if(guild == GB[j][1] ){
 								rply.text = '已經有公會取這個名字了，請輸入其他名字';
 								return rply;
 							}else{
