@@ -251,5 +251,6 @@ module.exports = {
 	switchName,
 	saveArray,
 	InGuildView,
-	creatGuild
+	creatGuild,
+	DelGuild
 };
