@@ -935,7 +935,7 @@ function GuildManage(UserID,command,Name, title){
 
 							return rply;
 						}else{
-							if(Name == GB[j][2][0]){
+							if(Name == GB[j][3][0]){
 								rply.text = '錯誤！你不能驅逐你自己';
 								return rply;
 							}
