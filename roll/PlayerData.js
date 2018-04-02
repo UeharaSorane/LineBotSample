@@ -1093,7 +1093,7 @@ function GuildManage(UserID,command,Name, title){
 									\n\n 公會管理 解散 確定';
 							return rply;
 						}else{
-							if(title != '非常確定'||title != '完全確定'){
+							if(title != '非常確定'&&title != '完全確定'){
 								rply.text = '你真的確定要解散公會 ' + GB[j][1] + ' 嗎？\
 										\n 一旦確認後將無法拿回已經投入公會的全部素材，而且所有成員將全數退出公會\
 										\n 真的確定要解散的話，請輸入:\
