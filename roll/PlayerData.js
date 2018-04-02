@@ -929,6 +929,58 @@ function GuildManage(UserID,command,Name, title){
 
 							return rply;
 						}
+					}else if(command == '驅逐' ){
+						if(Name == null){
+							rply.text = '請輸入想要驅逐的會員！';
+
+							return rply;
+						}else{
+							if(Name == GB[j][2][0]){
+								rply.text = '錯誤！你不能驅逐你自己';
+								return rply;
+							}
+							
+							for(var k = 0; k<GB[j][3].length;k++){
+								if(GB[j][3][k] == Name){
+									if(title != '確定'){
+										rply.text = '你確定要驅逐會員 ' + GB[j][3][k] + ' 嗎？\
+												\n 一旦確認後將無法反悔\
+												\n 確定要驅逐他的話，請輸入:\
+												\n\n 公會 驅逐 玩家名 確定';
+										return rply;
+									}else{
+										for(var l = 0;l<CharArr.length;l++){
+											if(Name == CharArr[l][1]){
+												
+												GB[j][2].splice(k, 1);
+												GB[j][3].splice(k, 1);
+												GB[j][2][9] = '無';
+												GB[j][3][9] = '無';
+
+												CharArr[l][14] = '輔導公會';
+												CharArr[l][15] = '會員';
+
+												GB[j][5]--;
+												CheckTitle(GB[j][1]);
+
+												Guild.saveArray(GB);
+												ArrayUpdate();
+
+												rply.text = '你成功驅逐玩家 ' + Name + ' 了！';
+												return rply;
+												
+											}
+										}
+										rply.text = '嚴重錯誤！發現無資料的玩家名，請立刻通知GM！';
+								
+										return rply;
+										
+									}
+								}
+							}
+							
+							return rply;
+						}
 					}else{
 						rply.text = '錯誤！沒有 ' + command + '的指令';
 						return rply;
