@@ -780,7 +780,7 @@ function GuildInformation(UserID,command,guild){
 								GB[leng][6] = '自由加入';
 								
 								CharArr[i][14] = GB[leng][1];
-								CharArr[i][15] = GB[leng][4][GB[leng][5]];
+								CharArr[i][15] = GB[leng][4][0];
 								
 								Guild.creatGuild(GB[leng][0]);
 								ArrayUpdate();
