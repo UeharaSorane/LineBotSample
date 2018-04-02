@@ -227,7 +227,7 @@ function DelGuild(GB){
 				console.log( err );
 			}else{
 
-				rows[rows.length].del();
+				rows[rows.length-1].del();
 				CharArr = GB;
 				ArrayUpdate();
 				
