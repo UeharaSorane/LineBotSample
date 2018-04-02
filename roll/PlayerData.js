@@ -981,6 +981,58 @@ function GuildManage(UserID,command,Name, title){
 							
 							return rply;
 						}
+					}else if(command == '會長交換' ){
+						if(Name == null){
+							rply.text = '請輸入想要給予會長權限的會員！';
+
+							return rply;
+						}else{
+							if(Name == GB[j][3][0]){
+								rply.text = '錯誤！和自己交換會長權限一點意義都沒有啊';
+								return rply;
+							}
+							
+							for(var k = 0; k<GB[j][3].length;k++){
+								if(GB[j][3][k] == Name){
+									if(title != '確定'){
+										rply.text = '你確定要把會長權限交給 ' + GB[j][3][k] + ' 嗎？\
+												\n 一旦確認後將無法反悔\
+												\n 確定要交換的話，請輸入:\
+												\n\n 公會 會長交換 玩家名 確定';
+										return rply;
+									}else{
+										for(var l = 0;l<CharArr.length;l++){
+											if(Name == CharArr[l][1]){
+												let temp1 = UserID;
+												let temp2 = GB[j][3][0];
+												
+												
+												GB[j][3][0] = GB[j][3][k];
+												GB[j][2][0] = GB[j][2][k];
+												
+												GB[j][2][k] = temp1;
+												GB[j][3][k] = temp2;
+		
+												CheckTitle(GB[j][1]);
+
+												Guild.saveArray(GB);
+												ArrayUpdate();
+
+												rply.text = '你成功把會長權力交給玩家 ' + Name + ' 了！';
+												return rply;
+												
+											}
+										}
+										rply.text = '嚴重錯誤！發現無資料的玩家名，請立刻通知GM！';
+								
+										return rply;
+										
+									}
+								}
+							}
+							
+							return rply;
+						}
 					}else{
 						rply.text = '錯誤！沒有 ' + command + '的指令';
 						return rply;
