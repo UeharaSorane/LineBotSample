@@ -201,6 +201,21 @@ function InGuildView(GuildName){
 	}
 }
 
+function creatGuild(GB){
+
+	DB.useServiceAccountAuth(creds, function (err) {
+ 
+	  // Get all of the rows from the spreadsheet.
+	  DB.addRow(19, { guildid: GB}, function(err) {
+		  if(err) {
+		    console.log(err);
+		  }
+		  
+		});
+	});
+	
+}
+
 module.exports = {
 	guildView,
 	guildSearch,
@@ -208,5 +223,6 @@ module.exports = {
 	InheritPlayer,
 	switchName,
 	saveArray,
-	InGuildView
+	InGuildView,
+	creatGuild
 };
