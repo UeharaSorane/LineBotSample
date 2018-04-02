@@ -770,7 +770,7 @@ function GuildInformation(UserID,command,guild){
 									if(temp <= GB[k][0]) temp = GB[k][0];
 								}
 								GB[leng] = [];
-								GB[leng][0] = temp;
+								GB[leng][0] = temp+1;
 								GB[leng][1] = guild;
 								GB[leng][2] = [UserID];
 								GB[leng][3] = [CharArr[i][1]];
@@ -785,8 +785,7 @@ function GuildInformation(UserID,command,guild){
 								ArrayUpdate();
 								
 								rply.text = '你已創立公會 ' + guild + ' 了！\
-
-										\n 請輸入 公會管理 完成創立';
+								\n 請輸入 公會管理 完成創立';
 								return rply;
 								
 							}
