@@ -767,10 +767,11 @@ function GuildInformation(UserID,command,guild){
 								let temp = 0;
 								let leng = GB.length;
 								for(var k = 0; k<GB.length ; k++){
-									if(temp <= GB[k][0]) temp = GB[k][0];
+									if(temp <= Number(GB[k][0])) temp = Number(GB[k][0]);
 								}
+								temp++;
 								GB[leng] = [];
-								GB[leng][0] = temp+1;
+								GB[leng][0] = temp;
 								GB[leng][1] = guild;
 								GB[leng][2] = [UserID];
 								GB[leng][3] = [CharArr[i][1]];
