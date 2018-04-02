@@ -147,6 +147,7 @@ function InheritPlayer(UserID,Guild,Name){
 			for(var j = 0;j<CharArr[i][3].length;j++){
 				if(CharArr[i][3][j] == Name){
 					CharArr[i][2][j] = UserID;
+					ArrayUpdate();
 				}
 			}
 		}
@@ -159,6 +160,8 @@ function switchName(UserID,Guild,Name){
 			for(var j = 0;j<CharArr[i][2].length;j++){
 				if(CharArr[i][2][j] == UserID){
 					CharArr[i][3][j] = Name;
+					
+					ArrayUpdate();
 				}
 			}
 		}
