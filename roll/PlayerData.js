@@ -750,6 +750,52 @@ function GuildInformation(UserID,command,guild){
 				
 				rply.text = '嚴重錯誤！找不到你所屬的公會';
 				return rply;
+			}else if(command == '建立'){
+				if(CharArr[i][14] != '輔導公會'){
+					rply.text = '錯誤！你已經有所屬公會了';
+					return rply;
+				}else{
+					if(guild == null ){
+						rply.text = '請輸入想要創立的公會名';
+						return rply;
+					}else{
+						for(var j = 0; j<GB.length;j++){
+							if(guild == 'GB[j][1]' ){
+								rply.text = '已經有公會取這個名字了，請輸入其他名字';
+								return rply;
+							}else{
+								let temp = 0;
+								let leng = GB.length;
+								for(var k = 0; k<GB.length ; k++){
+									if(temp <= GB[k][0]) temp = GB[k][0];
+								}
+								GB[leng] = [];
+								GB[leng][0] = temp;
+								GB[leng][1] = guild;
+								GB[leng][2] = [UserID];
+								GB[leng][3] = [CharArr[i][1]];
+								GB[leng][4] = ['會長','會員1','會員2','會員3','會員4','會員5','會員6','會員7','會員8','會員9'];
+								GB[leng][5] = 1;
+								GB[leng][6] = '自由加入';
+								
+								CharArr[i][14] = GB[leng][1];
+								CharArr[i][15] = GB[leng][4][GB[leng][5]];
+								
+								Guild.creatGuild(GB[leng][0]);
+								ArrayUpdate();
+								
+								rply.text = '你已創立公會 ' + guild + ' 了！\
+
+										\n 請輸入 公會管理 完成創立';
+								return rply;
+								
+							}
+						}
+					}
+				}
+				
+				rply.text =  Guild.guildSearch(guild);
+				return rply;
 			}else{
 				rply.text = '錯誤！沒有 ' + command + '的指令';
 				return rply;
@@ -977,8 +1023,11 @@ function GuildManage(UserID,command,Name, title){
 										
 									}
 								}
+								
 							}
 							
+							rply.text = '錯誤！這名玩家不屬於你的公會喔！';
+
 							return rply;
 						}
 					}else if(command == '會長交換' ){
@@ -998,7 +1047,7 @@ function GuildManage(UserID,command,Name, title){
 										rply.text = '你確定要把會長權限交給 ' + GB[j][3][k] + ' 嗎？\
 												\n 一旦確認後將無法反悔\
 												\n 確定要交換的話，請輸入:\
-												\n\n 公會 會長交換 玩家名 確定';
+												\n\n 公會管理 會長交換 玩家名 確定';
 										return rply;
 									}else{
 										for(var l = 0;l<CharArr.length;l++){
@@ -1031,6 +1080,8 @@ function GuildManage(UserID,command,Name, title){
 								}
 							}
 							
+							rply.text = '錯誤！這名玩家不屬於你的公會喔！';
+
 							return rply;
 						}
 					}else{
