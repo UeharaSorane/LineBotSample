@@ -993,7 +993,7 @@ function GuildManage(UserID,command,Name, title){
 										rply.text = '你確定要驅逐會員 ' + GB[j][3][k] + ' 嗎？\
 												\n 一旦確認後將無法反悔\
 												\n 確定要驅逐他的話，請輸入:\
-												\n\n 公會 驅逐 玩家名 確定';
+												\n\n 公會管理 驅逐 玩家名 確定';
 										return rply;
 									}else{
 										for(var l = 0;l<CharArr.length;l++){
@@ -1085,6 +1085,52 @@ function GuildManage(UserID,command,Name, title){
 
 							return rply;
 						}
+					}else if(command == '解散'){
+						if(Name != '確定'){
+							rply.text = '你確定要解散公會 ' + GB[j][1] + ' 嗎？\
+									\n 一旦確認後將無法拿回已經投入公會的全部素材，而且所有成員將全數退出公會\
+									\n 確定要解散的話，請輸入:\
+									\n\n 公會管理 解散 確定';
+							return rply;
+						}else{
+							if(title != '非常確定'||title != '完全確定'){
+								rply.text = '你真的確定要解散公會 ' + GB[j][1] + ' 嗎？\
+										\n 一旦確認後將無法拿回已經投入公會的全部素材，而且所有成員將全數退出公會\
+										\n 真的確定要解散的話，請輸入:\
+										\n\n 公會管理 解散 確定 非常確定';
+								return rply;
+							}else if(title != '完全確定'){
+								rply.text = '!!!!!最終警告!!!!! \
+								\n!!!!!下一步將正式動作，請三思而後行!!!!!\
+								\n\
+								\n你真的完全確定要解散公會 ' + GB[j][1] + ' 嗎？\
+										\n 一旦確認後將無法拿回已經投入公會的全部素材，而且所有成員將全數退出公會\
+										\n 真的確定要解散的話，請輸入:\
+										\n\n 公會管理 解散 確定 完全確定';
+								return rply;
+							}else{
+								for(var k = 0; k<GB[j][3].length; k++){
+									for(var l = 0; l<CharArr.length; l++){
+										if(GB[j][3][k] == CharArr[l][1]){
+
+											CharArr[l][14] = '輔導公會';
+											CharArr[l][15] = '會員';
+
+										}
+										
+									}
+									
+									
+								}
+								
+								GB.splice(j, 1);
+								Guild.DelGuild(GB);
+								rply.text = '公會成功解散了！';
+								return rply;
+								
+							}
+						}
+						
 					}else{
 						rply.text = '錯誤！沒有 ' + command + '的指令';
 						return rply;
