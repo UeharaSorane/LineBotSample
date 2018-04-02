@@ -778,6 +778,7 @@ function GuildInformation(UserID,command,guild){
 								GB[leng][4] = ['會長','會員1','會員2','會員3','會員4','會員5','會員6','會員7','會員8','會員9'];
 								GB[leng][5] = 1;
 								GB[leng][6] = '自由加入';
+								GB[leng][7] = [];
 								
 								CharArr[i][14] = GB[leng][1];
 								CharArr[i][15] = GB[leng][4][0];
