@@ -161,7 +161,392 @@ function GuildCheck(UserID){
 	
 }
 
+function Warehouse(UserID,command,type,number){
+	for(var i = 0;i <PB.length;i++){
+		if(PB[i][0] == UserID){
+			if(PB[i][14] == '輔導公會'){
+				rply.text = '錯誤！輔導公會是不能使用公會倉庫的';
+				return rply;
+			}
+			
+			for(var j = 0; j<CharArr.length;j++){
+				if(PB[i][14] == CharArr[j][1]){
+					if(command == null){
+						rply.text = '這是你目前所處公會的倉庫情報:\
+								\n 公會名: ' + CharArr[j][1] + '\
+								\n 倉庫等級: ' + CharArr[j][6] + '等\
+								\n-----倉庫素材一覽-----\
+								\n 1 武器素材(小): ' + CharArr[j][7] + '\
+								\n 2 武器素材(中): ' + CharArr[j][8] + '\
+								\n 3 武器素材(大): ' + CharArr[j][9] + '\
+								\n 4 公會素材(小): ' + CharArr[j][10] + '\
+								\n 5 公會素材(中): ' + CharArr[j][11] + '\
+								\n 6 公會素材(大): ' + CharArr[j][12] + '\
+								\n 7 金幣: ' + CharArr[j][13] + 'G\
+								\n 8 奇蹟石: ' + CharArr[j][14] + '個\
+								\n\
+								\n 想要儲放素材，請輸入 公會倉庫 儲放 素材名(編號) 數量';
+						return rply;
+					}else if(command == '儲放'){
+						if(type == null){
+							rply.text = '請輸入想要儲放的素材';
+							return rply;
+						}
+						
+						if(number == null){
+							rply.text = '請輸入想要儲放的數量';
+							return rply;
+						}else if(isNaN(number)){
+							rply.text = '請輸入阿拉伯半形數字';
+							return rply;
+						}else if(number<=0 || number%1 != 0){
+							rply.text = '請輸入有效的數字(大於0的正整數)';
+							return rply;
+						}
+						
+						
+						if(type == '武器素材(小)'||type == 1){
+							else if(number>PB[i][7]){
+								rply.text = '持有素材不足(' + (number - PB[i][7]) + ')';
+								return rply;
+							}else{
+								PB[i][7]-=number;
+								CharArr[j][7]+=number;
+								
+								rply.text = '儲放成功';
+								
+								if(CharArr[j][6] == 1&&CharArr[j][7] > 1000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][7] - 1000) + '個素材進行歸還';
+									PB[i][7]+=CharArr[j][7]-1000;
+									CharArr[j][7] = 1000;
+										
+								}else if(CharArr[j][6] == 2&&CharArr[j][7] > 2000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][7] - 2000) + '個素材進行歸還';
+									PB[i][7]+=CharArr[j][7]-2000;
+									CharArr[j][7] = 2000;
+										
+								}else if(CharArr[j][6] == 3&&CharArr[j][7] > 3000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][7] - 3000) + '個素材進行歸還';
+									PB[i][7]+=CharArr[j][7]-3000;
+									CharArr[j][7] = 3000;
+										
+								}else if(CharArr[j][6] == 4&&CharArr[j][7] > 5000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][7] - 5000) + '個素材進行歸還';
+									PB[i][7]+=CharArr[j][7]-5000;
+									CharArr[j][7] = 5000;
+										
+								}else if(CharArr[j][6] == 5&&CharArr[j][7] > 10000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][7] - 10000) + '個素材進行歸還';
+									PB[i][7]+=CharArr[j][7]-10000;
+									CharArr[j][7] = 10000;
+										
+								}
+								
+								ArrayUpdate();
+								PlayerData.saveArray(PB);
+								
+								return rply;
+							}
+							
+						}else if(type == '武器素材(中)'||type == 2){
+							if(number>PB[i][8]){
+								rply.text = '持有素材不足(' + (number - PB[i][8]) + ')';
+								return rply;
+							}else{
+								PB[i][8]-=number;
+								CharArr[j][8]+=number;
+								
+								rply.text = '儲放成功';
+								
+								if(CharArr[j][6] == 1&&CharArr[j][8] > 1000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][8] - 1000) + '個素材進行歸還';
+									PB[i][8]+=CharArr[j][8]-1000;
+									CharArr[j][8] = 1000;
+										
+								}else if(CharArr[j][6] == 2&&CharArr[j][8] > 2000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][8] - 2000) + '個素材進行歸還';
+									PB[i][8]+=CharArr[j][8]-2000;
+									CharArr[j][8] = 2000;
+										
+								}else if(CharArr[j][6] == 3&&CharArr[j][8] > 3000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][8] - 3000) + '個素材進行歸還';
+									PB[i][8]+=CharArr[j][8]-3000;
+									CharArr[j][8] = 3000;
+										
+								}else if(CharArr[j][6] == 4&&CharArr[j][8] > 5000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][8] - 5000) + '個素材進行歸還';
+									PB[i][8]+=CharArr[j][8]-5000;
+									CharArr[j][8] = 5000;
+										
+								}else if(CharArr[j][6] == 5&&CharArr[j][8] > 10000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][8] - 10000) + '個素材進行歸還';
+									PB[i][8]+=CharArr[j][8]-10000;
+									CharArr[j][8] = 10000;
+										
+								}
+								
+								ArrayUpdate();
+								PlayerData.saveArray(PB);
+								return rply;
+							}
+							
+						}else if(type == '武器素材(大)'||type == 3){
+							if(number>PB[i][9]){
+								rply.text = '持有素材不足(' + (number - PB[i][9]) + ')';
+								return rply;
+							}else{
+								PB[i][9]-=number;
+								CharArr[j][9]+=number;
+								
+								rply.text = '儲放成功';
+								
+								if(CharArr[j][6] == 1&&CharArr[j][9] > 1000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][9] - 1000) + '個素材進行歸還';
+									PB[i][9]+=CharArr[j][9]-1000;
+									CharArr[j][9] = 1000;
+										
+								}else if(CharArr[j][6] == 2&&CharArr[j][9] > 2000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][9] - 2000) + '個素材進行歸還';
+									PB[i][9]+=CharArr[j][9]-2000;
+									CharArr[j][9] = 2000;
+										
+								}else if(CharArr[j][6] == 3&&CharArr[j][9] > 3000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][9] - 3000) + '個素材進行歸還';
+									PB[i][9]+=CharArr[j][9]-3000;
+									CharArr[j][9] = 3000;
+										
+								}else if(CharArr[j][6] == 4&&CharArr[j][9] > 5000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][9] - 5000) + '個素材進行歸還';
+									PB[i][9]+=CharArr[j][9]-5000;
+									CharArr[j][9] = 5000;
+										
+								}else if(CharArr[j][6] == 5&&CharArr[j][9] > 10000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][9] - 10000) + '個素材進行歸還';
+									PB[i][9]+=CharArr[j][9]-10000;
+									CharArr[j][9] = 10000;
+								
+								ArrayUpdate();
+								PlayerData.saveArray(PB);
+								return rply;
+							}
+							
+						}else if(type == '公會素材(小)'||type == 4){
+							if(number>PB[i][10]){
+								rply.text = '持有素材不足(' + (number - PB[i][10]) + ')';
+								return rply;
+							}else{
+								PB[i][10]-=number;
+								CharArr[j][10]+=number;
+								
+								rply.text = '儲放成功';
+								
+								if(CharArr[j][6] == 1&&CharArr[j][10] > 1000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][10] - 1000) + '個素材進行歸還';
+									PB[i][10]+=CharArr[j][10]-1000;
+									CharArr[j][10] = 1000;
+										
+								}else if(CharArr[j][6] == 2&&CharArr[j][10] > 2000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][10] - 2000) + '個素材進行歸還';
+									PB[i][10]+=CharArr[j][10]-2000;
+									CharArr[j][10] = 2000;
+										
+								}else if(CharArr[j][6] == 3&&CharArr[j][10] > 3000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][10] - 3000) + '個素材進行歸還';
+									PB[i][10]+=CharArr[j][10]-3000;
+									CharArr[j][10] = 3000;
+										
+								}else if(CharArr[j][6] == 4&&CharArr[j][10] > 5000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][10] - 5000) + '個素材進行歸還';
+									PB[i][10]+=CharArr[j][10]-5000;
+									CharArr[j][10] = 5000;
+										
+								}else if(CharArr[j][6] == 5&&CharArr[j][10] > 10000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][10] - 10000) + '個素材進行歸還';
+									PB[i][10]+=CharArr[j][10]-10000;
+									CharArr[j][10] = 10000;
+								
+								ArrayUpdate();
+								PlayerData.saveArray(PB);
+								rply.text = '儲放成功';
+								return rply;
+							}
+							
+						}else if(type == '公會素材(中)'||type == 5){
+							if(number>PB[i][11]){
+								rply.text = '持有素材不足(' + (number - PB[i][11]) + ')';
+								return rply;
+							}else{
+								PB[i][11]-=number;
+								CharArr[j][11]+=number;
+								
+								rply.text = '儲放成功';
+								
+								if(CharArr[j][6] == 1&&CharArr[j][11] > 1000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][11] - 1000) + '個素材進行歸還';
+									PB[i][11]+=CharArr[j][11]-1000;
+									CharArr[j][11] = 1000;
+										
+								}else if(CharArr[j][6] == 2&&CharArr[j][11] > 2000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][11] - 2000) + '個素材進行歸還';
+									PB[i][11]+=CharArr[j][11]-2000;
+									CharArr[j][11] = 2000;
+										
+								}else if(CharArr[j][6] == 3&&CharArr[j][11] > 3000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][11] - 3000) + '個素材進行歸還';
+									PB[i][11]+=CharArr[j][11]-3000;
+									CharArr[j][11] = 3000;
+										
+								}else if(CharArr[j][6] == 4&&CharArr[j][11] > 5000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][11] - 5000) + '個素材進行歸還';
+									PB[i][11]+=CharArr[j][11]-5000;
+									CharArr[j][11] = 5000;
+										
+								}else if(CharArr[j][6] == 5&&CharArr[j][11] > 10000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][11] - 10000) + '個素材進行歸還';
+									PB[i][11]+=CharArr[j][11]-10000;
+									CharArr[j][11] = 10000;
+								
+								ArrayUpdate();
+								PlayerData.saveArray(PB);
+								return rply;
+							}
+							
+						}else if(type == '公會素材(大)'||type == 6){
+							if(number>PB[i][12]){
+								rply.text = '持有素材不足(' + (number - PB[i][12]) + ')';
+								return rply;
+							}else{
+								PB[i][12]-=number;
+								CharArr[j][12]+=number;
+								
+								rply.text = '儲放成功';
+								
+								if(CharArr[j][6] == 1&&CharArr[j][12] > 1000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][12] - 1000) + '個素材進行歸還';
+									PB[i][12]+=CharArr[j][12]-1000;
+									CharArr[j][12] = 1000;
+										
+								}else if(CharArr[j][6] == 2&&CharArr[j][12] > 2000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][12] - 2000) + '個素材進行歸還';
+									PB[i][12]+=CharArr[j][12]-2000;
+									CharArr[j][12] = 2000;
+										
+								}else if(CharArr[j][6] == 3&&CharArr[j][12] > 3000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][12] - 3000) + '個素材進行歸還';
+									PB[i][12]+=CharArr[j][12]-3000;
+									CharArr[j][12] = 3000;
+										
+								}else if(CharArr[j][6] == 4&&CharArr[j][12] > 5000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][12] - 5000) + '個素材進行歸還';
+									PB[i][12]+=CharArr[j][12]-5000;
+									CharArr[j][12] = 5000;
+										
+								}else if(CharArr[j][6] == 5&&CharArr[j][12] > 10000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][12] - 10000) + '個素材進行歸還';
+									PB[i][12]+=CharArr[j][12]-10000;
+									CharArr[j][12] = 10000;
+								
+								ArrayUpdate();
+								PlayerData.saveArray(PB);
+								return rply;
+							}
+							
+						}else if(type == '金幣'||type == 7){
+							if(number>PB[i][2]){
+								rply.text = '持有金幣不足(' + (number - PB[i][2]) + ')';
+								return rply;
+							}else{
+								PB[i][2]-=number;
+								CharArr[j][13]+=number;
+								
+								rply.text = '儲放成功';
+								
+								if(CharArr[j][6] == 1&&CharArr[j][13] > 10000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][13] - 10000) + 'G金幣進行歸還';
+									PB[i][2]+=CharArr[j][13]-10000;
+									CharArr[j][13] = 10000;
+										
+								}else if(CharArr[j][6] == 2&&CharArr[j][13] > 1500000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][13] - 1500000) + 'G金幣進行歸還';
+									PB[i][2]+=CharArr[j][13]-1500000;
+									CharArr[j][13] = 1500000;
+										
+								}else if(CharArr[j][6] == 3&&CharArr[j][13] > 100000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][13] - 100000) + 'G金幣進行歸還';
+									PB[i][2]+=CharArr[j][13]-100000;
+									CharArr[j][13] = 100000;
+										
+								}else if(CharArr[j][6] == 4&&CharArr[j][13] > 150000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][13] - 150000) + 'G金幣進行歸還';
+									PB[i][2]+=CharArr[j][13]-150000;
+									CharArr[j][13] = 150000;
+										
+								}else if(CharArr[j][6] == 5&&CharArr[j][13] > 200000){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][13] - 200000) + 'G金幣進行歸還';
+									PB[i][2]+=CharArr[j][13]-200000;
+									CharArr[j][13] = 200000;
+								
+								ArrayUpdate();
+								PlayerData.saveArray(PB);
+								return rply;
+							}
+							
+						}else if(type == '奇蹟石'||type == 8){
+							if(CharArr[j][6] < 4){{
+								rply.text = '\n 設施等級不足，無法儲存奇蹟石';
+								return rply;
+
+							}
+							
+							if(number>PB[i][3]){
+								rply.text = '持有奇蹟石不足(' + (number - PB[i][3]) + ')';
+								return rply;
+							}else{
+								PB[i][3]-=number;
+								CharArr[j][14]+=number;
+								
+								rply.text = '儲放成功';
+								
+								if(CharArr[j][6] == 4&&CharArr[j][14] > 100){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][14] - 100) + '個奇蹟石進行歸還';
+									PB[i][3]+=CharArr[j][14]-100;
+									CharArr[j][14] = 100;
+										
+								}else if(CharArr[j][6] == 5&&CharArr[j][14] > 500){{
+					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][14] - 500) + '個奇蹟石進行歸還';
+									PB[i][3]+=CharArr[j][14]-500;
+									CharArr[j][14] = 500;
+								
+								ArrayUpdate();
+								PlayerData.saveArray(PB);
+								return rply;
+							}
+							
+						}else{
+							rply.text = '錯誤！沒有 ' + type + '的素材';
+							return rply;
+						}
+					}else{
+						
+						rply.text = '錯誤！沒有 ' + command + '的指令';
+						return rply;
+					}		
+				}
+			}
+			rply.text = '嚴重錯誤！發現無資料的公會，請找GM確認';
+			
+			return rply;
+			
+		}
+	}
+	
+	rply.text = '錯誤！此LINE帳號尚未持有角色';
+			
+	return rply;
+}
+
 module.exports = {
 	ArrayUpdate,
-	GuildCheck
+	GuildCheck,
+	Warehouse
 };
