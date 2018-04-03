@@ -161,7 +161,9 @@ function GuildCheck(UserID){
 	
 }
 
-function Warehouse(UserID,command,type,number){
+function Warehouse(UserID,command,type,NumberA){
+	var number = Number(NumberA);
+	
 	for(var i = 0;i <PB.length;i++){
 		if(PB[i][0] == UserID){
 			if(PB[i][14] == '輔導公會'){
