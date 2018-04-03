@@ -1,5 +1,4 @@
 var rply ={type : 'text'}; //type是必需的,但可以更改
-var returnRply;
 var fs = require('fs');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
@@ -50,7 +49,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 
 					
 				}
-				console.log(CharArr);
+				//console.log(CharArr);
 				console.log('公會設施資料 讀取完成');
 				//console.log();
 			}
@@ -109,13 +108,61 @@ function ArrayUpdate() {
 function GuildCheck(UserID){
 	for(var i = 0;i <PB.length;i++){
 		if(PB[i][0] == UserID){
+			if(PB[i][14] == '輔導公會'){
+				rply.text = '這是輔導公會的設施情報:\
+						\n 公會名: ' + CharArr[j][1] + '\
+						\n-----設施等級一覽-----\
+						\n 訓練房: 1等\
+						\n 煉金工坊: 1等\
+						\n 公會商店: 1等\
+						\n 公會餐廳: 1等\
+						\n 公會倉庫: 1等\
+						\n-----倉庫素材一覽-----\
+						\n 無法使用公會倉庫\
+						\n\
+						\n 想要使用設施，請輸入 公會設施 設施名';
+				return rply;
+			}
+			
 			for(var j = 0; j<CharArr.length;j++){
-				if(PB[i][14] == CharArr[j][0]){
-					rply.text = '這是你目前所處公會設施情報:';
+				if(PB[i][14] == CharArr[j][1]){
+					rply.text = '這是你目前所處公會設施情報:\
+							\n 公會名: ' + CharArr[j][1] + '\
+							\n-----設施等級一覽-----\
+							\n 訓練房: ' + CharArr[j][2] + '等\
+							\n 煉金工坊: ' + CharArr[j][3] + '等\
+							\n 公會商店: ' + CharArr[j][4] + '等\
+							\n 公會餐廳: ' + CharArr[j][5] + '等\
+							\n 公會倉庫: ' + CharArr[j][6] + '等\
+							\n-----倉庫素材一覽-----\
+							\n 武器素材(小): ' + CharArr[j][7] + '\
+							\n 武器素材(中): ' + CharArr[j][8] + '\
+							\n 武器素材(大): ' + CharArr[j][9] + '\
+							\n 公會素材(小): ' + CharArr[j][10] + '\
+							\n 公會素材(中): ' + CharArr[j][11] + '\
+							\n 公會素材(大): ' + CharArr[j][12] + '\
+							\n 金幣: ' + CharArr[j][13] + 'G\
+							\n 奇蹟石: ' + CharArr[j][14] + '個\
+							\n\
+							\n 想要使用設施，請輸入 設施名';
+					return rply;
 					
 				}
 			}
+			rply.text = '嚴重錯誤！發現無資料的公會，請找GM確認';
+			
+			return rply;
+			
 		}
 	}
 	
+	rply.text = '錯誤！此LINE帳號尚未持有角色';
+			
+	return rply;
+	
 }
+
+module.exports = {
+	ArrayUpdate,
+	GuildCheck
+};
