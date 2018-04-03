@@ -98,7 +98,7 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	if (trigger.match(/^公會設施$/)!= null ) return exports.GuildFacility.GuildCheck(UserID);//確認公會設施
 	
 	////////////////////////////公會設施相關
-	if (trigger.match(/^公會倉庫$/)!= null ) return exports.PlayerData.GuildManage(UserID, mainMsg[1], mainMsg[2], mainMsg[3]);//公會倉庫
+	if (trigger.match(/^公會倉庫$/)!= null ) return exports.GuildFacility.Warehouse(UserID, mainMsg[1], mainMsg[2], mainMsg[3]);//公會倉庫
 	
 	////////////////////////////戰鬥資料相關
 	if (trigger.match(/^戰鬥能力$/)!= null ) return exports.BattleStates.BattleStates(UserID);//玩家情報
