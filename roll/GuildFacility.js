@@ -4,6 +4,17 @@ var fs = require('fs');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
 
+var Guild = require('./Guild.js');
+var PlayerData = require('./PlayerData.js');
+var WB = require('./WeaponBox.js');
+var BB = require('./BadgeBox.js');
+var MB = require('./MateBox.js');
+var IB = require('./ItemBox.js');
+
+var PB = PlayerData.GetArray();
+
+
+
 var CharArr= [];
 
 var DB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
@@ -92,5 +103,19 @@ function ArrayUpdate() {
 			});
 
 	});
+	
+}
+
+function GuildCheck(UserID){
+	for(var i = 0;i <PB.length;i++){
+		if(PB[i][0] == UserID){
+			for(var j = 0; j<CharArr.length;j++){
+				if(PB[i][14] == CharArr[j][0]){
+					rply.text = '這是你目前所處公會設施情報:';
+					
+				}
+			}
+		}
+	}
 	
 }
