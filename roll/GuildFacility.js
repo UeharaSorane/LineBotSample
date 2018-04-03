@@ -216,27 +216,27 @@ function Warehouse(UserID,command,type,number){
 								rply.text = '儲放成功';
 								
 								if(CharArr[j][6] == 1&&CharArr[j][7] > 1000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][7] - 1000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][7] - 1000) + '個素材進行歸還';
 									PB[i][7]+=CharArr[j][7]-1000;
 									CharArr[j][7] = 1000;
 										
 								}else if(CharArr[j][6] == 2&&CharArr[j][7] > 2000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][7] - 2000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][7] - 2000) + '個素材進行歸還';
 									PB[i][7]+=CharArr[j][7]-2000;
 									CharArr[j][7] = 2000;
 										
 								}else if(CharArr[j][6] == 3&&CharArr[j][7] > 3000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][7] - 3000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][7] - 3000) + '個素材進行歸還';
 									PB[i][7]+=CharArr[j][7]-3000;
 									CharArr[j][7] = 3000;
 										
 								}else if(CharArr[j][6] == 4&&CharArr[j][7] > 5000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][7] - 5000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][7] - 5000) + '個素材進行歸還';
 									PB[i][7]+=CharArr[j][7]-5000;
 									CharArr[j][7] = 5000;
 										
 								}else if(CharArr[j][6] == 5&&CharArr[j][7] > 10000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][7] - 10000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][7] - 10000) + '個素材進行歸還';
 									PB[i][7]+=CharArr[j][7]-10000;
 									CharArr[j][7] = 10000;
 										
@@ -259,27 +259,27 @@ function Warehouse(UserID,command,type,number){
 								rply.text = '儲放成功';
 								
 								if(CharArr[j][6] == 1&&CharArr[j][8] > 1000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][8] - 1000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][8] - 1000) + '個素材進行歸還';
 									PB[i][8]+=CharArr[j][8]-1000;
 									CharArr[j][8] = 1000;
 										
 								}else if(CharArr[j][6] == 2&&CharArr[j][8] > 2000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][8] - 2000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][8] - 2000) + '個素材進行歸還';
 									PB[i][8]+=CharArr[j][8]-2000;
 									CharArr[j][8] = 2000;
 										
 								}else if(CharArr[j][6] == 3&&CharArr[j][8] > 3000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][8] - 3000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][8] - 3000) + '個素材進行歸還';
 									PB[i][8]+=CharArr[j][8]-3000;
 									CharArr[j][8] = 3000;
 										
 								}else if(CharArr[j][6] == 4&&CharArr[j][8] > 5000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][8] - 5000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][8] - 5000) + '個素材進行歸還';
 									PB[i][8]+=CharArr[j][8]-5000;
 									CharArr[j][8] = 5000;
 										
 								}else if(CharArr[j][6] == 5&&CharArr[j][8] > 10000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][8] - 10000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][8] - 10000) + '個素材進行歸還';
 									PB[i][8]+=CharArr[j][8]-10000;
 									CharArr[j][8] = 10000;
 										
@@ -301,29 +301,30 @@ function Warehouse(UserID,command,type,number){
 								rply.text = '儲放成功';
 								
 								if(CharArr[j][6] == 1&&CharArr[j][9] > 1000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][9] - 1000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][9] - 1000) + '個素材進行歸還';
 									PB[i][9]+=CharArr[j][9]-1000;
 									CharArr[j][9] = 1000;
 										
 								}else if(CharArr[j][6] == 2&&CharArr[j][9] > 2000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][9] - 2000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][9] - 2000) + '個素材進行歸還';
 									PB[i][9]+=CharArr[j][9]-2000;
 									CharArr[j][9] = 2000;
 										
 								}else if(CharArr[j][6] == 3&&CharArr[j][9] > 3000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][9] - 3000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][9] - 3000) + '個素材進行歸還';
 									PB[i][9]+=CharArr[j][9]-3000;
 									CharArr[j][9] = 3000;
 										
 								}else if(CharArr[j][6] == 4&&CharArr[j][9] > 5000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][9] - 5000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][9] - 5000) + '個素材進行歸還';
 									PB[i][9]+=CharArr[j][9]-5000;
 									CharArr[j][9] = 5000;
 										
 								}else if(CharArr[j][6] == 5&&CharArr[j][9] > 10000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][9] - 10000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][9] - 10000) + '個素材進行歸還';
 									PB[i][9]+=CharArr[j][9]-10000;
 									CharArr[j][9] = 10000;
+								}
 								
 								ArrayUpdate();
 								PlayerData.saveArray(PB);
@@ -340,35 +341,34 @@ function Warehouse(UserID,command,type,number){
 								rply.text = '儲放成功';
 								
 								if(CharArr[j][6] == 1&&CharArr[j][10] > 1000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][10] - 1000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][10] - 1000) + '個素材進行歸還';
 									PB[i][10]+=CharArr[j][10]-1000;
 									CharArr[j][10] = 1000;
 										
 								}else if(CharArr[j][6] == 2&&CharArr[j][10] > 2000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][10] - 2000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][10] - 2000) + '個素材進行歸還';
 									PB[i][10]+=CharArr[j][10]-2000;
 									CharArr[j][10] = 2000;
 										
 								}else if(CharArr[j][6] == 3&&CharArr[j][10] > 3000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][10] - 3000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][10] - 3000) + '個素材進行歸還';
 									PB[i][10]+=CharArr[j][10]-3000;
 									CharArr[j][10] = 3000;
 										
 								}else if(CharArr[j][6] == 4&&CharArr[j][10] > 5000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][10] - 5000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][10] - 5000) + '個素材進行歸還';
 									PB[i][10]+=CharArr[j][10]-5000;
 									CharArr[j][10] = 5000;
 										
 								}else if(CharArr[j][6] == 5&&CharArr[j][10] > 10000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][10] - 10000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][10] - 10000) + '個素材進行歸還';
 									PB[i][10]+=CharArr[j][10]-10000;
 									CharArr[j][10] = 10000;
+								}
 								
 								ArrayUpdate();
 								PlayerData.saveArray(PB);
-								rply.text = '儲放成功';
 								return rply;
-							}
 							
 						}else if(type == '公會素材(中)'||type == 5){
 							if(number>PB[i][11]){
@@ -381,34 +381,34 @@ function Warehouse(UserID,command,type,number){
 								rply.text = '儲放成功';
 								
 								if(CharArr[j][6] == 1&&CharArr[j][11] > 1000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][11] - 1000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][11] - 1000) + '個素材進行歸還';
 									PB[i][11]+=CharArr[j][11]-1000;
 									CharArr[j][11] = 1000;
 										
 								}else if(CharArr[j][6] == 2&&CharArr[j][11] > 2000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][11] - 2000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][11] - 2000) + '個素材進行歸還';
 									PB[i][11]+=CharArr[j][11]-2000;
 									CharArr[j][11] = 2000;
 										
 								}else if(CharArr[j][6] == 3&&CharArr[j][11] > 3000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][11] - 3000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][11] - 3000) + '個素材進行歸還';
 									PB[i][11]+=CharArr[j][11]-3000;
 									CharArr[j][11] = 3000;
 										
 								}else if(CharArr[j][6] == 4&&CharArr[j][11] > 5000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][11] - 5000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][11] - 5000) + '個素材進行歸還';
 									PB[i][11]+=CharArr[j][11]-5000;
 									CharArr[j][11] = 5000;
 										
 								}else if(CharArr[j][6] == 5&&CharArr[j][11] > 10000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][11] - 10000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][11] - 10000) + '個素材進行歸還';
 									PB[i][11]+=CharArr[j][11]-10000;
 									CharArr[j][11] = 10000;
+								}
 								
 								ArrayUpdate();
 								PlayerData.saveArray(PB);
 								return rply;
-							}
 							
 						}else if(type == '公會素材(大)'||type == 6){
 							if(number>PB[i][12]){
@@ -421,34 +421,34 @@ function Warehouse(UserID,command,type,number){
 								rply.text = '儲放成功';
 								
 								if(CharArr[j][6] == 1&&CharArr[j][12] > 1000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][12] - 1000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][12] - 1000) + '個素材進行歸還';
 									PB[i][12]+=CharArr[j][12]-1000;
 									CharArr[j][12] = 1000;
 										
 								}else if(CharArr[j][6] == 2&&CharArr[j][12] > 2000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][12] - 2000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][12] - 2000) + '個素材進行歸還';
 									PB[i][12]+=CharArr[j][12]-2000;
 									CharArr[j][12] = 2000;
 										
 								}else if(CharArr[j][6] == 3&&CharArr[j][12] > 3000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][12] - 3000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][12] - 3000) + '個素材進行歸還';
 									PB[i][12]+=CharArr[j][12]-3000;
 									CharArr[j][12] = 3000;
 										
 								}else if(CharArr[j][6] == 4&&CharArr[j][12] > 5000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][12] - 5000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][12] - 5000) + '個素材進行歸還';
 									PB[i][12]+=CharArr[j][12]-5000;
 									CharArr[j][12] = 5000;
 										
 								}else if(CharArr[j][6] == 5&&CharArr[j][12] > 10000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][12] - 10000) + '個素材進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][12] - 10000) + '個素材進行歸還';
 									PB[i][12]+=CharArr[j][12]-10000;
 									CharArr[j][12] = 10000;
+								}
 								
 								ArrayUpdate();
 								PlayerData.saveArray(PB);
 								return rply;
-							}
 							
 						}else if(type == '金幣'||type == 7){
 							if(number>PB[i][2]){
@@ -461,34 +461,34 @@ function Warehouse(UserID,command,type,number){
 								rply.text = '儲放成功';
 								
 								if(CharArr[j][6] == 1&&CharArr[j][13] > 10000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][13] - 10000) + 'G金幣進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][13] - 10000) + 'G金幣進行歸還';
 									PB[i][2]+=CharArr[j][13]-10000;
 									CharArr[j][13] = 10000;
 										
 								}else if(CharArr[j][6] == 2&&CharArr[j][13] > 1500000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][13] - 1500000) + 'G金幣進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][13] - 1500000) + 'G金幣進行歸還';
 									PB[i][2]+=CharArr[j][13]-1500000;
 									CharArr[j][13] = 1500000;
 										
 								}else if(CharArr[j][6] == 3&&CharArr[j][13] > 100000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][13] - 100000) + 'G金幣進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][13] - 100000) + 'G金幣進行歸還';
 									PB[i][2]+=CharArr[j][13]-100000;
 									CharArr[j][13] = 100000;
 										
 								}else if(CharArr[j][6] == 4&&CharArr[j][13] > 150000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][13] - 150000) + 'G金幣進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][13] - 150000) + 'G金幣進行歸還';
 									PB[i][2]+=CharArr[j][13]-150000;
 									CharArr[j][13] = 150000;
 										
 								}else if(CharArr[j][6] == 5&&CharArr[j][13] > 200000){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][13] - 200000) + 'G金幣進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][13] - 200000) + 'G金幣進行歸還';
 									PB[i][2]+=CharArr[j][13]-200000;
 									CharArr[j][13] = 200000;
+								}
 								
 								ArrayUpdate();
 								PlayerData.saveArray(PB);
 								return rply;
-							}
 							
 						}else if(type == '奇蹟石'||type == 8){
 							if(CharArr[j][6] < 4){
@@ -507,19 +507,20 @@ function Warehouse(UserID,command,type,number){
 								rply.text = '儲放成功';
 								
 								if(CharArr[j][6] == 4&&CharArr[j][14] > 100){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][14] - 100) + '個奇蹟石進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][14] - 100) + '個奇蹟石進行歸還';
 									PB[i][3]+=CharArr[j][14]-100;
 									CharArr[j][14] = 100;
 										
 								}else if(CharArr[j][6] == 5&&CharArr[j][14] > 500){
-					rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][14] - 500) + '個奇蹟石進行歸還';
+									rply.text += '\n 警告，已達儲放上限，將超過的' + (CharArr[j][14] - 500) + '個奇蹟石進行歸還';
 									PB[i][3]+=CharArr[j][14]-500;
 									CharArr[j][14] = 500;
+									
+								}
 								
 								ArrayUpdate();
 								PlayerData.saveArray(PB);
 								return rply;
-							}
 							
 						}else{
 							rply.text = '錯誤！沒有 ' + type + '的素材';
