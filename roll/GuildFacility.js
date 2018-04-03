@@ -328,7 +328,6 @@ function Warehouse(UserID,command,type,number){
 								ArrayUpdate();
 								PlayerData.saveArray(PB);
 								return rply;
-							}
 							
 						}else if(type == '公會素材(小)'||type == 4){
 							if(number>PB[i][10]){
