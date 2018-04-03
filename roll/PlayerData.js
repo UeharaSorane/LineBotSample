@@ -797,6 +797,27 @@ function GuildInformation(UserID,command,guild){
 				
 				rply.text =  Guild.guildSearch(guild);
 				return rply;
+			}else if(command == '確認'){
+				if(CharArr[i][14] == '輔導公會'){
+					rply.text = '你目前尚未加入任何公會，將只能使用等級一的設施。';
+					
+					return rply;
+				}else{
+					for(var j =0;j<GB.length;j++){
+						for(var k = 0;k<GB[j][2].length;k++){
+							if(GB[j][2][k] == UserID){
+								rply.text = '歡迎' + GB[j][1] + '的' + GB[j][4][k] +'！\n-------------\n';
+								rply.text += Guild.InGuildView(CharArr[i][14]) + '\n想確認公會設施的狀態，請輸入\
+															\n 公會設施 進行確認';
+								
+								return rply;
+							}
+						}
+					}
+					
+					rply.text = '嚴重錯誤！發現無資料的公會，請立刻通知GM！';
+					return rply;
+				}
 			}else{
 				rply.text = '錯誤！沒有 ' + command + '的指令';
 				return rply;
