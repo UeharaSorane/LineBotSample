@@ -97,6 +97,9 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	if (trigger.match(/^公會管理$/)!= null ) return exports.PlayerData.GuildManage(UserID, mainMsg[1], mainMsg[2], mainMsg[3]);//公會管理功能(會長限定)
 	if (trigger.match(/^公會設施$/)!= null ) return exports.GuildFacility.GuildCheck(UserID);//確認公會設施
 	
+	////////////////////////////公會設施相關
+	if (trigger.match(/^公會倉庫$/)!= null ) return exports.PlayerData.GuildManage(UserID, mainMsg[1], mainMsg[2], mainMsg[3]);//公會倉庫
+	
 	////////////////////////////戰鬥資料相關
 	if (trigger.match(/^戰鬥能力$/)!= null ) return exports.BattleStates.BattleStates(UserID);//玩家情報
 	if (trigger.match(/^角色能力查詢$/)!= null ) return exports.BattleStates.BattleStatesSearch(mainMsg[1]);//查詢角色能力
