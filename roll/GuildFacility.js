@@ -110,7 +110,6 @@ function GuildCheck(UserID){
 		if(PB[i][0] == UserID){
 			if(PB[i][14] == '輔導公會'){
 				rply.text = '這是輔導公會的設施情報:\
-						\n 公會名: ' + CharArr[j][1] + '\
 						\n-----設施等級一覽-----\
 						\n 訓練房: 1等\
 						\n 煉金工坊: 1等\
