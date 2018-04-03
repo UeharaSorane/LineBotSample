@@ -206,7 +206,7 @@ function Warehouse(UserID,command,type,number){
 						
 						
 						if(type == '武器素材(小)'||type == 1){
-							else if(number>PB[i][7]){
+							if(number>PB[i][7]){
 								rply.text = '持有素材不足(' + (number - PB[i][7]) + ')';
 								return rply;
 							}else{
