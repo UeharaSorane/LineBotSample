@@ -209,7 +209,7 @@ function Warehouse(UserID,command,type,NumberA){
 						
 						if(type == '武器素材(小)'||type == 1){
 							if(number>PB[i][7]){
-								rply.text = '持有素材不足(' + (number - PB[i][7]) + ')';
+								rply.text = '持有素材不足(' + (PB[i][7]-number) + ')';
 								return rply;
 							}else{
 								PB[i][7]-=number;
@@ -252,7 +252,7 @@ function Warehouse(UserID,command,type,NumberA){
 							
 						}else if(type == '武器素材(中)'||type == 2){
 							if(number>PB[i][8]){
-								rply.text = '持有素材不足(' + (number - PB[i][8]) + ')';
+								rply.text = '持有素材不足(' + (PB[i][8]-number) + ')';
 								return rply;
 							}else{
 								PB[i][8]-=number;
@@ -294,7 +294,7 @@ function Warehouse(UserID,command,type,NumberA){
 							
 						}else if(type == '武器素材(大)'||type == 3){
 							if(number>PB[i][9]){
-								rply.text = '持有素材不足(' + (number - PB[i][9]) + ')';
+								rply.text = '持有素材不足(' + (PB[i][9]-number) + ')';
 								return rply;
 							}else{
 								PB[i][9]-=number;
@@ -335,7 +335,7 @@ function Warehouse(UserID,command,type,NumberA){
 							
 						}else if(type == '公會素材(小)'||type == 4){
 							if(number>PB[i][10]){
-								rply.text = '持有素材不足(' + (number - PB[i][10]) + ')';
+								rply.text = '持有素材不足(' + (PB[i][10]-number) + ')';
 								return rply;
 							}else{
 								PB[i][10]-=number;
@@ -376,7 +376,7 @@ function Warehouse(UserID,command,type,NumberA){
 							
 						}else if(type == '公會素材(中)'||type == 5){
 							if(number>PB[i][11]){
-								rply.text = '持有素材不足(' + (number - PB[i][11]) + ')';
+								rply.text = '持有素材不足(' + (PB[i][11]-number) + ')';
 								return rply;
 							}else{
 								PB[i][11]-=number;
@@ -417,7 +417,7 @@ function Warehouse(UserID,command,type,NumberA){
 							
 						}else if(type == '公會素材(大)'||type == 6){
 							if(number>PB[i][12]){
-								rply.text = '持有素材不足(' + (number - PB[i][12]) + ')';
+								rply.text = '持有素材不足(' + (PB[i][12]-number) + ')';
 								return rply;
 							}else{
 								PB[i][12]-=number;
@@ -458,7 +458,7 @@ function Warehouse(UserID,command,type,NumberA){
 							
 						}else if(type == '金幣'||type == 7){
 							if(number>PB[i][2]){
-								rply.text = '持有金幣不足(' + (number - PB[i][2]) + ')';
+								rply.text = '持有金幣不足(' + (PB[i][2]-number) + ')';
 								return rply;
 							}else{
 								PB[i][2]-=number;
@@ -505,7 +505,7 @@ function Warehouse(UserID,command,type,NumberA){
 							}
 							
 							if(number>PB[i][3]){
-								rply.text = '持有奇蹟石不足(' + (number - PB[i][3]) + ')';
+								rply.text = '持有奇蹟石不足(' + (PB[i][3]-number) + ')';
 								return rply;
 							}else{
 								PB[i][3]-=number;
