@@ -329,6 +329,7 @@ function Warehouse(UserID,command,type,number){
 								ArrayUpdate();
 								PlayerData.saveArray(PB);
 								return rply;
+							}
 							
 						}else if(type == '公會素材(小)'||type == 4){
 							if(number>PB[i][10]){
@@ -369,6 +370,7 @@ function Warehouse(UserID,command,type,number){
 								ArrayUpdate();
 								PlayerData.saveArray(PB);
 								return rply;
+							}
 							
 						}else if(type == '公會素材(中)'||type == 5){
 							if(number>PB[i][11]){
@@ -409,6 +411,7 @@ function Warehouse(UserID,command,type,number){
 								ArrayUpdate();
 								PlayerData.saveArray(PB);
 								return rply;
+							}
 							
 						}else if(type == '公會素材(大)'||type == 6){
 							if(number>PB[i][12]){
@@ -449,6 +452,7 @@ function Warehouse(UserID,command,type,number){
 								ArrayUpdate();
 								PlayerData.saveArray(PB);
 								return rply;
+							}
 							
 						}else if(type == '金幣'||type == 7){
 							if(number>PB[i][2]){
@@ -489,6 +493,7 @@ function Warehouse(UserID,command,type,number){
 								ArrayUpdate();
 								PlayerData.saveArray(PB);
 								return rply;
+							}
 							
 						}else if(type == '奇蹟石'||type == 8){
 							if(CharArr[j][6] < 4){
@@ -521,6 +526,7 @@ function Warehouse(UserID,command,type,number){
 								ArrayUpdate();
 								PlayerData.saveArray(PB);
 								return rply;
+							}
 							
 						}else{
 							rply.text = '錯誤！沒有 ' + type + '的素材';
