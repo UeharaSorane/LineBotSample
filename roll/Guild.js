@@ -216,12 +216,12 @@ function creatGuild(GB){
 	
 }
 
-/*function DelGuild(GB){
+function DelGuild(GB){
 
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
-	  DB.getRows(21 , 
+	 /* DB.getRows(21 , 
 		function (err, rows) {
 			if (err) {
 				console.log( err );
@@ -238,10 +238,10 @@ function creatGuild(GB){
 			console.log('公會基本資料 更新完成');
 
 
-		});
+		});*/
 	});
 	
-}*/
+}
 
 module.exports = {
 	guildView,
