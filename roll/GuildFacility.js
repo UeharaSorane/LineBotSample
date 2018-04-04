@@ -701,7 +701,7 @@ function Warehouse(UserID,command,type,NumberA){
 	return rply;
 }
 
-function trainhouse(UserID,level,paytype){
+function trainhouse(UserID,level,paytype,confirm){
 	for(var i = 0;i <PB.length;i++){
 		if(PB[i][0] == UserID){
 			
@@ -715,17 +715,99 @@ function trainhouse(UserID,level,paytype){
 										\n 訓練房等級: ' + CharArr[j][2] + '等\
 										\n-----你的訓練情報-----\
 										\n 訓練等級: ' + BS[k][31] + '\
-										\n 剩餘訓練點數: ' + BS[k][30] + '\
-										\n\
-										\n 想要進行訓練，請輸入 公會倉庫 想要訓練多少等 從哪裡付款(公會倉庫、個人)';
+										\n 剩餘訓練點數: ' + BS[k][30];
+								if(BS[k][31] == 50){
+									rply.text += '\n\n 你的訓練等級已滿，不必再訓練了。';
+									
+								}else{
+									rply.text += '\n\n 想要進行訓練，請輸入 公會倉庫 想要訓練多少等 從哪裡付款(公會倉庫、個人)';
+								}
+								
 								return rply;
 							}else{
+								if(paytype == null){
+									rply.text = '請輸入想要從哪裡扣款';
+									return rply;
+								}
+								
 								if(isNaN(level)){
 									rply.text = '請輸入阿拉伯半形數字';
 									return rply;
 								}else if(level<=0 || level%1 != 0){
 									rply.text = '請輸入有效的數字(大於0的正整數)';
 									return rply;
+								}else{
+									let cost = 0;
+									
+									for(var times =0 ;times < level; times++){
+										cost+=(BS[k][31]+times);
+									}
+									
+									if(confirm != '確定'){
+										rply.text+= '\n 升級至' + (BS[k][31] + level) + '等\
+												\n 需要金幣: ' + cost*100 + '\
+												\n\
+												\n 個人持有金幣量: ' + PB[i][2] +'\
+												\n 公會倉庫的金幣量: ' + CharArr[j][13] +'\
+												\n\
+												\n 確定要升級的話，請輸入\
+												\n 訓練房 想要提升多少等 付款方式 確定';
+										return rply;
+										
+									}
+									if(level+BS[k][31]> 5){
+										if(PB[i][14] == '輔導公會' ||CharArr[j][2] ==1){
+											rply.text = '錯誤！訓練房等級不足，只能升到5等';
+											return rply;
+										}
+									}
+									
+									if(level+BS[k][31]> 10){
+										if(CharArr[j][2] ==2){
+											rply.text = '錯誤！訓練房等級不足，只能升到10等';
+											return rply;
+										}
+									}else if(level+BS[k][31]> 13){
+										if(CharArr[j][2] ==3){
+											rply.text = '錯誤！訓練房等級不足，只能升到13等';
+											return rply;
+										}
+									}else if(level+BS[k][31]> 18){
+										if(CharArr[j][2] ==4){
+											rply.text = '錯誤！訓練房等級不足，只能升到18等';
+											return rply;
+										}
+									}else if(level+BS[k][31]> 50){
+											rply.text = '錯誤！訓練等級上限是50等，不能再更高了';
+											return rply;
+									}
+									
+									if(paytype == '公會倉庫'){
+										if(CharARr[j][13] < cost*100){
+											rply.text = '公會倉庫的金幣不足(' + (CharARr[j][13] - cost*100) + ')';
+											return rply;
+										}else{
+											CharARr[j][13] -= cost*100;
+											ArrayUpdate();
+										}
+									}else if(paytype == '個人'){
+										if(PB[i][2] < cost*100){
+											rply.text = '你持有的金幣不足(' + (PB[i][2] - cost*100) + ')';
+											return rply;
+										}else{
+											PB[i][2] -= cost*100;
+											PlayerData.saveArray(PB);
+										}
+									}
+									
+									BS[k][31]+= level;
+									BS[k][30]+= level;
+									BattleStates.saveArray(BS);
+									
+									rply.text = '訓練成功！\
+											\n 請輸入 訓練情報 進行確認';
+									
+									
 								}
 							}
 						}
