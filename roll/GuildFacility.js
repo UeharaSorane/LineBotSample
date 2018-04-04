@@ -62,6 +62,26 @@ DB.useServiceAccountAuth(creds, function (err) {
 		
 	});
 
+var needWM = 
+[
+	[[30,15,5,500],[40,20,6,600],[70,30,11,1100],[170,80,31,3600]],
+ 
+	[[10,5,1,100],[30,10,5,500],[100,50,20,2500]],
+ 
+	[[5,0,0],[10,5,0],[15,5,1],[50,25,10]]
+
+];
+
+var needGM = 
+[
+	[1000,500,50,1000],
+	[1500,1000,100,5000],
+	[3000,2000,300,10000],
+	[5000,2500,50,50000]
+];
+
+
+
 function ArrayUpdate() {
 
 	DB.useServiceAccountAuth(creds, function (err) {
@@ -105,7 +125,7 @@ function ArrayUpdate() {
 	
 }
 
-function GuildCheck(UserID,command,facility){
+function GuildCheck(UserID,command,facility,confirm){
 	for(var i = 0;i <PB.length;i++){
 		if(PB[i][0] == UserID){
 			if(PB[i][14] == '輔導公會'){
@@ -168,6 +188,8 @@ function GuildCheck(UserID,command,facility){
 						return rply;
 						
 					}else if(command == '升級'){
+						let fancilityN = 0;
+						
 						for(var k = 0;k<GB.length;k++){
 							if(CharArr[j][1] == GB[k][1]){
 								if(UserID == GB[k][2][0]){
@@ -175,17 +197,80 @@ function GuildCheck(UserID,command,facility){
 										rply.text = '這是你目前所處公會設施情報:\
 												\n 公會名: ' + CharArr[j][1] + '\
 												\n-----設施等級一覽-----\
-												\n 訓練房: ' + CharArr[j][2] + '等\
-												\n 煉金工坊: ' + CharArr[j][3] + '等\
-												\n 公會商店: ' + CharArr[j][4] + '等\
-												\n 公會餐廳: ' + CharArr[j][5] + '等\
-												\n 公會倉庫: ' + CharArr[j][6] + '等\
+												\n 1 訓練房: ' + CharArr[j][2] + '等\
+												\n 2 煉金工坊: ' + CharArr[j][3] + '等\
+												\n 3 公會商店: ' + CharArr[j][4] + '等\
+												\n 4 公會餐廳: ' + CharArr[j][5] + '等\
+												\n 5 公會倉庫: ' + CharArr[j][6] + '等\
 												\n\
-												\n 請輸入 公會設施 升級 想要升級的設施名';
+												\n 請輸入 公會設施 升級 想要升級的設施名(編號)';
 										return rply;
 									}else{
-										rply.text = '錯誤！沒有名稱或編號為 ' + facility + '的設施';
-										return rply;
+										if(facility == 1||facility == '訓練房') fancilityN = 2;
+										else if(facility == 2||facility == '煉金工坊') fancilityN = 3;
+										else if(facility == 3||facility == '公會商店') fancilityN = 4;
+										else if(facility == 4||facility == '公會餐廳') fancilityN = 5;
+										else if(facility == 5||facility == '公會倉庫') fancilityN = 6;
+										else{
+											rply.text = '錯誤！沒有名稱或編號為 ' + facility + '的設施';
+											return rply;
+										}
+										
+										if(confirm != '確定'){
+											let NameT;
+											if(fancilityN = 2) NameT = '訓練房';
+											else if(fancilityN = 3) NameT = '煉金工坊';
+											else if(fancilityN = 4) NameT = '公會商店';
+											else if(fancilityN = 5) NameT = '公會餐廳';
+											else if(fancilityN = 6) NameT = '公會倉庫';
+											
+											rply.text = '公會設施 ' + NameT + '\
+													\n 目前等級: ' + CharArr[j][fancilityN] + '等';
+													
+											if(CharArr[j][fancilityN] == 5){
+												rply.text += '\n 等級以達到上限，不必再升級了';
+												
+												return rply;
+											}else{
+												rply.text+= '\n 升級至' + (CharArr[j][fancilityN] + 1) '等\
+														\n 需要以下公會素材:\
+														\n 公會素材(小): ' + needGM[CharArr[j][fancilityN]-1][0] + '\
+														\n 公會素材(中): ' + needGM[CharArr[j][fancilityN]-1][1] + '\
+														\n 公會素材(大): ' + needGM[CharArr[j][fancilityN]-1][2] + '\
+														\n 金幣: ' + needGM[CharArr[j][fancilityN]-1][3] + '\
+														\n 確定要升級的話，請輸入\
+														\n 公會設施 升級 設施名 確認';
+												return rply;
+											}
+											
+										}else{
+											if(CharArr[j][10] < needGM[CharArr[j][fancilityN]-1][0]){
+												rply.text = '錯誤！倉庫裡的公會素材(小)不足(' + (CharArr[j][10] < needGM[CharArr[j][fancilityN]-1][0]) + ')';
+												return rply;
+											}else if(CharArr[j][11] < needGM[CharArr[j][fancilityN]-1][1]){
+												rply.text = '錯誤！倉庫裡的公會素材(中)不足(' + (CharArr[j][11] < needGM[CharArr[j][fancilityN]-1][1]) + ')';
+												return rply;
+											}else if(CharArr[j][12] < needGM[CharArr[j][fancilityN]-1][2]){
+												rply.text = '錯誤！倉庫裡的公會素材(大)不足(' + (CharArr[j][12] < needGM[CharArr[j][fancilityN]-1][2]) + ')';
+												return rply;
+											}else if(CharArr[j][13] < needGM[CharArr[j][fancilityN]-1][3]){
+												rply.text = '錯誤！倉庫裡的金幣不足(' + (CharArr[j][13] < needGM[CharArr[j][fancilityN]-1][3]) + 'G)';
+												return rply;
+											}else{
+												CharArr[j][10] -= needGM[CharArr[j][fancilityN]-1][0];
+												CharArr[j][11] -= needGM[CharArr[j][fancilityN]-1][1];
+												CharArr[j][12] -= needGM[CharArr[j][fancilityN]-1][2];
+												CharArr[j][13] -= needGM[CharArr[j][fancilityN]-1][3];
+												CharArr[j][fancilityN]++;
+												
+												rply.text = '升級成功！';
+												return rply;
+												
+												
+											}
+											
+										}
+										 
 									}
 
 								}
