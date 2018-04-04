@@ -9,10 +9,12 @@ var WB = require('./WeaponBox.js');
 var BB = require('./BadgeBox.js');
 var MB = require('./MateBox.js');
 var IB = require('./ItemBox.js');
+var BattleStates = require('./BattleStates.js');
+
 
 var PB = PlayerData.GetArray();
 var GB = Guild.GetArray();
-
+var BS = BattleStates.GetArray();
 
 var CharArr= [];
 
@@ -699,8 +701,56 @@ function Warehouse(UserID,command,type,NumberA){
 	return rply;
 }
 
+function trainhouse(UserID,level,paytype){
+	for(var i = 0;i <PB.length;i++){
+		if(PB[i][0] == UserID){
+			
+			for(var j = 0; j<CharArr.length;j++){
+				if(PB[i][14] == '輔導公會'||PB[i][14] == CharArr[j][1]){
+					for(var k = 0;k<BS.length;k++){
+						if(BS[k][0] == UserID){
+							if(level == null){
+								rply.text = '這是你目前所處公會的訓練房情報:\
+										\n 公會名: ' + CharArr[j][1] + '\
+										\n 訓練房等級: ' + CharArr[j][2] + '等\
+										\n-----你的訓練情報-----\
+										\n 訓練等級: ' + BS[k][31] + '\
+										\n 剩餘訓練點數: ' + BS[k][30] + '\
+										\n\
+										\n 想要進行訓練，請輸入 公會倉庫 想要訓練多少等 從哪裡付款(公會倉庫、個人)';
+								return rply;
+							}else{
+								if(isNaN(level)){
+									rply.text = '請輸入阿拉伯半形數字';
+									return rply;
+								}else if(level<=0 || level%1 != 0){
+									rply.text = '請輸入有效的數字(大於0的正整數)';
+									return rply;
+								}
+							}
+						}
+					}
+					rply.text = '嚴重錯誤！發現無戰鬥情報的玩家，請找GM確認';
+			
+					return rply;
+							
+				}
+			}
+			rply.text = '嚴重錯誤！發現無資料的公會，請找GM確認';
+			
+			return rply;
+			
+		}
+	}
+	
+	rply.text = '錯誤！此LINE帳號尚未持有角色';
+			
+	return rply;
+}
+
 module.exports = {
 	ArrayUpdate,
 	GuildCheck,
-	Warehouse
+	Warehouse,
+	trainhouse
 };
