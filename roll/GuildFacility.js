@@ -244,7 +244,11 @@ function GuildCheck(UserID,command,facility,confirm){
 											}
 											
 										}else{
-											if(CharArr[j][10] < needGM[CharArr[j][fancilityN]-1][0]){
+											if(CharArr[j][fancilityN] == 5){
+												rply.text = '等級以達到上限，不必再升級了';
+												
+												return rply;
+											}else if(CharArr[j][10] < needGM[CharArr[j][fancilityN]-1][0]){
 												rply.text = '錯誤！倉庫裡的公會素材(小)不足(' + (CharArr[j][10] - needGM[CharArr[j][fancilityN]-1][0]) + ')';
 												return rply;
 											}else if(CharArr[j][11] < needGM[CharArr[j][fancilityN]-1][1]){
