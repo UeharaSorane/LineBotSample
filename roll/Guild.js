@@ -222,13 +222,14 @@ function DelGuild(GB){
  
 	  // Get all of the rows from the spreadsheet.
 		 DB.getRows(21 , function (err, rows) {
-			 		/*if (err) {
+			 		if (err) {
 						console.log( err );
-					}else{
+					}/*else{
 						rows[rows.length-1].del();
 						CharArr = GB;
 						ArrayUpdate();
-					}console.log('公會基本資料 更新完成');*/
+					}
+					console.log('公會基本資料 更新完成');*/
 		 });
 	});
 	
