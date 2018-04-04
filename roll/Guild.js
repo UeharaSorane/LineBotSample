@@ -224,12 +224,12 @@ function DelGuild(GB){
 		 DB.getRows(21 , function (err, rows) {
 			 		if (err) {
 						console.log( err );
-					}/*else{
-						rows[rows.length-1].del();
-						CharArr = GB;
-						ArrayUpdate();
+					}else{
+						//rows[rows.length-1].del();
+						//CharArr = GB;
+						//ArrayUpdate();
 					}
-					console.log('公會基本資料 更新完成');*/
+					//console.log('公會基本資料 更新完成');
 		 });
 	});
 	
