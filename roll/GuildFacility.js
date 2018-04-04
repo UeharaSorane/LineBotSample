@@ -741,7 +741,7 @@ function trainhouse(UserID,Level,paytype,confirm){
 								}else{
 									let cost = 0;
 									
-									for(var times =0 ;times < level; times++){
+									for(var times =1 ;times <= level; times++){
 										cost+=(BS[k][31]+times);
 									}
 									
