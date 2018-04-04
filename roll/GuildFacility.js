@@ -232,7 +232,7 @@ function GuildCheck(UserID,command,facility,confirm){
 												
 												return rply;
 											}else{
-												rply.text+= '\n 升級至' + (CharArr[j][fancilityN] + 1) '等\
+												rply.text+= '\n 升級至' + (CharArr[j][fancilityN] + 1) + '等\
 														\n 需要以下公會素材:\
 														\n 公會素材(小): ' + needGM[CharArr[j][fancilityN]-1][0] + '\
 														\n 公會素材(中): ' + needGM[CharArr[j][fancilityN]-1][1] + '\
