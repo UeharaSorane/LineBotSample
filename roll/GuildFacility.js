@@ -239,7 +239,7 @@ function GuildCheck(UserID,command,facility,confirm){
 														\n 公會素材(大): ' + needGM[CharArr[j][fancilityN]-1][2] + '\
 														\n 金幣: ' + needGM[CharArr[j][fancilityN]-1][3] + '\
 														\n 確定要升級的話，請輸入\
-														\n 公會設施 升級 設施名 確認';
+														\n 公會設施 升級 設施名 確定';
 												return rply;
 											}
 											
