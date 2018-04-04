@@ -809,6 +809,7 @@ function trainhouse(UserID,Level,paytype,confirm){
 									rply.text = '訓練成功！\
 											\n 請輸入 訓練情報 進行確認';
 									
+									return rply;
 									
 								}
 							}
