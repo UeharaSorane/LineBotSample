@@ -720,12 +720,13 @@ function trainhouse(UserID,Level,paytype,confirm){
 										\n 剩餘訓練點數: ' + BS[k][30];
 								if(BS[k][31] == 50){
 									rply.text += '\n\n 你的訓練等級已滿，不必再訓練了。';
+									return rply;
 									
 								}else{
 									rply.text += '\n\n 想要進行訓練，請輸入 公會倉庫 想要訓練多少等 從哪裡付款(公會倉庫、個人)';
+									return rply;
 								}
 								
-								return rply;
 							}else{
 								if(paytype == null){
 									rply.text = '請輸入想要從哪裡扣款';
