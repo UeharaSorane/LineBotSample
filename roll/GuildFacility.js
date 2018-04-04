@@ -701,7 +701,9 @@ function Warehouse(UserID,command,type,NumberA){
 	return rply;
 }
 
-function trainhouse(UserID,level,paytype,confirm){
+function trainhouse(UserID,Level,paytype,confirm){
+	let level = Number(Level);
+	
 	for(var i = 0;i <PB.length;i++){
 		if(PB[i][0] == UserID){
 			
@@ -744,7 +746,7 @@ function trainhouse(UserID,level,paytype,confirm){
 									}
 									
 									if(confirm != '確定'){
-										rply.text+= '\n 升級至' + (BS[k][31] + level) + '等\
+										rply.text= '\n 升級至' + (BS[k][31] + level) + '等\
 												\n 需要金幣: ' + cost*100 + '\
 												\n\
 												\n 個人持有金幣量: ' + PB[i][2] +'\
