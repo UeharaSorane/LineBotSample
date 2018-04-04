@@ -214,17 +214,9 @@ function creatGuild(GB){
 		});
 	});
 	
-	DB.addRow(22, { Guildid: GB}, function(err) {
-		  if(err) {
-		    console.log(err);
-		  }
-		  
-		});
-	});
-	
 }
 
-function DelGuild(GB){
+/*function DelGuild(GB){
 
 	DB.useServiceAccountAuth(creds, function (err) {
  
@@ -247,10 +239,9 @@ function DelGuild(GB){
 
 
 		});
-		
 	});
 	
-}
+}*/
 
 module.exports = {
 	guildView,
