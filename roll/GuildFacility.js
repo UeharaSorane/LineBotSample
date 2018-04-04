@@ -836,6 +836,48 @@ function trainhouse(UserID,Level,paytype,confirm){
 	return rply;
 }
 
+function creatGuild(GB){
+
+	DB.useServiceAccountAuth(creds, function (err) {
+ 
+	  // Get all of the rows from the spreadsheet.
+	  DB.addRow(22, { Guildid: GB}, function(err) {
+		  if(err) {
+		    console.log(err);
+		  }
+		  
+		});
+	});
+	
+}
+
+function DelGuild(GB){
+
+	DB.useServiceAccountAuth(creds, function (err) {
+ 
+	  // Get all of the rows from the spreadsheet.
+	  DB.getRows(22 , 
+		function (err, rows) {
+			if (err) {
+				console.log( err );
+			}else{
+
+				rows[rows.length-1].del();
+				CharArr = GB;
+				ArrayUpdate();
+				
+				
+				
+
+			}
+			console.log('公會設施資料 更新完成');
+
+
+		});
+	});
+	
+}
+
 module.exports = {
 	ArrayUpdate,
 	GuildCheck,
