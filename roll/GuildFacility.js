@@ -786,10 +786,10 @@ function trainhouse(UserID,Level,paytype,confirm){
 									
 									if(paytype == '公會倉庫'){
 										if(CharARr[j][13] < cost*100){
-											rply.text = '公會倉庫的金幣不足(' + (CharARr[j][13] - cost*100) + ')';
+											rply.text = '公會倉庫的金幣不足(' + (CharArr[j][13] - cost*100) + ')';
 											return rply;
 										}else{
-											CharARr[j][13] -= cost*100;
+											CharArr[j][13] -= cost*100;
 											ArrayUpdate();
 										}
 									}else if(paytype == '個人'){
