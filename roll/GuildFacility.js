@@ -800,6 +800,9 @@ function trainhouse(UserID,Level,paytype,confirm){
 											PB[i][2] -= cost*100;
 											PlayerData.saveArray(PB);
 										}
+									}else{
+										rply.text = '錯誤！沒有 ' + paytype + '的付款方式';
+										return rply;
 									}
 									
 									BS[k][31]+= level;
