@@ -167,6 +167,36 @@ function GuildCheck(UserID,command,facility){
 			
 						return rply;
 						
+					}else if(command == '升級'){
+						for(var k = 0;k<GB.length;k++){
+							if(CharArr[j][1] == GB[k][1]){
+								if(UserID == GB[k][2][0]){
+									if(facility == null){
+										rply.text = '這是你目前所處公會設施情報:\
+												\n 公會名: ' + CharArr[j][1] + '\
+												\n-----設施等級一覽-----\
+												\n 訓練房: ' + CharArr[j][2] + '等\
+												\n 煉金工坊: ' + CharArr[j][3] + '等\
+												\n 公會商店: ' + CharArr[j][4] + '等\
+												\n 公會餐廳: ' + CharArr[j][5] + '等\
+												\n 公會倉庫: ' + CharArr[j][6] + '等\
+												\n\
+												\n 請輸入 公會設施 升級 想要升級的設施名';
+										return rply;
+									}else{
+										rply.text = '錯誤！沒有名稱或編號為 ' + facility + '的設施';
+										return rply;
+									}
+
+								}
+								rply.text='\n 只有會長才能升級設施喔';
+								return rply;
+							}
+						}
+						rply.text = '嚴重錯誤！發現無基本資料的公會，請找GM確認';
+			
+						return rply;
+						
 					}else{
 						rply.text = '錯誤！沒有 ' + command + '的指令';
 						return rply;
