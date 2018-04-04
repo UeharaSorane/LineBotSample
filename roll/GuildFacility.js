@@ -263,6 +263,7 @@ function GuildCheck(UserID,command,facility,confirm){
 												CharArr[j][13] -= needGM[CharArr[j][fancilityN]-1][3];
 												CharArr[j][fancilityN]++;
 												
+												ArrayUpdate();
 												rply.text = '升級成功！';
 												return rply;
 												
