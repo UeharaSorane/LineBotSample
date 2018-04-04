@@ -245,16 +245,16 @@ function GuildCheck(UserID,command,facility,confirm){
 											
 										}else{
 											if(CharArr[j][10] < needGM[CharArr[j][fancilityN]-1][0]){
-												rply.text = '錯誤！倉庫裡的公會素材(小)不足(' + (CharArr[j][10] < needGM[CharArr[j][fancilityN]-1][0]) + ')';
+												rply.text = '錯誤！倉庫裡的公會素材(小)不足(' + (CharArr[j][10] - needGM[CharArr[j][fancilityN]-1][0]) + ')';
 												return rply;
 											}else if(CharArr[j][11] < needGM[CharArr[j][fancilityN]-1][1]){
-												rply.text = '錯誤！倉庫裡的公會素材(中)不足(' + (CharArr[j][11] < needGM[CharArr[j][fancilityN]-1][1]) + ')';
+												rply.text = '錯誤！倉庫裡的公會素材(中)不足(' + (CharArr[j][11] - needGM[CharArr[j][fancilityN]-1][1]) + ')';
 												return rply;
 											}else if(CharArr[j][12] < needGM[CharArr[j][fancilityN]-1][2]){
-												rply.text = '錯誤！倉庫裡的公會素材(大)不足(' + (CharArr[j][12] < needGM[CharArr[j][fancilityN]-1][2]) + ')';
+												rply.text = '錯誤！倉庫裡的公會素材(大)不足(' + (CharArr[j][12] - needGM[CharArr[j][fancilityN]-1][2]) + ')';
 												return rply;
 											}else if(CharArr[j][13] < needGM[CharArr[j][fancilityN]-1][3]){
-												rply.text = '錯誤！倉庫裡的金幣不足(' + (CharArr[j][13] < needGM[CharArr[j][fancilityN]-1][3]) + 'G)';
+												rply.text = '錯誤！倉庫裡的金幣不足(' + (CharArr[j][13] - needGM[CharArr[j][fancilityN]-1][3]) + 'G)';
 												return rply;
 											}else{
 												CharArr[j][10] -= needGM[CharArr[j][fancilityN]-1][0];
