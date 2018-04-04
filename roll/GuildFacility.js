@@ -218,11 +218,11 @@ function GuildCheck(UserID,command,facility,confirm){
 										
 										if(confirm != '確定'){
 											let NameT;
-											if(fancilityN = 2) NameT = '訓練房';
-											else if(fancilityN = 3) NameT = '煉金工坊';
-											else if(fancilityN = 4) NameT = '公會商店';
-											else if(fancilityN = 5) NameT = '公會餐廳';
-											else if(fancilityN = 6) NameT = '公會倉庫';
+											if(fancilityN == 2) NameT = '訓練房';
+											else if(fancilityN == 3) NameT = '煉金工坊';
+											else if(fancilityN == 4) NameT = '公會商店';
+											else if(fancilityN == 5) NameT = '公會餐廳';
+											else if(fancilityN == 6) NameT = '公會倉庫';
 											
 											rply.text = '公會設施 ' + NameT + '\
 													\n 目前等級: ' + CharArr[j][fancilityN] + '等';
