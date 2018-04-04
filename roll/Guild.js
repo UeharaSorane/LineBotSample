@@ -214,6 +214,14 @@ function creatGuild(GB){
 		});
 	});
 	
+	DB.addRow(22, { Guildid: GB}, function(err) {
+		  if(err) {
+		    console.log(err);
+		  }
+		  
+		});
+	});
+	
 }
 
 function DelGuild(GB){
@@ -239,6 +247,7 @@ function DelGuild(GB){
 
 
 		});
+		
 	});
 	
 }
