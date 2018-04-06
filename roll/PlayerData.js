@@ -904,8 +904,6 @@ module.exports = {
 	ArrayUpdate,
 	box,
 	GetArray,
-	switchName,
-	switchTitle,
 	saveArray,
 	GuildInformation,
 	GuildManage,
