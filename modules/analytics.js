@@ -90,7 +90,7 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	if (trigger.match(/^玩家建立$/)!= null ) return exports.DataManage.CreatNewPlayer(UserID, mainMsg[1], mainMsg[2], mainMsg[3]);//建立新玩家
 	if (trigger.match(/^資料庫更新$/)!= null ) return exports.PlayerData.ArrayUpdate();//資料庫外部更動更新
 	if (trigger.match(/^繼承模式開啟$/)!= null ) return exports.DataManage.InheritModeOn(UserID,mainMsg[1], mainMsg[2]);//開啟繼承權限
-	if (trigger.match(/^繼承$/)!= null ) return exports.PlayerData.InheritChatacter(UserID, mainMsg[1], mainMsg[2]);//繼承角色
+	if (trigger.match(/^繼承$/)!= null ) return exports.DataManage.InheritChatacter(UserID, mainMsg[1], mainMsg[2]);//繼承角色
 	if (trigger.match(/^更名$/)!= null ) return exports.PlayerData.switchName(UserID, mainMsg[1]);//更名
 	if (trigger.match(/^更換稱號$/)!= null ) return exports.PlayerData.switchTitle(UserID, mainMsg[1]);//更換稱號
 	if (trigger.match(/^公會$/)!= null ) return exports.PlayerData.GuildInformation(UserID, mainMsg[1], mainMsg[2]);//公會功能
