@@ -210,6 +210,11 @@ function switchName(UserID,Name){
 				return rply;
 			}
 			
+			if(PD[i][16] == 1){
+				Guild.switchNameWL(PD[i][1],PD[i][17],Name);
+				
+			}
+			
 			PD[i][1] = Name;
 			PlayerData.saveArray(PD);
 			BattleStates.switchName(UserID,Name);
@@ -220,12 +225,6 @@ function switchName(UserID,Name){
 			SkillBox.switchName(UserID,Name);
 			ItemBox.switchName(UserID,Name);
 			Guild.switchName(UserID,PD[i][14],Name);
-			
-			if(PD[i][16] == 1){
-				Guild.switchNameWL(PD[i][17],Name);
-				
-			}
-			
 			
 			rply.text = '更名成功！你現在的名字為' + Name;
 			return rply;
