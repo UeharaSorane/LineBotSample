@@ -1143,5 +1143,6 @@ module.exports = {
 	switchTitle,
 	saveArray,
 	GuildInformation,
-	GuildManage
+	GuildManage,
+	CreatNewPlayer
 };
