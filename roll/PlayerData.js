@@ -251,66 +251,6 @@ function CreatNewPlayer(userID,CName,Title,weapon) {
 
 }
 
-function InheritModeOn(userID,Cname,password){
-	if(Cname == null){
-		rply.text = '請輸入要開啟繼承模式的角色名！';
-
-		return rply;
-		
-	}else{
-		for(var i=0; i< CharArr.length; i++){
-			if(CharArr[i][1] == Cname && CharArr[i][0] !=userID){
-				rply.text = '此角色不是屬於你的喔!';
-
-				return rply;
-			}
-		
-		}
-		
-		if(password == null){
-			rply.text = '請輸入要用來繼承的專用密碼！(一旦建立就不能修改，請勿必記下)';
-
-			return rply;
-	
-		}else{
-			for(var i=0; i< CharArr.length; i++){
-				if (CharArr[i][1] == Cname) {
-					if (CharArr[i][5] == 1) {
-						rply.text = '此角色已經開啟繼承模式了！如果忘記密碼，請找GM處理';
-
-						return rply;
-					}
-					CharArr[i][5] = 1;
-					CharArr[i][6] = password;
-					DB.useServiceAccountAuth(creds, function (err) {
-		
-						DB.getRows(1 , 
-							function (err, rows) {
-								if (err) {
-									console.log( err );
-								}else{
-									rows[i].inheritio = 1;
-									rows[i].inheritpassword = password;
-									rows[i].save();
-								}
-							});
-					});
-					rply.text = '角色' + Cname + '開啟繼承模式！請輸入 繼承 角色名 繼承密碼 進行繼承';
-					
-					ArrayUpdate();
-			
-					return rply;
-					
-				}
-				
-			}
-			rply.text = '找不到角色名為 ' + Cname + ' 的角色喔！';
-			
-			return rply;
-		}
-	}
-}
-
 function InheritChatacter(UserID,Cname,password){
 	for(var i=0; i< CharArr.length; i++){
 		if(CharArr[i][0] == UserID && CharArr[i][1] != Cname){
@@ -1133,7 +1073,6 @@ module.exports = {
 	main,
 	SearchPlayer,
 	ArrayUpdate,
-	InheritModeOn,
 	InheritChatacter,
 	box,
 	GetArray,
