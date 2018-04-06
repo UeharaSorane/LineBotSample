@@ -311,8 +311,10 @@ function CreatNewPlayer(UserID,Name,weaponN){
 	  // Get all of the rows from the spreadsheet.
 	  DB.addRow(10, { Userid: UserID}, function(err) {
 		  if(err) {
-		    console.log(err);
-		  }
+			console.log(err);
+		}else{
+			ArrayUpdate();
+		}
 		  
 		});
 	});
