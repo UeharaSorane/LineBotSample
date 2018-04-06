@@ -63,17 +63,6 @@ DB.useServiceAccountAuth(creds, function (err) {
 		
 	});
 
-DB.useServiceAccountAuth(creds, function (err) {
-		DB.addRow(1, { Userid: '測試用'}, function(err) {
-			if(err) {
-				console.log(err);
-		 	}else{
-				//ArrayUpdate();
-			}
-		  
-		});
-	});
-
 function ArrayUpdate() {
 
 	DB.useServiceAccountAuth(creds, function (err) {
@@ -248,7 +237,7 @@ function CreatNewPlayer(userID,CName,Title,weapon) {
 	DB.useServiceAccountAuth(creds, function (err) {
  
 		// Get all of the rows from the spreadsheet.
-		DB.addRow(1, { Userid: userID}, function(err) {
+		DB.addRow(1, { Userid: '測試用'}, function(err) {
 			if(err) {
 				console.log(err);
 		 	}else{
