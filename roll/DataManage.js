@@ -61,6 +61,7 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 	}
 	
 	if(weapon == '木劍' || weapon == '木短杖' || weapon == '木長杖' ||weapon == '木弓' ||weapon == '普通筆記本'){
+		PlayerData.CreatNewPlayer(UserID,CName,CTitle,weapon);
 		BattleStates.CreatNewPlayer(UserID,CName,weapon);
 		WeaponBox.CreatNewPlayer(UserID,CName,weapon);
 		AccessoryBox.CreatNewPlayer(UserID,CName);
@@ -68,16 +69,13 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 		MateBox.CreatNewPlayer(UserID,CName);
 		SkillBox.CreatNewPlayer(UserID,CName);
 		ItemBox.CreatNewPlayer(UserID,CName);
+		rply.text = '玩家資料 ' + CName + ' 建立完成！';
+				
+		return rply;
 	}else{
 		rply.text = '請不要輸入起始武器以外的武器喔...';
 		return rply;
 	}
-	
-	PD.CreatNewPlayer(UserID,CName,CTitle,weapon);
-      
-	rply.text = '玩家資料 ' + CName + ' 建立完成！';
-				
-	return rply;
 	
 	///
 
