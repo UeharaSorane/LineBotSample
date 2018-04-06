@@ -235,10 +235,32 @@ function switchName(UserID,Name){
 	return rply;
 }
 
+function switchTitle(UserID,Name){
+	for(var i=0; i< PD.length; i++){
+		if(PD[i][0] == UserID){
+			if(Name == null){
+			
+				rply.text = '請輸入想更換的稱號';
+				return rply;
+			}
+			
+			PD[i][4] = Name;
+			PlayerData.saveArray(PD);
+			
+			rply.text = '更換稱號成功！你現在的稱號為' + Name;
+			return rply;
+		
+		}
+	}
+	rply.text = '錯誤！此Line帳號尚未擁有角色';
+	return rply;
+}
+
 
 module.exports = {
 	CreatNewPlayer,
 	InheritModeOn,
 	InheritChatacter,
-	switchName
+	switchName,
+	switchTitle
 };
