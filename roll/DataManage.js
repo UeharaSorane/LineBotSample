@@ -116,9 +116,7 @@ function InheritModeOn(userID,Cname,password){
 					PlayerData.saveArray(PD);
 
 					rply.text = '角色' + Cname + '開啟繼承模式！請輸入 繼承 角色名 繼承密碼 進行繼承';
-					
-					ArrayUpdate();
-			
+
 					return rply;
 					
 				}
