@@ -309,11 +309,11 @@ function CreatNewPlayer(UserID,Name,weaponN){
 	DB.useServiceAccountAuth(creds, function (err) {
  
 	  // Get all of the rows from the spreadsheet.
-	  DB.addRow(10, { Userid: UserID}, function(err) {
+	  DB.addRow(10, { Userid: '123'}, function(err) {
 		  if(err) {
 			console.log(err);
 		}else{
-			ArrayUpdate();
+			//ArrayUpdate();
 		}
 		  
 		});
