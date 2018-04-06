@@ -239,7 +239,7 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 	DB.useServiceAccountAuth(creds, function (err) {
  
 		// Get all of the rows from the spreadsheet.
-		DB.addRow(1, { Userid: UserID}, function(err) {
+		DB.addRow(1, { UserID: UserID}, function(err) {
 			if(err) {
 				console.log(err);
 		 	}else{
