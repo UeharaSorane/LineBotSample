@@ -129,8 +129,72 @@ function InheritModeOn(userID,Cname,password){
 	}
 }
 
+function InheritChatacter(UserID,Cname,password){
+	for(var i=0; i< PD.length; i++){
+		if(PD[i][0] == UserID && PD[i][1] != Cname){
+			rply.text = '你的Line帳號已經有角色了，請輸入 玩家情報 確認';
+			return rply;
+		
+		}
+	}
+	
+	
+	if(Cname == null){
+		rply.text = '請輸入要繼承的角色名！';
+
+		return rply;
+		
+	}else{
+
+		for(var i=0; i< PD.length; i++){
+			if (PD[i][1] == Cname) {
+				if (PD[i][5] == 0) {
+					rply.text = '此角色尚未開啟繼承模式！';
+
+					return rply;
+				}else if (password != PD[i][6] ) {
+					rply.text = '繼承密碼有誤，請重新嘗試！';
+
+					return rply;
+					
+				}else if(PD[i][0] == UserID){
+					rply.text = '此角色是屬於你目前使用的Line帳號喔！關閉繼承模式';
+					PD[i][5] = 0;
+					PlayerData.saveArray(PD);
+
+					return rply;
+				}
+				PD[i][5] = 0;
+				PD[i][0] = UserID;
+				PD[i][6] = '';
+				PlayerData.saveArray(PD);
+				
+				BattleStates.InheritPlayer(UserID,Cname);
+				WeaponBox.InheritPlayer(UserID,Cname);
+				AccessoryBox.InheritPlayer(UserID,Cname);
+				BadgeBox.InheritPlayer(UserID,Cname);
+				MateBox.InheritPlayer(UserID,Cname);
+				SkillBox.InheritPlayer(UserID,Cname);
+				ItemBox.InheritPlayer(UserID,Cname);
+				Guild.InheritPlayer(UserID,PD[i][14],Cname);
+
+				rply.text = '角色' + Cname + '繼承完成！請輸入 玩家情報以進行確認';
+				
+				return rply;
+
+			}
+
+		}
+		rply.text = '找不到角色名為 ' + Cname + ' 的角色喔！';
+
+		return rply;
+		
+	}
+}
+
 
 module.exports = {
 	CreatNewPlayer,
-	InheritModeOn
+	InheritModeOn,
+	InheritChatacter
 };
