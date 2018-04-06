@@ -210,14 +210,12 @@ function SearchPlayer(Name) {
 
 }
 
-function CreatNewPlayer(UserID,CName,Title,weapon) {
+function CreatNewPlayer(userID,CName,Title,weapon) {
 	var CharArrleng = CharArr.length;
 
 	CharArr[CharArrleng] = [];
 	
-	console.log(CharArrleng);
-	
-	CharArr[CharArrleng][0] = UserID;
+	CharArr[CharArrleng][0] = userID;
 	CharArr[CharArrleng][1] = CName;
 	CharArr[CharArrleng][2] = 1000;
 	CharArr[CharArrleng][3] = 5;
@@ -239,7 +237,7 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 	DB.useServiceAccountAuth(creds, function (err) {
  
 		// Get all of the rows from the spreadsheet.
-		DB.addRow(1, { UserID: UserID}, function(err) {
+		DB.addRow(1, { UserID: userID}, function(err) {
 			if(err) {
 				console.log(err);
 		 	}else{
