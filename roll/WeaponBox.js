@@ -189,7 +189,7 @@ function CreatNewPlayer(UserID,cname,STWeapon){
 		  if(err) {
 			console.log(err);
 		}else{
-			ArrayUpdate();
+			UpdateArray();
 		}
 		  
 		});
