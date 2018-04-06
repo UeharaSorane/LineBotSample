@@ -192,9 +192,54 @@ function InheritChatacter(UserID,Cname,password){
 	}
 }
 
+function switchName(UserID,Name){
+	for(var i=0; i< PD.length; i++){
+
+		if (PD[i][1] == Name &&PD[i][0]!=UserID) {
+			rply.text = '已經有人取這個名字了！請改取其它名字';
+
+			return rply;
+		}
+	}
+	
+	for(var i=0; i< PD.length; i++){
+		if(PD[i][0] == UserID){
+			if(Name == null){
+			
+				rply.text = '請輸入想更換的名字';
+				return rply;
+			}
+			
+			PD[i][1] = Name;
+			PlayerData.saveArray(PD);
+			BattleStates.switchName(UserID,Name);
+			WeaponBox.switchName(UserID,Name);
+			AccessoryBox.switchName(UserID,Name);
+			BadgeBox.switchName(UserID,Name);
+			MateBox.switchName(UserID,Name);
+			SkillBox.switchName(UserID,Name);
+			ItemBox.switchName(UserID,Name);
+			Guild.switchName(UserID,PD[i][14],Name);
+			
+			if(PD[i][16] == 1){
+				Guild.switchNameWL(PD[i][17],Name);
+				
+			}
+			
+			
+			rply.text = '更名成功！你現在的名字為' + Name;
+			return rply;
+		
+		}
+	}
+	rply.text = '錯誤！此Line帳號尚未擁有角色';
+	return rply;
+}
+
 
 module.exports = {
 	CreatNewPlayer,
 	InheritModeOn,
-	InheritChatacter
+	InheritChatacter,
+	switchName
 };
