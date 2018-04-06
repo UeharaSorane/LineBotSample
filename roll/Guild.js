@@ -168,6 +168,20 @@ function switchName(UserID,Guild,Name){
 	}
 }
 
+function switchNameWL(NameB,Guild,Name){
+	for(var i =0; i<CharArr.length;i++){
+		if(CharArr[i][1] == Guild){
+			for(var j = 0;j<CharArr[i][7].length;j++){
+				if(CharArr[i][7][j] == NameB){
+					CharArr[i][7][j] = Name;
+					
+					ArrayUpdate();
+				}
+			}
+		}
+	}
+}
+
 function saveArray(ReturnF){
 	
 	CharArr = ReturnF;
