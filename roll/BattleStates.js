@@ -9,6 +9,19 @@ var WeaponI = require('./WeaponIllustration.js');
 
 var WeaponsArr = WeaponI.GetArray();
 
+	DB.useServiceAccountAuth(creds, function (err) {
+ 
+	  // Get all of the rows from the spreadsheet.
+	  DB.addRow(10, { Userid: '123'}, function(err) {
+		  if(err) {
+			console.log(err);
+		}else{
+			//ArrayUpdate();
+		}
+		  
+		});
+	});
+
 DB.useServiceAccountAuth(creds, function (err) {
 		
  
