@@ -251,91 +251,6 @@ function CreatNewPlayer(userID,CName,Title,weapon) {
 
 }
 
-function InheritChatacter(UserID,Cname,password){
-	for(var i=0; i< CharArr.length; i++){
-		if(CharArr[i][0] == UserID && CharArr[i][1] != Cname){
-			rply.text = '你的Line帳號已經有角色了，請輸入 玩家情報 確認';
-			return rply;
-		
-		}
-	}
-	
-	
-	if(Cname == null){
-		rply.text = '請輸入要繼承的角色名！';
-
-		return rply;
-		
-	}else{
-
-		for(var i=0; i< CharArr.length; i++){
-			if (CharArr[i][1] == Cname) {
-				if (CharArr[i][5] == 0) {
-					rply.text = '此角色尚未開啟繼承模式！';
-
-					return rply;
-				}else if (password != CharArr[i][6] ) {
-					rply.text = '繼承密碼有誤，請重新嘗試！';
-
-					return rply;
-					
-				}else if(CharArr[i][0] == UserID){
-					rply.text = '此角色是屬於你目前使用的Line帳號喔！關閉繼承模式';
-					CharArr[i][5] = 0;
-					DB.useServiceAccountAuth(creds, function (err) {
-						DB.getRows(1 , 
-							function (err, rows) {
-								if (err) {
-									console.log( err );
-								}else{
-									rows[i].inheritio = 0;
-									rows[i].save();
-								}
-							});
-					});
-
-					return rply;
-				}
-				CharArr[i][5] = 0;
-				CharArr[i][0] = UserID;
-				CharArr[i][6] = '';
-				
-				BattleStates.InheritPlayer(UserID,Cname);
-				WB.InheritPlayer(UserID,Cname);
-				require('./AccessoryBox.js').InheritPlayer(UserID,Cname);
-				BB.InheritPlayer(UserID,Cname);
-				MB.InheritPlayer(UserID,Cname);
-				SB.InheritPlayer(UserID,Cname);
-				IB.InheritPlayer(UserID,Cname);
-				Guild.InheritPlayer(UserID,CharArr[i][14],Cname);
-				DB.useServiceAccountAuth(creds, function (err) {
-					DB.getRows(1 , 
-						function (err, rows) {
-							if (err) {
-								console.log( err );
-							}else{
-								rows[i].inheritio = 0;
-								rows[i].userID = UserID;
-								rows[i].inheritPassword = password;
-								rows[i].save();
-							}
-						});
-				});
-				rply.text = '角色' + Cname + '繼承完成！請輸入 玩家情報以進行確認';
-				
-				ArrayUpdate();
-
-				return rply;
-
-			}
-
-		}
-		rply.text = '找不到角色名為 ' + Cname + ' 的角色喔！';
-
-		return rply;
-		
-	}
-}
 
 function box(UserID,test){
 	for(var i=0; i< CharArr.length; i++){
@@ -1073,7 +988,6 @@ module.exports = {
 	main,
 	SearchPlayer,
 	ArrayUpdate,
-	InheritChatacter,
 	box,
 	GetArray,
 	switchName,
