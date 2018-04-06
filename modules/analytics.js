@@ -94,7 +94,15 @@ function parseInput(rplyToken, inputStr,UserID,Dname) {
 	if (trigger.match(/^更名$/)!= null ) return exports.PlayerData.switchName(UserID, mainMsg[1]);//更名
 	if (trigger.match(/^更換稱號$/)!= null ) return exports.PlayerData.switchTitle(UserID, mainMsg[1]);//更換稱號
 	if (trigger.match(/^公會$/)!= null ) return exports.PlayerData.GuildInformation(UserID, mainMsg[1], mainMsg[2]);//公會功能
-	if (trigger.match(/^公會管理$/)!= null ) return exports.PlayerData.GuildManage(UserID, mainMsg[1], mainMsg[2], mainMsg[3]);//公會管理功能(會長限定)
+	if (trigger.match(/^公會管理$/)!= null ){
+		if(mainMsg[1] == '解散' && mainMsg[2] == '確定' && mainMsg[3] == '非常確定'){
+			exports.GuildFacility.delGuild(UserID);
+		}
+		
+		return exports.PlayerData.GuildManage(UserID, mainMsg[1], mainMsg[2], mainMsg[3]);//公會管理功能(會長限定)
+	}
+	
+	
 	if (trigger.match(/^公會設施$/)!= null ) return exports.GuildFacility.GuildCheck(UserID, mainMsg[1], mainMsg[2], mainMsg[3]);//確認公會設施
 	
 	////////////////////////////公會設施相關
