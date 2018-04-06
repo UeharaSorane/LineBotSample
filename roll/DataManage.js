@@ -128,6 +128,7 @@ function InheritModeOn(userID,Cname,password){
 			
 			return rply;
 		}
+	}
 }
 
 
