@@ -25,20 +25,19 @@ var GF = GuildFacility.GetArray();
 
 function CreatNewPlayer(UserID,CName,Title,weapon) {
 	var CTitle;
-	var CharArrleng = CharArr.length;
+	var PDleng = PD.length;
 	
-	for(var i=0; i< CharArr.length; i++){
+	for(var i=0; i< PD.length; i++){
 
-		if (CharArr[i][0] == UserID) {
+		if (PD[i][0] == UserID) {
 			rply.text = '你的Line帳號已經有角色了，請輸入 玩家情報 確認';
-
 			return rply;
 		}
 	}
 	
-	for(var i=0; i< CharArr.length; i++){
+	for(var i=0; i< PD.length; i++){
 
-		if (CharArr[i][1] == CName) {
+		if (PD[i][1] == CName) {
 			rply.text = '已經有人取這個名字了！請改取其它名字';
 
 			return rply;
@@ -64,56 +63,26 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 	if(weapon == '木劍' || weapon == '木短杖' || weapon == '木長杖' ||weapon == '木弓' ||weapon == '普通筆記本'){
 		BattleStates.CreatNewPlayer(UserID,CName,weapon);
 		WB.CreatNewPlayer(UserID,CName,weapon);
-		require('./AccessoryBox.js').CreatNewPlayer(UserID,CName);
+		AB.CreatNewPlayer(UserID,CName);
 		BB.CreatNewPlayer(UserID,CName);
 		MB.CreatNewPlayer(UserID,CName);
 		SB.CreatNewPlayer(UserID,CName);
 		IB.CreatNewPlayer(UserID,CName);
-		
 	}else{
 		rply.text = '請不要輸入起始武器以外的武器喔...';
-
 		return rply;
 	}
 	
-	CharArr[CharArrleng] = [];
-	
-	console.log(CharArrleng);
-	
-	CharArr[CharArrleng][0] = UserID;
-	CharArr[CharArrleng][1] = CName;
-	CharArr[CharArrleng][2] = 1000;
-	CharArr[CharArrleng][3] = 5;
-	CharArr[CharArrleng][4] = CTitle;
-	CharArr[CharArrleng][5] = 0;
-	CharArr[CharArrleng][7] = 0;
-	CharArr[CharArrleng][8] = 0;
-	CharArr[CharArrleng][9] = 0;
-	CharArr[CharArrleng][10] = 0;
-	CharArr[CharArrleng][11] = 0;
-	CharArr[CharArrleng][12] = 0;
-	CharArr[CharArrleng][13] = 0;
-	CharArr[CharArrleng][14] = '輔導公會';
-	CharArr[CharArrleng][15] = '會員';
-	CharArr[CharArrleng][16] = 0;
-	///確認玩家資料
-	
-	DB.useServiceAccountAuth(creds, function (err) {
- 
-	  // Get all of the rows from the spreadsheet.
-	  DB.addRow(1, { Userid: UserID}, function(err) {
-		  if(err) {
-		    console.log(err);
-		  }
-		  
-		});
-	});
-	
+	PD.CreatNewPlayer(UserID,CName,CTitle,weapon);
       
-	rply.text = '玩家資料 ' + CName + ' 建立完成！請輸入 玩家情報 進行確認';
+	rply.text = '玩家資料 ' + CName + ' 建立完成！';
 				
 	return rply;
 	
 	///
 
 }
+
+module.exports = {
+	CreatNewPlayer
+};
