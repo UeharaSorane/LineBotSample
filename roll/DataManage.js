@@ -62,12 +62,12 @@ function CreatNewPlayer(UserID,CName,Title,weapon) {
 	
 	if(weapon == '木劍' || weapon == '木短杖' || weapon == '木長杖' ||weapon == '木弓' ||weapon == '普通筆記本'){
 		BattleStates.CreatNewPlayer(UserID,CName,weapon);
-		WB.CreatNewPlayer(UserID,CName,weapon);
-		AB.CreatNewPlayer(UserID,CName);
-		BB.CreatNewPlayer(UserID,CName);
-		MB.CreatNewPlayer(UserID,CName);
-		SB.CreatNewPlayer(UserID,CName);
-		IB.CreatNewPlayer(UserID,CName);
+		WeaponBox.CreatNewPlayer(UserID,CName,weapon);
+		AccessoryBox.CreatNewPlayer(UserID,CName);
+		BadgeBox.CreatNewPlayer(UserID,CName);
+		MateBox.CreatNewPlayer(UserID,CName);
+		SkillBox.CreatNewPlayer(UserID,CName);
+		ItemBox.CreatNewPlayer(UserID,CName);
 	}else{
 		rply.text = '請不要輸入起始武器以外的武器喔...';
 		return rply;
