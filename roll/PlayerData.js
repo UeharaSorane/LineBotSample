@@ -241,7 +241,7 @@ function CreatNewPlayer(userID,CName,Title,weapon) {
 			if(err) {
 				console.log(err);
 		 	}else{
-				//ArrayUpdate();
+				ArrayUpdate();
 			}
 		  
 		});
