@@ -63,6 +63,17 @@ DB.useServiceAccountAuth(creds, function (err) {
 		
 	});
 
+DB.useServiceAccountAuth(creds, function (err) {
+		DB.addRow(1, { Userid: '測試用'}, function(err) {
+			if(err) {
+				console.log(err);
+		 	}else{
+				//ArrayUpdate();
+			}
+		  
+		});
+	});
+
 function ArrayUpdate() {
 
 	DB.useServiceAccountAuth(creds, function (err) {
