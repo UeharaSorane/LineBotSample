@@ -192,8 +192,10 @@ function CreatNewPlayer(UserID,cname,STWeapon){
 	  // Get all of the rows from the spreadsheet.
 	  DB.addRow(15, { Userid: UserID}, function(err) {
 		  if(err) {
-		    console.log(err);
-		  }
+			console.log(err);
+		}else{
+			UpdateArray();
+		}
 		  
 		});
 	});
