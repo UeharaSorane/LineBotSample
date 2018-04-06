@@ -239,6 +239,16 @@ function CreatNewPlayer(UserID,cname,STWeapon){
 	
 }
 
+function GetArray(){
+	return WeaponBoxArr;
+}
+
+function saveArray(ReturnF){
+	
+	WeaponBoxArr = ReturnF;
+	UpdateArray();
+}
+
 
 module.exports = {
 	SearchItem,
@@ -246,5 +256,7 @@ module.exports = {
 	switchName,
 	InheritPlayer,
 	getItem,
-	CreatNewPlayer
+	CreatNewPlayer,
+	GetArray,
+	saveArray
 };
