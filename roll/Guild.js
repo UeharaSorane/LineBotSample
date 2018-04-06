@@ -258,5 +258,6 @@ module.exports = {
 	saveArray,
 	InGuildView,
 	creatGuild,
-	DelGuild
+	DelGuild,
+	switchNameWL
 };
