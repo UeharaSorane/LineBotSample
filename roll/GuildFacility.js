@@ -853,8 +853,8 @@ function InheritPlayer(UserID,Guild,Name){
 function switchName(UserID,Guild,Name){
 	for(var i =0; i<CharArr.length;i++){
 		if(CharArr[i][1] == Guild && CharArr[i][1] != '輔導公會'){
-			if(CharArr[i][16] == UserID){
-				CharArr[i][15] = Name;
+			if(CharArr[i][15] == UserID){
+				CharArr[i][16] = Name;
 
 				ArrayUpdate();
 			}
