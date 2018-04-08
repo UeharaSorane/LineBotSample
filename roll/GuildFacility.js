@@ -130,6 +130,8 @@ function ArrayUpdate() {
 }
 
 function GuildCheck(UserID,command,facility,confirm){
+	ArrayUpdate();
+	
 	for(var i = 0;i <PB.length;i++){
 		if(PB[i][0] == UserID){
 			if(PB[i][14] == '輔導公會'){
