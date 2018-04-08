@@ -810,7 +810,7 @@ function GuildManage(UserID,command,Name, title){
 }
 
 function CheckTitle(guild){
-	for(var i=0;i<GB.length;i++){
+	for(var i=0;i<CharArr.length;i++){
 		if(CharArr[i][1] == guild){
 			for(var j = 0; j<CharArr[i][5]; j++){
 				for(var k = 0; k<PD.length;k++){
