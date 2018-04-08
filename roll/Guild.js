@@ -4,6 +4,7 @@ var fs = require('fs');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
 
+var GuildFacility = require('./GuildFacility.js');
 var PlayerData = require('./PlayerData.js');
 var PD = PlayerData.GetArray();
 
@@ -408,6 +409,8 @@ function GuildInformation(UserID,command,guild){
 								
 								PD[i][14] = CharArr[leng][1];
 								PD[i][15] = CharArr[leng][4][0];
+								
+								GuildFacility.CreatNewGuild(UserID,PD[i][1],temp,guild);
 								
 								DB.useServiceAccountAuth(creds, function (err) {
  
