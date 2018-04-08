@@ -332,6 +332,11 @@ function GuildInformation(UserID,command,guild){
 					return rply;
 				}
 				
+				if(PD[i][0] == CharArr[j][2][0]){
+					rply.text = '錯誤！會長是不能退出公會的';
+					return rply;
+				}
+				
 				if(guild !='確定'){
 					rply.text = '你確定要退出公會 ' + PD[i][14] + ' 嗎？\
 							\n 一旦退出將無法取回你已經投入公會的任何東西\
@@ -342,10 +347,6 @@ function GuildInformation(UserID,command,guild){
 				
 				for(var j = 0;j<CharArr.length;j++){
 					if(PD[i][14] == CharArr[j][1]){
-						if(PD[i][0] == CharArr[j][2][0]){
-							rply.text = '錯誤！會長是不能退出公會的';
-							return rply;
-						}
 						
 						for(var k = 0; k<CharArr[j][2].length;k++){
 							if(CharArr[j][2][k] == PD[i][0]){
