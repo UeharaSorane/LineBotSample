@@ -156,8 +156,7 @@ function GuildCheck(UserID,command,facility,confirm){
 			}
 			
 			for(var j = 0; j<CharArr.length;j++){
-				if(PB[i][14] == CharArr[j][1]){
-				console.log(CharArr[i]);	
+				if(PB[i][14] == CharArr[j][1]){	
 				
 					if(command == null){
 						rply.text = '這是你目前所處公會設施情報:\
@@ -179,7 +178,7 @@ function GuildCheck(UserID,command,facility,confirm){
 								\n 奇蹟石: ' + CharArr[j][14] + '個\
 								\n\
 								\n 想要使用設施，請輸入 設施名';
-						if(UserID == CharArr[i][15]){
+						if(UserID == CharArr[j][15]){
 							rply.text+='\n 想要升級公會設施，請輸入 公會設施 升級 設施名';
 						}
 						return rply;
@@ -187,7 +186,7 @@ function GuildCheck(UserID,command,facility,confirm){
 					}else if(command == '升級'){
 						let fancilityN = 0;
 						
-							if(UserID == CharArr[i][15]){
+							if(UserID == CharArr[j][15]){
 								if(facility == null){
 									rply.text = '這是你目前所處公會設施情報:\
 											\n 公會名: ' + CharArr[j][1] + '\
