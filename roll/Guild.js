@@ -349,8 +349,9 @@ function GuildInformation(UserID,command,guild){
 				
 				for(var j = 0;j<CharArr.length;j++){
 					if(PD[i][14] == CharArr[j][1]){
+						console.log(CharArr[j]);
 						
-						for(var k = 0; k<CharArr[j][2].length;k++){
+						/*for(var k = 0; k<CharArr[j][2].length;k++){
 							if(CharArr[j][2][k] == PD[i][0]){
 								//console.log(CharArr[j][7][k]);
 
@@ -369,7 +370,7 @@ function GuildInformation(UserID,command,guild){
 								PlayerData.saveArray(PD);
 								ArrayUpdate();
 
-								rply.text = '你已退出公會 ' + CharArr[j][1] + ' 了！';
+								rply.text = '你已退出公會 ' + CharArr[j][1] + ' 了！';*/
 								return rply;
 							}
 						}
