@@ -421,7 +421,7 @@ function GuildInformation(UserID,command,guild){
 										});
 									});
 								
-								rply.text = '你已創立公會 ' + guild + ' 了！;
+								rply.text = '你成功創立公會 ' + guild + ' 了！';
 								return rply;
 								
 							}
