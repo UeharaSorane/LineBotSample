@@ -837,11 +837,36 @@ function saveArray(ReturnF){
 	ArrayUpdate();
 }
 
+function InheritPlayer(UserID,Guild,Name){
+	for(var i =0; i<CharArr.length;i++){
+		if(CharArr[i][1] == Guild && CharArr[i][1] != '輔導公會'){
+			if(CharArr[i][16] == Name){
+				CharArr[i][15] = UserID;
+				ArrayUpdate();
+			}
+		}
+	}
+}
+
+function switchName(UserID,Guild,Name){
+	for(var i =0; i<CharArr.length;i++){
+		if(CharArr[i][1] == Guild && CharArr[i][1] != '輔導公會'){
+			if(CharArr[i][16] == UserID){
+				CharArr[i][15] = Name;
+
+				ArrayUpdate();
+			}
+		}
+	}
+}
+
 module.exports = {
 	ArrayUpdate,
 	GuildCheck,
 	Warehouse,
 	trainhouse,
 	GetArray,
-	saveArray
+	saveArray,
+	InheritPlayer,
+	switchName
 };
