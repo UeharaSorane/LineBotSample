@@ -7,6 +7,7 @@ var creds = require('../client_secret.json');
 var GuildFacility = require('./GuildFacility.js');
 var PlayerData = require('./PlayerData.js');
 var PD = PlayerData.GetArray();
+var GF = GuildFacility.GetArray();
 
 var CharArr= [];
 
@@ -715,6 +716,15 @@ function GuildManage(UserID,command,Name, title){
 												
 												CharArr[j][3][0] = CharArr[j][3][k];
 												CharArr[j][2][0] = CharArr[j][2][k];
+												
+												for(var m = 0; m<GF.length;m++){
+													if(CharArr[j][1] == GF[m][1]){
+														GF[m][16] = CharArr[j][3][k];
+														GF[m][15] = CharArr[j][2][k];
+														
+														GuildFacility.saveArray(GF);
+													}
+												}
 												
 												CharArr[j][2][k] = temp1;
 												CharArr[j][3][k] = temp2;
