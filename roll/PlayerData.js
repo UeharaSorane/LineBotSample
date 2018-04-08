@@ -139,13 +139,6 @@ function main(UserID) {
 			if(CharArr[i][5] == 1) rply.text += '\n!!!警告 繼承模式開啟中，請盡速繼承!!!';
 			
 			ArrayUpdate();
-			BattleStates.ArrayUpdate();
-			WB.UpdateArray();
-			require('./AccessoryBox.js').UpdateArray();
-			BB.UpdateArray();
-			MB.UpdateArray();
-			SB.UpdateArray();
-
 			return rply;
 
 		}
@@ -201,11 +194,6 @@ function SearchPlayer(Name) {
 	rply.text = '找不到角色名為 ' + Name + ' 的角色喔！';
 
 	return rply;
-
-	
-	
-  
-	
 	///
 
 }
@@ -251,53 +239,6 @@ function CreatNewPlayer(userID,CName,Title,weapon) {
 
 }
 
-
-function box(UserID,test){
-	for(var i=0; i< CharArr.length; i++){
-
-		if (CharArr[i][0] == UserID) {
-			rply.text ='玩家 ' + CharArr[i][1] + '開啟寶箱！';
-			
-			var OpenedBox = BoxOpen.main();
-			
-			rply.text += '\n' + OpenedBox[9];
-			
-			if(test == '測試'){
-				rply.text+= '\n 注意，這只是測試，不具有實際效果(攤';
-				return rply;
-				
-				
-			}
-			
-			CharArr[i][2] += Number(OpenedBox[0]);
-			CharArr[i][3] += Number(OpenedBox[1]);
-			CharArr[i][7] += Number(OpenedBox[3]);
-			CharArr[i][8] += Number(OpenedBox[4]);
-			CharArr[i][9] += Number(OpenedBox[5]);
-			CharArr[i][10] += Number(OpenedBox[6]);
-			CharArr[i][11] += Number(OpenedBox[7]);
-			CharArr[i][12] += Number(OpenedBox[8]);
-			
-			if(typeof(OpenedBox[2]) != 'undefined'){
-				let tempS = SB.getSkill(UserID,OpenedBox[2]);
-				
-				rply.text += tempS[0];
-				CharArr[i][2] += tempS[1];
-				
-			
-			}
-			
-			ArrayUpdate();
-
-			return rply;
-
-		}
-	}
-	
-	rply.text = '錯誤！此Line帳號尚未擁有角色';
-	return rply;
-
-}
 
 function GetArray(){
 	return CharArr;
@@ -902,7 +843,6 @@ module.exports = {
 	main,
 	SearchPlayer,
 	ArrayUpdate,
-	box,
 	GetArray,
 	saveArray,
 	GuildInformation,
