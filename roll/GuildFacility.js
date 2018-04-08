@@ -178,12 +178,12 @@ function GuildCheck(UserID,command,facility,confirm){
 								\n 奇蹟石: ' + CharArr[j][14] + '個\
 								\n\
 								\n 想要使用設施，請輸入 設施名';
-						/*if(UserID == CharArr[i][15]){
+						if(UserID == CharArr[i][15]){
 							rply.text+='\n 想要升級公會設施，請輸入 公會設施 升級 設施名';
 							return rply;
-						}*/
-
-						return rply;
+						}else{
+							return rply;
+						}
 						
 					}else if(command == '升級'){
 						let fancilityN = 0;
@@ -274,10 +274,11 @@ function GuildCheck(UserID,command,facility,confirm){
 
 								}
 
-							}
-							rply.text='\n 只有會長才能升級設施喔';
-							return rply;
+							}else{
+								rply.text='\n 只有會長才能升級設施喔';
+								return rply;
 
+							}
 						
 					}else{
 						rply.text = '錯誤！沒有 ' + command + '的指令';
