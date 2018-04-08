@@ -5,6 +5,9 @@ var fs = require('fs');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
 
+var PlayerData = require('./PlayerData.js');
+var PD = PlayerData.GetArray();
+
 var SkillDB = new GoogleSpreadsheet('12y_EgRKvjO7a1xEc5wbM5ERofFfXW-csoR4_R0H0HfA');
 var SkillArr= [];
 SkillArr[0] = [];
@@ -292,7 +295,54 @@ function main() {
 	
 }
 
+function box(UserID,test){
+	for(var i=0; i< PD.length; i++){
+
+		if (PD[i][0] == UserID) {
+			rply.text ='玩家 ' + PD[i][1] + '開啟寶箱！';
+			
+			var OpenedBox = main();
+			
+			rply.text += '\n' + OpenedBox[9];
+			
+			if(test == '測試'){
+				rply.text+= '\n 注意，這只是測試，不具有實際效果(攤';
+				return rply;
+			}
+			
+			PD[i][2] += Number(OpenedBox[0]);
+			PD[i][3] += Number(OpenedBox[1]);
+			PD[i][7] += Number(OpenedBox[3]);
+			PD[i][8] += Number(OpenedBox[4]);
+			PD[i][9] += Number(OpenedBox[5]);
+			PD[i][10] += Number(OpenedBox[6]);
+			PD[i][11] += Number(OpenedBox[7]);
+			PD[i][12] += Number(OpenedBox[8]);
+			
+			if(typeof(OpenedBox[2]) != 'undefined'){
+				let tempS = SB.getSkill(UserID,OpenedBox[2]);
+				
+				rply.text += tempS[0];
+				PD[i][2] += tempS[1];
+				
+			
+			}
+			
+			PlayerData.saveArray(PD);
+
+			return rply;
+
+		}
+	}
+	
+	rply.text = '錯誤！此Line帳號尚未擁有角色';
+	return rply;
+
+}
+
+
 
 module.exports = {
-	main
+	main,
+	box
 };
