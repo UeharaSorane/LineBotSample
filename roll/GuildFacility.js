@@ -53,6 +53,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 				}
 				//console.log(CharArr);
 				console.log('公會設施資料 讀取完成');
+				console.log(CharArr[0][15]);
 				//console.log();
 			}
 		
