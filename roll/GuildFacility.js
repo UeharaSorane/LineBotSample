@@ -860,6 +860,48 @@ function switchName(UserID,Guild,Name){
 	}
 }
 
+function CreatNewGuild(userID,CName,GuildID,GuildName) {
+	var CharArrleng = CharArr.length;
+
+	CharArr[CharArrleng] = [];
+	
+	CharArr[CharArrleng][0] = GuildID;
+	CharArr[CharArrleng][1] = GuildName;
+	CharArr[CharArrleng][2] = 1;
+	CharArr[CharArrleng][3] = 1;
+	CharArr[CharArrleng][4] = 1;
+	CharArr[CharArrleng][6] = 1;
+	CharArr[CharArrleng][5] = 1;
+	CharArr[CharArrleng][7] = 0;
+	CharArr[CharArrleng][8] = 0;
+	CharArr[CharArrleng][9] = 0;
+	CharArr[CharArrleng][10] = 0;
+	CharArr[CharArrleng][11] = 0;
+	CharArr[CharArrleng][12] = 0;
+	CharArr[CharArrleng][13] = 0;
+	CharArr[CharArrleng][14] = 0;
+	CharArr[CharArrleng][15] = userID;
+	CharArr[CharArrleng][16] = CName;
+	///確認玩家資料
+	
+	
+	DB.useServiceAccountAuth(creds, function (err) {
+ 
+		// Get all of the rows from the spreadsheet.
+		DB.addRow(22, { Guildid: GuildID}, function(err) {
+			if(err) {
+				console.log(err);
+		 	}else{
+				ArrayUpdate();
+			}
+		  
+		});
+	});
+	
+		///
+
+}
+
 module.exports = {
 	ArrayUpdate,
 	GuildCheck,
@@ -868,5 +910,6 @@ module.exports = {
 	GetArray,
 	saveArray,
 	InheritPlayer,
-	switchName
+	switchName,
+	CreatNewGuild
 };
