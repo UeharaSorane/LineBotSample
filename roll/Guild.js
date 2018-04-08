@@ -710,24 +710,24 @@ function GuildManage(UserID,command,Name, title){
 									}else{
 										for(var l = 0;l<PD.length;l++){
 											if(Name == PD[l][1]){
-												let temp1 = UserID;
-												let temp2 = CharArr[j][3][0];
+												let temp1 = CharArr[j][3][k];
+												let temp2 = CharArr[j][2][k];
 												
 												
-												CharArr[j][3][0] = CharArr[j][3][k];
-												CharArr[j][2][0] = CharArr[j][2][k];
+												CharArr[j][3][k] = CharArr[j][3][0];
+												CharArr[j][2][k] = CharArr[j][2][0];
 												
 												for(var m = 0; m<GF.length;m++){
 													if(CharArr[j][1] == GF[m][1]){
-														GF[m][16] = CharArr[j][3][0];
-														GF[m][15] = CharArr[j][2][0];
+														GF[m][16] = temp1;
+														GF[m][15] = temp2;
 														
 														GuildFacility.saveArray(GF);
 													}
 												}
 												
-												CharArr[j][2][k] = temp1;
-												CharArr[j][3][k] = temp2;
+												CharArr[j][2][0] = temp1;
+												CharArr[j][3][0] = temp2;
 		
 												CheckTitle(CharArr[j][1]);
 
