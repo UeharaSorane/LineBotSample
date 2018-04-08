@@ -1,5 +1,4 @@
 var rply ={type : 'text'}; //type是必需的,但可以更改
-var BoxOpen = require('./BoxOpen.js');
 var BattleStates = require('./BattleStates.js');
 var WB = require('./WeaponBox.js');
 var BB = require('./BadgeBox.js');
