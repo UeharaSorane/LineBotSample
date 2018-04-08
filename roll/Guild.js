@@ -329,6 +329,8 @@ function GuildInformation(UserID,command,guild){
 					
 				}
 			}else if(command == '退出'){
+				console.log(CharArr[j]);
+				
 				if(PD[i][14] == '輔導公會'){
 					rply.text = '錯誤！你尚未加入任何公會';
 					return rply;
@@ -349,7 +351,6 @@ function GuildInformation(UserID,command,guild){
 				
 				for(var j = 0;j<CharArr.length;j++){
 					if(PD[i][14] == CharArr[j][1]){
-						console.log(CharArr[j]);
 						
 						for(var k = 0; k<CharArr[j][2].length;k++){
 							if(CharArr[j][2][k] == PD[i][0]){
