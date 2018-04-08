@@ -351,8 +351,8 @@ function GuildInformation(UserID,command,guild){
 					if(PD[i][14] == CharArr[j][1]){
 						console.log(CharArr[j]);
 						
-						/*for(var k = 0; k<CharArr[j][2].length;k++){
-							if(CharArr[j][2][k] == PD[i][0]){
+						for(var k = 0; k<CharArr[j][2].length;k++){
+							/*if(CharArr[j][2][k] == PD[i][0]){
 								//console.log(CharArr[j][7][k]);
 
 
