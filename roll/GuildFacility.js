@@ -53,7 +53,6 @@ DB.useServiceAccountAuth(creds, function (err) {
 				}
 				//console.log(CharArr);
 				console.log('公會設施資料 讀取完成');
-				console.log(CharArr[0][15]);
 				//console.log();
 			}
 		
@@ -158,6 +157,8 @@ function GuildCheck(UserID,command,facility,confirm){
 			
 			for(var j = 0; j<CharArr.length;j++){
 				if(PB[i][14] == CharArr[j][1]){
+				console.log(CharArr[i]);	
+				
 					if(command == null){
 						rply.text = '這是你目前所處公會設施情報:\
 								\n 公會名: ' + CharArr[j][1] + '\
