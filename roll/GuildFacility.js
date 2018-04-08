@@ -180,10 +180,8 @@ function GuildCheck(UserID,command,facility,confirm){
 								\n 想要使用設施，請輸入 設施名';
 						if(UserID == CharArr[i][15]){
 							rply.text+='\n 想要升級公會設施，請輸入 公會設施 升級 設施名';
-							return rply;
-						}else{
-							return rply;
 						}
+						return rply;
 						
 					}else if(command == '升級'){
 						let fancilityN = 0;
