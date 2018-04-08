@@ -726,8 +726,8 @@ function GuildManage(UserID,command,Name, title){
 													}
 												}
 												
-												CharArr[j][2][0] = temp1;
-												CharArr[j][3][0] = temp2;
+												CharArr[j][2][0] = temp2;
+												CharArr[j][3][0] = temp1;
 		
 												CheckTitle(CharArr[j][1]);
 
