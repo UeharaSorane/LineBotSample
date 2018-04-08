@@ -177,6 +177,7 @@ function InheritChatacter(UserID,Cname,password){
 				SkillBox.InheritPlayer(UserID,Cname);
 				ItemBox.InheritPlayer(UserID,Cname);
 				Guild.InheritPlayer(UserID,PD[i][14],Cname);
+				GuildFacility.InheritPlayer(UserID,PD[i][14],Cname);
 
 				rply.text = '角色' + Cname + '繼承完成！請輸入 玩家情報以進行確認';
 				
@@ -225,6 +226,7 @@ function switchName(UserID,Name){
 			SkillBox.switchName(UserID,Name);
 			ItemBox.switchName(UserID,Name);
 			Guild.switchName(UserID,PD[i][14],Name);
+			GuildFacility.switchName(UserID,PD[i][14],Name);
 			
 			rply.text = '更名成功！你現在的名字為' + Name;
 			return rply;
