@@ -835,7 +835,6 @@ function GetArray(){
 function saveArray(ReturnF){
 	
 	CharArr = ReturnF;
-	console.log(CharArr[0][3].join(','));
 	ArrayUpdate();
 }
 
