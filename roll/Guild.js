@@ -438,7 +438,7 @@ function GuildInformation(UserID,command,guild){
 						for(var k = 0;k<CharArr[j][2].length;k++){
 							if(CharArr[j][2][k] == UserID){
 								rply.text = '歡迎' + CharArr[j][1] + '的' + CharArr[j][4][k] +'！\n-------------\n';
-								rply.text += PlayerData.InGuildView(PD[i][14]) + '\n想確認公會設施的狀態，請輸入\
+								rply.text += InGuildView(PD[i][14]) + '\n想確認公會設施的狀態，請輸入\
 															\n 公會設施 進行確認';
 								
 								return rply;
