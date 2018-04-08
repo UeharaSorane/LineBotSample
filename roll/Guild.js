@@ -329,28 +329,27 @@ function GuildInformation(UserID,command,guild){
 					
 				}
 			}else if(command == '退出'){
-				console.log(CharArr[j]);
-				
-				if(PD[i][14] == '輔導公會'){
-					rply.text = '錯誤！你尚未加入任何公會';
-					return rply;
-				}
-				
-				if(PD[i][0] == CharArr[j][2][0]){
-					rply.text = '錯誤！會長是不能退出公會的';
-					return rply;
-				}
-				
-				if(guild !='確定'){
-					rply.text = '你確定要退出公會 ' + PD[i][14] + ' 嗎？\
-							\n 一旦退出將無法取回你已經投入公會的任何東西\
-							\n 確定要退出的話，請輸入:\
-							\n\n 公會 退出 確定';
-					return rply;
-				}
 				
 				for(var j = 0;j<CharArr.length;j++){
 					if(PD[i][14] == CharArr[j][1]){
+						if(PD[i][14] == '輔導公會'){
+							rply.text = '錯誤！你尚未加入任何公會';
+							return rply;
+						}
+
+						if(PD[i][0] == CharArr[j][2][0]){
+							rply.text = '錯誤！會長是不能退出公會的';
+							return rply;
+						}
+
+						if(guild !='確定'){
+							rply.text = '你確定要退出公會 ' + PD[i][14] + ' 嗎？\
+									\n 一旦退出將無法取回你已經投入公會的任何東西\
+									\n 確定要退出的話，請輸入:\
+									\n\n 公會 退出 確定';
+							return rply;
+						}
+				
 						
 						for(var k = 0; k<CharArr[j][2].length;k++){
 							if(CharArr[j][2][k] == PD[i][0]){
