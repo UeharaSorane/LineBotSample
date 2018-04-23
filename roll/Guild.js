@@ -222,6 +222,8 @@ function InGuildView(GuildName){
 
 
 function GuildInformation(UserID,command,guild){
+	ArrayUpdate();
+	
 	for(var i =0; i<PD.length;i++){
 		if(UserID == PD[i][0]){
 			if(command == null){
