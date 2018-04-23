@@ -789,6 +789,7 @@ function GuildManage(UserID,command,Name, title){
 									
 									
 								}
+								let GMD = CharArr[j][1];
 								
 								CharArr.splice(j, 1);
 								DB.useServiceAccountAuth(creds, function (err) {
@@ -800,6 +801,7 @@ function GuildManage(UserID,command,Name, title){
 												}else{
 													rows[rows.length-1].del();
 													ArrayUpdate();
+													GuildFacility.deleteGuild(GMD);
 												}
 									 });
 								});
