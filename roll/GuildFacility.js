@@ -903,6 +903,26 @@ function CreatNewGuild(userID,CName,GuildID,GuildName) {
 
 }
 
+function deleteGuild(Gname){
+	for(var i = 0; i<CharArr.length;i++){
+		if(CharArr[i][1] == Gname){
+			CharArr.splice(i, 1);
+			DB.useServiceAccountAuth(creds, function (err) {
+ 
+				  // Get all of the rows from the spreadsheet.
+					 DB.getRows(22 , function (err, rows) {
+								if (err) {
+									console.log( err );
+								}else{
+									rows[rows.length-1].del();
+									ArrayUpdate();
+								}
+					 });
+				});
+		}
+	}
+}
+
 module.exports = {
 	ArrayUpdate,
 	GuildCheck,
@@ -912,5 +932,6 @@ module.exports = {
 	saveArray,
 	InheritPlayer,
 	switchName,
-	CreatNewGuild
+	CreatNewGuild,
+	deleteGuild
 };
