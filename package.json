@@ -13,7 +13,8 @@
     "express": "4.13.3",
     "body-parser": "1.15.2",
     "google-spreadsheet": "2.0.3",
-    "sync": "0.2.5"
+    "sync": "0.2.5",
+    "linebot": "1.4.1"
   },
   "keywords": [
     "Sorane",
