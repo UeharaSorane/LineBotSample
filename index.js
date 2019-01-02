@@ -26,6 +26,7 @@ var server = app.listen(process.env.PORT || 8080, function() {
 
 bot.on('message', function(event) {
         console.log(event);
+	console.log(1);
 	
 	var msg = event.message;
 	var rply = ['text',''];
