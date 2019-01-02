@@ -32,7 +32,7 @@ bot.on('message', function(event) {
 	
 		if(event.message.type == 'text'){
 			event.source.profile().then(function (profile) {
-				rply = exports.check.parseInput(msg.text, event.source.userId, profile.displayName, event.source.groupId);
+				rply = exports.analytics.parseInput(msg.text, event.source.userId, profile.displayName, event.source.groupId);
 				if(rply[0] == 'none'){
 				}else if(rply[0] == 'groupRply'){
 					bot.push('Ca06e35d5eefc0162348764ce8bdb52b5',rply[1]);
