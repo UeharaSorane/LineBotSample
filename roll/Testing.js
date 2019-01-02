@@ -1,10 +1,6 @@
 var rply = [];
 var linebot = require('linebot');
 var express = require('express');
-var BattileUI = require('../battlesys/battleUI.js');
-
-var BattleInfo = BattileUI.BattleInfo;
-
 var bot = linebot({
 	channelId: "1635505649",
 	channelSecret: "b59dc842309386b494bb05541e10dfb3",
