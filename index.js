@@ -1,11 +1,5 @@
+var linebot = require('linebot');
 var express = require('express');
-var bodyParser = require('body-parser');
-var app = express();
-var jsonParser = bodyParser.json();
-var channelAccessToken = process.env.LINE_CHANNEL_ACCESSTOKEN;
-var channelSecret = process.env.LINE_CHANNEL_SECRET;
-// Load `*.js` under modules directory as properties
-//  i.e., `User.js` will become `exports['User']` or `exports.User`
 require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
   if (file.match(/\.js$/) !== null && file !== 'index.js') {
     var name = file.replace('.js', '');
@@ -13,78 +7,44 @@ require('fs').readdirSync(__dirname + '/modules/').forEach(function(file) {
   }
 });
 
+var bot = linebot({
+	channelId: "1635505649",
+	channelSecret: "b59dc842309386b494bb05541e10dfb3",
+	channelAccessToken: "jCV9Fe8nB3+G91MXq2eWCz5v2w+jGsE8A+kVdln0CF3E53aW5nZnzNfnlzkmVgZkf2OAxNahvylD0Z0VJ+wGDrDkfoyMQMvm525qu2T1c3h9FeL8VMMEwbTRXTEtUYO8Bfu5x0xYMwX/aoKJSHYrEAdB04t89/1O/w1cDnyilFU="
+	});
 
-var options = {
-	host: 'api.line.me',
-	port: 443,
-	path: '/v2/bot/message/reply',
-	method: 'POST',
-	headers: {
-	'Content-Type': 'application/json',
-	'Authorization':'Bearer ' + channelAccessToken
-	}
-}
-app.set('port', (process.env.PORT || 5000));
-// views is directory for all template files
-app.get('/', function(req, res) {
-//	res.send(parseInput(req.query.input));
-	res.send('初步檢查並沒有問題');
-});
-app.post('/', jsonParser, function(req, res) {
-	let event = req.body.events[0];
-	let type = event.type;
-	let msgType = event.message.type;
-	let msg = event.message.text;
-	let rplyToken = event.replyToken;
-	let rplyVal = {};
-	console.log(msg);
-	//訊息來到後, 會自動呼叫handleEvent 分類,然後跳到analytics.js進行骰組分析
-	//如希望增加修改骰組,只要修改analytics.js的條件式 和ROLL內的骰組檔案即可,然後在HELP.JS 增加說明.
-	try {
-	rplyVal = handleEvent(event);
-	} 
-	catch(e) {
-		console.log('catch error');
-		console.log('Request error: ' + e.message);
-	}
-	//把回應的內容,掉到replyMsgToLine.js傳出去
-	if (rplyVal) {
-	exports.replyMsgToLine.replyMsgToLine(rplyToken, rplyVal, options); 
-	} else {
-	//console.log('Do not trigger'); 
-	}
-	res.send('ok');
+var app = express();
+
+app.post('/', bot.parser());
+
+//因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
+var server = app.listen(process.env.PORT || 8080, function() {
+	var port = server.address().port;
+	console.log("App now running on port", port);
+	console.log("基本運轉似乎沒問題");
 });
 
-app.listen(app.get('port'), function() {
-	console.log('Node app is running on port', app.get('port'));
+bot.on('message', function(event) {
+        console.log(event);
+	
+	var msg = event.message;
+	var rply = ['text',''];
+	
+		if(event.message.type == 'text'){
+			event.source.profile().then(function (profile) {
+				rply = exports.check.parseInput(msg.text, event.source.userId, profile.displayName, event.source.groupId);
+				if(rply[0] == 'none'){
+				}else if(rply[0] == 'groupRply'){
+					bot.push('Ca06e35d5eefc0162348764ce8bdb52b5',rply[1]);
+				}else if(rply[0] == 'rply'){
+					event.reply(rply[1]).then(function (data) {
+					  // success
+					}).catch(function (error) {
+					  // error
+				});
+				}
+				
+			});
+			
+		}
 });
-
-function handleEvent(event) {	
-
-  switch (event.type) {
-    case 'message':
-      const message = event.message;
-      switch (message.type) {
-        case 'text':
-          return exports.analytics.parseInput(event.rplyToken, event.message.text, event.source.userId); 
-		  
-        default:
-           break;
-      }
-    case 'follow':
-		break;
-    case 'unfollow':
-       break;
-    case 'join':
-break;
-    case 'leave':
-       break;
-    case 'postback':
-       break;
-    case 'beacon':
-      break;
-    default:
-       break;
-  }
-}
