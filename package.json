@@ -1,14 +1,13 @@
 {
   "name": "Sorane",
   "version": "1.0.0",
-  "description": "A TRPG Line Bot",
+  "description": "My Line Bot",
   "engines": {
     "node": "6.9.1"
   },
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "battle": "node battle.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "express": "4.13.3",
