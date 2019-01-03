@@ -42,6 +42,10 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
           return ['rply',exports.rollbase.nomalDiceRoller(inputStr,mainMsg[0],mainMsg[1],mainMsg[2])];
         }
 	
+	//ccb指令
+	else if (trigger.match(/^ccb$/)!= null && mainMsg[1]<=1000 ){
+		if (trigger == 'ccb'&& mainMsg[1]<=99) return exports.battle.ccb(mainMsg[1],mainMsg[2]);
+        }
 	
 	
 	else return ['none',''];
