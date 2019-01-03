@@ -2,7 +2,7 @@ var rollbase = require('./rollbase.js');
 var rply ={type : 'text'}; //type是必需的,但可以更改
 
 //////////////// 插旗
-	function BStyleFlagSCRIPTS() {
+	function BStyleFlagSCRIPTS(userN) {
 		let rplyArr = ['\
 		「打完這仗我就回老家結婚（この戦いが終わったら、故郷に帰って結婚するんだ）」', '\
 		「打完這一仗後我請你喝酒」', '\
@@ -64,9 +64,10 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 ////////////////
 
 //////////////// 空音閒談
-        function randomReply() {
+        function randomReply(userName) {
         	let rplyArr = [
 		  
+			userName+'，感覺你很閒呢…能一直找我聊天...'/*,
 		 	'\有什麼事嗎？', 
 		 	'\如果沒有需要，我回去打街機喔。', 
 		  	'\嗯....(專心打太鼓達人中)', 
@@ -82,11 +83,10 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 			'\！',
 		  	'\剛認識就直接叫名子，感覺好像有點奇怪？',
 		  	'\我的喜好嗎...？當然是音樂遊戲啊！',
-		  	'\我的製作人，施彥任內心有點脆弱，拜托沒事不要傷他的心喔。',
+		  	'\我的父親(?)，施彥任內心有點脆弱，拜托沒事不要傷他的心喔。',
 		  	'\比起一直找我聊天，不如試著找其他事做吧。',
-		  	'\我最喜歡的角色嗎...？應該是露吧。不論何時都很可愛',
 		  	'\稍微...讓我休息一下吧(攤',
-			'\希望我成為你的同伴？看看夥伴商店吧！'];
+			'\希望我成為你的同伴？看看夥伴商店吧！'/*];
         	rply.text =  rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 					
 			return rply;
