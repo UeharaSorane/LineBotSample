@@ -7,6 +7,10 @@ var bot = linebot({
   channelAccessToken: "jCV9Fe8nB3+G91MXq2eWCz5v2w+jGsE8A+kVdln0CF3E53aW5nZnzNfnlzkmVgZkf2OAxNahvylD0Z0VJ+wGDrDkfoyMQMvm525qu2T1c3h9FeL8VMMEwbTRXTEtUYO8Bfu5x0xYMwX/aoKJSHYrEAdB04t89/1O/w1cDnyilFU="
 });
 
+var talkChannal = {
+	"C7dea53a651793073f816c1838e6eb69d"
+}
+
 function ReplyTest(UserN,myText) {
 	///確認系統reply功能沒問題用
 	rply[0] = 'rply';
