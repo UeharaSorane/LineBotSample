@@ -111,7 +111,7 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 		  	'\整天妄想稱呼我暱稱？真是有夠噁心的'];
         	rply.text =  rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 					
-			return rply;
+			return ['rply',rply];
         }
 ////////////////
 
