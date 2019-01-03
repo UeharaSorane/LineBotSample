@@ -128,7 +128,6 @@ function choice(input,str) {
 module.exports = {
 	BStyleFlagSCRIPTS,
 	randomReply,
-	randomReplyShin,
 	randomLuck,
 	SortIt,
 	choice
