@@ -27,17 +27,20 @@ function ReplyTest(UserN,myText) {
 }
 
 
-function SecretTalk(UserID,myText) {
+function SecretTalk(UserID,Channal,myText) {
 	///匿名淦話
 	rply[0] = 'push';
-	
-	bot.push('C7dea53a651793073f816c1838e6eb69d',myText);
-	
-	//rply[1] = myText;
-	///
-	
-	return rply;
-
+	if(talkChannal[Channal-1] != null){
+		rply[0] = 'push';
+		bot.push(talkChannal[Channal-1],myText);
+		return rply;
+	}
+	else{
+		rply[0] = 'rply';
+		rply[1] = '找不到頻道喔';
+		return rply;
+		
+	}
 }
 
 function PushTest(UserID,GroupID) {
