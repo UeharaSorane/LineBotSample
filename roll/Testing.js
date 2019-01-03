@@ -33,7 +33,7 @@ var talkChannal= [];
 					
 				}
 				//console.log(AccessArr);
-				console.log('頻道資料 讀取完成');
+				//console.log('頻道資料 讀取完成');
 			}
 		
 
