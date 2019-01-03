@@ -28,7 +28,7 @@ ChannalDB.useServiceAccountAuth(creds, function (err) {
 					talkChannal[i] = [];
 					
 					talkChannal[i][0] = rows[i].channalname;
-					talkChannal[i][1] = rows[i].id;
+					talkChannal[i][1] = 1;
 					talkChannal[i][2] = rows[i].descripition;
 					
 				}
