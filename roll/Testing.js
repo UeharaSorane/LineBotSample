@@ -38,11 +38,11 @@ var talkChannal= [];
 		
 
 			
-			});*/
+			});
 	
 		
 		
-	});
+	});*/
 
 
 function ReplyTest(UserN,myText) {
