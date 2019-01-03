@@ -37,6 +37,8 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 	else if (trigger.match(/^大聲測試$/) != null) return exports.Testing.PushTest(UserID,GroupID);//測試push功能用
 	else if (trigger.match(/^淦話$/) != null) return exports.Testing.SecretTalk(UserN,mainMsg[1]);//匿名對話
 	else if (trigger.match(/空音/) != null) return exports.funny.randomReply(UserN) ;//空音閒談指令
+	else if (trigger.match(/運氣|運勢/) != null) return exports.funny.randomLuck(mainMsg) ; //占卜運氣
+	else if (trigger.match(/flag|插旗/) != null) return exports.funny.BStyleFlagSCRIPTS() ;//插旗用指令
 	
 ////////////////////////普通ROLL擲骰判定
         else if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/\d+d+\d/)!=null) {
