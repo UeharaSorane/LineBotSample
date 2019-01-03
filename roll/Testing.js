@@ -66,7 +66,8 @@ function SecretTalk(UserID,Channal,myText) {
 	///匿名淦話
 	if(Channal == null){
 		rply[0] = 'rply';
-		rply[1] = '這是目前有登錄的頻道清單：\';
+		rply[1] = '這是目前有登錄的頻道清單：';
+';
 		for(var a = 0;a< talkChannal.length;a++){
 			rply[1] += '\n'+(a+1) +'\.'+talkChannal[a][0];
 		}
