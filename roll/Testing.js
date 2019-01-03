@@ -27,9 +27,9 @@ var talkChannal= [];
 				for(var i=0; i< rows.length; i++){
 					talkChannal[i] = [];
 					
-					/*talkChannal[i][0] = rows[i].ChannalName;
+					talkChannal[i][0] = rows[i].ChannalName;
 					talkChannal[i][1] = rows[i].ChannalID;
-					talkChannal[i][2] = rows[i].Descripition;*/
+					talkChannal[i][2] = rows[i].Descripition;
 					
 				}
 				//console.log(AccessArr);
@@ -38,12 +38,12 @@ var talkChannal= [];
 		
 
 			
-			});
+			});*/
 	
 		
 		
 	});
-*/
+
 
 function ReplyTest(UserN,myText) {
 	///確認系統reply功能沒問題用
