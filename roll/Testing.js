@@ -14,14 +14,14 @@ var creds = require('../client_secret.json');
 var ChannalDB = new GoogleSpreadsheet('1hwFlTrJ7JHeWMLbHmfg7LP7f13OfAoMebF6HIkHpHPs');
 var talkChannal= [];
 
-/*ChannalDB.useServiceAccountAuth(creds, function (err) {
+ChannalDB.useServiceAccountAuth(creds, function (err) {
 		
  
 	
  // 是先將資料讀進陣列
 	ChannalDB.getRows(0 , 
 		function (err, rows) {
-			if (err) {
+			/*if (err) {
 				console.log( err );
 			}else{
 				for(var i=0; i< rows.length; i++){
@@ -34,15 +34,15 @@ var talkChannal= [];
 				}
 				//console.log(AccessArr);
 				//console.log('頻道資料 讀取完成');
-			}
+			}/*/
 		
 
 			
-			});
+		});
 	
 		
 		
-	});*/
+});
 
 
 function ReplyTest(UserN,myText) {
