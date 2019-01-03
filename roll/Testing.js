@@ -8,7 +8,8 @@ var bot = linebot({
 });
 
 var talkChannal = [
-	"C7dea53a651793073f816c1838e6eb69d"
+	"C7dea53a651793073f816c1838e6eb69d",//trpg群
+	"U7783ccf51debc249a07bc1d957bd3a69"//兔司機
 ];
 
 function ReplyTest(UserN,myText) {
