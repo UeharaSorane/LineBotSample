@@ -19,7 +19,7 @@ ChannalDB.useServiceAccountAuth(creds, function (err) {
  
 	
  // 是先將資料讀進陣列
-	ChannalDB.getRows(5 , 
+	ChannalDB.getRows(0 , 
 		function (err, rows) {
 			if (err) {
 				console.log( err );
