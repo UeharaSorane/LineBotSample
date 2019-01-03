@@ -9,7 +9,7 @@ var bot = linebot({
 
 var talkChannal = {
 	"C7dea53a651793073f816c1838e6eb69d"
-}
+};
 
 function ReplyTest(UserN,myText) {
 	///確認系統reply功能沒問題用
