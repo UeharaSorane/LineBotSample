@@ -10,7 +10,7 @@ function ccb(chack,text){
 		else if (temp >=95) rply.text = 'ccb<=' + chack  + ' ' + temp + ' → 糟了！大失敗！';
 		else if (temp <=5) rply.text = 'ccb<=' + chack  + ' ' + temp + ' → 太棒了！大成功！';
 		else if (temp == 1) rply.text = 'ccb<=' + chack  + ' ' + temp + ' → 完美！超級大成功！！！';
-		if (temp <= chack) rply.text = 'ccb<=' + chack + ' '  + temp + ' → 很好！成功了！';
+		else if (temp <= chack) rply.text = 'ccb<=' + chack + ' '  + temp + ' → 很好！成功了！';
 		else rply.text = 'ccb<=' + chack  + ' ' + temp + ' → 可惜！失敗了！' ;
 	}else{
 		if (temp == 100) rply.text = text + ': ccb<=' + chack + ' ' + temp + ' → 完了！超級大失敗！！！';
