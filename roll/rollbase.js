@@ -1,11 +1,10 @@
-var rply ={type : 'text'}; //type是必需的,但可以更改
 
 ////////////////////////////////////////
 //////////////// 擲骰子運算
 ////////////////////////////////////////
 
 
-function Dice(diceSided){	
+function Dice(diceSided){
 		return Math.floor((Math.random() * diceSided) + 1)
 	}	
 
