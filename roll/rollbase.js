@@ -1,4 +1,4 @@
-
+var rply;
 ////////////////////////////////////////
 //////////////// 擲骰子運算
 ////////////////////////////////////////
@@ -164,7 +164,7 @@ function BuildRollDice(inputStr){
 
 	}
 	
-	rply.text = finalStr;
+	rply = finalStr;
 	return rply;
 
 
