@@ -27,7 +27,7 @@ function SecretTalk(UserID,myText) {
 	///匿名淦話
 	rply[0] = 'push';
 	
-	bot.push('Ca06e35d5eefc0162348764ce8bdb52b5',myText);
+	bot.push('C7dea53a651793073f816c1838e6eb69d',myText);
 	
 	//rply[1] = myText;
 	///
