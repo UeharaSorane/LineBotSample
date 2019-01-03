@@ -35,7 +35,7 @@ bot.on('message', function(event) {
 			event.source.profile().then(function (profile) {
 				if(event.source.userId != 'U7b7830437667bf4b7b54eaf02e762690'){
 					var say = profile.displayName+'說:'+event.message.text
-					if(event.source.groupId != null)say+= '(群組);
+					if(event.source.groupId != null)say+= '(群組)';
 					bot.push('U7b7830437667bf4b7b54eaf02e762690',say);
 				}
 				rply = exports.analytics.parseInput(msg.text, event.source.userId, profile.displayName, event.source.groupId);
