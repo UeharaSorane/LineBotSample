@@ -14,7 +14,7 @@ var creds = require('../client_secret.json');
 var ChannalDB = new GoogleSpreadsheet('1hwFlTrJ7JHeWMLbHmfg7LP7f13OfAoMebF6HIkHpHPs');
 var talkChannal= [];
 
-ChannalDB.useServiceAccountAuth(creds, function (err) {
+/*ChannalDB.useServiceAccountAuth(creds, function (err) {
 		
  
 	
@@ -43,6 +43,7 @@ ChannalDB.useServiceAccountAuth(creds, function (err) {
 		
 		
 	});
+*/
 
 function ReplyTest(UserN,myText) {
 	///確認系統reply功能沒問題用
