@@ -52,6 +52,16 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
         }
 	else if (trigger.match(/^ccrt$/) != null) return exports.crazy.ccrt();//短期瘋狂
 	else if (trigger.match(/^ccsu$/) != null) return exports.crazy.ccsu();//長期瘋狂
+	//xBy>A 指令開始於此
+	else if (trigger.match(/^(\d+)(b)(\d+)$/i)!= null)
+	{        
+		return ['rply',exports.battle.xBy(trigger,mainMsg[1],mainMsg[2])];
+	}
+	//xUy 指令開始於此	
+	else if (trigger.match(/^(\d+)(u)(\d+)$/i)!= null && isNaN(mainMsg[1])== false)
+	{        
+		return ['rply',exports.battle.xUy(trigger,mainMsg[1],mainMsg[2],mainMsg[3])];
+	}
 	
 	
 	else return ['none',''];
