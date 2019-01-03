@@ -71,7 +71,7 @@ function SecretTalk(UserID,Channal,myText) {
 		}
 		rply[1] += '\n\n 想要進行匿名對話，請輸入[淦話 頻道編號 對話內容]';
 		        return rply;
-	}else if(talkChannal[Channal] == null){
+	}else if(talkChannal[Channal-1] == null){
 		rply[0] = 'rply';
 		rply[1] = '找不到該頻道喔';
 		return rply;
