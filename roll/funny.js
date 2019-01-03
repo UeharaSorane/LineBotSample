@@ -89,7 +89,7 @@ var rply ={type : 'text'}; //type是必需的,但可以更改
 			'\希望我成為你的同伴？看看夥伴商店吧！'*/];
         	rply.text =  rplyArr[Math.floor((Math.random() * (rplyArr.length)) + 0)];
 					
-			return rply;
+			return ['rply,'rply];
         }
 ////////////////
 
