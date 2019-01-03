@@ -21,20 +21,20 @@ ChannalDB.useServiceAccountAuth(creds, function (err) {
  // 是先將資料讀進陣列
 	ChannalDB.getRows(0 , 
 		function (err, rows) {
-			/*if (err) {
+			if (err) {
 				console.log( err );
 			}else{
-				for(var i=0; i< rows.length; i++){
+				/*for(var i=0; i< rows.length; i++){
 					talkChannal[i] = [];
 					
 					talkChannal[i][0] = rows[i].ChannalName;
 					talkChannal[i][1] = rows[i].ChannalID;
 					talkChannal[i][2] = rows[i].Descripition;
 					
-				}
+				}*/
 				//console.log(AccessArr);
 				//console.log('頻道資料 讀取完成');
-			}/*/
+			}
 		
 
 			
