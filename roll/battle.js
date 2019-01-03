@@ -6,33 +6,21 @@ function ccb(chack,text){
 	let temp = rollbase.Dice(100);
 
 	if (text == null ) {
-		if (temp == 100) rply.text = 'ccb<=' + chack  + ' ' + temp + ' → 糟了！大失敗！';
-		if (temp == 1) rply.text = 'ccb<=' + chack  + ' ' + temp + ' → 太棒了！大成功！';
+		if (temp ==100 ) rply.text = 'ccb<=' + chack  + ' ' + temp + ' → 完了！超級大失敗！！！';
+		else if (temp >=95) rply.text = 'ccb<=' + chack  + ' ' + temp + ' → 糟了！大失敗！';
+		else if (temp <=5) rply.text = 'ccb<=' + chack  + ' ' + temp + ' → 太棒了！大成功！';
+		else if (temp == 1) rply.text = 'ccb<=' + chack  + ' ' + temp + ' → 完美！超級大成功！！！';
 		if (temp <= chack) rply.text = 'ccb<=' + chack + ' '  + temp + ' → 很好！成功了！';
 		else rply.text = 'ccb<=' + chack  + ' ' + temp + ' → 可惜！失敗了！' ;
 	}else{
-		if (temp == 100) rply.text = text + ': ccb<=' + chack + ' ' + temp + ' → 糟了！大失敗！';
-		if (temp == 1) rply.text = text + ': ccb>=' + chack + ' ' + temp + ' → 太棒了！大成功！';
-		if (temp <= chack) rply.text = text + ': ccb>=' + chack + ' ' + temp + ' → 很好！成功了！';
+		if (temp == 100) rply.text = text + ': ccb<=' + chack + ' ' + temp + ' → 完了！超級大失敗！！！';
+		else if (temp >=95) rply.text = text + ': ccb<=' + chack + ' ' + temp + ' → 糟了！大失敗！';
+		else if (temp <=5) rply.text = text + ': ccb>=' + chack + ' ' + temp + ' → 太棒了！大成功！';
+		else if (temp == 1) rply.text = text + ': ccb>=' + chack + ' ' + temp + ' → 完美！超級大成功！！！';
+		else if (temp <= chack) rply.text = text + ': ccb>=' + chack + ' ' + temp + ' → 很好！成功了！';
 		else rply.text = text + ': ccb>=' + chack + ' ' + temp + ' → 可惜！失敗了！';
 	}
 	
-	return rply;
-	
-}
-////////////////
-
-//////////////// 速度判定
-function spd(spd1p,spd2p){
-	let temp = rollbase.Dice(100);
-	
-	var spdmus = spd1p - spd2p;
-
-	if (spdmus+50 > temp) {
-		rply.text = '速度差:'+spdmus+'>='+(temp-50)+'→ 你先攻！';
-	}else{
-		rply.text = '速度差:'+spdmus+'<'+(temp-50)+'→ 對手先攻！';
-	}
 	return rply;
 	
 }
@@ -147,7 +135,6 @@ function xUy(triggermsg ,text01, text02, text03) {
 
 module.exports = {
 	ccb,
-	spd,
 	xBy,
 	xUy
 };
