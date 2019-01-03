@@ -36,12 +36,15 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 	if (trigger.match(/^鸚鵡測試$/) != null) return exports.Testing.ReplyTest(UserN,mainMsg[1]);//測試reply功能用
 	else if (trigger.match(/^大聲測試$/) != null) return exports.Testing.PushTest(UserID,GroupID);//測試push功能用
 	else if (trigger.match(/^淦話$/) != null) return exports.Testing.SecretTalk(UserN,mainMsg[1]);//匿名對話
-	else return ['none',''];
 	
 ////////////////////////普通ROLL擲骰判定
-        if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/\d+d+\d/)!=null) {
-          return exports.rollbase.nomalDiceRoller(inputStr,mainMsg[0],mainMsg[1],mainMsg[2]);
+        else if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/\d+d+\d/)!=null) {
+          return ['rply',exports.rollbase.nomalDiceRoller(inputStr,mainMsg[0],mainMsg[1],mainMsg[2])];
         }
+	
+	
+	
+	else return ['none',''];
 
 
 }
