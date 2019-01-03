@@ -79,13 +79,13 @@ function SecretTalk(UserID,Channal,myText) {
 	}else{
 		if(myText == null){
 			rply[0] = 'rply';
-		        rply[1] = '頻道名稱:'+ talkChannal[Channal][0]+'\
-                                \n 描述:'+ talkChannal[Channal][2]+'\
+		        rply[1] = '頻道名稱:'+ talkChannal[Channal+1][0]+'\
+                                \n 描述:'+ talkChannal[Channal+1][2]+'\
                                 \n\n 想要進行匿名對話，請輸入[淦話 頻道編號 對話內容]';
 		        return rply;
 		}else{
 			rply[0] = 'push';
-		        bot.push(talkChannal[Channal-1],myText);
+		        bot.push(talkChannal[Channal+1][1],myText);
 		        return rply;
 		}
 	}
