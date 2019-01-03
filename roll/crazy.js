@@ -252,7 +252,7 @@ function ccrt() {
 	if (rollcc == 9) {
 		rply.text = cocmadnessrt[rollcc] + '\n症狀持續' + time + '輪數' + ' \n' + cocPhobias[PP];
 	};
-	return rply;
+	return ['rply',rply];
 }
 function ccsu() {
 	var rollcc = Math.floor(Math.random() * 10);
@@ -267,7 +267,7 @@ function ccsu() {
 	if (rollcc == 9) {
 		rply.text = cocmadnesssu[rollcc] + '\n症狀持續' + time + '小時' + ' \n' + cocPhobias[PP];
 	};
-	return rply;
+	return ['rply',rply];
 }
 
 module.exports = {
