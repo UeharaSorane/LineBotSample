@@ -269,3 +269,8 @@ function ccsu() {
 	};
 	return rply;
 }
+
+module.exports = {
+	ccrt,
+	ccsu
+};
