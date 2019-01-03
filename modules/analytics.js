@@ -49,6 +49,8 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 	else if (trigger.match(/^ccb$/)!= null && mainMsg[1]<=1000 ){
 		if (trigger == 'ccb'&& mainMsg[1]<=99) return ['rply',exports.battle.ccb(mainMsg[1],mainMsg[2])];
         }
+	else if (trigger.match(/^ccrt$/) != null) return exports.crazy.ccrt();//短期瘋狂
+	else if (trigger.match(/^ccsu$/) != null) return exports.crazy.ccsu();//長期瘋狂
 	
 	
 	else return ['none',''];
