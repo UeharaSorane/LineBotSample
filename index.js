@@ -21,7 +21,7 @@ app.post('/', bot.parser());
 var server = app.listen(process.env.PORT || 8080, function() {
 	var port = server.address().port;
 	console.log("App now running on port", port);
-	console.log("基本運轉似乎沒問題");
+	console.log("好，沒事");
 });
 
 bot.on('message', function(event) {
