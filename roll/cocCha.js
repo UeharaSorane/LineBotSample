@@ -250,7 +250,7 @@ function ChaSkiCheck(UserID){
 						}
 					}
 					
-
+					console.log(rply[1]);
 					return rply;
 				}
 			}
