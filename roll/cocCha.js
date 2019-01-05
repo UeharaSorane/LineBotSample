@@ -46,7 +46,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					
 					
 				}
-				console.log('角色基本資料 讀取完成');
+				//console.log('角色基本資料 讀取完成');
 			}	
 		});
 	
@@ -108,8 +108,8 @@ DB.useServiceAccountAuth(creds, function (err) {
 					}
 					
 				}
-				//console.log(ChaQua);
-				console.log('角色素質資料 讀取完成');
+				console.log(ChaSki);
+				console.log('角色技能資料 讀取完成');
 			}	
 		});
 });
