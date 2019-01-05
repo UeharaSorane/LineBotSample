@@ -118,23 +118,23 @@ function menu(UserN){
 		  	"type": "buttons",
 		  		"text":"嗨！" + UserN + "，請問要做什麼？",
 		  		"actions": [{
-					"type": "postback",
+					"type": "message",
 					"label": "角色基本資料",
-					"data": "角色基本資料"},
+					"text": "角色基本資料"},
 					{
-					"type": "postback",
+					"type": "message",
 					"label": "角色素質資料",
-					"data": "角色素質資料"
+					"text": "角色素質資料"
 					},
 		      			{
-					"type": "postback",
+					"type": "message",
 					"label": "角色技能資料",
-					"data": "角色技能資料"
+					"text": "角色技能資料"
 					},
 					{
-					"type": "postback",
+					"type": "message",
 					"label": "技能查詢",
-					"data": "技能查詢"
+					"text": "技能查詢"
 					}
 				]
 		}
