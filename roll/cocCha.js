@@ -230,7 +230,7 @@ function ChaSkiCheck(UserID){
 					rply += '\n特技:';
 					
 					for(var c = 0;c<ChaSki[b][15].length;c++){
-						for(var d = 0;d<skilllist[d].length;d++){
+						for(var d = 0;d<skilllist.length;d++){
 							if(skilllist[d] == ChaSki[b][15][c]){
 								var skillLV = ChaSki[b][1][d] + ChaSki[b][2][d] + ChaSki[b][3][d] + ChaSki[b][4][d];
 								rply[1] += '\n' + skilllist[d] + '\n';
