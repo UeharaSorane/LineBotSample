@@ -178,10 +178,10 @@ function ChaSkiCheck(UserID){
 						\n角色名:' + ChaSki[b][0] + '\n';
 					
 					for(var c = 0;c<skilllist.length;c++){
-						var skillLV = ChaSki[b][c][1] + ChaSki[b][c][2] + ChaSki[b][c][3] + ChaSki[b][c][4];
+						var skillLV = ChaSki[b][1][c] + ChaSki[b][2][c] + ChaSki[b][3][c] + ChaSki[b][4][c];
 						
 						rply[1] += '\n' + skilllist[c] + ':' + skillLV + '\
-						\n(' + ChaSki[b][c][1] + '/' + ChaSki[b][c][2] + '/' + ChaSki[b][c][3] + '/' + ChaSki[b][c][4] + ')';
+						\n(' + ChaSki[b][1][c] + '/' + ChaSki[b][2][c] + '/' + ChaSki[b][3][c] + '/' + ChaSki[b][4][c] + ')';
 					}
 
 					return rply;
