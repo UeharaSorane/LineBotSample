@@ -204,47 +204,50 @@ function ChaSkiCheck(UserID){
 					rply[1] = '【COC技能資料】\
 						\n角色名:' + ChaSki[b][0] + '\
 						\n職業技能點數:' + ChaSki[b][11] + '/' + ChaSki[b][10] + '\
-						\n興趣技能點數:' + ChaSki[b][13] + '/' + ChaSki[b][12] + '\n';
+						\n興趣技能點數:' + ChaSki[b][13] + '/' + ChaSki[b][12] + '\
+						\n\n職業技能:';
 					
-					for(var c = 0;c<skilllist.length;c++){
-						var skillLV = ChaSki[b][1][c] + ChaSki[b][2][c] + ChaSki[b][3][c] + ChaSki[b][4][c];
-						
-						rply[1] += '\n' + skilllist[c];
-						
-						for(var d = 0;d<ChaSki[b][14].length;d++){
-							if(skilllist[c] == ChaSki[b][14][d]){
-								rply[1] += '(職業)';
+					for(var c = 0;c<ChaSki[b][14].length;c++){
+						for(var d = 0;d<skilllist[d].length;d++){
+							if(skilllist[d] == ChaSki[b][14][c]){
+								var skillLV = ChaSki[b][1][d] + ChaSki[b][2][d] + ChaSki[b][3][d] + ChaSki[b][4][d];
+								rply[1] += '\n' + skilllist[d] + '\n';
+								
+								rply += ':' + skillLV + '\
+								\n(' + ChaSki[b][1][d] + '/' + ChaSki[b][2][d] + '/' + ChaSki[b][3][d] + '/' + ChaSki[b][4][d] + ')';
 							}
 						}
-						
-						for(var d = 0;d<ChaSki[b][15].length;d++){
-							if(skilllist[c] == ChaSki[b][15][d]){
-								rply[1] += '<特技>';
+						for(var d = 0;d<ChaSki[b][5].length;d++){
+							if(ChaSki[b][5][d] == ChaSki[b][14][c]){
+								var skillLV = ChaSki[b][6][d] + ChaSki[b][7][d] + ChaSki[b][8][d] + ChaSki[b][9][d];
+								rply[1] += '\n' + ChaSki[b][5][d] + '\n';
+								
+								rply += ':' + skillLV + '\
+								\n(' + ChaSki[b][6][d] + '/' + ChaSki[b][7][d] + '/' + ChaSki[b][8][d] + '/' + ChaSki[b][9][d] + ')';
 							}
 						}
-						
-						rply += ':' + skillLV + '\
-						\n(' + ChaSki[b][1][c] + '/' + ChaSki[b][2][c] + '/' + ChaSki[b][3][c] + '/' + ChaSki[b][4][c] + ')';
 					}
-					rply[1] += '\n [自定義技能]';
-					for(var c = 0;c<ChaSki[b][5].length;c++){
-						var skillLV = ChaSki[b][6][c] + ChaSki[b][7][c] + ChaSki[b][8][c] + ChaSki[b][9][c];
-						
-						rply[1] += '\n' + ChaSki[b][5][c];
-						for(var d = 0;d<ChaSki[b][14].length;d++){
-							if(skilllist[c] == ChaSki[b][14][d]){
-								rply[1] += '(職業)';
+					rply += '\n特技:';
+					
+					for(var c = 0;c<ChaSki[b][15].length;c++){
+						for(var d = 0;d<skilllist[d].length;d++){
+							if(skilllist[d] == ChaSki[b][15][c]){
+								var skillLV = ChaSki[b][1][d] + ChaSki[b][2][d] + ChaSki[b][3][d] + ChaSki[b][4][d];
+								rply[1] += '\n' + skilllist[d] + '\n';
+								
+								rply += ':' + skillLV + '\
+								\n(' + ChaSki[b][1][d] + '/' + ChaSki[b][2][d] + '/' + ChaSki[b][3][d] + '/' + ChaSki[b][4][d] + ')';
 							}
 						}
-						
-						for(var d = 0;d<ChaSki[b][15].length;d++){
-							if(skilllist[c] == ChaSki[b][15][d]){
-								rply[1] += '<特技>';
+						for(var d = 0;d<ChaSki[b][5].length;d++){
+							if(ChaSki[b][5][d] == ChaSki[b][15][c]){
+								var skillLV = ChaSki[b][6][d] + ChaSki[b][7][d] + ChaSki[b][8][d] + ChaSki[b][9][d];
+								rply[1] += '\n' + ChaSki[b][5][d] + '\n';
+								
+								rply += ':' + skillLV + '\
+								\n(' + ChaSki[b][6][d] + '/' + ChaSki[b][7][d] + '/' + ChaSki[b][8][d] + '/' + ChaSki[b][9][d] + ')';
 							}
 						}
-						
-						rply += ':' + skillLV + '\
-						\n(' + ChaSki[b][6][c] + '/' + ChaSki[b][7][c] + '/' + ChaSki[b][8][c] + '/' + ChaSki[b][9][c] + ')';
 					}
 					
 
