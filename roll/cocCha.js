@@ -276,15 +276,15 @@ function ChaSkiSearch(UserID,skillName){
 					
 					if(skillName == null){
 						rply[1] += '\n你所持有的技能:\
-							\n\n【職業技能】';
+							\n\n【職業技能】\n';
 						for(var c = 0;c<ChaSki[b][14].length;c++){
 							rply[1] += ChaSki[b][14][c] + '\n';
 						}
-						rply[1] += '\n【特技】';
+						rply[1] += '\n【特技】\n';
 						for(var c = 0;c<ChaSki[b][15].length;c++){
 							rply[1] += ChaSki[b][15][c] + '\n';
 						}
-						rply[1] += '\n【通常通用技能】';
+						rply[1] += '\n【通常通用技能】\n';
 						for(var c = 0;c<skilllist.length;c++){
 							var check = 0;
 							for(var d = 0;d<ChaSki[b][14].length;d++){
@@ -301,7 +301,7 @@ function ChaSkiSearch(UserID,skillName){
 							}
 							if(check == 0)rply[1] += skilllist[c] + '\n';
 						}
-						rply[1] += '\n【通常自訂技能】';
+						rply[1] += '\n【通常自訂技能】\n';
 						for(var c = 0;c<ChaSki[b][5].length;c++){
 							var check = 0;
 							for(var d = 0;d<ChaSki[b][14].length;d++){
@@ -322,7 +322,7 @@ function ChaSkiSearch(UserID,skillName){
 						rply[1] += '\n想要確認技能，請輸入[技能查詢 技能名]進行確認';
 						return rply;
 					}else{
-						rply[1] += '查詢的技能名:' + skillName + '\
+						rply[1] += '\n查詢的技能名:' + skillName + '\
 							\n類型:';
 
 						for(var c = 0;c<skilllist.length;c++){
