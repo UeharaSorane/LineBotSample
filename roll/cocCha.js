@@ -7,6 +7,13 @@ var DB = new GoogleSpreadsheet('1hwFlTrJ7JHeWMLbHmfg7LP7f13OfAoMebF6HIkHpHPs');
 var ChaIm= [];
 var ChaQua= [];
 
+var skilllist = ['會計','人類學','估價','考古','魅惑','攀爬','電腦使用','信用評級','喬裝','閃避','自動車駕駛',
+		 '電器維修','電子學','話術','急救','歷史','威嚇','跳躍','法律','圖書館使用','聆聽','鎖匠',
+		 '機械維修','醫學','自然學','導航','神祕學','操作重機具','說服','心理學','心理分析',
+		 '巧手','偵查','隱密行動','游泳','投擲','追蹤'];
+
+var ChaSki= [];
+
 DB.useServiceAccountAuth(creds, function (err) {
 		
  
@@ -70,6 +77,41 @@ DB.useServiceAccountAuth(creds, function (err) {
 				console.log('角色素質資料 讀取完成');
 			}	
 		});
+	
+	DB.getRows(4 , 
+		function (err, rows) {
+			if (err) {
+				console.log( err );
+			}else{
+				for(var i=0; i< rows.length; i++){
+					ChaSki[i] = [];
+					
+					ChaSki[i][0] = rows[i].chaname;
+					ChaSki[i][1] = rows[i].default.split(',');
+					for(var De = 0;De<ChaSki[i][1].length;De++){
+						ChaSki[i][1][De] = Number(ChaSki[i][1][De]);
+					}
+					ChaSki[i][2] = rows[i].classp.split(',');
+					for(var De = 0;De<ChaSki[i][2].length;De++){
+						ChaSki[i][2][De] = Number(ChaSki[i][2][De]);
+					}
+					ChaSki[i][3] = rows[i].interestp.split(',');
+					for(var De = 0;De<ChaSki[i][3].length;De++){
+						ChaSki[i][3][De] = Number(ChaSki[i][3][De]);
+					}
+					ChaSki[i][4] = rows[i].skillupp.split(',');
+					for(var De = 0;De<ChaSki[i][4].length;De++){
+						ChaSki[i][4][De] = Number(ChaSki[i][4][De]);
+					}
+					for(var De = 0;De<ChaSki[i][1].length;De++){
+						ChaSki[i][5][De] = ChaSki[i][1][De] + ChaSki[i][2][De] + ChaSki[i][3][De] + ChaSki[i][4][De];
+					}
+					
+				}
+				//console.log(ChaQua);
+				console.log('角色素質資料 讀取完成');
+			}	
+		});
 });
 
 function SearchCha(UserID){
@@ -129,7 +171,34 @@ function ChaQuaCheck(UserID){
 	return rply;
 }
 
+function ChaSkiCheck(UserID){
+	rply[0] = 'rply';
+	
+	for(var a = 0;a<ChaIm.length;a++){
+		if(ChaIm[a][0] == UserID){
+			for(var b = 0;b<ChaSki.length;b++){
+				if(ChaSki[b][0] == ChaIm[a][1]){
+					rply[1] = '【COC技能資料】\
+						\n角色名:' + ChaSki[b][0] + '\n';
+					
+					for(var c = 0;c<skilllist.length;c++){
+						rply[1] += '\n' + skilllist[c] + ':' +  ChaSki[b][c][5] + '\
+						\n(' + ChaSki[b][c][1] + '/' + ChaSki[b][c][2] + '/' + ChaSki[b][c][3] + '/' + ChaSki[b][c][4] + ')';
+					}
+
+					return rply;
+				}
+			}
+			rply[1] = '嚴重錯誤!!!你的角色沒有技能資料，請向開發人員報告';
+			return rply;
+		}
+	}
+	rply[1] = '你尚未持有CoC角色';
+	return rply;
+}
+
 module.exports = {
 	SearchCha,
-	ChaQuaCheck
+	ChaQuaCheck,
+	ChaSkiCheck
 };
