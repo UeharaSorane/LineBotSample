@@ -213,7 +213,7 @@ function ChaSkiCheck(UserID){
 								var skillLV = ChaSki[b][1][d] + ChaSki[b][2][d] + ChaSki[b][3][d] + ChaSki[b][4][d];
 								rply[1] += '\n' + skilllist[d] + '\n';
 								
-								rply += ':' + skillLV + '\
+								rply[1] += ':' + skillLV + '\
 								\n(' + ChaSki[b][1][d] + '/' + ChaSki[b][2][d] + '/' + ChaSki[b][3][d] + '/' + ChaSki[b][4][d] + ')';
 							}
 						}
@@ -222,7 +222,7 @@ function ChaSkiCheck(UserID){
 								var skillLV = ChaSki[b][6][d] + ChaSki[b][7][d] + ChaSki[b][8][d] + ChaSki[b][9][d];
 								rply[1] += '\n' + ChaSki[b][5][d] + '\n';
 								
-								rply += ':' + skillLV + '\
+								rply[1] += ':' + skillLV + '\
 								\n(' + ChaSki[b][6][d] + '/' + ChaSki[b][7][d] + '/' + ChaSki[b][8][d] + '/' + ChaSki[b][9][d] + ')';
 							}
 						}
@@ -235,7 +235,7 @@ function ChaSkiCheck(UserID){
 								var skillLV = ChaSki[b][1][d] + ChaSki[b][2][d] + ChaSki[b][3][d] + ChaSki[b][4][d];
 								rply[1] += '\n' + skilllist[d] + '\n';
 								
-								rply += ':' + skillLV + '\
+								rply[1] += ':' + skillLV + '\
 								\n(' + ChaSki[b][1][d] + '/' + ChaSki[b][2][d] + '/' + ChaSki[b][3][d] + '/' + ChaSki[b][4][d] + ')';
 							}
 						}
@@ -244,7 +244,7 @@ function ChaSkiCheck(UserID){
 								var skillLV = ChaSki[b][6][d] + ChaSki[b][7][d] + ChaSki[b][8][d] + ChaSki[b][9][d];
 								rply[1] += '\n' + ChaSki[b][5][d] + '\n';
 								
-								rply += ':' + skillLV + '\
+								rply[1] += ':' + skillLV + '\
 								\n(' + ChaSki[b][6][d] + '/' + ChaSki[b][7][d] + '/' + ChaSki[b][8][d] + '/' + ChaSki[b][9][d] + ')';
 							}
 						}
