@@ -325,7 +325,7 @@ function ChaSkiSearch(UserID,skillName){
 						rply[1] += '查詢的技能名:' + skillName + '\
 							\n類型:';
 
-						for(var c = 0;c<skilllist.length;b++){
+						/*for(var c = 0;c<skilllist.length;b++){
 							if(skilllist[c] == skillName){
 								var check =0;
 
@@ -354,7 +354,7 @@ function ChaSkiSearch(UserID,skillName){
 								return rply;
 
 							}
-						}
+						}*/
 
 						/*for(var c = 0;c<ChaSki[b][5].length;b++){
 							if(ChaSki[b][5][c] == skillName){
