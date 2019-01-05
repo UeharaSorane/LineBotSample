@@ -25,25 +25,26 @@ var server = app.listen(process.env.PORT || 8080, function() {
 });
 
 bot.on('message', function(event) {
-        console.log(event);
-	
-	var msg = event.message;
-	var rply = ['text',''];
-	
-	//var profile = event.source.profile();
-	console.log(event.source.profile());
-	
-	if(event.message.type == 'text'){
-		event.source.profile().then(function (profile) {
+	event.source.profile().then(function (profile) {
+		console.log(event);
+		var src = event.source;
+		var msg = event.message;
+		
+		if(event.message.type == 'text'){
 			if(event.source.userId != 'U7b7830437667bf4b7b54eaf02e762690'){
-				var say = profile.displayName+'說:'+event.message.text
+				var say = profile.displayName+'說:'+event.message.text;
 				if(event.source.groupId != null)say+= '(群組)';
 				bot.push('U7b7830437667bf4b7b54eaf02e762690',say);
 			}
-		});
-	}else if(msg.type == 'sticker'){
-		
-	}
+		}else if(msg.type == 'sticker'){
+			if(event.source.userId != 'U7b7830437667bf4b7b54eaf02e762690'){
+				var say = profile.displayName+'傳送了一張貼圖';
+				if(event.source.groupId != null)say+= '(群組)';
+				bot.push('U7b7830437667bf4b7b54eaf02e762690',say);
+				bot.push('U7b7830437667bf4b7b54eaf02e762690',msg);
+			}
+		}
+	});
 	
 	if(event.message.type == 'text'){
 		event.source.profile().then(function (profile) {
