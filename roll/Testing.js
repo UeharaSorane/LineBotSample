@@ -32,7 +32,6 @@ ChannalDB.useServiceAccountAuth(creds, function (err) {
 					talkChannal[i][2] = rows[i].descripition;
 					
 				}
-				//console.log(AccessArr);
 				console.log('頻道資料 讀取完成');
 			}
 		
@@ -42,6 +41,10 @@ ChannalDB.useServiceAccountAuth(creds, function (err) {
 	
 		
 		
+});
+
+bot.on('follow',function(event){
+	console.log(event);
 });
 
 
