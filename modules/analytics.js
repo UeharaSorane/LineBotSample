@@ -43,6 +43,7 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 ////////////////////////CoC資料
 	else if (trigger.match(/^角色基本資料$/) != null) return exports.cocCha.SearchCha(UserID) ;//角色基本資料
 	else if (trigger.match(/^角色素質資料$/) != null) return exports.cocCha.ChaQuaCheck(UserID) ;//角色基本資料
+	else if (trigger.match(/^角色技能資料$/) != null) return exports.cocCha.ChaSkiCheck(UserID) ;//角色基本資料
 	
 ////////////////////////普通ROLL擲骰判定
         else if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/\d+d+\d/)!=null) {
