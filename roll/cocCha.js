@@ -104,11 +104,11 @@ DB.useServiceAccountAuth(creds, function (err) {
 						ChaSki[i][4][De] = Number(ChaSki[i][4][De]);
 					}
 					for(var De = 0;De<ChaSki[i][1].length;De++){
-						//ChaSki[i][5][De] = ChaSki[i][1][De] + ChaSki[i][2][De] + ChaSki[i][3][De] + ChaSki[i][4][De];
+						ChaSki[i][5][De] = ChaSki[i][1][De] + ChaSki[i][2][De] + ChaSki[i][3][De] + ChaSki[i][4][De];
 					}
 					
 				}
-				console.log(ChaSki);
+				console.log(ChaSki[0][5]);
 				console.log('角色技能資料 讀取完成');
 			}	
 		});
