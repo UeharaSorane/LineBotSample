@@ -40,7 +40,8 @@ bot.on('message', function(event) {
 			//if(event.source.userId != 'U7b7830437667bf4b7b54eaf02e762690'){
 				var say = profile.displayName+'傳送了一張貼圖';
 				if(event.source.groupId != null)say+= '(群組)';
-				bot.push('U7b7830437667bf4b7b54eaf02e762690',msg);
+				event.reply(msg);
+				//bot.push('U7b7830437667bf4b7b54eaf02e762690',msg);
 				/*var Stk = {
 						type: 'sticker',
 						packageId: '2591664',
