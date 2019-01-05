@@ -227,7 +227,7 @@ function ChaSkiCheck(UserID){
 							}
 						}
 					}
-					rply += '\n特技:';
+					rply[1] += '\n特技:';
 					
 					for(var c = 0;c<ChaSki[b][15].length;c++){
 						for(var d = 0;d<skilllist.length;d++){
