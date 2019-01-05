@@ -37,17 +37,17 @@ bot.on('message', function(event) {
 				bot.push('U7b7830437667bf4b7b54eaf02e762690',say);
 			}
 		}else if(msg.type == 'sticker'){
-			if(event.source.userId != 'U7b7830437667bf4b7b54eaf02e762690'){
+			//if(event.source.userId != 'U7b7830437667bf4b7b54eaf02e762690'){
 				var say = profile.displayName+'傳送了一張貼圖';
 				if(event.source.groupId != null)say+= '(群組)';
-				bot.push('U7b7830437667bf4b7b54eaf02e762690',say);
-				var Stk = {
+				bot.push('U7b7830437667bf4b7b54eaf02e762690',msg);
+				/*var Stk = {
 						type: 'sticker',
 						packageId: '2591664',
 						stickerId: '1062629'}
 				
-				bot.push('U7b7830437667bf4b7b54eaf02e762690',Stk);
-			}
+				bot.push('U7b7830437667bf4b7b54eaf02e762690',Stk);*/
+			//}
 		}
 	});
 	
