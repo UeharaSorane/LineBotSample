@@ -41,7 +41,7 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 	else if (trigger.match(/flag|插旗/) != null) return exports.funny.BStyleFlagSCRIPTS() ;//插旗用指令
 	else if (trigger.match(/^help$|^幫助$/)!= null ) return exports.Help.Help(UserN);//幫助頁面
 ////////////////////////CoC資料
-	else if (trigger.match(/^目錄|menu$/) != null) return exports.cocCha.SearchCha(UserN) ;//目錄
+	else if (trigger.match(/^目錄|menu$/) != null) return exports.Testing.menu(UserN) ;//目錄
 	else if (trigger.match(/^角色基本資料$/) != null) return exports.cocCha.SearchCha(UserID) ;//角色基本資料
 	else if (trigger.match(/^角色素質資料$/) != null) return exports.cocCha.ChaQuaCheck(UserID) ;//角色素質資料
 	else if (trigger.match(/^角色技能資料$/) != null) return exports.cocCha.ChaSkiCheck(UserID) ;//角色技能資料
