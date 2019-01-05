@@ -104,7 +104,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 						ChaSki[i][4][De] = Number(ChaSki[i][4][De]);
 					}
 					for(var De = 0;De<ChaSki[i][1].length;De++){
-						ChaSki[i][5][De] = ChaSki[i][1][De] + ChaSki[i][2][De] + ChaSki[i][3][De] + ChaSki[i][4][De];
+						//ChaSki[i][5][De] = ChaSki[i][1][De] + ChaSki[i][2][De] + ChaSki[i][3][De] + ChaSki[i][4][De];
 					}
 					
 				}
@@ -182,7 +182,7 @@ function ChaSkiCheck(UserID){
 						\n角色名:' + ChaSki[b][0] + '\n';
 					
 					for(var c = 0;c<skilllist.length;c++){
-						rply[1] += '\n' + skilllist[c] + ':' +  ChaSki[b][c][5] + '\
+						rply[1] += '\n' + skilllist[c] + ':' /*+  ChaSki[b][c][5]*/ + '\
 						\n(' + ChaSki[b][c][1] + '/' + ChaSki[b][c][2] + '/' + ChaSki[b][c][3] + '/' + ChaSki[b][c][4] + ')';
 					}
 
