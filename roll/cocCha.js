@@ -5,6 +5,7 @@ var creds = require('../client_secret.json');
 
 var DB = new GoogleSpreadsheet('1hwFlTrJ7JHeWMLbHmfg7LP7f13OfAoMebF6HIkHpHPs');
 var ChaIm= [];
+var ChaQua= [];
 
 DB.useServiceAccountAuth(creds, function (err) {
 		
@@ -41,6 +42,33 @@ DB.useServiceAccountAuth(creds, function (err) {
 				console.log('角色基本資料 讀取完成');
 			}	
 		});
+	
+	DB.getRows(3 , 
+		function (err, rows) {
+			if (err) {
+				console.log( err );
+			}else{
+				for(var i=0; i< rows.length; i++){
+					ChaQua[i] = [];
+					
+					ChaQua[i][0] = rows[i].chaname;
+					ChaQua[i][1] = Number(rows[i].str);
+					ChaQua[i][2] = Number(rows[i].dex);
+					ChaQua[i][3] = Number(rows[i].con);
+					ChaQua[i][4] = Number(rows[i].app);
+					ChaQua[i][5] = Number(rows[i].pow);
+					ChaQua[i][6] = Number(rows[i].int);
+					ChaQua[i][7] = Number(rows[i].edu);
+					ChaQua[i][8] = Number(rows[i].siz);
+					ChaQua[i][9] = Number(rows[i].mov);
+					ChaQua[i][10] = Number(rows[i].idea);
+					ChaQua[i][11] = Number(rows[i].know);
+					ChaQua[i][12] = Number(rows[i].luk);
+					
+				}
+				console.log('角色素質資料 讀取完成');
+			}	
+		});
 });
 
 function SearchCha(UserID){
@@ -66,16 +94,41 @@ function SearchCha(UserID){
 	rply[1] = '你尚未持有CoC角色';
 	return rply;
 }
-function exportDB(){
-	return ChaIm;
-}
 
-function saveDB(DB){
-	ChaIm = DB;
+function ChaQuaCheck(UserID){
+	rply[0] = 'rply';
+	
+	for(var a = 0;a<ChaIm.length;a++){
+		if(ChaIm[a][0] == UserID){
+			for(var b = 0;b<ChaQua.length;b++){
+				if(ChaQua[b][0] == ChaQua[a][1]){
+					rply[1] = '【COC素質資料】\
+						\n角色名:' + ChaQua[b][0] + '\
+						\n力量(STR):' + ChaQua[b][1] + '\
+						\n敏捷(DEX):' + ChaQua[b][2] + '\
+						\n體質(CON):' + ChaQua[b][3] + '\
+						\n外貌(APP):' + ChaQua[b][4] + '\
+						\n意志(POW):' + ChaQua[b][5] + '\
+						\n智力(INT):' + ChaQua[b][6] + '\
+						\n教育(EDU):' + ChaQua[b][7] + '\
+						\n體型(SIZ):' + ChaQua[b][8] + '\
+						\n機動力(MOV):' + ChaQua[b][9] + '\
+						\n靈感(IDEA):' + ChaQua[b][10] + '\
+						\n知識(KNOW):' + ChaQua[b][11] + '\
+						\n幸運(LUK):' + ChaQua[b][12];
+
+					return rply;
+				}
+			}
+			rply[1] = '嚴重錯誤!!!你的角色沒有能力資料，請向開發人員報告';
+			return rply;
+		}
+	}
+	rply[1] = '你尚未持有CoC角色';
+	return rply;
 }
 
 module.exports = {
 	SearchCha,
-	exportDB,
-	saveDB
+	ChaQuaCheck
 };
