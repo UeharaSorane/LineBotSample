@@ -147,5 +147,6 @@ function menu(UserN){
 module.exports = {
 	ReplyTest,
 	PushTest,
-	SecretTalk
+	SecretTalk,
+	menu
 };
