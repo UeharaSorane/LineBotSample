@@ -26,31 +26,45 @@ var server = app.listen(process.env.PORT || 8080, function() {
 
 bot.on('message', function(event) {
         console.log(event);
-	console.log(1);
 	
 	var msg = event.message;
 	var rply = ['text',''];
 	
-		if(event.message.type == 'text'){
-			event.source.profile().then(function (profile) {
-				if(event.source.userId != 'U7b7830437667bf4b7b54eaf02e762690'){
-					var say = profile.displayName+'說:'+event.message.text
-					if(event.source.groupId != null)say+= '(群組)';
-					bot.push('U7b7830437667bf4b7b54eaf02e762690',say);
-				}
-				rply = exports.analytics.parseInput(msg.text, event.source.userId, profile.displayName, event.source.groupId);
-				if(rply[0] == 'none'){
-				}else if(rply[0] == 'groupRply'){
-					bot.push('Ca06e35d5eefc0162348764ce8bdb52b5',rply[1]);
-				}else if(rply[0] == 'rply'){
-					event.reply(rply[1]).then(function (data) {
-					  // success
-					}).catch(function (error) {
-					  // error
-				});
-				}
-				
+	var profile = event.source.profile();
+	console.log(profile);
+	
+	if(event.message.type == 'text'){
+		event.source.profile().then(function (profile) {
+			if(event.source.userId != 'U7b7830437667bf4b7b54eaf02e762690'){
+				var say = profile.displayName+'說:'+event.message.text
+				if(event.source.groupId != null)say+= '(群組)';
+				bot.push('U7b7830437667bf4b7b54eaf02e762690',say);
+			}
+		});
+	}else if(msg.type == 'sticker'){
+		
+	}
+	
+	if(event.message.type == 'text'){
+		event.source.profile().then(function (profile) {
+			/*if(event.source.userId != 'U7b7830437667bf4b7b54eaf02e762690'){
+				var say = profile.displayName+'說:'+event.message.text
+				if(event.source.groupId != null)say+= '(群組)';
+				bot.push('U7b7830437667bf4b7b54eaf02e762690',say);
+			}*/
+			rply = exports.analytics.parseInput(msg.text, event.source.userId, profile.displayName, event.source.groupId);
+			if(rply[0] == 'none'){
+			}else if(rply[0] == 'groupRply'){
+				bot.push('Ca06e35d5eefc0162348764ce8bdb52b5',rply[1]);
+			}else if(rply[0] == 'rply'){
+				event.reply(rply[1]).then(function (data) {
+				  // success
+				}).catch(function (error) {
+				  // error
 			});
-			
-		}
+			}
+
+		});
+
+	}
 });
