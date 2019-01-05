@@ -103,6 +103,26 @@ DB.useServiceAccountAuth(creds, function (err) {
 					for(var De = 0;De<ChaSki[i][4].length;De++){
 						ChaSki[i][4][De] = Number(ChaSki[i][4][De]);
 					}
+					ChaSki[i][5] = rows[i].createst.split(',');
+					
+					ChaSki[i][6] = rows[i].createsde.split(',');
+					for(var De = 0;De<ChaSki[i][6].length;De++){
+						ChaSki[i][6][De] = Number(ChaSki[i][6][De]);
+					}
+					ChaSki[i][7] = rows[i].createscp.split(',');
+					for(var De = 0;De<ChaSki[i][7].length;De++){
+						ChaSki[i][7][De] = Number(ChaSki[i][7][De]);
+					}
+					ChaSki[i][8] = rows[i].createip.split(',');
+					for(var De = 0;De<ChaSki[i][8].length;De++){
+						ChaSki[i][8][De] = Number(ChaSki[i][8][De]);
+					}
+					ChaSki[i][9] = rows[i].createupp.split(',');
+					for(var De = 0;De<ChaSki[i][9].length;De++){
+						ChaSki[i][9][De] = Number(ChaSki[i][9][De]);
+					}
+					
+					
 				}
 				//console.log(ChaSki);
 				console.log('角色技能資料 讀取完成');
@@ -183,6 +203,14 @@ function ChaSkiCheck(UserID){
 						rply[1] += '\n' + skilllist[c] + ':' + skillLV + '\
 						\n(' + ChaSki[b][1][c] + '/' + ChaSki[b][2][c] + '/' + ChaSki[b][3][c] + '/' + ChaSki[b][4][c] + ')';
 					}
+					rply[1] += '\n [自定義技能]';
+					for(var c = 0;c<ChaSki[b][5].length;c++){
+						var skillLV = ChaSki[b][6][c] + ChaSki[b][7][c] + ChaSki[b][8][c] + ChaSki[b][9][c];
+						
+						rply[1] += '\n' + ChaSki[b][5][c] + ':' + skillLV + '\
+						\n(' + ChaSki[b][6][c] + '/' + ChaSki[b][7][c] + '/' + ChaSki[b][8][c] + '/' + ChaSki[b][9][c] + ')';
+					}
+					
 
 					return rply;
 				}
