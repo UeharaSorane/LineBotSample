@@ -102,7 +102,7 @@ function ChaQuaCheck(UserID){
 	for(var a = 0;a<ChaIm.length;a++){
 		if(ChaIm[a][0] == UserID){
 			for(var b = 0;b<ChaQua.length;b++){
-				if(ChaQua[b][0] == ChaQua[a][1]){
+				if(ChaQua[b][0] == ChaIm[a][1]){
 					rply[1] = '【COC素質資料】\
 						\n角色名:' + ChaQua[b][0] + '\
 						\n力量(STR):' + ChaQua[b][1] + '\
