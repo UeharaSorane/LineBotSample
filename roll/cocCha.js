@@ -325,7 +325,7 @@ function ChaSkiSearch(UserID,skillName){
 						rply[1] += '查詢的技能名:' + skillName + '\
 							\n類型:';
 
-						/*for(var c = 0;c<skilllist.length;b++){
+						for(var c = 0;c<skilllist.length;c++){
 							if(skilllist[c] == skillName){
 								var check =0;
 
@@ -354,9 +354,9 @@ function ChaSkiSearch(UserID,skillName){
 								return rply;
 
 							}
-						}*/
+						}
 
-						/*for(var c = 0;c<ChaSki[b][5].length;b++){
+						for(var c = 0;c<ChaSki[b][5].length;c++){
 							if(ChaSki[b][5][c] == skillName){
 								var check =0;
 
@@ -385,7 +385,7 @@ function ChaSkiSearch(UserID,skillName){
 								return rply;
 
 							}
-						}*/
+						}
 						rply[1] = '錯誤!你不持有此技能或是不存在此技能';
 						return rply;
 					}
