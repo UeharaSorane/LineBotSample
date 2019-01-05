@@ -299,7 +299,7 @@ function ChaSkiSearch(UserID,skillName){
 									break;
 								}
 							}
-							if(check == 0)rply[1] += ChaSki[b][1][c] + '\n';
+							if(check == 0)rply[1] += skilllist[c] + '\n';
 						}
 						rply[1] += '\n【通常自訂技能】';
 						for(var c = 0;c<ChaSki[b][5].length;c++){
@@ -356,7 +356,7 @@ function ChaSkiSearch(UserID,skillName){
 							}
 						}
 
-						for(var c = 0;c<ChaSki[b][5].length;b++){
+						/*for(var c = 0;c<ChaSki[b][5].length;b++){
 							if(ChaSki[b][5][c] == skillName){
 								var check =0;
 
@@ -385,7 +385,7 @@ function ChaSkiSearch(UserID,skillName){
 								return rply;
 
 							}
-						}
+						}*/
 						rply[1] = '錯誤!你不持有此技能或是不存在此技能';
 						return rply;
 					}
