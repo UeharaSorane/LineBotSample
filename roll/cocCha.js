@@ -212,13 +212,13 @@ function ChaSkiCheck(UserID){
 						rply[1] += '\n' + skilllist[c];
 						
 						for(var d = 0;d<ChaSki[b][14].length;d++){
-							if(skilllist[c] == ChaSki[b][14]){
+							if(skilllist[c] == ChaSki[b][14][d]){
 								rply[1] += '(職業)';
 							}
 						}
 						
 						for(var d = 0;d<ChaSki[b][15].length;d++){
-							if(skilllist[c] == ChaSki[b][15]){
+							if(skilllist[c] == ChaSki[b][15][d]){
 								rply[1] += '<特技>';
 							}
 						}
