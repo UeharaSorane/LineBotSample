@@ -24,9 +24,7 @@ var server = app.listen(process.env.PORT || 8080, function() {
 	console.log("好，沒事");
 });
 
-bot.on('follow',function(event){
-	console.log(event);
-});
+var rply = ['',''];
 
 bot.on('message', function(event) {
 	event.source.profile().then(function (profile) {
