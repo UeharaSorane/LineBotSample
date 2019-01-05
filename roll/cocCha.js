@@ -207,7 +207,7 @@ function ChaSkiCheck(UserID){
 						\n興趣技能點數:' + ChaSki[b][13] + '/' + ChaSki[b][12] + '\
 						\n\n職業技能:';
 					
-					for(var c = 0;c<ChaSki[b][14].length;c++){
+					/*for(var c = 0;c<ChaSki[b][14].length;c++){
 						for(var d = 0;d<skilllist[d].length;d++){
 							if(skilllist[d] == ChaSki[b][14][c]){
 								var skillLV = ChaSki[b][1][d] + ChaSki[b][2][d] + ChaSki[b][3][d] + ChaSki[b][4][d];
@@ -250,7 +250,7 @@ function ChaSkiCheck(UserID){
 						}
 					}
 					
-					console.log(rply[1]);
+					console.log(rply[1]);*/
 					return rply;
 				}
 			}
