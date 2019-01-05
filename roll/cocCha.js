@@ -264,6 +264,141 @@ function ChaSkiCheck(UserID){
 	return rply;
 }
 
+function ChaSkiSearch(UserID,skillName){
+	rply[0] = 'rply';
+	
+	for(var a = 0;a<ChaIm.length;a++){
+		if(ChaIm[a][0] == UserID){
+			for(var b = 0;b<ChaSki.length;b++){
+				if(ChaSki[b][0] == ChaIm[a][1]){
+					rply[1] = '【CoC技能查詢】\
+						\n角色名:' + ChaIm[a][1];
+					
+					if(skillName == null){
+						rply[1] += '\n你所持有的技能:\
+							\n\n【職業技能】';
+						for(var c = 0;c<ChaSki[b][14].length;c++){
+							rply[1] += ChaSki[b][14][c] + '\n';
+						}
+						rply += '\n【特技】';
+						for(var c = 0;c<ChaSki[b][15].length;c++){
+							rply[1] += ChaSki[b][15][c] + '\n';
+						}
+						rply += '\n【通常通用技能】';
+						for(var c = 0;c<skilllist.length;c++){
+							var check = 0;
+							for(var d = 0;d<ChaSki[b][14].length;d++){
+								if(ChaSki[b][14][d] == skilllist[c]){
+									check = 1;
+									break;
+								}
+							}
+							for(var d = 0;d<ChaSki[b][15].length;d++){
+								if(ChaSki[b][15][d] == skilllist[c] || check == 1){
+									check = 1;
+									break;
+								}
+							}
+							if(check == 0)rply[1] += ChaSki[b][1][c] + '\n';
+						}
+						rply += '\n【通常自訂技能】';
+						for(var c = 0;c<ChaSki[b][5].length;c++){
+							var check = 0;
+							for(var d = 0;d<ChaSki[b][14].length;d++){
+								if(ChaSki[b][14][d] == ChaSki[b][5][c]){
+									check = 1;
+									break;
+								}
+							}
+							for(var d = 0;d<ChaSki[b][15].length;d++){
+								if(ChaSki[b][15][d] == ChaSki[b][5][c] || check == 1){
+									check = 1;
+									break;
+								}
+							}
+							if(check == 0)rply[1] += ChaSki[b][5][c] + '\n';
+						}
+						
+						rply += '\n想要確認技能，請輸入[技能查詢 技能名]進行確認';
+						return rply;
+					}else{
+						rply[1] += '查詢的技能名:' + skillName + '\
+							\n類型:';
+
+						for(var c = 0;c<skilllist.length;b++){
+							if(skilllist[c] == skillName){
+								var check =0;
+
+								for(var d = 0;d<ChaSki[b][14].length;d++){
+									if(ChaSki[b][14][d] == skillName && check == 0){
+										rply[1] += '(職業技能)\n';
+										check = 1;
+										break;
+									}
+								}
+								for(var d = 0;d<ChaSki[b][15].length;d++){
+									if(ChaSki[b][15][d] == skillName && check == 0){
+										rply[1] += '《特技》\n';
+										check = 1;
+										break;
+									}
+								}
+								if(check == 0){
+									rply[1] += '通常通用技能\n';
+								}
+								var skillLV = ChaSki[b][1][c] + ChaSki[b][2][c] + ChaSki[b][3][c] + ChaSki[b][4][c];
+
+								rply[1] += '技能等級:' + skillLV + '\
+								\n(' + ChaSki[b][1][c] + '/' + ChaSki[b][2][c] + '/' + ChaSki[b][3][c] + '/' + ChaSki[b][4][c] + ')';
+
+								return rply;
+
+							}
+						}
+
+						for(var c = 0;c<ChaSki[b][5].length;b++){
+							if(ChaSki[b][5][c] == skillName){
+								var check =0;
+
+								for(var d = 0;d<ChaSki[b][14].length;d++){
+									if(ChaSki[b][14][d] == skillName && check == 0){
+										rply[1] += '(職業技能)\n';
+										check = 1;
+										break;
+									}
+								}
+								for(var d = 0;d<ChaSki[b][15].length;d++){
+									if(ChaSki[b][15][d] == skillName && check == 0){
+										rply[1] += '《特技》\n';
+										check = 1;
+										break;
+									}
+								}
+								if(check == 0){
+									rply[1] += '通常自訂技能\n';
+								}
+								var skillLV = ChaSki[b][6][c] + ChaSki[b][7][c] + ChaSki[b][8][c] + ChaSki[b][9][c];
+
+								rply[1] += '技能等級:' + skillLV + '\
+								\n(' + ChaSki[b][6][c] + '/' + ChaSki[b][7][c] + '/' + ChaSki[b][8][c] + '/' + ChaSki[b][9][c] + ')';
+
+								return rply;
+
+							}
+						}
+						rply[1] = '錯誤!你不持有此技能或是不存在此技能';
+						return rply;
+					}
+				}
+			}
+			rply[1] = '嚴重錯誤!!!你的角色沒有技能資料，請向開發人員報告';
+			return rply;
+		}
+	}
+	rply[1] = '你尚未持有CoC角色';
+	return rply;
+}
+
 module.exports = {
 	SearchCha,
 	ChaQuaCheck,
