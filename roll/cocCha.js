@@ -54,8 +54,8 @@ function SearchCha(UserID){
 				\nMP(魔力):' + ChaIm[a][11] + '/' + ChaIm[a][10] + '\
 				\nSan(理智):' + ChaIm[a][13] + '/' + ChaIm[a][12] + '\
 				\n[基本資料]\
-				\n年齡:' + ChaIm[a][2] + '\
-				\n職業:' + ChaIm[a][3] + '\
+				\n年齡:' + ChaIm[a][3] + '\
+				\n職業:' + ChaIm[a][4] + '\
 				\n性別:' + ChaIm[a][5] + '\
 				\n出生地:' + ChaIm[a][6] + '\
 				\n現居地:' + ChaIm[a][7];
