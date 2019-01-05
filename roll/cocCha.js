@@ -57,7 +57,7 @@ function SearchCha(UserID){
 				\n年齡:' + ChaIm[a][2] + '\
 				\n職業:' + ChaIm[a][3] + '\
 				\n性別:' + ChaIm[a][5] + '\
-				\n出生地:' + ChaIm[a][6] '\
+				\n出生地:' + ChaIm[a][6] + '\
 				\n現居地:' + ChaIm[a][7];
 			
 			return rply;
