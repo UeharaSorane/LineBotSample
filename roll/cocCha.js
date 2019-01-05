@@ -205,13 +205,13 @@ function ChaSkiCheck(UserID){
 						\n角色名:' + ChaSki[b][0] + '\
 						\n職業技能點數:' + ChaSki[b][11] + '/' + ChaSki[b][10] + '\
 						\n興趣技能點數:' + ChaSki[b][13] + '/' + ChaSki[b][12] + '\
-						\n\n職業技能:';
+						\n\n〈職業技能〉';
 					
 					for(var c = 0;c<ChaSki[b][14].length;c++){
 						for(var d = 0;d<skilllist.length;d++){
 							if(skilllist[d] == ChaSki[b][14][c]){
 								var skillLV = ChaSki[b][1][d] + ChaSki[b][2][d] + ChaSki[b][3][d] + ChaSki[b][4][d];
-								rply[1] += '\n' + skilllist[d] + '\n';
+								rply[1] += '\n' + skilllist[d];
 								
 								rply[1] += ':' + skillLV + '\
 								\n(' + ChaSki[b][1][d] + '/' + ChaSki[b][2][d] + '/' + ChaSki[b][3][d] + '/' + ChaSki[b][4][d] + ')';
@@ -220,20 +220,20 @@ function ChaSkiCheck(UserID){
 						for(var d = 0;d<ChaSki[b][5].length;d++){
 							if(ChaSki[b][5][d] == ChaSki[b][14][c]){
 								var skillLV = ChaSki[b][6][d] + ChaSki[b][7][d] + ChaSki[b][8][d] + ChaSki[b][9][d];
-								rply[1] += '\n' + ChaSki[b][5][d] + '\n';
+								rply[1] += '\n' + ChaSki[b][5][d];
 								
 								rply[1] += ':' + skillLV + '\
 								\n(' + ChaSki[b][6][d] + '/' + ChaSki[b][7][d] + '/' + ChaSki[b][8][d] + '/' + ChaSki[b][9][d] + ')';
 							}
 						}
 					}
-					rply[1] += '\n特技:';
+					rply[1] += '\n《特技》';
 					
 					for(var c = 0;c<ChaSki[b][15].length;c++){
 						for(var d = 0;d<skilllist.length;d++){
 							if(skilllist[d] == ChaSki[b][15][c]){
 								var skillLV = ChaSki[b][1][d] + ChaSki[b][2][d] + ChaSki[b][3][d] + ChaSki[b][4][d];
-								rply[1] += '\n' + skilllist[d] + '\n';
+								rply[1] += '\n' + skilllist[d];
 								
 								rply[1] += ':' + skillLV + '\
 								\n(' + ChaSki[b][1][d] + '/' + ChaSki[b][2][d] + '/' + ChaSki[b][3][d] + '/' + ChaSki[b][4][d] + ')';
@@ -242,7 +242,7 @@ function ChaSkiCheck(UserID){
 						for(var d = 0;d<ChaSki[b][5].length;d++){
 							if(ChaSki[b][5][d] == ChaSki[b][15][c]){
 								var skillLV = ChaSki[b][6][d] + ChaSki[b][7][d] + ChaSki[b][8][d] + ChaSki[b][9][d];
-								rply[1] += '\n' + ChaSki[b][5][d] + '\n';
+								rply[1] += '\n' + ChaSki[b][5][d];
 								
 								rply[1] += ':' + skillLV + '\
 								\n(' + ChaSki[b][6][d] + '/' + ChaSki[b][7][d] + '/' + ChaSki[b][8][d] + '/' + ChaSki[b][9][d] + ')';
@@ -250,6 +250,8 @@ function ChaSkiCheck(UserID){
 						}
 					}
 					
+					
+					rply[1] += '\n想要搜尋非職業技能，請輸入[技能查詢 技能名]進行確認';
 					//console.log(rply[1]);
 					return rply;
 				}
