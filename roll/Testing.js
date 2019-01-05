@@ -109,6 +109,39 @@ function PushTest(UserID,GroupID) {
 
 }
 
+function menu(UserN){
+	rply[0] = 'rply';
+	rply[1] = {
+		  "type": "template",
+		  "altText": "很抱歉，你的Line版本不支援此系統，建議輸入help查看可使用的指令",
+		  "template": {
+		  	"type": "buttons",
+		  		"text":"嗨！" + UserN + "，請問要做什麼？",
+		  		"actions": [{
+					"type": "postback",
+					"label": "角色基本資料",
+					"data": "角色基本資料"},
+					{
+					"type": "postback",
+					"label": "角色素質資料",
+					"data": "角色素質資料"
+					},
+		      			{
+					"type": "postback",
+					"label": "角色技能資料",
+					"data": "角色技能資料"
+					},
+					{
+					"type": "postback",
+					"label": "技能查詢",
+					"data": "技能查詢"
+					}
+				]
+		}
+	}
+	
+}
+
 
 
 module.exports = {
