@@ -40,6 +40,8 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 	else if (trigger.match(/運氣|運勢/) != null) return exports.funny.randomLuck(mainMsg) ; //占卜運氣
 	else if (trigger.match(/flag|插旗/) != null) return exports.funny.BStyleFlagSCRIPTS() ;//插旗用指令
 	else if (trigger.match(/^help$|^幫助$/)!= null ) return exports.Help.Help(UserN);//幫助頁面
+////////////////////////CoC資料
+	else if (trigger.match(/^角色基本資料$/) != null) return exports.funny.randomReply(UserID) ;//角色基本資料
 	
 ////////////////////////普通ROLL擲骰判定
         else if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/\d+d+\d/)!=null) {
