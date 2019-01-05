@@ -30,8 +30,8 @@ bot.on('message', function(event) {
 	var msg = event.message;
 	var rply = ['text',''];
 	
-	var profile = event.source.profile();
-	console.log(profile);
+	//var profile = event.source.profile();
+	console.log(event.source.profile());
 	
 	if(event.message.type == 'text'){
 		event.source.profile().then(function (profile) {
