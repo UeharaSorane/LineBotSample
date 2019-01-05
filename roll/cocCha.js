@@ -402,5 +402,6 @@ function ChaSkiSearch(UserID,skillName){
 module.exports = {
 	SearchCha,
 	ChaQuaCheck,
-	ChaSkiCheck
+	ChaSkiCheck,
+	ChaSkiSearch
 };
