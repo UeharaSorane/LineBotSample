@@ -121,7 +121,14 @@ DB.useServiceAccountAuth(creds, function (err) {
 					for(var De = 0;De<ChaSki[i][9].length;De++){
 						ChaSki[i][9][De] = Number(ChaSki[i][9][De]);
 					}
+					ChaSki[i][10] = Number(rows[i].getclassskillp);
+					ChaSki[i][11] = Number(rows[i].classskillp);
 					
+					ChaSki[i][12] = Number(rows[i].getinterestskillp);
+					ChaSki[i][13] = Number(rows[i].interestskillp);
+					
+					ChaSki[i][14] = rows[i].classskill.split(',');
+					ChaSki[i][15] = rows[i].specialskill.split(',');
 					
 				}
 				//console.log(ChaSki);
@@ -195,19 +202,48 @@ function ChaSkiCheck(UserID){
 			for(var b = 0;b<ChaSki.length;b++){
 				if(ChaSki[b][0] == ChaIm[a][1]){
 					rply[1] = '【COC技能資料】\
-						\n角色名:' + ChaSki[b][0] + '\n';
+						\n角色名:' + ChaSki[b][0] + '\
+						\n職業技能點數:' + ChaSki[b][11] + '/' + ChaSki[b][10] + '\
+						\n興趣技能點數:' + ChaSki[b][13] + '/' + ChaSki[b][12] + '\n';
 					
 					for(var c = 0;c<skilllist.length;c++){
 						var skillLV = ChaSki[b][1][c] + ChaSki[b][2][c] + ChaSki[b][3][c] + ChaSki[b][4][c];
 						
-						rply[1] += '\n' + skilllist[c] + ':' + skillLV + '\
+						rply[1] += '\n' + skilllist[c];
+						
+						for(var d = 0;d<ChaSki[b][14].length;d++){
+							if(skilllist[c] == ChaSki[b][14]){
+								rply[1] += '(職業)';
+							}
+						}
+						
+						for(var d = 0;d<ChaSki[b][15].length;d++){
+							if(skilllist[c] == ChaSki[b][15]){
+								rply[1] += '<特技>';
+							}
+						}
+						
+						rply += ':' + skillLV + '\
 						\n(' + ChaSki[b][1][c] + '/' + ChaSki[b][2][c] + '/' + ChaSki[b][3][c] + '/' + ChaSki[b][4][c] + ')';
 					}
 					rply[1] += '\n [自定義技能]';
 					for(var c = 0;c<ChaSki[b][5].length;c++){
 						var skillLV = ChaSki[b][6][c] + ChaSki[b][7][c] + ChaSki[b][8][c] + ChaSki[b][9][c];
 						
-						rply[1] += '\n' + ChaSki[b][5][c] + ':' + skillLV + '\
+						rply[1] += '\n' + ChaSki[b][5][c];
+						for(var d = 0;d<ChaSki[b][14].length;d++){
+							if(skilllist[c] == ChaSki[b][14]){
+								rply[1] += '(職業)';
+							}
+						}
+						
+						for(var d = 0;d<ChaSki[b][15].length;d++){
+							if(skilllist[c] == ChaSki[b][15]){
+								rply[1] += '<特技>';
+							}
+						}
+						
+						rply += ':' + skillLV + '\
 						\n(' + ChaSki[b][6][c] + '/' + ChaSki[b][7][c] + '/' + ChaSki[b][8][c] + '/' + ChaSki[b][9][c] + ')';
 					}
 					
