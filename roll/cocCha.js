@@ -73,7 +73,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					ChaQua[i][12] = Number(rows[i].luk);
 					
 				}
-				console.log(ChaQua);
+				//console.log(ChaQua);
 				console.log('角色素質資料 讀取完成');
 			}	
 		});
@@ -131,7 +131,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					ChaSki[i][15] = rows[i].specialskill.split(',');
 					
 				}
-				//console.log(ChaSki);
+				console.log(ChaSki);
 				console.log('角色技能資料 讀取完成');
 			}	
 		});
