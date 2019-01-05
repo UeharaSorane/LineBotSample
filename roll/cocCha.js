@@ -103,12 +103,8 @@ DB.useServiceAccountAuth(creds, function (err) {
 					for(var De = 0;De<ChaSki[i][4].length;De++){
 						ChaSki[i][4][De] = Number(ChaSki[i][4][De]);
 					}
-					for(var De = 0;De<ChaSki[i][1].length;De++){
-						ChaSki[i][5][De] = ChaSki[i][1][De] + ChaSki[i][2][De] + ChaSki[i][3][De] + ChaSki[i][4][De];
-					}
-					
 				}
-				console.log(ChaSki[0][5]);
+				//console.log(ChaSki);
 				console.log('角色技能資料 讀取完成');
 			}	
 		});
@@ -182,7 +178,9 @@ function ChaSkiCheck(UserID){
 						\n角色名:' + ChaSki[b][0] + '\n';
 					
 					for(var c = 0;c<skilllist.length;c++){
-						rply[1] += '\n' + skilllist[c] + ':' /*+  ChaSki[b][c][5]*/ + '\
+						var skillLV = ChaSki[b][c][1] + ChaSki[b][c][2] + ChaSki[b][c][3] + ChaSki[b][c][4];
+						
+						rply[1] += '\n' + skilllist[c] + ':' + skillLV + '\
 						\n(' + ChaSki[b][c][1] + '/' + ChaSki[b][c][2] + '/' + ChaSki[b][c][3] + '/' + ChaSki[b][c][4] + ')';
 					}
 
