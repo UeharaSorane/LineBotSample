@@ -148,7 +148,10 @@ DB.useServiceAccountAuth(creds, function (err) {
 					ChaWea[i][1] = rows[i].damagebonus;
 					ChaWea[i][2] = rows[i].weaponn.split(',');
 					ChaWea[i][3] = rows[i].damage.split(',');
-					ChaWea[i][4] = Number(rows[i].dbio);
+					ChaWea[i][4] = rows[i].dbio.split(',');
+					for(var De = 0;De<ChaWea[i][4].length;De++){
+						ChaWea[i][4][De] = Number(ChaWea[i][4][De]);
+					}
 					ChaWea[i][5] = rows[i].debuff.split(',');
 					ChaWea[i][6] = rows[i].debufftimes.split(',');
 					ChaWea[i][7] = rows[i].range.split(',');
@@ -427,9 +430,29 @@ function ChaSkiSearch(UserID,skillName){
 	return rply;
 }
 
+function ChaWeapon(UserID){
+		rply[0] = 'rply';
+	
+		for(var a = 0;a<ChaIm.length;a++){
+			if(ChaIm[a][0] == UserID){
+				for(var b = 0;b<ChaWea.length;b++){
+					if(ChaWea[b][0] == ChaWea[a][1]){
+						rply[1] = ''
+					}
+				}
+				rply[1] = '嚴重錯誤!!!你的角色沒有武器資料，請向開發人員報告';
+				return rply;
+			}
+		}
+		rply[1] = '你尚未持有CoC角色';
+		return rply;
+}
+}
+
 module.exports = {
 	SearchCha,
 	ChaQuaCheck,
 	ChaSkiCheck,
-	ChaSkiSearch
+	ChaSkiSearch,
+	ChaWeapon
 };
