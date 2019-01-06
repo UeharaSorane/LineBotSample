@@ -431,22 +431,42 @@ function ChaSkiSearch(UserID,skillName){
 }
 
 function ChaWeapon(UserID){
-		rply[0] = 'rply';
-	
-		for(var a = 0;a<ChaIm.length;a++){
-			if(ChaIm[a][0] == UserID){
-				for(var b = 0;b<ChaWea.length;b++){
-					if(ChaWea[b][0] == ChaWea[a][1]){
-						rply[1] = ''
+	rply[0] = 'rply';
+
+	for(var a = 0;a<ChaIm.length;a++){
+		if(ChaIm[a][0] == UserID){
+			for(var b = 0;b<ChaWea.length;b++){
+				if(ChaWea[b][0] == ChaWea[a][1]){
+					rply[1] = '【CoC角色武器】\
+						\n你使用的角色:' + ChaWea[b][0] + '\
+						\n傷害加成:' + ChaWea[b][1] + '\
+						\n你目前持有的武器:\n';
+
+					for(var c = 0;c<ChaWea[b][2].length;c++){
+						rply +='\n===============\
+							\n武器名:' + ChaWea[b][2][c] + '\
+							\n傷害:' + ChaWea[b][3][c];
+						if(ChaWea[b][4][c] == 1){
+							rply += '+傷害加成';
+						}
+						if(ChaWea[b][5][c] != '無'){
+							rply += '+' + ChaWea[b][5][c] + '(' + ChaWea[b][6][c] + ')';
+						}
+						rply += '\n射程:' + ChaWea[b][7][c] + '\
+							 \n次數/輪:' + ChaWea[b][8][c] + '\
+							 \n彈藥:' + ChaWea[b][9][c] + '\
+							 \n故障值:' + ChaWea[b][10][c];
+
 					}
+					return rply;
 				}
-				rply[1] = '嚴重錯誤!!!你的角色沒有武器資料，請向開發人員報告';
-				return rply;
 			}
+			rply[1] = '嚴重錯誤!!!你的角色沒有武器資料，請向開發人員報告';
+			return rply;
 		}
-		rply[1] = '你尚未持有CoC角色';
-		return rply;
-}
+	}
+	rply[1] = '你尚未持有CoC角色';
+	return rply;
 }
 
 module.exports = {
