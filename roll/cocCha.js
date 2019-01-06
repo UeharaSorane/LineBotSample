@@ -436,7 +436,7 @@ function ChaWeapon(UserID){
 	for(var a = 0;a<ChaIm.length;a++){
 		if(ChaIm[a][0] == UserID){
 			for(var b = 0;b<ChaWea.length;b++){
-				if(ChaWea[b][0] == ChaWea[a][1]){
+				if(ChaWea[b][0] == ChaIm[a][1]){
 					rply[1] = '【CoC角色武器】\
 						\n你使用的角色:' + ChaWea[b][0] + '\
 						\n傷害加成:' + ChaWea[b][1] + '\
