@@ -13,6 +13,7 @@ var skilllist = ['會計','人類學','估價','考古','魅惑','攀爬','電�
 		 '巧手','偵查','隱密行動','游泳','投擲','追蹤'];
 
 var ChaSki= [];
+var ChaWea= [];
 
 DB.useServiceAccountAuth(creds, function (err) {
 		
@@ -131,8 +132,35 @@ DB.useServiceAccountAuth(creds, function (err) {
 					ChaSki[i][15] = rows[i].specialskill.split(',');
 					
 				}
-				console.log(ChaSki);
+				//console.log(ChaSki);
 				console.log('角色技能資料 讀取完成');
+			}	
+		});
+	DB.getRows(5 , 
+		function (err, rows) {
+			if (err) {
+				console.log( err );
+			}else{
+				for(var i=0; i< rows.length; i++){
+					ChaWea[i] = [];
+					
+					ChaWea[i][0] = rows[i].chaname;
+					ChaWea[i][1] = rows[i].damagebonus;
+					ChaWea[i][2] = rows[i].weaponn.split(',');
+					ChaWea[i][3] = rows[i].damage.split(',');
+					ChaWea[i][4] = Number(rows[i].dbio);
+					ChaWea[i][5] = rows[i].debuff.split(',');
+					ChaWea[i][6] = rows[i].debufftimes.split(',');
+					ChaWea[i][7] = rows[i].range.split(',');
+					ChaWea[i][8] = rows[i].turn.split(',');
+					ChaWea[i][9] = rows[i].bullet.split(',');
+					ChaWea[i][10] = rows[i].broken.split(',');
+					for(var De = 0;De<ChaWea[i][10].length;De++){
+						ChaWea[i][10][De] = Number(ChaWea[i][10][De]);
+					}
+				}
+				console.log(ChaWea);
+				console.log('角色武器資料 讀取完成');
 			}	
 		});
 });
