@@ -15,6 +15,7 @@ var skilllist = ['會計','人類學','估價','考古','魅惑','攀爬','電�
 var ChaSki= [];
 var ChaWea= [];
 var ChaItem= [];
+var AccessDB= [];
 
 DB.useServiceAccountAuth(creds, function (err) {
 		
@@ -29,7 +30,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 				for(var i=0; i< rows.length; i++){
 					ChaIm[i] = [];
 					
-					ChaIm[i][0] = rows[i].userid;
+					ChaIm[i][0] = rows[i].chaid;
 					ChaIm[i][1] = rows[i].chaname;
 					ChaIm[i][2] = rows[i].plname;
 					ChaIm[i][3] = rows[i].age;
@@ -43,8 +44,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					ChaIm[i][11] = Number(rows[i].mp);
 					ChaIm[i][12] = Number(rows[i].startsan);
 					ChaIm[i][13] = Number(rows[i].san);
-					ChaIm[i][14] = rows[i].transkey;
-					ChaIm[i][15] = Number(rows[i].transio);
+					ChaIm[i][14] = Number(rows[i].completes);
 					
 					
 				}
@@ -186,17 +186,46 @@ DB.useServiceAccountAuth(creds, function (err) {
 					ChaItem[i][6] = rows[i].spell.split(',');
 					ChaItem[i][7] = rows[i].spcreature.split(',');
 				}
-				console.log(ChaItem);
+				//console.log(ChaItem);
 				console.log('角色物品資料 讀取完成');
+			}	
+		});
+	
+	DB.getRows(7 , 
+		function (err, rows) {
+			if (err) {
+				console.log( err );
+			}else{
+				for(var i=0; i< rows.length; i++){
+					AccessDB[i] = [];
+					
+					AccessDB[i][0] = rows[i].userid;
+					AccessDB[i][1] = rows[i].playern;
+					AccessDB[i][2] = rows[i].playcha;
+					AccessDB[i][3] = rows[i].havecha.split(',');
+					AccessDB[i][4] = rows[i].transkey;
+					AccessDB[i][5] = Number(rows[i].transio);
+				}
+				console.log(AccessDB);
+				console.log('帳號連結資料 讀取完成');
 			}	
 		});
 });
 
+function CheckCha(UserID){
+	for(var a = 0;a<AccessDB.length;a++){
+		if(AccessDB[a][0] == UserID) return AccessDB[a][2];
+	}
+	return 0;
+}
+
 function SearchCha(UserID){
 	rply[0] = 'rply';
 	
+	var playCha = CheckCha(UserID);
+	
 	for(var a = 0;a<ChaIm.length;a++){
-		if(ChaIm[a][0] == UserID){
+		if(ChaIm[a][1] == playCha){
 			rply[1] = '【COC角色資料】\
 				\n角色名:' + ChaIm[a][1] + '\
 				\nHP(生命):' + ChaIm[a][8] + '/' + ChaIm[a][9] + '\
@@ -207,7 +236,8 @@ function SearchCha(UserID){
 				\n職業:' + ChaIm[a][4] + '\
 				\n性別:' + ChaIm[a][5] + '\
 				\n出生地:' + ChaIm[a][6] + '\
-				\n現居地:' + ChaIm[a][7];
+				\n現居地:' + ChaIm[a][7]+ '\
+				\n完成副本數:' + ChaIm[a][14];
 			
 			return rply;
 		}
@@ -219,8 +249,10 @@ function SearchCha(UserID){
 function ChaQuaCheck(UserID){
 	rply[0] = 'rply';
 	
+	var playCha = CheckCha(UserID);
+	
 	for(var a = 0;a<ChaIm.length;a++){
-		if(ChaIm[a][0] == UserID){
+		if(ChaIm[a][1] == playCha){
 			for(var b = 0;b<ChaQua.length;b++){
 				if(ChaQua[b][0] == ChaIm[a][1]){
 					rply[1] = '【COC素質資料】\
@@ -252,8 +284,10 @@ function ChaQuaCheck(UserID){
 function ChaSkiCheck(UserID){
 	rply[0] = 'rply';
 	
+	var playCha = CheckCha(UserID);
+	
 	for(var a = 0;a<ChaIm.length;a++){
-		if(ChaIm[a][0] == UserID){
+		if(ChaIm[a][1] == playCha){
 			for(var b = 0;b<ChaSki.length;b++){
 				if(ChaSki[b][0] == ChaIm[a][1]){
 					rply[1] = '【COC技能資料】\
@@ -323,8 +357,10 @@ function ChaSkiCheck(UserID){
 function ChaSkiSearch(UserID,skillName){
 	rply[0] = 'rply';
 	
+	var playCha = CheckCha(UserID);
+	
 	for(var a = 0;a<ChaIm.length;a++){
-		if(ChaIm[a][0] == UserID){
+		if(ChaIm[a][1] == playCha){
 			for(var b = 0;b<ChaSki.length;b++){
 				if(ChaSki[b][0] == ChaIm[a][1]){
 					rply[1] = '【CoC技能查詢】\
@@ -457,9 +493,11 @@ function ChaSkiSearch(UserID,skillName){
 
 function ChaWeapon(UserID){
 	rply[0] = 'rply';
+	
+	var playCha = CheckCha(UserID);
 
 	for(var a = 0;a<ChaIm.length;a++){
-		if(ChaIm[a][0] == UserID){
+		if(ChaIm[a][1] == playCha){
 			for(var b = 0;b<ChaWea.length;b++){
 				if(ChaWea[b][0] == ChaIm[a][1]){
 					rply[1] = '【CoC角色武器】\
@@ -496,9 +534,11 @@ function ChaWeapon(UserID){
 
 function ChaItemCheck(UserID){
 	rply[0] = 'rply';
+	
+	var playCha = CheckCha(UserID);
 
 	for(var a = 0;a<ChaIm.length;a++){
-		if(ChaIm[a][0] == UserID){
+		if(ChaIm[a][1] == playCha){
 			for(var b = 0;b<ChaItem.length;b++){
 				if(ChaItem[b][0] == ChaIm[a][1]){
 					rply[1] = '【CoC角色持有物】\
