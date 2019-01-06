@@ -447,7 +447,7 @@ function ChaWeapon(UserID){
 							\n武器名:' + ChaWea[b][2][c] + '\
 							\n傷害:' + ChaWea[b][3][c];
 						if(ChaWea[b][4][c] == 1){
-							rply[1] += '+傷害加成';
+							rply[1] += '+' + ChaWea[b][1] + '(傷害加成)';
 						}
 						if(ChaWea[b][5][c] != '無'){
 							rply[1] += '+' + ChaWea[b][5][c] + '(' + ChaWea[b][6][c] + ')';
