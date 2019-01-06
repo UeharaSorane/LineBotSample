@@ -131,6 +131,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 					
 					ChaSki[i][14] = rows[i].classskill.split(',');
 					ChaSki[i][15] = rows[i].specialskill.split(',');
+					ChaSki[i][16] = Number(rows[i].cpoint);
 					
 				}
 				//console.log(ChaSki);
@@ -257,6 +258,7 @@ function ChaSkiCheck(UserID){
 				if(ChaSki[b][0] == ChaIm[a][1]){
 					rply[1] = '【COC技能資料】\
 						\n角色名:' + ChaSki[b][0] + '\
+						\n克蘇魯神話:' + ChaSki[b][16] + '\
 						\n職業技能點數:' + ChaSki[b][11] + '/' + ChaSki[b][10] + '\
 						\n興趣技能點數:' + ChaSki[b][13] + '/' + ChaSki[b][12] + '\
 						\n\n〈職業技能〉';
