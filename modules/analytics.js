@@ -58,7 +58,8 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 	else if (trigger.match(/^角色技能資料$/) != null) return exports.cocCha.ChaSkiCheck(UserID) ;//角色技能資料
 
 ////////////////////////CoC持有物資料
-	else if (trigger.match(/^角色武器資料$/) != null) return exports.cocCha.ChaWeapon(UserID) ;//技能查詢
+	else if (trigger.match(/^角色武器資料$/) != null) return exports.cocCha.ChaWeapon(UserID) ;//角色武器資料
+	else if (trigger.match(/^角色道具資料$/) != null) return exports.cocCha.ChaItemCheck(UserID) ;//角色道具資料
 	
 ////////////////////////普通ROLL擲骰判定
         else if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/\d+d+\d/)!=null) {
