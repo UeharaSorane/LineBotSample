@@ -14,6 +14,7 @@ var skilllist = ['會計','人類學','估價','考古','魅惑','攀爬','電�
 
 var ChaSki= [];
 var ChaWea= [];
+var ChaItem= [];
 
 DB.useServiceAccountAuth(creds, function (err) {
 		
@@ -162,8 +163,30 @@ DB.useServiceAccountAuth(creds, function (err) {
 						ChaWea[i][10][De] = Number(ChaWea[i][10][De]);
 					}
 				}
-				console.log(ChaWea);
+				//console.log(ChaWea);
 				console.log('角色武器資料 讀取完成');
+			}	
+		});
+	
+	DB.getRows(6 , 
+		function (err, rows) {
+			if (err) {
+				console.log( err );
+			}else{
+				for(var i=0; i< rows.length; i++){
+					ChaItem[i] = [];
+					
+					ChaItem[i][0] = rows[i].chaname;
+					ChaItem[i][1] = Number(rows[i].money);
+					ChaItem[i][2] = rows[i].item.split(',');
+					ChaItem[i][3] = rows[i].spability.split(',');
+					ChaItem[i][4] = rows[i].injure.split(',');
+					ChaItem[i][5] = rows[i].scary.split(',');
+					ChaItem[i][5] = rows[i].spell.split(',');
+					ChaItem[i][5] = rows[i].spcreature.split(',');
+				}
+				console.log(ChaItem);
+				console.log('角色物品資料 讀取完成');
 			}	
 		});
 });
@@ -469,6 +492,59 @@ function ChaWeapon(UserID){
 	return rply;
 }
 
+function ChaItemCheck(UserID){
+	rply[0] = 'rply';
+
+	for(var a = 0;a<ChaIm.length;a++){
+		if(ChaIm[a][0] == UserID){
+			for(var b = 0;b<ChaItem.length;b++){
+				if(ChaItem[b][0] == ChaIm[a][1]){
+					rply[1] = '【CoC角色持有物】\
+						\n你使用的角色:' + ChaItem[b][0] + '\
+						\n持有金錢(美金):' + ChaItem[b][1] + '\
+						\n===============\
+						\n你目前持有的物品:\n';
+					for(var c = 0;c<ChaItem[b][2].length;c++){
+						rply[1] += ChaItem[b][2][c] + '\n';
+					}
+					
+					rply[1] +='\n===============\
+						\n你目前擁有的特殊能力:\n';
+					for(var c = 0;c<ChaItem[b][3].length;c++){
+						rply[1] += ChaItem[b][3][c] + '\n';
+					}
+					rply[1] +='\n===============\
+						\n你目前擁有的創傷與疤痕:\n';
+					for(var c = 0;c<ChaItem[b][4].length;c++){
+						rply[1] += ChaItem[b][4][c] + '\n';
+					}
+					rply[1] +='\n===============\
+						\n你目前擁有的恐懼與狂熱:\n';
+					for(var c = 0;c<ChaItem[b][5].length;c++){
+						rply[1] += ChaItem[b][5][c] + '\n';
+					}
+					rply[1] +='\n===============\
+						\n你目前擁有的咒術:\n';
+					for(var c = 0;c<ChaItem[b][6].length;c++){
+						rply[1] += ChaItem[b][6][c] + '\n';
+					}
+					rply[1] +='\n===============\
+						\n你目前可進行的第三類接觸:\n';
+					for(var c = 0;c<ChaItem[b][7].length;c++){
+						rply[1] += ChaItem[b][7][c] + '\n';
+					}
+
+					return rply;
+				}
+			}
+			rply[1] = '嚴重錯誤!!!你的角色沒有道具資料，請向開發人員報告';
+			return rply;
+		}
+	}
+	rply[1] = '你尚未持有CoC角色';
+	return rply;
+}
+
 /*function CoCmenu(UserID,UserN){
 	rply[0] = 'rply';
 	rply[1] = {
@@ -507,5 +583,6 @@ module.exports = {
 	ChaQuaCheck,
 	ChaSkiCheck,
 	ChaSkiSearch,
-	ChaWeapon
+	ChaWeapon,
+	ChaItemCheck
 };
