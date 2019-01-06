@@ -119,30 +119,28 @@ function menu(UserN){
 		  		"text":"嗨！" + UserN + "，請問要做什麼？",
 		  		"actions": [{
 					"type": "message",
-					"label": "角色基本資料",
-					"text": "角色基本資料"},
+					"label": "開啟CoC選單",
+					"text": "CoC選單"},
 					{
 					"type": "message",
-					"label": "角色素質資料",
-					"text": "角色素質資料"
+					"label": "開啟娛樂選單",
+					"text": "娛樂選單"
 					},
 		      			{
 					"type": "message",
-					"label": "角色技能資料",
-					"text": "角色技能資料"
+					"label": "打開幫助",
+					"text": "help"
 					},
 					{
 					"type": "message",
-					"label": "技能查詢",
-					"text": "技能查詢"
+					"label": "閒聊",
+					"text": "嘿空音"
 					}
 				]
 		}
 	}
 	return rply;
 }
-
-
 
 module.exports = {
 	ReplyTest,
