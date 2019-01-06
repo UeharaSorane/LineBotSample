@@ -443,16 +443,16 @@ function ChaWeapon(UserID){
 						\n你目前持有的武器:\n';
 
 					for(var c = 0;c<ChaWea[b][2].length;c++){
-						rply +='\n===============\
+						rply[1] +='\n===============\
 							\n武器名:' + ChaWea[b][2][c] + '\
 							\n傷害:' + ChaWea[b][3][c];
 						if(ChaWea[b][4][c] == 1){
-							rply += '+傷害加成';
+							rply[1] += '+傷害加成';
 						}
 						if(ChaWea[b][5][c] != '無'){
-							rply += '+' + ChaWea[b][5][c] + '(' + ChaWea[b][6][c] + ')';
+							rply[1] += '+' + ChaWea[b][5][c] + '(' + ChaWea[b][6][c] + ')';
 						}
-						rply += '\n射程:' + ChaWea[b][7][c] + '\
+						rply[1] += '\n射程:' + ChaWea[b][7][c] + '\
 							 \n次數/輪:' + ChaWea[b][8][c] + '\
 							 \n彈藥:' + ChaWea[b][9][c] + '\
 							 \n故障值:' + ChaWea[b][10][c];
