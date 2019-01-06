@@ -182,8 +182,8 @@ DB.useServiceAccountAuth(creds, function (err) {
 					ChaItem[i][3] = rows[i].spability.split(',');
 					ChaItem[i][4] = rows[i].injure.split(',');
 					ChaItem[i][5] = rows[i].scary.split(',');
-					ChaItem[i][5] = rows[i].spell.split(',');
-					ChaItem[i][5] = rows[i].spcreature.split(',');
+					ChaItem[i][6] = rows[i].spell.split(',');
+					ChaItem[i][7] = rows[i].spcreature.split(',');
 				}
 				console.log(ChaItem);
 				console.log('角色物品資料 讀取完成');
