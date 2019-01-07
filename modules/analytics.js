@@ -49,7 +49,7 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 ////////////////////////CoC選單
 	else if (trigger.match(/^coc角色資料$/) != null) return exports.cocCha.Chamenu(UserID) ;//角色資料
 	else if (trigger.match(/^技能查詢$/) != null) return exports.cocCha.ChaSkiSearch(UserID,mainMsg[1]) ;//技能查詢
-	//else if (trigger.match(/^CoC持有物資料$/) != null) return exports.Testing.Itemmenu(UserID) ;//持有物資料
+	else if (trigger.match(/^coc持有物資料$/) != null) return exports.cocCha.Itemmenu(UserID) ;//持有物資料
 	//else if (trigger.match(/^其他CoC選項$/) != null) return exports.cocCha.OtherCoC(UserID) ;//切換角色
 	
 ////////////////////////CoC角色資料
