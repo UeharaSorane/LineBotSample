@@ -252,6 +252,42 @@ function SwitchCha(UserID,ChaName){
 	rply[1] = '你尚未持有CoC角色';
 	return rply;
 }
+
+function AccountTrans(UserID,TransKey){
+	rply[0] = 'rply';
+	
+	for(var a = 0;a<AccessDB.length;a++){
+		if(AccessDB[a][0] == UserID){
+			if(TransKey = null){
+				if(AccessDB[a][5] == 0){
+					rply[1] = '此帳號的轉移模式尚未啟動，要更換綁定的Line帳號的話請輸入[轉移帳號 轉移碼(自行設定)]';
+					return rply;
+				}else if(AccessDB[a][5] == 1){
+					rply[1] = '此帳號的轉移模式已啟動，請在要綁定的Line帳號輸入[接收帳號 目前的使用角色 轉移碼(設定好的)]';
+					return rply;
+				}
+			}else{
+				if(AccessDB[a][5] == 0){
+					AccessDB[a][5] = 1;
+					AccessDB[a][4] = TransKey;
+					saveAccessDB(a);
+					
+					rply[1] = '轉移模式啟動!請使用要綁定的Line帳號，並輸入[接收帳號 目前的使用角色 轉移碼(設定好的)]\
+						\n\n如要關閉，請輸入[轉移帳號 轉移碼(設定好的)]';
+					return rply;
+				}else{
+					AccessDB[a][5] = 0;
+					AccessDB[a][4] = 'none';
+					saveAccessDB(a);
+					
+					rply[1] = '關閉轉移模式，如要重新啟動，必須重新設定轉移碼';
+					return rply;
+				}
+			}
+		}
+	}
+}
+
 function SearchCha(UserID){
 	rply[0] = 'rply';
 	
@@ -771,5 +807,6 @@ module.exports = {
 	ChaItemCheck,
 	CoCmenu,
 	Chamenu,
-	Itemmenu
+	Itemmenu,
+	AccountTrans
 };
