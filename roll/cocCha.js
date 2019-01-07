@@ -635,12 +635,21 @@ function GetOldChaStep(UserID,command){
 						var CI = ChaIm.length;
 						var CQ = ChaQua.length;
 						var CS = ChaSki.length;
-						var CW = ChaWea
+						var CW = ChaWea.length;
 						var CIt = ChaItem.length;
 						
 						ChaIm[CI] = GetOldCha[workID][2];
 						ChaQua[CQ] = GetOldCha[workID][3];
 						ChaSki[CS] = GetOldCha[workID][4];
+						ChaItem[CW] = [GetOldCha[workID][2][1],'0',['徒手'],['1d3'],[1],['無'],['0'],['無'],
+							      ['肉搏'],['1'],['--'],[100]];
+						
+						if(GetOldCha[workID][3][1] + GetOldCha[workID][3][8]<=13)ChaItem[CW][1] = '-1d6';
+						else if(GetOldCha[workID][3][1] + GetOldCha[workID][3][8]<=16)ChaItem[CW][1] = '-1d4';
+						else if(GetOldCha[workID][3][1] + GetOldCha[workID][3][8]<=24)ChaItem[CW][1] = '0';
+						else if(GetOldCha[workID][3][1] + GetOldCha[workID][3][8]<=32)ChaItem[CW][1] = '+1d4';
+						else ChaItem[CW][1] = '+1d6';
+						
 						ChaItem[CIt] = [GetOldCha[workID][2][1],0,['無'],['無'],['無'],['無'],['無'],['無']];
 						
 						GetOldCha[workID][4][17]++;
