@@ -306,13 +306,19 @@ function receiveAccount(UserID,playCha,TransKey){
 		}
 	}
 	for(var a = 0;a<AccessDB.length;a++){
-		if(AccessDB[a][2] == playCha){
-			if(AccessDB[a][5] == 0 || TransKey != AccessDB[a][4]){
-				rply[1] = '你提供的轉移資訊有誤，請再試一次';
-				return rply;
-			}
+		if(AccessDB[a][2] == playCha && AccessDB[a][5] == 1 && TransKey == AccessDB[a][4]){
+			AccessDB[a][0] = UserID;
+			AccessDB[a][5] = 0;
+			AccessDB[a][4] = 'none';
+			saveAccessDB(a);
+
+			rply[1] = '轉移成功!建議你輸入[角色更換]確認帳號狀態';
+			return rply;
 		}
 	}
+	
+	rply[1] = '你提供的轉移資訊有誤，請再試一次';
+	return rply;
 	
 }
 
@@ -836,5 +842,6 @@ module.exports = {
 	CoCmenu,
 	Chamenu,
 	Itemmenu,
-	AccountTrans
+	AccountTrans,
+	receiveAccount
 };
