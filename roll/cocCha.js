@@ -667,6 +667,37 @@ function Chamenu(UserID){
 	
 	}
 }
+function Itemmenu(UserID){
+	rply[0] = 'rply';
+	
+	var playCha = CheckCha(UserID);
+	if(playCha == 0){
+		rply[1] = '你尚未持有CoC角色';
+		return rply;
+	}else{
+		rply[1] = {
+		  "type": "template",
+		  "altText": "很抱歉，你的Line版本不支援此系統，建議輸入help查看可使用的指令",
+		  "template": {
+		  	"type": "buttons",
+		  		"text":"目前查詢的角色是:" + playCha,
+		  		"actions": [{
+					"type": "message",
+					"label": "查看武器資料",
+					"text": "角色武器資料"},
+					{
+					"type": "message",
+					"label": "查看持有物",
+					"text": "角色道具資料"
+					}
+				]
+		}
+	}
+	return rply;
+	
+	}
+}
+
 
 module.exports = {
 	SearchCha,
@@ -676,5 +707,6 @@ module.exports = {
 	ChaWeapon,
 	ChaItemCheck,
 	CoCmenu,
-	Chamenu
+	Chamenu,
+	Itemmenu
 };
