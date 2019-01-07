@@ -43,7 +43,7 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 	
 ////////////////////////目錄
 	else if (trigger.match(/^目錄|menu$/) != null) return exports.Testing.menu(UserN) ;//目錄
-	else if (trigger.match(/^CoC選單$/) != null) return exports.cocCha.CoCmenu(UserID,UserN) ;//CoC選單
+	else if (trigger.match(/^coc選單$/) != null) return exports.cocCha.CoCmenu(UserID,UserN) ;//CoC選單
 	//else if (trigger.match(/^娛樂選單$/) != null) return exports.Testing.Funnymenu(UserN) ;//娛樂選單
 	
 ////////////////////////CoC選單
