@@ -14,6 +14,13 @@ var skilllist = ['會計','人類學','估價','考古','魅惑','攀爬','電�
 var Qualist = ['力量(STR)','敏捷(DEX)','體質(CON)','外貌(APP)','意志(POW)',
 	       '智力(INT)','教育(EDU)','體型(SIZ)','機動力(MOV)','靈感(IEDA)',
 	       '知識(KNOW)','幸運(LUK)'];
+var DefaultGS = [5,1,5,1,15,20,5,0,5,'DEX/2',20,
+		 10,1,5,30,5,15,20,5,20,20,1,
+		 10,1,10,10,5,1,10,10,1,
+		 10,25,20,20,20,10];
+var CreateDS = ['藝術技藝','鬥毆','手槍','步槍/散彈槍','其他語言','日文','專業駕駛','科學','生存'];
+
+var CreateGS = [5,25,20,25,1,'EDU',1,1,10];
 
 var ChaSki= [];
 var ChaWea= [];
@@ -476,6 +483,175 @@ function GetOldChaStep(UserID,command){
 				
 			}
 			GetOldCha[workID][1][1]++;
+			return rply;
+			break;
+		case 2:
+			switch(GetOldCha[workID][1][1]){
+				case 0:
+					GetOldCha[workID][4] = [GetOldCha[workID][2][1],
+								[],[],[],[],
+								[CreateDS],[],[],[],[],
+								0,0,0,0,
+							       [],[],0,0];
+					rply[1] = '【CoC資料寫入系統】\
+							\n接下來開始設定技能資料\
+							\n\n接下來請輸入[資料寫入 此角色的所有職業技能(請用「,」分開)]\
+							\n[請不要輸入大寫英文以及空白鍵，會導致角色無法讀入]';
+					GetOldCha[workID][1][1]++;
+					break;
+				case 1:
+					GetOldCha[workID][4][14] = command.split(',');
+					rply[1] = '【CoC資料寫入系統】\
+							\n接下來請輸入[資料寫入 此角色的所有特技(請用「,」分開)]\
+							\n[請不要輸入大寫英文以及空白鍵，會導致角色無法讀入]';
+					GetOldCha[workID][1][1]++;
+					break;
+				case 2:
+					GetOldCha[workID][4][15] = command.split(',');
+					rply[1] = '【CoC資料寫入系統】\
+							\n接下來開始設定共通技能資料\
+							\n\n接下來請輸入[資料寫入 此角色「會計」的三大配點(職業天賦,興趣天賦,成長值)\
+							(請用「,」分開)]\
+							\n\n[請使用半形阿拉伯數字]';
+					GetOldCha[workID][1][1]++;
+					break;
+				case 3:
+					var temp = command.split(',');
+					if(temp.length<3){
+						rply[1] = '錯誤!資料不完整!';
+						return rply;
+					}
+					
+					for(var a = 0;a<temp.length;a++){
+						if(isNaN(temp[a])){
+							rply[1] = '錯誤!請輸入半形阿拉伯數字!';
+							return rply;
+						}
+					}
+					if(DefaultGS[GetOldCha[workID][4][17]] == 'DEX/2'){
+						GetOldCha[workID][4][1][GetOldCha[workID][4][17]] = Math.floor(GetOldCha[workID][3][2]/2);
+					}else{
+						GetOldCha[workID][4][1][GetOldCha[workID][4][17]] = DefaultGS[GetOldCha[workID][4][17]];
+					}
+					GetOldCha[workID][4][2][GetOldCha[workID][4][17]] = temp[0];
+					GetOldCha[workID][4][3][GetOldCha[workID][4][17]] = temp[1];
+					GetOldCha[workID][4][4][GetOldCha[workID][4][17]] = temp[2];
+					
+					if(GetOldCha[workID][4][17] < DefaultGS.length){
+						GetOldCha[workID][4][17]++;
+						rply[1] = '【CoC資料寫入系統】\
+								\n接下來請輸入[資料寫入 此角色「' + DefaultGS[GetOldCha[workID][4][17]] + '」的三大配點(職業天賦,興趣天賦,成長值)\
+								(請用「,」分開)]\
+								\n\n[請使用半形阿拉伯數字]';
+						break;
+						
+					}else{
+						rply[1] = '【CoC資料寫入系統】\
+								\n接下來開始設定自訂技能資料\
+								\n\n接下來請輸入[資料寫入 此角色「藝術技藝(通用)」的三大配點(職業天賦,興趣天賦,成長值)\
+								(請用「,」分開)]\
+								\n\n[請使用半形阿拉伯數字]';
+						GetOldCha[workID][1][1]++;
+						GetOldCha[workID][4][17] = 0;
+						break;
+					}
+				case 4:
+					var temp = command.split(',');
+					if(temp.length<3){
+						rply[1] = '錯誤!資料不完整!';
+						return rply;
+					}
+					
+					for(var a = 0;a<temp.length;a++){
+						if(isNaN(temp[a])){
+							rply[1] = '錯誤!請輸入半形阿拉伯數字!';
+							return rply;
+						}
+					}
+					if(CreateGS[GetOldCha[workID][4][17]] == 'EDU'){
+						GetOldCha[workID][4][6][GetOldCha[workID][4][17]] = GetOldCha[workID][3][7];
+					}else{
+						GetOldCha[workID][4][6][GetOldCha[workID][4][17]] = CreateGS[GetOldCha[workID][4][17]];
+					}
+					GetOldCha[workID][4][7][GetOldCha[workID][4][17]] = temp[0];
+					GetOldCha[workID][4][8][GetOldCha[workID][4][17]] = temp[1];
+					GetOldCha[workID][4][9][GetOldCha[workID][4][17]] = temp[2];
+					
+					if(GetOldCha[workID][4][17] < CreateGS.length){
+						GetOldCha[workID][4][17]++;
+						rply[1] = '【CoC資料寫入系統】\
+								\n接下來請輸入[資料寫入 此角色「' + CreateDS[GetOldCha[workID][4][17]] + '」的四大配點(職業天賦,興趣天賦,成長值)\
+								(請用「,」分開)]\
+								\n\n[請使用半形阿拉伯數字]';
+						break;
+						
+					}else{
+						GetOldCha[workID][4][17]++;
+						rply[1] = '【CoC資料寫入系統】\
+								\n接下來開始設定自訂技能資料\
+								\n\n接下來請輸入[資料寫入 此角色持有的自定義技能]\
+								\n(請用「,」分開)';
+						GetOldCha[workID][1][1]++;
+						break;
+					}
+				case 5:
+					GetOldCha[workID][4][5] = GetOldCha[workID][4][5].concat(command.split(','));
+					rply[1] = '【CoC資料寫入系統】\
+							\n接下來請輸入[資料寫入 此角色「' + GetOldCha[workID][4][5][GetOldCha[workID][4][17]] + '」的四大配點(基礎值,職業天賦,興趣天賦,成長值)\
+							(請用「,」分開)]\
+							\n\n[請使用半形阿拉伯數字]';
+					GetOldCha[workID][1][1]++;
+					break;
+					
+				case 6:
+					var temp = command.split(',');
+					if(temp.length<4){
+						rply[1] = '錯誤!資料不完整!';
+						return rply;
+					}
+					
+					for(var a = 0;a<temp.length;a++){
+						if(isNaN(temp[a])){
+							rply[1] = '錯誤!請輸入半形阿拉伯數字!';
+							return rply;
+						}
+					}
+
+					GetOldCha[workID][4][6][GetOldCha[workID][4][17]] = temp[0];
+					GetOldCha[workID][4][7][GetOldCha[workID][4][17]] = temp[1];
+					GetOldCha[workID][4][8][GetOldCha[workID][4][17]] = temp[2];
+					GetOldCha[workID][4][9][GetOldCha[workID][4][17]] = temp[3];
+					
+					if(GetOldCha[workID][4][17] < GetOldCha[workID][4][5].length){
+						GetOldCha[workID][4][17]++;
+						rply[1] = '【CoC資料寫入系統】\
+								\n接下來請輸入[資料寫入 此角色「' + GetOldCha[workID][4][5][GetOldCha[workID][4][17]] + '」的四大配點(職業天賦,興趣天賦,成長值)\
+								(請用「,」分開)]\
+								\n\n[請使用半形阿拉伯數字]';
+						break;
+					}else{
+						
+						
+						var CI = ChaIm.length;
+						var CQ = ChaQua.length;
+						var CS = ChaSki.length;
+						var CW = ChaWea
+						var CIt = ChaItem.length;
+						
+						ChaIm[CI] = GetOldCha[workID][2];
+						ChaQua[CQ] = GetOldCha[workID][3];
+						ChaSki[CS] = GetOldCha[workID][4];
+						ChaItem[CIt] = [GetOldCha[workID][2][1],0,['無'],['無'],['無'],['無'],['無'],['無']];
+						
+						GetOldCha[workID][4][17]++;
+						rply[1] = '【CoC資料寫入系統】\
+								\n\
+								\n\n接下來請輸入[資料寫入 此角色持有的自定義技能]\
+								\n(請用「,」分開)';
+						GetOldCha[workID][1][1]++;
+						break;
+					}
+			}
 			return rply;
 			break;
 	}
