@@ -272,10 +272,158 @@ function GetOldChaStep(UserID,command){
 		GetOldCha[GOCL][1] = [0,0];
 		workID = GOCL;
 	}
-	if(GetOldCha[workID][1][0] = 0){
-		rply[1] = ''
+	switch(GetOldCha[workID][1][0]){
+		case 0:
+			switch(GetOldCha[workID][1][1]){
+				case 0:
+					rply[1] = '【CoC資料寫入系統】\
+						\n        歡迎使用本系統，接下來將由我引導你完成資料引入，以下過程請儘可能及早完成。\
+						\n\n請輸入[資料寫入]繼續';
+					break;
+				case 1:
+					rply[1] = '【CoC資料寫入系統】\
+						\n接下來請輸入[資料寫入 此角色的名字]\
+						\n\n[請不要輸入大寫英文以及空白鍵，會導致角色無法讀入]';
+					break;
+				case 2:
+					if(command == null){
+						rply[1] = '名字不可以空白!';
+						return rply;
+					}else{
+						for(var a = 0;a<ChaIm.length;a++){
+							if(command == ChaIm[a][1]){
+								rply[1] = '此名字已經有人使用了，請換一個!';
+								return rply;
+							}
+						}
+						GetOldCha[workID][2] = ['1','command','','','','','','',0,0,0,0,0,0,0];
+					
+						rply[1] = '【CoC資料寫入系統】\
+							\n接下來請輸入[資料寫入 玩家的名字]\
+							\n\n[請不要輸入大寫英文以及空白鍵，會導致角色無法讀入]';
+						break;	
+					}
+				case 3:
+					GetOldCha[workID][2][2] = command;
+					
+					rply[1] = '【CoC資料寫入系統】\
+						\n接下來請輸入[資料寫入 此角色的年齡]\
+						\n\n[請不要輸入大寫英文以及空白鍵，會導致角色無法讀入]';
+					break;
+				case 4:
+					GetOldCha[workID][2][3] = command;
+					
+					rply[1] = '【CoC資料寫入系統】\
+						\n接下來請輸入[資料寫入 此角色的職業]\
+						\n\n[請不要輸入大寫英文以及空白鍵，會導致角色無法讀入]';
+					break;
+				case 5:
+					GetOldCha[workID][2][4] = command;
+					
+					rply[1] = '【CoC資料寫入系統】\
+						\n接下來請輸入[資料寫入 此角色的性別]\
+						\n\n[請不要輸入大寫英文以及空白鍵，會導致角色無法讀入]';
+					break;
+				case 6:
+					GetOldCha[workID][2][5] = command;
+					
+					rply[1] = '【CoC資料寫入系統】\
+						\n接下來請輸入[資料寫入 此角色的出生地]\
+						\n\n[請不要輸入大寫英文以及空白鍵，會導致角色無法讀入]';
+					break;
+				case 7:
+					GetOldCha[workID][2][6] = command;
+					
+					rply[1] = '【CoC資料寫入系統】\
+						\n接下來請輸入[資料寫入 此角色的居住地]\
+						\n\n[請不要輸入大寫英文以及空白鍵，會導致角色無法讀入]';
+					break;
+				case 8:
+					GetOldCha[workID][2][7] = command;
+					
+					rply[1] = '【CoC資料寫入系統】\
+						\n接下來請輸入[資料寫入 此角色最大Hp]\
+						\n\n[請使用半形阿拉伯數字]';
+					break;
+				case 9:
+					if(isNaN(command)){
+						rply[1] = '錯誤!請輸入半形阿拉伯數字!';
+						return rply;
+					}else{
+						GetOldCha[workID][2][8] = command;
+					
+						rply[1] = '【CoC資料寫入系統】\
+							\n接下來請輸入[資料寫入 此角色當前Hp]\
+							\n\n[請使用半形阿拉伯數字]';
+						break;
+					}
+				case 10:
+					if(isNaN(command)){
+						rply[1] = '錯誤!請輸入半形阿拉伯數字!';
+						return rply;
+					}else{
+						GetOldCha[workID][2][9] = command;
+					
+						rply[1] = '【CoC資料寫入系統】\
+							\n接下來請輸入[資料寫入 此角色最大Mp]\
+							\n\n[請使用半形阿拉伯數字]';
+						break;
+					}
+				case 11:
+					if(isNaN(command)){
+						rply[1] = '錯誤!請輸入半形阿拉伯數字!';
+						return rply;
+					}else{
+						GetOldCha[workID][2][10] = command;
+					
+						rply[1] = '【CoC資料寫入系統】\
+							\n接下來請輸入[資料寫入 此角色當前Mp]\
+							\n\n[請使用半形阿拉伯數字]';
+						break;
+					}
+				case 12:
+					if(isNaN(command)){
+						rply[1] = '錯誤!請輸入半形阿拉伯數字!';
+						return rply;
+					}else{
+						GetOldCha[workID][2][11] = command;
+					
+						rply[1] = '【CoC資料寫入系統】\
+							\n接下來請輸入[資料寫入 此角色起始San]\
+							\n\n[請使用半形阿拉伯數字]';
+						break;
+					}
+				case 13:
+					if(isNaN(command)){
+						rply[1] = '錯誤!請輸入半形阿拉伯數字!';
+						return rply;
+					}else{
+						GetOldCha[workID][2][12] = command;
+					
+						rply[1] = '【CoC資料寫入系統】\
+							\n接下來請輸入[資料寫入 此角色當前San]\
+							\n\n[請使用半形阿拉伯數字]';
+						break;
+					}
+				case 14:
+					if(isNaN(command)){
+						rply[1] = '錯誤!請輸入半形阿拉伯數字!';
+						return rply;
+					}else{
+						GetOldCha[workID][2][13] = command;
+					
+						rply[1] = '【CoC資料寫入系統】\
+							\n角色基本資料寫入完成!\
+							\n接下來請輸入[資料寫入]繼續';
+						GetOldCha[workID][1][1] =0;
+						GetOldCha[workID][1][0] =1;
+						return rply;
+					}
+			}
+			GetOldCha[workID][1][1]++;
+			return rply;
+			break;
 	}
-	
 }
 
 function AccountTrans(UserID,TransKey){
