@@ -219,6 +219,39 @@ function CheckCha(UserID){
 	return 0;
 }
 
+function SwitchCha(UserID,ChaName){
+	rply[0] = 'rply';
+	
+	for(var a = 0;a<AccessDB.length;a++){
+		if(AccessDB[a][0] == UserID){
+			if(ChaName == null){
+				rply[1] = '【COC帳號情報】\
+					\n你目前使用的角色:' + AccessDB[a][2] + '\
+					\n=====你目前持有的角色=====';
+				
+				for(var b = 0;b<AccessDB[a][3].length;b++){
+					rply[1] += '\n' + AccessDB[a][3][b];
+				}
+				rply[1] += '\n若想要更換角色，請輸入[角色更換 角色名]即可';
+				return rply;
+			}else{
+				for(var b = 0;b<AccessDB[a][3].length;b++){
+					if(AccessDB[a][3][b] == ChaName){
+						AccessDB[a][2] = ChaName;
+						saveAccessDB(a);
+						
+						rply[1] = '角色切換完成，你目前使用的角色是:' + ChaName;
+						return rply;
+					}
+				}
+				rply[1] = '錯誤!你不持有此角色或是不存在此角色';
+				return rply;
+			}
+		}
+	}
+	rply[1] = '你尚未持有CoC角色';
+	return rply;
+}
 function SearchCha(UserID){
 	rply[0] = 'rply';
 	
@@ -699,7 +732,37 @@ function Itemmenu(UserID){
 }
 
 
+function saveAccessDB(Target){
+	DB.useServiceAccountAuth(creds, function (err) {
+		DB.getRows(7 , 
+			function (err, rows) {
+				if (err) {
+					console.log( err );
+				}else{
+
+
+					rows[Target].userid = AccessDB[Target][0];
+					rows[Target].playern = AccessDB[Target][1];
+					rows[Target].playcha = AccessDB[Target][2];
+					
+					var havchaS = AccessDB[Target][3][0];
+					for(var a = 1;a<AccessDB[Target][3].length;a++){
+						havchaS += ',' + AccessDB[Target][3][a];
+					}
+					rows[Target].havecha = havchaS;
+					
+					rows[Target].transkey = AccessDB[Target][4];
+					rows[Target].transio = AccessDB[Target][5];
+					
+					rows[Target].save();
+					console.log('帳號連結資料 更新完成');
+				}	
+			});
+	});
+}
+
 module.exports = {
+	SwitchCha,
 	SearchCha,
 	ChaQuaCheck,
 	ChaSkiCheck,
