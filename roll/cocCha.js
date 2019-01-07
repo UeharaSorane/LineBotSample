@@ -276,12 +276,17 @@ function AccountTrans(UserID,TransKey){
 						\n\n如要關閉，請輸入[轉移帳號 轉移碼(設定好的)]';
 					return rply;
 				}else{
-					AccessDB[a][5] = 0;
-					AccessDB[a][4] = 'none';
-					saveAccessDB(a);
-					
-					rply[1] = '關閉轉移模式，如要重新啟動，必須重新設定轉移碼';
-					return rply;
+					if(TransKey == AccessDB[a][4]){
+						AccessDB[a][5] = 0;
+						AccessDB[a][4] = 'none';
+						saveAccessDB(a);
+
+						rply[1] = '關閉轉移模式，如要重新啟動，必須重新設定轉移碼';
+						return rply;
+					}else{
+						rply[1] = '你輸入的轉移碼有誤，請再試一次';
+						return rply;
+					}
 				}
 			}
 		}
