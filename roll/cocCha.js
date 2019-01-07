@@ -1244,6 +1244,230 @@ function saveAccessDB(Target){
 	});
 }
 
+function saveChaIm(i){
+	DB.useServiceAccountAuth(creds, function (err) {
+		DB.getRows(2 , 
+			function (err, rows) {
+				if (err) {
+					console.log( err );
+				}else{
+
+
+					rows[i].chaid = ChaIm[i][0];
+					rows[i].chaname = ChaIm[i][1];
+					rows[i].plname = ChaIm[i][2];
+					rows[i].age = ChaIm[i][3];
+					rows[i].class = ChaIm[i][4];
+					rows[i].sex = ChaIm[i][5];
+					rows[i].born = ChaIm[i][6];
+					rows[i].live = ChaIm[i][7];
+					rows[i].maxhp = ChaIm[i][8];
+					rows[i].hp = ChaIm[i][9];
+					rows[i].maxmp = ChaIm[i][10];
+					rows[i].mp = ChaIm[i][11];
+					rows[i].startsan = ChaIm[i][12];
+					rows[i].san = ChaIm[i][13];
+					rows[i].completes = ChaIm[i][14];
+					
+					rows[i].save();
+					console.log('角色基本資料 更新完成');
+				}	
+			});
+	});
+}
+
+function saveChaQua(i){
+	DB.useServiceAccountAuth(creds, function (err) {
+		DB.getRows(3 , 
+			function (err, rows) {
+				if (err) {
+					console.log( err );
+				}else{
+
+
+					rows[i].chaname = ChaQua[i][0];
+					rows[i].str = ChaQua[i][1];
+					rows[i].dex = ChaQua[i][2];
+					rows[i].con = ChaQua[i][3];
+					rows[i].app = ChaQua[i][4];
+					rows[i].pow = ChaQua[i][5];
+					rows[i].int = ChaQua[i][6];
+					rows[i].edu = ChaQua[i][7];
+					rows[i].siz = ChaQua[i][8];
+					rows[i].mov = ChaQua[i][9];
+					rows[i].idea = ChaQua[i][10];
+					rows[i].know = ChaQua[i][11];
+					rows[i].luk = ChaQua[i][12];
+					
+					rows[i].save();
+					console.log('角色素質資料 更新完成');
+				}	
+			});
+	});
+}
+
+function saveChaSki(i){
+	DB.useServiceAccountAuth(creds, function (err) {
+		DB.getRows(4 , 
+			function (err, rows) {
+				if (err) {
+					console.log( err );
+				}else{
+
+
+					rows[i].chaname = ChaSki[i][0];
+					var S = ChaSki[i][1][0];
+					for(var a = 1;a<ChaSki[i][1].length;a++){
+						S += ',' + ChaSki[i][1][a];
+					}
+					rows[i].default = S;
+					
+					S = ChaSki[i][2][0];
+					for(var a = 1;a<ChaSki[i][2].length;a++){
+						S += ',' + ChaSki[i][2][a];
+					}
+					rows[i].classp = S;
+					
+					S = ChaSki[i][3][0];
+					for(var a = 1;a<ChaSki[i][3].length;a++){
+						S += ',' + ChaSki[i][3][a];
+					}
+					rows[i].interestp = S;
+					
+					S = ChaSki[i][4][0];
+					for(var a = 1;a<ChaSki[i][4].length;a++){
+						S += ',' + ChaSki[i][4][a];
+					}
+					rows[i].skillupp = S;
+					
+					S = ChaSki[i][5][0];
+					for(var a = 1;a<ChaSki[i][5].length;a++){
+						S += ',' + ChaSki[i][5][a];
+					}
+					rows[i].creattst = S;
+					
+					S = ChaSki[i][6][0];
+					for(var a = 1;a<ChaSki[i][6].length;a++){
+						S += ',' + ChaSki[i][6][a];
+					}
+					rows[i].createsde = S;
+					
+					S = ChaSki[i][7][0];
+					for(var a = 1;a<ChaSki[i][7].length;a++){
+						S += ',' + ChaSki[i][7][a];
+					}
+					rows[i].createscp = S;
+					
+					S = ChaSki[i][8][0];
+					for(var a = 1;a<ChaSki[i][8].length;a++){
+						S += ',' + ChaSki[i][8][a];
+					}
+					rows[i].createip = S;
+					
+					S = ChaSki[i][9][0];
+					for(var a = 1;a<ChaSki[i][9].length;a++){
+						S += ',' + ChaSki[i][9][a];
+					}
+					rows[i].createupp = S;
+					rows[i].getclassskillp = ChaSki[i][10];
+					rows[i].classskillp = ChaSki[i][11];
+					rows[i].getinterestskillp = ChaSki[i][12];
+					rows[i].interestskillp = ChaSki[i][13];
+					
+					S = ChaSki[i][14][0];
+					for(var a = 1;a<ChaSki[i][14].length;a++){
+						S += ',' + ChaSki[i][14][a];
+					}
+					rows[i].classskill = S;
+					
+					S = ChaSki[i][15][0];
+					for(var a = 1;a<ChaSki[i][15].length;a++){
+						S += ',' + ChaSki[i][15][a];
+					}
+					rows[i].specialskill = S;
+					
+					rows[i].cpoint = ChaSki[i][16];
+					
+					rows[i].save();
+					console.log('角色素質資料 更新完成');
+				}	
+			});
+	});
+}
+
+function saveChaWea(i){
+	DB.useServiceAccountAuth(creds, function (err) {
+		DB.getRows(5 , 
+			function (err, rows) {
+				if (err) {
+					console.log( err );
+				}else{
+
+
+					rows[i].chaname = ChaWea[i][0];
+					rows[i].damagebonus = ChaWea[i][1];
+					
+					
+					var S = ChaWea[i][2][0];
+					for(var a = 1;a<ChaWea[i][2].length;a++){
+						S += ',' + ChaWea[i][2][a];
+					}
+					rows[i].weaponn = S;
+					
+					S = ChaWea[i][3][0];
+					for(var a = 1;a<ChaWea[i][3].length;a++){
+						S += ',' + ChaWea[i][3][a];
+					}
+					rows[i].damage = S;
+					
+					S = ChaWea[i][4][0];
+					for(var a = 1;a<ChaWea[i][4].length;a++){
+						S += ',' + ChaWea[i][4][a];
+					}
+					rows[i].dbio = S;
+					
+					S = ChaWea[i][5][0];
+					for(var a = 1;a<ChaWea[i][5].length;a++){
+						S += ',' + ChaWea[i][5][a];
+					}
+					rows[i].debuff = S;
+					
+					S = ChaWea[i][6][0];
+					for(var a = 1;a<ChaWea[i][6].length;a++){
+						S += ',' + ChaWea[i][6][a];
+					}
+					rows[i].debufftimes = S;
+					
+					S = ChaWea[i][7][0];
+					for(var a = 1;a<ChaWea[i][7].length;a++){
+						S += ',' + ChaWea[i][7][a];
+					}
+					rows[i].range = S;
+					
+					S = ChaWea[i][8][0];
+					for(var a = 1;a<ChaWea[i][8].length;a++){
+						S += ',' + ChaWea[i][8][a];
+					}
+					rows[i].turn = S;
+					
+					S = ChaWea[i][9][0];
+					for(var a = 1;a<ChaWea[i][9].length;a++){
+						S += ',' + ChaWea[i][9][a];
+					}
+					rows[i].bullet = S;
+					
+					S = ChaWea[i][10][0];
+					for(var a = 1;a<ChaWea[i][10].length;a++){
+						S += ',' + ChaWea[i][10][a];
+					}
+					
+					rows[i].save();
+					console.log('角色武器資料 更新完成');
+				}	
+			});
+	});
+}
+
 module.exports = {
 	SwitchCha,
 	SearchCha,
