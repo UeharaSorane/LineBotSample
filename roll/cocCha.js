@@ -600,7 +600,7 @@ function CoCmenu(UserID,UserN){
 		  "altText": "很抱歉，你的Line版本不支援此系統，建議輸入help查看可使用的指令",
 		  "template": {
 		  	"type": "buttons",
-		  		"text":UserN + "目前使用的角色是" + playCha,
+		  		"text":UserN + "目前使用的角色是:" + playCha,
 		  		"actions": [{
 					"type": "message",
 					"label": "查看角色資料",
@@ -628,6 +628,42 @@ function CoCmenu(UserID,UserN){
 	}
 }
 
+function Chamenu(UserID,UserN){
+	rply[0] = 'rply';
+	
+	var playCha = CheckCha(UserID);
+	if(playCha == 0){
+		rply[1] = '你尚未持有CoC角色';
+		return rply;
+	}else{
+		rply[1] = {
+		  "type": "template",
+		  "altText": "很抱歉，你的Line版本不支援此系統，建議輸入help查看可使用的指令",
+		  "template": {
+		  	"type": "buttons",
+		  		"text":"目前查詢的角色是:" + playCha,
+		  		"actions": [{
+					"type": "message",
+					"label": "查看角色資料",
+					"text": "角色基本資料"},
+					{
+					"type": "message",
+					"label": "查看素質資料",
+					"text": "角色素質資料"
+					},
+		      			{
+					"type": "message",
+					"label": "查看技能資料",
+					"text": "角色技能資料"
+					}
+				]
+		}
+	}
+	return rply;
+	
+	}
+}
+
 module.exports = {
 	SearchCha,
 	ChaQuaCheck,
@@ -635,5 +671,6 @@ module.exports = {
 	ChaSkiSearch,
 	ChaWeapon,
 	ChaItemCheck,
-	CoCmenu
+	CoCmenu,
+	Chamenu
 };
