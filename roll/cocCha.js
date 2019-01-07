@@ -296,6 +296,26 @@ function AccountTrans(UserID,TransKey){
 	
 }
 
+function receiveAccount(UserID,playCha,TransKey){
+	rply[0] = 'rply';
+	
+	for(var a = 0;a<AccessDB.length;a++){
+		if(AccessDB[a][0] == UserID){
+			rply[1] = '錯誤!此Line帳號已經有CoC資料，不能進行本操作';
+			return rply;
+		}
+	}
+	for(var a = 0;a<AccessDB.length;a++){
+		if(AccessDB[a][2] == playCha){
+			if(AccessDB[a][5] == 0 || TransKey != AccessDB[a][4]){
+				rply[1] = '你提供的轉移資訊有誤，請再試一次';
+				return rply;
+			}
+		}
+	}
+	
+}
+
 function SearchCha(UserID){
 	rply[0] = 'rply';
 	
