@@ -1016,5 +1016,6 @@ module.exports = {
 	Chamenu,
 	Itemmenu,
 	AccountTrans,
-	receiveAccount
+	receiveAccount,
+	GetOldChaStep
 };
