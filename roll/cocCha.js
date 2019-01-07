@@ -258,7 +258,7 @@ function AccountTrans(UserID,TransKey){
 	
 	for(var a = 0;a<AccessDB.length;a++){
 		if(AccessDB[a][0] == UserID){
-			if(TransKey = null){
+			if(TransKey == null){
 				if(AccessDB[a][5] == 0){
 					rply[1] = '此帳號的轉移模式尚未啟動，要更換綁定的Line帳號的話請輸入[轉移帳號 轉移碼(自行設定)]';
 					return rply;
