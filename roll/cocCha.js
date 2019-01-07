@@ -11,6 +11,9 @@ var skilllist = ['會計','人類學','估價','考古','魅惑','攀爬','電�
 		 '電器維修','電子學','話術','急救','歷史','威嚇','跳躍','法律','圖書館使用','聆聽','鎖匠',
 		 '機械維修','醫學','自然學','導航','神祕學','操作重機具','說服','心理學','心理分析',
 		 '巧手','偵查','隱密行動','游泳','投擲','追蹤'];
+var Qualist = ['力量(STR)','敏捷(DEX)','體質(CON)','外貌(APP)','意志(POW)',
+	       '智力(INT)','教育(EDU)','體型(SIZ)','機動力(MOV)','靈感(IEDA)',
+	       '知識(KNOW)','幸運(LUK)'];
 
 var ChaSki= [];
 var ChaWea= [];
@@ -421,6 +424,56 @@ function GetOldChaStep(UserID,command){
 						GetOldCha[workID][1][0] =1;
 						return rply;
 					}
+			}
+			GetOldCha[workID][1][1]++;
+			return rply;
+			break;
+		case 1:
+			switch(GetOldCha[workID][1][1]){
+				case 0:
+					GetOldCha[workID][3] = [GetOldCha[workID][2][1],0,0,0,0,0,0,0,0,0,0,0];
+					rply[1] = '【CoC資料寫入系統】\
+							\n接下來開始設定素質能力\
+							\n\n接下來請輸入[資料寫入 此角色的力量(STR)]\
+							\n[請使用半形阿拉伯數字]';
+					break;
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+				case 5:
+				case 6:
+				case 7:
+				case 8:
+				case 9:
+				case 10:
+				case 11:
+					if(isNaN(command)){
+						rply[1] = '錯誤!請輸入半形阿拉伯數字!';
+						return rply;
+					}else{
+						GetOldCha[workID][3][GetOldCha[workID][1][1]] = command;
+					
+						rply[1] = '【CoC資料寫入系統】\
+							\n接下來請輸入[資料寫入 此角色的' + Qualist[GetOldCha[workID][1][1]] + ']\
+							\n\n[請使用半形阿拉伯數字]';
+						break;
+					}
+				case 12:
+					if(isNaN(command)){
+						rply[1] = '錯誤!請輸入半形阿拉伯數字!';
+						return rply;
+					}else{
+						GetOldCha[workID][2][12] = command;
+					
+						rply[1] = '【CoC資料寫入系統】\
+							\n角色素質資料寫入完成!\
+							\n接下來請輸入[資料寫入]繼續';
+						GetOldCha[workID][1][1] =0;
+						GetOldCha[workID][1][0] =2;
+						return rply;
+					}
+				
 			}
 			GetOldCha[workID][1][1]++;
 			return rply;
