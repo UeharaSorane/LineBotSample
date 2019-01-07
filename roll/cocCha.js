@@ -268,7 +268,7 @@ function GetOldChaStep(UserID,command){
 			break;
 		}
 	}
-	if(workID = -1){
+	if(workID == -1){
 		GetOldCha[GOCL] = [];
 		GetOldCha[GOCL][0] = UserID;
 		GetOldCha[GOCL][1] = [0,0];
