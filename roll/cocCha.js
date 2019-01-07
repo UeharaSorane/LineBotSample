@@ -256,6 +256,8 @@ function SwitchCha(UserID,ChaName){
 }
 
 function GetOldChaStep(UserID,command){
+	console.log(GetOldCha);
+	
 	rply[0] = 'rply';
 	var workID = -1;
 	var GOCL = GetOldCha.length;
