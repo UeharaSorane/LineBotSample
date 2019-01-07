@@ -286,6 +286,9 @@ function AccountTrans(UserID,TransKey){
 			}
 		}
 	}
+	rply[1] = '你尚未建立CoC資料';
+	return rply;
+	
 }
 
 function SearchCha(UserID){
