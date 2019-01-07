@@ -628,7 +628,7 @@ function CoCmenu(UserID,UserN){
 	}
 }
 
-function Chamenu(UserID,UserN){
+function Chamenu(UserID){
 	rply[0] = 'rply';
 	
 	var playCha = CheckCha(UserID);
