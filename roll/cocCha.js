@@ -16,6 +16,8 @@ var ChaSki= [];
 var ChaWea= [];
 var ChaItem= [];
 var AccessDB= [];
+var GetOldCha = [[]];
+var GetOldChaN = 0;
 
 DB.useServiceAccountAuth(creds, function (err) {
 		
@@ -251,6 +253,29 @@ function SwitchCha(UserID,ChaName){
 	}
 	rply[1] = '你尚未持有CoC角色';
 	return rply;
+}
+
+function GetOldChaStep(UserID,command){
+	rply[0] = 'rply';
+	var workID = -1;
+	var GOCL = GetOldCha.length;
+	
+	for(var a = 0;a<GetOldCha.length;a++){
+		if(GetOldCha[a][0] == UserID){
+			workID = a;
+			break;
+		}
+	}
+	if(workID = -1){
+		GetOldCha[GOCL] = [];
+		GetOldCha[GOCL][0] = UserID;
+		GetOldCha[GOCL][1] = [0,0];
+		workID = GOCL;
+	}
+	if(GetOldCha[workID][1][0] = 0){
+		rply[1] = ''
+	}
+	
 }
 
 function AccountTrans(UserID,TransKey){
