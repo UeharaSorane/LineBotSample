@@ -64,6 +64,7 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 	
 ////////////////////////其他CoC選項
 	else if (trigger.match(/^角色更換$/) != null) return exports.cocCha.SwitchCha(UserID,mainMsg[1]) ;//切換角色
+	else if (trigger.match(/^轉移帳號$/) != null) return exports.cocCha.AccountTrans(UserID,mainMsg[1]) ;//切換角色
 	
 ////////////////////////普通ROLL擲骰判定
         else if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/\d+d+\d/)!=null) {
