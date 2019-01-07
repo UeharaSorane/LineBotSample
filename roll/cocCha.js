@@ -298,7 +298,7 @@ function GetOldChaStep(UserID,command){
 								return rply;
 							}
 						}
-						GetOldCha[workID][2] = ['1','command','','','','','','',0,0,0,0,0,0,0];
+						GetOldCha[workID][2] = [1,command,'','','','','','',0,0,0,0,0,0,0];
 					
 						rply[1] = '【CoC資料寫入系統】\
 							\n接下來請輸入[資料寫入 玩家的名字]\
