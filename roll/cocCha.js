@@ -630,7 +630,19 @@ function GetOldChaStep(UserID,command){
 								\n\n[請使用半形阿拉伯數字]';
 						break;
 					}else{
-						
+						rply[1] = '【CoC資料寫入系統】\
+								\n接下來請輸入[資料寫入 此角色「克蘇魯神話」的點數\
+								\n[請使用半形阿拉伯數字]';
+						GetOldCha[workID][1][1]++;
+						break;
+				
+					}
+				case 7:
+					if(isNaN(command)){
+						rply[1] = '錯誤!請輸入半形阿拉伯數字!';
+						return rply;
+					}else{
+						GetOldCha[workID][4][16] = command;
 						
 						var CI = ChaIm.length;
 						var CQ = ChaQua.length;
@@ -640,7 +652,7 @@ function GetOldChaStep(UserID,command){
 						
 						ChaIm[CI] = GetOldCha[workID][2];
 						ChaQua[CQ] = GetOldCha[workID][3];
-						ChaSki[CS] = GetOldCha[workID][4];
+						ChaSki[CS] = GetOldCha[workID][4].splice(17,1);
 						ChaItem[CW] = [GetOldCha[workID][2][1],'0',['徒手'],['1d3'],[1],['無'],['0'],['無'],
 							      ['肉搏'],['1'],['--'],[100]];
 						
@@ -652,13 +664,42 @@ function GetOldChaStep(UserID,command){
 						
 						ChaItem[CIt] = [GetOldCha[workID][2][1],0,['無'],['無'],['無'],['無'],['無'],['無']];
 						
-						GetOldCha[workID][4][17]++;
+						for(var a = 0;a<AccessDB.length;a++){
+							if(AccessDB[a][0] == UserID){
+								var HaveChaL = AccessDB[a][3];
+								AccessDB[a][3][HaveChaL] = GetOldCha[workID][2][1];
+								saveAccessDB(a);
+								saveChaIm(CI);
+								saveChaQua(CQ);
+								saveChaSki(CS);
+								saveChaWea(CW);
+								saveChaItem(CIt);
+								GetOldCha[workID] = [];
+								
+								rply[1] = '【CoC資料寫入系統】\
+								\n資料寫入完成，請輸入[角色更換]來切換角色';
+								
+								return rply;
+								
+							}
+						}
+						var AD = AccessDB.length;
+						AccessDB[AD] = [UserID,'玩家',GetOldCha[workID][2][1],GetOldCha[workID][2][1],'none',0];
+						
+						var HaveChaL = AccessDB[a][3];
+						AccessDB[a][3][HaveChaL] = GetOldCha[workID][2][1];
+						saveAccessDB(a);
+						saveChaIm(CI);
+						saveChaQua(CQ);
+						saveChaSki(CS);
+						saveChaWea(CW);
+						saveChaItem(CIt);
+						GetOldCha[workID] = [];
+
 						rply[1] = '【CoC資料寫入系統】\
-								\n\
-								\n\n接下來請輸入[資料寫入 此角色持有的自定義技能]\
-								\n(請用「,」分開)';
-						GetOldCha[workID][1][1]++;
-						break;
+						\n資料寫入完成，請輸入[角色更換]來切換角色';
+
+						return rply;
 					}
 			}
 			return rply;
@@ -1463,6 +1504,63 @@ function saveChaWea(i){
 					
 					rows[i].save();
 					console.log('角色武器資料 更新完成');
+				}	
+			});
+	});
+}
+
+function saveChaItem(i){
+	DB.useServiceAccountAuth(creds, function (err) {
+		DB.getRows(6 , 
+			function (err, rows) {
+				if (err) {
+					console.log( err );
+				}else{
+
+
+					rows[i].chaname = ChaItem[i][0];
+					rows[i].money = ChaItem[i][1];
+					
+					
+					var S = ChaItem[i][2][0];
+					for(var a = 1;a<ChaItem[i][2].length;a++){
+						S += ',' + ChaItem[i][2][a];
+					}
+					rows[i].item = S;
+					
+					S = ChaItem[i][3][0];
+					for(var a = 1;a<ChaItem[i][3].length;a++){
+						S += ',' + ChaItem[i][3][a];
+					}
+					rows[i].spability = S;
+					
+					S = ChaItem[i][4][0];
+					for(var a = 1;a<ChaItem[i][4].length;a++){
+						S += ',' + ChaItem[i][4][a];
+					}
+					rows[i].injure = S;
+					
+					S = ChaItem[i][5][0];
+					for(var a = 1;a<ChaItem[i][5].length;a++){
+						S += ',' + ChaItem[i][5][a];
+					}
+					rows[i].scary = S;
+					
+					S = ChaItem[i][6][0];
+					for(var a = 1;a<ChaItem[i][6].length;a++){
+						S += ',' + ChaItem[i][6][a];
+					}
+					rows[i].spell = S;
+					
+					S = ChaItem[i][7][0];
+					for(var a = 1;a<ChaItem[i][7].length;a++){
+						S += ',' + ChaItem[i][7][a];
+					}
+					rows[i].spcreature = S;
+					
+					
+					rows[i].save();
+					console.log('角色道具資料 更新完成');
 				}	
 			});
 	});
