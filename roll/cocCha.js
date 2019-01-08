@@ -18,7 +18,7 @@ var DefaultGS = [5,1,5,1,15,20,5,0,5,'DEX/2',20,
 		 10,1,5,30,5,15,20,5,20,20,1,
 		 10,1,10,10,5,1,10,10,1,
 		 10,25,20,20,20,10];
-var CreateDS = ['藝術技藝','鬥毆','手槍','步槍/散彈槍','其他語言','日文','專業駕駛','科學','生存'];
+var CreateDS = ['藝術技藝','鬥毆','手槍','步槍/散彈槍','其他語言','母語','專業駕駛','科學','生存'];
 
 var CreateGS = [5,25,20,25,1,'EDU',1,1,10];
 
@@ -668,7 +668,7 @@ function GetOldChaStep(UserID,command){
 						
 						for(var a = 0;a<AccessDB.length;a++){
 							if(AccessDB[a][0] == UserID){
-								var HaveChaL = AccessDB[a][3];
+								/*var HaveChaL = AccessDB[a][3];
 								AccessDB[a][3][HaveChaL] = GetOldCha[workID][2][1];
 								saveAccessDB(a);
 								saveChaIm(CI);
@@ -676,7 +676,7 @@ function GetOldChaStep(UserID,command){
 								saveChaSki(CS);
 								saveChaWea(CW);
 								saveChaItem(CIt);
-								GetOldCha[workID] = [];
+								GetOldCha[workID] = [];*/
 								
 								rply[1] = '【CoC資料寫入系統】\
 								\n資料寫入完成，請輸入[角色更換]來切換角色';
@@ -685,7 +685,7 @@ function GetOldChaStep(UserID,command){
 								
 							}
 						}
-						var AD = AccessDB.length;
+						/*var AD = AccessDB.length;
 						AccessDB[AD] = [UserID,'玩家',GetOldCha[workID][2][1],GetOldCha[workID][2][1],'none',0];
 						
 						var HaveChaL = AccessDB[a][3];
@@ -696,7 +696,7 @@ function GetOldChaStep(UserID,command){
 						saveChaSki(CS);
 						saveChaWea(CW);
 						saveChaItem(CIt);
-						GetOldCha[workID] = [];
+						GetOldCha[workID] = [];*/
 
 						rply[1] = '【CoC資料寫入系統】\
 						\n資料寫入完成，請輸入[角色更換]來切換角色';
