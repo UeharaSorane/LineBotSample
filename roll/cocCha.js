@@ -537,10 +537,10 @@ function GetOldChaStep(UserID,command){
 					GetOldCha[workID][4][3][GetOldCha[workID][4][17]] = temp[1];
 					GetOldCha[workID][4][4][GetOldCha[workID][4][17]] = temp[2];
 					
-					if(GetOldCha[workID][4][17] < DefaultGS.length){
+					if(GetOldCha[workID][4][17] < DefaultGS.length-1){
 						GetOldCha[workID][4][17]++;
 						rply[1] = '【CoC資料寫入系統】\
-								\n接下來請輸入[資料寫入 此角色「' + DefaultGS[GetOldCha[workID][4][17]] + '」的三大配點(職業天賦,興趣天賦,成長值)\
+								\n接下來請輸入[資料寫入 此角色「' + skilllist[GetOldCha[workID][4][17]] + '」的三大配點(職業天賦,興趣天賦,成長值)\
 								(請用「,」分開)]\
 								\n\n[請使用半形阿拉伯數字]';
 						break;
@@ -577,10 +577,10 @@ function GetOldChaStep(UserID,command){
 					GetOldCha[workID][4][8][GetOldCha[workID][4][17]] = temp[1];
 					GetOldCha[workID][4][9][GetOldCha[workID][4][17]] = temp[2];
 					
-					if(GetOldCha[workID][4][17] < CreateGS.length){
+					if(GetOldCha[workID][4][17] < CreateGS.length-1){
 						GetOldCha[workID][4][17]++;
 						rply[1] = '【CoC資料寫入系統】\
-								\n接下來請輸入[資料寫入 此角色「' + CreateDS[GetOldCha[workID][4][17]] + '」的四大配點(職業天賦,興趣天賦,成長值)\
+								\n接下來請輸入[資料寫入 此角色「' + CreateDS[GetOldCha[workID][4][17]] + '」的三大配點(職業天賦,興趣天賦,成長值)\
 								(請用「,」分開)]\
 								\n\n[請使用半形阿拉伯數字]';
 						break;
@@ -595,7 +595,9 @@ function GetOldChaStep(UserID,command){
 						break;
 					}
 				case 5:
-					GetOldCha[workID][4][5] = GetOldCha[workID][4][5].concat(command.split(','));
+					for(var a = 0;a<command.split(',').length;a++){
+						GetOldCha[workID][4][5][8+a] = command.split(',')[a];
+					}
 					rply[1] = '【CoC資料寫入系統】\
 							\n接下來請輸入[資料寫入 此角色「' + GetOldCha[workID][4][5][GetOldCha[workID][4][17]] + '」的四大配點(基礎值,職業天賦,興趣天賦,成長值)\
 							(請用「,」分開)]\
@@ -1263,7 +1265,7 @@ function saveAccessDB(Target){
 				if (err) {
 					console.log( err );
 				}else{
-
+					if(Target == rows.length)DB.addRow(7,['n']);
 
 					rows[Target].userid = AccessDB[Target][0];
 					rows[Target].playern = AccessDB[Target][1];
@@ -1292,7 +1294,7 @@ function saveChaIm(i){
 				if (err) {
 					console.log( err );
 				}else{
-
+					if(i == rows.length)DB.addRow(2,['n']);
 
 					rows[i].chaid = ChaIm[i][0];
 					rows[i].chaname = ChaIm[i][1];
@@ -1324,7 +1326,7 @@ function saveChaQua(i){
 				if (err) {
 					console.log( err );
 				}else{
-
+					if(i == rows.length)DB.addRow(3,['n']);
 
 					rows[i].chaname = ChaQua[i][0];
 					rows[i].str = ChaQua[i][1];
@@ -1355,6 +1357,7 @@ function saveChaSki(i){
 					console.log( err );
 				}else{
 
+					if(i == rows.length)DB.addRow(4,['n']);
 
 					rows[i].chaname = ChaSki[i][0];
 					var S = ChaSki[i][1][0];
@@ -1443,7 +1446,7 @@ function saveChaWea(i){
 				if (err) {
 					console.log( err );
 				}else{
-
+					if(i == rows.length)DB.addRow(5,['n']);
 
 					rows[i].chaname = ChaWea[i][0];
 					rows[i].damagebonus = ChaWea[i][1];
@@ -1516,6 +1519,7 @@ function saveChaItem(i){
 				if (err) {
 					console.log( err );
 				}else{
+					if(i == rows.length)DB.addRow(6,['n']);
 
 
 					rows[i].chaname = ChaItem[i][0];
