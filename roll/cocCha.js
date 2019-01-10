@@ -226,180 +226,217 @@ DB.useServiceAccountAuth(creds, function (err) {
 
 function CheckCha(UserID){
 	for(var a = 0;a<AccessDB.length;a++){
-		if(AccessDB[a][0] == UserID) return AccessDB[a][2];
+		if(AccessDB[a][0] == UserID && AccessDB[a][2] != null){
+			return a;
+		}else{
+			return 'NoCha';
+		}
 	}
-	return 0;
+	return 'NoAccount';
 }
 
 function SwitchCha(UserID,ChaName){
 	rply[0] = 'rply';
 	
-	for(var a = 0;a<AccessDB.length;a++){
-		if(AccessDB[a][0] == UserID){
-			if(ChaName == null){
-				rply[1] = '【COC帳號情報】\
-					\n你目前使用的角色:' + AccessDB[a][2] + '\
-					\n=====你目前持有的角色=====';
-				
-				for(var b = 0;b<AccessDB[a][3].length;b++){
-					rply[1] += '\n' + AccessDB[a][3][b];
-				}
-				rply[1] += '\n若想要更換角色，請輸入[角色更換 角色名]即可';
-				return rply;
-			}else{
-				for(var b = 0;b<AccessDB[a][3].length;b++){
-					if(AccessDB[a][3][b] == ChaName){
-						AccessDB[a][2] = ChaName;
-						saveAccessDB(a);
-						
-						rply[1] = '角色切換完成，你目前使用的角色是:' + ChaName;
-						return rply;
-					}
-				}
-				rply[1] = '錯誤!你不持有此角色或是不存在此角色';
-				return rply;
+	var AccountCheck = CheckCha(UserID);
+	
+	if(AccountCheck == 'NoAccoumt'){
+		rply[1] = '你尚未建立CoC帳號';
+		return rply;
+	}else if(AccountCheck == 'NoCha'){
+		rply[1] = '你尚未持有CoC角色';
+		return rply;
+	}else{
+		var a = AccountCheck;
+		
+		if(ChaName == null){
+			rply[1] = '【COC帳號情報】\
+				\n你目前使用的角色:' + AccessDB[a][2] + '\
+				\n=====你目前持有的角色=====';
+
+			for(var b = 0;b<AccessDB[a][3].length;b++){
+				rply[1] += '\n' + AccessDB[a][3][b];
 			}
+			rply[1] += '\n若想要更換角色，請輸入[角色更換 角色名]即可';
+			return rply;
+		}else{
+			for(var b = 0;b<AccessDB[a][3].length;b++){
+				if(AccessDB[a][3][b] == ChaName){
+					AccessDB[a][2] = ChaName;
+					saveAccessDB(a);
+
+					rply[1] = '角色切換完成，你目前使用的角色是:' + ChaName;
+					return rply;
+				}
+			}
+			rply[1] = '錯誤!你不持有此角色或是不存在此角色';
+			return rply;
 		}
 	}
-	rply[1] = '你尚未持有CoC角色';
-	return rply;
 }
 
 function AccountTrans(UserID,TransKey){
 	rply[0] = 'rply';
 	
-	for(var a = 0;a<AccessDB.length;a++){
-		if(AccessDB[a][0] == UserID){
-			if(TransKey == null){
-				if(AccessDB[a][5] == 0){
-					rply[1] = '此帳號的轉移模式尚未啟動，要更換綁定的Line帳號的話請輸入[轉移帳號 轉移碼(自行設定)]';
-					return rply;
-				}else if(AccessDB[a][5] == 1){
-					rply[1] = '此帳號的轉移模式已啟動，請在要綁定的Line帳號輸入[接收帳號 目前的使用角色 轉移碼(設定好的)]';
-					return rply;
-				}
+	var AccountCheck = CheckCha(UserID);
+	
+	if(AccountCheck == 'NoAccoumt'){
+		rply[1] = '你尚未建立CoC帳號';
+		return rply;
+	}else if(AccountCheck == 'NoCha'){
+		rply[1] = '你尚未持有CoC角色';
+		return rply;
+	}else{
+		var a = AccountCheck;
+		
+		if(TransKey == null){
+			if(AccessDB[a][5] == 0){
+				rply[1] = '此帳號的轉移模式尚未啟動，要更換綁定的Line帳號的話請輸入[轉移帳號 轉移碼(自行設定)]';
+				return rply;
+			}else if(AccessDB[a][5] == 1){
+				rply[1] = '此帳號的轉移模式已啟動，請在要綁定的Line帳號輸入[接收帳號 目前的使用角色 轉移碼(設定好的)]';
+				return rply;
+			}
+		}else{
+			if(AccessDB[a][5] == 0){
+				AccessDB[a][5] = 1;
+				AccessDB[a][4] = TransKey;
+				saveAccessDB(a);
+
+				rply[1] = '轉移模式啟動!請使用要綁定的Line帳號，並輸入[接收帳號 目前的使用角色 轉移碼(設定好的)]\
+					\n\n如要關閉，請輸入[轉移帳號 轉移碼(設定好的)]';
+				return rply;
 			}else{
-				if(AccessDB[a][5] == 0){
-					AccessDB[a][5] = 1;
-					AccessDB[a][4] = TransKey;
+				if(TransKey == AccessDB[a][4]){
+					AccessDB[a][5] = 0;
+					AccessDB[a][4] = 'none';
 					saveAccessDB(a);
-					
-					rply[1] = '轉移模式啟動!請使用要綁定的Line帳號，並輸入[接收帳號 目前的使用角色 轉移碼(設定好的)]\
-						\n\n如要關閉，請輸入[轉移帳號 轉移碼(設定好的)]';
+
+					rply[1] = '關閉轉移模式，如要重新啟動，必須重新設定轉移碼';
 					return rply;
 				}else{
-					if(TransKey == AccessDB[a][4]){
-						AccessDB[a][5] = 0;
-						AccessDB[a][4] = 'none';
-						saveAccessDB(a);
-
-						rply[1] = '關閉轉移模式，如要重新啟動，必須重新設定轉移碼';
-						return rply;
-					}else{
-						rply[1] = '你輸入的轉移碼有誤，請再試一次';
-						return rply;
-					}
+					rply[1] = '你輸入的轉移碼有誤，請再試一次';
+					return rply;
 				}
 			}
 		}
 	}
-	rply[1] = '你尚未建立CoC資料';
-	return rply;
-	
 }
 
 function receiveAccount(UserID,playCha,TransKey){
 	rply[0] = 'rply';
 	
-	for(var a = 0;a<AccessDB.length;a++){
-		if(AccessDB[a][0] == UserID){
-			rply[1] = '錯誤!此Line帳號已經有CoC資料，不能進行本操作';
-			return rply;
-		}
-	}
-	for(var a = 0;a<AccessDB.length;a++){
-		if(AccessDB[a][2] == playCha && AccessDB[a][5] == 1 && TransKey == AccessDB[a][4]){
-			AccessDB[a][0] = UserID;
-			AccessDB[a][5] = 0;
-			AccessDB[a][4] = 'none';
-			saveAccessDB(a);
+	var AccountCheck = CheckCha(UserID);
+	
+	if(AccountCheck != 'NoAccoumt'){
+		rply[1] = '錯誤!此Line帳號已經有CoC資料，不能進行本操作';
+		return rply;
+	}else{
+		for(var a = 0;a<AccessDB.length;a++){
+			if(AccessDB[a][2] == playCha && AccessDB[a][5] == 1 && TransKey == AccessDB[a][4]){
+				AccessDB[a][0] = UserID;
+				AccessDB[a][5] = 0;
+				AccessDB[a][4] = 'none';
+				saveAccessDB(a);
 
-			rply[1] = '轉移成功!建議你輸入[角色更換]確認帳號狀態';
-			return rply;
+				rply[1] = '轉移成功!建議你輸入[角色更換]確認帳號狀態';
+				return rply;
+			}
 		}
+
+		rply[1] = '你提供的轉移資訊有誤，請再試一次';
+		return rply;
 	}
-	
-	rply[1] = '你提供的轉移資訊有誤，請再試一次';
-	return rply;
-	
 }
 
 function SearchCha(UserID){
 	rply[0] = 'rply';
 	
-	var playCha = CheckCha(UserID);
+	var AccountCheck = CheckCha(UserID);
 	
-	for(var a = 0;a<ChaIm.length;a++){
-		if(ChaIm[a][1] == playCha){
-			rply[1] = '【COC角色資料】\
-				\n角色名:' + ChaIm[a][1] + '\
-				\nHP(生命):' + ChaIm[a][8] + '/' + ChaIm[a][9] + '\
-				\nMP(魔力):' + ChaIm[a][11] + '/' + ChaIm[a][10] + '\
-				\nSan(理智):' + ChaIm[a][13] + '/' + ChaIm[a][12] + '\
-				\n[基本資料]\
-				\n年齡:' + ChaIm[a][3] + '\
-				\n職業:' + ChaIm[a][4] + '\
-				\n性別:' + ChaIm[a][5] + '\
-				\n出生地:' + ChaIm[a][6] + '\
-				\n現居地:' + ChaIm[a][7]+ '\
-				\n完成副本數:' + ChaIm[a][14];
-			
-			return rply;
+	if(AccountCheck == 'NoAccoumt'){
+		rply[1] = '你尚未建立CoC帳號';
+		return rply;
+	}else if(AccountCheck == 'NoCha'){
+		rply[1] = '你尚未持有CoC角色';
+		return rply;
+	}else{
+		
+		for(var a = 0;a<ChaIm.length;a++){
+			if(ChaIm[a][1] == AccessDB[AccountCheck][2]){
+				rply[1] = '【COC角色資料】\
+					\n角色名:' + ChaIm[a][1] + '\
+					\nHP(生命):' + ChaIm[a][8] + '/' + ChaIm[a][9] + '\
+					\nMP(魔力):' + ChaIm[a][11] + '/' + ChaIm[a][10] + '\
+					\nSan(理智):' + ChaIm[a][13] + '/' + ChaIm[a][12] + '\
+					\n[基本資料]\
+					\n年齡:' + ChaIm[a][3] + '\
+					\n職業:' + ChaIm[a][4] + '\
+					\n性別:' + ChaIm[a][5] + '\
+					\n出生地:' + ChaIm[a][6] + '\
+					\n現居地:' + ChaIm[a][7]+ '\
+					\n完成副本數:' + ChaIm[a][14];
+
+				return rply;
+			}
 		}
+		rply[1] = '嚴重錯誤！此角色沒有基本資料，請向管理員通報！';
+		return rply;
 	}
-	rply[1] = '你尚未持有CoC角色';
-	return rply;
 }
 
 function ChaQuaCheck(UserID){
 	rply[0] = 'rply';
 	
-	var playCha = CheckCha(UserID);
+	var AccountCheck = CheckCha(UserID);
 	
-	for(var a = 0;a<ChaIm.length;a++){
-		if(ChaIm[a][1] == playCha){
-			for(var b = 0;b<ChaQua.length;b++){
-				if(ChaQua[b][0] == ChaIm[a][1]){
-					rply[1] = '【COC素質資料】\
-						\n角色名:' + ChaQua[b][0] + '\
-						\n力量(STR):' + ChaQua[b][1] + '\
-						\n敏捷(DEX):' + ChaQua[b][2] + '\
-						\n體質(CON):' + ChaQua[b][3] + '\
-						\n外貌(APP):' + ChaQua[b][4] + '\
-						\n意志(POW):' + ChaQua[b][5] + '\
-						\n智力(INT):' + ChaQua[b][6] + '\
-						\n教育(EDU):' + ChaQua[b][7] + '\
-						\n體型(SIZ):' + ChaQua[b][8] + '\
-						\n機動力(MOV):' + ChaQua[b][9] + '\
-						\n靈感(IDEA):' + ChaQua[b][10] + '\
-						\n知識(KNOW):' + ChaQua[b][11] + '\
-						\n幸運(LUK):' + ChaQua[b][12];
+	if(AccountCheck == 'NoAccoumt'){
+		rply[1] = '你尚未建立CoC帳號';
+		return rply;
+	}else if(AccountCheck == 'NoCha'){
+		rply[1] = '你尚未持有CoC角色';
+		return rply;
+	}else{
+		for(var a = 0;a<ChaQua.length;a++){
+			if(ChaQua[a][0] == AccessDB[AccountCheck][2]){
+				rply[1] = '【COC素質資料】\
+					\n角色名:' + ChaQua[a][0] + '\
+					\n力量(STR):' + ChaQua[a[1] + '\
+					\n敏捷(DEX):' + ChaQua[a][2] + '\
+					\n體質(CON):' + ChaQua[a][3] + '\
+					\n外貌(APP):' + ChaQua[a][4] + '\
+					\n意志(POW):' + ChaQua[a][5] + '\
+					\n智力(INT):' + ChaQua[a][6] + '\
+					\n教育(EDU):' + ChaQua[a][7] + '\
+					\n體型(SIZ):' + ChaQua[a][8] + '\
+					\n機動力(MOV):' + ChaQua[a][9] + '\
+					\n靈感(IDEA):' + ChaQua[a][10] + '\
+					\n知識(KNOW):' + ChaQua[a][11] + '\
+					\n幸運(LUK):' + ChaQua[a][12];
 
-					return rply;
-				}
+				return rply;
 			}
-			rply[1] = '嚴重錯誤!!!你的角色沒有能力資料，請向開發人員報告';
-			return rply;
 		}
+		rply[1] = '嚴重錯誤!!!你的角色沒有能力資料，請向開發人員報告';
+		return rply;
+		
 	}
-	rply[1] = '你尚未持有CoC角色';
-	return rply;
 }
 
 function ChaSkiCheck(UserID){
 	rply[0] = 'rply';
 	
-	var playCha = CheckCha(UserID);
+	var AccountCheck = CheckCha(UserID);
+	
+	if(AccountCheck == 'NoAccoumt'){
+		rply[1] = '你尚未建立CoC帳號';
+		return rply;
+	}else if(AccountCheck == 'NoCha'){
+		rply[1] = '你尚未持有CoC角色';
+		return rply;
+	}
+	
+	var playCha = AccessDB[AccountCheck][2];
 	
 	for(var a = 0;a<ChaIm.length;a++){
 		if(ChaIm[a][1] == playCha){
