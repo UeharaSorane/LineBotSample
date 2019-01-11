@@ -48,7 +48,9 @@ DB[0].useServiceAccountAuth(creds, function (err) {
 			
 			for(var a = 0;a<ChaAcc.length;a++){
 				DB[ChaAcc[a][1]].useServiceAccountAuth(creds, function (err) {
-					DB[ChaAcc[a][1]].getCells(ChaAcc[a][2],{
+					console.log(ChaAcc);
+					
+					/*DB[ChaAcc[a][1]].getCells(ChaAcc[a][2],{
 						'min-row' : 2,
 						'max-row' : 8,
 						'min-col' : 2,
@@ -60,7 +62,7 @@ DB[0].useServiceAccountAuth(creds, function (err) {
 						else{
 							console.log(cells);
 						}
-					});
+					});*/
 				});
 			}
 			console.log('角色連結資料 讀取完成');
