@@ -65,6 +65,7 @@ for(var a = 1;a<DB.length;a++){
 								'Born' : cells[5].value,
 								'Live' : cells[1].value
 							};
+							console.log(ChaIm[(a-1)+b]);
 						}
 					});
 				}
