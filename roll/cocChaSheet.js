@@ -15,10 +15,10 @@ DB.useServiceAccountAuth(creds, function (err) {
 			}else{
 				for(var i=0; i< rows.length; i++){
 					DB.getCells(rows[i].saveworksheet,{
-						'min-row': 1,
-						'max-row': 1,
-						'min-col': 1,
-						'max-col': 7,
+						'min-row': 2,
+						'max-row': 8,
+						'min-col': 2,
+						'max-col': 2,
 						'return-empty': true
 					},function(err,cells){
 						var cell = cells[0];
