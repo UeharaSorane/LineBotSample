@@ -39,8 +39,7 @@ for(var a = 1;a<DB.length;a++){
 		DB[1].getInfo(function(err,info){
 			if(err) console.log( err );
 			else{
-				for(var b = 0; b<info.worksheets.length;b++){
-					
+				for(var b = 1; b<info.worksheets.length;b++){
 					DB[1].getCells(b,{
 						'min-row' : 2,
 						'max-row' : 8,
