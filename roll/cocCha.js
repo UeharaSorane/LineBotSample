@@ -53,6 +53,8 @@ function CreateAccount(UserID,PlayerN){
 				'transkey': 'none',
 				'transio': 0
 			});
+		},function(err,row){
+			row.save;
 		});
 
 		
