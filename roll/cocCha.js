@@ -41,7 +41,7 @@ for(var a = 1;a<DB.length;a++){
 			else{
 				for(var b = 0; b<info.worksheets.length;b++){
 					
-					DB[b].getCells(ChaAcc[b][2],{
+					DB[1].getCells(b,{
 						'min-row' : 2,
 						'max-row' : 8,
 						'min-col' : 2,
