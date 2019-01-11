@@ -46,18 +46,12 @@ function CreateAccount(UserID,PlayerN){
 		AccessDB[i] = [UserID,'','','none',0];
 		
 		DB.useServiceAccountAuth(creds, function (err) {
-			DB.getRows(1 , function (err, rows) {
-				if (err) {
-					console.log( err );
-				}else{
-					DB.addRow(1,{
-						'userid': UserID,
-						'playcha': '',
-						'havecha': '',
-						'transkey': 'none',
-						'transio': 0
-					});
-				}
+			DB.addRow(1,{
+				'userid': UserID,
+				'playcha': '',
+				'havecha': '',
+				'transkey': 'none',
+				'transio': 0
 			});
 		});
 
