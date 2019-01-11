@@ -47,25 +47,18 @@ function CreateAccount(UserID,PlayerN){
 		
 		DB.useServiceAccountAuth(creds, function (err) {
 			//if(err) console.log(err);
-			DB.addRow(1,{
-				userid : UserID,
-				playcha : '',
-				havecha : '',
-				transkey : "none",
-				transio : 0
-			},function(err,row){
+			DB.addRow(1,{Userid : UserID},function(err,row){
 				if(err){
 					console.log(err);
 					rply[1] = '錯誤!資料寫入失敗';
 					return rply;
+				}else{
+					SaveAccessDB(i);
+					rply[1] = '帳號登記成功！';
+					return rply;
 				}
-			});
-			
+			});	
 		});
-
-		rply[1] = '帳號登記成功！';
-		return rply;
-		
 	}
 }
 
