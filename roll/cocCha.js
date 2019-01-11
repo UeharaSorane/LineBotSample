@@ -47,7 +47,7 @@ function CreateAccount(UserID){
 		
 		DB.useServiceAccountAuth(creds, function (err) {
 			//if(err) console.log(err);
-			DB.addRow(1,{Userid : UserID},function(err,row){
+			DB.addRow(2,{Userid : UserID},function(err,row){
 				if(err){
 					console.log(err);
 				}else{
@@ -185,7 +185,7 @@ function receiveAccount(UserID,playCha,TransKey){
 
 function SaveAccessDB(Target){
 	DB.useServiceAccountAuth(creds, function (err) {
-		DB.getRows(1 , function (err, rows) {
+		DB.getRows(2 , function (err, rows) {
 			if (err) {
 				console.log( err );
 			}else{
