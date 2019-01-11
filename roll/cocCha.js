@@ -246,10 +246,9 @@ function CreateAccount(UserID,PlayerN){
 
 function CheckCha(UserID){
 	for(var a = 0;a<AccessDB.length;a++){
-		if(AccessDB[a][0] == UserID && AccessDB[a][2] != null){
-			return a;
-		}else{
-			return 'NoCha';
+		if(AccessDB[a][0] == UserID){
+			if(AccessDB[a][2] != null)return a;
+			else return 'NoCha';
 		}
 	}
 	return 'NoAccount';
