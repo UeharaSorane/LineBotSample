@@ -46,7 +46,7 @@ Channal.find(function(err,Channals){
 	}
 });
 
-Channal.find({channal_id: 0},function(err,ChannalT){
+Channal.findOneAndUpdate({channal_id: 0},function(err,ChannalT){
 	if(err) throw err;
 	else{
 		ChannalT.channal_line_id = 'U7b7830437667bf4b7b54eaf02e762690';
