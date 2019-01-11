@@ -402,10 +402,7 @@ function ChaQuaCheck(UserID){
 				rply[1] = '【COC素質資料】\
 					\n角色名:' + ChaQua[a][0] + '\
 					\n力量(STR):' + ChaQua[a[1] + '\
-					\n敏捷(DEX):' + ChaQua[a][2] + '\
-					\n體質(CON):' + ChaQua[a][3] + '\
-					\n外貌(APP):' + ChaQua[a][4] + '\
-					\n意志(POW):' + ChaQua[a][5];
+					\n敏捷(DEX):' + ChaQua[a][2];
 				
 				/*rply[1] = '【COC素質資料】\
 					\n角色名:' + ChaQua[a][0] + '\
