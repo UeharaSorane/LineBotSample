@@ -192,8 +192,8 @@ function ChannalUpdate(ChannalT){
 			
 			NewChannal.save(function(err){
 				if(err) throw err;
-				else console.log('資料正確儲存');*/
-			});
+				else console.log('資料正確儲存');
+			});*/
 		}
 	});
 }
