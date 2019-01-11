@@ -40,6 +40,8 @@ for(var a = 1;a<DB.length;a++){
 			if(err) console.log( err );
 			else{
 				for(var b = 1; b<info.worksheets.length;b++){
+					console.log(b);
+					
 					DB[1].getCells(b,{
 						'min-row' : 2,
 						'max-row' : 8,
