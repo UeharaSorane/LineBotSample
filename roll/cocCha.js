@@ -399,7 +399,7 @@ function ChaQuaCheck(UserID){
 	}else{
 		for(var a = 0;a<ChaQua.length;a++){
 			if(ChaQua[a][0] == AccessDB[AccountCheck][2]){
-				rply[1] = '【COC素質資料】\
+				/*rply[1] = '【COC素質資料】\
 					\n角色名:' + ChaQua[a][0] + '\
 					\n力量(STR):' + ChaQua[a[1] + '\
 					\n敏捷(DEX):' + ChaQua[a][2] + '\
@@ -414,7 +414,7 @@ function ChaQuaCheck(UserID){
 					\n知識(KNOW):' + ChaQua[a][11] + '\
 					\n幸運(LUK):' + ChaQua[a][12];
 
-				return rply;
+				return rply;*/
 			}
 		}
 		rply[1] = '嚴重錯誤!!!你的角色沒有能力資料，請向開發人員報告';
