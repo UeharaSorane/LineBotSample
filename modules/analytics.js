@@ -41,7 +41,7 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 	else if (trigger.match(/flag|插旗/) != null) return exports.funny.BStyleFlagSCRIPTS() ;//插旗用指令
 	else if (trigger.match(/^help$|^幫助$/)!= null ) return exports.Help.Help(UserN);//幫助頁面
 	
-	else if (trigger.match(/^coc建立帳號$/) != null) return exports.cocCha.CreateAccount(UserID,UserN) ;//CoC選單
+	//else if (trigger.match(/^coc建立帳號$/) != null) return exports.cocCha.CreateAccount(UserID,UserN) ;//CoC選單
 	
 ////////////////////////目錄
 	//else if (trigger.match(/^目錄|menu$/) != null) return exports.Testing.menu(UserN) ;//目錄
@@ -65,11 +65,11 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 
 	
 ////////////////////////其他CoC選項
-	else if (trigger.match(/^角色更換|帳號確認$/) != null) return exports.cocCha.SwitchCha(UserID,mainMsg[1]) ;//切換角色
+	//else if (trigger.match(/^角色更換|帳號確認$/) != null) return exports.cocCha.SwitchCha(UserID,mainMsg[1]) ;//切換角色
 	//else if (trigger.match(/^轉移帳號$/) != null) return exports.cocCha.AccountTrans(UserID,mainMsg[1]) ;//轉移帳號
 	
 ////////////////////////轉移帳號相關
-	else if (trigger.match(/^接收帳號$/) != null) return exports.cocCha.receiveAccount(UserID,mainMsg[1],mainMsg[2]) ;//接收帳號
+	//else if (trigger.match(/^接收帳號$/) != null) return exports.cocCha.receiveAccount(UserID,mainMsg[1],mainMsg[2]) ;//接收帳號
 
 ////////////////////////普通ROLL擲骰判定
         else if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/\d+d+\d/)!=null) {
