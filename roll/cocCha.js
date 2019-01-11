@@ -55,7 +55,10 @@ function CreateAccount(UserID){
 				}
 			});	
 		});
+		rply[1] = '帳號建立完成!';
+		return rply;
 	}
+	
 }
 
 function CheckCha(UserID){
