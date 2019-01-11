@@ -44,7 +44,7 @@ for(var a = 1;a<DB.length;a++){
 			if(err) console.log( err );
 			else{
 				for(var b = 1; b<=info.worksheets.length;b++){
-					//console.log(b);
+					console.log(b);
 					
 					DBT.getCells(b,{
 						'min-row' : 2,
@@ -56,7 +56,7 @@ for(var a = 1;a<DB.length;a++){
 					},function(err,cells){
 						if(err) console.log( err );
 						else{
-							ChaIm[b] = {
+							ChaIm[b-1] = {
 								'ChaName' : cells[0].value,
 								'PlayerN' : cells[1].value,
 								'Class' : cells[2].value,
@@ -65,7 +65,7 @@ for(var a = 1;a<DB.length;a++){
 								'Born' : cells[5].value,
 								'Live' : cells[6].value
 							};
-							console.log(ChaIm[b]);
+							console.log(ChaIm[b-1]);
 						}
 					});
 				}
