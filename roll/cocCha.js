@@ -48,19 +48,19 @@ function CreateAccount(UserID,PlayerN){
 		DB.useServiceAccountAuth(creds, function (err) {
 			if(err) console.log(err);
 			else{
-				/*DB.addRow(1,{
-					"userid": UserID,
-					"playcha": '',
-					"havecha": '',
-					"transkey": "none",
-					"transio": 0
+				DB.addRow(1,{
+					userid: UserID,
+					playcha: '',
+					havecha: '',
+					transkey: "none",
+					transio: 0
 				},function(err,row){
 					if(err){
 						console.log(err);
 						rply[1] = '錯誤!資料寫入失敗';
 						return rply;
 					}
-				});*/
+				});
 			}
 			
 		});
