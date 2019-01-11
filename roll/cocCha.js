@@ -224,6 +224,26 @@ DB.useServiceAccountAuth(creds, function (err) {
 		});
 });
 
+function CreateAccount(UserID,PlayerN){
+	rply[0] = 'rply';
+	
+	var AccountCheck = CheckCha(UserID);
+	
+	if(AccountCheck != 'NoAccoumt'){
+		rply[1] = '錯誤!此Line帳號已經有CoC資料，不能進行本操作';
+		return rply;
+	}else{
+		var i = AccessDB.length;
+		AccessDB[i] = [UserID,PlayerN,'','','none',0];
+		
+		saveAccessDB(i);
+		
+		rply[1] = '帳號登記成功！';
+		return rply;
+		
+	}
+}
+
 function CheckCha(UserID){
 	for(var a = 0;a<AccessDB.length;a++){
 		if(AccessDB[a][0] == UserID && AccessDB[a][2] != null){
