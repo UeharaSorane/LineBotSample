@@ -71,7 +71,7 @@ function SecretTalk(UserID,Channal,myText) {
 		rply[0] = 'rply';
 		rply[1] = '這是目前有登錄的頻道清單：';
 		for(var a = 0;a< talkChannal.length;a++){
-			rply[1] += '\n'+(a+1) +'\.'+talkChannal[a].channal_id;
+			rply[1] += '\n'+(a+1) +'\.'+talkChannal[a].channal_name;
 		}
 		rply[1] += '\n\n 想要進行匿名對話，請輸入[淦話 頻道編號 對話內容]';
 		        return rply;
