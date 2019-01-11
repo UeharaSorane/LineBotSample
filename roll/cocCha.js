@@ -60,10 +60,10 @@ for(var a = 1;a<DB.length;a++){
 								'ChaName' : cells[0].value,
 								'PlayerN' : cells[1].value,
 								'Class' : cells[2].value,
-								'Age' : Number(cells[3].value),
+								'Age' : cells[3].value,
 								'Sex' : cells[4].value,
 								'Born' : cells[5].value,
-								'Live' : cells[1].value
+								'Live' : cells[6].value
 							};
 							console.log(ChaIm[(a-1)+b]);
 						}
@@ -72,7 +72,7 @@ for(var a = 1;a<DB.length;a++){
 			}
 		});
 	});
-	console.log(ChaIm);
+	//console.log(ChaIm);
 	console.log('角色資料' + a +' 讀取完成');
 }
 
