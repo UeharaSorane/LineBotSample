@@ -8,8 +8,13 @@ var ChaIm= [];
 var ChaQua= [];
 
 DB.useServiceAccountAuth(creds, function (err) {
-  DB.getCells({
+	DB.getCells({
 		'min-row': 1,
-    'max-row': 5,
-    'return-empty': true}
+		'max-row': 15,
+		'return-empty': true
+	},function(err,cells){
+		var cell = cells[0];
+		console.log('Cell R'+cell.row+'C'+cell.col+' = '+cell.value);
+	});
+	
 });
