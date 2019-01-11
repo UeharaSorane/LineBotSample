@@ -33,7 +33,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 	});
 });
 
-function CreateAccount(UserID,PlayerN){
+function CreateAccount(UserID){
 	rply[0] = 'rply';
 	
 	var AccountCheck = CheckCha(UserID);
@@ -50,12 +50,8 @@ function CreateAccount(UserID,PlayerN){
 			DB.addRow(1,{Userid : UserID},function(err,row){
 				if(err){
 					console.log(err);
-					rply[1] = '錯誤!資料寫入失敗';
-					return rply;
 				}else{
 					SaveAccessDB(i);
-					rply[1] = '帳號登記成功！';
-					return rply;
 				}
 			});	
 		});
