@@ -399,7 +399,7 @@ function ChaQuaCheck(UserID){
 	}else{
 		for(var a = 0;a<ChaQua.length;a++){
 			if(ChaQua[a][0] == AccessDB[AccountCheck][2]){
-				rply[1] = '【COC素質資料】';
+				rply[1] = '【COC素質資料】\角色名:' + ChaQua[a][0];
 				
 				/*rply[1] = '【COC素質資料】\
 					\n角色名:' + ChaQua[a][0] + '\
