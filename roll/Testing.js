@@ -76,8 +76,6 @@ function ChannalCheck(UserID,UserN){
 		"channal_line_id" : UserID,
 		"channal_name" : UserN
 	};
-	console.log(talkChannal[TCL]);
-	
 	ChannalUpdate(talkChannal[TCL]);
 	
 	
@@ -186,16 +184,16 @@ function funnymenu(UserN){
 }
 
 function ChannalUpdate(ChannalT){
-	Channal.find({channal_id: ChannalT.channal_id},function(err,ChannalT){
-		if(ChannalT.length == 0){
+	Channal.find({channal_id: ChannalT.channal_id},function(err,Channals){
+		if(Channals.length == 0){
 			console.log(ChannalT);
 			
-			/*var NewChannal = new Channal(ChannalT);
+			var NewChannal = new Channal(ChannalT);
 			
 			NewChannal.save(function(err){
 				if(err) throw err;
 				else console.log('資料正確儲存');
-			});*/
+			});
 		}
 	});
 }
