@@ -1,6 +1,6 @@
 var rply = [];
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://<dbuser>:<dbpassword>@ds229312.mlab.com:29312/linetest';
+var mongoDB = 'mongodb://b88009005:b09050905@ds229312.mlab.com:29312/linetest';
 
 //連線到資料庫
 mongoose.connect(mongoDB);
