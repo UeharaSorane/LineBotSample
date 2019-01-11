@@ -56,7 +56,7 @@ for(var a = 1;a<DB.length;a++){
 					},function(err,cells){
 						if(err) console.log( err );
 						else{
-							ChaIm[b-1] = {
+							ChaIm[b-2] = {
 								'ChaName' : cells[0].value,
 								'PlayerN' : cells[1].value,
 								'Class' : cells[2].value,
