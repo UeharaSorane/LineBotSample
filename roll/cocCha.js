@@ -260,7 +260,7 @@ function SwitchCha(UserID,ChaName){
 	var AccountCheck = CheckCha(UserID);
 	console.log(AccountCheck)
 	
-	if(AccountCheck == 'NoAccoumt'){
+	if(AccountCheck == 'NoAccount'){
 		rply[1] = '你尚未建立CoC帳號';
 		return rply;
 	}else if(AccountCheck == 'NoCha'){
@@ -300,7 +300,7 @@ function AccountTrans(UserID,TransKey){
 	
 	var AccountCheck = CheckCha(UserID);
 	
-	if(AccountCheck == 'NoAccoumt'){
+	if(AccountCheck == 'NoAccount'){
 		rply[1] = '你尚未建立CoC帳號';
 		return rply;
 	}else if(AccountCheck == 'NoCha'){
@@ -348,7 +348,7 @@ function receiveAccount(UserID,playCha,TransKey){
 	
 	var AccountCheck = CheckCha(UserID);
 	
-	if(AccountCheck != 'NoAccoumt'){
+	if(AccountCheck != 'NoAccount'){
 		rply[1] = '錯誤!此Line帳號已經有CoC資料，不能進行本操作';
 		return rply;
 	}else{
@@ -374,7 +374,7 @@ function SearchCha(UserID){
 	
 	var AccountCheck = CheckCha(UserID);
 	
-	if(AccountCheck == 'NoAccoumt'){
+	if(AccountCheck == 'NoAccount'){
 		rply[1] = '你尚未建立CoC帳號';
 		return rply;
 	}else if(AccountCheck == 'NoCha'){
@@ -410,7 +410,7 @@ function ChaQuaCheck(UserID){
 	
 	var AccountCheck = CheckCha(UserID);
 	
-	if(AccountCheck == 'NoAccoumt'){
+	if(AccountCheck == 'NoAccount'){
 		rply[1] = '你尚未建立CoC帳號';
 		return rply;
 	}else if(AccountCheck == 'NoCha'){
@@ -449,7 +449,7 @@ function ChaSkiCheck(UserID){
 	
 	var AccountCheck = CheckCha(UserID);
 	
-	if(AccountCheck == 'NoAccoumt'){
+	if(AccountCheck == 'NoAccount'){
 		rply[1] = '你尚未建立CoC帳號';
 		return rply;
 	}else if(AccountCheck == 'NoCha'){
@@ -536,7 +536,7 @@ function ChaSkiSearch(UserID,skillName){
 	
 	var AccountCheck = CheckCha(UserID);
 	
-	if(AccountCheck == 'NoAccoumt'){
+	if(AccountCheck == 'NoAccount'){
 		rply[1] = '你尚未建立CoC帳號';
 		return rply;
 	}else if(AccountCheck == 'NoCha'){
@@ -683,7 +683,7 @@ function ChaWeapon(UserID){
 	
 	var AccountCheck = CheckCha(UserID);
 	
-	if(AccountCheck == 'NoAccoumt'){
+	if(AccountCheck == 'NoAccount'){
 		rply[1] = '你尚未建立CoC帳號';
 		return rply;
 	}else if(AccountCheck == 'NoCha'){
@@ -734,7 +734,7 @@ function ChaItemCheck(UserID){
 	
 	var AccountCheck = CheckCha(UserID);
 	
-	if(AccountCheck == 'NoAccoumt'){
+	if(AccountCheck == 'NoAccount'){
 		rply[1] = '你尚未建立CoC帳號';
 		return rply;
 	}else if(AccountCheck == 'NoCha'){
@@ -799,7 +799,7 @@ function CoCmenu(UserID,UserN){
 	
 	var AccountCheck = CheckCha(UserID);
 	
-	if(AccountCheck == 'NoAccoumt'){
+	if(AccountCheck == 'NoAccount'){
 		rply[1] = '你尚未建立CoC帳號';
 		return rply;
 	}else if(AccountCheck == 'NoCha'){
@@ -845,7 +845,7 @@ function Chamenu(UserID){
 	
 	var AccountCheck = CheckCha(UserID);
 	
-	if(AccountCheck == 'NoAccoumt'){
+	if(AccountCheck == 'NoAccount'){
 		rply[1] = '你尚未建立CoC帳號';
 		return rply;
 	}else if(AccountCheck == 'NoCha'){
@@ -885,7 +885,7 @@ function Itemmenu(UserID){
 	
 	var AccountCheck = CheckCha(UserID);
 	
-	if(AccountCheck == 'NoAccoumt'){
+	if(AccountCheck == 'NoAccount'){
 		rply[1] = '你尚未建立CoC帳號';
 		return rply;
 	}else if(AccountCheck == 'NoCha'){
