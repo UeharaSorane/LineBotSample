@@ -76,6 +76,10 @@ for(var a = 1;a<DB.length;a++){
 	console.log('角色資料' + a +' 讀取完成');
 }
 
+function CheckChaIm(){
+	console.log(ChaIm);
+};
+
 function CreateAccount(UserID){
 	rply[0] = 'rply';
 	
@@ -115,6 +119,7 @@ function CheckCha(UserID){
 }
 
 function SwitchCha(UserID,ChaName){
+	CheckChaIm();
 	rply[0] = 'rply';
 	
 	var AccountCheck = CheckCha(UserID);
