@@ -9,6 +9,7 @@ DB[0] = new GoogleSpreadsheet('1hwFlTrJ7JHeWMLbHmfg7LP7f13OfAoMebF6HIkHpHPs');
 DB[1] = new GoogleSpreadsheet('1PUuThi4P4mTcogdN28xEmH2R1VVbbiVzTIsoKRtLNSY');
 var AccessDB= [];
 var ChaIm = [];
+var ChaAcc = [0];
 
 
 DB[0].useServiceAccountAuth(creds, function (err) {
@@ -31,53 +32,71 @@ DB[0].useServiceAccountAuth(creds, function (err) {
 			console.log('帳號連結資料 讀取完成');
 		}	
 	});
+	
+	DB[0].getRows(3 , function (err, rows) {
+		if (err) {
+			console.log( err );
+		}else{
+			for(var i=0; i< rows.length; i++){
+				AccessDB[i+1] = [];
+
+				ChaAcc[i+1][0] = rows[i].chaname;
+				ChaAcc[i+1][1] = Number(rows[i].savesheet);
+				ChaAcc[i+1][2] = Number(rows[i].saveworksheet);
+			}
+			//console.log(AccessDB);
+			console.log('角色連結資料 讀取完成');
+		}	
+	});
+	
 });
 
 for(var a = 1;a<DB.length;a++){
 	//console.log(DB[a]);
 	//if(DB[a])
 	var DBT = DB[a];
-	
-	DBT.useServiceAccountAuth(creds, function (err) {
-		//console.log( err );
-		DBT.getInfo(function(err,info){
-			if(err) console.log( err );
-			else{
-				for(var b = 1; b<=info.worksheets.length;b++){
-					console.log(b);
-					
-					DBT.getCells(b,{
-						'min-row' : 2,
-						'max-row' : 8,
-						'min-col' : 2,
-						'max-col' : 2,
-						'return-empty' : true
-
-					},function(err,cells){
-						if(err) console.log( err );
-						else{
-							ChaIm[b-2] = {
-								'ChaName' : cells[0].value,
-								'PlayerN' : cells[1].value,
-								'Class' : cells[2].value,
-								'Age' : cells[3].value,
-								'Sex' : cells[4].value,
-								'Born' : cells[5].value,
-								'Live' : cells[6].value
-							};
-							console.log(ChaIm);
-						}
-					});
-				}
-			}
-		});
-	});
 	//console.log(ChaIm);
 	console.log('角色資料' + a +' 讀取完成');
 }
 
-function CheckChaIm(){
-	console.log(ChaIm);
+function CheckChaAcc(){
+	if(CharAcc[0] == 0){
+		for(var a =1;a<CharAcc.length;a++){
+			var DBT = DB[CharAcc[a][1]];
+			DBT.useServiceAccountAuth(creds, function (err) {
+				//console.log( err );
+				DBT.getInfo(function(err,info){
+					if(err) console.log( err );
+					else{
+
+						DBT.getCells(CharAcc[a][1],{
+							'min-row' : 2,
+							'max-row' : 8,
+							'min-col' : 2,
+							'max-col' : 2,
+							'return-empty' : true
+
+						},function(err,cells){
+							if(err) console.log( err );
+							else{
+								ChaIm[a-1] = {
+									'ChaName' : cells[0].value,
+									'PlayerN' : cells[1].value,
+									'Class' : cells[2].value,
+									'Age' : cells[3].value,
+									'Sex' : cells[4].value,
+									'Born' : cells[5].value,
+									'Live' : cells[6].value
+								};
+								console.log(CharIm[a-1]);
+							}
+						});
+					}
+				});
+			});
+			
+		}
+	}
 };
 
 function CreateAccount(UserID){
@@ -119,7 +138,6 @@ function CheckCha(UserID){
 }
 
 function SwitchCha(UserID,ChaName){
-	CheckChaIm();
 	rply[0] = 'rply';
 	
 	var AccountCheck = CheckCha(UserID);
@@ -262,6 +280,7 @@ function SaveAccessDB(Target){
 
 
 module.exports = {
+	CheckChaAcc,
 	CreateAccount,
 	SwitchCha,
 	AccountTrans,
