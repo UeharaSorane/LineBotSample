@@ -38,6 +38,7 @@ var ChannalSchema = new Schema({
 var Channal = mongoose.model('Channal',ChannalSchema);
 
 
+
 Channal.find(function(err,Channals){
 	if(err) throw err;
 	else{
@@ -45,8 +46,17 @@ Channal.find(function(err,Channals){
 	}
 });
 
-
-
+Channal.find({channal_id: 0},function(err,ChannalT){
+	if(err) throw err;
+	else{
+		ChannalT.channal_line_id = 'U7b7830437667bf4b7b54eaf02e762690';
+		ChannalT.channal_name = '決心';
+		ChannalT.save(function(err){
+			if(err)throw err;
+			else console.log('資料更新成功');
+		});
+	}
+});
 
 
 
