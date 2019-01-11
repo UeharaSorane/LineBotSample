@@ -37,7 +37,7 @@ bot.on('message', function(event) {
 			
 			if(rply[0] == 'none'){
 				if(event.source.groupId == null){
-					exports.analytics.TalkCheck(src.userID,profile.displayName);
+					exports.analytics.TalkCheck(src.userId,profile.displayName);
 				}
 				
 				if(event.source.userId != 'U7b7830437667bf4b7b54eaf02e762690'){
