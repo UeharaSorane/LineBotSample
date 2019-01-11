@@ -35,10 +35,10 @@ DB[0].useServiceAccountAuth(creds, function (err) {
 
 for(var a = 1;a<=DB.length;a++){
 	console.log(DB[a].constructor);
-	if(DB[a])
+	//if(DB[a])
 	
 	//DB[a].useServiceAccountAuth(creds, function (err) {
-		console.log( err );
+		//console.log( err );
 		/*DB[a].getInfo(function(err,info){
 			if(err) console.log( err );
 			else{
