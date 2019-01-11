@@ -97,7 +97,7 @@ function SwitchCha(UserID,ChaName){
 			for(var b = 0;b<AccessDB[a][2].length;b++){
 				if(AccessDB[a][2][b] == ChaName){
 					AccessDB[a][1] = ChaName;
-					saveAccessDB(a);
+					SaveAccessDB(a);
 
 					rply[1] = '角色切換完成，你目前使用的角色是:' + ChaName;
 					return rply;
