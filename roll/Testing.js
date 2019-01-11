@@ -186,7 +186,9 @@ function funnymenu(UserN){
 function ChannalUpdate(ChannalT){
 	Channal.find({channal_id: ChannalT.channal_id},function(err,ChannalT){
 		if(ChannalT.length == 0){
-			var NewChannal = new Channal(ChannalT,function(err){
+			var NewChannal = new Channal(ChannalT);
+			
+			NewChannal.save(,function(err){
 				if(err) throw err;
 				else console.log('資料正確儲存');
 			});
