@@ -18,6 +18,11 @@ var CharArr = new Array(5);
 
 //用來呼叫骰組,新增骰組的話,要寫條件式到下面呼叫 
 //格式是 exports.骰組檔案名字.function名
+function TalkCehck(UserID,UserN){
+	return exports.Testing.ChnnalCheck(UserID,UserN);
+}
+
+
 function parseInput(inputStr,UserID,UserN,GroupID) {
 	//console.log('InputStr: ' + inputStr);
 	_isNaN = function(obj) 	{
@@ -101,5 +106,6 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 
 
 module.exports = {
-	parseInput:parseInput
+	parseInput:parseInput,
+	TalkCehck
 };
