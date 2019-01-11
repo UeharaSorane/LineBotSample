@@ -56,7 +56,7 @@ for(var a = 1;a<DB.length;a++){
 					},function(err,cells){
 						if(err) console.log( err );
 						else{
-							ChaIm[(a-1)+b] = {
+							ChaIm[b] = {
 								'ChaName' : cells[0].value,
 								'PlayerN' : cells[1].value,
 								'Class' : cells[2].value,
@@ -65,7 +65,7 @@ for(var a = 1;a<DB.length;a++){
 								'Born' : cells[5].value,
 								'Live' : cells[6].value
 							};
-							console.log(ChaIm[(a-1)+b]);
+							console.log(ChaIm[b]);
 						}
 					});
 				}
