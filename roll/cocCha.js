@@ -33,10 +33,10 @@ DB[0].useServiceAccountAuth(creds, function (err) {
 	});
 });
 
-for(var a = 1;a<DB.length;a++){
-	DB[1].useServiceAccountAuth(creds, function (err) {
+for(var a = 1;a<=DB.length;a++){
+	DB[a].useServiceAccountAuth(creds, function (err) {
 		
-		DB[1].getInfo(function(err,info){
+		DB[a].getInfo(function(err,info){
 			if(err) console.log( err );
 			else{
 				for(var b = 1; b<=info.worksheets.length;b++){
@@ -52,9 +52,15 @@ for(var a = 1;a<DB.length;a++){
 					},function(err,cells){
 						if(err) console.log( err );
 						else{
-							for(var c = 0;c<cells.length;c++){
-								ChaIm[(a-1)+b][c] = cells[c].value;
-							}
+							ChaIm[(a-1)+b] = {
+								'ChaName' : cells[0].value,
+								'PlayerN' : cells[1].value,
+								'Class' : cells[2].value,
+								'Age' : Number(cells[3].value),
+								'Sex' : cells[4].value,
+								'Born' : cells[5].value,
+								'Live' : cells[1].value
+							};
 						}
 					});
 				}
