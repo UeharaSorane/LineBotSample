@@ -55,7 +55,11 @@ function CreateAccount(UserID,PlayerN){
 					"transkey": "none",
 					"transio": 0
 				},function(err,row){
-					if(err)console.log(err);
+					if(err){
+						console.log(err);
+						rply[1] = '錯誤!資料寫入失敗';
+						return rply;
+					}
 				});
 			}
 			
