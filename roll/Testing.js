@@ -8,10 +8,6 @@ var bot = linebot({
 });
 
 var fs = require('fs');
-var GoogleSpreadsheet = require('google-spreadsheet');
-var creds = require('../client_secret.json');
-
-var ChannalDB = new GoogleSpreadsheet('1hwFlTrJ7JHeWMLbHmfg7LP7f13OfAoMebF6HIkHpHPs');
 var talkChannal= [];
 
 //////////mongo系統
@@ -37,63 +33,21 @@ var ChannalSchema = new Schema({
 
 var Channal = mongoose.model('Channal',ChannalSchema);
 
-
-
 Channal.find(function(err,Channals){
 	if(err) throw err;
 	else{
-		console.log(Channals);
+		for(var a = 0;a<Channals.length;a++){
+			talkChannal[a] = {
+				"channal_id" : Channals[a].channal_id,
+				"channal_line_id" : Channals[a].channal_line_id,
+				"channal_name" : Channals[a].channal_name
+			};
+		}
+		
+		console.log(talkChannal);
+		console.log("頻道資料，更新完成");
 	}
 });
-
-Channal.findOne({channal_id: 0},function(err,ChannalT){
-	if(err) throw err;
-	else{
-		ChannalT.channal_line_id = 'U7b7830437667bf4b7b54eaf02e762690';
-		ChannalT.channal_name = '決心';
-		ChannalT.save(function(err){
-			if(err)throw err;
-			else console.log('資料更新成功');
-		});
-	}
-});
-
-
-
-
-ChannalDB.useServiceAccountAuth(creds, function (err) {
-		
- 
-	
- // 是先將資料讀進陣列
-	ChannalDB.getRows(1 , 
-		function (err, rows) {
-			if (err) {
-				console.log( err );
-			}else{
-				for(var i=0; i< rows.length; i++){
-					talkChannal[i] = [];
-					
-					talkChannal[i][0] = rows[i].channalname;
-					talkChannal[i][1] = rows[i].channalid;
-					talkChannal[i][2] = rows[i].descripition;
-					
-				}
-				console.log('頻道資料 讀取完成');
-			}
-		
-
-			
-		});
-	
-		
-		
-});
-
-bot.on('follow',function(event){
-	console.log(event);
-});
-
 
 function ReplyTest(UserN,myText) {
 	///確認系統reply功能沒問題用
@@ -117,7 +71,7 @@ function SecretTalk(UserID,Channal,myText) {
 		rply[0] = 'rply';
 		rply[1] = '這是目前有登錄的頻道清單：';
 		for(var a = 0;a< talkChannal.length;a++){
-			rply[1] += '\n'+(a+1) +'\.'+talkChannal[a][0];
+			rply[1] += '\n'+(a+1) +'\.'+talkChannal[a].channal_id;
 		}
 		rply[1] += '\n\n 想要進行匿名對話，請輸入[淦話 頻道編號 對話內容]';
 		        return rply;
@@ -129,13 +83,12 @@ function SecretTalk(UserID,Channal,myText) {
 	}else{
 		if(myText == null){
 			rply[0] = 'rply';
-		        rply[1] = '頻道名稱:'+ talkChannal[Channal-1][0]+'\
-                                \n 描述:'+ talkChannal[Channal-1][2]+'\
+		        rply[1] = '頻道名稱:'+ talkChannal[Channal-1].channal_name+'\
                                 \n\n 想要進行匿名對話，請輸入[淦話 頻道編號 對話內容]';
 		        return rply;
 		}else{
 			rply[0] = 'push';
-		        bot.push(talkChannal[Channal-1][1],myText);
+		        bot.push(talkChannal[Channal-1].channal_line_id,myText);
 		        return rply;
 		}
 	}
