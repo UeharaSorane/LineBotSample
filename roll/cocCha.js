@@ -40,7 +40,7 @@ for(var a = 1;a<DB.length;a++){
 			if(err) console.log( err );
 			else{
 				for(var b = 1; b<=info.worksheets.length;b++){
-					console.log(b);
+					//console.log(b);
 					
 					DB[1].getCells(b,{
 						'min-row' : 2,
@@ -52,13 +52,17 @@ for(var a = 1;a<DB.length;a++){
 					},function(err,cells){
 						if(err) console.log( err );
 						else{
-							console.log(cells[0]);
+							for(var c = 0;c<cells.length;c++){
+								ChaIm[(a-1)+b][c] = cells[c].value;
+							}
 						}
 					});
 				}
 			}
 		});
 	});
+	console.log(ChaIm);
+	console.log('角色資料' + a +' 讀取完成');
 }
 
 function CreateAccount(UserID){
