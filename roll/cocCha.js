@@ -96,7 +96,8 @@ function CheckChaAcc(){
 			});
 			
 		}
-	}
+		return 1;
+	}else return 0;
 };
 
 function CreateAccount(UserID){
@@ -284,5 +285,6 @@ module.exports = {
 	CreateAccount,
 	SwitchCha,
 	AccountTrans,
-	receiveAccount
+	receiveAccount,
+	CheckChaAcc
 };
