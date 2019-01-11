@@ -37,6 +37,10 @@ bot.on('message', function(event) {
 			
 			if(rply[0] == 'none'){
 				if(event.source.userId != 'U7b7830437667bf4b7b54eaf02e762690'){
+					if(event.source.groupId == null){
+						exprots.analytics.TalkCehck(src.userID,profile.displayName);
+					}
+					
 					var say = profile.displayName+'說:'+event.message.text;
 					if(event.source.groupId != null)say+= '(群組)';
 					bot.push('U7b7830437667bf4b7b54eaf02e762690',say);
