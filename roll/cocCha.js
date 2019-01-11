@@ -48,7 +48,7 @@ DB[0].useServiceAccountAuth(creds, function (err) {
 			
 			for(var a = 0;a<ChaAcc.length;a++){
 				DB[ChaAcc[a][1]].useServiceAccountAuth(creds, function (err) {
-					console.log(ChaAcc[a][1]);
+					console.log(ChaAcc[a].length);
 					
 					/*DB[ChaAcc[a][1]].getCells(ChaAcc[a][2],{
 						'min-row' : 2,
