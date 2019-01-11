@@ -52,12 +52,11 @@ function CreateAccount(UserID,PlayerN){
 				'havecha': '',
 				'transkey': 'none',
 				'transio': 0
+			},function(err,row){
+				row.save();
 			});
-		},function(err,row){
-			row.save;
 		});
 
-		
 		rply[1] = '帳號登記成功！';
 		return rply;
 		
