@@ -412,7 +412,7 @@ function ChaQuaCheck(UserID){
 					\n機動力(MOV):' + ChaQua[a][9] + '\
 					\n靈感(IDEA):' + ChaQua[a][10] + '\
 					\n知識(KNOW):' + ChaQua[a][11]/* + '\
-					\n幸運(LUK):' + ChaQua[a][12]*/;
+					\n幸運(LUK):' + ChaQua[a][12]*/
 
 				return rply;
 			}
