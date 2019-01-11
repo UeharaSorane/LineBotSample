@@ -400,7 +400,18 @@ function ChaQuaCheck(UserID){
 		for(var a = 0;a<ChaQua.length;a++){
 			if(ChaQua[a][0] == AccessDB[AccountCheck][2]){
 				rply[1] = '【COC素質資料】\
-					\n角色名:' + ChaQua[a][0];
+					\n角色名:' + ChaQua[a][0] + '\
+					\n力量(STR):' + ChaQua[a[1] + '\
+					\n敏捷(DEX):' + ChaQua[a][2] + '\
+					\n體質(CON):' + ChaQua[a][3] + '\
+					\n外貌(APP):' + ChaQua[a][4] + '\
+					\n意志(POW):' + ChaQua[a][5] + '\
+					\n智力(INT):' + ChaQua[a][6] + '\
+					\n教育(EDU):' + ChaQua[a][7] + '\
+					\n體型(SIZ):' + ChaQua[a][8] + '\
+					\n機動力(MOV):' + ChaQua[a][9] + '\
+					\n靈感(IDEA):' + ChaQua[a][10] + '\
+					\n知識(KNOW):' + ChaQua[a][11];
 				
 				/*rply[1] = '【COC素質資料】\
 					\n角色名:' + ChaQua[a][0] + '\
