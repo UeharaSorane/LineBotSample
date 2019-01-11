@@ -64,7 +64,7 @@ function ReplyTest(UserN,myText) {
 
 }
 
-function TalkCehck(UserID,UserN){
+function ChannalCheck(UserID,UserN){
 	for(var a = 0; a<talkChannal.length;a++){
 		if(UserID == talkChannal[a].channal_line_id){
 			return 0;
@@ -199,5 +199,6 @@ module.exports = {
 	PushTest,
 	SecretTalk,
 	menu,
-	funnymenu
+	funnymenu,
+	ChannalCheck
 };
