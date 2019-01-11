@@ -258,6 +258,7 @@ function SwitchCha(UserID,ChaName){
 	rply[0] = 'rply';
 	
 	var AccountCheck = CheckCha(UserID);
+	console.log(AccountCheck)
 	
 	if(AccountCheck == 'NoAccoumt'){
 		rply[1] = '你尚未建立CoC帳號';
