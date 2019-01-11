@@ -1230,6 +1230,7 @@ function saveChaItem(i){
 }
 
 module.exports = {
+	CreateAccount,
 	SwitchCha,
 	SearchCha,
 	ChaQuaCheck,
