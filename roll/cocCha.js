@@ -50,7 +50,7 @@ for(var a = 1;a<DB.length;a++){
 					},function(err,cells){
 						if(err) console.log( err );
 						else{
-							console.log(cells);
+							console.log(cells[0]);
 						}
 					});
 				}
