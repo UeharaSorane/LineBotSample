@@ -49,7 +49,7 @@ for(var a = 1;a<DB.length;a++){
 						'return-empty' : true
 
 					},function(err,cells){
-						if(err) return err;
+						if(err) console.log( err );
 						else{
 							console.log(cells);
 						}
