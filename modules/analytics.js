@@ -44,32 +44,32 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 	else if (trigger.match(/^coc建立帳號$/) != null) return exports.cocCha.CreateAccount(UserID,UserN) ;//CoC選單
 	
 ////////////////////////目錄
-	else if (trigger.match(/^目錄|menu$/) != null) return exports.Testing.menu(UserN) ;//目錄
-	else if (trigger.match(/^coc選單$/) != null) return exports.cocCha.CoCmenu(UserID,UserN) ;//CoC選單
-	else if (trigger.match(/^娛樂選單$/) != null) return exports.Testing.funnymenu(UserN) ;//娛樂選單
+	//else if (trigger.match(/^目錄|menu$/) != null) return exports.Testing.menu(UserN) ;//目錄
+	//else if (trigger.match(/^coc選單$/) != null) return exports.cocCha.CoCmenu(UserID,UserN) ;//CoC選單
+	//else if (trigger.match(/^娛樂選單$/) != null) return exports.Testing.funnymenu(UserN) ;//娛樂選單
 	
 ////////////////////////CoC選單
-	else if (trigger.match(/^coc角色資料$/) != null) return exports.cocCha.Chamenu(UserID) ;//角色資料
-	else if (trigger.match(/^技能查詢$/) != null) return exports.cocCha.ChaSkiSearch(UserID,mainMsg[1]) ;//技能查詢
-	else if (trigger.match(/^coc持有物資料$/) != null) return exports.cocCha.Itemmenu(UserID) ;//持有物資料
+	//else if (trigger.match(/^coc角色資料$/) != null) return exports.cocCha.Chamenu(UserID) ;//角色資料
+	//else if (trigger.match(/^技能查詢$/) != null) return exports.cocCha.ChaSkiSearch(UserID,mainMsg[1]) ;//技能查詢
+	//else if (trigger.match(/^coc持有物資料$/) != null) return exports.cocCha.Itemmenu(UserID) ;//持有物資料
 	//else if (trigger.match(/^其他CoC選項$/) != null) return exports.cocCha.OtherCoC(UserID) ;//切換角色
 	
 ////////////////////////CoC角色資料
-	else if (trigger.match(/^角色基本資料$/) != null) return exports.cocCha.SearchCha(UserID) ;//角色基本資料
-	else if (trigger.match(/^角色素質資料$/) != null) return exports.cocCha.ChaQuaCheck(UserID) ;//角色素質資料
-	else if (trigger.match(/^角色技能資料$/) != null) return exports.cocCha.ChaSkiCheck(UserID) ;//角色技能資料
+	//else if (trigger.match(/^角色基本資料$/) != null) return exports.cocCha.SearchCha(UserID) ;//角色基本資料
+	//else if (trigger.match(/^角色素質資料$/) != null) return exports.cocCha.ChaQuaCheck(UserID) ;//角色素質資料
+	//else if (trigger.match(/^角色技能資料$/) != null) return exports.cocCha.ChaSkiCheck(UserID) ;//角色技能資料
 
 ////////////////////////CoC持有物資料
-	else if (trigger.match(/^角色武器資料$/) != null) return exports.cocCha.ChaWeapon(UserID) ;//角色武器資料
-	else if (trigger.match(/^角色道具資料$/) != null) return exports.cocCha.ChaItemCheck(UserID) ;//角色道具資料
+	//else if (trigger.match(/^角色武器資料$/) != null) return exports.cocCha.ChaWeapon(UserID) ;//角色武器資料
+	//else if (trigger.match(/^角色道具資料$/) != null) return exports.cocCha.ChaItemCheck(UserID) ;//角色道具資料
 
 	
 ////////////////////////其他CoC選項
-	else if (trigger.match(/^角色更換$/) != null) return exports.cocCha.SwitchCha(UserID,mainMsg[1]) ;//切換角色
-	else if (trigger.match(/^轉移帳號$/) != null) return exports.cocCha.AccountTrans(UserID,mainMsg[1]) ;//轉移帳號
+	//else if (trigger.match(/^角色更換$/) != null) return exports.cocCha.SwitchCha(UserID,mainMsg[1]) ;//切換角色
+	//else if (trigger.match(/^轉移帳號$/) != null) return exports.cocCha.AccountTrans(UserID,mainMsg[1]) ;//轉移帳號
 	
 ////////////////////////轉移帳號相關
-	else if (trigger.match(/^接收帳號$/) != null) return exports.cocCha.receiveAccount(UserID,mainMsg[1],mainMsg[2]) ;//接收帳號
+	//else if (trigger.match(/^接收帳號$/) != null) return exports.cocCha.receiveAccount(UserID,mainMsg[1],mainMsg[2]) ;//接收帳號
 
 ////////////////////////普通ROLL擲骰判定
         else if (inputStr.match(/\w/)!=null && inputStr.toLowerCase().match(/\d+d+\d/)!=null) {
