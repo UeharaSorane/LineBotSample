@@ -36,16 +36,17 @@ DB[0].useServiceAccountAuth(creds, function (err) {
 for(var a = 1;a<DB.length;a++){
 	//console.log(DB[a]);
 	//if(DB[a])
+	var DBT = DB[a];
 	
-	DB[a].useServiceAccountAuth(creds, function (err) {
+	DBT.useServiceAccountAuth(creds, function (err) {
 		//console.log( err );
-		/*DB[a].getInfo(function(err,info){
+		DBT.getInfo(function(err,info){
 			if(err) console.log( err );
 			else{
 				for(var b = 1; b<=info.worksheets.length;b++){
 					//console.log(b);
 					
-					DB[1].getCells(b,{
+					DBT.getCells(b,{
 						'min-row' : 2,
 						'max-row' : 8,
 						'min-col' : 2,
@@ -68,7 +69,7 @@ for(var a = 1;a<DB.length;a++){
 					});
 				}
 			}
-		});*/
+		});
 	});
 	console.log(ChaIm);
 	console.log('角色資料' + a +' 讀取完成');
