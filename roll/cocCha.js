@@ -34,8 +34,10 @@ DB[0].useServiceAccountAuth(creds, function (err) {
 });
 
 for(var a = 1;a<=DB.length;a++){
-	console.log(DB[a]);
-	DB[a].useServiceAccountAuth(creds, function (err) {
+	console.log(DB[a].constructor);
+	if(DB[a])
+	
+	//DB[a].useServiceAccountAuth(creds, function (err) {
 		console.log( err );
 		/*DB[a].getInfo(function(err,info){
 			if(err) console.log( err );
@@ -67,7 +69,7 @@ for(var a = 1;a<=DB.length;a++){
 				}
 			}
 		});*/
-	});
+	//});
 	console.log(ChaIm);
 	console.log('角色資料' + a +' 讀取完成');
 }
