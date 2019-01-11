@@ -33,7 +33,7 @@ DB[0].useServiceAccountAuth(creds, function (err) {
 	});
 });
 
-for(var a = 1;a<=DB.length;a++){
+for(var a = 1;a<DB.length;a++){
 	console.log(a);
 	//if(DB[a])
 	
