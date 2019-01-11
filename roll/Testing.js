@@ -76,6 +76,8 @@ function ChannalCheck(UserID,UserN){
 		"channal_line_id" : UserID,
 		"channal_name" : UserN
 	};
+	console.log(talkChannal[TCL]);
+	
 	ChannalUpdate(talkChannal[TCL]);
 	
 	
