@@ -188,7 +188,7 @@ function ChannalUpdate(ChannalT){
 		if(ChannalT.length == 0){
 			var NewChannal = new Channal(ChannalT);
 			
-			NewChannal.save(,function(err){
+			NewChannal.save(function(err){
 				if(err) throw err;
 				else console.log('資料正確儲存');
 			});
