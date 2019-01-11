@@ -55,7 +55,7 @@ function CreateAccount(UserID,PlayerN){
 						'playcha': '',
 						'havecha': '',
 						'transkey': 'none',
-						'transio': 0;
+						'transio': 0
 					});
 				}
 			});
