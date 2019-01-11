@@ -39,7 +39,7 @@ for(var a = 1;a<DB.length;a++){
 	
 	DB[a].useServiceAccountAuth(creds, function (err) {
 		//console.log( err );
-		DB[a].getInfo(function(err,info){
+		/*DB[a].getInfo(function(err,info){
 			if(err) console.log( err );
 			else{
 				for(var b = 1; b<=info.worksheets.length;b++){
@@ -68,7 +68,7 @@ for(var a = 1;a<DB.length;a++){
 					});
 				}
 			}
-		});
+		});*/
 	});
 	console.log(ChaIm);
 	console.log('角色資料' + a +' 讀取完成');
