@@ -135,7 +135,7 @@ function AccountTrans(UserID,TransKey){
 			if(AccessDB[a][4] == 0){
 				AccessDB[a][4] = 1;
 				AccessDB[a][3] = TransKey;
-				saveAccessDB(a);
+				SaveAccessDB(a);
 
 				rply[1] = '轉移模式啟動!請使用要綁定的Line帳號，並輸入[接收帳號 目前的使用角色 轉移碼(設定好的)]\
 					\n\n如要關閉，請輸入[轉移帳號 轉移碼(設定好的)]';
@@ -144,7 +144,7 @@ function AccountTrans(UserID,TransKey){
 				if(TransKey == AccessDB[a][3]){
 					AccessDB[a][4] = 0;
 					AccessDB[a][3] = 'none';
-					saveAccessDB(a);
+					SaveAccessDB(a);
 
 					rply[1] = '關閉轉移模式，如要重新啟動，必須重新設定轉移碼';
 					return rply;
@@ -171,7 +171,7 @@ function receiveAccount(UserID,playCha,TransKey){
 				AccessDB[a][0] = UserID;
 				AccessDB[a][4] = 0;
 				AccessDB[a][3] = 'none';
-				saveAccessDB(a);
+				SaveAccessDB(a);
 
 				rply[1] = '轉移成功!建議你輸入[角色更換]確認帳號狀態';
 				return rply;
