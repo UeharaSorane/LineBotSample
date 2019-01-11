@@ -48,7 +48,7 @@ function CreateAccount(UserID,PlayerN){
 		DB.useServiceAccountAuth(creds, function (err) {
 			if(err) console.log(err);
 			else{
-				DB.addRow(1,{
+				/*DB.addRow(1,{
 					"userid": UserID,
 					"playcha": '',
 					"havecha": '',
@@ -60,7 +60,7 @@ function CreateAccount(UserID,PlayerN){
 						rply[1] = '錯誤!資料寫入失敗';
 						return rply;
 					}
-				});
+				});*/
 			}
 			
 		});
