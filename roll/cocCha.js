@@ -34,9 +34,9 @@ DB[0].useServiceAccountAuth(creds, function (err) {
 });
 
 for(var a = 1;a<DB.length;a++){
-	DB[a].useServiceAccountAuth(creds, function (err) {
+	DB[1].useServiceAccountAuth(creds, function (err) {
 		
-		DB[a].getInfo(function(err,info){
+		DB[1].getInfo(function(err,info){
 			if(err) console.log( err );
 			else{
 				for(var b = 0; b<info.worksheets.length;b++){
