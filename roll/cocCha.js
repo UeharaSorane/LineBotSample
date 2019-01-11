@@ -49,11 +49,11 @@ function CreateAccount(UserID,PlayerN){
 			if(err) console.log(err);
 			else{
 				DB.addRow(1,{
-					'userid': UserID,
-					'playcha': '',
-					'havecha': '',
-					'transkey': 'none',
-					'transio': 0
+					"userid": UserID,
+					"playcha": '',
+					"havecha": '',
+					"transkey": "none",
+					"transio": 0
 				},function(err,row){
 					if(err)console.log(err);
 				});
