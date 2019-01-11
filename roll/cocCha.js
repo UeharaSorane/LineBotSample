@@ -401,8 +401,7 @@ function ChaQuaCheck(UserID){
 			if(ChaQua[a][0] == AccessDB[AccountCheck][2]){
 				rply[1] = '【COC素質資料】\
 					\n角色名:' + ChaQua[a][0] + '\
-					\n力量(STR):' + ChaQua[a[1] + '\
-					\n敏捷(DEX):' + ChaQua[a][2];
+					\n力量(STR):' + ChaQua[a[1];
 				
 				/*rply[1] = '【COC素質資料】\
 					\n角色名:' + ChaQua[a][0] + '\
