@@ -14,6 +14,47 @@ var creds = require('../client_secret.json');
 var ChannalDB = new GoogleSpreadsheet('1hwFlTrJ7JHeWMLbHmfg7LP7f13OfAoMebF6HIkHpHPs');
 var talkChannal= [];
 
+//////////mongo系統
+var mongoose = require('mongoose');
+var mongoDB = 'mongodb://b88009005:b09050905@ds229312.mlab.com:29312/linetest';
+
+//連線測試
+mongoose.connect(mongoDB);
+mongoose.Promise = global.Promise;
+const Schema = mongoose.Schema;
+
+mongoose.connect(mongoDB, function (err) {
+	if(err) throw err;
+	else console.log('連線測試成功，可以正常吃芒果!');
+});
+///
+
+var ChannalSchema = new Schema({
+	channal_id : {type: Number, required: true},
+	channal_line_id : {type: String, required: true},
+	channal_name : {type: String, required: true}
+});
+
+var Channal = mongoose.model('Channal',ChannalSchema);
+var testC = new Channal({
+	channal_id : 0,
+	channal_line_id : '0',
+	channal_name : '測試用'
+});
+
+Channal.find(function(err,Channals){
+	if(err) throw err;
+	else{
+		console.log(Channals);
+	}
+});
+
+
+
+
+
+
+
 ChannalDB.useServiceAccountAuth(creds, function (err) {
 		
  
