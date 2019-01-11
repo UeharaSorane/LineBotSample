@@ -229,7 +229,7 @@ function CreateAccount(UserID,PlayerN){
 	
 	var AccountCheck = CheckCha(UserID);
 	
-	if(AccountCheck != 'NoAccoumt'){
+	if(AccountCheck != 'NoAccount'){
 		rply[1] = '錯誤!此Line帳號已經有CoC資料，不能進行本操作';
 		return rply;
 	}else{
