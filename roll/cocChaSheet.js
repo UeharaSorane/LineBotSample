@@ -21,7 +21,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 						'max-col': 2,
 						'return-empty': true
 					},function(err,cells){
-						var cell = cells[0];
+						var cell = cells[1];
 						console.log('Cell R'+cell.row+'C'+cell.col+' = '+cell.value);
 					});
 					
