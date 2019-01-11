@@ -8,7 +8,6 @@ var DB = [];
 DB[0] = new GoogleSpreadsheet('1hwFlTrJ7JHeWMLbHmfg7LP7f13OfAoMebF6HIkHpHPs');
 DB[1] = new GoogleSpreadsheet('1PUuThi4P4mTcogdN28xEmH2R1VVbbiVzTIsoKRtLNSY');
 var AccessDB= [];
-var ChaAcc = [];
 var ChaIm = [];
 
 
@@ -32,25 +31,17 @@ DB[0].useServiceAccountAuth(creds, function (err) {
 			console.log('帳號連結資料 讀取完成');
 		}	
 	});
-	
-	DB[0].getRows(3 , function (err, rows) {
-		if (err) {
-			console.log( err );
-		}else{
-			for(var i=0; i< rows.length; i++){
-				ChaAcc[i] = [];
+});
 
-				ChaAcc[i][0] = rows[i].chaname;
-				ChaAcc[i][1] = Number(rows[i].savesheet);
-				ChaAcc[i][2] = Number(rows[i].saveworksheet);
-			}
-			console.log(ChaAcc);
-			
-			for(var a = 0;a<ChaAcc.length;a++){
-				DB[ChaAcc[a][1]].useServiceAccountAuth(creds, function (err) {
-					console.log(ChaAcc[a]);
+for(var a = 1;a<DB.length;a++){
+	DB[a].useServiceAccountAuth(creds, function (err) {
+		
+		DB[a].getInfo(function(err,info){
+			if(err) console.log( err );
+			else{
+				for(var b = 0; b<info.worksheets.length;b++){
 					
-					/*DB[ChaAcc[a][1]].getCells(ChaAcc[a][2],{
+					DB[b].getCells(ChaAcc[b][2],{
 						'min-row' : 2,
 						'max-row' : 8,
 						'min-col' : 2,
@@ -62,16 +53,12 @@ DB[0].useServiceAccountAuth(creds, function (err) {
 						else{
 							console.log(cells);
 						}
-					});*/
-				});
+					});
+				}
 			}
-			console.log('角色連結資料 讀取完成');
-		}
-	
+		});
 	});
-});
-
-
+}
 
 function CreateAccount(UserID){
 	rply[0] = 'rply';
