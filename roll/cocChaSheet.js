@@ -8,7 +8,7 @@ var ChaIm= [];
 var ChaQua= [];
 
 DB.useServiceAccountAuth(creds, function (err) {
-	DB.getCells({
+	DB.getCells(8,{
 		'min-row': 1,
 		'max-row': 15,
 		'return-empty': true
