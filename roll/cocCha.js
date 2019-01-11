@@ -924,9 +924,9 @@ function saveAccessDB(Target){
 				if (err) {
 					console.log( err );
 				}else{
-					if(Target == rows.length)DB.addRow(7,['n']);
+					if(Target >= rows.length)DB.addRow(7,['n']);
 
-					rows[Target].userid = AccessDB[Target][0];
+					/*rows[Target].userid = AccessDB[Target][0];
 					rows[Target].playern = AccessDB[Target][1];
 					rows[Target].playcha = AccessDB[Target][2];
 					
@@ -937,7 +937,7 @@ function saveAccessDB(Target){
 					rows[Target].havecha = havchaS;
 					
 					rows[Target].transkey = AccessDB[Target][4];
-					rows[Target].transio = AccessDB[Target][5];
+					rows[Target].transio = AccessDB[Target][5];*/
 					
 					rows[Target].save();
 					console.log('帳號連結資料 更新完成');
