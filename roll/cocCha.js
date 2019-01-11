@@ -28,7 +28,7 @@ DB.useServiceAccountAuth(creds, function (err) {
 		}	
 	});
 	
-	DB..getRows(3 , function (err, rows) {
+	DB.getRows(3 , function (err, rows) {
 		
 	});
 });
