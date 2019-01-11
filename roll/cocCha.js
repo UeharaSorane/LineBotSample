@@ -44,8 +44,8 @@ DB[0].useServiceAccountAuth(creds, function (err) {
 				ChaAcc[i][1] = Number(rows[i].savesheet);
 				ChaAcc[i][2] = Number(rows[i].saveworksheet);
 				
-				DB[ChaAcc[i][1]].useServiceAccountAuth(creds, function (err) {
-					DB[ChaAcc[i][1]].getCells(ChaAcc[i][2],{
+				DB[rows[i].savesheet].useServiceAccountAuth(creds, function (err) {
+					DB[rows[i].savesheet].getCells(rows[i].saveworksheet,{
 						'min-row' : 2,
 						'max-row' : 8,
 						'min-col' : 2,
