@@ -21,7 +21,7 @@ const Schema = mongoose.Schema;
 
 mongoose.connect(mongoDB, function (err) {
 	if(err) throw err;
-	else console.log('連線測試成功，可以正常吃芒果!');
+	else console.log('連線成功，可以正常吃芒果!');
 });
 ///
 
@@ -62,6 +62,24 @@ function ReplyTest(UserN,myText) {
 	
 	///
 
+}
+
+function TalkCehck(UserID,UserN){
+	for(var a = 0; a<talkChannal.length;a++){
+		if(UserID == talkChannal[a].channal_line_id){
+			return 0;
+		}
+	}
+	var TCL = talkChannal.length;
+	talkChannal[TCL] = {
+		"channal_id" : TCL,
+		"channal_line_id" : UserID,
+		"channal_name" : UserN
+	};
+	ChannalUpdate(talkChannal[TCL]);
+	
+	
+	
 }
 
 
@@ -163,6 +181,17 @@ function funnymenu(UserN){
 		}
 	}
 	return rply;
+}
+
+function ChannalUpdate(ChannalT){
+	Channal.find({channal_id: ChannalT.channal_id},function(err,ChannalT){
+		if(ChannalT.length == 0){
+			var NewChannal = new Channal(ChannalT,function(err){
+				if(err) throw err;
+				else console.log('資料正確儲存');
+			});
+		}
+	});
 }
 
 module.exports = {
