@@ -36,18 +36,7 @@ var ChannalSchema = new Schema({
 });
 
 var Channal = mongoose.model('Channal',ChannalSchema);
-var testC = new Channal({
-	channal_id : 0,
-	channal_line_id : '0',
-	channal_name : '測試用'
-});
 
-testC.save(function(err){
-	if(err) throw err;
-	else{
-		console.log('平安無事的存進去了');
-	}
-});
 
 Channal.find(function(err,Channals){
 	if(err) throw err;
