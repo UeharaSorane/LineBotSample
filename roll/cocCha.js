@@ -513,7 +513,17 @@ function ChaSkiCheck(UserID){
 function ChaSkiSearch(UserID,skillName){
 	rply[0] = 'rply';
 	
-	var playCha = CheckCha(UserID);
+	var AccountCheck = CheckCha(UserID);
+	
+	if(AccountCheck == 'NoAccoumt'){
+		rply[1] = '你尚未建立CoC帳號';
+		return rply;
+	}else if(AccountCheck == 'NoCha'){
+		rply[1] = '你尚未持有CoC角色';
+		return rply;
+	}
+	
+	var playCha = AccessDB[AccountCheck][2];
 	
 	for(var a = 0;a<ChaIm.length;a++){
 		if(ChaIm[a][1] == playCha){
@@ -650,7 +660,17 @@ function ChaSkiSearch(UserID,skillName){
 function ChaWeapon(UserID){
 	rply[0] = 'rply';
 	
-	var playCha = CheckCha(UserID);
+	var AccountCheck = CheckCha(UserID);
+	
+	if(AccountCheck == 'NoAccoumt'){
+		rply[1] = '你尚未建立CoC帳號';
+		return rply;
+	}else if(AccountCheck == 'NoCha'){
+		rply[1] = '你尚未持有CoC角色';
+		return rply;
+	}
+	
+	var playCha = AccessDB[AccountCheck][2];
 
 	for(var a = 0;a<ChaIm.length;a++){
 		if(ChaIm[a][1] == playCha){
@@ -691,7 +711,17 @@ function ChaWeapon(UserID){
 function ChaItemCheck(UserID){
 	rply[0] = 'rply';
 	
-	var playCha = CheckCha(UserID);
+	var AccountCheck = CheckCha(UserID);
+	
+	if(AccountCheck == 'NoAccoumt'){
+		rply[1] = '你尚未建立CoC帳號';
+		return rply;
+	}else if(AccountCheck == 'NoCha'){
+		rply[1] = '你尚未持有CoC角色';
+		return rply;
+	}
+	
+	var playCha = AccessDB[AccountCheck][2];
 
 	for(var a = 0;a<ChaIm.length;a++){
 		if(ChaIm[a][1] == playCha){
@@ -746,11 +776,16 @@ function ChaItemCheck(UserID){
 function CoCmenu(UserID,UserN){
 	rply[0] = 'rply';
 	
-	var playCha = CheckCha(UserID);
-	if(playCha == 0){
+	var AccountCheck = CheckCha(UserID);
+	
+	if(AccountCheck == 'NoAccoumt'){
+		rply[1] = '你尚未建立CoC帳號';
+		return rply;
+	}else if(AccountCheck == 'NoCha'){
 		rply[1] = '你尚未持有CoC角色';
 		return rply;
 	}else{
+		var playCha = AccessDB[AccountCheck][2];
 		rply[1] = {
 		  "type": "template",
 		  "altText": "很抱歉，你的Line版本不支援此系統，建議輸入help查看可使用的指令",
@@ -787,11 +822,16 @@ function CoCmenu(UserID,UserN){
 function Chamenu(UserID){
 	rply[0] = 'rply';
 	
-	var playCha = CheckCha(UserID);
-	if(playCha == 0){
+	var AccountCheck = CheckCha(UserID);
+	
+	if(AccountCheck == 'NoAccoumt'){
+		rply[1] = '你尚未建立CoC帳號';
+		return rply;
+	}else if(AccountCheck == 'NoCha'){
 		rply[1] = '你尚未持有CoC角色';
 		return rply;
 	}else{
+		var playCha = AccessDB[AccountCheck][2];
 		rply[1] = {
 		  "type": "template",
 		  "altText": "很抱歉，你的Line版本不支援此系統，建議輸入help查看可使用的指令",
@@ -822,11 +862,16 @@ function Chamenu(UserID){
 function Itemmenu(UserID){
 	rply[0] = 'rply';
 	
-	var playCha = CheckCha(UserID);
-	if(playCha == 0){
+	var AccountCheck = CheckCha(UserID);
+	
+	if(AccountCheck == 'NoAccoumt'){
+		rply[1] = '你尚未建立CoC帳號';
+		return rply;
+	}else if(AccountCheck == 'NoCha'){
 		rply[1] = '你尚未持有CoC角色';
 		return rply;
 	}else{
+		var playCha = AccessDB[AccountCheck][2];
 		rply[1] = {
 		  "type": "template",
 		  "altText": "很抱歉，你的Line版本不支援此系統，建議輸入help查看可使用的指令",
