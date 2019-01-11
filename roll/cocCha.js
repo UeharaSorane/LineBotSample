@@ -43,15 +43,18 @@ DB[0].useServiceAccountAuth(creds, function (err) {
 				ChaAcc[i][0] = rows[i].chaname;
 				ChaAcc[i][1] = Number(rows[i].savesheet);
 				ChaAcc[i][2] = Number(rows[i].saveworksheet);
-				
-				DB[1].useServiceAccountAuth(creds, function (err) {
-					DB[1].getCells(rows[i].saveworksheet,{
+			}
+			console.log(ChaAcc);
+			
+			for(var a = 0;a<ChaAcc.length;a++){
+				DB[ChaAcc[a][1]].useServiceAccountAuth(creds, function (err) {
+					DB[ChaAcc[a][1]].getCells(ChaAcc[a][2],{
 						'min-row' : 2,
 						'max-row' : 8,
 						'min-col' : 2,
 						'max-col' : 2,
 						'return-empty' : true
-						
+
 					},function(err,cells){
 						if(err) return err;
 						else{
@@ -59,9 +62,7 @@ DB[0].useServiceAccountAuth(creds, function (err) {
 						}
 					});
 				});
-				
 			}
-			console.log(ChaAcc);
 			console.log('角色連結資料 讀取完成');
 		}
 	
