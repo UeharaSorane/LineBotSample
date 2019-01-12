@@ -56,7 +56,7 @@ NameA.find(function(err,Names){
 		for(var a = 0;a<Names.length;a++){
 			NameArr[a] = Names[a];
 		}
-		console.log("NameArr = " + NameArr);
+		//console.log("NameArr = " + NameArr);
 		console.log("coc名字資料，讀取完成");
 	}
 });
