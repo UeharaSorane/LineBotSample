@@ -54,13 +54,19 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 	//else if (trigger.match(/^娛樂選單$/) != null) return exports.Testing.funnymenu(UserN) ;//娛樂選單
 	
 ////////////////////////CoC選單
+	else if (trigger.match(/^角色更換|帳號確認$/) != null) return exports.cocCha.SwitchCha(UserID,mainMsg[1]) ;//切換角色
+	else if (trigger.match(/^角色登記$/) != null) return exports.cocCha.createCha(UserID,mainMsg[1]) ;//角色登記
 	//else if (trigger.match(/^coc角色資料$/) != null) return exports.cocCha.Chamenu(UserID) ;//角色資料
-	//else if (trigger.match(/^技能查詢$/) != null) return exports.cocCha.ChaSkiSearch(UserID,mainMsg[1]) ;//技能查詢
-	//else if (trigger.match(/^coc持有物資料$/) != null) return exports.cocCha.Itemmenu(UserID) ;//持有物資料
 	//else if (trigger.match(/^其他CoC選項$/) != null) return exports.cocCha.OtherCoC(UserID) ;//切換角色
 	
 ////////////////////////CoC角色資料
-	//else if (trigger.match(/^角色基本資料$/) != null) return exports.cocCha.SearchCha(UserID) ;//角色基本資料
+	else if (trigger.match(/^角色基本資料$/) != null) return exports.cocCha.SearchCha(UserID) ;//角色基本資料
+	//else if (trigger.match(/^角色素質資料$/) != null) return exports.cocCha.ChaQuaCheck(UserID) ;//角色素質資料
+	//else if (trigger.match(/^角色技能資料$/) != null) return exports.cocCha.ChaSkiCheck(UserID) ;//角色技能資料
+	//else if (trigger.match(/^coc持有物資料$/) != null) return exports.cocCha.Itemmenu(UserID) ;//持有物資料
+	
+////////////////////////CoC角色資料維護
+	else if (trigger.match(/^$/) != null) return exports.cocCha.SearchCha(UserID) ;//角色基本資料
 	//else if (trigger.match(/^角色素質資料$/) != null) return exports.cocCha.ChaQuaCheck(UserID) ;//角色素質資料
 	//else if (trigger.match(/^角色技能資料$/) != null) return exports.cocCha.ChaSkiCheck(UserID) ;//角色技能資料
 
@@ -70,7 +76,6 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 
 	
 ////////////////////////其他CoC選項
-	else if (trigger.match(/^角色更換|帳號確認$/) != null) return exports.cocCha.SwitchCha(UserID,mainMsg[1]) ;//切換角色
 	//else if (trigger.match(/^轉移帳號$/) != null) return exports.cocCha.AccountTrans(UserID,mainMsg[1]) ;//轉移帳號
 	
 ////////////////////////轉移帳號相關
