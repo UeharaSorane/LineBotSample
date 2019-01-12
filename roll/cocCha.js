@@ -96,7 +96,7 @@ function SwitchCha(UserID,cha){
 		console.log(T);
 			
 		rply[1] = '【CoC帳號確認】';
-		if(T.have_cha == []){
+		if(T.have_cha.length == 0){
 			rply[1] += '\n[注意！你目前尚未持有角色]';
 		}else{
 			rply[1] += '\n你目前遊玩的角色是:' + T.play_cha + '\
