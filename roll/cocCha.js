@@ -215,7 +215,7 @@ function SearchCha(UserID){
 		var T = CocChaIm.findChaIm(AccountArr[Check].play_cha);
 		
 		if(T == 'NotFound'){
-			rply[1] = '此角色尚未登記基本資料';
+			rply[1] = '嚴重錯誤!!!此角色未建立基本資料，請通報管理員';
 			return rply;
 		}else{
 			rply[1] = '【CoC角色基本情報】\
@@ -226,6 +226,134 @@ function SearchCha(UserID){
 				\n出生地:' + T.born + '\
 				\n現居地:' + T.live;
 
+			return rply;
+		}
+	}
+}
+
+function modChaIm(UserID,cha,Target,TValue){
+	rply[0] = 'rply';
+	var Check = CheckAccount(UserID);
+	if(Check == 'NoAccount'){
+		rply[1] = '你尚未登記帳號喔！請輸入[coc建立帳號]來登記帳號';
+		return rply;
+	}else{
+		var T = AccountArr[Check]; 
+		if(cha == null){
+			rply[1] = '【CoC基本資料維護】\
+					\n請輸入[基本資料維護 要維護的角色名]';
+			return rply;
+		}else{
+			for(var a =0; a<T.have_cha.length;a++){
+				if(T.have_cha[a] == cha){
+					var TCI = CocChaIm.findChaIm(AccountArr[Check].play_cha);
+					if(TCI == 'NotFound'){
+					rply[1] = '嚴重錯誤!!!此角色未建立基本資料，請通報管理員';
+						return rply;
+					}else{
+						if(Target == null){
+							rply[1] = '【CoC基本資料維護】\
+								\n請輸入[基本資料維護 角色名 要維護的欄位]';
+							return rply;
+						}else{
+							if(TValue == null){
+								if(Target == '角色名'){
+									rply[1] = '【CoC基本資料維護】\
+										\n當前角色名:' + TCI.cha_name + '\
+										\n\
+										\n角色名不可變更';
+									return rply;
+								}else if(Target == '職業'){
+									rply[1] = '【CoC基本資料維護】\
+										\n當前角色職業:' + TCI.cha_class + '\
+										\n\
+										\n如要修改，請輸入\
+										\n[基本資料維護 角色名 職業 新的職業]';
+									return rply;
+								}else if(Target == '年齡'){
+									rply[1] = '【CoC基本資料維護】\
+										\n當前角色年齡:' + TCI.age + '\
+										\n\
+										\n如要修改，請輸入\
+										\n[基本資料維護 角色名 年齡 新的年齡]';
+									return rply;
+								}else if(Target == '性別'){
+									rply[1] = '【CoC基本資料維護】\
+										\n當前角色性別:' + TCI.sex + '\
+										\n\
+										\n如要修改，請輸入\
+										\n[基本資料維護 角色名 性別 新的性別]';
+									return rply;
+								}else if(Target == '出生地'){
+									rply[1] = '【CoC基本資料維護】\
+										\n當前角色出生地:' + TCI.born + '\
+										\n\
+										\n如要修改，請輸入\
+										\n[基本資料維護 角色名 出生地 新的出生地]';
+									return rply;
+								}else if(Target == '現居地'){
+									rply[1] = '【CoC基本資料維護】\
+										\n當前角色現居地:' + TCI.live + '\
+										\n\
+										\n如要修改，請輸入\
+										\n[基本資料維護 角色名 現居地 新的現居地]';
+									return rply;
+								}else{
+									rply[1] = '錯誤!沒有這個欄位喔';
+									return rply;
+								}
+							}else{
+								if(Target == '角色名'){
+									rply[1] = '【CoC基本資料維護】\
+										\n當前角色名:' + TCI.cha_name + '\
+										\n\
+										\n角色名不可變更';
+								}else if(Target == '職業'){
+									TCI.cha_class = TValue;
+									CocChaIm.saveChaIm(TCI);
+									
+									rply[1] = '【CoC基本資料維護】\
+										\n更改成功;
+									return rply;
+								}else if(Target == '年齡'){
+									TCI.cha_age = TValue;
+									CocChaIm.saveChaIm(TCI);
+									
+									rply[1] = '【CoC基本資料維護】\
+										\n更改成功;
+									return rply;
+								}else if(Target == '性別'){
+									TCI.cha_sex = TValue;
+									CocChaIm.saveChaIm(TCI);
+									
+									rply[1] = '【CoC基本資料維護】\
+										\n更改成功;
+									return rply;
+								}else if(Target == '出生地'){
+									TCI.born = TValue;
+									CocChaIm.saveChaIm(TCI);
+									
+									rply[1] = '【CoC基本資料維護】\
+										\n更改成功;
+									return rply;
+								}else if(Target == '現居地'){
+									TCI.live = TValue;
+									CocChaIm.saveChaIm(TCI);
+									
+									rply[1] = '【CoC基本資料維護】\
+										\n更改成功;
+									return rply;
+								}else{
+									rply[1] = '錯誤!沒有這個欄位喔';
+									return rply;
+								}
+							}
+						}
+
+					}
+				}
+			}
+			rply[1] = '錯誤！你不持有此角色或此角色不存在';
 			return rply;
 		}
 	}
