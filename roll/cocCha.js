@@ -185,5 +185,6 @@ function saveAccounts(AccountT){
 module.exports = {
 	CreateAccount,
 	SwitchCha,
+	createCha,
 	SearchCha
 };
