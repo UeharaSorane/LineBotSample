@@ -109,28 +109,48 @@ function SwitchCha(UserID,cha){
 	}else{
 		var T = AccountArr[Check]; 
 		
-		console.log(T);
-			
-		rply[1] = '【CoC帳號確認】';
-		if(T.have_cha.length == 0){
-			rply[1] += '\n[注意！你目前尚未持有角色]';
-		}else{
-			rply[1] += '\n你目前遊玩的角色是:' + T.play_cha + '\
-				\n你目前持有的角色:';
-			
-			for(var a = 0;a<T.have_cha.length;a++){
-				rply[1] += '\n' + (a+1) + '.' + T.have_cha[a];
+		if(cha == null){
+		
+			//console.log(T);
+
+			rply[1] = '【CoC帳號確認】';
+			if(T.have_cha.length == 0){
+				rply[1] += '\n[注意！你目前尚未持有角色]';
+			}else{
+				rply[1] += '\n你目前遊玩的角色是:' + T.play_cha + '\
+					\n你目前持有的角色:';
+
+				for(var a = 0;a<T.have_cha.length;a++){
+					rply[1] += '\n' + (a+1) + '.' + T.have_cha[a];
+				}
 			}
-		}
 
-		rply[1] += '\n繼承模式:';
+			rply[1] += '\n==========\
+					\n繼承模式:';
 
-		if(T.trans_io == false){
-			rply[1] += '關閉中';
+			if(T.trans_io == false){
+				rply[1] += '關閉中';
+			}else{
+				rply[1] += '開啟中';
+			}
+			rply[1] += '\n==========\
+					\n\n如果要切換角色的話，請輸入[角色切換 角色名]進行切換';
+			
+			return rply;
 		}else{
-			rply[1] += '開啟中';
+			for(var a =0; a<T.have_cha.length;a++){
+				if(T.have_cha[a] == cha){
+					T.play_cha = cha;
+					saveAccounts(T);
+					
+					rply[1] = '切換完成！請輸入[帳號確認]進行確認';
+					return rply;
+					
+				}
+			}
+			rply[1] = '錯誤！你不持有此角色或此角色不存在';
+			return rply;
 		}
-		return rply;
 	}
 	
 }
