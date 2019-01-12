@@ -20,7 +20,7 @@ var AccountSchema = new Schema({
 	user_id:{type:String,require:true},
 	have_cha:{type:Array,default:[]},
 	trans_key:{type:String,default:'none'},
-	trans_io:{type:boolean,default:false}
+	trans_io:{type:Boolean,default:false}
 });
 
 var Account = mongoose.model('AccountData',AccountSchema);
