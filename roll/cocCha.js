@@ -128,10 +128,12 @@ function createCha(UserID,chaName){
 			rply[1] = '【CoC角色登記】\
 				\n請注意，這動作只是讓角色登記在你的名下，如果要更進一步地設定角色，請輸入[help]求助。\
 				\n\n一旦登記角色，就只有管理員可以刪除，請小心\
+				\n\n不能使用跟已登記角色一樣的名字\
 				\n\n如果這是你第一位登記的角色，他便會成為你目前的使用角色\
 				\n\n確認以上事項後，請輸入[角色登記 角色名]完成登記';
 			return rply;
 		}else{
+			
 			var T = AccountArr[Check];
 			var AAHCL = T.have_cha.length;
 			T.have_cha[AAHCL] = chaName;
