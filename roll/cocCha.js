@@ -16,7 +16,7 @@ const Schema = mongoose.Schema;
 var AccountSchema = new Schema({
 	id:{type:Number},
 	user_id:{type:String,require:true},
-	play_cha:{type:String,default:''},
+	play_cha:{type:String,default:null},
 	have_cha:{type:Array,default:[]},
 	trans_key:{type:String,default:'none'},
 	trans_io:{type:Boolean,default:false}
@@ -28,7 +28,7 @@ var NameSchema = new Schema({
 });
 
 var Account = mongoose.model('AccountData',AccountSchema);
-var NameA = mongoose.model('AccountData',AccountSchema);
+var NameA = mongoose.model('NameData',NameSchema);
 var AccountArr = [];
 var NameArr = [];
 
@@ -161,7 +161,7 @@ function createCha(UserID,chaName){
 			var T = AccountArr[Check];
 			var AAHCL = T.have_cha.length;
 			T.have_cha[AAHCL] = chaName;
-			if(T.play_cha == null){
+			if(T.play_cha === null){
 				T.play_cha = chaName;
 			}
 			saveAccounts(T);
