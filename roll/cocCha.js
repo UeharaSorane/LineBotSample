@@ -127,5 +127,6 @@ function saveAccounts(AccountT){
 }
 
 module.exports = {
-	CreateAccount
+	CreateAccount,
+	SwitchCha
 };
