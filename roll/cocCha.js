@@ -224,7 +224,9 @@ function SearchCha(UserID){
 				\n年齡:' + T.age + '\
 				\n性別:' + T.sex + '\
 				\n出生地:' + T.born + '\
-				\n現居地:' + T.live;
+				\n現居地:' + T.live + '\
+				\n\n如果想修改角色基本資料，請輸入\
+				\n\n [基本資料維護]';
 
 			return rply;
 		}
