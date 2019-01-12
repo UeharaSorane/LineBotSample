@@ -56,7 +56,7 @@ function findChaIm(chaName){
 }
 
 function saveChaIm(ChaImT){
-	CIArr.findOneAndUpdate({id: ChaImT.id},ChaImT,{
+	ChaIm.findOneAndUpdate({id: ChaImT.id},ChaImT,{
 		upsert:true
 	},function(err){
 		if(err) throw err;
