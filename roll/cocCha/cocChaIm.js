@@ -13,11 +13,11 @@ var ChaImSchema = new Schema({
 	id:{type:Number},
 	user_id:{type:String,require:true},
 	cha_name:{type:String,require:true},
-	cha_class:{type:String,default'未設定'},
-	age:{type:String,default'未設定'},
-	sex:{type:String,default'未設定'},
-	born:{type:String,default'未設定'},
-	live:{type:String,default'未設定'}
+	cha_class:{type:String,default:'未設定'},
+	age:{type:String,default:'未設定'},
+	sex:{type:String,default:'未設定'},
+	born:{type:String,default:'未設定'},
+	live:{type:String,default:'未設定'}
 });
 
 var ChaIm = mongoose.model('ChaIm',ChaImSchema);
