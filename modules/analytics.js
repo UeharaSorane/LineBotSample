@@ -66,7 +66,7 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 	//else if (trigger.match(/^coc持有物資料$/) != null) return exports.cocCha.Itemmenu(UserID) ;//持有物資料
 	
 ////////////////////////CoC角色資料維護
-	else if (trigger.match(/^$/) != null) return exports.cocCha.SearchCha(UserID) ;//角色基本資料
+	else if (trigger.match(/^基本資料維護$/) != null) return exports.cocCha.modChaIm(UserID,mainMsg[1],mainMsg[2],mainMsg[3]) ;//基本資料資料
 	//else if (trigger.match(/^角色素質資料$/) != null) return exports.cocCha.ChaQuaCheck(UserID) ;//角色素質資料
 	//else if (trigger.match(/^角色技能資料$/) != null) return exports.cocCha.ChaSkiCheck(UserID) ;//角色技能資料
 
