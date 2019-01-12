@@ -305,9 +305,8 @@ function modChaIm(UserID,cha,Target,TValue){
 							}else{
 								if(Target == '角色名'){
 									rply[1] = '【CoC基本資料維護】\
-										\n當前角色名:' + TCI.cha_name + '\
-										\n\
 										\n角色名不可變更';
+									return rply;
 								}else if(Target == '職業'){
 									TCI.cha_class = TValue;
 									CocChaIm.saveChaIm(TCI);
