@@ -25,7 +25,7 @@ var ChaIm = mongoose.model('ChaIm',ChaImSchema);
 var CIArr = [];
 
 ChaIm.find(function(err,ChaIms){
-	for(var a = 0;a<ChaIms;a++){
+	for(var a = 0;a<ChaIms.length;a++){
 		CIArr[a] = ChaIms[a];
 	}
 	
