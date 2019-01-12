@@ -25,7 +25,7 @@ var AccountSchema = new Schema({
 var NameSchema = new Schema({
 	id:{type:Number},
 	name:{type:String,require:true}
-};
+});
 
 var Account = mongoose.model('AccountData',AccountSchema);
 var NameA = mongoose.model('AccountData',AccountSchema);
