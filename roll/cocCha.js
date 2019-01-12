@@ -45,56 +45,72 @@ Account.find(function(err,Accounts){
 	}
 });
 
+function CheckAccount(UserID){
+	for(var a = 0;a<AccountArr.length;a++){
+		var T = AccountArr[a];
+		if(T.user_id == UserID){
+			return a;
+		}
+	}
+	return 'NoAccount';
+}
+
 function CreateAccount(UserID){
 	rply[0] = 'rply';
 	
-	if(UserID == null){
-		rply[1] = '注意!讀取你的Line UserID失敗，請通報給系統人員';
+	var Check = CheckAccount(UserID);
+	
+	if(Check != 'NoAccount'){
+		rply[1] = '錯誤!這個Line帳號已經有資料了，無法使用本操作';
 		return rply;
 	}else{
-		var AAL = AccountArr.length;
-		AccountArr[AAL] = {
-			id: AAL,
-			user_id: UserID,
-			have_cha: [],
-			trans_key: 'none',
-			trans_io: false
-		};
-		
-		saveAccounts(AccountArr[AAL]);
-		rply[1] = '帳號登記完成!';
-		return rply;
+		if(UserID == null){
+			rply[1] = '注意!讀取你的Line UserID失敗，請通報給系統人員';
+			return rply;
+		}else{
+			var AAL = AccountArr.length;
+			AccountArr[AAL] = {
+				id: AAL,
+				user_id: UserID,
+				have_cha: [],
+				trans_key: 'none',
+				trans_io: false
+			};
+
+			saveAccounts(AccountArr[AAL]);
+			rply[1] = '帳號登記完成!';
+			return rply;
+		}
 	}
 }
 
 function SwitchCha(UserID,cha){
 	rply[0] = 'rply';
-	for(var a = 0;a<AccountArr.length;a++){
-		if(AccountArr[a].user_id == UserID){
-			var T = AccountArr[a]; 
+	var Check = CheckAccount(UserID);
+	if(Check == 'NoAccount'){
+		rply[1] = '你尚未登記帳號喔！請輸入[coc建立帳號]來登記帳號';
+		return rply;
+	}else{
+		var T = AccountArr[Check]; 
 			
-			rply[1] = '【CoC帳號確認】';
-			if(T.have_cha == null){
-				rply[1] += '\n[注意！你目前尚未持有角色]';
-			}else{
-				rply[1] += '\n你目前遊玩的角色是:' + T.play_cha + '\
-					\n你目前持有的角色:' + T.have_cha;
-			}
-			
-			rply[1] += '\n繼承模式:';
-			
-			if(T.trans_io == false){
-				rply[1] += '關閉中';
-			}else{
-				rply[1] += '開啟中';
-			}
-			return rply;
-			
+		rply[1] = '【CoC帳號確認】';
+		if(T.have_cha == null){
+			rply[1] += '\n[注意！你目前尚未持有角色]';
+		}else{
+			rply[1] += '\n你目前遊玩的角色是:' + T.play_cha + '\
+				\n你目前持有的角色:' + T.have_cha;
 		}
+
+		rply[1] += '\n繼承模式:';
+
+		if(T.trans_io == false){
+			rply[1] += '關閉中';
+		}else{
+			rply[1] += '開啟中';
+		}
+		return rply;
 	}
 	
-	rply[1] = '你尚未登記帳號喔！請輸入[coc建立帳號]來登記帳號';
-	return rply;
 }
 
 function saveAccounts(AccountT){
