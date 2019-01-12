@@ -99,7 +99,7 @@ function SwitchCha(UserID,cha){
 				\n你目前持有的角色:';
 			
 			for(var a = 0;a<T.have_cha.length;a++){
-				rply[1] += '\n' + (a+1) + T.have_cha[a];
+				rply[1] += '\n' + (a+1) + '.' + T.have_cha[a];
 			}
 		}
 
