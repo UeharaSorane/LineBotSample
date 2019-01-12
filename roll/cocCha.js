@@ -317,14 +317,14 @@ function modChaIm(UserID,cha,Target,TValue){
 										\n更改成功';
 									return rply;
 								}else if(Target == '年齡'){
-									TCI.cha_age = TValue;
+									TCI.age = TValue;
 									CocChaIm.saveChaIm(TCI);
 									
 									rply[1] = '【CoC基本資料維護】\
 										\n更改成功';
 									return rply;
 								}else if(Target == '性別'){
-									TCI.cha_sex = TValue;
+									TCI.sex = TValue;
 									CocChaIm.saveChaIm(TCI);
 									
 									rply[1] = '【CoC基本資料維護】\
