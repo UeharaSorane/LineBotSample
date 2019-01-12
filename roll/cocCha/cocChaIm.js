@@ -68,5 +68,6 @@ function saveChaIm(ChaImT){
 
 module.exports = {
 	findChaIm,
-	CreateCha
+	CreateCha,
+	saveChaIm
 };
