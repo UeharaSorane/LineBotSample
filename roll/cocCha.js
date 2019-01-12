@@ -18,7 +18,7 @@ mongoose.connect(mongoDB, function (err) {
 var AccountSchema = new Schema({
 	id:{type:Number},
 	user_id:{type:String,require:true},
-	play_cha:{type:String,require:false},
+	play_cha:{type:String,default:''},
 	have_cha:{type:Array,default:[]},
 	trans_key:{type:String,default:'none'},
 	trans_io:{type:Boolean,default:false}
