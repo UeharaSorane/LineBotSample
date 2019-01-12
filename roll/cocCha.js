@@ -18,6 +18,7 @@ mongoose.connect(mongoDB, function (err) {
 var AccountSchema = new Schema({
 	id:{type:Number},
 	user_id:{type:String,require:true},
+	play_cha:{type:String,require:false},
 	have_cha:{type:Array,default:[]},
 	trans_key:{type:String,default:'none'},
 	trans_io:{type:Boolean,default:false}
@@ -33,6 +34,7 @@ Account.find(function(err,Accounts){
 			AccountArr[a] = {
 				id: Accounts[a].id,
 				user_id: Accounts[a].user_id,
+				play_cha: Accounts[a].play_cha,
 				have_cha: Accounts[a].have_cha,
 				trans_key: Accounts[a].trans_key,
 				trans_io: Accounts[a].trans_io
@@ -60,7 +62,39 @@ function CreateAccount(UserID){
 		};
 		
 		saveAccounts(AccountArr[AAL]);
+		rply[1] = '帳號登記完成!';
+		return rply;
 	}
+}
+
+function SwitchCha(UserID,mainMsg[1]){
+	rply[0] = 'rply';
+	for(var a = 0;a<AccountArr.length;a++){
+		if(AccountArr[a].user_id == UserID){
+			var T = AccountArr[a]; 
+			
+			rply[1] = '【CoC帳號確認】';
+			if(T.have_cha == null){
+				rply[1] += '\n[注意！你目前尚未持有角色]';
+			}else{
+				rply[1] += '\n你目前遊玩的角色是:' + T.play_cha + '\
+					\n你目前持有的角色:' + T.have_cha;
+			}
+			
+			rply[1] += '\n繼承模式:';
+			
+			if(T.trans_io == false){
+				rply[1] += '關閉中';
+			}else{
+				rply[1] += '開啟中';
+			}
+			return rply;
+			
+		}
+	}
+	
+	rply[1] = '你尚未登記帳號喔！請輸入[coc建立帳號]來登記帳號';
+	return rply;
 }
 
 function saveAccounts(AccountT){
