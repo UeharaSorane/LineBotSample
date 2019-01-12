@@ -1,5 +1,7 @@
 var rply = [];
 
+var CocChaIm = require("./cocChaIm.js");
+
 //////////mongo系統
 var mongoose = require('mongoose');
 var mongoDB = 'mongodb://b88009005:b09050905@ds229312.mlab.com:29312/linetest';
@@ -115,16 +117,66 @@ function SwitchCha(UserID,cha){
 	
 }
 
+function createCha(UserID,chaName){
+	rply[0] = 'rply';
+	var Check = CheckAccount(UserID);
+	if(Check == 'NoAccount'){
+		rply[1] = '你尚未登記帳號喔！請輸入[coc建立帳號]來登記帳號';
+		return rply;
+	}else{
+		if(chaName == null){
+			rply[1] = '【CoC角色登記】\
+				\n請注意，這動作只是讓角色登記在你的名下，如果要更進一步地設定角色，請輸入[help]求助。\
+				\n\n一旦登記角色，就只有管理員可以刪除，請小心\
+				\n\n如果這是你第一位登記的角色，他便會成為你目前的使用角色\
+				\n\n確認以上事項後，請輸入[角色登記 角色名]完成登記';
+			return rply;
+		}else{
+			var T = AccountArr[Check];
+			var AAHCL = T.have_cha.length;
+			T.have_cha[AAHCL] = chaName;
+			if(T.play_cha == null){
+				T.play_cha = chaName;
+			}
+		}
+	}
+}
 
+function SearchCha(UserID){
+	rply[0] = 'rply';
+	var Check = CheckAccount(UserID);
+	if(Check == 'NoAccount'){
+		rply[1] = '你尚未登記帳號喔！請輸入[coc建立帳號]來登記帳號';
+		return rply;
+	}else if(AccountArr[Check].play_cha == null){
+		rply[1] = '你尚未登記角色喔！';
+		return rply;
+	}else{
+		var T = CocChaIm.findChaIm(AccountArr[Check].play_cha);
+		
+		if(T == 'NotFound'){
+			rply[1] = '此角色尚未登記基本資料';
+			return rply;
+		}else{
+			rply[1] = '【CoC角色基本情報】\
+				\n角色名:' + T.cha_name + '\
+				\n職業:' + T.cha_class + '\
+				\n年齡:' + T.age + '\
+				\n性別:' + T.sex + '\
+				\n出生地:' + T.born + '\
+				\n現居地:' + T.live;
+
+			return rply;
+		}
+	}
+}
 
 function saveAccounts(AccountT){
-	Account.find({id: AccountT.id},function(err,Accounts){
+	Account.findOneAndUpdate({id: AccountT.id},AccountT,{
+		upsert:true
+	},function(err){
 		if(err) throw err;
 		else{
-			Account.create(AccountT,function(err){
-				if(err) throw err;
-			});
-			
 			console.log("帳號資料 更新完成");
 		}
 	});
@@ -132,5 +184,6 @@ function saveAccounts(AccountT){
 
 module.exports = {
 	CreateAccount,
-	SwitchCha
+	SwitchCha,
+	SearchCha
 };
