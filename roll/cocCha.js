@@ -22,8 +22,15 @@ var AccountSchema = new Schema({
 	trans_io:{type:Boolean,default:false}
 });
 
+var NameSchema = new Schema({
+	id:{type:Number},
+	name:{type:String,require:true}
+};
+
 var Account = mongoose.model('AccountData',AccountSchema);
+var NameA = mongoose.model('AccountData',AccountSchema);
 var AccountArr = [];
+var NameArr = [];
 
 Account.find(function(err,Accounts){
 	if(err)throw err;
@@ -38,8 +45,19 @@ Account.find(function(err,Accounts){
 				trans_io: Accounts[a].trans_io
 			};
 		}
-		console.log("AccountArr = " + AccountArr);
+		//console.log("AccountArr = " + AccountArr);
 		console.log("coc帳號資料，讀取完成");
+	}
+});
+
+NameA.find(function(err,Names){
+	if(err)throw err;
+	else{
+		for(var a = 0;a<Names.length;a++){
+			NameArr[a] = Names[a];
+		}
+		console.log("NameArr = " + NameArr);
+		console.log("coc名字資料，讀取完成");
 	}
 });
 
@@ -133,6 +151,12 @@ function createCha(UserID,chaName){
 				\n\n確認以上事項後，請輸入[角色登記 角色名]完成登記';
 			return rply;
 		}else{
+			for(var a = 0;a<NameArr.length;a++){
+				if(NameArr[a].name == chaName){
+					rply[1] = '這個名字有人使用喽，請換一個試試看';
+					return rply;
+				}
+			}
 			
 			var T = AccountArr[Check];
 			var AAHCL = T.have_cha.length;
@@ -140,6 +164,18 @@ function createCha(UserID,chaName){
 			if(T.play_cha == null){
 				T.play_cha = chaName;
 			}
+			saveAccounts(T);
+			
+			var NAL = NameArr.length;
+			NameArr[NAL] = {
+				id: NAL,
+				name: chaName
+			}
+			
+			saveNames(NameArr[NAL]);
+			
+			rply[1] = '登記完成！請輸入[帳號確認]進行確認';
+			return rply;
 		}
 	}
 }
@@ -180,6 +216,17 @@ function saveAccounts(AccountT){
 		if(err) throw err;
 		else{
 			console.log("帳號資料 更新完成");
+		}
+	});
+}
+
+function saveNames(NameArr){
+	NameA.findOneAndUpdate({id: NameArr.id},NameArr,{
+		upsert:true
+	},function(err){
+		if(err) throw err;
+		else{
+			console.log("名字資料 更新完成");
 		}
 	});
 }
