@@ -246,9 +246,9 @@ function modChaIm(UserID,cha,Target,TValue){
 		}else{
 			for(var a =0; a<T.have_cha.length;a++){
 				if(T.have_cha[a] == cha){
-					var TCI = CocChaIm.findChaIm(AccountArr[Check].play_cha);
+					var TCI = CocChaIm.findChaIm(cha);
 					if(TCI == 'NotFound'){
-					rply[1] = '嚴重錯誤!!!此角色未建立基本資料，請通報管理員';
+						rply[1] = '嚴重錯誤!!!此角色未建立基本資料，請通報管理員';
 						return rply;
 					}else{
 						if(Target == null){
