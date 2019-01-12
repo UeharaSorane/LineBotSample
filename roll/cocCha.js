@@ -134,7 +134,7 @@ function SwitchCha(UserID,cha){
 				rply[1] += '開啟中';
 			}
 			rply[1] += '\n==========\
-					\n\n如果要切換角色的話，請輸入[角色切換 角色名]進行切換';
+					\n\n如果要切換角色的話，請輸入[角色更換 角色名]進行切換';
 			
 			return rply;
 		}else{
