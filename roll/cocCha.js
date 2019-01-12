@@ -313,35 +313,35 @@ function modChaIm(UserID,cha,Target,TValue){
 									CocChaIm.saveChaIm(TCI);
 									
 									rply[1] = '【CoC基本資料維護】\
-										\n更改成功;
+										\n更改成功';
 									return rply;
 								}else if(Target == '年齡'){
 									TCI.cha_age = TValue;
 									CocChaIm.saveChaIm(TCI);
 									
 									rply[1] = '【CoC基本資料維護】\
-										\n更改成功;
+										\n更改成功';
 									return rply;
 								}else if(Target == '性別'){
 									TCI.cha_sex = TValue;
 									CocChaIm.saveChaIm(TCI);
 									
 									rply[1] = '【CoC基本資料維護】\
-										\n更改成功;
+										\n更改成功';
 									return rply;
 								}else if(Target == '出生地'){
 									TCI.born = TValue;
 									CocChaIm.saveChaIm(TCI);
 									
 									rply[1] = '【CoC基本資料維護】\
-										\n更改成功;
+										\n更改成功';
 									return rply;
 								}else if(Target == '現居地'){
 									TCI.live = TValue;
 									CocChaIm.saveChaIm(TCI);
 									
 									rply[1] = '【CoC基本資料維護】\
-										\n更改成功;
+										\n更改成功';
 									return rply;
 								}else{
 									rply[1] = '錯誤!沒有這個欄位喔';
