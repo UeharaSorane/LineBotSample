@@ -9,10 +9,6 @@ mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 
-mongoose.connect(mongoDB, function (err) {
-	if(err) throw err;
-	else console.log('連線成功，可以正常吃芒果!');
-});
 ///////////
 
 var AccountSchema = new Schema({
@@ -100,7 +96,11 @@ function SwitchCha(UserID,cha){
 			rply[1] += '\n[注意！你目前尚未持有角色]';
 		}else{
 			rply[1] += '\n你目前遊玩的角色是:' + T.play_cha + '\
-				\n你目前持有的角色:' + T.have_cha;
+				\n你目前持有的角色:';
+			
+			for(var a = 0;a<T.have_cha.length;a++){
+				rply[1] += '\n' + (a+1) + T.have_cha[a];
+			}
 		}
 
 		rply[1] += '\n繼承模式:';
@@ -114,6 +114,8 @@ function SwitchCha(UserID,cha){
 	}
 	
 }
+
+
 
 function saveAccounts(AccountT){
 	Account.find({id: AccountT.id},function(err,Accounts){
