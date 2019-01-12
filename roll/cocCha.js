@@ -1,6 +1,6 @@
 var rply = [];
 
-var CocChaIm = require("./cocChaIm.js");
+var CocChaIm = require("./cocCha/cocChaIm.js");
 
 //////////mongo系統
 var mongoose = require('mongoose');
