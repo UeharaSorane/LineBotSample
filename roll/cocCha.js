@@ -193,6 +193,8 @@ function createCha(UserID,chaName){
 			}
 			
 			saveNames(NameArr[NAL]);
+			CocChaIm.CreateCha(UserID,chaName);
+			
 			
 			rply[1] = '登記完成！請輸入[帳號確認]進行確認';
 			return rply;
