@@ -44,7 +44,7 @@ Channal.find(function(err,Channals){
 			};
 		}
 		
-		console.log(talkChannal);
+		//console.log(talkChannal);
 		console.log("頻道資料，更新完成");
 	}
 });
