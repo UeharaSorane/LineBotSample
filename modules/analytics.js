@@ -70,7 +70,7 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 
 	
 ////////////////////////其他CoC選項
-	//else if (trigger.match(/^角色更換|帳號確認$/) != null) return exports.cocCha.SwitchCha(UserID,mainMsg[1]) ;//切換角色
+	else if (trigger.match(/^角色更換|帳號確認$/) != null) return exports.cocCha.SwitchCha(UserID,mainMsg[1]) ;//切換角色
 	//else if (trigger.match(/^轉移帳號$/) != null) return exports.cocCha.AccountTrans(UserID,mainMsg[1]) ;//轉移帳號
 	
 ////////////////////////轉移帳號相關
