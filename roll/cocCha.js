@@ -67,7 +67,7 @@ function CreateAccount(UserID){
 	}
 }
 
-function SwitchCha(UserID,mainMsg[1]){
+function SwitchCha(UserID,cha){
 	rply[0] = 'rply';
 	for(var a = 0;a<AccountArr.length;a++){
 		if(AccountArr[a].user_id == UserID){
