@@ -32,7 +32,7 @@ ChaIm.find(function(err,ChaIms){
 });
 
 function findChaIm(chaName){
-	for(var a =;a<CIArr.length;a++){
+	for(var a =0;a<CIArr.length;a++){
 		if(CIArr[a].cha_name == chaName) return CIArr[a];
 	}
 	return 'NotFound';
