@@ -29,6 +29,7 @@ ChaIm.find(function(err,ChaIms){
 		CIArr[a] = ChaIms[a];
 	}
 	
+	console.log('CIArr = ' + CIArr);
 	console.log("coc角色基本資料，讀取完成");
 });
 
