@@ -385,5 +385,6 @@ module.exports = {
 	CreateAccount,
 	SwitchCha,
 	createCha,
-	SearchCha
+	SearchCha,
+	modChaIm
 };
