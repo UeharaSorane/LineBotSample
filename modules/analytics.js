@@ -46,7 +46,7 @@ function parseInput(inputStr,UserID,UserN,GroupID) {
 	else if (trigger.match(/flag|插旗/) != null) return exports.funny.BStyleFlagSCRIPTS() ;//插旗用指令
 	else if (trigger.match(/^help$|^幫助$/)!= null ) return exports.Help.Help(UserN);//幫助頁面
 	
-	//else if (trigger.match(/^coc建立帳號$/) != null) return exports.cocCha.CreateAccount(UserID,UserN) ;//CoC選單
+	else if (trigger.match(/^coc建立帳號$/) != null) return exports.cocCha.CreateAccount(UserID) ;//CoC選單
 	
 ////////////////////////目錄
 	//else if (trigger.match(/^目錄|menu$/) != null) return exports.Testing.menu(UserN) ;//目錄
