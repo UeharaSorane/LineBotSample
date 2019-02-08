@@ -1,7 +1,7 @@
 //引用外部函數庫
-var linebot = require('linebot');
+var linebot = require('linebot');//LineBot 的主要功能
 //引用自己的函數庫
-var analytics = require("./modules/analytics.js");
+var analytics = require("./modules/analytics.js");//這個是分析訊息的函庫
 //
 
 var bot = linebot({
