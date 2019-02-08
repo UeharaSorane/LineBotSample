@@ -3,7 +3,7 @@
 這個Bot是一個空白的Bot，可透過Node.js語言量身打造出你專屬的Bot
 
 
-如何建立自己的Line骰子機器人(以下參考https://github.com/zeteticl/TrpgLineBot-php/blob/master/README.md的介紹)
+如何建立自己的Line骰子機器人(以下參考https://github.com/zeteticl/TrpgLineBot-php/blob/master/README.md 的介紹)
 ==
 
 準備動作：
