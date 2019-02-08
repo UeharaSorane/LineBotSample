@@ -1,4 +1,4 @@
-var Sample = require("../mainfunc/Sample.js");
+var Sample = require("../mainFunc/Sample.js");
 
 function parseInput(inputStr,UserID,UserN,GroupID) {
 	if (inputStr.match(/^嗨$/) != null) return Sample.Hello();//哈喽
