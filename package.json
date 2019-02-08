@@ -1,7 +1,7 @@
 {
-  "name": "Sorane",
+  "name": "SampleBot",
   "version": "1.0.0",
-  "description": "My Line Bot",
+  "description": "SampleLineBot",
   "engines": {
     "node": "6.9.1"
   },
@@ -12,13 +12,9 @@
   "dependencies": {
     "express": "4.13.3",
     "body-parser": "1.15.2",
-    "google-spreadsheet": "2.0.3",
-    "sync": "0.2.5",
-    "linebot": "1.4.1",
-    "mongoose":"5.4.3"
+    "linebot": "1.4.1"
   },
   "keywords": [
-    "Sorane",
     "Line"
   ],
   "license": "MIT"
