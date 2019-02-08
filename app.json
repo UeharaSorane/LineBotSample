@@ -1,0 +1,17 @@
+{
+	"name": "LineBotSample",
+	"description": "為自己量身訂做一個LineBot",
+	"repository": "https://github.com/UeharaSorane/LineBotSample.git",
+	"keywords": ["Line Bot"],
+	"env": {
+		"LINE_CHANNEL_SECRET": {
+			"description": "LINE_Channel_Secret"
+		},
+		"LINE_CHANNEL_ACCESSTOKEN": {
+			"description": "LINE_Channel_Accesstoken"
+		},
+		"KEY_WORD": {
+			"description": "你的機器人的名字"
+		}
+	}
+}
